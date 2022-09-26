@@ -1,8 +1,8 @@
 # Wor Of Monster
 ## Team Game Makers
-###### Design & Art Director : CenturuK 
-###### Game Desing(Planaing) & Main Director : Donnie
-###### Developer : DokCo.
+Design & Art Director : CenturuK 
+Game Desing(Planaing) & Main Director : Donnie
+Developer : DokCo.
 
 
 ### Save data [link](https://www.notion.so/SAVE-DATA-767b03e4499841bcae49e789445bd42b)
