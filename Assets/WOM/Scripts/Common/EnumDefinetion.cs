@@ -16,4 +16,9 @@ public class EnumDefinetion
         gold,
         boss
     }
+
+    public enum AttackType
+    {
+        normal
+    }
 }
