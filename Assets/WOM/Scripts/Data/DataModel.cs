@@ -41,14 +41,26 @@ public class StageData
     public string stageName;
     public int monsterNormalId;
     public int monsterBossId;
+    public int mosterGlodId;
+    public int phaseCount;
+    public int bgId;
+    public string rewardEvent;
+    public string unlock;
 }
-
-
-
 
 
 [Serializable]
 public class EvolutionData
 {
+    public int depthId;
+    public string name;
+    public EnumDefinetion.InsectType insectType;
+    public float damage;
+    public float damageRate;
+    public float criticalChance;
+    public float criticalDamage;
+    public float speed;
+    public float goldBonus;
+    public float bossDamage;
 
 }
