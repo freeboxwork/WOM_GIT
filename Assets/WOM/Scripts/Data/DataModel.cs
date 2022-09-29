@@ -62,5 +62,35 @@ public class EvolutionData
     public float speed;
     public float goldBonus;
     public float bossDamage;
+}
 
+[Serializable]
+public class EvolutionOptionData
+{
+    public int optionId;
+    public int optionA;
+    public int optionB;
+    public int requiredLevel;
+}
+
+[Serializable]
+public class UpgradeData
+{
+    public int level;
+    public float upgradeCost;
+    public float damage;
+}
+
+[Serializable]
+public class MonsterData
+{
+    public int monsterId;
+    public float hp;
+    public float exp;
+    public float gold;
+    public int goldCount;
+    public int imageId;
+    public EnumDefinetion.MonsterType monsterType;
+    public int bgId;
+    public EnumDefinetion.AttackType attackType;
 }
