@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro.EditorUtilities;
 
 public class DataModel : MonoBehaviour
 {
@@ -31,6 +32,17 @@ public class InsectSaveData
     public string evolutionTechTree;
     public EvolutionData evolutionLastData;
 }
+
+
+[Serializable]
+public class StageData
+{
+    public int stageId;
+    public string stageName;
+    public int monsterNormalId;
+    public int monsterBossId;
+}
+
 
 
 
