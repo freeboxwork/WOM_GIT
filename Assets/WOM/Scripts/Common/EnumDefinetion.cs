@@ -19,6 +19,21 @@ public class EnumDefinetion
 
     public enum AttackType
     {
-        normal
+        normal,
+    }
+
+    public enum SheetDataType
+    {
+        evolutionData_bee,
+        evolutionData_beetle,
+        evolutionData_mentis,
+        evolutionOptionData_bee,
+        evolutionOptionData_beetle,
+        evolutionOptionData_mentis,
+        monsterData_boss,
+        monsterData_gold,
+        monsterData_normal,
+        stageData,
+        upgradeData
     }
 }

@@ -1700,6 +1700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boom_00P
       objectReference: {fileID: 0}
+    - target: {fileID: 3474505992292315227, guid: 6463285cd9a0c04458b3617dde602913, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6463285cd9a0c04458b3617dde602913, type: 3}
 --- !u!1001 &4304186194801667898
@@ -1878,6 +1882,18 @@ PrefabInstance:
     - target: {fileID: 630736420063910280, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
       propertyPath: m_Name
       value: Monsters
+      objectReference: {fileID: 0}
+    - target: {fileID: 630736420063910280, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740893056698269306, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3366819005177823854, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
+    - target: {fileID: 4862160205534152494, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
+      propertyPath: m_SpriteKey
+      value: 1.1558011e-21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
