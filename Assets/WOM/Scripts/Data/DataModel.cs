@@ -94,3 +94,17 @@ public class MonsterData
     public int bgId;
     public EnumDefinetion.AttackType attackType;
 }
+
+[Serializable]
+public class InsectData
+{
+    public string name;
+    public EnumDefinetion.InsectType insectType;
+    public float damage;
+    public float damageRate;
+    public float criticalChance;
+    public float ciriticalDamage;
+    public float speed;
+    public float goldDamage;
+    public float bossDamage;
+}

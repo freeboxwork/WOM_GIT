@@ -51,7 +51,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _Fade: 0.362
+    - _Fade: 1
     - _Scale: 10
     m_Colors:
     - _Color: {r: 1, g: 0.3184083, b: 0, a: 1}
