@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-
-public class PlayDataController : MonoBehaviour
+public class PlayerDataManager : MonoBehaviour
 {
     public SaveData saveData;
     string fileName = "saveData.txt";
@@ -12,7 +11,7 @@ public class PlayDataController : MonoBehaviour
 
 
     System.DateTime startDataTime;
-    
+
     void Start()
     {
         path = Path.Combine(Application.dataPath, fileName);
@@ -32,7 +31,7 @@ public class PlayDataController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     // save data
@@ -72,8 +71,6 @@ public class PlayDataController : MonoBehaviour
         return "2";
     }
 
-
-
     InsectSaveData GetInsectSaveData()
     {
         InsectSaveData data = new InsectSaveData();
@@ -94,5 +91,4 @@ public class PlayDataController : MonoBehaviour
             saveData = JsonUtility.FromJson<SaveData>(json);
         }
     }
-
 }
