@@ -9,7 +9,7 @@ namespace ProjectGraphics
         private Transform parentTr;
         private Vector3 distPos;
 
-        [Header("그림자 거리"), Range(0.2f, 1.0f)]
+        [Header("그림자 거리"), Range(0.1f, 1.0f)]
         public float distance = 0.5f;
 
         private void Start()
