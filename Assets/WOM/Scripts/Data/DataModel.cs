@@ -76,6 +76,7 @@ public class EvolutionOptionData
 [Serializable]
 public class UpgradeData
 {
+    public int id;
     public int level;
     public float upgradeCost;
     public float damage;
@@ -107,4 +108,86 @@ public class InsectData
     public float speed;
     public float goldDamage;
     public float bossDamage;
+}
+
+[Serializable]
+public class UnionData
+{
+    public int unionIndex;
+    public string grade;
+    public int damage;
+    public int passiveDamage;
+    public float spawnTime;
+    public float moveSpeed;
+    public string name;
+    public int reqirementLevelUp;
+    public int increaseReqirement;
+    public int increaseAbilityRate;
+}
+
+[Serializable]
+public class TrainingData
+{
+    public int trainingIndex;
+    public float increaseValue;
+    public int maxLevel;
+    public string abilityType;
+    public string explanation;
+}
+
+[Serializable]
+public class EvolutionGradeData
+{
+    public string evolutionGrade;
+    public int damageRate;
+    public int slotCount;
+    public int penaltyStoneAmount;
+}
+
+[Serializable]
+public class PolishEvolutionData
+{
+    public string grade;
+    public float insectDamage;
+    public float insectCriticalChance;
+    public float insectCriticalDamage;
+    public float goldBonus;
+    public float insectMoveSpeed;
+    public float insectSpawnTime;
+    public float InsectBossDamage;
+    public int gradeProbability;
+}
+
+[Serializable]
+public class TalentData
+{
+    public int talentIndex;
+    public int increaseValue;
+    public int maxLevel;
+    public string abilityType;
+    public string explanation;
+}
+
+[Serializable]
+public class DNAData
+{
+    public int dnaIndex;
+    public int increaseValue;
+    public int decreaseProbability;
+    public int maxLevel;
+    public string abilityType;
+    public string explanation;
+}
+
+[Serializable]
+public class SkillData
+{
+    public int skillIndex;
+    public int duration;
+    public int power;
+    public string name;
+    public int coolTime;
+    public int addDurationTime;
+    public int addPowerRate;
+    public int maxLevel;
 }
