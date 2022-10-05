@@ -97,14 +97,14 @@ public class UnionData
 {
     public int unionIndex;
     public string grade;
-    public int damage;
-    public int passiveDamage;
+    public float damage;
+    public float passiveDamage;
     public float spawnTime;
     public float moveSpeed;
     public string name;
     public int reqirementLevelUp;
     public int increaseReqirement;
-    public int increaseAbilityRate;
+    public float increaseAbilityRate;
 }
 
 [Serializable]
@@ -137,14 +137,14 @@ public class PolishEvolutionData
     public float insectMoveSpeed;
     public float insectSpawnTime;
     public float InsectBossDamage;
-    public int gradeProbability;
+    public float gradeProbability;
 }
 
 [Serializable]
 public class TalentData
 {
     public int talentIndex;
-    public int increaseValue;
+    public float increaseValue;
     public int maxLevel;
     public string abilityType;
     public string explanation;
@@ -154,8 +154,8 @@ public class TalentData
 public class DNAData
 {
     public int dnaIndex;
-    public int increaseValue;
-    public int decreaseProbability;
+    public float increaseValue;
+    public float decreaseProbability;
     public int maxLevel;
     public string abilityType;
     public string explanation;
@@ -165,11 +165,11 @@ public class DNAData
 public class SkillData
 {
     public int skillIndex;
-    public int duration;
+    public float duration;
     public int power;
     public string name;
-    public int coolTime;
-    public int addDurationTime;
-    public int addPowerRate;
+    public float coolTime;
+    public float addDurationTime;
+    public float addPowerRate;
     public int maxLevel;
 }
