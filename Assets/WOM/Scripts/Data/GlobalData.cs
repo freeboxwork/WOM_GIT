@@ -6,7 +6,7 @@ public class GlobalData : MonoBehaviour
 {
 
     public  static GlobalData instance;
-
+    public DataManager dataManager;
     private void Awake()
     {
         SetInstance();
@@ -23,10 +23,6 @@ public class GlobalData : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
 }
