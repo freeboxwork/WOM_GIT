@@ -19,13 +19,10 @@ public class MonsterBase : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 }
 
+/*
 [System.Serializable]
 public class MonsterNomal : MonsterBase
 {
@@ -43,3 +40,4 @@ public class MonsterBoss : MonsterBase
 {
 
 }
+*/

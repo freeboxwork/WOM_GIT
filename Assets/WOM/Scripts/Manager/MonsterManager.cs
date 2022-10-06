@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public MonsterNormal monsterNormal;
+    public MonsterGold monsterGold;
+    public MonsterBoss monsterBold;
+    
+    // normal gold boss
+
     void Start()
     {
         
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
