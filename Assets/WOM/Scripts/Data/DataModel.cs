@@ -18,7 +18,7 @@ public class StageData
     public string stageName;
     public int monsterNormalId;
     public int monsterBossId;
-    public int mosterGlodId;
+    public int monsterGoldId;
     public int phaseCount;
     public int bgId;
     public string rewardEvent;
@@ -78,8 +78,8 @@ public class MonsterData
     public float gold;
     public int goldCount;
     public int imageId;
-    public EnumDefinetion.MonsterType monsterType;
     public int bgId;
+    public EnumDefinetion.MonsterType monsterType;
     public EnumDefinetion.AttackType attackType;
 }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterBase : MonoBehaviour
 {
-    public int id;
+    public int monsterId;
     public float hp;
     public float exp;
     public float gold;
