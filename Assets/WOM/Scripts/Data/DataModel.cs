@@ -12,7 +12,7 @@ public class DataModel : MonoBehaviour
 
 
 [Serializable]
-public class StageData
+public class StageData   
 {
     public int stageId;
     public string stageName;
@@ -23,6 +23,11 @@ public class StageData
     public int bgId;
     public string rewardEvent;
     public string unlock;
+
+    public StageData CopyInstance()
+    {
+        return (StageData)this.MemberwiseClone();
+    }
 }
 
 

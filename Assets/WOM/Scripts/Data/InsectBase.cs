@@ -33,20 +33,20 @@ public class InsectBase : MonoBehaviour
 }
 
 
-[System.Serializable]
-public class InsectBee : InsectBase
-{
+//[System.Serializable]
+//public class InsectBee : InsectBase
+//{
 
-}
+//}
 
-[System.Serializable]
-public class InsectBeetle : InsectBase
-{
+//[System.Serializable]
+//public class InsectBeetle : InsectBase
+//{
 
-}
+//}
 
-[System.Serializable]
-public class InsectMentis : InsectBase
-{
+//[System.Serializable]
+//public class InsectMentis : InsectBase
+//{
 
-}
+//}
