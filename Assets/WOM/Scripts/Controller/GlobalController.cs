@@ -9,6 +9,7 @@ public class GlobalController : MonoBehaviour
     public PlayerDataManager playerDataManager;
     public InsectManager insectManager;
     public StageManager stageManager;
+    public MonsterManager monsterManager;
          
          
 
@@ -27,18 +28,19 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(playerDataManager.InitPlayerData());
 
         // Player data 세팅
-        
+
+        // 스테이지 세팅
+        yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
+
 
         // 곤충 데이터 세팅
         yield return StartCoroutine(insectManager.Init(playerDataManager));
 
 
         // 몬스터 데이터 세팅
+       // yield return StartCoroutine(monsterManager.Init());
 
-
-        // 스테이지 세팅
-        yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
-
+        
     }
 
 }
