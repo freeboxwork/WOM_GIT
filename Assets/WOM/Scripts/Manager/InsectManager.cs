@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InsectManager : MonoBehaviour
 {
-
+    
     public InsectBee insectBee;
     public InsectBeetle insectBeetle;
     public InsectMentis insectMentis;
@@ -42,14 +43,18 @@ public class InsectManager : MonoBehaviour
     {
         switch (insectType)
         {
-            case EnumDefinetion.InsectType.mentis: break;
-                insectBee = new InsectBee();
+            case EnumDefinetion.InsectType.mentis:
+                insectMentis.insectType = insectType;
+                SetInsectEvolutionData(insectMentis, evolutionData);
+                break;
+            case EnumDefinetion.InsectType.bee:
                 insectBee.insectType = insectType;
                 SetInsectEvolutionData(insectBee, evolutionData);
-            case EnumDefinetion.InsectType.bee: break;
-               
-
-            case EnumDefinetion.InsectType.beetle: break;
+                break;
+            case EnumDefinetion.InsectType.beetle:
+                insectBeetle.insectType = insectType;
+                SetInsectEvolutionData(insectBeetle, evolutionData);
+                break;
         }
     }
 
@@ -63,7 +68,6 @@ public class InsectManager : MonoBehaviour
         insectBee.speed = evolutionData.speed;
         insectBee.goldBonus = evolutionData.goldBonus;
         insectBee.bossDamage = evolutionData.bossDamage;
-
     }
 
     void BirthInsectBullets()
@@ -71,8 +75,33 @@ public class InsectManager : MonoBehaviour
         InitancingInsects(prefabInsectBee, insectBullets_Bee);
         InitancingInsects(prefabInsectBeetle, insectBullets_Beetle);
         InitancingInsects(prefabInsectMentis, insectBullets_Mentis);
-
     }
+
+    // pooling system
+    public void EnableBullet(EnumDefinetion.InsectType insectType)
+    {
+        var bullets = GetBulletsByInsectType(insectType);
+        var bullet = bullets.FirstOrDefault(f => !f.gameObject.activeSelf);
+        if(bullet != null)
+            bullet.gameObject.SetActive(true);
+        else
+        {
+            //TODO 모든 오브젝트 ENABLE 상태일때 새로운 BULLET 추가 
+
+        }
+    }
+
+    List<InsectBullet> GetBulletsByInsectType(EnumDefinetion.InsectType insectType)
+    {
+        switch (insectType)
+        {
+            case EnumDefinetion.InsectType.mentis: return insectBullets_Mentis;
+            case EnumDefinetion.InsectType.bee: return insectBullets_Bee;
+            case EnumDefinetion.InsectType.beetle: return insectBullets_Beetle; 
+        }
+        return null;
+    }
+
 
     void InitancingInsects(InsectBullet prefab, List<InsectBullet> bullets)
     {

@@ -7,11 +7,10 @@ using System;
 public class PlayerDataManager : MonoBehaviour
 {
     public SaveData saveData;
+    public Player player;
     string fileName = "saveData.txt";
     string path;
-
     string isFirstConnectKey = "isFirstConnect";
-
     System.DateTime startDataTime;
 
     void Start()
@@ -181,4 +180,14 @@ public class InsectSaveData
     public int upgradeLevel;
     public string evolutionTechTree;
     public EvolutionData evolutionLastData;
+}
+
+[System.Serializable]
+public class Player
+{
+    public int stageIdx;
+    public int upgradeLevelIdx;
+    public int gold;
+    public DateTime playTime;
+
 }
