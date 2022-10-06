@@ -19,7 +19,7 @@ public class PlayerDataManager : MonoBehaviour
    
     }
 
-    IEnumerator InitPlayerData()
+    public IEnumerator InitPlayerData()
     {
         // set save & load path
         path = path = Path.Combine(Application.dataPath, fileName);
@@ -107,7 +107,7 @@ public class PlayerDataManager : MonoBehaviour
 
         var json = JsonUtility.ToJson(saveData);
 
-        Debug.Log(json);
+        //Debug.Log(json);
 
         // save file
         //File.CreateText(path);  

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using static EnumDefinetion;
+using UnityEditor.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
@@ -49,6 +52,11 @@ public class DataManager : MonoBehaviour
         var bee = GetData<EvolutionDatas>(EnumDefinetion.SheetDataType.evolutionData_bee);
         var beetle = GetData<EvolutionDatas>(EnumDefinetion.SheetDataType.evolutionData_beetle);
 
+        // set type
+        mentis.data.ForEach(f => f.insectType = InsectType.mentis);
+        bee.data.ForEach(f => f.insectType = InsectType.bee);
+        beetle.data.ForEach(f => f.insectType = InsectType.beetle);
+
         evolutionDatas.Add(mentis);
         evolutionDatas.Add(bee);
         evolutionDatas.Add(beetle);
@@ -71,6 +79,11 @@ public class DataManager : MonoBehaviour
         var gold = GetData<MonsterDatas>(EnumDefinetion.SheetDataType.monsterData_gold);
         var normal = GetData<MonsterDatas>(EnumDefinetion.SheetDataType.monsterData_normal);
 
+        // set type
+        boss.data.ForEach(f => f.monsterType = MonsterType.boss);
+        gold.data.ForEach(f => f.monsterType = MonsterType.gold);
+        normal.data.ForEach(f => f.monsterType = MonsterType.normal);
+
         monsterDatas.Add(boss);
         monsterDatas.Add(gold);
         monsterDatas.Add(normal);
@@ -90,27 +103,28 @@ public class DataManager : MonoBehaviour
     
     public StageData GetStageDataById(int stageId)
     {
-        return null;
+        return stageDatas.data.FirstOrDefault(f=> f.stageId == stageId);
     }
 
     public EvolutionData GetEvolutionDataById(EnumDefinetion.InsectType insectType, int id)
     {
-        return null;
+        return evolutionDatas[TypeIdx(insectType)].data.FirstOrDefault(f=> f.depthId == id);
     }
 
     public EvolutionOptionData GetEvolutionOptionDataById(EnumDefinetion.InsectType insectType, int id)
     {
-        return null;
+        return evolutionOptionDatas[TypeIdx(insectType)].data.FirstOrDefault(f => f.optionId == id);
     }
 
     public MonsterData GetMonsterDataById(EnumDefinetion.MonsterType monsterType, int id)
     {
-        return null;
+
+        return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.monsterId == id);
     }
 
     public UpgradeData GetUpgradeDataById(int id)
     {
-        return null;
+        return upgradeData.data.FirstOrDefault(f => f.id == id);
     }
 
     TextAsset GetSheetData(EnumDefinetion.SheetDataType sheetDataType)
@@ -119,6 +133,14 @@ public class DataManager : MonoBehaviour
         return sheetDatas[idx];
     }
 
+    int TypeIdx(EnumDefinetion.InsectType  insectType)
+    {
+        return (int)insectType;
+    }
+    int TypeIdx(EnumDefinetion.MonsterType monsterType)
+    {
+        return (int)monsterType;
+    }
 }
 
 

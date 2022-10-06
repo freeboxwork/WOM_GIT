@@ -618,6 +618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataManager: {fileID: 848934864}
+  playerDataManager: {fileID: 1289334274}
+  insectManager: {fileID: 1934036581}
 --- !u!1 &848934862
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +661,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 848934862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f7128363b7385e4188cad7e512d3d6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e875696b8d7d7d45a582d707687d9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sheetDatas:
