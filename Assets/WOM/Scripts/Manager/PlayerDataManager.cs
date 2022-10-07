@@ -31,6 +31,17 @@ public class PlayerDataManager : MonoBehaviour
 
     }
 
+    /*게임 플레이시 필요한 데이터*/
+    public IEnumerator SetPlayerData()
+    {
+        yield return null;
+        player = new Player();
+
+        player.stageIdx = saveData.stageIdx;
+        player.upgradeLevelIdx = saveData.upgradeLevelIdx;
+        player.gold = saveData.gold;    
+    }
+
     void SetGamePlayStartDateTime()
     {
         startDataTime = System.DateTime.Now;
@@ -42,6 +53,9 @@ public class PlayerDataManager : MonoBehaviour
 
         
     }
+
+
+    
 
     void Update()
     {

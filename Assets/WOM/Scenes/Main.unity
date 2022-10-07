@@ -702,7 +702,8 @@ MonoBehaviour:
   dataManager: {fileID: 848934864}
   playerDataManager: {fileID: 1289334274}
   insectManager: {fileID: 1934036581}
-  stageManager: {fileID: 0}
+  stageManager: {fileID: 905966739}
+  monsterManager: {fileID: 685712868}
 --- !u!1001 &841547811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddd0af58e893ee4c9241082b00d9a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  monsterId: 0
   hp: 0
   exp: 0
   gold: 0
@@ -938,12 +939,19 @@ MonoBehaviour:
     stageName: 
     monsterNormalId: 0
     monsterBossId: 0
-    mosterGlodId: 0
+    monsterGoldId: 0
     phaseCount: 0
     bgId: 0
     rewardEvent: 
     unlock: 
-  rdBg: {fileID: 0}
+  rdBg: {fileID: 1775716029}
+  bgImages:
+  - {fileID: 21300000, guid: 3f70fd7066b0505459fc6c58c27ce4d3, type: 3}
+  - {fileID: 21300000, guid: a2109d2f2729a404f8a35480e8b97951, type: 3}
+  - {fileID: 21300000, guid: 6b6723adf7395cc4d8cae33497990140, type: 3}
+  - {fileID: 21300000, guid: 64fdf0ea9021f334b9ce80ee0fc74d01, type: 3}
+  - {fileID: 21300000, guid: 2713ba01da9935240ae211ea27e848e2, type: 3}
+  - {fileID: 21300000, guid: 35bd9eae687c56b4eaabbe33e46494dc, type: 3}
 --- !u!1 &1012453667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0243dff8462a6841a3129a3691095ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  monsterId: 0
   hp: 0
   exp: 0
   gold: 0
@@ -1879,7 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83831fcca6a4ca5478090525d91a0921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  monsterId: 0
   hp: 0
   exp: 0
   gold: 0
