@@ -11,33 +11,20 @@ public class MonsterBase : MonoBehaviour
     public int goldCount;
     public int imageId;
     public int bgId;
-    public EnumDefinetion.MonsterType monsterType;
-    public EnumDefinetion.AttackType attackType;
+    public EnumDefinition.MonsterType monsterType;
+    public EnumDefinition.AttackType attackType;
 
     void Start()
     {
 
     }
 
-   
-}
+    
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.transform.name);
+    }
 
-/*
-[System.Serializable]
-public class MonsterNomal : MonsterBase
-{
-
-}
-
-[System.Serializable]
-public class MonsterGold : MonsterBase
-{
 
 }
 
-[System.Serializable]
-public class MonsterBoss : MonsterBase
-{
-
-}
-*/

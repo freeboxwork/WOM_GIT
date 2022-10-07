@@ -23,16 +23,16 @@ public class MonsterManager : MonoBehaviour
 
         yield return null;
 
-        var monNormalData = GetMonsterData(EnumDefinetion.MonsterType.normal, stageData.monsterNormalId);
-        var monGoldData = GetMonsterData(EnumDefinetion.MonsterType.gold, stageData.monsterGoldId);
-        var monBossData = GetMonsterData(EnumDefinetion.MonsterType.boss, stageData.monsterBossId);
+        var monNormalData = GetMonsterData(EnumDefinition.MonsterType.normal, stageData.monsterNormalId);
+        var monGoldData = GetMonsterData(EnumDefinition.MonsterType.gold, stageData.monsterGoldId);
+        var monBossData = GetMonsterData(EnumDefinition.MonsterType.boss, stageData.monsterBossId);
 
-        SetMonsterData(EnumDefinetion.MonsterType.normal, monNormalData);
-        SetMonsterData(EnumDefinetion.MonsterType.gold, monGoldData);
-        SetMonsterData(EnumDefinetion.MonsterType.boss, monBossData);
+        SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
+        SetMonsterData(EnumDefinition.MonsterType.gold, monGoldData);
+        SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
     }
 
-    MonsterData GetMonsterData(EnumDefinetion.MonsterType monsterType, int monsterId)
+    MonsterData GetMonsterData(EnumDefinition.MonsterType monsterType, int monsterId)
     {
         var data = GlobalData.instance.dataManager.GetMonsterDataById(monsterType,monsterId); 
         if(data == null)
@@ -47,7 +47,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    void SetMonsterData(EnumDefinetion.MonsterType monsterType , MonsterData monsterData)
+    void SetMonsterData(EnumDefinition.MonsterType monsterType , MonsterData monsterData)
     {
         var monster = GetMonsterData(monsterType);
         
@@ -65,13 +65,13 @@ public class MonsterManager : MonoBehaviour
 
 
 
-    MonsterBase GetMonsterData(EnumDefinetion.MonsterType monsterType)
+    MonsterBase GetMonsterData(EnumDefinition.MonsterType monsterType)
     {
         switch (monsterType)
         {
-            case EnumDefinetion.MonsterType.normal: return monsterNormal;
-            case EnumDefinetion.MonsterType.gold: return monsterGold;
-            case EnumDefinetion.MonsterType.boss: return monsterBold;   
+            case EnumDefinition.MonsterType.normal: return monsterNormal;
+            case EnumDefinition.MonsterType.gold: return monsterGold;
+            case EnumDefinition.MonsterType.boss: return monsterBold;   
         }
         return null;
     }

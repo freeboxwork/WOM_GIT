@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class InsectBullet : MonoBehaviour
 {
-    public EnumDefinetion.InsectType insectType;
+    public EnumDefinition.InsectType insectType;
         
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class InsectBullet : MonoBehaviour
     }
 
     
-    public void SetInsectType(EnumDefinetion.InsectType insectType)
+    public void SetInsectType(EnumDefinition.InsectType insectType)
     {
         this.insectType = insectType;
     } 

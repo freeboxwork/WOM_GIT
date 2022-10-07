@@ -35,23 +35,23 @@ public class InsectManager : MonoBehaviour
         BirthInsectBullets();
 
         // 곤충 인스턴스 생성
-        SetInsectData(EnumDefinetion.InsectType.bee, playerDataManager.saveData.beeSaveData.evolutionLastData);
+        SetInsectData(EnumDefinition.InsectType.bee, playerDataManager.saveData.beeSaveData.evolutionLastData);
 
     }
 
-    void SetInsectData(EnumDefinetion.InsectType insectType, EvolutionData evolutionData)
+    void SetInsectData(EnumDefinition.InsectType insectType, EvolutionData evolutionData)
     {
         switch (insectType)
         {
-            case EnumDefinetion.InsectType.mentis:
+            case EnumDefinition.InsectType.mentis:
                 insectMentis.insectType = insectType;
                 SetInsectEvolutionData(insectMentis, evolutionData);
                 break;
-            case EnumDefinetion.InsectType.bee:
+            case EnumDefinition.InsectType.bee:
                 insectBee.insectType = insectType;
                 SetInsectEvolutionData(insectBee, evolutionData);
                 break;
-            case EnumDefinetion.InsectType.beetle:
+            case EnumDefinition.InsectType.beetle:
                 insectBeetle.insectType = insectType;
                 SetInsectEvolutionData(insectBeetle, evolutionData);
                 break;
@@ -78,7 +78,7 @@ public class InsectManager : MonoBehaviour
     }
 
     // pooling system
-    public void EnableBullet(EnumDefinetion.InsectType insectType)
+    public void EnableBullet(EnumDefinition.InsectType insectType)
     {
         var bullets = GetBulletsByInsectType(insectType);
         var bullet = bullets.FirstOrDefault(f => !f.gameObject.activeSelf);
@@ -91,13 +91,13 @@ public class InsectManager : MonoBehaviour
         }
     }
 
-    List<InsectBullet> GetBulletsByInsectType(EnumDefinetion.InsectType insectType)
+    List<InsectBullet> GetBulletsByInsectType(EnumDefinition.InsectType insectType)
     {
         switch (insectType)
         {
-            case EnumDefinetion.InsectType.mentis: return insectBullets_Mentis;
-            case EnumDefinetion.InsectType.bee: return insectBullets_Bee;
-            case EnumDefinetion.InsectType.beetle: return insectBullets_Beetle; 
+            case EnumDefinition.InsectType.mentis: return insectBullets_Mentis;
+            case EnumDefinition.InsectType.bee: return insectBullets_Bee;
+            case EnumDefinition.InsectType.beetle: return insectBullets_Beetle; 
         }
         return null;
     }
