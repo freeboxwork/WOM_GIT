@@ -5,7 +5,7 @@ using UnityEngine;
 public class InsectBase : MonoBehaviour
 {
     public string name;
-    public EnumDefinetion.InsectType insectType;
+    public EnumDefinition.InsectType insectType;
     public float damage;
     public float damageRate;
     public float criticalChance;

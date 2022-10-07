@@ -36,7 +36,7 @@ public class EvolutionData
 {
     public int depthId;
     public string name;
-    public EnumDefinetion.InsectType insectType;
+    public EnumDefinition.InsectType insectType;
     public float damage;
     public float damageRate;
     public float criticalChance;
@@ -79,15 +79,15 @@ public class MonsterData
     public int goldCount;
     public int imageId;
     public int bgId;
-    public EnumDefinetion.MonsterType monsterType;
-    public EnumDefinetion.AttackType attackType;
+    public EnumDefinition.MonsterType monsterType;
+    public EnumDefinition.AttackType attackType;
 }
 
 [Serializable]
 public class InsectData
 {
     public string name;
-    public EnumDefinetion.InsectType insectType;
+    public EnumDefinition.InsectType insectType;
     public float damage;
     public float damageRate;
     public float criticalChance;

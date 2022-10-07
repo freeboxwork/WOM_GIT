@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using static EnumDefinetion;
+using static EnumDefinition;
 using UnityEditor.SceneManagement;
 
 public class DataManager : MonoBehaviour
@@ -43,14 +43,14 @@ public class DataManager : MonoBehaviour
    
     void SetStageData()
     {
-        stageDatas = GetData<StageDatas>(EnumDefinetion.SheetDataType.stageData);
+        stageDatas = GetData<StageDatas>(EnumDefinition.SheetDataType.stageData);
     }
     void SetEvolutionData()
     {
         // 0 : mentins , 1 : bee , 2 : beetle
-        var mentis = GetData<EvolutionDatas>(EnumDefinetion.SheetDataType.evolutionData_mentis);
-        var bee = GetData<EvolutionDatas>(EnumDefinetion.SheetDataType.evolutionData_bee);
-        var beetle = GetData<EvolutionDatas>(EnumDefinetion.SheetDataType.evolutionData_beetle);
+        var mentis = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_mentis);
+        var bee = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_bee);
+        var beetle = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_beetle);
 
         // set type
         mentis.data.ForEach(f => f.insectType = InsectType.mentis);
@@ -64,9 +64,9 @@ public class DataManager : MonoBehaviour
     void SetEvolutionOptionData()
     {
         // 0 : mentins , 1 : bee , 2 : beetle
-        var mentis = GetData<EvolutionOptionDatas>(EnumDefinetion.SheetDataType.evolutionOptionData_mentis);
-        var bee = GetData<EvolutionOptionDatas>(EnumDefinetion.SheetDataType.evolutionOptionData_bee);
-        var beetle = GetData<EvolutionOptionDatas>(EnumDefinetion.SheetDataType.evolutionOptionData_beetle);
+        var mentis = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_mentis);
+        var bee = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_bee);
+        var beetle = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_beetle);
 
         evolutionOptionDatas.Add(mentis);
         evolutionOptionDatas.Add(bee);
@@ -74,27 +74,27 @@ public class DataManager : MonoBehaviour
     }
     void SetMonsterData()
     {
-        // 0 : boss , 1 : gold , 2 : normal
-        var boss = GetData<MonsterDatas>(EnumDefinetion.SheetDataType.monsterData_boss);
-        var gold = GetData<MonsterDatas>(EnumDefinetion.SheetDataType.monsterData_gold);
-        var normal = GetData<MonsterDatas>(EnumDefinetion.SheetDataType.monsterData_normal);
+        var boss = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_boss);
+        var gold = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_gold);
+        var normal = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_normal);
 
         // set type
         boss.data.ForEach(f => f.monsterType = MonsterType.boss);
         gold.data.ForEach(f => f.monsterType = MonsterType.gold);
         normal.data.ForEach(f => f.monsterType = MonsterType.normal);
 
-        monsterDatas.Add(boss);
-        monsterDatas.Add(gold);
+        // 0 : normal , 1: gold , 2 : boss
         monsterDatas.Add(normal);
+        monsterDatas.Add(gold);
+        monsterDatas.Add(boss);
     }
     void SetUpgradeData()
     {
-        upgradeData = GetData<UpgradeDatas>(EnumDefinetion.SheetDataType.upgradeData);
+        upgradeData = GetData<UpgradeDatas>(EnumDefinition.SheetDataType.upgradeData);
     }
     
 
-    T GetData<T>(EnumDefinetion.SheetDataType sheetDataType)
+    T GetData<T>(EnumDefinition.SheetDataType sheetDataType)
     {
         var data = GetSheetData(sheetDataType);
         return JsonUtility.FromJson<T>(data.text);
@@ -106,17 +106,17 @@ public class DataManager : MonoBehaviour
         return stageDatas.data.FirstOrDefault(f=> f.stageId == stageId);
     }
 
-    public EvolutionData GetEvolutionDataById(EnumDefinetion.InsectType insectType, int id)
+    public EvolutionData GetEvolutionDataById(EnumDefinition.InsectType insectType, int id)
     {
         return evolutionDatas[TypeIdx(insectType)].data.FirstOrDefault(f=> f.depthId == id);
     }
 
-    public EvolutionOptionData GetEvolutionOptionDataById(EnumDefinetion.InsectType insectType, int id)
+    public EvolutionOptionData GetEvolutionOptionDataById(EnumDefinition.InsectType insectType, int id)
     {
         return evolutionOptionDatas[TypeIdx(insectType)].data.FirstOrDefault(f => f.optionId == id);
     }
 
-    public MonsterData GetMonsterDataById(EnumDefinetion.MonsterType monsterType, int id)
+    public MonsterData GetMonsterDataById(EnumDefinition.MonsterType monsterType, int id)
     {
 
         return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.monsterId == id);
@@ -127,17 +127,17 @@ public class DataManager : MonoBehaviour
         return upgradeData.data.FirstOrDefault(f => f.id == id);
     }
 
-    TextAsset GetSheetData(EnumDefinetion.SheetDataType sheetDataType)
+    TextAsset GetSheetData(EnumDefinition.SheetDataType sheetDataType)
     {
         var idx = (int)sheetDataType;
         return sheetDatas[idx];
     }
 
-    int TypeIdx(EnumDefinetion.InsectType  insectType)
+    int TypeIdx(EnumDefinition.InsectType  insectType)
     {
         return (int)insectType;
     }
-    int TypeIdx(EnumDefinetion.MonsterType monsterType)
+    int TypeIdx(EnumDefinition.MonsterType monsterType)
     {
         return (int)monsterType;
     }

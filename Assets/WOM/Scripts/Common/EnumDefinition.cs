@@ -1,9 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class EnumDefinetion 
+public class EnumDefinition 
 {
+    public enum CustomDataType
+    {
+        button,
+        text,
+        image,
+        animCont
+    }
+
     public enum InsectType
     {
         mentis,
@@ -35,5 +40,17 @@ public class EnumDefinetion
         monsterData_normal,
         stageData,
         upgradeData
+    }
+
+    public enum AnimCurveType
+    {
+        EaseInQuad,
+        EaseOutQuad,
+        EaseInOutQuad,
+        EaseOutCubic,
+        EaseInOutCubic,
+        Spring,
+        EaseInQuint,
+        EaseInOutSine,
     }
 }

@@ -79,9 +79,9 @@ public class PlayerDataManager : MonoBehaviour
             saveData.playingTime = "0";
 
             // set insect save data
-            saveData.beeSaveData = GetFirstConnectInsectData(EnumDefinetion.InsectType.bee);
-            saveData.beetleSaveData = GetFirstConnectInsectData(EnumDefinetion.InsectType.beetle);
-            saveData.mentisSaveData = GetFirstConnectInsectData(EnumDefinetion.InsectType.mentis);
+            saveData.beeSaveData = GetFirstConnectInsectData(EnumDefinition.InsectType.bee);
+            saveData.beetleSaveData = GetFirstConnectInsectData(EnumDefinition.InsectType.beetle);
+            saveData.mentisSaveData = GetFirstConnectInsectData(EnumDefinition.InsectType.mentis);
         }
         else
         {
@@ -149,7 +149,7 @@ public class PlayerDataManager : MonoBehaviour
         return data;
     }
 
-    InsectSaveData GetFirstConnectInsectData(EnumDefinetion.InsectType insectType)
+    InsectSaveData GetFirstConnectInsectData(EnumDefinition.InsectType insectType)
     {
         InsectSaveData data = new InsectSaveData();
         data.evolutionIdx = 0;
