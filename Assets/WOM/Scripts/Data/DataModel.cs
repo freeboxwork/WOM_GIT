@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro.EditorUtilities;
+using JetBrains.Annotations;
 
 public class DataModel : MonoBehaviour
 {
@@ -67,6 +68,12 @@ public class UpgradeData
     public int level;
     public float upgradeCost;
     public float damage;
+}
+
+[Serializable]
+public class NewData
+{
+    public int monsterId;
 }
 
 [Serializable]
