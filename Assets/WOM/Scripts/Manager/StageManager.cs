@@ -7,7 +7,7 @@ public class StageManager : MonoBehaviour
 {
     public StageData stageData;
     public SpriteRenderer rdBg;
-
+    public List<Sprite> bgImages = new List<Sprite>();
     
     void Start()
     {
@@ -32,5 +32,11 @@ public class StageManager : MonoBehaviour
     void SetBgImage()
     {
         // set texture
+        rdBg.sprite = GetBgImgById(stageData.stageId);
+    }
+
+    Sprite GetBgImgById(int id)
+    {
+        return bgImages[id];
     }
 }

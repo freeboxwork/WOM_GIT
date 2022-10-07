@@ -17,13 +17,15 @@ public class MonsterManager : MonoBehaviour
     }
 
 
-    public IEnumerator Init(StageData stageData)
+    public IEnumerator Init(int stageId)
     {
+        StageData stageData = GlobalData.instance.dataManager.GetStageDataById(stageId);
+
         yield return null;
 
         var monNormalData = GetMonsterData(EnumDefinetion.MonsterType.normal, stageData.monsterNormalId);
         var monGoldData = GetMonsterData(EnumDefinetion.MonsterType.gold, stageData.monsterGoldId);
-        var monBossData = GetMonsterData(EnumDefinetion.MonsterType.normal, stageData.monsterNormalId);
+        var monBossData = GetMonsterData(EnumDefinetion.MonsterType.boss, stageData.monsterBossId);
 
         SetMonsterData(EnumDefinetion.MonsterType.normal, monNormalData);
         SetMonsterData(EnumDefinetion.MonsterType.gold, monGoldData);
@@ -58,6 +60,7 @@ public class MonsterManager : MonoBehaviour
         monster.bgId = monsterData.bgId;
         monster.monsterType = monsterData.monsterType;
         monster.attackType = monsterData.attackType;
+
     }
 
 
