@@ -7,7 +7,6 @@ using System;
 public class PlayerDataManager : MonoBehaviour
 {
     public SaveData saveData;
-    public Player player;
     string fileName = "saveData.txt";
     string path;
     string isFirstConnectKey = "isFirstConnect";
@@ -31,16 +30,7 @@ public class PlayerDataManager : MonoBehaviour
 
     }
 
-    /*게임 플레이시 필요한 데이터*/
-    public IEnumerator SetPlayerData()
-    {
-        yield return null;
-        player = new Player();
-
-        player.stageIdx = saveData.stageIdx;
-        player.upgradeLevelIdx = saveData.upgradeLevelIdx;
-        player.gold = saveData.gold;    
-    }
+   
 
     void SetGamePlayStartDateTime()
     {
@@ -196,6 +186,7 @@ public class InsectSaveData
     public EvolutionData evolutionLastData;
 }
 
+/*
 [System.Serializable]
 public class Player
 {
@@ -203,5 +194,8 @@ public class Player
     public int upgradeLevelIdx;
     public int gold;
     public DateTime playTime;
+    /// <summary> 등장한 몬스터 </summary>
+    public MonsterBase currentMonster;
 
 }
+*/

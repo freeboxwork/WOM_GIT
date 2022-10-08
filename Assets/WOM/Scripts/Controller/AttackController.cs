@@ -5,7 +5,8 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     public InsectManager insectManager;
-    // Start is called before the first frame update
+    /// <summary> 공격 가능 상태  </summary>
+    bool isAttackableState = false ; 
     void Start()
     {
         insectManager = GlobalData.instance.insectManager;
@@ -14,10 +15,13 @@ public class AttackController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isAttackableState)
         {
-            var pos = Input.mousePosition;
-            EnableInsectBullet(pos);
+            if (Input.GetMouseButtonDown(0))
+            {
+                var pos = Input.mousePosition;
+                EnableInsectBullet(pos);
+            }
         }
     }
     void EnableInsectBullet(Vector2 enablePos)
@@ -33,6 +37,13 @@ public class AttackController : MonoBehaviour
         var pos = pointY / Screen.height * 100f;
         return pos > 50f;
     }
+
+    /// <summary> 공격 가능 상태 제어 </summary>
+    public void SetAttackableState(bool value)
+    {
+        isAttackableState = value;
+    }
+
 
     Vector2 GetDownSideRandomPos()
     {

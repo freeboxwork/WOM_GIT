@@ -9,6 +9,8 @@ public class GlobalData : MonoBehaviour
     public DataManager dataManager;
     public InsectManager insectManager;
     public MonsterManager monsterManager;
+    public Player player;
+         
     private void Awake()
     {
         SetInstance();
