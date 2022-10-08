@@ -31,6 +31,22 @@ public class StageData
     }
 }
 
+[Serializable]
+public class MonsterSprite
+{
+    public int id ;
+    public int tail ;
+    public int hand ;
+    public int finger ;
+    public int foreArm ;
+    public int upperArm ;
+    public int head ;
+    public int body ;
+    public int leg_0 ;
+    public int leg_1 ;
+    public int leg_2 ;
+}
+
 
 [Serializable]
 public class EvolutionData

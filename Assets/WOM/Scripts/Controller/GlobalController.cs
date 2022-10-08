@@ -40,8 +40,11 @@ public class GlobalController : MonoBehaviour
         // 몬스터 데이터 세팅
         yield return StartCoroutine(monsterManager.Init(stageManager.stageData.stageId));
 
-        // 타겟 몬스터 지정 -> 첫 시작은 무조건 노멀 몬스터로
+        // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
+
+        // 등장 몬스터 활성화 -> 첫 시작은 노멀 몬스터
+        monsterManager.EnableMonster(EnumDefinition.MonsterType.normal);
 
         // 공격 가능 상태로 전환
         attackController.SetAttackableState(true);
