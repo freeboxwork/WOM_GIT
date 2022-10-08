@@ -847,7 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterNormal: {fileID: 1089423845}
   monsterGold: {fileID: 2093046811}
-  monsterBold: {fileID: 841547814}
+  monsterBoss: {fileID: 841547814}
 --- !u!1 &708608343
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,8 +936,8 @@ MonoBehaviour:
   insectManager: {fileID: 1934036581}
   stageManager: {fileID: 905966739}
   monsterManager: {fileID: 685712868}
-  player: {fileID: 0}
-  attackController: {fileID: 0}
+  player: {fileID: 1430916486}
+  attackController: {fileID: 274116685}
 --- !u!1001 &841547811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1030,6 +1030,18 @@ MonoBehaviour:
   bgId: 0
   monsterType: 0
   attackType: 0
+  spriteLibraryChanged: {fileID: 841547815}
+--- !u!114 &841547815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8709659281224663759, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+  m_PrefabInstance: {fileID: 841547811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841547813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &848934862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,12 +1098,15 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 97a738a157f242a46bc55fcb4d2f7a45, type: 3}
   - {fileID: 4900000, guid: 32d0be6c3dc997b4bace9ab4c5e59095, type: 3}
   - {fileID: 4900000, guid: 718a1fcb64e61894d8c0050b44780690, type: 3}
+  - {fileID: 4900000, guid: 741859d0a04d85c489d1487543ab53d4, type: 3}
   stageDatas:
     data: []
   evolutionDatas: []
   evolutionOptionDatas: []
   monsterDatas: []
   upgradeData:
+    data: []
+  monsterSpriteData:
     data: []
 --- !u!1 &879479834
 GameObject:
@@ -1327,6 +1342,18 @@ MonoBehaviour:
   bgId: 0
   monsterType: 0
   attackType: 0
+  spriteLibraryChanged: {fileID: 1089423846}
+--- !u!114 &1089423846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1499204843702502440, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+  m_PrefabInstance: {fileID: 1089423842}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089423844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1249124944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,6 +2775,18 @@ MonoBehaviour:
   bgId: 0
   monsterType: 0
   attackType: 0
+  spriteLibraryChanged: {fileID: 2093046812}
+--- !u!114 &2093046812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2456668813116973281, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+  m_PrefabInstance: {fileID: 2093046808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093046810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2113049909
 GameObject:
   m_ObjectHideFlags: 0

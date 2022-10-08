@@ -40,7 +40,8 @@ public class EnumDefinition
         monsterData_gold,
         monsterData_normal,
         stageData,
-        upgradeData
+        upgradeData,
+        monsterSpriteData
     }
 
     public enum AnimCurveType
