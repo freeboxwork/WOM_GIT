@@ -15,7 +15,7 @@ public class AttackController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAttackableState)
+        if (isAttackableState == true)
         {
             if (Input.GetMouseButtonDown(0))
             {

@@ -22,10 +22,10 @@ public class MonsterBase : MonoBehaviour
 
     }
     
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.transform.name);
-    }
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Debug.Log(collision.transform.name);
+    //}
 
 
 }

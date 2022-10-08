@@ -51,6 +51,16 @@ public class InsectManager : MonoBehaviour
         return insects[(int)insectType];
     }
 
+    // 공격력 공식 : (damage+ (damage* damageRate)) x (1+ criticalChance x ( 2 + criticalDamage -1))
+    /// <summary> 계산된 곤충 데미지 값 </summary>
+    public float GetInsectDamage(EnumDefinition.InsectType insectType)
+    {
+        var insect = GetInsect(insectType);
+        return (insect.damage + (insect.damage * insect.damageRate)) * (1 + insect.criticalChance * (2 + insect.criticalDamage - 1));
+    }
+
+
+
     void SetInsectData(EnumDefinition.InsectType insectType, EvolutionData evolutionData)
     {
         switch (insectType)
@@ -76,7 +86,7 @@ public class InsectManager : MonoBehaviour
         insectBase.damage = evolutionData.damage;
         insectBee.damageRate = evolutionData.damageRate;
         insectBee.criticalChance = evolutionData.criticalChance;
-        insectBee.ciriticalDamage = evolutionData.criticalDamage;
+        insectBee.criticalDamage = evolutionData.criticalDamage;
         insectBee.speed = evolutionData.speed;
         insectBee.goldBonus = evolutionData.goldBonus;
         insectBee.bossDamage = evolutionData.bossDamage;
