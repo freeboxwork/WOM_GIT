@@ -14,6 +14,7 @@ public class InsectManager : MonoBehaviour
     public InsectBullet prefabInsectBeetle;
     public InsectBullet prefabInsectMentis;
 
+    // using object pooling...
     public List<InsectBullet> insectBullets_Bee;
     public List<InsectBullet> insectBullets_Beetle;
     public List<InsectBullet> insectBullets_Mentis;
@@ -21,6 +22,7 @@ public class InsectManager : MonoBehaviour
     public Transform tr_insectPool;
     public int insectBirthCount = 15;
 
+    public List<InsectBase> insects = new List<InsectBase>();
    
     void Start()
     {
@@ -29,14 +31,24 @@ public class InsectManager : MonoBehaviour
 
     public IEnumerator Init(PlayerDataManager playerDataManager)
     {
-        yield return null;
-
         // 곤충 생성
         BirthInsectBullets();
 
         // 곤충 인스턴스 생성
         SetInsectData(EnumDefinition.InsectType.bee, playerDataManager.saveData.beeSaveData.evolutionLastData);
 
+        // add insects list 
+        // 순서 : mentis, bee, beetle
+        insects.Add(insectMentis);
+        insects.Add(insectBee);
+        insects.Add(insectBeetle);
+
+        yield return new WaitForEndOfFrame();
+    }
+
+    public InsectBase GetInsect(EnumDefinition.InsectType insectType)
+    {
+        return insects[(int)insectType];
     }
 
     void SetInsectData(EnumDefinition.InsectType insectType, EvolutionData evolutionData)
