@@ -9,7 +9,7 @@ public class InsectBase : MonoBehaviour
     public float damage;
     public float damageRate;
     public float criticalChance;
-    public float ciriticalDamage;
+    public float criticalDamage;
     public float speed;
     public float goldBonus;
     public float bossDamage;
