@@ -7,6 +7,8 @@ public class GlobalData : MonoBehaviour
 
     public  static GlobalData instance;
     public DataManager dataManager;
+    public InsectManager insectManager;
+    public MonsterManager monsterManager;
     private void Awake()
     {
         SetInstance();
