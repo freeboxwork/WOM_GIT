@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Scorpions_Lib
   m_EditorClassIdentifier: 
   m_Labels:
-  - m_Name: Tail
-    m_Hash: -603645085
+  - m_Name: tail
+    m_Hash: 2084025437
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -115,8 +115,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -652675065337213126, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: Hand
-    m_Hash: -2024739407
+  - m_Name: hand
+    m_Hash: 660750991
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -217,8 +217,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -8413678822566076162, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: Finger
-    m_Hash: -872312951
+  - m_Name: finger
+    m_Hash: -877819201
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -319,8 +319,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: 6487112480889736409, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: ForeArm
-    m_Hash: -1817348278
+  - m_Name: foreArm
+    m_Hash: 1544572630
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -421,8 +421,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -7024571202575411679, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: UpperArm
-    m_Hash: 1343786605
+  - m_Name: upperArm
+    m_Hash: -1452348357
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -523,8 +523,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: 3521782310248096203, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: Head
-    m_Hash: 130111906
+  - m_Name: head
+    m_Hash: -1477183844
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -625,8 +625,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -5101113428749320241, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: Body
-    m_Hash: 2073732236
+  - m_Name: body
+    m_Hash: -609743950
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -727,8 +727,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -3366819005177823854, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: 0_Leg
-    m_Hash: 1186025426
+  - m_Name: leg_0
+    m_Hash: -1065695502
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -829,8 +829,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -5625401280035915158, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: 1_Leg
-    m_Hash: 2077320802
+  - m_Name: leg_1
+    m_Hash: -1216481692
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -931,8 +931,8 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -3401557883571628469, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  - m_Name: 2_Leg
-    m_Hash: 1014045874
+  - m_Name: leg_2
+    m_Hash: 779397086
     m_CategoryList:
     - m_Name: 32
       m_Hash: 2103780943
@@ -1033,4 +1033,4 @@ MonoBehaviour:
     - m_Name: 0
       m_Hash: -186917087
       m_Sprite: {fileID: -4034209062493509313, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
-  m_ModificationHash: -638001804527250704
+  m_ModificationHash: 638008663631592936

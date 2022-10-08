@@ -45,35 +45,35 @@ namespace ProjectGraphics
 
         void InitializedPartDictionary()
         {
-            parts.Add("Tail", partNum.tail);
-            parts.Add("Hand", partNum.hand);
-            parts.Add("Finger", partNum.finger);
-            parts.Add("ForeArm", partNum.foreArm);
-            parts.Add("UpperArm", partNum.upperArm);
-            parts.Add("Head", partNum.head);
-            parts.Add("Body", partNum.body);
-            parts.Add("0_Leg", partNum.leg0);
-            parts.Add("1_Leg", partNum.leg1);
-            parts.Add("2_Leg", partNum.leg2);
+            parts.Add("tail", partNum.tail);
+            parts.Add("hand", partNum.hand);
+            parts.Add("finger", partNum.finger);
+            parts.Add("foreArm", partNum.foreArm);
+            parts.Add("upperArm", partNum.upperArm);
+            parts.Add("head", partNum.head);
+            parts.Add("body", partNum.body);
+            parts.Add("leg_0", partNum.leg0);
+            parts.Add("leg_1", partNum.leg1);
+            parts.Add("leg_2", partNum.leg2);
         }
 
         public void ChangedPartDictionaryValue()
         {
-            parts["Tail"] = partNum.tail;
-            parts["Hand"] = partNum.hand;
-            parts["Finger"] = partNum.finger;
-            parts["ForeArm"] = partNum.foreArm;
-            parts["UpperArm"] = partNum.upperArm;
-            parts["Head"] = partNum.head;
-            parts["Body"] = partNum.body;
-            parts["0_Leg"] = partNum.leg0;
-            parts["1_Leg"] = partNum.leg1;
-            parts["2_Leg"] = partNum.leg2;
+            parts["tail"] = partNum.tail;
+            parts["hand"] = partNum.hand;
+            parts["finger"] = partNum.finger;
+            parts["foreArm"] = partNum.foreArm;
+            parts["upperArm"] = partNum.upperArm;
+            parts["head"] = partNum.head;
+            parts["body"] = partNum.body;
+            parts["leg_0"] = partNum.leg0;
+            parts["leg_1"] = partNum.leg1;
+            parts["leg_2"] = partNum.leg2;
 
             //부위 변환
             foreach (var item in parts)
             {
-                spritesController.ChangedSpritePartImgae(item.Key, item.Value);
+                spritesController.ChangedSpritePartImage(item.Key, item.Value);
             }
 
             ChangePartNumberDatas();
@@ -81,16 +81,16 @@ namespace ProjectGraphics
 
         void ChangePartNumberDatas()
         {
-            partNum.tail = parts["Tail"];
-            partNum.hand = parts["Hand"];
-            partNum.finger = parts["Finger"];
-            partNum.foreArm = parts["ForeArm"];
-            partNum.upperArm = parts["UpperArm"];
-            partNum.head = parts["Head"];
-            partNum.body = parts["Body"];
-            partNum.leg0 = parts["0_Leg"];
-            partNum.leg1 = parts["1_Leg"];
-            partNum.leg2 = parts["2_Leg"];
+            partNum.tail = parts["tail"];
+            partNum.hand = parts["hand"];
+            partNum.finger = parts["finger"];
+            partNum.foreArm = parts["foreArm"];
+            partNum.upperArm = parts["upperArm"];
+            partNum.head = parts["head"];
+            partNum.body = parts["body"];
+            partNum.leg0 = parts["leg_0"];
+            partNum.leg1 = parts["leg_1"];
+            partNum.leg2 = parts["leg_2"];
         }
 
         #region CSV 파일 저장 관련

@@ -19,6 +19,7 @@ namespace ProjectGraphics
             foreach (var item in re)
             {
                 string name = item.GetCategory();
+                Debug.Log(name);
                 resolver.Add(name, item);
             }
         }
@@ -33,7 +34,7 @@ namespace ProjectGraphics
         }
 
         //지정스프라이트 교체
-        public void ChangedSpritePartImgae(string key, int num)
+        public void ChangedSpritePartImage(string key, int num)
         {
             resolver[key].SetCategoryAndLabel(key, num.ToString());
         }
