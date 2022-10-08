@@ -1,3 +1,4 @@
+using ProjectGraphics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,12 @@ public class MonsterBase : MonoBehaviour
     public EnumDefinition.MonsterType monsterType;
     public EnumDefinition.AttackType attackType;
 
+    public SpriteLibraryChanged spriteLibraryChanged;
+    
     void Start()
     {
 
     }
-
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
