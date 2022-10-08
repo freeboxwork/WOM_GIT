@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4304186195738549221}
   - component: {fileID: 4304186195738549220}
   - component: {fileID: -7696914327861270080}
+  - component: {fileID: 7072555088193193043}
   m_Layer: 0
   m_Name: Bee00
   m_TagString: Untagged
@@ -99,6 +100,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insectType: 1
+  animData: {fileID: 7072555088193193043}
+--- !u!114 &7072555088193193043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304186195738549223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animCurveType: 3
+  animDuration: 0.7
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
 --- !u!1 &4304186195977861312
 GameObject:
   m_ObjectHideFlags: 0

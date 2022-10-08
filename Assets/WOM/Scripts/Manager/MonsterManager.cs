@@ -33,11 +33,11 @@ public class MonsterManager : MonoBehaviour
         SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
 
         // set sprite image
-        /*
+        
         SetMonsterBodyImage(monNormalData, monsterNormal);
         SetMonsterBodyImage(monGoldData, monsterGold);
         SetMonsterBodyImage(monBossData, monsterBoss);
-        */
+        
 
         // add monsters list 
         monsters.Add(monsterNormal);
@@ -50,25 +50,25 @@ public class MonsterManager : MonoBehaviour
         var spriteData = GlobalData.instance.dataManager.GetMonsterSpriteDataById(monData.imageId);
 
         // set tail
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("tail", spriteData.tail);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("tail", spriteData.tail);
         // set hand
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("hand", spriteData.hand);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("hand", spriteData.hand);
         // set finger
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("finger", spriteData.finger);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("finger", spriteData.finger);
         // set foreArm
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("foreArm", spriteData.foreArm);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("foreArm", spriteData.foreArm);
         // set upperArm
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("upperArm", spriteData.upperArm);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("upperArm", spriteData.upperArm);
         // set head
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("head", spriteData.head);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("head", spriteData.head);
         // set body
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("body", spriteData.body);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("body", spriteData.body);
         // set leg_0
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("leg_0", spriteData.leg_0);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("leg_0", spriteData.leg_0);
         // set leg_1
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("leg_1", spriteData.leg_1);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("leg_1", spriteData.leg_1);
         // set leg_2
-        monster.spriteLibraryChanged.ChangedSpritePartImgae("leg_2", spriteData.leg_2);
+        monster.spriteLibraryChanged.ChangedSpritePartImage("leg_2", spriteData.leg_2);
     }
 
     //TODO: 애니메이션으로 제어
