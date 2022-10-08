@@ -13,7 +13,8 @@ public class EnumDefinition
     {
         mentis,
         bee,
-        beetle
+        beetle,
+        none
     }
     public enum MonsterType
     {
