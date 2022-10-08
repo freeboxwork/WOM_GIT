@@ -7,6 +7,21 @@ using UnityEditor.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
+
+    /*
+        evolutionData_bee,
+        evolutionData_beetle,
+        evolutionData_mentis,
+        evolutionOptionData_bee,
+        evolutionOptionData_beetle,
+        evolutionOptionData_mentis,
+        monsterData_boss,
+        monsterData_gold,
+        monsterData_normal,
+        stageData,
+        upgradeData,
+        monsterSpriteData
+     */
     public List<TextAsset> sheetDatas = new List<TextAsset>();
 
     public StageDatas stageDatas;
@@ -14,7 +29,8 @@ public class DataManager : MonoBehaviour
     public List<EvolutionOptionDatas> evolutionOptionDatas;
     public List<MonsterDatas> monsterDatas;
     public UpgradeDatas upgradeData;
-    
+    public MonsterSprites monsterSpriteData;
+
     void Start()
     {
         
@@ -39,6 +55,8 @@ public class DataManager : MonoBehaviour
         // UPGRADE
         SetUpgradeData();
 
+        // MONSTER SPRETE
+        SetMonsterSpriteData();
     }
    
     void SetStageData()
@@ -93,13 +111,16 @@ public class DataManager : MonoBehaviour
         upgradeData = GetData<UpgradeDatas>(EnumDefinition.SheetDataType.upgradeData);
     }
     
+    void SetMonsterSpriteData()
+    {
+        monsterSpriteData = GetData<MonsterSprites>(EnumDefinition.SheetDataType.monsterSpriteData);
+    }
 
     T GetData<T>(EnumDefinition.SheetDataType sheetDataType)
     {
         var data = GetSheetData(sheetDataType);
         return JsonUtility.FromJson<T>(data.text);
     }
-    
     
     public StageData GetStageDataById(int stageId)
     {
@@ -125,6 +146,11 @@ public class DataManager : MonoBehaviour
     public UpgradeData GetUpgradeDataById(int id)
     {
         return upgradeData.data.FirstOrDefault(f => f.id == id);
+    }
+
+    public MonsterSprite GetMonsterSpriteDataById(int id)
+    {
+        return monsterSpriteData.data.FirstOrDefault(f => f.id == id);
     }
 
     TextAsset GetSheetData(EnumDefinition.SheetDataType sheetDataType)
@@ -172,4 +198,11 @@ public class MonsterDatas
 public class UpgradeDatas
 {
     public List<UpgradeData> data = new List<UpgradeData>(); 
+}
+
+
+[System.Serializable]
+public class MonsterSprites
+{
+    public List<MonsterSprite> data = new List<MonsterSprite>();
 }

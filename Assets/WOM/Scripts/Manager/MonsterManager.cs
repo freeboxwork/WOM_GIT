@@ -6,9 +6,10 @@ public class MonsterManager : MonoBehaviour
 {
     public MonsterNormal monsterNormal;
     public MonsterGold monsterGold;
-    public MonsterBoss monsterBold;
-    
+    public MonsterBoss monsterBoss;
+
     // normal gold boss
+    public List<MonsterBase> monsters = new List<MonsterBase>();
 
     void Start()
     {
@@ -30,6 +31,61 @@ public class MonsterManager : MonoBehaviour
         SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
         SetMonsterData(EnumDefinition.MonsterType.gold, monGoldData);
         SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
+
+        // set sprite image
+        /*
+        SetMonsterBodyImage(monNormalData, monsterNormal);
+        SetMonsterBodyImage(monGoldData, monsterGold);
+        SetMonsterBodyImage(monBossData, monsterBoss);
+        */
+
+        // add monsters list 
+        monsters.Add(monsterNormal);
+        monsters.Add(monsterGold);
+        monsters.Add(monsterBoss);
+    }
+
+    void SetMonsterBodyImage(MonsterData monData, MonsterBase monster)
+    {
+        var spriteData = GlobalData.instance.dataManager.GetMonsterSpriteDataById(monData.imageId);
+
+        // set tail
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("tail", spriteData.tail);
+        // set hand
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("hand", spriteData.hand);
+        // set finger
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("finger", spriteData.finger);
+        // set foreArm
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("foreArm", spriteData.foreArm);
+        // set upperArm
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("upperArm", spriteData.upperArm);
+        // set head
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("head", spriteData.head);
+        // set body
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("body", spriteData.body);
+        // set leg_0
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("leg_0", spriteData.leg_0);
+        // set leg_1
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("leg_1", spriteData.leg_1);
+        // set leg_2
+        monster.spriteLibraryChanged.ChangedSpritePartImgae("leg_2", spriteData.leg_2);
+    }
+
+    //TODO: 애니메이션으로 제어
+    public void EnableMonster(EnumDefinition.MonsterType monsterType)
+    {
+        for (int i = 0; i < monsters.Count; i++)
+        {
+            if ((int)monsterType == i)
+            {
+                //TODO ANIMATION 으로 변경
+                monsters[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                monsters[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     MonsterData GetMonsterData(EnumDefinition.MonsterType monsterType, int monsterId)
@@ -71,7 +127,7 @@ public class MonsterManager : MonoBehaviour
         {
             case EnumDefinition.MonsterType.normal: return monsterNormal;
             case EnumDefinition.MonsterType.gold: return monsterGold;
-            case EnumDefinition.MonsterType.boss: return monsterBold;   
+            case EnumDefinition.MonsterType.boss: return monsterBoss;   
         }
         return null;
     }
