@@ -24,6 +24,7 @@ public class AttackController : MonoBehaviour
             }
         }
     }
+ 
     void EnableInsectBullet(Vector2 enablePos)
     {
         var worldPos = Camera.main.ScreenToWorldPoint(enablePos);
@@ -43,7 +44,10 @@ public class AttackController : MonoBehaviour
     {
         isAttackableState = value;
     }
-
+    public bool GetAttackableState()
+    {
+        return isAttackableState;
+    }
 
     Vector2 GetDownSideRandomPos()
     {

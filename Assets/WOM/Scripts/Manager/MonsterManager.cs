@@ -33,13 +33,13 @@ public class MonsterManager : MonoBehaviour
         SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
 
         // set sprite image
-        
         SetMonsterBodyImage(monNormalData, monsterNormal);
         SetMonsterBodyImage(monGoldData, monsterGold);
         SetMonsterBodyImage(monBossData, monsterBoss);
-        
+
 
         // add monsters list 
+        // ¼ø¼­ : normal ,  gold,  boss
         monsters.Add(monsterNormal);
         monsters.Add(monsterGold);
         monsters.Add(monsterBoss);

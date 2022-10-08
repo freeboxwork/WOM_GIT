@@ -250,7 +250,8 @@ MonoBehaviour:
   dataManager: {fileID: 848934864}
   insectManager: {fileID: 1934036581}
   monsterManager: {fileID: 685712868}
-  player: {fileID: 0}
+  attackController: {fileID: 274116685}
+  player: {fileID: 1430916486}
 --- !u!1 &245078722
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +396,38 @@ Transform:
   - {fileID: 2058859727}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &392283920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 392283921}
+  m_Layer: 0
+  m_Name: '[ FX ]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &392283921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392283920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1934829625}
+  m_Father: {fileID: 1249124945}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -548,7 +581,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000091d77613d79dbfe28f18d6c1216e57fc417e60fe71a88ceb7901199d910e6fb3
@@ -962,6 +995,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1189217859575039585, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     - target: {fileID: 1208869920045787781, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
       propertyPath: m_SpriteKey
       value: 2.4730634e-10
@@ -1090,6 +1127,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4343599024989165547, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 8709659281224663758, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709659281224663758, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
 --- !u!4 &841547812 stripped
@@ -1362,6 +1407,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4050232139499045176, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 1499204843702502441, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499204843702502441, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1944006825815258173, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1478,6 +1531,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8975710837284995206, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     - target: {fileID: 8995402514450984034, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
       propertyPath: m_SpriteKey
       value: 2.4730634e-10
@@ -1558,6 +1615,7 @@ Transform:
   - {fileID: 261012095}
   - {fileID: 879479835}
   - {fileID: 1561350215}
+  - {fileID: 392283921}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2426,6 +2484,51 @@ MonoBehaviour:
   insectBullets_Mentis: []
   tr_insectPool: {fileID: 43688935}
   insectBirthCount: 15
+  insects: []
+--- !u!1 &1934829624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934829625}
+  - component: {fileID: 1934829626}
+  m_Layer: 0
+  m_Name: EaseValues
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1934829625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934829624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 392283921}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934829626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934829624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef7f9105b8fb554ea400d3a91242a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037346925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,6 +3010,14 @@ PrefabInstance:
       propertyPath: m_BoneTransforms.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2456668813116973280, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456668813116973280, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2955134244880892434, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_SpriteKey
       value: 0.67888993
@@ -2990,6 +3101,10 @@ PrefabInstance:
     - target: {fileID: 5353030542743823439, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353030542743823439, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     - target: {fileID: 5562416918447432024, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_SpriteKey
