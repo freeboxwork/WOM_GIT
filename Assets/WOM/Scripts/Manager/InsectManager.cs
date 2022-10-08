@@ -78,7 +78,7 @@ public class InsectManager : MonoBehaviour
     }
 
     // pooling system
-    public void EnableBullet(EnumDefinition.InsectType insectType, Vector3 targetPos)
+    public void EnableBullet(EnumDefinition.InsectType insectType, Vector2 targetPos)
     {
         var bullets = GetBulletsByInsectType(insectType);
         var bullet = bullets.FirstOrDefault(f => !f.gameObject.activeSelf);

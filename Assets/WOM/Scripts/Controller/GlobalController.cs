@@ -10,8 +10,9 @@ public class GlobalController : MonoBehaviour
     public InsectManager insectManager;
     public StageManager stageManager;
     public MonsterManager monsterManager;
-         
-         
+    public Player player;
+    public AttackController attackController;
+
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(playerDataManager.InitPlayerData());
         
         // Player data 세팅
-        yield return StartCoroutine(playerDataManager.SetPlayerData());
+        yield return StartCoroutine(player.Init(playerDataManager.saveData));
         
         // 스테이지 세팅
         yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
@@ -37,9 +38,13 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(insectManager.Init(playerDataManager));
 
         // 몬스터 데이터 세팅
-       yield return StartCoroutine(monsterManager.Init(stageManager.stageData.stageId));
+        yield return StartCoroutine(monsterManager.Init(stageManager.stageData.stageId));
+
+        // 타겟 몬스터 지정 -> 첫 시작은 무조건 노멀 몬스터로
+        player.SetCurrentMonster(monsterManager.monsterNormal);
 
         // 공격 가능 상태로 전환
+        attackController.SetAttackableState(true);
         
     }
 

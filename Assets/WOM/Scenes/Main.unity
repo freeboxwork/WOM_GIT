@@ -250,6 +250,7 @@ MonoBehaviour:
   dataManager: {fileID: 848934864}
   insectManager: {fileID: 1934036581}
   monsterManager: {fileID: 685712868}
+  player: {fileID: 0}
 --- !u!1 &245078722
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +936,8 @@ MonoBehaviour:
   insectManager: {fileID: 1934036581}
   stageManager: {fileID: 905966739}
   monsterManager: {fileID: 685712868}
+  player: {fileID: 0}
+  attackController: {fileID: 0}
 --- !u!1001 &841547811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1454,10 +1457,6 @@ MonoBehaviour:
     gold: 0
     offlineTime: 
     playingTime: 
-  player:
-    stageIdx: 0
-    upgradeLevelIdx: 0
-    gold: 0
 --- !u!1 &1395766385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1430916485}
+  - component: {fileID: 1430916486}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1722,6 +1722,22 @@ Transform:
   m_Father: {fileID: 879479835}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1430916486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430916484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cba373bb86407b468fccbfa8acff827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageIdx: 0
+  upgradeLevelIdx: 0
+  gold: 0
+  currentMonster: {fileID: 0}
 --- !u!1 &1544780988
 GameObject:
   m_ObjectHideFlags: 0
