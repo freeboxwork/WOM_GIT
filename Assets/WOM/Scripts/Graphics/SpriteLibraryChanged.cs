@@ -19,7 +19,7 @@ namespace ProjectGraphics
             foreach (var item in re)
             {
                 string name = item.GetCategory();
-                Debug.Log(name);
+                //Debug.Log(name);
                 resolver.Add(name, item);
             }
         }
