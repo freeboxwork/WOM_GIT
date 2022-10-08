@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1348948941708790430}
   - component: {fileID: 1348948941708790431}
   - component: {fileID: -151419926794647515}
+  - component: {fileID: -8844348188701716801}
   m_Layer: 0
   m_Name: Mantis00
   m_TagString: Untagged
@@ -197,3 +198,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insectType: 0
+  animData: {fileID: -8844348188701716801}
+--- !u!114 &-8844348188701716801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348948941708790424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animCurveType: 3
+  animDuration: 0.7
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0

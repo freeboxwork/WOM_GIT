@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 4133864425603818100}
   - component: {fileID: 4133864425603818101}
   - component: {fileID: -7902834804681615650}
+  - component: {fileID: -868726394049380404}
   m_Layer: 0
   m_Name: Beetle00
   m_TagString: Untagged
@@ -197,3 +198,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insectType: 2
+  animData: {fileID: -868726394049380404}
+--- !u!114 &-868726394049380404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133864425603818102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animCurveType: 3
+  animDuration: 0.7
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
