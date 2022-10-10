@@ -16,7 +16,8 @@ public class MonsterBase : MonoBehaviour
     public EnumDefinition.AttackType attackType;
 
     public SpriteLibraryChanged spriteLibraryChanged;
-    
+    public MonsterInOutAnimator inOutAnimator;
+
     void Start()
     {
 
