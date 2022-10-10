@@ -23,7 +23,9 @@ public class MonsterInOutAnimator : MonoBehaviour
     {
         var startPos = startPoint_MonsterIn.position;
         var enaPos = endPoint_MonsterIn.position;
-        isAnimPlay = true;
+        
+        monsterAnim.SetBool("Run", isAnimPlay = true);
+
         animDataIn.ResetAnimData();
         while (animDataIn.animTime < 0.999f)
         {
@@ -33,7 +35,8 @@ public class MonsterInOutAnimator : MonoBehaviour
             monsterTr.position = Vector3.Lerp(startPos, enaPos, animDataIn.animValue);
             yield return null;
         }
-        isAnimPlay = false;
+
+        monsterAnim.SetBool("Run", isAnimPlay = false);
     }
 
 
@@ -51,6 +54,12 @@ public class MonsterInOutAnimator : MonoBehaviour
             yield return null;
         }
         isAnimPlay = false;
+    }
+
+    //입맛에 맞게 수정하세요.
+    public void GetHitAnimation()
+    {
+        monsterAnim.SetTrigger("Hit");
     }
 
 }
