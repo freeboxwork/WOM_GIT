@@ -10,6 +10,9 @@ public class GlobalData : MonoBehaviour
     public InsectManager insectManager;
     public MonsterManager monsterManager;
     public AttackController attackController;
+    public CustomTypeDataManager customTypeDataManager;
+    public EventController eventController; 
+    public UiController uiController;
     public Player player;
          
     private void Awake()
