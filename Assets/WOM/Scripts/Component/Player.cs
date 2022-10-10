@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public int upgradeLevelIdx;
     public int gold;
     public DateTime playTime;
+    public StageData currentStageData;
 
     /// <summary> 현재 전투중인 몬스터 </summary>
     public MonsterBase currentMonster;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         stageIdx = saveData.stageIdx;
         upgradeLevelIdx = saveData.upgradeLevelIdx;
         gold = saveData.gold;
+        currentStageData = GlobalData.instance.dataManager.GetStageDataById(stageIdx);
     }
 
 }

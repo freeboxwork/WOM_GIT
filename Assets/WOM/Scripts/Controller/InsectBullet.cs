@@ -65,7 +65,8 @@ public class InsectBullet : MonoBehaviour
     {
         if (collision.transform.CompareTag("monster"))
         {
-            // monster hit!
+            // monster hit event!
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType);
 
             // ¼Ò¸ê
             gameObject.SetActive(false);

@@ -13,10 +13,17 @@ public class MonsterManager : MonoBehaviour
 
     void Start()
     {
-        
-
+        AddMonsterList();
     }
 
+    void AddMonsterList()
+    {
+        // add monsters list 
+        // 순서 : normal ,  gold,  boss
+        monsters.Add(monsterNormal);
+        monsters.Add(monsterGold);
+        monsters.Add(monsterBoss);
+    }
 
     public IEnumerator Init(int stageId)
     {
@@ -36,13 +43,6 @@ public class MonsterManager : MonoBehaviour
         SetMonsterBodyImage(monNormalData, monsterNormal);
         SetMonsterBodyImage(monGoldData, monsterGold);
         SetMonsterBodyImage(monBossData, monsterBoss);
-
-
-        // add monsters list 
-        // 순서 : normal ,  gold,  boss
-        monsters.Add(monsterNormal);
-        monsters.Add(monsterGold);
-        monsters.Add(monsterBoss);
     }
 
     void SetMonsterBodyImage(MonsterData monData, MonsterBase monster)

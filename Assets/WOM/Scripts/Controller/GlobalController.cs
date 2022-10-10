@@ -12,6 +12,7 @@ public class GlobalController : MonoBehaviour
     public MonsterManager monsterManager;
     public Player player;
     public AttackController attackController;
+    public UiController uiController;
 
 
     void Start()
@@ -24,12 +25,12 @@ public class GlobalController : MonoBehaviour
     {
         // set data
         yield return StartCoroutine(dataManager.SetDatas());
+
+        // set ui data
+        yield return StartCoroutine(uiController.SetUiDatas());
         
         // get player data ( 게임 종료전 저장 되어있는 데이터 로드 )
         yield return StartCoroutine(playerDataManager.InitPlayerData());
-        
-        // Player data 세팅
-        yield return StartCoroutine(player.Init(playerDataManager.saveData));
         
         // 스테이지 세팅
         yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
@@ -40,15 +41,31 @@ public class GlobalController : MonoBehaviour
         // 몬스터 데이터 세팅
         yield return StartCoroutine(monsterManager.Init(stageManager.stageData.stageId));
 
+        // Player data 세팅
+        yield return StartCoroutine(player.Init(playerDataManager.saveData));
+
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
 
         // 등장 몬스터 활성화 -> 첫 시작은 노멀 몬스터
         monsterManager.EnableMonster(EnumDefinition.MonsterType.normal);
 
+        // UI 초기화
+        SetUI_Init();
+
         // 공격 가능 상태로 전환
         attackController.SetAttackableState(true);
         
     }
+
+    void SetUI_Init()
+    {
+        // set boss monster hp
+        var hp = player.currentMonster.hp;
+        uiController.SetTxtMonsterHp(hp);
+    }
+
+
+
 
 }

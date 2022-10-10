@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UiController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public CustomTypeDataManager customTypeDataManager;
+    
+    [Header("BOSS 관련 UI 항")]
+    public TextMeshProUGUI txtBossHp;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary> 필요 UI SETTING </summary>
+    public IEnumerator SetUiDatas()
     {
-        
+        txtBossHp = customTypeDataManager.GetCustomTypeData_Text(1).components.text;
+        yield return null;
     }
+
+
+    /* SET MONSTER UI */
+    public void SetTxtMonsterHp(float value)
+    {
+        txtBossHp.text = value.ToString();
+    }
+      
+
 }

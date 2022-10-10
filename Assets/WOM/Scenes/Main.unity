@@ -251,7 +251,54 @@ MonoBehaviour:
   insectManager: {fileID: 1934036581}
   monsterManager: {fileID: 685712868}
   attackController: {fileID: 274116685}
+  customTypeDataManager: {fileID: 1643049991}
+  eventController: {fileID: 1977599352}
+  uiController: {fileID: 1679356918}
   player: {fileID: 1430916486}
+--- !u!1 &167315882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167315883}
+  - component: {fileID: 167315884}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &167315883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167315882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1561350215}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167315884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167315882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae24f6958b3e0343892f22aca89c20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &245078722
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +364,7 @@ Transform:
   - {fileID: 739282121}
   - {fileID: 274116684}
   - {fileID: 1679356917}
+  - {fileID: 1977599351}
   m_Father: {fileID: 1249124945}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -973,6 +1021,7 @@ MonoBehaviour:
   monsterManager: {fileID: 685712868}
   player: {fileID: 1430916486}
   attackController: {fileID: 274116685}
+  uiController: {fileID: 1679356918}
 --- !u!1001 &841547811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1996,6 +2045,16 @@ MonoBehaviour:
   stageIdx: 0
   upgradeLevelIdx: 0
   gold: 0
+  currentStageData:
+    stageId: 0
+    stageName: 
+    monsterNormalId: 0
+    monsterBossId: 0
+    monsterGoldId: 0
+    phaseCount: 0
+    bgId: 0
+    rewardEvent: 
+    unlock: 
   currentMonster: {fileID: 0}
 --- !u!1 &1544780988
 GameObject:
@@ -2185,6 +2244,7 @@ Transform:
   - {fileID: 1934036580}
   - {fileID: 685712867}
   - {fileID: 905966738}
+  - {fileID: 167315883}
   m_Father: {fileID: 1249124945}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2234,13 +2294,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customTypeDatas:
   - {fileID: 653059483}
-  - {fileID: 1544780990}
   - {fileID: 1395766387}
+  - {fileID: 1544780990}
+  - {fileID: 1863401082}
   customTypeDatas_animCont: []
   customTypeDatas_uiButton:
   - {fileID: 653059483}
   customTypeDatas_uiText:
   - {fileID: 1544780990}
+  - {fileID: 1863401082}
   customTypeDatas_uiImage:
   - {fileID: 1395766387}
 --- !u!1 &1679356916
@@ -2252,6 +2314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679356917}
+  - component: {fileID: 1679356918}
   m_Layer: 0
   m_Name: UiController
   m_TagString: Untagged
@@ -2274,6 +2337,20 @@ Transform:
   m_Father: {fileID: 261012095}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1679356918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679356916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5292d1169b5456a4c9f84d7bf4df8aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTypeDataManager: {fileID: 1643049991}
+  txtBossHp: {fileID: 0}
 --- !u!1 &1747509662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2833,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef7f9105b8fb554ea400d3a91242a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1977599350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1977599351}
+  - component: {fileID: 1977599352}
+  m_Layer: 0
+  m_Name: EventController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1977599351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977599350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 261012095}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1977599352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977599350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15dfaedc2211f964ea3f4f346aea5fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037346925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,7 +2928,7 @@ MonoBehaviour:
   damage: 0
   damageRate: 0
   criticalChance: 0
-  ciriticalDamage: 0
+  criticalDamage: 0
   speed: 0
   goldBonus: 0
   bossDamage: 0
@@ -2828,7 +2949,7 @@ MonoBehaviour:
   damage: 0
   damageRate: 0
   criticalChance: 0
-  ciriticalDamage: 0
+  criticalDamage: 0
   speed: 0
   goldBonus: 0
   bossDamage: 0
@@ -2849,7 +2970,7 @@ MonoBehaviour:
   damage: 0
   damageRate: 0
   criticalChance: 0
-  ciriticalDamage: 0
+  criticalDamage: 0
   speed: 0
   goldBonus: 0
   bossDamage: 0
