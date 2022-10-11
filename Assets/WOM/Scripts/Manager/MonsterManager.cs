@@ -8,6 +8,11 @@ public class MonsterManager : MonoBehaviour
     public MonsterGold monsterGold;
     public MonsterBoss monsterBoss;
 
+    public int monsterId_normal;
+    public int monsterId_gold;
+    public int monsterId_boss;
+         
+
     // normal gold boss
     public List<MonsterBase> monsters = new List<MonsterBase>();
 

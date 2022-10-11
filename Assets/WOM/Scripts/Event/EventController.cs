@@ -27,13 +27,13 @@ public class EventController : MonoBehaviour
     void AddEvents()
     {
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
-        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
+        EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
     }   
     
     void RemoveEvents()
     {
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
-        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
+        EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
     }
 
 
@@ -84,17 +84,24 @@ public class EventController : MonoBehaviour
 
     // MONSTER KILL EVENT
 
-    void OnMonsterKill(EnumDefinition.InsectType insectType)
+    void OnMonsterKill(EnumDefinition.MonsterType monsterType)
     {
         //phaseCount 0 도달시 골드 몬스터 등장.
         var phaseCount = globalData.player.currentStageData.phaseCount -= 1;
         if (IsPhaseCountZero(phaseCount))
         {
             Debug.Log("골드 몬스터 등장");
-        }
 
-        // NEXT MONSTER SETTING
+        }
+        else
+        {
+           
+            // Monster In Animation
+            StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
+        }
     }
+
+    
 
 
     /* UTILITY METHOD */

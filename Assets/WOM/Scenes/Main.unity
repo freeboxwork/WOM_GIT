@@ -1028,6 +1028,9 @@ MonoBehaviour:
   monsterNormal: {fileID: 1089423845}
   monsterGold: {fileID: 2093046811}
   monsterBoss: {fileID: 841547814}
+  monsterId_normal: 0
+  monsterId_gold: 0
+  monsterId_boss: 0
   monsters: []
 --- !u!1 &708608343
 GameObject:
@@ -1728,6 +1731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 436624422}
     m_Modifications:
+    - target: {fileID: 1089423851, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: monster
+      value: 
+      objectReference: {fileID: 1089423845}
     - target: {fileID: 1089423851, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
       propertyPath: monsterTr
       value: 
