@@ -1700,6 +1700,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 436624422}
     - target: {fileID: 1089423851, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: monsterCol
+      value: 
+      objectReference: {fileID: 1089423852}
+    - target: {fileID: 1089423851, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
       propertyPath: monsterAnim
       value: 
       objectReference: {fileID: 1089423847}
@@ -1719,6 +1723,14 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Extent.y
       value: 0.9500005
       objectReference: {fileID: 0}
+    - target: {fileID: 1499204843700722562, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499204843700722564, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d9d2afc868f4304095a46a7f23688bc, type: 2}
     - target: {fileID: 2558611898619005673, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
       propertyPath: m_Bounds.m_Center.y
       value: 0.0151228905
@@ -1892,6 +1904,11 @@ MonoBehaviour:
 --- !u!95 &1089423847 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1499204843702502437, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+  m_PrefabInstance: {fileID: 1089423842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1089423852 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1499204843702502441, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
   m_PrefabInstance: {fileID: 1089423842}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1249124944

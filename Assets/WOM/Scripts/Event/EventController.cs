@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EventController : MonoBehaviour
@@ -26,11 +27,13 @@ public class EventController : MonoBehaviour
     void AddEvents()
     {
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
+        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
     }   
     
     void RemoveEvents()
     {
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
+        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
     }
 
 
@@ -39,33 +42,60 @@ public class EventController : MonoBehaviour
 
     void OnMonsterHit(EnumDefinition.InsectType insectType)
     {
-        // get damage
+
+        // GET DAMAGE
         var damage = globalData.insectManager.GetInsectDamage(insectType);
-        //Debug.Log(insectType + "damage : " + damage);
+
+        // GET MONSTER
+        var currentMonster = globalData.player.currentMonster;
 
         // set monster damage
-        var currentMonster = globalData.player.currentMonster;
         currentMonster.hp -= damage;
+
+        // play monster hit animation
+        currentMonster.inOutAnimator.monsterAnim.SetBool("Hit",true);
 
 
         // 몬스터 제거시
         if (IsMonseterKill(currentMonster.hp))
         {
-            //phaseCount 0 도달시 골드 몬스터 등장.
-            var phaseCount = globalData.player.currentStageData.phaseCount -= 1;
-            if (IsPhaseCountZero(phaseCount))
-            {
-            
-            }
+            // 몬스터 재 등장 후 공격 가능 ??????
+            // GlobalData.instance.attackController.SetAttackableState(false);
+            // 제거 애니메이션
+            currentMonster.inOutAnimator.MonsterKillAnim();
+            globalData.uiController.SetTxtMonsterHp(0);
+        
+        }
+        else
+        {
+            // set ui
+            globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
         }
 
 
 
-        // set ui
-        globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
-
+        
     }
 
+
+    // MONSTER KILL EVENT
+
+    void OnMonsterKill(EnumDefinition.InsectType insectType)
+    {
+        //phaseCount 0 도달시 골드 몬스터 등장.
+        var phaseCount = globalData.player.currentStageData.phaseCount -= 1;
+        if (IsPhaseCountZero(phaseCount))
+        {
+            Debug.Log("골드 몬스터 등장");
+        }
+
+        // NEXT MONSTER SETTING
+    }
+
+
+    /* UTILITY METHOD */
+
+    // 몬스터 제거 판단
     bool IsMonseterKill(float monster_hp)
     {
         return monster_hp <= 0;

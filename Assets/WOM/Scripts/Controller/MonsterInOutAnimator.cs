@@ -11,6 +11,8 @@ public class MonsterInOutAnimator : MonoBehaviour
     public Transform endPoint_MonsterIn;
     public Transform monsterTr;
     public Animator monsterAnim;
+    public Collider2D monsterCol;
+
 
     bool isAnimPlay;
     void Start()
@@ -21,6 +23,9 @@ public class MonsterInOutAnimator : MonoBehaviour
 
     public IEnumerator AnimPosition()
     {
+        // collider disable
+        monsterCol.enabled = false;
+
         var startPos = startPoint_MonsterIn.position;
         var enaPos = endPoint_MonsterIn.position;
         
@@ -30,18 +35,27 @@ public class MonsterInOutAnimator : MonoBehaviour
         while (animDataIn.animTime < 0.999f)
         {
             animDataIn.animTime = (Time.time - animDataIn.animStartTime) / animDataIn.animDuration;
-            Debug.Log(animDataIn.animTime);
             animDataIn.animValue = EaseValues.instance.GetAnimCurve(animDataIn.animCurveType, animDataIn.animTime);
             monsterTr.position = Vector3.Lerp(startPos, enaPos, animDataIn.animValue);
             yield return null;
         }
 
         monsterAnim.SetBool("Run", isAnimPlay = false);
+        // collider enable
+        monsterCol.enabled = true;
     }
+
+    public void MonsterKillAnim()
+    {
+        StartCoroutine(MaterialAnimMinMax(dissolveMat, "_fade", (1, 0)));
+    } 
 
 
     public IEnumerator MaterialAnimMinMax(Material mat, string property, (float, float) minMax)
     {
+        // collider disable
+        monsterCol.enabled = false;
+
         isAnimPlay = true;
         animDataDissolve.ResetAnimData();
         while (animDataDissolve.animTime < 0.999f)
@@ -54,6 +68,7 @@ public class MonsterInOutAnimator : MonoBehaviour
             yield return null;
         }
         isAnimPlay = false;
+        monsterTr.position = startPoint_MonsterIn.position;
     }
 
     //입맛에 맞게 수정하세요.
