@@ -14,6 +14,7 @@ public class GlobalData : MonoBehaviour
     public EventController eventController; 
     public UiController uiController;
     public Player player;
+    public EffectManager effectManager;
          
     private void Awake()
     {

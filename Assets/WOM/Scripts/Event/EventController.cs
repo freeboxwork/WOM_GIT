@@ -52,7 +52,7 @@ public class EventController : MonoBehaviour
         // set monster damage
         currentMonster.hp -= damage;
 
-        // play monster hit animation
+        // monster hit animation 
         currentMonster.inOutAnimator.monsterAnim.SetBool("Hit",true);
 
 
@@ -61,7 +61,11 @@ public class EventController : MonoBehaviour
         {
             // 몬스터 재 등장 후 공격 가능 ??????
             // GlobalData.instance.attackController.SetAttackableState(false);
-            // 제거 애니메이션
+
+            // 하프라인 위쪽 곤충들 제거
+            globalData.insectManager.DisableHalfLineInsects();
+
+            // monster kill animation
             currentMonster.inOutAnimator.MonsterKillAnim();
             globalData.uiController.SetTxtMonsterHp(0);
         

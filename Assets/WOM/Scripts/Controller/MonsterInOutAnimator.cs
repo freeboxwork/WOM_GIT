@@ -20,6 +20,16 @@ public class MonsterInOutAnimator : MonoBehaviour
         
     }
 
+    private void OnDestroy()
+    {
+        ResetMat();
+    }
+
+    void ResetMat()
+    {
+        dissolveMat.SetFloat("_fade", 1);
+    } 
+
 
     public IEnumerator AnimPosition()
     {

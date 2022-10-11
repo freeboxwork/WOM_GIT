@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InsectManager : MonoBehaviour
@@ -23,7 +24,9 @@ public class InsectManager : MonoBehaviour
     public int insectBirthCount = 15;
 
     public List<InsectBase> insects = new List<InsectBase>();
-   
+
+    public Transform trHalfPoint;
+
     void Start()
     {
         //StartCoroutine(Init());
@@ -44,6 +47,27 @@ public class InsectManager : MonoBehaviour
         insects.Add(insectBeetle);
 
         yield return new WaitForEndOfFrame();
+    }
+
+    /// <summary> 몬스터 제거시 하프라인 위의 곤충들 제거 </summary>
+    public void DisableHalfLineInsects()
+    {
+        DisableInsects(insectBullets_Bee);
+        DisableInsects(insectBullets_Beetle);
+        DisableInsects(insectBullets_Mentis);
+    }
+
+    bool IsHalfPointUpSide(InsectBullet insectBullet)
+    {
+        return insectBullet.transform.position.y > trHalfPoint.position.y;
+    }
+
+    public void DisableInsects(List<InsectBullet> insectBullets)
+    {
+        foreach (var insect in insectBullets)
+            if (insect.gameObject.activeSelf)
+                if(IsHalfPointUpSide(insect))
+                    insect.DisableInsect();
     }
 
     public InsectBase GetInsect(EnumDefinition.InsectType insectType)
