@@ -51,6 +51,7 @@ public class InsectBullet : MonoBehaviour
             yield return null;
 
         }
+        gameObject.SetActive(false);
     }
 
     (Vector3 startPoint, Vector3 targetPoint) GetAnimPoints()
