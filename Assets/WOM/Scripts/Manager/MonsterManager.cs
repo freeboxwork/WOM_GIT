@@ -50,6 +50,21 @@ public class MonsterManager : MonoBehaviour
         SetMonsterBodyImage(monBossData, monsterBoss);
     }
 
+    public void SetDataMonNormal(int stageId)
+    {
+        StageData stageData = GlobalData.instance.dataManager.GetStageDataById(stageId);
+        var monNormalData = GetMonsterData(EnumDefinition.MonsterType.normal, stageData.monsterNormalId);
+        SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
+    }
+
+    //int GetMonsterID(StageData stageData, EnumDefinition.MonsterType monsterType)
+    //{
+    //    switch (monsterType)
+    //    {
+    //        case EnumDefinition.MonsterType.normal: return stageData.monsterNormalId);
+    //    }
+    //}
+
     void SetMonsterBodyImage(MonsterData monData, MonsterBase monster)
     {
         var spriteData = GlobalData.instance.dataManager.GetMonsterSpriteDataById(monData.imageId);
