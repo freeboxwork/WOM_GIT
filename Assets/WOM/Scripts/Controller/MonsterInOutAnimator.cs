@@ -12,6 +12,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     public Transform monsterTr;
     public Animator monsterAnim;
     public Collider2D monsterCol;
+    public MonsterBase monster;
 
 
     bool isAnimPlay;
@@ -35,6 +36,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     {
         // collider disable
         monsterCol.enabled = false;
+        ResetMat();
 
         var startPos = startPoint_MonsterIn.position;
         var enaPos = endPoint_MonsterIn.position;
@@ -79,6 +81,8 @@ public class MonsterInOutAnimator : MonoBehaviour
         }
         isAnimPlay = false;
         monsterTr.position = startPoint_MonsterIn.position;
+
+        EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
     }
 
     //입맛에 맞게 수정하세요.
