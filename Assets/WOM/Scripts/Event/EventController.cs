@@ -59,9 +59,7 @@ public class EventController : MonoBehaviour
         // 몬스터 제거시
         if (IsMonseterKill(currentMonster.hp))
         {
-            // 몬스터 재 등장 후 공격 가능 ??????
-            // GlobalData.instance.attackController.SetAttackableState(false);
-
+          
             // 하프라인 위쪽 곤충들 제거
             globalData.insectManager.DisableHalfLineInsects();
 
@@ -95,7 +93,9 @@ public class EventController : MonoBehaviour
         }
         else
         {
-           
+            // set monster data
+            globalData.monsterManager.SetDataMonNormal(globalData.player.stageIdx);
+
             // Monster In Animation
             StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
         }

@@ -55,6 +55,13 @@ public class MonsterInOutAnimator : MonoBehaviour
         monsterAnim.SetBool("Run", isAnimPlay = false);
         // collider enable
         monsterCol.enabled = true;
+
+        // 몬스터 재 등장 후 공격 가능 ??????
+        GlobalData.instance.attackController.SetAttackableState(true);
+
+        // set hp
+        // TODO: 이벤트 방식으로 변환 -> MonsterAPPEARComplete
+        GlobalData.instance.uiController.SetTxtMonsterHp(GlobalData.instance.player.currentMonster.hp);
     }
 
     public void MonsterKillAnim()
@@ -65,6 +72,9 @@ public class MonsterInOutAnimator : MonoBehaviour
 
     public IEnumerator MaterialAnimMinMax(Material mat, string property, (float, float) minMax)
     {
+        // 몬스터 재 등장 후 공격 가능 ??????
+        GlobalData.instance.attackController.SetAttackableState(false);
+
         // collider disable
         monsterCol.enabled = false;
 
@@ -83,6 +93,9 @@ public class MonsterInOutAnimator : MonoBehaviour
         transform.position = startPoint_MonsterIn.position;
 
         EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
+
+        
+
     }
 
     //입맛에 맞게 수정하세요.
