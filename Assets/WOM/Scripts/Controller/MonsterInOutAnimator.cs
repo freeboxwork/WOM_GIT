@@ -57,7 +57,7 @@ public class MonsterInOutAnimator : MonoBehaviour
         monsterCol.enabled = true;
 
         // 몬스터 재 등장 후 공격 가능 ??????
-        GlobalData.instance.attackController.SetAttackableState(true);
+       // GlobalData.instance.attackController.SetAttackableState(true);
 
         // set hp
         // TODO: 이벤트 방식으로 변환 -> MonsterAPPEARComplete
@@ -73,7 +73,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     public IEnumerator MaterialAnimMinMax(Material mat, string property, (float, float) minMax)
     {
         // 몬스터 재 등장 후 공격 가능 ??????
-        GlobalData.instance.attackController.SetAttackableState(false);
+      //  GlobalData.instance.attackController.SetAttackableState(false);
 
         // collider disable
         monsterCol.enabled = false;
