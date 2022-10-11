@@ -9,7 +9,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     public Material dissolveMat;
     public Transform startPoint_MonsterIn;
     public Transform endPoint_MonsterIn;
-    public Transform monsterTr;
+    //public Transform monsterTr;
     public Animator monsterAnim;
     public Collider2D monsterCol;
     public MonsterBase monster;
@@ -48,7 +48,7 @@ public class MonsterInOutAnimator : MonoBehaviour
         {
             animDataIn.animTime = (Time.time - animDataIn.animStartTime) / animDataIn.animDuration;
             animDataIn.animValue = EaseValues.instance.GetAnimCurve(animDataIn.animCurveType, animDataIn.animTime);
-            monsterTr.position = Vector3.Lerp(startPos, enaPos, animDataIn.animValue);
+            transform.position = Vector3.Lerp(startPos, enaPos, animDataIn.animValue);
             yield return null;
         }
 
@@ -80,7 +80,7 @@ public class MonsterInOutAnimator : MonoBehaviour
             yield return null;
         }
         isAnimPlay = false;
-        monsterTr.position = startPoint_MonsterIn.position;
+        transform.position = startPoint_MonsterIn.position;
 
         EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
     }
