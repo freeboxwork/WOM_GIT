@@ -13,6 +13,7 @@ public class GlobalController : MonoBehaviour
     public Player player;
     public AttackController attackController;
     public UiController uiController;
+    public EffectManager effectManager;
 
 
     void Start()
@@ -35,11 +36,14 @@ public class GlobalController : MonoBehaviour
         // 스테이지 세팅
         yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
 
-        // 곤충 데이터 세팅
+        // 곤충 세팅
         yield return StartCoroutine(insectManager.Init(playerDataManager));
 
-        // 몬스터 데이터 세팅
+        // 몬스터 세팅
         yield return StartCoroutine(monsterManager.Init(stageManager.stageData.stageId));
+
+        // 이펙트 세팅
+        yield return StartCoroutine(effectManager.Init());
 
         // Player data 세팅
         yield return StartCoroutine(player.Init(playerDataManager.saveData));

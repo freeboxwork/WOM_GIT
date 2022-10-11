@@ -10,6 +10,8 @@ public class InsectBullet : MonoBehaviour
 {
     public EnumDefinition.InsectType insectType;
     public AnimData animData;
+    public ParticleSystem effDisable;
+        
     
     float speed = 1;
     Vector3 lookDir;
@@ -75,6 +77,12 @@ public class InsectBullet : MonoBehaviour
         }
     }
 
-
+    // 어떠한 이유로 곤충 갑자기 사라져야 할 때
+    public void DisableInsect()
+    {
+        // 파티클 이펙트 추가
+        GlobalData.instance.effectManager.EnableInsectDisableEffect(this.transform);
+        gameObject.SetActive(false);
+    }
 
 }
