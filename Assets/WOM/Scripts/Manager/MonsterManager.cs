@@ -107,7 +107,7 @@ public class MonsterManager : MonoBehaviour
         monster.spriteLibraryChanged.ChangedSpritePartImage("leg_2", spriteData.leg_2);
     }
 
-    //TODO: 애니메이션으로 제어
+
     public void EnableMonster(EnumDefinition.MonsterType monsterType)
     {
         for (int i = 0; i < monsters.Count; i++)
@@ -158,15 +158,15 @@ public class MonsterManager : MonoBehaviour
 
 
 
-    MonsterBase GetMonsterData(EnumDefinition.MonsterType monsterType)
+    public MonsterBase GetMonsterData(EnumDefinition.MonsterType monsterType)
     {
         switch (monsterType)
         {
             case EnumDefinition.MonsterType.normal: return monsterNormal;
             case EnumDefinition.MonsterType.gold: return monsterGold;
-            case EnumDefinition.MonsterType.boss: return monsterBoss;   
+            case EnumDefinition.MonsterType.boss: return monsterBoss;
         }
         return null;
     }
-   
+
 }
