@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using static EnumDefinition;
 
 public class EventController : MonoBehaviour
 {
@@ -28,12 +29,14 @@ public class EventController : MonoBehaviour
     {
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
         EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
+        EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, OnMonsterUiReset);
     }   
     
     void RemoveEvents()
     {
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
+        EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, OnMonsterUiReset);
     }
 
 
@@ -84,23 +87,53 @@ public class EventController : MonoBehaviour
 
     void OnMonsterKill(EnumDefinition.MonsterType monsterType)
     {
-        //phaseCount 0 도달시 골드 몬스터 등장.
-        var phaseCount = globalData.player.currentStageData.phaseCount -= 1;
-        if (IsPhaseCountZero(phaseCount))
+        if(monsterType == EnumDefinition.MonsterType.normal)
         {
-            Debug.Log("골드 몬스터 등장");
+            //phaseCount 0 도달시 골드 몬스터 등장.
+            var phaseCount = globalData.player.currentStageData.phaseCount -= 1;
+            if (IsPhaseCountZero(phaseCount))
+            {
+                Debug.Log("골드 몬스터 등장");
+                MonsterAppearGold();
+            }
+            else
+            {
+                //reset monster data
+                globalData.monsterManager.SetMonsterData(monsterType, globalData.player.stageIdx);
 
+                // Monster In Animation
+                StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
+            }
         }
-        else
-        {
-            // set monster data
-            globalData.monsterManager.SetDataMonNormal(globalData.player.stageIdx);
 
-            // Monster In Animation
-            StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
-        }
+
+       
     }
 
+    // 골드 몬스터 등장
+    void MonsterAppearGold()
+    {
+        globalData.player.currentMonster = globalData.monsterManager.monsterGold;
+        //reset monster data
+        globalData.monsterManager.SetMonsterData(EnumDefinition.MonsterType.gold, globalData.player.stageIdx);
+
+        // Monster In Animation
+        StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
+
+
+    }
+
+
+    // 몬스터 UI 리셋
+    void OnMonsterUiReset()
+    {
+        var monsterData  = globalData.player.currentMonster;
+
+        // SET HP
+        globalData.uiController.SetTxtMonsterHp(monsterData.hp);
+        // SLIDE BAR
+
+    }
     
 
 

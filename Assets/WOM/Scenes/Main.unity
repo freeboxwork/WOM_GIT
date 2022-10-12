@@ -1441,7 +1441,7 @@ MonoBehaviour:
   monsterType: 0
   attackType: 0
   spriteLibraryChanged: {fileID: 841547815}
-  inOutAnimator: {fileID: 0}
+  inOutAnimator: {fileID: 841547819}
 --- !u!114 &841547815 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8709659281224663759, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
@@ -1453,6 +1453,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &841547816 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8709659281224663746, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+  m_PrefabInstance: {fileID: 841547811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &841547817 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8709659281224663758, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+  m_PrefabInstance: {fileID: 841547811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &841547819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841547813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957350059a6597a479037b71590b83ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animDataIn: {fileID: 841547821}
+  animDataDissolve: {fileID: 841547820}
+  dissolveMat: {fileID: 2100000, guid: 8d5767723b0d6b74ea95110e5699a8ac, type: 2}
+  startPoint_MonsterIn: {fileID: 1398014560}
+  endPoint_MonsterIn: {fileID: 424950010}
+  monsterAnim: {fileID: 841547816}
+  monsterCol: {fileID: 841547817}
+  monster: {fileID: 841547814}
+--- !u!114 &841547820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841547813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: monster die
+  animCurveType: 0
+  animDuration: 0.8
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
+--- !u!114 &841547821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841547813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: monster in
+  animCurveType: 3
+  animDuration: 1
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
 --- !u!1 &848934862
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,7 +4097,7 @@ MonoBehaviour:
   monsterType: 0
   attackType: 0
   spriteLibraryChanged: {fileID: 2093046812}
-  inOutAnimator: {fileID: 0}
+  inOutAnimator: {fileID: 2093046816}
 --- !u!114 &2093046812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2456668813116973281, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
@@ -4041,6 +4109,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2093046813 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2456668813116973292, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+  m_PrefabInstance: {fileID: 2093046808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &2093046814 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2456668813116973280, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+  m_PrefabInstance: {fileID: 2093046808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2093046816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093046810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957350059a6597a479037b71590b83ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animDataIn: {fileID: 2093046818}
+  animDataDissolve: {fileID: 2093046817}
+  dissolveMat: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
+  startPoint_MonsterIn: {fileID: 1398014560}
+  endPoint_MonsterIn: {fileID: 424950010}
+  monsterAnim: {fileID: 2093046813}
+  monsterCol: {fileID: 2093046814}
+  monster: {fileID: 2093046811}
+--- !u!114 &2093046817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093046810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: monster die
+  animCurveType: 0
+  animDuration: 0.8
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
+--- !u!114 &2093046818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093046810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: monster in
+  animCurveType: 3
+  animDuration: 1
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
 --- !u!1 &2099665906
 GameObject:
   m_ObjectHideFlags: 0

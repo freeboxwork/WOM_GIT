@@ -50,11 +50,27 @@ public class MonsterManager : MonoBehaviour
         SetMonsterBodyImage(monBossData, monsterBoss);
     }
 
-    public void SetDataMonNormal(int stageId)
+    public void SetMonsterData(EnumDefinition.MonsterType monsterType, int stageId)
     {
         StageData stageData = GlobalData.instance.dataManager.GetStageDataById(stageId);
-        var monNormalData = GetMonsterData(EnumDefinition.MonsterType.normal, stageData.monsterNormalId);
-        SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
+        switch (monsterType)
+        {
+            case EnumDefinition.MonsterType.normal:
+                var monNormalData = GetMonsterData(monsterType, stageData.monsterNormalId);
+                SetMonsterData(monsterType, monNormalData);
+                break;
+            
+            case EnumDefinition.MonsterType.gold:
+                var monGoldData = GetMonsterData(monsterType, stageData.monsterGoldId);
+                SetMonsterData(monsterType, monGoldData);
+                break;
+            
+            case EnumDefinition.MonsterType.boss:
+                var monBossData = GetMonsterData(monsterType, stageData.monsterBossId); 
+                SetMonsterData(monsterType , monBossData);  
+                break;
+        }
+        
     }
 
     //int GetMonsterID(StageData stageData, EnumDefinition.MonsterType monsterType)
@@ -103,7 +119,7 @@ public class MonsterManager : MonoBehaviour
             }
             else
             {
-                monsters[i].gameObject.SetActive(false);
+                //monsters[i].gameObject.SetActive(false);
             }
         }
     }
