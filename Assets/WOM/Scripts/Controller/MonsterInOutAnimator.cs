@@ -56,7 +56,7 @@ public class MonsterInOutAnimator : MonoBehaviour
         // collider enable
         monsterCol.enabled = true;
 
-        // set hp
+        // set hp event
         EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterUiReset);
     }
 

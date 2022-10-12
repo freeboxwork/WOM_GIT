@@ -114,11 +114,12 @@ public class MonsterManager : MonoBehaviour
         {
             if ((int)monsterType == i)
             {
-                //TODO ANIMATION 으로 변경
+                //TODO : 꺼야 하는지 확인 필요
                 monsters[i].gameObject.SetActive(true);
             }
             else
             {
+                // TODO: 
                 //monsters[i].gameObject.SetActive(false);
             }
         }
