@@ -9,7 +9,10 @@ public class Player : MonoBehaviour
     public int upgradeLevelIdx;
     public int gold;
     public DateTime playTime;
+    
+    /// <summary> 현재 진행중인 스테이지 데이터 </summary>
     public StageData currentStageData;
+    public int pahseCountOriginalValue;
 
     /// <summary> 현재 전투중인 몬스터 </summary>
     public MonsterBase currentMonster;
@@ -36,7 +39,15 @@ public class Player : MonoBehaviour
         stageIdx = saveData.stageIdx;
         upgradeLevelIdx = saveData.upgradeLevelIdx;
         gold = saveData.gold;
-        currentStageData = GlobalData.instance.dataManager.GetStageDataById(stageIdx);
+        SetCurrentStageData(stageIdx);
+
+    }
+
+    public void SetCurrentStageData(int stageIdx)
+    {
+        var stageData = GlobalData.instance.dataManager.GetStageDataById(stageIdx); ;
+        currentStageData = stageData;
+        pahseCountOriginalValue = stageData.phaseCount;
     }
 
 }

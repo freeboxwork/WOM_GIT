@@ -12,7 +12,7 @@ public class GetCustomTypeObject : EditorWindow
     float labelWidth = 120;
          
 
-    [MenuItem("VENTA_TOOLS/GetCustomTypeObject")]
+    [MenuItem("GM_TOOLS/GetCustomTypeObject")]
     public static void ShowWindow()
     {
         var window = GetWindow<GetCustomTypeObject>();

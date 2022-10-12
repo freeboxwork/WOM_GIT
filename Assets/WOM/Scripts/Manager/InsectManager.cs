@@ -83,7 +83,7 @@ public class InsectManager : MonoBehaviour
     public float GetInsectDamage(EnumDefinition.InsectType insectType)
     {
         var insect = GetInsect(insectType);
-        return 1f;// (insect.damage + (insect.damage * insect.damageRate)) * (1 + insect.criticalChance * (2 + insect.criticalDamage - 1));
+        return 20f;// (insect.damage + (insect.damage * insect.damageRate)) * (1 + insect.criticalChance * (2 + insect.criticalDamage - 1));
     }
 
 

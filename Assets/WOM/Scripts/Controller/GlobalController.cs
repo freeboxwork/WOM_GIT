@@ -28,7 +28,7 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(dataManager.SetDatas());
 
         // set ui data
-        yield return StartCoroutine(uiController.SetUiDatas());
+        yield return StartCoroutine(uiController.Init());
         
         // get player data ( 게임 종료전 저장 되어있는 데이터 로드 )
         yield return StartCoroutine(playerDataManager.InitPlayerData());
@@ -70,7 +70,9 @@ public class GlobalController : MonoBehaviour
     {
         // set boss monster hp
         var hp = player.currentMonster.hp;
+        var phaseCount = player.currentStageData.phaseCount;
         uiController.SetTxtMonsterHp(hp);
+        uiController.SetTxtPhaseCount(phaseCount);
     }
 
 
