@@ -39,6 +39,9 @@ public class InsectManager : MonoBehaviour
 
         // 곤충 인스턴스 생성
         SetInsectData(EnumDefinition.InsectType.bee, playerDataManager.saveData.beeSaveData.evolutionLastData);
+        SetInsectData(EnumDefinition.InsectType.beetle, playerDataManager.saveData.beetleSaveData.evolutionLastData);
+        SetInsectData(EnumDefinition.InsectType.mentis, playerDataManager.saveData.mentisSaveData.evolutionLastData);
+
 
         // add insects list 
         // 순서 : mentis, bee, beetle

@@ -6,6 +6,7 @@ public class CallBackEventType
     {
         OnMonsterHit,
         OnMonsterKill,
+        OnMonsterUiReset,
         None,
     }
 }
