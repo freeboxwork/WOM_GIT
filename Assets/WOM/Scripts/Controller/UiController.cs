@@ -12,6 +12,11 @@ public class UiController : MonoBehaviour
     public TextMeshProUGUI txtMonsterHp;
     public TextMeshProUGUI txtPhaseCount;
     public Button btnBossChallenge;
+
+    [Header("보스몬스터 도전 관련 UI 항목" )]
+    public TextMeshProUGUI txtBossMonChallengeTimer;
+    public Image imgBossMonTimer;
+    public Image imgBossMonTimerParent;
    
 
 
@@ -49,9 +54,11 @@ public class UiController : MonoBehaviour
 
     void SetUiData()
     {
-        txtMonsterHp = customTypeDataManager.GetCustomTypeData_Text(1).components.text;
-        txtPhaseCount = customTypeDataManager.GetCustomTypeData_Text(2).components.text;
-        btnBossChallenge = customTypeDataManager.GetCustomTypeData_Button(0).components.button;
+        txtMonsterHp = customTypeDataManager.GetCustomTypeData_Text(1);
+        txtPhaseCount = customTypeDataManager.GetCustomTypeData_Text(2);
+        btnBossChallenge = customTypeDataManager.GetCustomTypeData_Button(0);
+        txtBossMonChallengeTimer = customTypeDataManager.GetCustomTypeData_Text(3);
+        imgBossMonTimer = customTypeDataManager.GetCustomTypeData_Image(0);
     }
 
 

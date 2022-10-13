@@ -6,7 +6,8 @@ public class EnumDefinition
         button,
         text,
         image,
-        animCont
+        animCont,
+        gm, // game object
     }
 
     public enum InsectType

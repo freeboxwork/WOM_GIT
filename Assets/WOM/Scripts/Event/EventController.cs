@@ -28,23 +28,23 @@ public class EventController : MonoBehaviour
 
     void AddEvents()
     {
-        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
-        EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
-        EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, OnMonsterUiReset);
+        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
+        EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, EvnOnMonsterUiReset);
     }   
     
     void RemoveEvents()
     {
-        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, OnMonsterHit);
-        EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, OnMonsterKill);
-        EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, OnMonsterUiReset);
+        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
+        EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, EvnOnMonsterUiReset);
     }
 
 
 
     // MONSTER HIT EVENT
 
-    void OnMonsterHit(EnumDefinition.InsectType insectType)
+    void EvnOnMonsterHit(EnumDefinition.InsectType insectType)
     {
 
         // GET DAMAGE
@@ -83,8 +83,10 @@ public class EventController : MonoBehaviour
 
     // MONSTER KILL EVENT
 
-    void OnMonsterKill(EnumDefinition.MonsterType monsterType)
+    void EvnOnMonsterKill(EnumDefinition.MonsterType monsterType)
     {
+        // GET GOLD
+
         switch (monsterType)
         {
             case MonsterType.normal : MonsterDie_Normal(); break;
@@ -122,31 +124,33 @@ public class EventController : MonoBehaviour
     // 6 : 몬스터 등장
     void MonsterDie_Gold()
     {
-     
+        // 보스 도전 버튼 활성화 
         globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
+        
         // phaseCount 리셋
         PhaseCountReset();
 
+        // 일반 몬스터 등장
         MonsterAppear(MonsterType.normal);
     }
 
     //보스 몬스터 사망시
     void MonsterDie_Boss()
     {
+        // SET STAGE DATA ( 다음 스테이지로 변경 )
+
+        // 몬스터 데이터 세팅
+
+        // 
+
 
     }
 
-    void PhaseCounting(out int value)
+    void EvnOnBossMonsterChalleng()
     {
-        value = globalData.player.currentStageData.phaseCount -= 1;
-        globalData.uiController.SetTxtPhaseCount(value);
-    }
-         
-    void PhaseCountReset()
-    {
-        var resetValue = 10;
-        globalData.player.currentStageData.phaseCount = resetValue;
-        globalData.uiController.SetTxtPhaseCount(resetValue);
+        // 현재 몬스터 제거
+
+        // 보스 몬스터 등장
     }
 
 
@@ -167,7 +171,7 @@ public class EventController : MonoBehaviour
 
 
     // EVENT => 몬스터 UI 리셋 ( 몬스터 등장 애니메이션 완료 후 호출 )
-    void OnMonsterUiReset()
+    void EvnOnMonsterUiReset()
     {
         var monsterData  = globalData.player.currentMonster;
 
@@ -176,21 +180,39 @@ public class EventController : MonoBehaviour
         // SLIDE BAR
 
     }
-    
+
 
 
     /* UTILITY METHOD */
-
+    #region UTILITY MEHTOD
     // 몬스터 제거 판단
     bool IsMonseterKill(float monster_hp)
     {
         return monster_hp <= 0;
     }
 
+    // 골드 몬스터 진입 단계 판단
     bool IsPhaseCountZero(int phaseCount)
     {
         return phaseCount <= 0;
     }
+    
+    // 골드 몬스터 진입 단계 카운팅
+    void PhaseCounting(out int value)
+    {
+        value = globalData.player.currentStageData.phaseCount -= 1;
+        globalData.uiController.SetTxtPhaseCount(value);
+    }
+
+    // 골드 몬스터 진입 단계 리셋
+    void PhaseCountReset()
+    {
+        var resetValue = globalData.player.pahseCountOriginalValue;
+        globalData.player.currentStageData.phaseCount = resetValue;
+        globalData.uiController.SetTxtPhaseCount(resetValue);
+    }
+
+    #endregion
 }
 
 

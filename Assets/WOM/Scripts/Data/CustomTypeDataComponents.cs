@@ -13,4 +13,5 @@ public class CustomTypeDataComponents
     public Image image;
     public SpriteRenderer sr;
     public Transform tr;
+    public GameObject gm;
 }

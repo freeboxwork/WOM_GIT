@@ -20,11 +20,12 @@ public class CustomTypeData : MonoBehaviour
     public void GetMyComponents()
     {
         components.animController = UtilityMethod.CustomGetComponetMy<AnimationController>(gameObject);
-        components.button = UtilityMethod.CustomGetComponetMy<Button>(gameObject);
-        components.text = UtilityMethod.CustomGetComponetMy<TextMeshProUGUI>(gameObject);
-        components.image = UtilityMethod.CustomGetComponetMy<Image>(gameObject);
-        components.tr = UtilityMethod.CustomGetComponetMy<Transform>(gameObject);
-        components.sr = UtilityMethod.CustomGetComponetMy<SpriteRenderer>(gameObject);
+        components.button         = UtilityMethod.CustomGetComponetMy<Button>(gameObject);
+        components.text           = UtilityMethod.CustomGetComponetMy<TextMeshProUGUI>(gameObject);
+        components.image          = UtilityMethod.CustomGetComponetMy<Image>(gameObject);
+        components.tr             = UtilityMethod.CustomGetComponetMy<Transform>(gameObject);
+        components.sr             = UtilityMethod.CustomGetComponetMy<SpriteRenderer>(gameObject);
+        components.gm             = UtilityMethod.CustomGetComponetMy<GameObject>(gameObject);
     }
 
 }
