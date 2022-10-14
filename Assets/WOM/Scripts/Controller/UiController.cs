@@ -52,6 +52,17 @@ public class UiController : MonoBehaviour
         txtPhaseCount.text = value.ToString();
     }
 
+    public void SetTxtBossChallengeTimer(int value)
+    {
+        txtBossMonChallengeTimer.text = value.ToString();
+    } 
+
+    public void SetImgFilledRaidal(float value)
+    {
+        imgBossMonTimer.fillAmount = value; 
+    }
+        
+
     void SetUiData()
     {
         txtMonsterHp = customTypeDataManager.GetCustomTypeData_Text(1);
