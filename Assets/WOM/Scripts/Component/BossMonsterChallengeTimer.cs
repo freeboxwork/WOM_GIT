@@ -14,10 +14,10 @@ public class BossMonsterChallengeTimer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartCoroutine(CalcTimer());    
-        }
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    StartCoroutine(CalcTimer());    
+        //}
     }
 
 
@@ -42,6 +42,7 @@ public class BossMonsterChallengeTimer : MonoBehaviour
         }
 
         // 타이머 종료 이벤트
+        // EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimerEnd);
    
     }
 
