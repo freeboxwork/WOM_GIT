@@ -70,6 +70,7 @@ public class UiController : MonoBehaviour
         btnBossChallenge = customTypeDataManager.GetCustomTypeData_Button(0);
         txtBossMonChallengeTimer = customTypeDataManager.GetCustomTypeData_Text(3);
         imgBossMonTimer = customTypeDataManager.GetCustomTypeData_Image(0);
+        imgBossMonTimerParent = customTypeDataManager.GetCustomTypeData_Image(1);
     }
 
 
@@ -85,5 +86,6 @@ public class UiController : MonoBehaviour
     void DisableUiElements()
     {
         btnBossChallenge.gameObject.SetActive(false);
+        imgBossMonTimerParent.gameObject.SetActive(false);
     }
 }

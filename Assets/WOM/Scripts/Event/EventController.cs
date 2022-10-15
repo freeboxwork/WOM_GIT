@@ -29,7 +29,7 @@ public class EventController : MonoBehaviour
     void AddEvents()
     {
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
-        EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
+        //EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, EvnOnMonsterUiReset);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
     }   
@@ -37,7 +37,7 @@ public class EventController : MonoBehaviour
     void RemoveEvents()
     {
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
-        EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
+        //EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, EvnOnMonsterUiReset);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
     }
@@ -74,7 +74,9 @@ public class EventController : MonoBehaviour
             globalData.insectManager.DisableHalfLineInsects();
 
             // monster kill animation
-            currentMonster.inOutAnimator.MonsterKillAnimWithEvent(); // 사망 애니메이션 진행 후 kill event 실행
+            // currentMonster.inOutAnimator.MonsterKillAnimWithEvent(); // 사망 애니메이션 진행 후 kill event 실행
+
+            StartCoroutine(MonsterKill(currentMonster));
         }
         // 몬스터 단순 피격시
         else
@@ -84,7 +86,7 @@ public class EventController : MonoBehaviour
         }
     }
 
-    IEnumerator MonsterKill(MonsterBase currentMonster , EnumDefinition.InsectType insectType)
+    IEnumerator MonsterKill(MonsterBase currentMonster )
     {
         yield return null;
 
@@ -94,22 +96,10 @@ public class EventController : MonoBehaviour
         // 하프라인 위쪽 곤충들 제거
         globalData.insectManager.DisableHalfLineInsects();
 
-        // monster kill animation
+        // monster kill animation 사망 애니메이션 대기
         yield return StartCoroutine(currentMonster.inOutAnimator.MonsterKillMatAnim());
 
-
-        switch (currentMonster.monsterType)
-        {
-
-            case MonsterType.normal: 
-                
-                
-
-                break;
-
-        }
-        
-
+        EvnOnMonsterKill(currentMonster.monsterType);
 
     }
 
@@ -182,17 +172,58 @@ public class EventController : MonoBehaviour
 
     void EvnOnBossMonsterChalleng()
     {
-        // 현재 몬스터 제거
-        globalData.player.currentMonster.inOutAnimator.MonsterKillAnimWithOutEvent();
+        //// 현재 몬스터 제거
+        //globalData.player.currentMonster.inOutAnimator.MonsterKillAnimWithOutEvent();
 
-        // 하프 라인 위 곤충 모두 제거
-        globalData.insectManager.DisableHalfLineInsects();
+        //// 하프 라인 위 곤충 모두 제거
+        //globalData.insectManager.DisableHalfLineInsects();
 
-        // 보스 몬스터 등장
-        MonsterAppear(MonsterType.boss);
+        //// 보스 몬스터 등장
+        //MonsterAppear(MonsterType.boss);
+
+        StartCoroutine(ProcessBossMonsterChallenge());
     }
 
-    
+    IEnumerator ProcessBossMonsterChallenge()
+    {
+        // 현재 몬스터 제거 ( 사망 애니메이션 대기 )
+        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
+
+        // 하프 라인 위 곤충 모두 제가
+        globalData.insectManager.DisableHalfLineInsects();
+
+        // 보스 도전 버튼 숨김
+        globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
+
+        // 보스 도전 타이머 활성화
+        globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(true);
+
+        // 보스 몬스터 등장
+        StartCoroutine(MonsterAppearCor(MonsterType.boss));
+
+        // 타이머 계산 시작
+        globalData.bossChallengeTimer.StartTimer();
+
+        // 몬스터 UI 리셋 
+        EvnOnMonsterUiReset();
+    }
+
+    IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
+    {
+        // get curret monster data
+        var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
+        // set current monster
+        globalData.player.currentMonster = monsterData;
+        // set monster data
+        globalData.monsterManager.SetMonsterData(monsterType, globalData.player.stageIdx);
+        // Monster In Animation
+        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
+    }
+
+
+
+
+
     /// <summary> 몬스터 등장 </summary>
     void MonsterAppear(EnumDefinition.MonsterType monsterType)
     {
