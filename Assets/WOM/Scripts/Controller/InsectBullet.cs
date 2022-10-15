@@ -60,8 +60,14 @@ public class InsectBullet : MonoBehaviour
     {
         (Vector3, Vector3) points;
         points.Item1 = transform.position;
-        points.Item2 = GlobalData.instance.player.currentMonster.transform.position;
+        points.Item2 = GetRandomMonsterPoint();
         return points;
+    }
+    Vector3 GetRandomMonsterPoint()
+    {
+        var monPos = GlobalData.instance.player.currentMonster.transform.position;
+        var x = Random.Range(monPos.x - 1, monPos.x + 1);
+        return new Vector3(x, monPos.y, monPos.z);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
