@@ -21,6 +21,12 @@ public class BossMonsterChallengeTimer : MonoBehaviour
     }
 
 
+    public void StartTimer()
+    {
+        StartCoroutine(CalcTimer());
+    }
+        
+
     public IEnumerator CalcTimer()
     {
         isTimerCalc = true;

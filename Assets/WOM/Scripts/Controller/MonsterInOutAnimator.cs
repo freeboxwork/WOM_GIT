@@ -63,16 +63,16 @@ public class MonsterInOutAnimator : MonoBehaviour
         EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterUiReset);
     }
 
-    // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-    public void MonsterKillAnimWithEvent()
-    {
-        StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), true));
-    }
-    // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-    public void MonsterKillAnimWithOutEvent()
-    {
-        StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), false));
-    }
+    //// TODO : EVENT CONTROLLER 에서 코루틴으로 제어
+    //public void MonsterKillAnimWithEvent()
+    //{
+    //    StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), true));
+    //}
+    //// TODO : EVENT CONTROLLER 에서 코루틴으로 제어
+    //public void MonsterKillAnimWithOutEvent()
+    //{
+    //    StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), false));
+    //}
 
     public IEnumerator MonsterKillMatAnim()
     {
@@ -121,30 +121,30 @@ public class MonsterInOutAnimator : MonoBehaviour
     }
 
 
-    public IEnumerator MonsterDieMatAnim(Material mat, string property, (float, float) minMax, bool runKillEvnet)
-    {
-        // collider disable
-        monsterCol.enabled = false;
+    //public IEnumerator MonsterDieMatAnim(Material mat, string property, (float, float) minMax, bool runKillEvnet)
+    //{
+    //    // collider disable
+    //    monsterCol.enabled = false;
 
-        isAnimPlay = true;
-        animDataDissolve.ResetAnimData();
-        while (animDataDissolve.animTime < 0.999f)
-        {
-            animDataDissolve.animTime = (Time.time - animDataDissolve.animStartTime) / animDataDissolve.animDuration;
-            //Debug.Log(animDataDissolve.animTime);
-            animDataDissolve.animValue = EaseValues.instance.GetAnimCurve(animDataDissolve.animCurveType, animDataDissolve.animTime);
-            var value = Mathf.Lerp(minMax.Item1, minMax.Item2, animDataDissolve.animValue);
-            mat.SetFloat(property, value);
-            yield return null;
-        }
-        isAnimPlay = false;
-        transform.position = startPoint_MonsterIn.position;
+    //    isAnimPlay = true;
+    //    animDataDissolve.ResetAnimData();
+    //    while (animDataDissolve.animTime < 0.999f)
+    //    {
+    //        animDataDissolve.animTime = (Time.time - animDataDissolve.animStartTime) / animDataDissolve.animDuration;
+    //        //Debug.Log(animDataDissolve.animTime);
+    //        animDataDissolve.animValue = EaseValues.instance.GetAnimCurve(animDataDissolve.animCurveType, animDataDissolve.animTime);
+    //        var value = Mathf.Lerp(minMax.Item1, minMax.Item2, animDataDissolve.animValue);
+    //        mat.SetFloat(property, value);
+    //        yield return null;
+    //    }
+    //    isAnimPlay = false;
+    //    transform.position = startPoint_MonsterIn.position;
 
-        // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-        if (runKillEvnet)
-            EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
+    //    // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
+    //    if (runKillEvnet)
+    //        EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
 
-    }
+    //}
 
     //입맛에 맞게 수정하세요. -> 감사합니다!
     public void GetHitAnimation()
