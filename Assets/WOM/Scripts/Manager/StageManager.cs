@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Accessibility;
 
@@ -22,6 +23,19 @@ public class StageManager : MonoBehaviour
         SetStageData(stageId);
         SetBgImage();
     }
+
+    public IEnumerator SetStageById(int stageIdx)
+    {
+        // set data
+        SetStageData(stageIdx);
+
+        // set bg image 
+        // TODO : Animation Ãß°¡
+        SetBgImage();
+
+        yield return null;
+    }
+
 
     void SetStageData(int stageId)
     {

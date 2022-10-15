@@ -288,6 +288,7 @@ MonoBehaviour:
   player: {fileID: 1430916486}
   effectManager: {fileID: 2099665908}
   bossChallengeTimer: {fileID: 1367053820}
+  stageManager: {fileID: 905966739}
 --- !u!1 &161271411
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,11 @@ using static UnityEngine.Rendering.DebugUI;
 public class EventController : MonoBehaviour
 {
     GlobalData globalData;
-    List<IEnumerator> processMonsterDieList = new List<IEnumerator>();
     void Start()
     {
         GetManagers();
         AddEvents();
-        SetProcessFunctionList();
+        
     }
 
     private void OnDestroy()
@@ -26,23 +25,17 @@ public class EventController : MonoBehaviour
         globalData = GlobalData.instance;
     }
 
-    void SetProcessFunctionList()
-    {
-        // 0 : normal , 1 : gold , 2 : boss
-        processMonsterDieList.Add(MonsterDie_Normal());
-        processMonsterDieList.Add(MonsterDie_Gold());
-        processMonsterDieList.Add(MonsterDie_Boss());
-    }
-
     void AddEvents()
     {
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
     }   
     
     void RemoveEvents()
     {
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
     }
 
@@ -101,7 +94,7 @@ public class EventController : MonoBehaviour
         {
             case MonsterType.normal: StartCoroutine(MonsterDie_Normal()); break;
             case MonsterType.gold: StartCoroutine(MonsterDie_Gold()); break;
-            case MonsterType.boss: StartCoroutine(MonsterDie_Gold()); break;
+            case MonsterType.boss: StartCoroutine(MonsterDie_Boss()); break;
         }
 
     }
@@ -113,7 +106,9 @@ public class EventController : MonoBehaviour
         PhaseCounting(out int phaseCount);
         if (IsPhaseCountZero(phaseCount)) 
         {
-           yield return StartCoroutine( MonsterAppearCor(MonsterType.gold));  
+            // 보스 도전 버튼 숨김 ( 보스 도전 버튼 있다면 숨김 - 무조건 숨김 )
+            globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
+            yield return StartCoroutine( MonsterAppearCor(MonsterType.gold));  
         }
         else
         {
@@ -148,11 +143,29 @@ public class EventController : MonoBehaviour
     //보스 몬스터 사망시
     IEnumerator MonsterDie_Boss()
     {
+        // 타이머 종료
+        globalData.bossChallengeTimer.StopAllCoroutines();
+
+        // 타이머 UI 리셋
+        globalData.uiController.SetImgTimerFilledRaidal(0);
+        globalData.uiController.SetTxtBossChallengeTimer(0);
+
+        // 타이머 UI Disable
+        globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
+
         // SET STAGE DATA ( 다음 스테이지로 변경 )
+        globalData.player.stageIdx++;
 
-        // 몬스터 데이터 세팅
+        // current stage setting
+        globalData.player.SetCurrentStageData(globalData.player.stageIdx);
 
-        yield return null;
+        // stage setting - stage manager 스테이지 데이터와 배경 이미지 전환 애니메이션
+        yield return StartCoroutine( globalData.stageManager.SetStageById(globalData.player.stageIdx));
+
+        // set monster data and monster skin
+        yield return StartCoroutine(globalData.monsterManager.Init(globalData.player.stageIdx));
+
+        yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }
 
     // 몬스터 등장
@@ -165,7 +178,7 @@ public class EventController : MonoBehaviour
         // set monster data
         globalData.monsterManager.SetMonsterData(monsterType, globalData.player.stageIdx);
         // Monster In Animation
-        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPosition());
+        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionIn());
         // 몬스터 UI 리셋 
         MonsterUiReset();
     }
@@ -179,11 +192,12 @@ public class EventController : MonoBehaviour
 
     IEnumerator ProcessBossMonsterChallenge()
     {
-        // 현재 몬스터 제거 ( 사망 애니메이션 대기 )
-        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
 
-        // 하프 라인 위 곤충 모두 제가
+        // 하프 라인 위 곤충 모두 제거
         globalData.insectManager.DisableHalfLineInsects();
+
+        // 일반 몬스터 OUT
+        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
 
         // 보스 도전 버튼 숨김
         globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
@@ -202,8 +216,28 @@ public class EventController : MonoBehaviour
     void EvnBossMonsterTimeOut()
     {
         // 현재(보스 몬스터 도전 전) phaseCount 몬스터 재등장 ?? -> 노멀 몬스터 등장하면 됨 phase count 는 따로 카운팅 되고 있으며 하나의 스테이지에 노멀 몬스터 데이터는 모두 동일함.
+        StartCoroutine(ProcessBossMonsterTimeOut());
+
     }
          
+    IEnumerator ProcessBossMonsterTimeOut()
+    {
+        // 하프 라인 위 곤충 모두 제거
+        globalData.insectManager.DisableHalfLineInsects();
+
+        // 보스 몬스터 OUT
+        yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionOut());
+
+        // 보스 도전 버튼 숨김
+        globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
+
+        // 보스 도전 타이머 활성화
+        globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
+
+        // 일반 본스터 등장
+        StartCoroutine(MonsterAppearCor(MonsterType.normal));
+
+    }
 
     void MonsterUiReset()
     {

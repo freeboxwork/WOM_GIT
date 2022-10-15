@@ -33,7 +33,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     } 
 
 
-    public IEnumerator AnimPosition()
+    public IEnumerator AnimPositionIn()
     {
         // collider disable
         monsterCol.enabled = false;
@@ -56,22 +56,33 @@ public class MonsterInOutAnimator : MonoBehaviour
         monsterAnim.SetBool("Run", isAnimPlay = false);
         // collider enable
         monsterCol.enabled = true;
-
-        // set hp event
-        // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-       // EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterUiReset);
     }
 
-    //// TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-    //public void MonsterKillAnimWithEvent()
-    //{
-    //    StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), true));
-    //}
-    //// TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-    //public void MonsterKillAnimWithOutEvent()
-    //{
-    //    StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), false));
-    //}
+    public IEnumerator AnimPositionOut()
+    {
+        // collider disable
+        monsterCol.enabled = false;
+        ResetMat();
+
+        var startPos = startPoint_MonsterIn.position;
+        var enaPos = endPoint_MonsterIn.position;
+
+        monsterAnim.SetBool("Run", isAnimPlay = true);
+
+        animDataIn.ResetAnimData();
+        while (animDataIn.animTime < 0.999f)
+        {
+            animDataIn.animTime = (Time.time - animDataIn.animStartTime) / animDataIn.animDuration;
+            animDataIn.animValue = EaseValues.instance.GetAnimCurve(animDataIn.animCurveType, animDataIn.animTime);
+            transform.position = Vector3.Lerp(enaPos, startPos,  animDataIn.animValue);
+            yield return null;
+        }
+
+        monsterAnim.SetBool("Run", isAnimPlay = false);
+        // collider enable
+        monsterCol.enabled = true;
+    }
+
 
     public IEnumerator MonsterKillMatAnim()
     {
@@ -91,12 +102,6 @@ public class MonsterInOutAnimator : MonoBehaviour
         }
         isAnimPlay = false;
         transform.position = startPoint_MonsterIn.position;
-
-        // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-        
-        //if (runKillEvnet)
-        //    EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, monster.monsterType);
-
     }
     public void MonsterHitAnim()
     {
@@ -118,37 +123,4 @@ public class MonsterInOutAnimator : MonoBehaviour
         }
         
     }
-
-
-    //public IEnumerator MonsterDieMatAnim(Material mat, string property, (float, float) minMax, bool runKillEvnet)
-    //{
-    //    // collider disable
-    //    monsterCol.enabled = false;
-
-    //    isAnimPlay = true;
-    //    animDataDissolve.ResetAnimData();
-    //    while (animDataDissolve.animTime < 0.999f)
-    //    {
-    //        animDataDissolve.animTime = (Time.time - animDataDissolve.animStartTime) / animDataDissolve.animDuration;
-    //        //Debug.Log(animDataDissolve.animTime);
-    //        animDataDissolve.animValue = EaseValues.instance.GetAnimCurve(animDataDissolve.animCurveType, animDataDissolve.animTime);
-    //        var value = Mathf.Lerp(minMax.Item1, minMax.Item2, animDataDissolve.animValue);
-    //        mat.SetFloat(property, value);
-    //        yield return null;
-    //    }
-    //    isAnimPlay = false;
-    //    transform.position = startPoint_MonsterIn.position;
-
-    //    // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-    //    if (runKillEvnet)
-    //        EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
-
-    //}
-
-    //입맛에 맞게 수정하세요. -> 감사합니다!
-    public void GetHitAnimation()
-    {
-        monsterAnim.SetTrigger("Hit");
-    }
-
 }

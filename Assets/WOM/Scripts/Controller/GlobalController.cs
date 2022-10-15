@@ -59,7 +59,7 @@ public class GlobalController : MonoBehaviour
         SetUI_Init();
 
         // Monster In Animation
-        yield return StartCoroutine(player.currentMonster.inOutAnimator.AnimPosition());
+        yield return StartCoroutine(player.currentMonster.inOutAnimator.AnimPositionIn());
 
         // 공격 가능 상태로 전환
         attackController.SetAttackableState(true);

@@ -57,7 +57,7 @@ public class UiController : MonoBehaviour
         txtBossMonChallengeTimer.text = value.ToString();
     } 
 
-    public void SetImgFilledRaidal(float value)
+    public void SetImgTimerFilledRaidal(float value)
     {
         imgBossMonTimer.fillAmount = value; 
     }
