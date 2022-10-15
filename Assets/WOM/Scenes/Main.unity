@@ -3433,7 +3433,7 @@ MonoBehaviour:
   customTypeDataManager: {fileID: 1643049991}
   txtMonsterHp: {fileID: 0}
   txtPhaseCount: {fileID: 0}
-  btnBossChallenge: {fileID: 653059484}
+  btnBossChallenge: {fileID: 0}
   txtBossMonChallengeTimer: {fileID: 0}
   imgBossMonTimer: {fileID: 0}
   imgBossMonTimerParent: {fileID: 0}
