@@ -55,6 +55,18 @@ public class InsectManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
+
+    public void SetAllInsectData(StageData stageData)
+    {
+        // 진화 공식 필요    
+    }
+
+    EvolutionData GetInsectEvolDataById(EnumDefinition.InsectType insectType, int idx)
+    {
+        return GlobalData.instance.dataManager.GetEvolutionDataById(insectType, idx);
+    }
+
+
     /// <summary> 몬스터 제거시 하프라인 위의 곤충들 제거 </summary>
     public void DisableHalfLineInsects()
     {

@@ -31,8 +31,6 @@ public class BossMonsterChallengeTimer : MonoBehaviour
     {
         isTimerCalc = true;
         animData.ResetAnimData();
-        
-        // 타이머 시작 이벤트 ?
 
         while (animData.animTime < 0.999f)
         {
@@ -42,15 +40,13 @@ public class BossMonsterChallengeTimer : MonoBehaviour
             animData.animValue = EaseValues.instance.GetAnimCurve(animData.animCurveType, animData.animTime);
         
             GlobalData.instance.uiController.SetTxtBossChallengeTimer(timeSecond);
-            GlobalData.instance.uiController.SetImgFilledRaidal(animData.animValue);
+            GlobalData.instance.uiController.SetImgTimerFilledRaidal(animData.animValue);
             
             yield return null;
         }
+        isTimerCalc = false;
 
         // 타이머 종료 이벤트
-        // EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimerEnd);
-   
+        EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut);
     }
-
-
 }

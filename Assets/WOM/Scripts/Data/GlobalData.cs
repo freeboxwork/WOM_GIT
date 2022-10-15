@@ -16,6 +16,7 @@ public class GlobalData : MonoBehaviour
     public Player player;
     public EffectManager effectManager;
     public BossMonsterChallengeTimer bossChallengeTimer;
+    public StageManager stageManager;
          
     private void Awake()
     {
