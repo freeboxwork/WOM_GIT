@@ -27,6 +27,9 @@ public class InsectManager : MonoBehaviour
 
     public Transform trHalfPoint;
 
+    public bool damageDebug = false;
+    public float debugDamage = 20;
+
     void Start()
     {
         //StartCoroutine(Init());
@@ -78,7 +81,7 @@ public class InsectManager : MonoBehaviour
         return insects[(int)insectType];
     }
 
-    
+
     /// <summary> 계산된 곤충 데미지 값 </summary>
     public float GetInsectDamage(EnumDefinition.InsectType insectType)
     {
@@ -88,9 +91,10 @@ public class InsectManager : MonoBehaviour
         {
             damage = damage * GetInsectCriticalDamage(insect);
         }
-        return  1f; //damage;
+        if (damageDebug) return debugDamage;
+        return damage;
     }
-    
+
     float GetInsectDamage(InsectBase insect)
     {
         // 공격력 공식 : (damage+ (damage* damageRate))

@@ -60,7 +60,7 @@ public class MonsterInOutAnimator : MonoBehaviour
 
         // set hp event
         // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
-        EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterUiReset);
+       // EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterUiReset);
     }
 
     //// TODO : EVENT CONTROLLER 에서 코루틴으로 제어
