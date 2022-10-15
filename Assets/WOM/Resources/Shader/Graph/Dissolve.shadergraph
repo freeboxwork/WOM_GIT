@@ -1741,7 +1741,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Hit_Power",
     "m_DefaultReferenceName": "_Hit_Power",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_hit",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
