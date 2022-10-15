@@ -4364,6 +4364,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4517916465912660765, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 213948199481286783, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 473621950970595704, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.0000019073486
@@ -4440,6 +4444,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8280741651589122040, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 1021512966128263605, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 1176607706063253427, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: -0.0000047683716
@@ -4492,10 +4500,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 574443700342767628, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 3017209514213620623, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 3180551174991892724, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4343599024989165547, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 3180551174991892724, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 3554915837308428758, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_SpriteKey
       value: 4.366131e-37
@@ -4524,6 +4540,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4050232139499045176, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 4113191431693713426, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 4939264666283646113, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4572,6 +4592,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6099501851012675139, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 5148451764645225693, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 5336764961021577387, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_SpriteKey
       value: 2.4730634e-10
@@ -4608,18 +4632,34 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2863801176027204321, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 7436649550904341412, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 7466397239361312158, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -7010259886071058512, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 7466397239361312158, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 7738256802268797074, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1057588206171791119, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 7738256802268797074, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 8170455437007242173, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -256157101355664781, guid: c5df9a0e0110f5944a9fa693913f844e, type: 3}
+    - target: {fileID: 8170455437007242173, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 8878528296439122452, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.01999998
@@ -4830,9 +4870,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7223b3786152f704da88b3152c933272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InsectDisableEffectsBirthCount: 15
+  insectDisableEffectsBirthCount: 15
+  insectAttackEffectsBrithCount: 10
   prefabInsectDisableEff: {fileID: 3474505992292315225, guid: 6463285cd9a0c04458b3617dde602913, type: 3}
-  InsectDisableEffects: []
+  insectDisableEffects: []
+  prefabInsectAttackEff:
+  - {fileID: -6060545426311559759, guid: 9dc31c37c97746c4d9672da7b1191966, type: 3}
+  - {fileID: 5587835252236862654, guid: 83e1d446b122a4f44a23322d93590770, type: 3}
+  - {fileID: 1698673197798735947, guid: 7bfa227991be5cc46bc1825bf5203a5f, type: 3}
+  insectAttackEffMentis: []
+  insectAttackEffBee: []
+  insectAttackEffBeetle: []
   trEffects: {fileID: 1710370011}
 --- !u!1 &2113049909
 GameObject:

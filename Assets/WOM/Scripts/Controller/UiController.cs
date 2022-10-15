@@ -75,6 +75,7 @@ public class UiController : MonoBehaviour
 
     void SetBtnEvent()
     {
+        // 보스 몬스터 도전 버튼
         btnBossChallenge.onClick.AddListener(() => {
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });

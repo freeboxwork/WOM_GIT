@@ -78,14 +78,37 @@ public class InsectManager : MonoBehaviour
         return insects[(int)insectType];
     }
 
-    // 공격력 공식 : (damage+ (damage* damageRate)) x (1+ criticalChance x ( 2 + criticalDamage -1))
+    
     /// <summary> 계산된 곤충 데미지 값 </summary>
     public float GetInsectDamage(EnumDefinition.InsectType insectType)
     {
         var insect = GetInsect(insectType);
-        return 20f;// (insect.damage + (insect.damage * insect.damageRate)) * (1 + insect.criticalChance * (2 + insect.criticalDamage - 1));
+        var damage = GetInsectDamage(insect);
+        if (HasCriticalDamage(insect)) // 크리티컬 데미지 터졌을때
+        {
+            damage = damage * GetInsectCriticalDamage(insect);
+        }
+        return  1f; //damage;
+    }
+    
+    float GetInsectDamage(InsectBase insect)
+    {
+        // 공격력 공식 : (damage+ (damage* damageRate))
+        return insect.damage + (insect.damage * insect.damageRate);
     }
 
+    // 치명타 데미지 계산
+    float GetInsectCriticalDamage(InsectBase insect)
+    {
+        return 2 + insect.criticalDamage;
+    }
+    // 크리티컬 데미지를 가지고 있는지? ( 크리티컬 데미지카 터졌는지 )
+    bool HasCriticalDamage( InsectBase insect )
+    {
+        var percentage = 1+insect.criticalChance;
+        var randomValue = Random.Range(0f, 100f);
+        return randomValue <= percentage;
+    }
 
 
     public void SetInsectData(EnumDefinition.InsectType insectType, EvolutionData evolutionData)

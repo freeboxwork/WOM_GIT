@@ -31,6 +31,7 @@ public class EventController : MonoBehaviour
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.AddCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, EvnOnMonsterUiReset);
+        EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
     }   
     
     void RemoveEvents()
@@ -38,6 +39,7 @@ public class EventController : MonoBehaviour
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill, EvnOnMonsterKill);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnMonsterUiReset, EvnOnMonsterUiReset);
+        EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
     }
 
 
@@ -70,12 +72,12 @@ public class EventController : MonoBehaviour
             globalData.insectManager.DisableHalfLineInsects();
 
             // monster kill animation
-            currentMonster.inOutAnimator.MonsterKillAnim(); // 사망 애니메이션 진행 후 kill event 실행
+            currentMonster.inOutAnimator.MonsterKillAnimWithEvent(); // 사망 애니메이션 진행 후 kill event 실행
         }
         // 몬스터 단순 피격시
         else
         {
-            // 몬스터 hp t
+            // 몬스터 hp text
             globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
         }
     }
@@ -113,6 +115,8 @@ public class EventController : MonoBehaviour
         }
     }
 
+
+
     // 골드 몬스터 사망시
     /* process */
     // 0 : 골드 몬스터 사망  
@@ -142,18 +146,22 @@ public class EventController : MonoBehaviour
         // 몬스터 데이터 세팅
 
         // 
-
-
     }
+
 
     void EvnOnBossMonsterChalleng()
     {
         // 현재 몬스터 제거
+        globalData.player.currentMonster.inOutAnimator.MonsterKillAnimWithOutEvent();
+
+        // 하프 라인 위 곤충 모두 제거
+        globalData.insectManager.DisableHalfLineInsects();
 
         // 보스 몬스터 등장
+        MonsterAppear(MonsterType.boss);
     }
 
-
+    
     /// <summary> 몬스터 등장 </summary>
     void MonsterAppear(EnumDefinition.MonsterType monsterType)
     {
