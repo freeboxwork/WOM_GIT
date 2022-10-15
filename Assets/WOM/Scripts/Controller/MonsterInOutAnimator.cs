@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterInOutAnimator : MonoBehaviour
@@ -57,16 +58,23 @@ public class MonsterInOutAnimator : MonoBehaviour
         monsterCol.enabled = true;
 
         // set hp event
+        // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
         EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterUiReset);
     }
 
-    public void MonsterKillAnim()
+    // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
+    public void MonsterKillAnimWithEvent()
     {
-        StartCoroutine(MaterialAnimMinMax(dissolveMat, "_fade", (1, 0)));
-    } 
+        StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), true));
+    }
+    // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
+    public void MonsterKillAnimWithOutEvent()
+    {
+        StartCoroutine(MonsterDieMatAnim(dissolveMat, "_fade", (1, 0), false));
+    }
 
 
-    public IEnumerator MaterialAnimMinMax(Material mat, string property, (float, float) minMax)
+    public IEnumerator MonsterDieMatAnim(Material mat, string property, (float, float) minMax, bool runKillEvnet)
     {
         // collider disable
         monsterCol.enabled = false;
@@ -85,7 +93,9 @@ public class MonsterInOutAnimator : MonoBehaviour
         isAnimPlay = false;
         transform.position = startPoint_MonsterIn.position;
 
-        EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
+        // TODO : EVENT CONTROLLER 에서 코루틴으로 제어
+        if (runKillEvnet)
+            EventManager.instance.RunEvent<EnumDefinition.MonsterType>(CallBackEventType.TYPES.OnMonsterKill,monster.monsterType);
 
     }
 
