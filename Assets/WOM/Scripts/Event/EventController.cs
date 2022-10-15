@@ -61,6 +61,8 @@ public class EventController : MonoBehaviour
         // monster hit animation 
         currentMonster.inOutAnimator.monsterAnim.SetBool("Hit",true);
 
+        // monster hit shader effect
+        currentMonster.inOutAnimator.MonsterHitAnim();
 
         // 몬스터 제거시 ( hp 로 판단 )
         if (IsMonseterKill(currentMonster.hp))
@@ -80,6 +82,35 @@ public class EventController : MonoBehaviour
             // 몬스터 hp text
             globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
         }
+    }
+
+    IEnumerator MonsterKill(MonsterBase currentMonster , EnumDefinition.InsectType insectType)
+    {
+        yield return null;
+
+        // hp text 0으로 표시
+        globalData.uiController.SetTxtMonsterHp(0);
+
+        // 하프라인 위쪽 곤충들 제거
+        globalData.insectManager.DisableHalfLineInsects();
+
+        // monster kill animation
+        yield return StartCoroutine(currentMonster.inOutAnimator.MonsterKillMatAnim());
+
+
+        switch (currentMonster.monsterType)
+        {
+
+            case MonsterType.normal: 
+                
+                
+
+                break;
+
+        }
+        
+
+
     }
 
 
