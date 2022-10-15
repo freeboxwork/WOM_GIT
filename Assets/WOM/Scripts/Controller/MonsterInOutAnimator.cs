@@ -11,7 +11,6 @@ public class MonsterInOutAnimator : MonoBehaviour
     public Material dissolveMat;
     public Transform startPoint_MonsterIn;
     public Transform endPoint_MonsterIn;
-    //public Transform monsterTr;
     public Animator monsterAnim;
     public Collider2D monsterCol;
     public MonsterBase monster;
