@@ -9,33 +9,39 @@ public class StageManager : MonoBehaviour
     public StageData stageData;
     public SpriteRenderer rdBg;
     public List<Sprite> bgImages = new List<Sprite>();
+    public BackgroundAnimController bgAnimController;   
     
     void Start()
     {
         
     }
 
-
+    public void PlayAnimBgScroll()
+    {
+        StartCoroutine(bgAnimController.ScrollAnim_BG());
+    }
+    
     public IEnumerator Init(int stageId)
     {
         yield return null;
-
         SetStageData(stageId);
-        // SetBgImage();
+        SetBgImage();
     }
 
     public IEnumerator SetStageById(int stageIdx)
     {
         // set data
-        SetStageData(stageIdx);
+        SetStageData(stageIdx, out bool isBgImgChange);
 
-        // set bg image 
-        // TODO : Animation 추가
-        // SetBgImage();
-
+        // 배경 변경
+        if (isBgImgChange)
+        {
+            var nextBgImg = GetCurrentBgImg();
+            yield return StartCoroutine(bgAnimController.TransitinBG(nextBgImg));
+        }
+        
         yield return null;
     }
-
 
     void SetStageData(int stageId)
     {
@@ -43,12 +49,27 @@ public class StageManager : MonoBehaviour
         stageData = data.CopyInstance();
     }
 
-    // bg scroll controller 에서 제어 하도록 수정
+    void SetStageData(int stageId, out bool isBgImgChange)
+    {
+        var data = GlobalData.instance.dataManager.GetStageDataById(stageId);
+
+        // 배경 변경 여부 판단
+        isBgImgChange = stageData.bgId != data.bgId;
+
+        stageData = data.CopyInstance();
+    }
+
     void SetBgImage()
     {
-        // set texture
-        rdBg.sprite = GetBgImgById(stageData.stageId);
+        bgAnimController.SetBgTex_Back(GetCurrentBgImg().texture);
     }
+    
+    Sprite GetCurrentBgImg()
+    {
+        var idx = stageData.bgId;
+        return (GetBgImgById(idx));
+    }
+
 
     Sprite GetBgImgById(int id)
     {
