@@ -98,7 +98,7 @@ public class MonsterData
     public int monsterId;
     public float hp;
     public float exp;
-    public float gold;
+    public int gold;
     public int goldCount;
     public int imageId;
     public int bgId;

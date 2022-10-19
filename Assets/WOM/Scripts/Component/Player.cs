@@ -50,4 +50,9 @@ public class Player : MonoBehaviour
         pahseCountOriginalValue = stageData.phaseCount;
     }
 
+    public void AddGold(int value)
+    {
+        gold = gold + value;
+    }
+
 }
