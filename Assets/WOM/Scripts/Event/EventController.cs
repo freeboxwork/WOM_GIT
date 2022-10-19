@@ -102,6 +102,9 @@ public class EventController : MonoBehaviour
     // 일반 몬스터 사망시
     IEnumerator MonsterDie_Normal()
     {
+        // BG Scroll Animation
+        globalData.stageManager.PlayAnimBgScroll();
+
         //phaseCount 0 도달시 골드 몬스터 등장.
         PhaseCounting(out int phaseCount);
         if (IsPhaseCountZero(phaseCount)) 
