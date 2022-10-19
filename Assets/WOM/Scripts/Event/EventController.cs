@@ -61,12 +61,6 @@ public class EventController : MonoBehaviour
         // 몬스터 제거시 ( hp 로 판단 )
         if (IsMonseterKill(currentMonster.hp))
         {
-            // hp text 0으로 표시
-            globalData.uiController.SetTxtMonsterHp(0); 
-
-            // 하프라인 위쪽 곤충들 제거
-            globalData.insectManager.DisableHalfLineInsects();
-
             StartCoroutine(MonsterKill(currentMonster));
         }
         // 몬스터 단순 피격시
@@ -77,9 +71,17 @@ public class EventController : MonoBehaviour
         }
     }
 
-    IEnumerator MonsterKill(MonsterBase currentMonster )
+    IEnumerator MonsterKill(MonsterBase currentMonster)
     {
         yield return null;
+
+        // TODO: GOLD 획득 애니메이션 추가 코루틴에서 제어
+        
+        // 골드 획득
+        GainGold(currentMonster);
+
+        // set glod text ui
+        globalData.uiController.SetTxtGold(globalData.player.gold);
 
         // hp text 0으로 표시
         globalData.uiController.SetTxtMonsterHp(0);
@@ -97,6 +99,12 @@ public class EventController : MonoBehaviour
             case MonsterType.boss: StartCoroutine(MonsterDie_Boss()); break;
         }
 
+    }
+
+    void GainGold(MonsterBase monster)
+    {
+        var gold = monster.gold;
+        globalData.player.AddGold(gold);
     }
 
     // 일반 몬스터 사망시

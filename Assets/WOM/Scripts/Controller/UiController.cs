@@ -11,6 +11,7 @@ public class UiController : MonoBehaviour
     [Header("Monster 관련 UI 항목")]
     public TextMeshProUGUI txtMonsterHp;
     public TextMeshProUGUI txtPhaseCount;
+    public TextMeshProUGUI txtGold;
     public Button btnBossChallenge;
 
     [Header("보스몬스터 도전 관련 UI 항목" )]
@@ -52,6 +53,11 @@ public class UiController : MonoBehaviour
         txtPhaseCount.text = value.ToString();
     }
 
+    public void SetTxtGold(int value)
+    {
+        txtGold.text = value.ToString();
+    }
+
     public void SetTxtBossChallengeTimer(int value)
     {
         txtBossMonChallengeTimer.text = value.ToString();
@@ -65,12 +71,13 @@ public class UiController : MonoBehaviour
 
     void SetUiData()
     {
-        txtMonsterHp = customTypeDataManager.GetCustomTypeData_Text(1);
-        txtPhaseCount = customTypeDataManager.GetCustomTypeData_Text(2);
-        btnBossChallenge = customTypeDataManager.GetCustomTypeData_Button(0);
+        txtMonsterHp             = customTypeDataManager.GetCustomTypeData_Text(1);
+        txtPhaseCount            = customTypeDataManager.GetCustomTypeData_Text(2);
+        txtGold                  = customTypeDataManager.GetCustomTypeData_Text(4);
+        btnBossChallenge         = customTypeDataManager.GetCustomTypeData_Button(0);
         txtBossMonChallengeTimer = customTypeDataManager.GetCustomTypeData_Text(3);
-        imgBossMonTimer = customTypeDataManager.GetCustomTypeData_Image(0);
-        imgBossMonTimerParent = customTypeDataManager.GetCustomTypeData_Image(1);
+        imgBossMonTimer          = customTypeDataManager.GetCustomTypeData_Image(0);
+        imgBossMonTimerParent    = customTypeDataManager.GetCustomTypeData_Image(1);
     }
 
 
