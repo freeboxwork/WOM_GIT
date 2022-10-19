@@ -21,7 +21,7 @@ public class StageManager : MonoBehaviour
         yield return null;
 
         SetStageData(stageId);
-        SetBgImage();
+        // SetBgImage();
     }
 
     public IEnumerator SetStageById(int stageIdx)
@@ -31,7 +31,7 @@ public class StageManager : MonoBehaviour
 
         // set bg image 
         // TODO : Animation 추가
-        SetBgImage();
+        // SetBgImage();
 
         yield return null;
     }
@@ -43,6 +43,7 @@ public class StageManager : MonoBehaviour
         stageData = data.CopyInstance();
     }
 
+    // bg scroll controller 에서 제어 하도록 수정
     void SetBgImage()
     {
         // set texture
