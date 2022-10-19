@@ -104,7 +104,7 @@ public class EventController : MonoBehaviour
     {
         // BG Scroll Animation
         globalData.stageManager.PlayAnimBgScroll();
-
+        
         //phaseCount 0 도달시 골드 몬스터 등장.
         PhaseCounting(out int phaseCount);
         if (IsPhaseCountZero(phaseCount)) 
