@@ -182,6 +182,9 @@ GameObject:
   m_Component:
   - component: {fileID: 26985159}
   - component: {fileID: 26985160}
+  - component: {fileID: 26985162}
+  - component: {fileID: 26985163}
+  - component: {fileID: 26985161}
   m_Layer: 0
   m_Name: BackgroundAnimController
   m_TagString: Untagged
@@ -216,6 +219,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3183dd28a7eed524681eb30de2a82fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  y_offsetRange: 0.2
+  bg_rd: {fileID: 1775716029}
+  animData_transition: {fileID: 26985162}
+  animData_BgScrollAnim: {fileID: 26985163}
+  currentBgIndex: 0
+--- !u!114 &26985161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26985158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8a690181f60374f8942d162bfeaed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animData: {fileID: 26985163}
+  m_transform: {fileID: 0}
+  animSystem_ID: 0
+  isAnimPlay: 0
+--- !u!114 &26985162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26985158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: transition
+  animCurveType: 2
+  animDuration: 1
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
+--- !u!114 &26985163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26985158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: bg scroll
+  animCurveType: 2
+  animDuration: 0.5
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
 --- !u!1 &43688934
 GameObject:
   m_ObjectHideFlags: 0
