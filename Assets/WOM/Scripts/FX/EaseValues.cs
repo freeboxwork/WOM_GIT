@@ -33,15 +33,16 @@ public class EaseValues : MonoBehaviour
     {
         switch (animCurveType)
         {
-            case EnumDefinition.AnimCurveType.EaseInQuad: return EaseInQuad(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.EaseOutQuad: return EaseOutQuad(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.EaseInOutQuad: return EaseInOutQuad(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.EaseOutCubic: return EaseOutCubic(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseInQuad:     return EaseInQuad(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseOutQuad:    return EaseOutQuad(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseInOutQuad:  return EaseInOutQuad(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseOutCubic:   return EaseOutCubic(0f, 1f, timeValue);
             case EnumDefinition.AnimCurveType.EaseInOutCubic: return EaseInOutCubic(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.Spring: return Spring(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.EaseInQuint: return EaseInQuint(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.EaseInOutSine: return EaseInOutSine(0f, 1f, timeValue);
-            case EnumDefinition.AnimCurveType.Linear: return Linear(0, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.Spring:         return Spring(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseInQuint:    return EaseInQuint(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseInOutSine:  return EaseInOutSine(0f, 1f, timeValue);
+            case EnumDefinition.AnimCurveType.EaseOutQuint:   return EaseOutQuint(0f, 1f, timeValue); 
+            case EnumDefinition.AnimCurveType.Linear:         return Linear(0, 1f, timeValue);
             default: return 0;
         }
     }
