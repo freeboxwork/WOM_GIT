@@ -4293,7 +4293,7 @@ MonoBehaviour:
   insects: []
   trHalfPoint: {fileID: 1073158299}
   damageDebug: 1
-  debugDamage: 1
+  debugDamage: 20
 --- !u!1 &1934829624
 GameObject:
   m_ObjectHideFlags: 0
