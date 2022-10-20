@@ -57,4 +57,15 @@ public class EnumDefinition
         EaseInOutSine,
         Linear
     }
+
+    public enum GoldPosType
+    {
+        START_POINT_Y,
+        END_POOINT_Y_MIN,
+        END_POOINT_Y_MAX,
+        END_POOINT_X_MIN,
+        END_POOINT_X_MAX,
+        SCREEN_UI_POINT
+    }
+
 }
