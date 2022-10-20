@@ -24,7 +24,19 @@ public class EffectManager : MonoBehaviour
     // 프리팹 생성될 부모 모드젝트
     public Transform trEffects;
 
-    
+    // 골드 생성 포인트들
+    public List<Transform> goldSFX_RandomPoints = new List<Transform>();
+
+    // 골드 프리팹
+    public GoldAnimController prefabGoldAnimCont;
+    // 골드 오브젝트 풀
+    public List<GoldAnimController> goldAnimControllers = new List<GoldAnimController>();
+    // 골드 풀링 카운트
+    int goldPoolCount = 10;
+   
+
+
+
 
     void Start()
     {
@@ -45,7 +57,19 @@ public class EffectManager : MonoBehaviour
         // attack effect beetle
         CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.beetle], insectAttackEffBeetle);
 
+        // 골드 풀링 오브젝트 생성
+        CreateInstanceGolds();
+    }
 
+    // 골드 생성 ( 풀링 오브젝트 ) 
+    void CreateInstanceGolds()
+    {
+        for (int i = 0; i < goldPoolCount; i++)
+        {
+            var gold = Instantiate(prefabGoldAnimCont, trEffects);
+            goldAnimControllers.Add(gold);
+            gold.gameObject.SetActive(false);
+        }
     }
 
     void CreateInstanceAttackEffects(ParticleRoate prefabParticle , List<ParticleRoate> list )
@@ -103,6 +127,12 @@ public class EffectManager : MonoBehaviour
     ParticleSystem GetInsectDisableEff()
     {
         return insectDisableEffects.FirstOrDefault(f => !f.gameObject.activeSelf);
+    }
+
+    // 골드 생성 포인트
+    public Transform GetGoldSfxRandomPoint(EnumDefinition.GoldPosType pointType)
+    {
+        return goldSFX_RandomPoints[(int)pointType];
     }
 
 }
