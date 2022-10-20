@@ -55,6 +55,7 @@ public class EnumDefinition
         Spring,
         EaseInQuint,
         EaseInOutSine,
+        EaseOutQuint,
         Linear
     }
 

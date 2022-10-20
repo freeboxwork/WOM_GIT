@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
+using UnityEngine.Events;
 
 public class GoldAnimController : MonoBehaviour
 {
@@ -32,9 +32,7 @@ public class GoldAnimController : MonoBehaviour
 
     private void OnEnable()
     {
-        //SetRandomRandomPositions();
-        //SetRandomRotValue();
-        //StartCoroutine(GoldAnim());
+        
     }
 
     private void Update()
@@ -45,9 +43,17 @@ public class GoldAnimController : MonoBehaviour
         //}
     }
 
-    public void GoldOutAnimStart()
+
+    public void GoldInAnimStart()
     {
-        StartCoroutine(GoldOutAnim());
+        SetRandomRandomPositions();
+        SetRandomRotValue();
+        StartCoroutine(GoldInAnim());
+    }
+
+    public void GoldOutAnimStart(UnityAction goalEvent)
+    {
+        StartCoroutine(GoldOutAnim(goalEvent));
     }
 
 
@@ -77,14 +83,14 @@ public class GoldAnimController : MonoBehaviour
 
 
 
-    IEnumerator GoldAnim()
+    IEnumerator GoldInAnim()
     {
         goldInAnimData.ResetAnimData();
 
         while (goldInAnimData.animValue < 0.99f)
         {
             goldInAnimData.animTime = ((Time.time - goldInAnimData.animStartTime) / goldInAnimData.animDuration);
-            goldInAnimData.animValue = EaseValues.instance.EaseOutQuint(0f, 1f, goldInAnimData.animTime);
+            goldInAnimData.animValue = EaseValues.instance.GetAnimCurve(goldInAnimData.animCurveType, goldInAnimData.animTime);// EaseValues.instance.EaseOutQuint(0f, 1f, goldInAnimData.animTime);
             transform.position = Vector2.Lerp(pos_startPoint, pos_targetPoint, goldInAnimData.animValue);
             transform.rotation = Quaternion.Lerp(startRot, targetRot, goldInAnimData.animValue);
 
@@ -93,7 +99,7 @@ public class GoldAnimController : MonoBehaviour
     }
 
 
-    IEnumerator GoldOutAnim()
+    IEnumerator GoldOutAnim(UnityAction goalEvent)
     {
         goldOutAnimData.ResetAnimData();
         var curPos = transform.position;
@@ -106,18 +112,24 @@ public class GoldAnimController : MonoBehaviour
         while (goldOutAnimData.animValue < 0.99f)
         {
             goldOutAnimData.animTime = ((Time.time - goldOutAnimData.animStartTime) / goldOutAnimData.animDuration);
-            goldOutAnimData.animValue = EaseValues.instance.EaseInQuad(0f, 1f, goldOutAnimData.animTime);
-
+            goldOutAnimData.animValue = EaseValues.instance.GetAnimCurve(goldOutAnimData.animCurveType, goldOutAnimData.animTime);// EaseValues.instance.EaseInQuad(0f, 1f, goldOutAnimData.animTime);
             transform.position = CalculateBezierPoint(goldOutAnimData.animValue, curPos, centerPos, targetPos);
             //transform.position = Vector2.Lerp(curPos, targetPos, goldOutAnimData.animValue);
             transform.rotation = Quaternion.Lerp(targetRot, startRot, goldOutAnimData.animValue);
+
+            
+
             yield return null;
         }
 
+        goalEvent.Invoke();
+
+        yield return new WaitForEndOfFrame();
+        
         gameObject.SetActive(false);
     }
 
-
+   
 
 
     Vector2 CalculateBezierPoint(float t, Vector2 p0, Vector2 p1, Vector2 p2)

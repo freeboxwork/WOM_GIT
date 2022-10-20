@@ -76,6 +76,8 @@ public class EventController : MonoBehaviour
         yield return null;
 
         // TODO: GOLD 획득 애니메이션 추가 코루틴에서 제어
+        var goldEnableCount = currentMonster.goldCount;
+        StartCoroutine(globalData.effectManager.EnableGoldEffects(goldEnableCount));
         
         // 골드 획득
         GainGold(currentMonster);
@@ -141,6 +143,9 @@ public class EventController : MonoBehaviour
     #endregion
     IEnumerator MonsterDie_Gold()
     {
+        // BG Scroll Animation
+        globalData.stageManager.PlayAnimBgScroll();
+
         // 보스 도전 버튼 활성화 
         globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
         
@@ -182,6 +187,9 @@ public class EventController : MonoBehaviour
     // 몬스터 등장
     IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
     {
+        // 골드 OUT EFFECT
+        StartCoroutine(globalData.effectManager.DisableGoldEffects());
+
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
         // set current monster
