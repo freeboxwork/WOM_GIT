@@ -83,13 +83,23 @@ public class EffectManager : MonoBehaviour
 
     public IEnumerator EnableGoldEffects(int enableCount)
     {
+        StopAllCoroutines();
+        yield return new WaitForEndOfFrame();
         for (int i = 0; i < enableCount; i++)
         {
             var gold = GetDisableGold();
-            gold.gameObject.SetActive(true);
-            gold.GoldInAnimStart();
-            enableGoldAnimConts.Add(gold);
-            yield return new WaitForSeconds(0.01f);
+            if(gold != null)
+            {
+                gold.gameObject.SetActive(true);
+                gold.GoldInAnimStart();
+                enableGoldAnimConts.Add(gold);
+                yield return new WaitForSeconds(0.01f);
+            }
+            else
+            {
+                Debug.Log("Gold Pool 이 비어 있습니다.");
+            }
+            
         }
     }
 
@@ -98,12 +108,16 @@ public class EffectManager : MonoBehaviour
         for (int i = 0; i < enableGoldAnimConts.Count; i++)
         {
             var gold = enableGoldAnimConts[i];
-            gold.GoldOutAnimStart(() => {
-                // 골드가 UI 쪽으로 이동후 개별 이벤트 실행
-                Debug.Log("gold goal event!!");
-            });
+            if (gold.gameObject.activeSelf)
+            {
+                gold.GoldOutAnimStart(() => {
+                    // 골드가 UI 쪽으로 이동후 개별 이벤트 실행
+                    //Debug.Log("gold goal event!!");
+                });
 
-            yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.05f);
+            }
+          
         }
         enableGoldAnimConts.Clear();
     }
@@ -158,7 +172,10 @@ public class EffectManager : MonoBehaviour
 
     GoldAnimController GetDisableGold()
     {
-        return goldAnimConts.FirstOrDefault(f => !f.gameObject.activeSelf);
+        var obj = goldAnimConts?.FirstOrDefault(f => !f.gameObject.activeSelf);
+        if (obj != null) return obj;
+        else return null;
+        //return goldAnimConts.FirstOrDefault(f => !f.gameObject.activeSelf);
     }
 
     ParticleRoate GetDisableParticleRoate(List<ParticleRoate> particles)
