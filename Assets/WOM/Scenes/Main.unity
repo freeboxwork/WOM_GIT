@@ -4293,7 +4293,7 @@ MonoBehaviour:
   insects: []
   trHalfPoint: {fileID: 1073158299}
   damageDebug: 1
-  debugDamage: 20
+  debugDamage: 1
 --- !u!1 &1934829624
 GameObject:
   m_ObjectHideFlags: 0
@@ -5365,7 +5365,7 @@ MonoBehaviour:
   insectAttackEffBee: []
   insectAttackEffBeetle: []
   trEffects: {fileID: 1710370011}
-  goldPoolCount: 25
+  goldPoolCount: 50
   prefabGoldAnimCont: {fileID: 1969637493, guid: 04415f1f2057c474ea9e6f5f99cfdfaa, type: 3}
   goldSFX_RandomPoints:
   - {fileID: 234574807}
