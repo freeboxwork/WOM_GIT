@@ -39,6 +39,8 @@ public class UiController : MonoBehaviour
 
         // Disable Ui Elements
         DisableUiElements();
+
+   
     }
 
 
