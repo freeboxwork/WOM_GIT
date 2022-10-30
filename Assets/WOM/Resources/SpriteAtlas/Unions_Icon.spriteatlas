@@ -140,5 +140,5 @@ SpriteAtlas:
   - U_Moth01
   - U_Cicada00
   m_RenderDataMap: {}
-  m_Tag: Unions
+  m_Tag: Unions_Icon
   m_IsVariant: 0

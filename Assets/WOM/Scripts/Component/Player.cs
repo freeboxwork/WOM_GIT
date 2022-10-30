@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public int stageIdx;
     public int upgradeLevelIdx;
     public int gold;
+    public int gem;
     public DateTime playTime;
     
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>

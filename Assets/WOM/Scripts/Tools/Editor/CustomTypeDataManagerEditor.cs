@@ -27,7 +27,7 @@ public class CustomTypeDataManagerEditor : Editor
         target.customTypeDatas_uiButton.Clear();
         target.customTypeDatas_uiText.Clear();
         target.customTypeDatas_uiImage.Clear();
-        target.customTypeDatas_gameObject.Clear();
+        target.customTypeDatas_transform.Clear();
 
         List<CustomTypeData> objectsInScene = new List<CustomTypeData>();
 
@@ -42,7 +42,7 @@ public class CustomTypeDataManagerEditor : Editor
         target.customTypeDatas_uiButton   = target.customTypeDatas.Where(w => w.customType == EnumDefinition.CustomDataType.button).ToList();
         target.customTypeDatas_uiText     = target.customTypeDatas.Where(w => w.customType == EnumDefinition.CustomDataType.text).ToList();
         target.customTypeDatas_uiImage    = target.customTypeDatas.Where(w => w.customType == EnumDefinition.CustomDataType.image).ToList();
-        target.customTypeDatas_gameObject = target.customTypeDatas.Where(w => w.customType == EnumDefinition.CustomDataType.gm).ToList();
+        target.customTypeDatas_transform = target.customTypeDatas.Where(w => w.customType == EnumDefinition.CustomDataType.tr).ToList();
     }
 
 
