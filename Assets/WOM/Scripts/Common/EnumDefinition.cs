@@ -7,7 +7,7 @@ public class EnumDefinition
         text,
         image,
         animCont,
-        gm, // game object
+        tr, // game object
     }
 
     public enum InsectType
@@ -42,7 +42,9 @@ public class EnumDefinition
         monsterData_normal,
         stageData,
         upgradeData,
-        monsterSpriteData
+        monsterSpriteData,
+        unionGambleData,
+        summonGradeData
     }
 
     public enum AnimCurveType
@@ -68,5 +70,16 @@ public class EnumDefinition
         END_POOINT_X_MAX,
         SCREEN_UI_POINT
     }
+
+    public enum UnionGradeType
+    {
+        normal,
+        high,
+        rare,
+        hero,
+        legend,
+        unique
+    }
+         
 
 }

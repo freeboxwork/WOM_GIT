@@ -16,7 +16,7 @@ public class CustomTypeDataManager : MonoBehaviour
     public List<CustomTypeData> customTypeDatas_uiButton = new List<CustomTypeData>();
     public List<CustomTypeData> customTypeDatas_uiText = new List<CustomTypeData>();
     public List<CustomTypeData> customTypeDatas_uiImage = new List<CustomTypeData>();
-    public List<CustomTypeData> customTypeDatas_gameObject = new List<CustomTypeData>();
+    public List<CustomTypeData> customTypeDatas_transform = new List<CustomTypeData>();
 
     void Start()
     {
@@ -64,13 +64,13 @@ public class CustomTypeDataManager : MonoBehaviour
         return null;
     }
 
-    public GameObject GetCustomTypeData_GameOnject(int index)
+    public Transform GetCustomTypeData_Transform(int index)
     {
-        var data = customTypeDatas_gameObject?.FirstOrDefault(f => f.index == index).components.gm;
+        var data = customTypeDatas_transform?.FirstOrDefault(f => f.index == index).components.tr;
         if (data != null)
             return data;
         else
-            Debug.LogError($"{EnumDefinition.CustomDataType.gm}_{index} custom type data 가 없습니다.");
+            Debug.LogError($"{EnumDefinition.CustomDataType.tr}_{index} custom type data 가 없습니다.");
         return null;
     }
 

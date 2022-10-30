@@ -14,6 +14,7 @@ public class GlobalController : MonoBehaviour
     public AttackController attackController;
     public UiController uiController;
     public EffectManager effectManager;
+    public LotteryManager lotteryManager;
 
 
     void Start()
@@ -48,12 +49,19 @@ public class GlobalController : MonoBehaviour
         // Player data 세팅
         yield return StartCoroutine(player.Init(playerDataManager.saveData));
 
+        // 뽑기 매니저 초기화 ( 첫 뽑기 데이터는 모두 0번 )
+        yield return StartCoroutine(lotteryManager.Init(0));
+
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
 
         // 등장 몬스터 활성화 -> 첫 시작은 노멀 몬스터
         // TODO : 하나만 켜야 하는지 확인 필요 현재 모두 나타나도록 수정
         monsterManager.EnableMonster(EnumDefinition.MonsterType.normal);
+
+       
+
+
 
         // UI 초기화
         SetUI_Init();

@@ -1,0 +1,18 @@
+{"data":[
+ {
+   "level": 0,
+   "count": 100,
+   "reward": "rare_5"
+ },
+ {
+   "level": 1,
+   "count": 300,
+   "reward": "hero_5"
+ },
+ {
+   "level": 2,
+   "count": 500,
+   "reward": "legend_5"
+ }
+]
+}

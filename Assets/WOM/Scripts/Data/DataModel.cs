@@ -201,3 +201,23 @@ public class SkillData
     public float addPowerRate;
     public int maxLevel;
 }
+
+[Serializable]
+public class UnionGambleData
+{
+    public int summonGrade;
+    public float normal;
+    public float high;
+    public float rare;
+    public float hero;
+    public float legend;
+    public float unique;
+}
+
+[Serializable]
+public class SummonGradeData
+{
+    public int level;
+    public int count;
+    public string reward;
+}

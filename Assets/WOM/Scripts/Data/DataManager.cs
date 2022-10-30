@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using static EnumDefinition;
 using UnityEditor.SceneManagement;
+using Unity.VisualScripting;
 
 public class DataManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class DataManager : MonoBehaviour
         stageData,
         upgradeData,
         monsterSpriteData
+        unionGambleData,
+        summonGradeData
+
      */
     public List<TextAsset> sheetDatas = new List<TextAsset>();
 
@@ -28,6 +32,8 @@ public class DataManager : MonoBehaviour
     public List<EvolutionDatas> evolutionDatas;
     public List<EvolutionOptionDatas> evolutionOptionDatas;
     public List<MonsterDatas> monsterDatas;
+    public UnionGambleDatas unionGambleDatas;
+    public SummonGradeDatas summonGradeDatas;
     public UpgradeDatas upgradeData;
     public MonsterSprites monsterSpriteData;
 
@@ -38,8 +44,6 @@ public class DataManager : MonoBehaviour
 
     public IEnumerator SetDatas()
     {
-        yield return null;
-
         // STAGE
         SetStageData();
 
@@ -57,8 +61,19 @@ public class DataManager : MonoBehaviour
 
         // MONSTER SPRETE
         SetMonsterSpriteData();
+
+        // SET UNION GAMBLE DATA ( 뽑기 데이터 , 뽑기 그레이드 데이터 )
+        SetGamleData();
+
+        yield return null;
     }
    
+    void SetGamleData()
+    {
+        unionGambleDatas = GetData<UnionGambleDatas>(EnumDefinition.SheetDataType.unionGambleData);
+        summonGradeDatas = GetData<SummonGradeDatas>(EnumDefinition.SheetDataType.summonGradeData);
+    }
+
     void SetStageData()
     {
         stageDatas = GetData<StageDatas>(EnumDefinition.SheetDataType.stageData);
@@ -90,7 +105,7 @@ public class DataManager : MonoBehaviour
         evolutionOptionDatas.Add(bee);
         evolutionOptionDatas.Add(beetle);
     }
-    void SetMonsterData()
+    void SetMonsterData() 
     {
         var boss = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_boss);
         var gold = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_gold);
@@ -153,6 +168,17 @@ public class DataManager : MonoBehaviour
         return monsterSpriteData.data.FirstOrDefault(f => f.id == id);
     }
 
+    public UnionGambleData GetUnionGambleDataBySummonGrade(int summonGrade)
+    {
+        return unionGambleDatas.data.FirstOrDefault(f => f.summonGrade == summonGrade);
+    }
+
+    public SummonGradeData GetSummonGradeDataByLevel(int level)
+    {
+        return summonGradeDatas.data.FirstOrDefault(f => f.level == level); 
+    }
+
+
     TextAsset GetSheetData(EnumDefinition.SheetDataType sheetDataType)
     {
         var idx = (int)sheetDataType;
@@ -205,4 +231,16 @@ public class UpgradeDatas
 public class MonsterSprites
 {
     public List<MonsterSprite> data = new List<MonsterSprite>();
+}
+
+[System.Serializable]
+public class UnionGambleDatas
+{
+    public List<UnionGambleData> data = new List<UnionGambleData>();
+}
+
+[System.Serializable]
+public class SummonGradeDatas
+{
+    public List<SummonGradeData> data = new List<SummonGradeData>();
 }
