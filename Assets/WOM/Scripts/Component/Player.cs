@@ -8,6 +8,12 @@ public class Player : MonoBehaviour
     public int stageIdx;
     public int upgradeLevelIdx;
     public int gold;
+    
+    // UPGRADE DATA
+    public int traningDamageLevel;
+    public int traningCriticalDamageLevel;
+    public int traningCriticalChanceLevel;
+
     public int gem;
     public DateTime playTime;
     

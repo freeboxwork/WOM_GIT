@@ -1,0 +1,509 @@
+﻿{
+   "data":[
+ {
+   "level": 0,
+   "salePrice": 0,
+   "criticalDamage": 0
+ },
+ {
+   "level": 1,
+   "salePrice": 1500,
+   "criticalDamage": 5
+ },
+ {
+   "level": 2,
+   "salePrice": 9708,
+   "criticalDamage": 10
+ },
+ {
+   "level": 3,
+   "salePrice": 33978,
+   "criticalDamage": 15
+ },
+ {
+   "level": 4,
+   "salePrice": 56630,
+   "criticalDamage": 20
+ },
+ {
+   "level": 5,
+   "salePrice": 94653,
+   "criticalDamage": 25
+ },
+ {
+   "level": 6,
+   "salePrice": 129440,
+   "criticalDamage": 30
+ },
+ {
+   "level": 7,
+   "salePrice": 184452,
+   "criticalDamage": 35
+ },
+ {
+   "level": 8,
+   "salePrice": 231374,
+   "criticalDamage": 40
+ },
+ {
+   "level": 9,
+   "salePrice": 303375,
+   "criticalDamage": 45
+ },
+ {
+   "level": 10,
+   "salePrice": 362432,
+   "criticalDamage": 50
+ },
+ {
+   "level": 11,
+   "salePrice": 451422,
+   "criticalDamage": 55
+ },
+ {
+   "level": 12,
+   "salePrice": 522614,
+   "criticalDamage": 60
+ },
+ {
+   "level": 13,
+   "salePrice": 628593,
+   "criticalDamage": 65
+ },
+ {
+   "level": 14,
+   "salePrice": 711920,
+   "criticalDamage": 70
+ },
+ {
+   "level": 15,
+   "salePrice": 834888,
+   "criticalDamage": 75
+ },
+ {
+   "level": 16,
+   "salePrice": 930350,
+   "criticalDamage": 80
+ },
+ {
+   "level": 17,
+   "salePrice": 1070307,
+   "criticalDamage": 85
+ },
+ {
+   "level": 18,
+   "salePrice": 1177904,
+   "criticalDamage": 90
+ },
+ {
+   "level": 19,
+   "salePrice": 1334850,
+   "criticalDamage": 95
+ },
+ {
+   "level": 20,
+   "salePrice": 1454582,
+   "criticalDamage": 100
+ },
+ {
+   "level": 21,
+   "salePrice": 1628517,
+   "criticalDamage": 105
+ },
+ {
+   "level": 22,
+   "salePrice": 1760384,
+   "criticalDamage": 110
+ },
+ {
+   "level": 23,
+   "salePrice": 1951308,
+   "criticalDamage": 115
+ },
+ {
+   "level": 24,
+   "salePrice": 2095310,
+   "criticalDamage": 120
+ },
+ {
+   "level": 25,
+   "salePrice": 2303223,
+   "criticalDamage": 125
+ },
+ {
+   "level": 26,
+   "salePrice": 2459360,
+   "criticalDamage": 130
+ },
+ {
+   "level": 27,
+   "salePrice": 2684262,
+   "criticalDamage": 135
+ },
+ {
+   "level": 28,
+   "salePrice": 2852534,
+   "criticalDamage": 140
+ },
+ {
+   "level": 29,
+   "salePrice": 3094425,
+   "criticalDamage": 145
+ },
+ {
+   "level": 30,
+   "salePrice": 3274832,
+   "criticalDamage": 150
+ },
+ {
+   "level": 31,
+   "salePrice": 3533712,
+   "criticalDamage": 155
+ },
+ {
+   "level": 32,
+   "salePrice": 3726254,
+   "criticalDamage": 160
+ },
+ {
+   "level": 33,
+   "salePrice": 4002123,
+   "criticalDamage": 165
+ },
+ {
+   "level": 34,
+   "salePrice": 4206800,
+   "criticalDamage": 170
+ },
+ {
+   "level": 35,
+   "salePrice": 4499658,
+   "criticalDamage": 175
+ },
+ {
+   "level": 36,
+   "salePrice": 4716470,
+   "criticalDamage": 180
+ },
+ {
+   "level": 37,
+   "salePrice": 5026317,
+   "criticalDamage": 185
+ },
+ {
+   "level": 38,
+   "salePrice": 5255264,
+   "criticalDamage": 190
+ },
+ {
+   "level": 39,
+   "salePrice": 5582100,
+   "criticalDamage": 195
+ },
+ {
+   "level": 40,
+   "salePrice": 5823182,
+   "criticalDamage": 200
+ },
+ {
+   "level": 41,
+   "salePrice": 6167007,
+   "criticalDamage": 205
+ },
+ {
+   "level": 42,
+   "salePrice": 6420224,
+   "criticalDamage": 210
+ },
+ {
+   "level": 43,
+   "salePrice": 6781038,
+   "criticalDamage": 215
+ },
+ {
+   "level": 44,
+   "salePrice": 7046390,
+   "criticalDamage": 220
+ },
+ {
+   "level": 45,
+   "salePrice": 7424193,
+   "criticalDamage": 225
+ },
+ {
+   "level": 46,
+   "salePrice": 7701680,
+   "criticalDamage": 230
+ },
+ {
+   "level": 47,
+   "salePrice": 8096472,
+   "criticalDamage": 235
+ },
+ {
+   "level": 48,
+   "salePrice": 8386094,
+   "criticalDamage": 240
+ },
+ {
+   "level": 49,
+   "salePrice": 8797875,
+   "criticalDamage": 245
+ },
+ {
+   "level": 50,
+   "salePrice": 9099632,
+   "criticalDamage": 250
+ },
+ {
+   "level": 51,
+   "salePrice": 9528402,
+   "criticalDamage": 255
+ },
+ {
+   "level": 52,
+   "salePrice": 9842294,
+   "criticalDamage": 260
+ },
+ {
+   "level": 53,
+   "salePrice": 10288053,
+   "criticalDamage": 265
+ },
+ {
+   "level": 54,
+   "salePrice": 10614080,
+   "criticalDamage": 270
+ },
+ {
+   "level": 55,
+   "salePrice": 11076828,
+   "criticalDamage": 275
+ },
+ {
+   "level": 56,
+   "salePrice": 11414990,
+   "criticalDamage": 280
+ },
+ {
+   "level": 57,
+   "salePrice": 11894727,
+   "criticalDamage": 285
+ },
+ {
+   "level": 58,
+   "salePrice": 12245024,
+   "criticalDamage": 290
+ },
+ {
+   "level": 59,
+   "salePrice": 12741750,
+   "criticalDamage": 295
+ },
+ {
+   "level": 60,
+   "salePrice": 13104182,
+   "criticalDamage": 300
+ },
+ {
+   "level": 61,
+   "salePrice": 13617897,
+   "criticalDamage": 305
+ },
+ {
+   "level": 62,
+   "salePrice": 13992464,
+   "criticalDamage": 310
+ },
+ {
+   "level": 63,
+   "salePrice": 14523168,
+   "criticalDamage": 315
+ },
+ {
+   "level": 64,
+   "salePrice": 14909870,
+   "criticalDamage": 320
+ },
+ {
+   "level": 65,
+   "salePrice": 15457563,
+   "criticalDamage": 325
+ },
+ {
+   "level": 66,
+   "salePrice": 15856400,
+   "criticalDamage": 330
+ },
+ {
+   "level": 67,
+   "salePrice": 16421082,
+   "criticalDamage": 335
+ },
+ {
+   "level": 68,
+   "salePrice": 16832054,
+   "criticalDamage": 340
+ },
+ {
+   "level": 69,
+   "salePrice": 17413725,
+   "criticalDamage": 345
+ },
+ {
+   "level": 70,
+   "salePrice": 17836832,
+   "criticalDamage": 350
+ },
+ {
+   "level": 71,
+   "salePrice": 18435492,
+   "criticalDamage": 355
+ },
+ {
+   "level": 72,
+   "salePrice": 18870734,
+   "criticalDamage": 360
+ },
+ {
+   "level": 73,
+   "salePrice": 19486383,
+   "criticalDamage": 365
+ },
+ {
+   "level": 74,
+   "salePrice": 19933760,
+   "criticalDamage": 370
+ },
+ {
+   "level": 75,
+   "salePrice": 20566398,
+   "criticalDamage": 375
+ },
+ {
+   "level": 76,
+   "salePrice": 21025910,
+   "criticalDamage": 380
+ },
+ {
+   "level": 77,
+   "salePrice": 21675537,
+   "criticalDamage": 385
+ },
+ {
+   "level": 78,
+   "salePrice": 22147184,
+   "criticalDamage": 390
+ },
+ {
+   "level": 79,
+   "salePrice": 22813800,
+   "criticalDamage": 395
+ },
+ {
+   "level": 80,
+   "salePrice": 23297582,
+   "criticalDamage": 400
+ },
+ {
+   "level": 81,
+   "salePrice": 23981187,
+   "criticalDamage": 405
+ },
+ {
+   "level": 82,
+   "salePrice": 24477104,
+   "criticalDamage": 410
+ },
+ {
+   "level": 83,
+   "salePrice": 25177698,
+   "criticalDamage": 415
+ },
+ {
+   "level": 84,
+   "salePrice": 25685750,
+   "criticalDamage": 420
+ },
+ {
+   "level": 85,
+   "salePrice": 26403333,
+   "criticalDamage": 425
+ },
+ {
+   "level": 86,
+   "salePrice": 26923520,
+   "criticalDamage": 430
+ },
+ {
+   "level": 87,
+   "salePrice": 27658092,
+   "criticalDamage": 435
+ },
+ {
+   "level": 88,
+   "salePrice": 28190414,
+   "criticalDamage": 440
+ },
+ {
+   "level": 89,
+   "salePrice": 28941975,
+   "criticalDamage": 445
+ },
+ {
+   "level": 90,
+   "salePrice": 29486432,
+   "criticalDamage": 450
+ },
+ {
+   "level": 91,
+   "salePrice": 30254982,
+   "criticalDamage": 455
+ },
+ {
+   "level": 92,
+   "salePrice": 30811574,
+   "criticalDamage": 460
+ },
+ {
+   "level": 93,
+   "salePrice": 31597113,
+   "criticalDamage": 465
+ },
+ {
+   "level": 94,
+   "salePrice": 32165840,
+   "criticalDamage": 470
+ },
+ {
+   "level": 95,
+   "salePrice": 32968368,
+   "criticalDamage": 475
+ },
+ {
+   "level": 96,
+   "salePrice": 33549230,
+   "criticalDamage": 480
+ },
+ {
+   "level": 97,
+   "salePrice": 34368747,
+   "criticalDamage": 485
+ },
+ {
+   "level": 98,
+   "salePrice": 34961744,
+   "criticalDamage": 490
+ },
+ {
+   "level": 99,
+   "salePrice": 35798250,
+   "criticalDamage": 495
+ },
+ {
+   "level": 100,
+   "salePrice": 36403382,
+   "criticalDamage": 500
+ }
+]
+}

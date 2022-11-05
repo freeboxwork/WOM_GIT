@@ -221,3 +221,30 @@ public class SummonGradeData
     public int count;
     public string reward;
 }
+
+[Serializable]
+public class TrainingDamageData
+{
+    public int level;
+    public int salePrice;
+    public float damage; 
+}
+
+[Serializable]
+public class TrainingCriticalDamageData
+{
+    public int level;
+    public int salePrice;
+    public float criticalDamage;
+}
+
+[Serializable]
+public class TrainingCriticalChanceData
+{
+    public int level;
+    public int salePrice;
+    public float criticalChance;
+}
+
+
+
