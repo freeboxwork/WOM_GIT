@@ -36,6 +36,7 @@ public class CustomTypeDataManager : MonoBehaviour
 
     public Button GetCustomTypeData_Button(int index)
     {
+        Debug.Log(index);
         var data = customTypeDatas_uiButton?.FirstOrDefault(f=> f.index == index).components.button;
         if (data != null)
             return data;
