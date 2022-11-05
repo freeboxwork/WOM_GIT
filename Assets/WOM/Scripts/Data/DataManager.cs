@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 using static EnumDefinition;
-using UnityEditor.SceneManagement;
-using Unity.VisualScripting;
 
 public class DataManager : MonoBehaviour
 {
@@ -23,7 +22,11 @@ public class DataManager : MonoBehaviour
         upgradeData,
         monsterSpriteData
         unionGambleData,
-        summonGradeData
+        summonGradeData,
+        trainingDamageData,
+        trainingCriticalDamageData,
+        trainingCriticalChanceData
+
 
      */
     public List<TextAsset> sheetDatas = new List<TextAsset>();
@@ -36,6 +39,10 @@ public class DataManager : MonoBehaviour
     public SummonGradeDatas summonGradeDatas;
     public UpgradeDatas upgradeData;
     public MonsterSprites monsterSpriteData;
+    public TrainingDamageDatas trainingDamageDatas;
+    public TrainingCriticalDamageDatas trainingCriticalDamageDatas;
+    public TrainingCriticalChanceDatas trainingCriticalChanceDatas;
+
 
     void Start()
     {
@@ -63,27 +70,37 @@ public class DataManager : MonoBehaviour
         SetMonsterSpriteData();
 
         // SET UNION GAMBLE DATA ( 뽑기 데이터 , 뽑기 그레이드 데이터 )
-        SetGamleData();
+        SetGambleData();
+
+        // TRANING DATAS
+        SetTraningDatas();
 
         yield return null;
     }
-   
-    void SetGamleData()
+
+    void SetTraningDatas()
     {
-        unionGambleDatas = GetData<UnionGambleDatas>(EnumDefinition.SheetDataType.unionGambleData);
-        summonGradeDatas = GetData<SummonGradeDatas>(EnumDefinition.SheetDataType.summonGradeData);
+        trainingDamageDatas = GetData<TrainingDamageDatas>(SheetDataType.trainingDamageData);
+        trainingCriticalDamageDatas = GetData<TrainingCriticalDamageDatas>(SheetDataType.trainingDamageData);
+        trainingCriticalChanceDatas = GetData<TrainingCriticalChanceDatas>(SheetDataType.trainingCriticalDamageData);
+    }
+   
+    void SetGambleData()
+    {
+        unionGambleDatas = GetData<UnionGambleDatas>(SheetDataType.unionGambleData);
+        summonGradeDatas = GetData<SummonGradeDatas>(SheetDataType.summonGradeData);
     }
 
     void SetStageData()
     {
-        stageDatas = GetData<StageDatas>(EnumDefinition.SheetDataType.stageData);
+        stageDatas = GetData<StageDatas>(SheetDataType.stageData);
     }
     void SetEvolutionData()
     {
         // 0 : mentins , 1 : bee , 2 : beetle
-        var mentis = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_mentis);
-        var bee = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_bee);
-        var beetle = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_beetle);
+        var mentis = GetData<EvolutionDatas>(SheetDataType.evolutionData_mentis);
+        var bee = GetData<EvolutionDatas>(SheetDataType.evolutionData_bee);
+        var beetle = GetData<EvolutionDatas>(SheetDataType.evolutionData_beetle);
 
         // set type
         mentis.data.ForEach(f => f.insectType = InsectType.mentis);
@@ -97,9 +114,9 @@ public class DataManager : MonoBehaviour
     void SetEvolutionOptionData()
     {
         // 0 : mentins , 1 : bee , 2 : beetle
-        var mentis = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_mentis);
-        var bee = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_bee);
-        var beetle = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_beetle);
+        var mentis = GetData<EvolutionOptionDatas>(SheetDataType.evolutionOptionData_mentis);
+        var bee = GetData<EvolutionOptionDatas>(SheetDataType.evolutionOptionData_bee);
+        var beetle = GetData<EvolutionOptionDatas>(SheetDataType.evolutionOptionData_beetle);
 
         evolutionOptionDatas.Add(mentis);
         evolutionOptionDatas.Add(bee);
@@ -107,9 +124,9 @@ public class DataManager : MonoBehaviour
     }
     void SetMonsterData() 
     {
-        var boss = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_boss);
-        var gold = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_gold);
-        var normal = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_normal);
+        var boss = GetData<MonsterDatas>(SheetDataType.monsterData_boss);
+        var gold = GetData<MonsterDatas>(SheetDataType.monsterData_gold);
+        var normal = GetData<MonsterDatas>(SheetDataType.monsterData_normal);
 
         // set type
         boss.data.ForEach(f => f.monsterType = MonsterType.boss);
@@ -123,15 +140,15 @@ public class DataManager : MonoBehaviour
     }
     void SetUpgradeData()
     {
-        upgradeData = GetData<UpgradeDatas>(EnumDefinition.SheetDataType.upgradeData);
+        upgradeData = GetData<UpgradeDatas>(SheetDataType.upgradeData);
     }
     
     void SetMonsterSpriteData()
     {
-        monsterSpriteData = GetData<MonsterSprites>(EnumDefinition.SheetDataType.monsterSpriteData);
+        monsterSpriteData = GetData<MonsterSprites>(SheetDataType.monsterSpriteData);
     }
 
-    T GetData<T>(EnumDefinition.SheetDataType sheetDataType)
+    T GetData<T>(SheetDataType sheetDataType)
     {
         var data = GetSheetData(sheetDataType);
         return JsonUtility.FromJson<T>(data.text);
@@ -142,17 +159,17 @@ public class DataManager : MonoBehaviour
         return stageDatas.data.FirstOrDefault(f=> f.stageId == stageId);
     }
 
-    public EvolutionData GetEvolutionDataById(EnumDefinition.InsectType insectType, int id)
+    public EvolutionData GetEvolutionDataById(InsectType insectType, int id)
     {
         return evolutionDatas[TypeIdx(insectType)].data.FirstOrDefault(f=> f.depthId == id);
     }
 
-    public EvolutionOptionData GetEvolutionOptionDataById(EnumDefinition.InsectType insectType, int id)
+    public EvolutionOptionData GetEvolutionOptionDataById(InsectType insectType, int id)
     {
         return evolutionOptionDatas[TypeIdx(insectType)].data.FirstOrDefault(f => f.optionId == id);
     }
 
-    public MonsterData GetMonsterDataById(EnumDefinition.MonsterType monsterType, int id)
+    public MonsterData GetMonsterDataById(MonsterType monsterType, int id)
     {
 
         return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.monsterId == id);
@@ -175,72 +192,105 @@ public class DataManager : MonoBehaviour
 
     public SummonGradeData GetSummonGradeDataByLevel(int level)
     {
-        return summonGradeDatas.data.FirstOrDefault(f => f.level == level); 
+        return summonGradeDatas.data.FirstOrDefault(f => f.level == level);
     }
 
+    public TrainingDamageData GetTrainingDamageDataByLevel(int level)
+    {
+        return trainingDamageDatas.data.FirstOrDefault(f => f.level == level);
+    }
 
-    TextAsset GetSheetData(EnumDefinition.SheetDataType sheetDataType)
+    public TrainingCriticalDamageData GetTrainingCriticalDamageDataByLevel(int level)
+    {
+        return trainingCriticalDamageDatas.data.FirstOrDefault(f => f.level == level);
+    }
+
+    public TrainingCriticalChanceData GetTrainingCriticalChanceDataByLevel(int level)
+    {
+        return trainingCriticalChanceDatas.data.FirstOrDefault(f => f.level == level);
+    }
+
+    TextAsset GetSheetData(SheetDataType sheetDataType)
     {
         var idx = (int)sheetDataType;
         return sheetDatas[idx];
     }
 
-    int TypeIdx(EnumDefinition.InsectType  insectType)
+    int TypeIdx(InsectType  insectType)
     {
         return (int)insectType;
     }
-    int TypeIdx(EnumDefinition.MonsterType monsterType)
+    int TypeIdx(MonsterType monsterType)
     {
         return (int)monsterType;
     }
 }
 
 
-[System.Serializable]
+[Serializable]
 public class StageDatas
 {
     public List<StageData> data = new List<StageData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class EvolutionDatas // insect Datas
 {
     public List<EvolutionData> data = new List<EvolutionData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class EvolutionOptionDatas
 {
     public List<EvolutionOptionData> data = new List<EvolutionOptionData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class MonsterDatas
 {
     public List<MonsterData> data = new List<MonsterData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class UpgradeDatas
 {
     public List<UpgradeData> data = new List<UpgradeData>(); 
 }
 
 
-[System.Serializable]
+[Serializable]
 public class MonsterSprites
 {
     public List<MonsterSprite> data = new List<MonsterSprite>();
 }
 
-[System.Serializable]
+[Serializable]
 public class UnionGambleDatas
 {
     public List<UnionGambleData> data = new List<UnionGambleData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class SummonGradeDatas
 {
     public List<SummonGradeData> data = new List<SummonGradeData>();
 }
+
+[Serializable]
+public class TrainingDamageDatas
+{
+    public List<TrainingDamageData> data = new List<TrainingDamageData>();
+}
+
+[Serializable]
+public class TrainingCriticalDamageDatas
+{
+    public List<TrainingCriticalDamageData> data = new List<TrainingCriticalDamageData>();
+}
+
+[Serializable]
+public class TrainingCriticalChanceDatas
+{
+    public List<TrainingCriticalChanceData> data = new List<TrainingCriticalChanceData>();
+}
+

@@ -30,6 +30,10 @@ public class InsectManager : MonoBehaviour
     public bool damageDebug = false;
     public float debugDamage = 20;
 
+    public int trainingDamageLevel;
+    public int trainingCriticalDamageLevel;
+    public int trainingCriticalChanceLevel;
+
     void Start()
     {
         //StartCoroutine(Init());
@@ -110,7 +114,7 @@ public class InsectManager : MonoBehaviour
     float GetInsectDamage(InsectBase insect)
     {
         // 공격력 공식 : (damage+ (damage* damageRate))
-        return insect.damage + (insect.damage * insect.damageRate);
+        return insect.damage; // + (insect.damage * insect.damageRate);
     }
 
     // 치명타 데미지 계산

@@ -7771,6 +7771,9 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 741859d0a04d85c489d1487543ab53d4, type: 3}
   - {fileID: 4900000, guid: 55d6c7110d5994c49865e594b7a8427e, type: 3}
   - {fileID: 4900000, guid: 9351c841c6e94fa42aa0d0e6a9a5dd83, type: 3}
+  - {fileID: 4900000, guid: 4373a6aa51260db46851e4f13d15c22c, type: 3}
+  - {fileID: 4900000, guid: 082a9c1a17659624ab3216800b224cce, type: 3}
+  - {fileID: 4900000, guid: 6f1816f0850729d48850c9912661799a, type: 3}
   stageDatas:
     data: []
   evolutionDatas: []
@@ -7783,6 +7786,12 @@ MonoBehaviour:
   upgradeData:
     data: []
   monsterSpriteData:
+    data: []
+  trainingDamageDatas:
+    data: []
+  trainingCriticalDamageDatas:
+    data: []
+  trainingCriticalChanceDatas:
     data: []
 --- !u!1001 &858051684
 PrefabInstance:
@@ -13424,6 +13433,9 @@ MonoBehaviour:
   stageIdx: 0
   upgradeLevelIdx: 0
   gold: 0
+  traningDamageLevel: 0
+  traningCriticalDamageLevel: 0
+  traningCriticalChanceLevel: 0
   gem: 0
   currentStageData:
     stageId: 0
@@ -14468,6 +14480,7 @@ Transform:
   - {fileID: 167315883}
   - {fileID: 2099665907}
   - {fileID: 6590210662459880413}
+  - {fileID: 1902627806}
   m_Father: {fileID: 1249124945}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15370,22 +15383,37 @@ MonoBehaviour:
   - {fileID: 247686139}
   - {fileID: 339392341}
   - {fileID: 345622663}
+  - {fileID: 349966032}
+  - {fileID: 367587517}
   - {fileID: 539293749}
+  - {fileID: 585274272}
+  - {fileID: 623588768}
   - {fileID: 653059483}
   - {fileID: 697387117}
   - {fileID: 762115815}
   - {fileID: 807080670}
+  - {fileID: 879588013}
+  - {fileID: 903892463}
   - {fileID: 911633400}
+  - {fileID: 914027500}
+  - {fileID: 929362393}
   - {fileID: 939886112}
+  - {fileID: 1048295173}
   - {fileID: 1064235334}
   - {fileID: 1395766387}
+  - {fileID: 1436398364}
   - {fileID: 1492253096}
   - {fileID: 1538384837}
   - {fileID: 1544780990}
   - {fileID: 1569533616}
+  - {fileID: 1572396156}
   - {fileID: 1575648662}
+  - {fileID: 1724150196}
+  - {fileID: 1736274583}
   - {fileID: 1740806786}
+  - {fileID: 1749848033}
   - {fileID: 1863401082}
+  - {fileID: 1989788016}
   - {fileID: 3409305087878420424}
   - {fileID: 3409305088193251360}
   - {fileID: 3409305089342743384}
@@ -15407,11 +15435,26 @@ MonoBehaviour:
   - {fileID: 3409305088193251360}
   - {fileID: 3409305089524062622}
   customTypeDatas_uiText:
+  - {fileID: 349966032}
+  - {fileID: 367587517}
   - {fileID: 539293749}
+  - {fileID: 585274272}
+  - {fileID: 623588768}
   - {fileID: 697387117}
+  - {fileID: 879588013}
+  - {fileID: 903892463}
+  - {fileID: 914027500}
+  - {fileID: 929362393}
+  - {fileID: 1048295173}
+  - {fileID: 1436398364}
   - {fileID: 1492253096}
   - {fileID: 1544780990}
+  - {fileID: 1572396156}
+  - {fileID: 1724150196}
+  - {fileID: 1736274583}
+  - {fileID: 1749848033}
   - {fileID: 1863401082}
+  - {fileID: 1989788016}
   customTypeDatas_uiImage:
   - {fileID: 345622663}
   - {fileID: 762115815}
@@ -17890,6 +17933,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891778844}
   m_CullTransparentMesh: 1
+--- !u!1 &1902627805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1902627806}
+  - component: {fileID: 1902627807}
+  m_Layer: 0
+  m_Name: SaleMaanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1902627806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902627805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1561350215}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902627807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902627805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd11e128b65f3a4abb10ac236c06aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1913362848
 GameObject:
   m_ObjectHideFlags: 0
@@ -18219,6 +18306,9 @@ MonoBehaviour:
   trHalfPoint: {fileID: 1073158299}
   damageDebug: 1
   debugDamage: 1
+  trainingDamageLevel: 0
+  trainingCriticalDamageLevel: 0
+  trainingCriticalChanceLevel: 0
 --- !u!1 &1934829624
 GameObject:
   m_ObjectHideFlags: 0
