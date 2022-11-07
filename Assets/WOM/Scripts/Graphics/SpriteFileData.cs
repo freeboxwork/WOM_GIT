@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SpriteDatas", menuName = "ScriptableObject/SpriteData")]
 public class SpriteFileData : ScriptableObject
 {
     [SerializeField]
-    public SpriteDataInfo[] normal;
-    public SpriteDataInfo[] high;
-    public SpriteDataInfo[] rare;
-    public SpriteDataInfo[] hero;
-    public SpriteDataInfo[] legend;
-    public SpriteDataInfo[] unique;
+    public SpriteDataInfo[] data;
+
+    public Sprite GetSpriteData(int num, out Sprite sprite)
+    {
+        sprite = data[num].sprite;
+        return data[num].icon;
+    }
 
     [System.Serializable]
     public struct SpriteDataInfo
     {
+        public EnumDefinition.UnionGradeType type;
         public int num;
         public string discription;
         public Sprite icon;
