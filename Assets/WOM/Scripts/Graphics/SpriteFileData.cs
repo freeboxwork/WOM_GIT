@@ -7,19 +7,15 @@ using UnityEngine;
 public class SpriteFileData : ScriptableObject
 {
     [SerializeField]
-    public SpriteDataInfo[] data;
+    SpriteDataInfo[] data;
 
-    public Sprite GetSpriteData(int num, out Sprite sprite)
-    {
-        sprite = data[num].sprite;
-        return data[num].icon;
-    }
+    public Sprite GetSpriteData(int num) => data[num].sprite;
+    public Sprite GetIconData(int num) => data[num].icon;
 
     [System.Serializable]
     public struct SpriteDataInfo
     {
         public EnumDefinition.UnionGradeType type;
-        public int num;
         public string discription;
         public Sprite icon;
         public Sprite sprite;
