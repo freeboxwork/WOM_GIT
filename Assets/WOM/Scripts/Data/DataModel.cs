@@ -226,9 +226,9 @@ public class SummonGradeData
 }
 
 
-[SerializeField]
+[Serializable]
 /// <summary> 판매 가능한 스탯 데이터</summary>
-public class SaleStat
+public class SaleStatData
 {
     public int level;
     public int salePrice;
@@ -246,4 +246,34 @@ public class SaleStat
     public float talentSpawnSpeed;
     public float talentGoldBonus;
 
+}
+
+[Serializable]
+/// <summary> 현재 유저의 스탯 레벨 인덱스 데이터</summary>
+public class PlayerStatLevelData
+{
+    public int levelDamage;
+    public int levelCriticalChance;
+    public int levelCriticalDamage;
+    public int levelTalentDamage;
+    public int levelTalentCriticalChance;
+    public int levelTalentCriticalDamage;
+    public int levelTalentMoveSpeed;
+    public int levelTalentSpawnSpeed;
+    public int levelTalentGoldBonus;
+
+    public List<int> statDatas;
+    public PlayerStatLevelData()
+    {
+        statDatas = new List<int>();
+        statDatas.Add(levelDamage);
+        statDatas.Add(levelCriticalChance);
+        statDatas.Add(levelCriticalDamage);
+        statDatas.Add(levelTalentDamage);
+        statDatas.Add(levelTalentCriticalChance);
+        statDatas.Add(levelTalentCriticalDamage);
+        statDatas.Add(levelTalentMoveSpeed);
+        statDatas.Add(levelTalentSpawnSpeed);
+        statDatas.Add(levelTalentGoldBonus);
+    }
 }

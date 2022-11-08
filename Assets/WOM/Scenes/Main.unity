@@ -7288,6 +7288,16 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 741859d0a04d85c489d1487543ab53d4, type: 3}
   - {fileID: 4900000, guid: 55d6c7110d5994c49865e594b7a8427e, type: 3}
   - {fileID: 4900000, guid: 9351c841c6e94fa42aa0d0e6a9a5dd83, type: 3}
+  sheetDatas_saleStats:
+  - {fileID: 4900000, guid: d9d0207d5010e46458b2a5fe4af26f50, type: 3}
+  - {fileID: 4900000, guid: 7c9a2f69513c44e4b95add4ff39e1490, type: 3}
+  - {fileID: 4900000, guid: 1f20682d12395fb4faa4a4b343d0e146, type: 3}
+  - {fileID: 4900000, guid: b1945274e93f11b4e87b10f8482e1e61, type: 3}
+  - {fileID: 4900000, guid: d0865a6dd9eb98f4a8e5731f39d4d6c2, type: 3}
+  - {fileID: 4900000, guid: 8dab07fefa8c2e543962f3a412dd83fc, type: 3}
+  - {fileID: 4900000, guid: 9011c923dd7a55b43bc0aa44b1696394, type: 3}
+  - {fileID: 4900000, guid: ef4987268cde091448e3b496b9d80f0e, type: 3}
+  - {fileID: 4900000, guid: 9f505113370d974419023a6dda95d845, type: 3}
   stageDatas:
     data: []
   evolutionDatas: []
@@ -7301,6 +7311,7 @@ MonoBehaviour:
     data: []
   monsterSpriteData:
     data: []
+  statSaleDatas: []
 --- !u!1001 &858051684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12887,6 +12898,7 @@ MonoBehaviour:
   stageIdx: 0
   upgradeLevelIdx: 0
   gold: 0
+  bone: 0
   gem: 0
   currentStageData:
     stageId: 0
@@ -12900,6 +12912,17 @@ MonoBehaviour:
     unlock: 
   pahseCountOriginalValue: 0
   currentMonster: {fileID: 0}
+  curStatLevel:
+    levelDamage: 0
+    levelCriticalChance: 0
+    levelCriticalDamage: 0
+    levelTalentDamage: 0
+    levelTalentCriticalChance: 0
+    levelTalentCriticalDamage: 0
+    levelTalentMoveSpeed: 0
+    levelTalentSpawnSpeed: 0
+    levelTalentGoldBonus: 0
+    statDatas: 000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &1476301007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1879935269847859200, guid: 9877a5dabd80c734d8d50a83aa7f98fd, type: 3}
@@ -14442,27 +14465,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTypeDatas:
-  - {fileID: 1402827890}
-  - {fileID: 546468483}
-  - {fileID: 380237446}
-  - {fileID: 902010971}
-  - {fileID: 152989233}
   - {fileID: 5664100}
-  - {fileID: 970143356}
-  - {fileID: 1197515800}
-  - {fileID: 1190078107}
-  - {fileID: 207414166}
-  - {fileID: 453373224}
-  - {fileID: 1407328353}
-  - {fileID: 1796588867}
-  - {fileID: 1135532315}
-  - {fileID: 1192860942}
-  - {fileID: 1027373076}
-  - {fileID: 1735355603}
-  - {fileID: 1666910652}
   - {fileID: 25142335}
   - {fileID: 124550271}
+  - {fileID: 152989233}
   - {fileID: 186876810}
+  - {fileID: 207414166}
   - {fileID: 209298458}
   - {fileID: 247686139}
   - {fileID: 285371262}
@@ -14471,9 +14479,12 @@ MonoBehaviour:
   - {fileID: 352724977}
   - {fileID: 361355380}
   - {fileID: 367587517}
+  - {fileID: 380237446}
   - {fileID: 392346079}
+  - {fileID: 453373224}
   - {fileID: 516497096}
   - {fileID: 539293749}
+  - {fileID: 546468483}
   - {fileID: 564454601}
   - {fileID: 585274272}
   - {fileID: 602763789}
@@ -14490,16 +14501,23 @@ MonoBehaviour:
   - {fileID: 821801244}
   - {fileID: 879956398}
   - {fileID: 886247371}
+  - {fileID: 902010971}
   - {fileID: 903892463}
   - {fileID: 911633400}
   - {fileID: 932279238}
   - {fileID: 939886112}
+  - {fileID: 970143356}
   - {fileID: 991658484}
   - {fileID: 1025771689}
+  - {fileID: 1027373076}
   - {fileID: 1062631578}
   - {fileID: 1064235334}
+  - {fileID: 1135532315}
   - {fileID: 1156971954}
   - {fileID: 1166893747}
+  - {fileID: 1190078107}
+  - {fileID: 1192860942}
+  - {fileID: 1197515800}
   - {fileID: 1208855129}
   - {fileID: 1210583655}
   - {fileID: 1242829205}
@@ -14510,8 +14528,10 @@ MonoBehaviour:
   - {fileID: 1311909110}
   - {fileID: 1392404997}
   - {fileID: 1395766387}
+  - {fileID: 1402827890}
   - {fileID: 1405295730}
   - {fileID: 1405295734}
+  - {fileID: 1407328353}
   - {fileID: 1421410267}
   - {fileID: 1476301009}
   - {fileID: 1476301013}
@@ -14528,12 +14548,15 @@ MonoBehaviour:
   - {fileID: 1578754814}
   - {fileID: 1617475371}
   - {fileID: 1620267294}
+  - {fileID: 1666910652}
   - {fileID: 1715602206}
   - {fileID: 1715602210}
   - {fileID: 1718143944}
   - {fileID: 1719060501}
+  - {fileID: 1735355603}
   - {fileID: 1740806786}
   - {fileID: 1775955373}
+  - {fileID: 1796588867}
   - {fileID: 1800430108}
   - {fileID: 1831419071}
   - {fileID: 1831419075}
@@ -14576,22 +14599,15 @@ MonoBehaviour:
   - {fileID: 3409305088193251360}
   - {fileID: 3409305089524062622}
   customTypeDatas_uiText:
-  - {fileID: 207414166}
-  - {fileID: 453373224}
-  - {fileID: 1407328353}
-  - {fileID: 1796588867}
-  - {fileID: 1135532315}
-  - {fileID: 1192860942}
-  - {fileID: 1027373076}
-  - {fileID: 1735355603}
-  - {fileID: 1666910652}
   - {fileID: 25142335}
   - {fileID: 124550271}
+  - {fileID: 207414166}
   - {fileID: 209298458}
   - {fileID: 285371262}
   - {fileID: 361355380}
   - {fileID: 367587517}
   - {fileID: 392346079}
+  - {fileID: 453373224}
   - {fileID: 539293749}
   - {fileID: 564454601}
   - {fileID: 585274272}
@@ -14606,13 +14622,17 @@ MonoBehaviour:
   - {fileID: 903892463}
   - {fileID: 932279238}
   - {fileID: 1025771689}
+  - {fileID: 1027373076}
   - {fileID: 1062631578}
+  - {fileID: 1135532315}
   - {fileID: 1156971954}
   - {fileID: 1166893747}
+  - {fileID: 1192860942}
   - {fileID: 1208855129}
   - {fileID: 1210583655}
   - {fileID: 1242829205}
   - {fileID: 1392404997}
+  - {fileID: 1407328353}
   - {fileID: 1421410267}
   - {fileID: 1492253096}
   - {fileID: 1499773082}
@@ -14623,9 +14643,12 @@ MonoBehaviour:
   - {fileID: 1578754814}
   - {fileID: 1617475371}
   - {fileID: 1620267294}
+  - {fileID: 1666910652}
   - {fileID: 1718143944}
   - {fileID: 1719060501}
+  - {fileID: 1735355603}
   - {fileID: 1775955373}
+  - {fileID: 1796588867}
   - {fileID: 1800430108}
   - {fileID: 1847914509}
   - {fileID: 1863401082}
@@ -14637,27 +14660,27 @@ MonoBehaviour:
   - {fileID: 2097738753}
   - {fileID: 2134828299}
   customTypeDatas_uiImage:
-  - {fileID: 1402827890}
-  - {fileID: 546468483}
-  - {fileID: 380237446}
-  - {fileID: 902010971}
-  - {fileID: 152989233}
   - {fileID: 5664100}
-  - {fileID: 970143356}
-  - {fileID: 1197515800}
-  - {fileID: 1190078107}
+  - {fileID: 152989233}
   - {fileID: 186876810}
   - {fileID: 345622663}
   - {fileID: 352724977}
+  - {fileID: 380237446}
   - {fileID: 516497096}
+  - {fileID: 546468483}
   - {fileID: 624335926}
   - {fileID: 638479361}
   - {fileID: 762115815}
+  - {fileID: 902010971}
+  - {fileID: 970143356}
   - {fileID: 991658484}
+  - {fileID: 1190078107}
+  - {fileID: 1197515800}
   - {fileID: 1250894957}
   - {fileID: 1257712585}
   - {fileID: 1311909110}
   - {fileID: 1395766387}
+  - {fileID: 1402827890}
   - {fileID: 1405295734}
   - {fileID: 1476301013}
   - {fileID: 1533232497}

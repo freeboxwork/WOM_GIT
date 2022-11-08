@@ -23,6 +23,13 @@ public class DataManager : MonoBehaviour
         monsterSpriteData
         unionGambleData,
         summonGradeData,
+     */
+
+
+    public List<TextAsset> sheetDatas = new List<TextAsset>();
+
+
+    /*
         trainingDamageData,
         trainingCriticalChanceData,
         trainingCriticalDamageData,
@@ -32,9 +39,9 @@ public class DataManager : MonoBehaviour
         talentMoveSpeedData,
         talentSpawnSpeed,
         talentGoldBonusData
-
      */
-    public List<TextAsset> sheetDatas = new List<TextAsset>();
+
+    public List<TextAsset> sheetDatas_saleStats = new List<TextAsset>();
 
     public StageDatas stageDatas;
     public List<EvolutionDatas> evolutionDatas;
@@ -44,6 +51,18 @@ public class DataManager : MonoBehaviour
     public SummonGradeDatas summonGradeDatas;
     public UpgradeDatas upgradeData;
     public MonsterSprites monsterSpriteData;
+
+    // SALE STATS
+    StatSaleDatas trainingDamageDatas;
+    StatSaleDatas trainingCriticalChanceData;
+    StatSaleDatas trainingCriticalDamageData;
+    StatSaleDatas talentDamageData;
+    StatSaleDatas talentCriticalChanceData;
+    StatSaleDatas talentCriticalDamageData;
+    StatSaleDatas talentMoveSpeedData;
+    StatSaleDatas talentSpawnSpeed;
+    StatSaleDatas talentGoldBonusData;
+    public List<StatSaleDatas> statSaleDatas = new List<StatSaleDatas>();
 
     void Start()
     {
@@ -73,25 +92,53 @@ public class DataManager : MonoBehaviour
         // SET UNION GAMBLE DATA ( 뽑기 데이터 , 뽑기 그레이드 데이터 )
         SetGamleData();
 
+        // ADD SALE STAT LIST
+        AddSaleStatElements();
+
+        // SET SALE STAT DATA ( 판매 가능한 스탯 데이터 )
+        SetSaleStatDatas();
+
         yield return null;
     }
+
+    void AddSaleStatElements()
+    {
+        statSaleDatas.Add(trainingDamageDatas);
+        statSaleDatas.Add(trainingCriticalChanceData);
+        statSaleDatas.Add(trainingCriticalDamageData);
+        statSaleDatas.Add(talentDamageData);
+        statSaleDatas.Add(talentCriticalChanceData);
+        statSaleDatas.Add(talentCriticalDamageData);
+        statSaleDatas.Add(talentMoveSpeedData);
+        statSaleDatas.Add(talentSpawnSpeed);
+        statSaleDatas.Add(talentGoldBonusData);
+    }
+         
    
+    void SetSaleStatDatas()
+    {
+        for (int i = 0; i < sheetDatas_saleStats.Count; i++)
+        {
+            statSaleDatas[i] = JsonUtility.FromJson<StatSaleDatas>(sheetDatas_saleStats[i].text);
+        }
+    }
+
     void SetGamleData()
     {
-        unionGambleDatas = GetData<UnionGambleDatas>(EnumDefinition.SheetDataType.unionGambleData);
-        summonGradeDatas = GetData<SummonGradeDatas>(EnumDefinition.SheetDataType.summonGradeData);
+        unionGambleDatas = GetData<UnionGambleDatas>(SheetDataType.unionGambleData);
+        summonGradeDatas = GetData<SummonGradeDatas>(SheetDataType.summonGradeData);
     }
 
     void SetStageData()
     {
-        stageDatas = GetData<StageDatas>(EnumDefinition.SheetDataType.stageData);
+        stageDatas = GetData<StageDatas>(SheetDataType.stageData);
     }
     void SetEvolutionData()
     {
         // 0 : mentins , 1 : bee , 2 : beetle
-        var mentis = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_mentis);
-        var bee = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_bee);
-        var beetle = GetData<EvolutionDatas>(EnumDefinition.SheetDataType.evolutionData_beetle);
+        var mentis = GetData<EvolutionDatas>(SheetDataType.evolutionData_mentis);
+        var bee = GetData<EvolutionDatas>(SheetDataType.evolutionData_bee);
+        var beetle = GetData<EvolutionDatas>(SheetDataType.evolutionData_beetle);
 
         // set type
         mentis.data.ForEach(f => f.insectType = InsectType.mentis);
@@ -105,9 +152,9 @@ public class DataManager : MonoBehaviour
     void SetEvolutionOptionData()
     {
         // 0 : mentins , 1 : bee , 2 : beetle
-        var mentis = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_mentis);
-        var bee = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_bee);
-        var beetle = GetData<EvolutionOptionDatas>(EnumDefinition.SheetDataType.evolutionOptionData_beetle);
+        var mentis = GetData<EvolutionOptionDatas>(SheetDataType.evolutionOptionData_mentis);
+        var bee = GetData<EvolutionOptionDatas>(SheetDataType.evolutionOptionData_bee);
+        var beetle = GetData<EvolutionOptionDatas>(SheetDataType.evolutionOptionData_beetle);
 
         evolutionOptionDatas.Add(mentis);
         evolutionOptionDatas.Add(bee);
@@ -115,9 +162,9 @@ public class DataManager : MonoBehaviour
     }
     void SetMonsterData() 
     {
-        var boss = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_boss);
-        var gold = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_gold);
-        var normal = GetData<MonsterDatas>(EnumDefinition.SheetDataType.monsterData_normal);
+        var boss = GetData<MonsterDatas>(SheetDataType.monsterData_boss);
+        var gold = GetData<MonsterDatas>(SheetDataType.monsterData_gold);
+        var normal = GetData<MonsterDatas>(SheetDataType.monsterData_normal);
 
         // set type
         boss.data.ForEach(f => f.monsterType = MonsterType.boss);
@@ -131,15 +178,15 @@ public class DataManager : MonoBehaviour
     }
     void SetUpgradeData()
     {
-        upgradeData = GetData<UpgradeDatas>(EnumDefinition.SheetDataType.upgradeData);
+        upgradeData = GetData<UpgradeDatas>(SheetDataType.upgradeData);
     }
     
     void SetMonsterSpriteData()
     {
-        monsterSpriteData = GetData<MonsterSprites>(EnumDefinition.SheetDataType.monsterSpriteData);
+        monsterSpriteData = GetData<MonsterSprites>(SheetDataType.monsterSpriteData);
     }
 
-    T GetData<T>(EnumDefinition.SheetDataType sheetDataType)
+    T GetData<T>(SheetDataType sheetDataType)
     {
         var data = GetSheetData(sheetDataType);
         return JsonUtility.FromJson<T>(data.text);
@@ -150,17 +197,17 @@ public class DataManager : MonoBehaviour
         return stageDatas.data.FirstOrDefault(f=> f.stageId == stageId);
     }
 
-    public EvolutionData GetEvolutionDataById(EnumDefinition.InsectType insectType, int id)
+    public EvolutionData GetEvolutionDataById(InsectType insectType, int id)
     {
         return evolutionDatas[TypeIdx(insectType)].data.FirstOrDefault(f=> f.depthId == id);
     }
 
-    public EvolutionOptionData GetEvolutionOptionDataById(EnumDefinition.InsectType insectType, int id)
+    public EvolutionOptionData GetEvolutionOptionDataById(InsectType insectType, int id)
     {
         return evolutionOptionDatas[TypeIdx(insectType)].data.FirstOrDefault(f => f.optionId == id);
     }
 
-    public MonsterData GetMonsterDataById(EnumDefinition.MonsterType monsterType, int id)
+    public MonsterData GetMonsterDataById(MonsterType monsterType, int id)
     {
 
         return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.monsterId == id);
@@ -187,19 +234,24 @@ public class DataManager : MonoBehaviour
     }
 
 
-    TextAsset GetSheetData(EnumDefinition.SheetDataType sheetDataType)
+    TextAsset GetSheetData(SheetDataType sheetDataType)
     {
         var idx = (int)sheetDataType;
         return sheetDatas[idx];
     }
 
-    int TypeIdx(EnumDefinition.InsectType  insectType)
+    int TypeIdx(InsectType  insectType)
     {
         return (int)insectType;
     }
-    int TypeIdx(EnumDefinition.MonsterType monsterType)
+    int TypeIdx(MonsterType monsterType)
     {
         return (int)monsterType;
+    }
+
+    public SaleStatData GetSaleStatDataByTypeId(SaleStatType statType , int level)
+    {
+        return statSaleDatas[(int)statType].data.FirstOrDefault(f => f.level == level);
     }
 }
 
@@ -254,8 +306,7 @@ public class SummonGradeDatas
 }
 
 [Serializable]
-public class TrainingDamageDatas
+public class StatSaleDatas
 {
-
+    public List<SaleStatData> data = new List<SaleStatData>();
 }
-

@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SaleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
     }
+
+
+    //재화 : GOLD
+
+
+
+    //재화 : BONE
+
+
 }
