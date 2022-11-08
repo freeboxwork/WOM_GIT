@@ -45,15 +45,19 @@ public class EnumDefinition
         monsterSpriteData,
         unionGambleData,
         summonGradeData,
-        trainingDamageData,
-        trainingCriticalChanceData,
-        trainingCriticalDamageData,
-        talentDamageData,
-        talentCriticalChanceData,
-        talentCriticalDamageData,
-        talentMoveSpeedData,
+    }
+
+    public enum SaleStatType
+    {
+        trainingDamage,
+        trainingCriticalChance,
+        trainingCriticalDamage,
+        talentDamage,
+        talentCriticalChance,
+        talentCriticalDamage,
+        talentMoveSpeed,
         talentSpawnSpeed,
-        talentGoldBonusData
+        talentGoldBonus
     }
 
     public enum AnimCurveType

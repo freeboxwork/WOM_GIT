@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public static class UtilityMethod 
 {
@@ -41,4 +43,35 @@ public static class UtilityMethod
         return new Vector2(x, y);
     }
 
+
+    public static void SetTxtCustomTypeByID(int id, string value)
+    {
+        var txtObj = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Text(id);
+        if (txtObj != null)
+        {
+            txtObj.text = value;
+        }
+        else
+        {
+            Debug.LogError($"Custom Type Object - Text - {id} 오브젝트가 없습니다.");
+        }
+    }
+
+    public static void SetBtnEventCustomTypeByID(int id , UnityAction action)
+    {
+        var btn = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);
+        if(btn != null)
+        {
+            btn.onClick.AddListener(action);
+        }
+        else
+        {
+            Debug.LogError($"Custom Type Object - Button - {id} 오브젝트가 없습니다.");
+        }
+    }
+
+    public static Button GetCustomTypeBtnByID(int id)
+    {
+        return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);  
+    }
 }

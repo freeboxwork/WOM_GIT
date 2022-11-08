@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnumDefinition;
+
 
 public class Player : MonoBehaviour
 {
     public int stageIdx;
     public int upgradeLevelIdx;
     public int gold;
+    public int bone;
     public int gem;
     public DateTime playTime;
     
@@ -17,6 +20,9 @@ public class Player : MonoBehaviour
 
     /// <summary> 현재 전투중인 몬스터 </summary>
     public MonsterBase currentMonster;
+
+    /// <summary> 현재 플레이어의 스탯 레벨 </summary>
+    public PlayerStatLevelData curStatLevel;
 
     void Start()
     {
@@ -56,4 +62,37 @@ public class Player : MonoBehaviour
         gold = gold + value;
     }
 
+    public void AddBone(int value)
+    {
+        bone = bone + value;
+    }
+
+    public void PayGold(int value)
+    {
+        gold = gold - value;
+    }
+
+    // TODO : SALE MANAGER 로 이동
+    bool IsValidPurchaseGold(int value)
+    {
+        return 0 < gold - value;
+    }
+
+    // TODO : SALE MANAGER 로 이동
+    bool IsValidPurchaseBone(int value)
+    {
+        return 0 < bone - value;
+    }
+
+    public int GetStatLevel(SaleStatType statType)
+    {
+        return curStatLevel.statDatas[(int)statType];
+    }
+
+    public void SetStatLevel(SaleStatType statType, int level)
+    {
+        curStatLevel.statDatas[(int)statType] = level;
+    }
 }
+
+

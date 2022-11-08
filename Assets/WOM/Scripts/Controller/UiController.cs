@@ -85,9 +85,9 @@ public class UiController : MonoBehaviour
         txtBossMonChallengeTimer = customTypeDataManager.GetCustomTypeData_Text(3);
         imgBossMonTimer          = customTypeDataManager.GetCustomTypeData_Image(0);
         imgBossMonTimerParent    = customTypeDataManager.GetCustomTypeData_Image(1);
-        btnLottery10Round        = customTypeDataManager.GetCustomTypeData_Button(10);
-        btnLottery30Round        = customTypeDataManager.GetCustomTypeData_Button(11);
-        btnLottery50Round        = customTypeDataManager.GetCustomTypeData_Button(12);
+        btnLottery10Round        = customTypeDataManager.GetCustomTypeData_Button(11);
+        btnLottery30Round        = customTypeDataManager.GetCustomTypeData_Button(12);
+        btnLottery50Round        = customTypeDataManager.GetCustomTypeData_Button(13);
         trLotteryGameSet         = customTypeDataManager.GetCustomTypeData_Transform(0);
     }
 
