@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using TMPro.EditorUtilities;
 using JetBrains.Annotations;
+using UnityEngine.Experimental.GlobalIllumination;
+using Unity.VisualScripting;
 
 public class DataModel : MonoBehaviour
 {
@@ -99,6 +101,7 @@ public class MonsterData
     public float hp;
     public float exp;
     public int gold;
+    public int bone;
     public int goldCount;
     public int imageId;
     public int bgId;
@@ -220,4 +223,27 @@ public class SummonGradeData
     public int level;
     public int count;
     public string reward;
+}
+
+
+[SerializeField]
+/// <summary> ∆«∏≈ ∞°¥…«— Ω∫≈» µ•¿Ã≈Õ</summary>
+public class SaleStat
+{
+    public int level;
+    public int salePrice;
+   
+    // gold ∑Œ »πµÊ
+    public float damage;
+    public float criticalChance;
+    public float criticalDamage;
+
+    // bone ¿∏∑Œ »πµÊ
+    public float talentDamage;
+    public float talentCriticalChance;
+    public float talentCriticalDamage;
+    public float talentMoveSpeed;
+    public float talentSpawnSpeed;
+    public float talentGoldBonus;
+
 }

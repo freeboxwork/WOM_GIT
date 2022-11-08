@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using static EnumDefinition;
-using UnityEditor.SceneManagement;
-using Unity.VisualScripting;
+using System;
 
 public class DataManager : MonoBehaviour
 {
@@ -23,7 +22,16 @@ public class DataManager : MonoBehaviour
         upgradeData,
         monsterSpriteData
         unionGambleData,
-        summonGradeData
+        summonGradeData,
+        trainingDamageData,
+        trainingCriticalChanceData,
+        trainingCriticalDamageData,
+        talentDamageData,
+        talentCriticalChanceData,
+        talentCriticalDamageData,
+        talentMoveSpeedData,
+        talentSpawnSpeed,
+        talentGoldBonusData
 
      */
     public List<TextAsset> sheetDatas = new List<TextAsset>();
@@ -196,51 +204,58 @@ public class DataManager : MonoBehaviour
 }
 
 
-[System.Serializable]
+[Serializable]
 public class StageDatas
 {
     public List<StageData> data = new List<StageData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class EvolutionDatas // insect Datas
 {
     public List<EvolutionData> data = new List<EvolutionData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class EvolutionOptionDatas
 {
     public List<EvolutionOptionData> data = new List<EvolutionOptionData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class MonsterDatas
 {
     public List<MonsterData> data = new List<MonsterData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class UpgradeDatas
 {
     public List<UpgradeData> data = new List<UpgradeData>(); 
 }
 
 
-[System.Serializable]
+[Serializable]
 public class MonsterSprites
 {
     public List<MonsterSprite> data = new List<MonsterSprite>();
 }
 
-[System.Serializable]
+[Serializable]
 public class UnionGambleDatas
 {
     public List<UnionGambleData> data = new List<UnionGambleData>();
 }
 
-[System.Serializable]
+[Serializable]
 public class SummonGradeDatas
 {
     public List<SummonGradeData> data = new List<SummonGradeData>();
 }
+
+[Serializable]
+public class TrainingDamageDatas
+{
+
+}
+
