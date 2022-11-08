@@ -71,12 +71,12 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7649c92199835ce4ca1b5689c5db6236, type: 3}
   - type: 1
     discription: 
-    icon: {fileID: 21300000, guid: 3f9f499d2866d59499e9d380d50b8238, type: 3}
-    sprite: {fileID: 21300000, guid: a13b54af8cbe9ef418b616f445a78b3c, type: 3}
-  - type: 1
-    discription: 
     icon: {fileID: 21300000, guid: f06930899b897924da932aae96099a2c, type: 3}
     sprite: {fileID: 21300000, guid: 4f33bd621e0cc6b46ad3df30c0533b19, type: 3}
+  - type: 1
+    discription: 
+    icon: {fileID: 21300000, guid: 9f5db9e0cb0986342918e8b6baab705c, type: 3}
+    sprite: {fileID: 21300000, guid: a77c0fa53ff6630489b27a76ff7f8385, type: 3}
   - type: 2
     discription: 
     icon: {fileID: 21300000, guid: beb6b73426eddc540a4fe585213167d2, type: 3}
