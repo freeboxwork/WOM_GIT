@@ -249,9 +249,14 @@ public class DataManager : MonoBehaviour
         return (int)monsterType;
     }
 
-    public SaleStatData GetSaleStatDataByTypeId(SaleStatType statType , int level)
+    public StatSaleData GetSaleStatDataByTypeId(SaleStatType statType , int level)
     {
         return statSaleDatas[(int)statType].data.FirstOrDefault(f => f.level == level);
+    }
+
+    public StatSaleDatas GetSaleStatDataByType(SaleStatType statType)
+    {
+        return statSaleDatas[(int)statType];
     }
 }
 
@@ -308,5 +313,5 @@ public class SummonGradeDatas
 [Serializable]
 public class StatSaleDatas
 {
-    public List<SaleStatData> data = new List<SaleStatData>();
+    public List<StatSaleData> data = new List<StatSaleData>();
 }

@@ -228,7 +228,7 @@ public class SummonGradeData
 
 [Serializable]
 /// <summary> 판매 가능한 스탯 데이터</summary>
-public class SaleStatData
+public class StatSaleData
 {
     public int level;
     public int salePrice;
@@ -276,4 +276,11 @@ public class PlayerStatLevelData
         statDatas.Add(levelTalentSpawnSpeed);
         statDatas.Add(levelTalentGoldBonus);
     }
+}
+
+
+[Serializable]
+public class SaleStatMsgData
+{
+    public EnumDefinition.SaleStatType saleStatType;
 }
