@@ -72,17 +72,6 @@ public class Player : MonoBehaviour
         gold = gold - value;
     }
 
-    // TODO : SALE MANAGER 로 이동
-    bool IsValidPurchaseGold(int value)
-    {
-        return 0 < gold - value;
-    }
-
-    // TODO : SALE MANAGER 로 이동
-    bool IsValidPurchaseBone(int value)
-    {
-        return 0 < bone - value;
-    }
 
     public int GetStatLevel(SaleStatType statType)
     {
