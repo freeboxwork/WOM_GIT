@@ -72,6 +72,10 @@ public class Player : MonoBehaviour
         gold = gold - value;
     }
 
+    public void PayBone(int value)
+    {
+        bone = bone - value;
+    }
 
     public int GetStatLevel(SaleStatType statType)
     {
