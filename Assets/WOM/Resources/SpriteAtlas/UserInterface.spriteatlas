@@ -43,10 +43,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5be064009e8197f489fb014653b05d30, type: 3}
   - {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
   - {fileID: 21300000, guid: 0e3ae5a00a4e70442b64c599a36de93a, type: 3}
+  - {fileID: 21300000, guid: 3819d8b16d191c044a46fbdeff09e5fb, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
+  - {fileID: 21300000, guid: 37485fc41ab25f64596b1ff9a21c7ad9, type: 3}
+  - {fileID: 21300000, guid: 5cddf297184708f4a8823457102c25ad, type: 3}
   - {fileID: 21300000, guid: a0e5f499560bea74ca7f01c2d82a9a9b, type: 3}
+  - {fileID: 21300000, guid: 95e53ee9124aceb4d98e28dd2d0d0d9f, type: 3}
   - {fileID: 21300000, guid: f002302a82c425b41bb6b513089544d2, type: 3}
   - {fileID: 21300000, guid: d360b8bbe415d394eb2365aad661fe22, type: 3}
+  - {fileID: 21300000, guid: 6de8483c3b1af88419f42542eb8fd87d, type: 3}
+  - {fileID: 21300000, guid: 49a5664cee8d3de47847e2c47c9d1819, type: 3}
   - {fileID: 21300000, guid: e2ff8c9cb6eb23f4aa2737407a12ae05, type: 3}
   - {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
   - {fileID: 21300000, guid: 6a4431dd713dd3c44b0a76abf5625e0f, type: 3}
@@ -55,10 +61,16 @@ SpriteAtlas:
   - Bar_Hp
   - btn_Base
   - Bar_MenuTitle_Dark
+  - Dna
   - ClearBox_TopRound
+  - Union
+  - Skill
   - Bar_Hp_Back
+  - Training
   - Bar_Slot00
   - btn_Base_RollOver
+  - Evolution
+  - Shop
   - UI_Coin
   - btn_Base_Select
   - btn_Base_Press
