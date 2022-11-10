@@ -109,6 +109,11 @@ public class UiController : MonoBehaviour
         // 뽑기 게임 50회 
         btnLottery50Round.onClick.AddListener(() => LotteryGameStart(50));
 
+
+        // STAT 구매
+        
+        
+
     }
 
     void LotteryGameStart(int roundCount)
