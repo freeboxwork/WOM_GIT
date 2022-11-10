@@ -18,7 +18,8 @@ public class GlobalData : MonoBehaviour
     public BossMonsterChallengeTimer bossChallengeTimer;
     public StageManager stageManager;
     public LotteryManager lotteryManager;
-         
+    public SaleManager saleManager;
+
     private void Awake()
     {
         SetInstance();

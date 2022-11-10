@@ -21,19 +21,45 @@ public class Player : MonoBehaviour
     /// <summary> 현재 전투중인 몬스터 </summary>
     public MonsterBase currentMonster;
 
-    /// <summary> 현재 플레이어의 스탯 레벨 </summary>
-    public PlayerStatLevelData curStatLevel;
+    /// <summary> 현재 플레이어의 스탯 데이터 </summary>
+    public PlayerStatData curStatData;
+
+
 
     void Start()
     {
         
     }
-    
-  
+
+    private void Awake()
+    {
+        curStatData = new PlayerStatData();
+    }
+
     public  IEnumerator Init(SaveData saveData)
     {
-        yield return null;
         SetPlayerDataFromSaveData(saveData);
+
+        // Set stat data 
+        SetStatData();
+
+        yield return null;
+    }
+
+    void SetStatData()
+    {
+        foreach (SaleStatType stat in Enum.GetValues(typeof(SaleStatType)))
+        {
+            var level = GetStatLevelByStatType(stat);
+            var data = GlobalData.instance.dataManager.GetSaleStatDataByTypeId(stat, level);
+            SetStatValue(stat, data.value);
+        }
+    }
+
+    // TODO: 저장된 플레이어 데이터에서 레벨값읽어 오도록 수정 현재 초기 값은 0
+    int GetStatLevelByStatType(SaleStatType statType)
+    {
+        return 0;
     }
 
     public void SetCurrentMonster(MonsterBase monsterBase)
@@ -79,12 +105,22 @@ public class Player : MonoBehaviour
 
     public int GetStatLevel(SaleStatType statType)
     {
-        return curStatLevel.statDatas[(int)statType];
+        return curStatData.statLevelDatas[(int)statType];
     }
 
     public void SetStatLevel(SaleStatType statType, int level)
     {
-        curStatLevel.statDatas[(int)statType] = level;
+        curStatData.statLevelDatas[(int)statType] = level;
+    }
+    
+    public float GetStatValue(SaleStatType statType)
+    {
+        return curStatData.statValueDatas[(int)statType];
+    }
+
+    public void SetStatValue(SaleStatType statType, float value)
+    {
+        curStatData.statValueDatas[(int)statType] = value;
     }
 }
 

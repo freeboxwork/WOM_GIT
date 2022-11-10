@@ -232,49 +232,64 @@ public class StatSaleData
 {
     public int level;
     public int salePrice;
-   
-    // gold ∑Œ »πµÊ
-    public float damage;
-    public float criticalChance;
-    public float criticalDamage;
 
-    // bone ¿∏∑Œ »πµÊ
-    public float talentDamage;
-    public float talentCriticalChance;
-    public float talentCriticalDamage;
-    public float talentMoveSpeed;
-    public float talentSpawnSpeed;
-    public float talentGoldBonus;
+    // gold ∑Œ »πµÊ
+    public float value;
 
 }
 
 [Serializable]
 /// <summary> «ˆ¿Á ¿Ø¿˙¿« Ω∫≈» ∑π∫ß ¿Œµ¶Ω∫ µ•¿Ã≈Õ</summary>
-public class PlayerStatLevelData
+public class PlayerStatData
 {
-    public int levelDamage;
-    public int levelCriticalChance;
-    public int levelCriticalDamage;
-    public int levelTalentDamage;
-    public int levelTalentCriticalChance;
-    public int levelTalentCriticalDamage;
-    public int levelTalentMoveSpeed;
-    public int levelTalentSpawnSpeed;
-    public int levelTalentGoldBonus;
+    int levelDamage;
+    int levelCriticalChance;
+    int levelCriticalDamage;
+    int levelTalentDamage;
+    int levelTalentCriticalChance;
+    int levelTalentCriticalDamage;
+    int levelTalentMoveSpeed;
+    int levelTalentSpawnSpeed;
+    int levelTalentGoldBonus;
 
-    public List<int> statDatas;
-    public PlayerStatLevelData()
+    float valueDamage;
+    float valueCriticalChance;
+    float valueCriticalDamage;
+    float valueTalentDamage;
+    float valueTalentCriticalChance;
+    float valueTalentCriticalDamage;
+    float valueTalentMoveSpeed;
+    float valueTalentSpawnSpeed;
+    float valueTalentGoldBonus;
+
+
+    public List<int> statLevelDatas;
+    public List<float> statValueDatas;
+    
+    
+    public PlayerStatData()
     {
-        statDatas = new List<int>();
-        statDatas.Add(levelDamage);
-        statDatas.Add(levelCriticalChance);
-        statDatas.Add(levelCriticalDamage);
-        statDatas.Add(levelTalentDamage);
-        statDatas.Add(levelTalentCriticalChance);
-        statDatas.Add(levelTalentCriticalDamage);
-        statDatas.Add(levelTalentMoveSpeed);
-        statDatas.Add(levelTalentSpawnSpeed);
-        statDatas.Add(levelTalentGoldBonus);
+        statLevelDatas = new List<int>();
+        statLevelDatas.Add(levelDamage);
+        statLevelDatas.Add(levelCriticalChance);
+        statLevelDatas.Add(levelCriticalDamage);
+        statLevelDatas.Add(levelTalentDamage);
+        statLevelDatas.Add(levelTalentCriticalChance);
+        statLevelDatas.Add(levelTalentCriticalDamage);
+        statLevelDatas.Add(levelTalentMoveSpeed);
+        statLevelDatas.Add(levelTalentSpawnSpeed);
+        statLevelDatas.Add(levelTalentGoldBonus);
+
+        statValueDatas = new List<float>();
+        statValueDatas.Add(valueDamage);
+        statValueDatas.Add(valueCriticalChance);
+        statValueDatas.Add(valueCriticalDamage);
+        statValueDatas.Add(valueTalentDamage);
+        statValueDatas.Add(valueTalentCriticalChance);
+        statValueDatas.Add(valueTalentCriticalDamage);
+        statValueDatas.Add(valueTalentMoveSpeed);
+        statValueDatas.Add(valueTalentSpawnSpeed);
+        statValueDatas.Add(valueTalentGoldBonus);
     }
 }
 
