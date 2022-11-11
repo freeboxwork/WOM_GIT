@@ -298,4 +298,9 @@ public class PlayerStatData
 public class SaleStatMsgData
 {
     public EnumDefinition.SaleStatType saleStatType;
+
+    public SaleStatMsgData(EnumDefinition.SaleStatType saleStatType)
+    {
+        this.saleStatType = saleStatType;
+    }
 }

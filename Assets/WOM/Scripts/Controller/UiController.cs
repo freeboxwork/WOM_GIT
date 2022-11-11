@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UiController : MonoBehaviour
 {
@@ -110,9 +111,29 @@ public class UiController : MonoBehaviour
         btnLottery50Round.onClick.AddListener(() => LotteryGameStart(50));
 
 
-        // STAT 구매
-        
-        
+        #region btn type list
+        /*
+        trainingDamage,
+        trainingCriticalChance,
+        trainingCriticalDamage,
+        talentDamage,
+        talentCriticalChance,
+        talentCriticalDamage,
+        talentMoveSpeed,
+        talentSpawnSpeed,
+        talentGoldBonus
+         */
+        #endregion
+        // STAT 구매 버튼 이벤트 세팅
+        int btnId = 14;
+        foreach(EnumDefinition.SaleStatType type in Enum.GetValues(typeof(EnumDefinition.SaleStatType)))
+        {
+            UtilityMethod.SetBtnEventCustomTypeByID(btnId, () =>
+            {
+                GlobalData.instance.saleManager.AddData(new SaleStatMsgData(type));
+            });
+            btnId++;
+        }
 
     }
 
