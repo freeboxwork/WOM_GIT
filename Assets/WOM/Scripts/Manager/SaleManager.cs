@@ -62,6 +62,16 @@ public class SaleManager : MonoBehaviour
 
 
                     // UI 적용
+                    if (payData.nextStatSaleData != null)
+                    {
+                        Debug.Log($"{statType}의 다음 레벨 : { payData.nextStatSaleData.level} - 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
+                    }
+                    else // 최종레벨 도달
+                    {
+                        Debug.Log("최종레벨 도달");
+                    }
+                    
+
                 }
                 else
                 {
@@ -75,13 +85,20 @@ public class SaleManager : MonoBehaviour
                 if (IsValidPurchaseBone(payData.statData.salePrice))
                 {
                     // 구매
-                    player.PayGold(payData.statData.salePrice);
+                    player.PayBone(payData.statData.salePrice);
 
                     // 데이터 적용
                     player.SetStatLevel(statType, payData.statData.level);
 
-
                     // UI 적용
+                    if (payData.nextStatSaleData != null)
+                    {
+                        Debug.Log($"{statType}의 다음 레벨 : {payData.nextStatSaleData.level} , 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
+                    }
+                    else // 최종레벨 도달
+                    {
+                        Debug.Log("최종레벨 도달");
+                    }
                 }
                 else
                 {
@@ -99,20 +116,33 @@ public class SaleManager : MonoBehaviour
         yield return null;
     }
 
-    (int level , StatSaleData statData, bool isValidMaximumLevel) GetPayData( SaleStatType statType)
+    (int level , StatSaleData statData, bool isValidMaximumLevel, StatSaleData nextStatSaleData) GetPayData( SaleStatType statType)
     {
-        (int, StatSaleData,bool) items;
+        (int m_level, StatSaleData m_statData,bool m_isValidMaxLevel, StatSaleData m_nextStatData) items;
         var statDatas = GlobalData.instance.dataManager.GetSaleStatDataByType(statType);
-        items.Item1 = player.GetStatLevel(statType);
+        items.m_level = player.GetStatLevel(statType);
         // 맥시멈 체크
-        items.Item3 = statDatas.data.Last().level > items.Item1;
-        if (items.Item3)
+        var lastData = statDatas.data.Last();
+        items.m_isValidMaxLevel =  lastData.level > items.m_level;
+        if (items.m_isValidMaxLevel)
         {
-            items.Item2 = GetStatSaleData(statDatas, items.Item1 + 1);
+            items.m_statData = GetStatSaleData(statDatas, items.m_level + 1);
         }
         else
         {
-            items.Item2 = null;
+            items.m_statData = null;
+        }
+
+        
+
+        // 다음 레벨 데이터 존재 하는지 체크
+        if(lastData.level > items.m_level+2)
+        {
+            items.m_nextStatData = GetStatSaleData(statDatas, items.m_level + 2);
+        }
+        else
+        {
+            items.m_nextStatData = null;
         }
         
         return items;
