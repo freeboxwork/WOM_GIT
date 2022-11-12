@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
 
     public void AddGold(int value)
     {
+        //var sum = value + (value * GetStatValue(SaleStatType.talentGoldBonus));
+
         gold = gold + value;
     }
 
