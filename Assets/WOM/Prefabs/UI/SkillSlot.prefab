@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2915869773021839550}
   - component: {fileID: 2915869773021839548}
   - component: {fileID: 2915869773021839549}
-  - component: {fileID: 2915869773021839523}
   m_Layer: 5
   m_Name: BeforeDmgText (TMP) (1)
   m_TagString: Untagged
@@ -136,27 +135,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2915869773021839523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915869773021839551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  components:
-    animController: {fileID: 0}
-    button: {fileID: 0}
-    text: {fileID: 2915869773021839549}
-    image: {fileID: 0}
-    sr: {fileID: 0}
-    tr: {fileID: 2915869773021839550}
-  customType: 1
-  index: 7
 --- !u!1 &2915869773779444243
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +147,6 @@ GameObject:
   - component: {fileID: 2915869773779444247}
   - component: {fileID: 2915869773779444240}
   - component: {fileID: 2915869773779444241}
-  - component: {fileID: 2915869773779444246}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -281,27 +258,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2915869773779444246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915869773779444243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  components:
-    animController: {fileID: 0}
-    button: {fileID: 2915869773779444241}
-    text: {fileID: 0}
-    image: {fileID: 2915869773779444240}
-    sr: {fileID: 0}
-    tr: {fileID: 2915869773779444242}
-  customType: 0
-  index: 8
 --- !u!1 &2915869773872714170
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +480,6 @@ GameObject:
   - component: {fileID: 2915869773889205324}
   - component: {fileID: 2915869773889205361}
   - component: {fileID: 2915869773889205362}
-  - component: {fileID: 2915869773889205363}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -649,27 +604,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2915869773889205363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915869773889205325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  components:
-    animController: {fileID: 0}
-    button: {fileID: 0}
-    text: {fileID: 2915869773889205362}
-    image: {fileID: 0}
-    sr: {fileID: 0}
-    tr: {fileID: 2915869773889205324}
-  customType: 1
-  index: 15
 --- !u!1 &2915869773893947983
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +615,6 @@ GameObject:
   - component: {fileID: 2915869773893947982}
   - component: {fileID: 2915869773893947980}
   - component: {fileID: 2915869773893947981}
-  - component: {fileID: 2915869773893948019}
   m_Layer: 5
   m_Name: InfoText (TMP)
   m_TagString: Untagged
@@ -806,27 +739,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2915869773893948019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915869773893947983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  components:
-    animController: {fileID: 0}
-    button: {fileID: 0}
-    text: {fileID: 2915869773893947981}
-    image: {fileID: 0}
-    sr: {fileID: 0}
-    tr: {fileID: 2915869773893947982}
-  customType: 1
-  index: 6
 --- !u!1 &2915869774145489976
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +750,6 @@ GameObject:
   - component: {fileID: 2915869774145489983}
   - component: {fileID: 2915869774145489981}
   - component: {fileID: 2915869774145489982}
-  - component: {fileID: 2915869774145489980}
   m_Layer: 5
   m_Name: AfterDmgText (TMP) (3)
   m_TagString: Untagged
@@ -963,27 +874,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2915869774145489980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915869774145489976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  components:
-    animController: {fileID: 0}
-    button: {fileID: 0}
-    text: {fileID: 2915869774145489982}
-    image: {fileID: 0}
-    sr: {fileID: 0}
-    tr: {fileID: 2915869774145489983}
-  customType: 1
-  index: 8
 --- !u!1 &2915869774285668487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,7 +1045,6 @@ GameObject:
   - component: {fileID: 2915869774681813353}
   - component: {fileID: 2915869774681813359}
   - component: {fileID: 2915869774681813352}
-  - component: {fileID: 2915869774681813358}
   m_Layer: 5
   m_Name: DmgCostText (TMP)
   m_TagString: Untagged
@@ -1280,27 +1169,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2915869774681813358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2915869774681813354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  components:
-    animController: {fileID: 0}
-    button: {fileID: 0}
-    text: {fileID: 2915869774681813352}
-    image: {fileID: 0}
-    sr: {fileID: 0}
-    tr: {fileID: 2915869774681813353}
-  customType: 1
-  index: 18
 --- !u!1 &2915869774687227117
 GameObject:
   m_ObjectHideFlags: 0

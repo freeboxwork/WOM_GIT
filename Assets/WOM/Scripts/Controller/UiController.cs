@@ -125,7 +125,7 @@ public class UiController : MonoBehaviour
          */
         #endregion
         // STAT 구매 버튼 이벤트 세팅
-        int btnId = 14;
+        int btnId = 8;
         foreach(EnumDefinition.SaleStatType type in Enum.GetValues(typeof(EnumDefinition.SaleStatType)))
         {
             UtilityMethod.SetBtnEventCustomTypeByID(btnId, () =>
