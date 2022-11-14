@@ -57,6 +57,13 @@ public static class UtilityMethod
         }
     }
 
+    public static void SetTxtsCustomTypeByIDs(int[] ids, float[] values)
+    {
+        for (int i = 0; i < ids.Length; i++)
+            SetTxtCustomTypeByID(ids[i], values[i].ToString());
+    }
+
+
     public static void SetBtnEventCustomTypeByID(int id , UnityAction action)
     {
         var btn = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);
