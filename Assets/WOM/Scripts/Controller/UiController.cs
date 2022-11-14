@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using static EnumDefinition;
 
 public class UiController : MonoBehaviour
 {
@@ -21,9 +22,6 @@ public class UiController : MonoBehaviour
     public Image imgBossMonTimerParent;
 
     [Header("뽑기 관련 UI 항목")]
-    public Button btnLottery10Round;
-    public Button btnLottery30Round;
-    public Button btnLottery50Round;
     public Transform trLotteryGameSet;
 
 
@@ -46,7 +44,7 @@ public class UiController : MonoBehaviour
         // Disable Ui Elements
         DisableUiElements();
 
-   
+        // Init Text Values
     }
 
 
@@ -86,9 +84,6 @@ public class UiController : MonoBehaviour
         txtBossMonChallengeTimer = customTypeDataManager.GetCustomTypeData_Text(3);
         imgBossMonTimer          = customTypeDataManager.GetCustomTypeData_Image(0);
         imgBossMonTimerParent    = customTypeDataManager.GetCustomTypeData_Image(1);
-        btnLottery10Round        = customTypeDataManager.GetCustomTypeData_Button(11);
-        btnLottery30Round        = customTypeDataManager.GetCustomTypeData_Button(12);
-        btnLottery50Round        = customTypeDataManager.GetCustomTypeData_Button(13);
         trLotteryGameSet         = customTypeDataManager.GetCustomTypeData_Transform(0);
     }
 
@@ -100,15 +95,10 @@ public class UiController : MonoBehaviour
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });
 
-
-        // 뽑기 게임 10회 
-        btnLottery10Round.onClick.AddListener(()=>LotteryGameStart(10));
-
-        // 뽑기 게임 30회 
-        btnLottery30Round.onClick.AddListener(() => LotteryGameStart(30));
-
-        // 뽑기 게임 50회 
-        btnLottery50Round.onClick.AddListener(() => LotteryGameStart(50));
+        // 뽑기 게임 10 , 30 , 50회
+        UtilityMethod.SetBtnEventCustomTypeByID(17, () => LotteryGameStart(10));
+        UtilityMethod.SetBtnEventCustomTypeByID(18, () => LotteryGameStart(10));
+        UtilityMethod.SetBtnEventCustomTypeByID(19, () => LotteryGameStart(10));
 
 
         #region btn type list
@@ -134,7 +124,25 @@ public class UiController : MonoBehaviour
             });
             btnId++;
         }
+    }
 
+
+    // Set Txt Traning Pannel Text
+    // 현재 스탯값과 다음 스탯값 텍스트를 세팅 할때 사용
+    public void SetTxtTraningValues(SaleStatType statType, float[] values)
+    {
+        switch (statType)
+        {
+            case SaleStatType.trainingDamage: UtilityMethod.SetTxtsCustomTypeByIDs(new int[] { 7, 8 },values); break;
+            case SaleStatType.trainingCriticalChance: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 11, 12 },values); break;
+            case SaleStatType.trainingCriticalDamage: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 15, 16 },values); break;
+            case SaleStatType.talentDamage: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 19, 20 },values); break;
+            case SaleStatType.talentCriticalChance: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 23, 24 },values); break;
+            case SaleStatType.talentCriticalDamage: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 27, 28 },values); break;
+            case SaleStatType.talentSpawnSpeed: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 31, 32 },values); break;
+            case SaleStatType.talentMoveSpeed: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 35, 36 },values); break;
+            case SaleStatType.talentGoldBonus: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 39, 40 },values); break;
+        }
     }
 
     void LotteryGameStart(int roundCount)

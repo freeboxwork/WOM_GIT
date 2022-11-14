@@ -64,7 +64,7 @@ public class SaleManager : MonoBehaviour
                     // UI 적용
                     if (payData.nextStatSaleData != null)
                     {
-                        Debug.Log($"{statType}의 다음 레벨 : { payData.nextStatSaleData.level} - 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
+                        Debug.Log($"{statType}의 현재 레벨 스탯값 : { payData.statData.value} - 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
                     }
                     else // 최종레벨 도달
                     {
