@@ -34,6 +34,19 @@ public class CustomTypeDataManager : MonoBehaviour
         return null;
     }
 
+    public List<CustomTypeData> GetCustomTypeDatas(EnumDefinition.CustomDataType dataType)
+    {
+        switch (dataType)
+        {
+            case EnumDefinition.CustomDataType.animCont: return customTypeDatas_animCont;
+            case EnumDefinition.CustomDataType.button: return customTypeDatas_uiButton;
+            case EnumDefinition.CustomDataType.text: return customTypeDatas_uiText;
+            case EnumDefinition.CustomDataType.image: return customTypeDatas_uiImage;
+            case EnumDefinition.CustomDataType.tr: return customTypeDatas_transform;
+            default: return new List<CustomTypeData>();
+        }
+    }
+
     public Button GetCustomTypeData_Button(int index)
     {
         //Debug.Log(index);
