@@ -28,9 +28,6 @@ public class GlobalController : MonoBehaviour
         // set data
         yield return StartCoroutine(dataManager.SetDatas());
 
-        // set ui data
-        yield return StartCoroutine(uiController.Init());
-        
         // get player data ( 게임 종료전 저장 되어있는 데이터 로드 )
         yield return StartCoroutine(playerDataManager.InitPlayerData());
         
@@ -48,6 +45,9 @@ public class GlobalController : MonoBehaviour
 
         // Player data 세팅
         yield return StartCoroutine(player.Init(playerDataManager.saveData));
+
+        // UI Controller 세팅 
+        yield return StartCoroutine(uiController.Init());
 
         // 뽑기 매니저 초기화 ( 첫 뽑기 데이터는 모두 0번 )
         yield return StartCoroutine(lotteryManager.Init(0));

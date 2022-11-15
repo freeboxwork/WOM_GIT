@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using static EnumDefinition;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class UiController : MonoBehaviour
 {
@@ -45,6 +47,9 @@ public class UiController : MonoBehaviour
         DisableUiElements();
 
         // Init Text Values
+
+        // 훈련 UI 초기 값 세팅
+        SetStatInfoTxt();
     }
 
 
@@ -127,7 +132,52 @@ public class UiController : MonoBehaviour
     }
 
 
-    // Set Txt Traning Pannel Text
+    #region 훈련 스탯 - 구매 가능한 스탯 UI 세팅 
+    // --- [ TRANING UI ] ---
+
+    void SetStatInfoTxt() // title , maximum level
+    {
+        // SET TITLE , MAXIMUM LEVEL
+        string[] names = { "Traning Damage", "Traning Critical Chance", "Traning Critical Damage", "Talent Damage", "Talent Critical Chance", "Talent Critical Damage" , "Talent Spawn Speed" , "Talent Move Speed", "Talent Gold Bonus" };
+        int idx = 0;
+        foreach(SaleStatType stat in Enum.GetValues(typeof(SaleStatType)))
+        {
+            var titleIdx =     6 + (4 * idx);
+            var curValueIdx =  7 + (4 * idx);
+            var nextValueIdx = 8 + (4 * idx);
+            var maxLevIdx =    9 + (4 * idx);
+            UtilityMethod.SetTxtCustomTypeByID(titleIdx, names[idx]);
+            UtilityMethod.SetTxtCustomTypeByID(curValueIdx, GetCurStatValue(stat));
+            UtilityMethod.SetTxtCustomTypeByID(nextValueIdx, GetNextStatValue(stat));
+            UtilityMethod.SetTxtCustomTypeByID(maxLevIdx,  GetStatMaxLevel(stat));
+            idx++;
+        }
+    }
+
+    string GetCurStatValue(SaleStatType statType)
+    {
+        var curLevel = GlobalData.instance.player.curStatData.statLevelDatas[(int)statType];
+        return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel).value.ToString();
+    }
+
+    string GetNextStatValue(SaleStatType statType)
+    {
+
+        var data = GlobalData.instance.dataManager.GetSaleStatDataByType(statType);
+        var curLevel = GlobalData.instance.player.curStatData.statLevelDatas[(int)statType];
+        // TODO: 다음 레벨 존재할때 어떤 값으로 넣어야 하는지 체크 필요함
+        if (data.data.Last().level > curLevel)
+            return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel+1).value.ToString();
+        else
+            return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel).value.ToString();
+    }
+
+    string GetStatMaxLevel(SaleStatType statType)
+    {
+        return "Max Level : " +  GlobalData.instance.dataManager.GetSaleStatDataByType(statType).data.Last().level.ToString();
+    }
+    
+
     // 현재 스탯값과 다음 스탯값 텍스트를 세팅 할때 사용
     public void SetTxtTraningValues(SaleStatType statType, float[] values)
     {
@@ -144,6 +194,10 @@ public class UiController : MonoBehaviour
             case SaleStatType.talentGoldBonus: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 39, 40 },values); break;
         }
     }
+
+    #endregion
+
+
 
     void LotteryGameStart(int roundCount)
     {

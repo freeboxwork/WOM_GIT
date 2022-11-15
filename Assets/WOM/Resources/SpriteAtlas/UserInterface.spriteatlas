@@ -65,6 +65,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1e13e576a7f11924e9db1622c482dba7, type: 3}
   - {fileID: 21300000, guid: d0beeb87bb5b7d04aaef118add229269, type: 3}
   - {fileID: 21300000, guid: 5cddf297184708f4a8823457102c25ad, type: 3}
+  - {fileID: 21300000, guid: bff705582d324e34ebdfaf8b57acd7c9, type: 3}
   - {fileID: 21300000, guid: 8b899768403e0c846a1b3d9f675a4631, type: 3}
   - {fileID: 21300000, guid: a0e5f499560bea74ca7f01c2d82a9a9b, type: 3}
   - {fileID: 21300000, guid: 417ac4d98b32b3e4d8746e1591f7249f, type: 3}
@@ -109,6 +110,7 @@ SpriteAtlas:
   - Icon_MoveSpeed
   - U_Frame_Legend
   - Skill
+  - Frame_Concave
   - Icon_Grade_03
   - Bar_Hp_Back
   - Icon_SpawnSpeed
