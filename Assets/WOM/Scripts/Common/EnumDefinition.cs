@@ -93,6 +93,14 @@ public class EnumDefinition
         legend,
         unique
     }
-         
+
+
+    /// <summary> 재화타입 </summary>
+    public enum GoodsType
+    {
+        gold,
+        boone,
+        jewel
+    }
 
 }
