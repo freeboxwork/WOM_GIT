@@ -45,14 +45,19 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
   - {fileID: 21300000, guid: 0e3ae5a00a4e70442b64c599a36de93a, type: 3}
   - {fileID: 21300000, guid: 7633baa0c2ce3164392a87f1237404c1, type: 3}
+  - {fileID: 21300000, guid: 013589b0790749243ae715e4f52e2bee, type: 3}
   - {fileID: 21300000, guid: d7cd9cd0c210f0141b3dc0ff62c93af7, type: 3}
+  - {fileID: 21300000, guid: b5cf9561b1652e14ab35927b66be36cd, type: 3}
   - {fileID: 21300000, guid: 3819d8b16d191c044a46fbdeff09e5fb, type: 3}
   - {fileID: 21300000, guid: 3541e462b8355ae4dab60f72d84e16d7, type: 3}
   - {fileID: 21300000, guid: 40e17be2181be8e4fb48bf67984e2d5a, type: 3}
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
   - {fileID: 21300000, guid: 340d1564ed4494e4b8417382c081075c, type: 3}
+  - {fileID: 21300000, guid: eced51b430ffb5a43b3c04631438dd6a, type: 3}
+  - {fileID: 21300000, guid: fa9c8ab4585c04c41a755bc5ec44ec46, type: 3}
   - {fileID: 21300000, guid: 37485fc41ab25f64596b1ff9a21c7ad9, type: 3}
+  - {fileID: 21300000, guid: 25c171d44276e344f961ab90c7eeeb8d, type: 3}
   - {fileID: 21300000, guid: 23d58bf421dcbc14ba855f1c014c87c1, type: 3}
   - {fileID: 21300000, guid: bef97d45548138b459d3736d332c56aa, type: 3}
   - {fileID: 21300000, guid: 871cb5a5f3d3b85438ea46efeec7d0b2, type: 3}
@@ -74,6 +79,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a32dfc5d9d2788641a2e67a9f0a6dbab, type: 3}
   - {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
   - {fileID: 21300000, guid: 6a4431dd713dd3c44b0a76abf5625e0f, type: 3}
+  - {fileID: 21300000, guid: e395104e80d98e94eba88b5e95fec101, type: 3}
   - {fileID: 21300000, guid: 8daaabce56b11294790b2dd87f746913, type: 3}
   - {fileID: 21300000, guid: cdb17eeea6a28354c8affba06db7934c, type: 3}
   - {fileID: 21300000, guid: 062b375fb7e6c8f4cae752dffd4767e7, type: 3}
@@ -83,14 +89,19 @@ SpriteAtlas:
   - btn_Base
   - Bar_MenuTitle_Dark
   - U_Frame_Rare
+  - UI_Skull
   - Icon_CriticalChance_Per
+  - UI_Dice
   - Dna
   - Icon_GoldBonus
   - U_Frame_Unique
   - Icon_CriticalDamage
   - ClearBox_TopRound
   - Icon_DamageUp_Per
+  - UI_Lock
+  - btn_inside
   - Union
+  - UI_Lock_un
   - Icon_CriticalDamage_Per
   - Icon_Grade_04
   - Icon_DamageUP
@@ -112,6 +123,7 @@ SpriteAtlas:
   - Icon_CriticalChance
   - btn_Base_Select
   - btn_Base_Press
+  - btn_small
   - Icon_Grade_01
   - U_Frame_High
   - ClearBox
