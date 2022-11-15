@@ -75,10 +75,16 @@ public class EventController : MonoBehaviour
     {
         yield return null;
 
-        // TODO: GOLD È¹µæ ¾Ö´Ï¸ÞÀÌ¼Ç Ãß°¡ ÄÚ·çÆ¾¿¡¼­ Á¦¾î
+        // GOLD È¹µæ ¾Ö´Ï¸ÞÀÌ¼Ç
         var goldEnableCount = currentMonster.goldCount;
-        StartCoroutine(globalData.effectManager.EnableGoldEffects(goldEnableCount));
-        
+        StartCoroutine(globalData.effectManager.goldPoolingCont.EnableGoldEffects(goldEnableCount));
+
+        // º¸½ºÀÏ°æ¿ì »ÀÁ¶°¢ È¹µæ
+        if(currentMonster.monsterType == MonsterType.boss)
+            StartCoroutine(globalData.effectManager.bonePoolingCont.EnableGoldEffects(goldEnableCount));
+
+
+
         // °ñµå È¹µæ
         GainGold(currentMonster);
 
@@ -107,6 +113,9 @@ public class EventController : MonoBehaviour
     {
         var gold = monster.gold;
         globalData.player.AddGold(gold);
+
+        if (monster.monsterType == MonsterType.boss)
+            globalData.player.AddBone(monster.bone);
     }
 
     // ÀÏ¹Ý ¸ó½ºÅÍ »ç¸Á½Ã
@@ -188,8 +197,12 @@ public class EventController : MonoBehaviour
     IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
     {
         // °ñµå OUT EFFECT
-        StartCoroutine(globalData.effectManager.DisableGoldEffects());
-
+        StartCoroutine(globalData.effectManager.goldPoolingCont.DisableGoldEffects());
+        
+        // º¸½ºÀÇ °æ¿ì »ÀÁ¶°¢ OUT EFF Ãß°¡
+        if(monsterType == MonsterType.boss)
+            StartCoroutine(globalData.effectManager.bonePoolingCont.DisableGoldEffects());
+        
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
         // set current monster

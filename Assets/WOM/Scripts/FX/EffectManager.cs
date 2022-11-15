@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngineInternal;
 
 public class EffectManager : MonoBehaviour
@@ -29,28 +30,18 @@ public class EffectManager : MonoBehaviour
     public Transform trEffects;
     [Header("=====================================================================================================================")]
     
+
     [Header("골드 관련 항목")]
-    // 골드 풀링 카운트
-    public int goldPoolCount = 25;
-    // 골드 프리팹
-    public GoldAnimController prefabGoldAnimCont;
     // 골드 생성 포인트들
     public List<Transform> goldSFX_RandomPoints = new List<Transform>();
-    // 골드 오브젝트 풀
-    public List<GoldAnimController> goldAnimConts = new List<GoldAnimController>();
-    // 활성화된 골드 오브젝트들
-    List<GoldAnimController> enableGoldAnimConts = new List<GoldAnimController>();
-   
-
-
+    public GoodsPoolingConrtoller goldPoolingCont;
+    public GoodsPoolingConrtoller bonePoolingCont;
 
 
     void Start()
     {
 
     }
-
-
 
     public IEnumerator Init()
     {
@@ -67,62 +58,12 @@ public class EffectManager : MonoBehaviour
         CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.beetle], insectAttackEffBeetle);
 
         // 골드 풀링 오브젝트 생성
-        CreateInstanceGolds();
+        goldPoolingCont.Init();
+        bonePoolingCont.Init();
+        //CreateInstanceGolds();
     }
 
-    // 골드 생성 ( 풀링 오브젝트 ) 
-    void CreateInstanceGolds()
-    {
-        for (int i = 0; i < goldPoolCount; i++)
-        {
-            var gold = Instantiate(prefabGoldAnimCont, trEffects);
-            goldAnimConts.Add(gold);
-            gold.gameObject.SetActive(false);
-        }
-    }
-
-    public IEnumerator EnableGoldEffects(int enableCount)
-    {
-        StopAllCoroutines();
-        yield return new WaitForEndOfFrame();
-        for (int i = 0; i < enableCount; i++)
-        {
-            var gold = GetDisableGold();
-            if(gold != null)
-            {
-                gold.gameObject.SetActive(true);
-                gold.GoldInAnimStart();
-                enableGoldAnimConts.Add(gold);
-                yield return new WaitForSeconds(0.01f);
-            }
-            else
-            {
-                Debug.Log("Gold Pool 이 비어 있습니다.");
-            }
-            
-        }
-    }
-
-    public IEnumerator DisableGoldEffects()
-    {
-        for (int i = 0; i < enableGoldAnimConts.Count; i++)
-        {
-            var gold = enableGoldAnimConts[i];
-            if (gold.gameObject.activeSelf)
-            {
-                gold.GoldOutAnimStart(() => {
-                    // 골드가 UI 쪽으로 이동후 개별 이벤트 실행
-                    //Debug.Log("gold goal event!!");
-                });
-
-                yield return new WaitForSeconds(0.05f);
-            }
-          
-        }
-        enableGoldAnimConts.Clear();
-    }
-
-
+ 
     void CreateInstanceAttackEffects(ParticleRoate prefabParticle , List<ParticleRoate> list )
     {
         for (int i = 0; i < insectAttackEffectsBrithCount; i++)
@@ -170,13 +111,7 @@ public class EffectManager : MonoBehaviour
         effect.gameObject.SetActive(true);
     }
 
-    GoldAnimController GetDisableGold()
-    {
-        var obj = goldAnimConts?.FirstOrDefault(f => !f.gameObject.activeSelf);
-        if (obj != null) return obj;
-        else return null;
-        //return goldAnimConts.FirstOrDefault(f => !f.gameObject.activeSelf);
-    }
+
 
     ParticleRoate GetDisableParticleRoate(List<ParticleRoate> particles)
     {

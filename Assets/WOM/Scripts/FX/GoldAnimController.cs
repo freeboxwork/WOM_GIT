@@ -115,7 +115,7 @@ public class GoldAnimController : MonoBehaviour
             goldOutAnimData.animValue = EaseValues.instance.GetAnimCurve(goldOutAnimData.animCurveType, goldOutAnimData.animTime);// EaseValues.instance.EaseInQuad(0f, 1f, goldOutAnimData.animTime);
             transform.position = CalculateBezierPoint(goldOutAnimData.animValue, curPos, centerPos, targetPos);
             //transform.position = Vector2.Lerp(curPos, targetPos, goldOutAnimData.animValue);
-            transform.rotation = Quaternion.Lerp(targetRot, startRot, goldOutAnimData.animValue);
+            //transform.rotation = Quaternion.Lerp(targetRot, startRot, goldOutAnimData.animValue);
 
             
 

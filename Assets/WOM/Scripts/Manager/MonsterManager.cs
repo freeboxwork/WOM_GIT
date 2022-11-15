@@ -147,7 +147,9 @@ public class MonsterManager : MonoBehaviour
         monster.monsterId = monsterData.monsterId;
         monster.hp = monsterData.hp;
         monster.exp = monsterData.exp;
+        monster.bone = monsterData.bone;
         monster.gold = monsterData.gold;
+        monster.boneCount = monsterData.boneCount;
         monster.goldCount = monsterData.goldCount;
         monster.imageId = monsterData.imageId;
         monster.bgId = monsterData.bgId;
