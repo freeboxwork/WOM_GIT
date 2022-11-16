@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using System;
+using System.Linq;
 using static EnumDefinition;
 
 public class CustomTypeDataViewer : EditorWindow
 {
-
     [MenuItem("GM_TOOLS/CustomTypeDataViewer")]
     public static void ShowWindow()
     {
@@ -50,11 +50,6 @@ public class CustomTypeDataViewer : EditorWindow
     private void OnGUI()
     {
 
-        //foreach (CustomDataType type in Enum.GetValues(typeof(CustomDataType)))
-        //{
-
-        //}
-
         EditorCustomGUI.GUI_Title("씬에 배치된 모든 CUSTOM TYPE DATA Object를 볼 수 있습니다.");
 
         for (int i = 0; i < enableTypes.Count; i++)
@@ -66,7 +61,7 @@ public class CustomTypeDataViewer : EditorWindow
             if (enableTypes[i])
             {
                 scrollViews[i] = EditorGUILayout.BeginScrollView(scrollViews[i], "HelpBox");
-                var data = manager.GetCustomTypeDatas((CustomDataType)i);
+                List<CustomTypeData> data = manager.GetCustomTypeDatas((CustomDataType)i).OrderBy(o => o.index).ToList();
                 for (int j = 0; j < data.Count; j++)
                 {
                     EditorCustomGUI.GUI_ObjectFiled_UI(120f, " INDEX : " + data[j].index, data[j]);
@@ -77,44 +72,26 @@ public class CustomTypeDataViewer : EditorWindow
             EditorGUILayout.EndFoldoutHeaderGroup();
 
             GUILayout.EndHorizontal();
-            //GUILayout.Space(2);
         }
 
-
-
-
-        //if (GUILayout.Button("On/Off"))
-        //{
-        //    fold = !fold;
-        //}
-        //tAnimBool.target = fold;
-
-        //FoldIn(tAnimBool);
-
-        //        EditorCustomGUI
     }
 
-    void FoldIn(AnimBool animValue)
-    { 
-        var value = EditorGUILayout.BeginFadeGroup(animValue.faded);
-        if (value)
-        {
-
+    //void FoldIn(AnimBool animValue)
+    //{ 
+    //    var value = EditorGUILayout.BeginFadeGroup(animValue.faded);
+    //    if (value)
+    //    {
             
-           
+    //        GUILayout.Button("TEST");
+    //        GUILayout.Button("TEST");
+    //        GUILayout.Button("TEST");
+    //        GUILayout.Button("TEST");
+    //        GUILayout.Button("TEST");
             
-            GUILayout.Button("TEST");
-            GUILayout.Button("TEST");
-            GUILayout.Button("TEST");
-            GUILayout.Button("TEST");
-            GUILayout.Button("TEST");
+    //        GUILayout.EndScrollView();
             
-            GUILayout.EndScrollView();
-            
-        }
-        
-        
-    }
+    //    }
+    //}
 
 
 }
