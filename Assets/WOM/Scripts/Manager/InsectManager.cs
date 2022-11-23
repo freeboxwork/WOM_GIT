@@ -114,6 +114,9 @@ public class InsectManager : MonoBehaviour
         // 공격력 공식 : (damage+ (damage* damageRate))
         //return insect.damage + (insect.damage * insect.damageRate);
         return (insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage));
+        //return ((insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage) + PolishEvolutionData insectDamage))  * EvolutionGradeData damageRate ;
+
+
     }
 
     // 치명타 데미지 계산
@@ -121,12 +124,14 @@ public class InsectManager : MonoBehaviour
     {
         //return 2 + insect.criticalDamage;
         return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) ;
+        //return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) + PolishEvolutionData insectCriticalDamage;
 
     }
     // 크리티컬 데미지를 가지고 있는지? ( 크리티컬 데미지카 터졌는지 )
     bool HasCriticalDamage( InsectBase insect )
     {
         //var percentage = 1+insect.criticalChance;
+        //var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage)+ PolishEvolutionData insectCriticalChance;
         var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage);
         var randomValue = Random.Range(0f, 100f);
         return randomValue <= percentage;
