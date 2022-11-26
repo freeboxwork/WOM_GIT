@@ -114,7 +114,7 @@ public class InsectManager : MonoBehaviour
         // 공격력 공식 : (damage+ (damage* damageRate))
         //return insect.damage + (insect.damage * insect.damageRate);
         return (insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage));
-        //return ((insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage) + PolishEvolutionData insectDamage))  * EvolutionGradeData damageRate ;
+        //return ((insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage) + RewardDiceEvolutionData insectDamage))  * RewardEvolutionGradeData damageRate ;
 
 
     }
@@ -124,21 +124,23 @@ public class InsectManager : MonoBehaviour
     {
         //return 2 + insect.criticalDamage;
         return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) ;
-        //return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) + PolishEvolutionData insectCriticalDamage;
+        //return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) + RewardPolishEvolutionData insectCriticalDamage;
 
     }
     // 크리티컬 데미지를 가지고 있는지? ( 크리티컬 데미지카 터졌는지 )
     bool HasCriticalDamage( InsectBase insect )
     {
         //var percentage = 1+insect.criticalChance;
-        //var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage)+ PolishEvolutionData insectCriticalChance;
+        //var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage)+ RewardPolishEvolutionData insectCriticalChance;
         var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage);
         var randomValue = Random.Range(0f, 100f);
         return randomValue <= percentage;
     }
 
     ///talentSpawnSpeed 방치형으로 게임이 전환될 경우 필요한 스텟 현재 사용되지 않으나 테스트 후 필요에 의해 사용될 수 있음
+    ///
     ///talentMoveSpeed 현재 구현되어 있는 곤충의 스피드가 Max. Max Speed값 = 500, Min Speed값 = 0, InsectBullet.AttackAnim speed 값이 필요하며 EvolutionData Speed의 값이 대입되고 + Player.GetStatValue(SaleStatType.trainingMoveSpeed) 가 됨
+    
     ///talentGoldBonus 재화를 획득하는 순간 체크 EventController.GainGold -> Player.AddGold 
 
     //---------- 훈련 업그레이드 끝
