@@ -2,15 +2,15 @@
    "data":[
       {
          "id":0,
-         "tail":0,
-         "hand":0,
-         "finger":0,
-         "foreArm":0,
-         "upperArm":0,
-         "head":0,
-         "body":0,
-         "leg_0":0,
-         "leg_1":0,
+         "tail":3,
+         "hand":1,
+         "finger":3,
+         "foreArm":1,
+         "upperArm":3,
+         "head":1,
+         "body":3,
+         "leg_0":1,
+         "leg_1":3,
          "leg_2":0
       },
       {
@@ -20,11 +20,11 @@
          "finger":1,
          "foreArm":1,
          "upperArm":1,
-         "head":1,
-         "body":1,
-         "leg_0":1,
-         "leg_1":1,
-         "leg_2":1
+         "head":2,
+         "body":4,
+         "leg_0":2,
+         "leg_1":4,
+         "leg_2":2
       },
       {
          "id":2,
