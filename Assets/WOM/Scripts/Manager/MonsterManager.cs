@@ -7,13 +7,14 @@ public class MonsterManager : MonoBehaviour
     public MonsterNormal monsterNormal;
     public MonsterGold monsterGold;
     public MonsterBoss monsterBoss;
+    public MonsterEvolution monsterEvolution;
 
     public int monsterId_normal;
     public int monsterId_gold;
     public int monsterId_boss;
          
 
-    // normal gold boss
+    // normal gold boss evolution
     public List<MonsterBase> monsters = new List<MonsterBase>();
 
     void Start()
@@ -24,10 +25,11 @@ public class MonsterManager : MonoBehaviour
     void AddMonsterList()
     {
         // add monsters list 
-        // 순서 : normal ,  gold,  boss
+        // 순서 : normal ,  gold,  boss , evolution
         monsters.Add(monsterNormal);
         monsters.Add(monsterGold);
         monsters.Add(monsterBoss);
+        monsters.Add(monsterEvolution);
     }
 
     public IEnumerator Init(int stageId)
@@ -37,8 +39,9 @@ public class MonsterManager : MonoBehaviour
         yield return null;
 
         var monNormalData = GetMonsterData(EnumDefinition.MonsterType.normal, stageData.monsterNormalId);
-        var monGoldData = GetMonsterData(EnumDefinition.MonsterType.gold, stageData.monsterGoldId);
-        var monBossData = GetMonsterData(EnumDefinition.MonsterType.boss, stageData.monsterBossId);
+        var monGoldData =   GetMonsterData(EnumDefinition.MonsterType.gold,   stageData.monsterGoldId);
+        var monBossData =   GetMonsterData(EnumDefinition.MonsterType.boss,   stageData.monsterBossId);
+        var monEvolData =   GetMonsterData(EnumDefinition.MonsterType.evolution, stageData.monsterBossId);
 
         SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
         SetMonsterData(EnumDefinition.MonsterType.gold, monGoldData);

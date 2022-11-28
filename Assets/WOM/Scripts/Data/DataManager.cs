@@ -165,16 +165,19 @@ public class DataManager : MonoBehaviour
         var boss = GetData<MonsterDatas>(SheetDataType.monsterData_boss);
         var gold = GetData<MonsterDatas>(SheetDataType.monsterData_gold);
         var normal = GetData<MonsterDatas>(SheetDataType.monsterData_normal);
+        var evolution = GetData<MonsterDatas>(SheetDataType.monsterData_evolution);
 
         // set type
         boss.data.ForEach(f => f.monsterType = MonsterType.boss);
         gold.data.ForEach(f => f.monsterType = MonsterType.gold);
         normal.data.ForEach(f => f.monsterType = MonsterType.normal);
+        evolution.data.ForEach(f => f.monsterType = MonsterType.evolution);
 
-        // 0 : normal , 1: gold , 2 : boss
+        // 0 : normal , 1: gold , 2 : boss , 3 : evolution
         monsterDatas.Add(normal);
         monsterDatas.Add(gold);
         monsterDatas.Add(boss);
+        monsterDatas.Add(evolution);
     }
     void SetUpgradeData()
     {
