@@ -174,7 +174,7 @@ public class UiController : MonoBehaviour
 
     string GetStatMaxLevel(SaleStatType statType)
     {
-        return "Max Level : " +  GlobalData.instance.dataManager.GetSaleStatDataByType(statType).data.Last().level.ToString();
+        return "Max : " +  GlobalData.instance.dataManager.GetSaleStatDataByType(statType).data.Last().level.ToString();
     }
     
 
