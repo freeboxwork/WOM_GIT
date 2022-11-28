@@ -21,7 +21,8 @@ public class EnumDefinition
     {
         normal,
         gold,
-        boss
+        boss,
+        evolution
     }
 
     public enum AttackType
@@ -40,6 +41,7 @@ public class EnumDefinition
         monsterData_boss,
         monsterData_gold,
         monsterData_normal,
+        monsterData_evolution,
         stageData,
         upgradeData,
         monsterSpriteData,

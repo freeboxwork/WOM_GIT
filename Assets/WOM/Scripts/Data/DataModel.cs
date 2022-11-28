@@ -22,6 +22,7 @@ public class StageData
     public int monsterNormalId;
     public int monsterBossId;
     public int monsterGoldId;
+    public int monsterEvolId;
     public int phaseCount;
     public int bgId;
     public string rewardEvent;
