@@ -80,6 +80,9 @@ public class DataManager : MonoBehaviour
         // EVOLUTION OPTION
         SetEvolutionOptionData();
 
+        // EVOLUTION GRADE
+
+
         // MONSTER
         SetMonsterData();
 
