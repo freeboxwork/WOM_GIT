@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int bone;
     public int gem;
     public DateTime playTime;
+
     
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>
     public StageData currentStageData;

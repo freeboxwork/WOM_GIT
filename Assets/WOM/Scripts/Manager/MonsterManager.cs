@@ -46,11 +46,13 @@ public class MonsterManager : MonoBehaviour
         SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
         SetMonsterData(EnumDefinition.MonsterType.gold, monGoldData);
         SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
+        SetMonsterData(EnumDefinition.MonsterType.evolution, monEvolData);
 
         // set sprite image
         SetMonsterBodyImage(monNormalData, monsterNormal);
         SetMonsterBodyImage(monGoldData, monsterGold);
         SetMonsterBodyImage(monBossData, monsterBoss);
+        SetMonsterBodyImage(monEvolData, monsterEvolution);
     }
 
     public void SetMonsterData(EnumDefinition.MonsterType monsterType, int stageId)
@@ -71,6 +73,9 @@ public class MonsterManager : MonoBehaviour
             case EnumDefinition.MonsterType.boss:
                 var monBossData = GetMonsterData(monsterType, stageData.monsterBossId); 
                 SetMonsterData(monsterType , monBossData);  
+                break;
+            case EnumDefinition.MonsterType.evolution:
+
                 break;
         }
         

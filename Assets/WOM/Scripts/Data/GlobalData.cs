@@ -19,6 +19,7 @@ public class GlobalData : MonoBehaviour
     public StageManager stageManager;
     public LotteryManager lotteryManager;
     public SaleManager saleManager;
+    public EvolutionManager evolutionManager;
 
     private void Awake()
     {
