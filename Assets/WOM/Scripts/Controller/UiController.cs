@@ -102,8 +102,8 @@ public class UiController : MonoBehaviour
 
         // »Ì±â °ÔÀÓ 10 , 30 , 50È¸
         UtilityMethod.SetBtnEventCustomTypeByID(17, () => LotteryGameStart(10));
-        UtilityMethod.SetBtnEventCustomTypeByID(18, () => LotteryGameStart(10));
-        UtilityMethod.SetBtnEventCustomTypeByID(19, () => LotteryGameStart(10));
+        UtilityMethod.SetBtnEventCustomTypeByID(18, () => LotteryGameStart(30));
+        UtilityMethod.SetBtnEventCustomTypeByID(19, () => LotteryGameStart(50));
 
 
         #region btn type list

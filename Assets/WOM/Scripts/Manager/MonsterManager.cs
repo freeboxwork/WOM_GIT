@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using static EnumDefinition;
 
 public class MonsterManager : MonoBehaviour
 {
@@ -41,18 +43,15 @@ public class MonsterManager : MonoBehaviour
         var monNormalData = GetMonsterData(EnumDefinition.MonsterType.normal, stageData.monsterNormalId);
         var monGoldData =   GetMonsterData(EnumDefinition.MonsterType.gold,   stageData.monsterGoldId);
         var monBossData =   GetMonsterData(EnumDefinition.MonsterType.boss,   stageData.monsterBossId);
-        var monEvolData =   GetMonsterData(EnumDefinition.MonsterType.evolution, stageData.monsterBossId);
 
         SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
         SetMonsterData(EnumDefinition.MonsterType.gold, monGoldData);
         SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
-        SetMonsterData(EnumDefinition.MonsterType.evolution, monEvolData);
 
         // set sprite image
         SetMonsterBodyImage(monNormalData, monsterNormal);
         SetMonsterBodyImage(monGoldData, monsterGold);
         SetMonsterBodyImage(monBossData, monsterBoss);
-        SetMonsterBodyImage(monEvolData, monsterEvolution);
     }
 
     public void SetMonsterData(EnumDefinition.MonsterType monsterType, int stageId)
@@ -74,11 +73,20 @@ public class MonsterManager : MonoBehaviour
                 var monBossData = GetMonsterData(monsterType, stageData.monsterBossId); 
                 SetMonsterData(monsterType , monBossData);  
                 break;
-            case EnumDefinition.MonsterType.evolution:
+        }
+    }
 
+    // 기본 몬스터 ( 노멀,골드,보스 제외 ) 이외의 몬스터 데이터 세팅시 
+    public void SetMonsterDataTraning(EnumDefinition.MonsterType monsterType, int dataId)
+    {
+
+        switch (monsterType)
+        {
+            case EnumDefinition.MonsterType.evolution:
+                var monEvolData = GetMonsterData(monsterType, dataId);
+                SetMonsterData(monsterType, monEvolData);
                 break;
         }
-        
     }
 
     //int GetMonsterID(StageData stageData, EnumDefinition.MonsterType monsterType)

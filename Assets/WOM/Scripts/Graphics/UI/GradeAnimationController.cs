@@ -27,6 +27,8 @@ namespace ProjectGraphics
         public Image iconUI;
         public TextMeshProUGUI gradeText;
 
+        public List<GameObject> enableObjects;
+
         [Header("현재 시작하는 등급")]
         public int gradeIndex = 0;
         [SerializeField] ImageResources[] imageResources;
@@ -64,6 +66,13 @@ namespace ProjectGraphics
         {
             SetImageResources(gradeIndex);
         }
+
+        public void EnableEffects(bool value)
+        {
+            foreach (var element in enableObjects)
+                element.SetActive(value);
+        }
+            
     }
 }
 
