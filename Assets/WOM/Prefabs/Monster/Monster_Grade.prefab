@@ -135,8 +135,8 @@ MonoBehaviour:
   - {fileID: 5947267535681967940}
   - {fileID: 4056507143373752100}
   m_Bounds:
-    m_Center: {x: 0, y: 0.00000035762787, z: 0}
-    m_Extent: {x: 4.219999, y: 1.6200006, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 4.2199993, y: 1.620001, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -547,7 +547,7 @@ MonoBehaviour:
   - {fileID: 8061645424486309502}
   - {fileID: 6544106796402646548}
   m_Bounds:
-    m_Center: {x: -0.0000019073486, y: -0.000002861023, z: 0}
+    m_Center: {x: -0.0000023841858, y: -0.0000030994415, z: 0}
     m_Extent: {x: 4.8399982, y: 1.4950027, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -702,8 +702,8 @@ MonoBehaviour:
   - {fileID: 1904703477934703013}
   - {fileID: 5735110949382328176}
   m_Bounds:
-    m_Center: {x: -0.00000023841858, y: 0.010000944, z: 0}
-    m_Extent: {x: 2.8299994, y: 0.79999995, z: 0}
+    m_Center: {x: 0, y: 0.0100002885, z: 0}
+    m_Extent: {x: 2.83, y: 0.7999999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -862,8 +862,8 @@ MonoBehaviour:
   - {fileID: 5276210981108903108}
   - {fileID: 4641482385108596517}
   m_Bounds:
-    m_Center: {x: 0.00000047683716, y: 0.00000023841858, z: 0}
-    m_Extent: {x: 4.789999, y: 1.3550004, z: 0}
+    m_Center: {x: 0.0000009536743, y: -0.00000059604645, z: 0}
+    m_Extent: {x: 4.7899995, y: 1.3550006, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -927,6 +927,11 @@ GameObject:
   - component: {fileID: 560119405868922712}
   - component: {fileID: 7152763833201914081}
   - component: {fileID: 704687152921164076}
+  - component: {fileID: 442527896207695065}
+  - component: {fileID: 1371630232589138690}
+  - component: {fileID: 5714004484366248489}
+  - component: {fileID: 3774799179351644991}
+  - component: {fileID: 4112933612453893309}
   m_Layer: 0
   m_Name: Monster_Grade
   m_TagString: Untagged
@@ -1021,6 +1026,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &442527896207695065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997474245837795744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0045e0a517c75478807a3c2c6f3469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterId: 0
+  hp: 0
+  exp: 0
+  bone: 0
+  gold: 0
+  boneCount: 0
+  goldCount: 0
+  imageId: 0
+  bgId: 0
+  monsterType: 0
+  attackType: 0
+  spriteLibraryChanged: {fileID: 0}
+  inOutAnimator: {fileID: 0}
+--- !u!114 &1371630232589138690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997474245837795744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957350059a6597a479037b71590b83ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animDataIn: {fileID: 3774799179351644991}
+  animDataDissolve: {fileID: 5714004484366248489}
+  animDataHit: {fileID: 4112933612453893309}
+  dissolveMat: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
+  startPoint_MonsterIn: {fileID: 0}
+  endPoint_MonsterIn: {fileID: 0}
+  monsterAnim: {fileID: 7152763833201914081}
+  monsterCol: {fileID: 560119405868922712}
+  monster: {fileID: 442527896207695065}
+--- !u!114 &5714004484366248489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997474245837795744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: monster die
+  animCurveType: 0
+  animDuration: 0.8
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
+--- !u!114 &3774799179351644991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997474245837795744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: monster in
+  animCurveType: 3
+  animDuration: 1
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
+--- !u!114 &4112933612453893309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997474245837795744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b955aaedd0e64ea49a572dc1a5730e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataName: hit anim
+  animCurveType: 3
+  animDuration: 0.3
+  value: 0
+  animTime: 0
+  animValue: 0
+  animStartTime: 0
 --- !u!1 &5002749879264954082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1363,7 @@ MonoBehaviour:
   - {fileID: 720703858869484732}
   m_Bounds:
     m_Center: {x: 0.00000023841858, y: 0.0000009536743, z: 0}
-    m_Extent: {x: 2.8899999, y: 3.0150003, z: 0}
+    m_Extent: {x: 2.89, y: 3.0150008, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1607,8 +1715,8 @@ MonoBehaviour:
   - {fileID: 5735110949382328176}
   - {fileID: 6959335500496438645}
   m_Bounds:
-    m_Center: {x: 0.0036597252, y: 0.00069981813, z: 0}
-    m_Extent: {x: 3.6363404, y: 0.71803904, z: 0}
+    m_Center: {x: 0.0036597252, y: 0.00069862604, z: 0}
+    m_Extent: {x: 3.6363409, y: 0.7180394, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1909,8 +2017,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7727821873687263829}
   m_Bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 2.4900002, y: 2.96, z: 0}
+    m_Center: {x: -0.00000023841858, y: 0.00000023841858, z: 0}
+    m_Extent: {x: 2.4900002, y: 2.9600005, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -2036,8 +2144,8 @@ MonoBehaviour:
   - {fileID: 1906290937404043073}
   - {fileID: 5385925457920210397}
   m_Bounds:
-    m_Center: {x: -0.0000009536743, y: 0.00000059604645, z: 0}
-    m_Extent: {x: 4.6200013, y: 1.4750004, z: 0}
+    m_Center: {x: -0.0000009536743, y: -0.00000047683716, z: 0}
+    m_Extent: {x: 4.620002, y: 1.4750001, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0

@@ -207,6 +207,7 @@ public class EventController : MonoBehaviour
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
         // set current monster
         globalData.player.currentMonster = monsterData;
+        
         // set monster data
         globalData.monsterManager.SetMonsterData(monsterType, globalData.player.stageIdx);
         // Monster In Animation
@@ -220,6 +221,19 @@ public class EventController : MonoBehaviour
     void EvnOnBossMonsterChalleng()
     {
         StartCoroutine(ProcessBossMonsterChallenge());
+    }
+
+    // 진화전 도전 버튼 눌렀을때 ( 진화 몬스터 사냥 )
+    void EvnOnEvolutionGradeChallenge(int dataId)
+    {
+
+    }
+
+    IEnumerator ProcessEvolutionGradeChallenge(int dataId)
+    {
+
+
+        yield return null;
     }
 
     IEnumerator ProcessBossMonsterChallenge()

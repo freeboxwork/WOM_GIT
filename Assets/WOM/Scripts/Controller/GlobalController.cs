@@ -59,10 +59,6 @@ public class GlobalController : MonoBehaviour
         // TODO : 하나만 켜야 하는지 확인 필요 현재 모두 나타나도록 수정
         monsterManager.EnableMonster(EnumDefinition.MonsterType.normal);
 
-       
-
-
-
         // UI 초기화
         SetUI_Init();
 
