@@ -40,8 +40,10 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: e20ee200346f7414cb2bd9e255475cdd, type: 3}
   - {fileID: 21300000, guid: 5be064009e8197f489fb014653b05d30, type: 3}
   - {fileID: 21300000, guid: 053bf0206cb7ebc4db712eb29a88700a, type: 3}
+  - {fileID: 21300000, guid: e082b68057a78484493f52090e07a794, type: 3}
   - {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
   - {fileID: 21300000, guid: 0e3ae5a00a4e70442b64c599a36de93a, type: 3}
   - {fileID: 21300000, guid: 7633baa0c2ce3164392a87f1237404c1, type: 3}
@@ -49,6 +51,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d7cd9cd0c210f0141b3dc0ff62c93af7, type: 3}
   - {fileID: 21300000, guid: b5cf9561b1652e14ab35927b66be36cd, type: 3}
   - {fileID: 21300000, guid: 3819d8b16d191c044a46fbdeff09e5fb, type: 3}
+  - {fileID: 21300000, guid: 7ea79f42de0eeaa4a983ed1ca0c3d217, type: 3}
   - {fileID: 21300000, guid: 3541e462b8355ae4dab60f72d84e16d7, type: 3}
   - {fileID: 21300000, guid: 40e17be2181be8e4fb48bf67984e2d5a, type: 3}
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
@@ -63,13 +66,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 871cb5a5f3d3b85438ea46efeec7d0b2, type: 3}
   - {fileID: 21300000, guid: 6dabe6d57c9063b40949a33c26fe949d, type: 3}
   - {fileID: 21300000, guid: 1e13e576a7f11924e9db1622c482dba7, type: 3}
+  - {fileID: 21300000, guid: 73aeb03795f6b1348a9ce60379521905, type: 3}
+  - {fileID: 21300000, guid: d2062647fece186459f78707b0c454a6, type: 3}
   - {fileID: 21300000, guid: d0beeb87bb5b7d04aaef118add229269, type: 3}
   - {fileID: 21300000, guid: 5cddf297184708f4a8823457102c25ad, type: 3}
   - {fileID: 21300000, guid: bff705582d324e34ebdfaf8b57acd7c9, type: 3}
+  - {fileID: 21300000, guid: ce45c56873753dd4a9c5c459643e22c3, type: 3}
   - {fileID: 21300000, guid: 8b899768403e0c846a1b3d9f675a4631, type: 3}
   - {fileID: 21300000, guid: a0e5f499560bea74ca7f01c2d82a9a9b, type: 3}
   - {fileID: 21300000, guid: 417ac4d98b32b3e4d8746e1591f7249f, type: 3}
   - {fileID: 21300000, guid: 95e53ee9124aceb4d98e28dd2d0d0d9f, type: 3}
+  - {fileID: 21300000, guid: 31a0881a49b31a44fb94b0645c746d13, type: 3}
   - {fileID: 21300000, guid: f002302a82c425b41bb6b513089544d2, type: 3}
   - {fileID: 21300000, guid: 4350b48ae6800844e90f41c3a14d7da8, type: 3}
   - {fileID: 21300000, guid: d7f2cb8ad61ddb14b8e6171cb085392b, type: 3}
@@ -85,8 +92,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cdb17eeea6a28354c8affba06db7934c, type: 3}
   - {fileID: 21300000, guid: 062b375fb7e6c8f4cae752dffd4767e7, type: 3}
   m_PackedSpriteNamesToIndex:
+  - U_Frame_White
   - Bar_Hp
   - Icon_Grade_00
+  - Skill_UnionAttack
   - btn_Base
   - Bar_MenuTitle_Dark
   - U_Frame_Rare
@@ -94,6 +103,7 @@ SpriteAtlas:
   - Icon_CriticalChance_Per
   - UI_Dice
   - Dna
+  - Skill_Critical
   - Icon_GoldBonus
   - U_Frame_Unique
   - Icon_CriticalDamage
@@ -108,13 +118,17 @@ SpriteAtlas:
   - Icon_DamageUP
   - U_Frame_Hero
   - Icon_MoveSpeed
+  - Skill_Speed
+  - Skill_Super
   - U_Frame_Legend
   - Skill
   - Frame_Concave
+  - Skill_Power
   - Icon_Grade_03
   - Bar_Hp_Back
   - Icon_SpawnSpeed
   - Training
+  - Skill_Gold
   - Bar_Slot00
   - Icon_Grade_02
   - U_Frame_Normal

@@ -11,6 +11,9 @@ public class SpriteFileData : ScriptableObject
 
     public Sprite GetSpriteData(int num) => data[num].sprite;
     public Sprite GetIconData(int num) => data[num].icon;
+    public EnumDefinition.UnionGradeType GetGradeData(int num) => data[num].type;
+    public int GetDataSize() => data.Length;
+
 
     [System.Serializable]
     public struct SpriteDataInfo
