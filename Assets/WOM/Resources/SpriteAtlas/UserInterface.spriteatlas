@@ -72,6 +72,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6dabe6d57c9063b40949a33c26fe949d, type: 3}
   - {fileID: 21300000, guid: 67b5fe063942b0d499f15abf9e8dcfc6, type: 3}
   - {fileID: 21300000, guid: 1e13e576a7f11924e9db1622c482dba7, type: 3}
+  - {fileID: 21300000, guid: 746121869a5fb7a4c834f5c76412f884, type: 3}
   - {fileID: 21300000, guid: 73aeb03795f6b1348a9ce60379521905, type: 3}
   - {fileID: 21300000, guid: d2062647fece186459f78707b0c454a6, type: 3}
   - {fileID: 21300000, guid: d0beeb87bb5b7d04aaef118add229269, type: 3}
@@ -91,6 +92,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d7f2cb8ad61ddb14b8e6171cb085392b, type: 3}
   - {fileID: 21300000, guid: 51684d9ad211c0a4dbf5ecf529383488, type: 3}
   - {fileID: 21300000, guid: 0a7c072bbbfe15f45a1806e6a2269c1c, type: 3}
+  - {fileID: 21300000, guid: d1def07b59a70aa4098c3266acbc6f0b, type: 3}
   - {fileID: 21300000, guid: d360b8bbe415d394eb2365aad661fe22, type: 3}
   - {fileID: 21300000, guid: 7a452b0c63fc99745a1678bb73e1d9bb, type: 3}
   - {fileID: 21300000, guid: 6de8483c3b1af88419f42542eb8fd87d, type: 3}
@@ -140,6 +142,7 @@ SpriteAtlas:
   - U_Frame_Hero
   - DNA_MantisAttack
   - Icon_MoveSpeed
+  - 1pixel_black
   - Skill_Speed
   - Skill_Super
   - U_Frame_Legend
@@ -159,6 +162,7 @@ SpriteAtlas:
   - U_Frame_Normal
   - DNA_GoldUp
   - Dna_InsectSpeed
+  - 256
   - btn_Base_RollOver
   - Dna_Dice
   - Evolution
