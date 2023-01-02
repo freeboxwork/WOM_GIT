@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class AnimationController : MonoBehaviour
 {
@@ -112,5 +114,21 @@ public class AnimationController : MonoBehaviour
         callBackEvent.Invoke();
     }
 
+    // UI IMAGE CLOLOR ANIM - CALLBACK COMPLETE EVENT
+    public IEnumerator UI_ImageColorAnim(Image image, Color start, Color end,UnityAction callBackEvent = null)
+    {
+        isAnimPlay = true;
+        animData.ResetAnimData();
+        while (animData.animTime < 0.999f)
+        {
+            animData.animTime = (Time.time - animData.animStartTime) / animData.animDuration;
+            animData.animValue = EaseValues.instance.GetAnimCurve(animData.animCurveType, animData.animTime);
+            image.color = Color.Lerp(start, end, animData.animValue);
+            yield return null;
+        }
+        isAnimPlay = false;
+        if(callBackEvent != null)   
+            callBackEvent.Invoke();
+    }
 
 }

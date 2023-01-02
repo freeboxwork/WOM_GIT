@@ -25,7 +25,7 @@ public class CustomTypeData : MonoBehaviour
         components.image          = UtilityMethod.CustomGetComponetMy<Image>(gameObject);
         components.tr             = UtilityMethod.CustomGetComponetMy<Transform>(gameObject);
         components.sr             = UtilityMethod.CustomGetComponetMy<SpriteRenderer>(gameObject);
-        
+        components.gm             = gameObject;
     }
 
 }

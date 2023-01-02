@@ -7,10 +7,10 @@ public class AnimData : MonoBehaviour
     public string dataName;
     public EnumDefinition.AnimCurveType animCurveType;
     public float animDuration = 0.5f;
-    public float value;
-    public float animTime;
-    public float animValue;
-    public float animStartTime;
+    [HideInInspector] public float value;
+    [HideInInspector] public float animTime;
+    [HideInInspector] public float animValue;
+    [HideInInspector] public float animStartTime;
 
     public void ResetAnimData()
     {

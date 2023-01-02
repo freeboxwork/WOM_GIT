@@ -158,6 +158,10 @@ public class LotteryManager : MonoBehaviour
             // name , color , sprite image index
             var name = unionNameData[unionTypeIndex][faceIndex];
             var face = unionFaceDatas[unionTypeIndex][faceIndex];
+
+            // INDEX 로 전달 하도록 수정 
+            // https://docs.google.com/spreadsheets/d/1gsiAKac3UtyWZNIKr3T-RxqNeR6ZfgjRdC4_VC_49gA/edit#gid=548996693
+
             //var color = cardColors[faceIndex];
             //card.imgCard.color = color;
             var card = lotteryCards[i];
