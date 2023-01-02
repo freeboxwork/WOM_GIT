@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -31,7 +32,7 @@ public class EvolutionManager : MonoBehaviour
 
     void Start()
     {
-        
+        SetBtnEvents();
     }
 
 
@@ -58,12 +59,25 @@ public class EvolutionManager : MonoBehaviour
 
         // 트랜지션 인
         var image = UtilityMethod.GetCustomTypeImageById(20);
-        
-        //yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image,)
+        var colorAlpha_None = new Color(1, 1, 1, 1);
+        var colorAlpha = new Color(1, 1, 1, 0);
+        animContTransition.animData = animDataTranIn;
+        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha ,colorAlpha_None));
+
+        // UI PANEL 숨김
+        GlobalData.instance.uiController.AllDisableMenuPanels();
+
+        yield return new WaitForSeconds(1f);
+
+        // 현재 몬스터 아웃
+
 
         // 데이터 세팅
 
+
         // 트랜지션 아웃
+        animContTransition.animData = animDataTranOut;
+        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha_None, colorAlpha));
 
         // 몬스터 인
     }

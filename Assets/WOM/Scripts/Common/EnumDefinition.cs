@@ -114,7 +114,6 @@ public class EnumDefinition
         skill,
         union,
         dna,
-        shop,
-
+        shop
     }
 }
