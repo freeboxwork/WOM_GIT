@@ -7,7 +7,8 @@ public class EnumDefinition
         text,
         image,
         animCont,
-        tr, // game object
+        tr, 
+        gm // gameobject
     }
 
     public enum InsectType
@@ -105,4 +106,15 @@ public class EnumDefinition
         jewel
     }
 
+
+    public enum MenuPanelType
+    {
+        training,
+        evolution,
+        skill,
+        union,
+        dna,
+        shop,
+
+    }
 }

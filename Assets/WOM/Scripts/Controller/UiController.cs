@@ -6,7 +6,6 @@ using TMPro;
 using System;
 using static EnumDefinition;
 using System.Linq;
-using Unity.VisualScripting;
 
 public class UiController : MonoBehaviour
 {
@@ -26,15 +25,27 @@ public class UiController : MonoBehaviour
     [Header("뽑기 관련 UI 항목")]
     public Transform trLotteryGameSet;
 
-
+    List<GameObject> mainPanels = new List<GameObject>();
     void Start()
     {
         
     }
 
+    void SetMainPanels()
+    {
+        foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
+        {
+            var panel = UtilityMethod.GetCustomTypeGMById((int)type);
+            mainPanels.Add(panel);
+        }
+    }
+
     /// <summary> UI 관련 정보 세팅 </summary>
     public IEnumerator Init()
     {
+        // set panel gameObjcts
+        SetMainPanels();
+
         // set ui data
         SetUiData();
 
@@ -129,7 +140,18 @@ public class UiController : MonoBehaviour
             });
             btnId++;
         }
+
+
+        // 메인 판넬 열기
+        foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
+        {
+            UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
+        }
     }
+
+
+
+
 
 
     #region 훈련 스탯 - 구매 가능한 스탯 UI 세팅 
@@ -198,6 +220,21 @@ public class UiController : MonoBehaviour
     #endregion
 
 
+    public void EnableMenuPanel(MenuPanelType type)
+    {
+        for (int i = 0; i < mainPanels.Count; i++)
+        {
+            if (i == (int)type)
+                mainPanels[i].SetActive(!mainPanels[i].activeSelf);
+            else
+                mainPanels[i].SetActive(false);
+        }
+    }
+    public void AllDisableMenuPanels()
+    {
+        foreach(var panel in mainPanels)
+            panel.SetActive(false);
+    }
 
     void LotteryGameStart(int roundCount)
     {

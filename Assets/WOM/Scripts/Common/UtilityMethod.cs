@@ -81,4 +81,16 @@ public static class UtilityMethod
     {
         return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);  
     }
+
+    public static Image GetCustomTypeImageById(int id)
+    {
+        return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Image(id);
+    }
+
+    public static GameObject GetCustomTypeGMById(int id)
+    {
+        return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Gameobject(id);
+    }
+
+
 }

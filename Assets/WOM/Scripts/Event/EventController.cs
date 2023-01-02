@@ -4,7 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using static EnumDefinition;
 using static UnityEngine.Rendering.DebugUI;
-
+/// <summary>
+/// 몬스터전 이벤트 관리
+/// </summary>
 public class EventController : MonoBehaviour
 {
     GlobalData globalData;
