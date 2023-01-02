@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 401733311129f6e4e9010d6a164913e9
+guid: 3b1948b807a93db4f9e77c8631a3f077
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - RecipekoreaOTF
+  - Maplestory
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
