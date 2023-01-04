@@ -108,6 +108,7 @@ public class EventController : MonoBehaviour
             case MonsterType.normal: StartCoroutine(MonsterDie_Normal()); break;
             case MonsterType.gold: StartCoroutine(MonsterDie_Gold()); break;
             case MonsterType.boss: StartCoroutine(MonsterDie_Boss()); break;
+            case MonsterType.evolution: StartCoroutine(MonsterDie_Evolution()); break;
         }
 
     }
@@ -193,6 +194,16 @@ public class EventController : MonoBehaviour
         // set monster data and monster skin
         yield return StartCoroutine(globalData.monsterManager.Init(globalData.player.stageIdx));
 
+        yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
+    }
+
+    //진화 몬스터 사망시
+    IEnumerator MonsterDie_Evolution()
+    {
+        // 보스 도전 버튼 활성화 
+        // globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
+
+        // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }
 
