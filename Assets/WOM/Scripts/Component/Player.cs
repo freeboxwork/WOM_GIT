@@ -7,13 +7,19 @@ using static EnumDefinition;
 
 public class Player : MonoBehaviour
 {
+    // 스테이지 레벨
     public int stageIdx;
     public int upgradeLevelIdx;
+    // 훈련 레벨
+    public int traningLevelIdx;
+    // 진화 레벨
+    public int evalutionLeveldx; 
     public int gold;
     public int bone;
     public int gem;
     public DateTime playTime;
 
+   
     
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>
     public StageData currentStageData;
@@ -22,9 +28,17 @@ public class Player : MonoBehaviour
     /// <summary> 현재 전투중인 몬스터 </summary>
     public MonsterBase currentMonster;
 
+    /// <summary> 현재 전투중인 몬스터 타입 </summary>
+    public MonsterType curMonsterType;
+
+    /// <summary> 직전에 전투한 몬스터 타입 </summary>
+    public MonsterType prevMonsterType;
+
     /// <summary> 현재 플레이어의 스탯 데이터 </summary>
     public PlayerStatData curStatData;
 
+    // 기본 몬스터를 제외한 몬스터 사냥중일때
+    public bool isSpacialMonsterHunting;
 
 
     void Start()
@@ -67,6 +81,22 @@ public class Player : MonoBehaviour
     {
         currentMonster = monsterBase;
     }
+
+    public MonsterBase GetCurrntMonster()
+    {
+        return currentMonster;
+    }
+
+    public void SetCurrentMonsterType(MonsterType monsterType)
+    {
+        curMonsterType = monsterType;
+    }
+
+    public void SetPervMonsterType(MonsterType monsterType)
+    {
+        prevMonsterType = monsterType;
+    }
+
 
     public void SetPlayerDataFromSaveData(SaveData saveData)
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AttackController : MonoBehaviour
 {
@@ -20,7 +21,10 @@ public class AttackController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 var pos = Input.mousePosition;
-                EnableInsectBullet(pos);
+                // 포인터 위치가 UI 위에 있는지 판단
+                var isPointerOnUI = EventSystem.current.IsPointerOverGameObject();
+                if (isPointerOnUI == false)
+                    EnableInsectBullet(pos);
             }
         }
     }

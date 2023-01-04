@@ -76,15 +76,15 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    // 기본 몬스터 ( 노멀,골드,보스 제외 ) 이외의 몬스터 데이터 세팅시 
-    public void SetMonsterDataTraning(EnumDefinition.MonsterType monsterType, int dataId)
+    /// <summary> 기본 몬스터 ( 노멀,골드,보스 제외 ) 이외의 몬스터 데이터 세팅시  </summary>
+    public void SetMonsterDataOther(EnumDefinition.MonsterType monsterType, int dataId)
     {
 
         switch (monsterType)
         {
             case EnumDefinition.MonsterType.evolution:
-                var monEvolData = GetMonsterData(monsterType, dataId);
-                SetMonsterData(monsterType, monEvolData);
+                var monsterData = GetMonsterData(monsterType, dataId);
+                SetMonsterData(monsterType, monsterData);
                 break;
         }
     }
@@ -183,6 +183,7 @@ public class MonsterManager : MonoBehaviour
             case EnumDefinition.MonsterType.normal: return monsterNormal;
             case EnumDefinition.MonsterType.gold: return monsterGold;
             case EnumDefinition.MonsterType.boss: return monsterBoss;
+            case EnumDefinition.MonsterType.evolution: return monsterEvolution; 
         }
         return null;
     }

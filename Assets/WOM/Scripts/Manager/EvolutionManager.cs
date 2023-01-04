@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// 진화 및 진화전 관리
+/// 진화 및 진화전 관리 - 사용하지 않음
 /// </summary>
 
 public class EvolutionManager : MonoBehaviour
@@ -32,7 +32,7 @@ public class EvolutionManager : MonoBehaviour
 
     void Start()
     {
-        SetBtnEvents();
+        
     }
 
 
@@ -41,46 +41,9 @@ public class EvolutionManager : MonoBehaviour
         yield return null;             
     }
     
-    void SetBtnEvents()
-    {
-        // 진화전 버튼
-        UtilityMethod.SetBtnEventCustomTypeByID(20, () => {
-            if (isEvolutionGamePlaying == false)
-                StartCoroutine(EvolutionUpgradeGameStart());
-        });
-
-    }
-
-    IEnumerator EvolutionUpgradeGameStart()
-    {
-        isEvolutionGamePlaying = true;
-
-        yield return null;
-
-        // 트랜지션 인
-        var image = UtilityMethod.GetCustomTypeImageById(20);
-        var colorAlpha_None = new Color(1, 1, 1, 1);
-        var colorAlpha = new Color(1, 1, 1, 0);
-        animContTransition.animData = animDataTranIn;
-        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha ,colorAlpha_None));
-
-        // UI PANEL 숨김
-        GlobalData.instance.uiController.AllDisableMenuPanels();
-
-        yield return new WaitForSeconds(1f);
-
-        // 현재 몬스터 아웃
+    
 
 
-        // 데이터 세팅
-
-
-        // 트랜지션 아웃
-        animContTransition.animData = animDataTranOut;
-        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha_None, colorAlpha));
-
-        // 몬스터 인
-    }
 
 
 }
