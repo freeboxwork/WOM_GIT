@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 4112933612453893309}
   m_Layer: 0
   m_Name: Monster_Grade
-  m_TagString: Untagged
+  m_TagString: monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1049,8 +1049,8 @@ MonoBehaviour:
   bgId: 0
   monsterType: 0
   attackType: 0
-  spriteLibraryChanged: {fileID: 0}
-  inOutAnimator: {fileID: 0}
+  spriteLibraryChanged: {fileID: 704687152921164076}
+  inOutAnimator: {fileID: 1371630232589138690}
 --- !u!114 &1371630232589138690
 MonoBehaviour:
   m_ObjectHideFlags: 0
