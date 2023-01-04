@@ -32,13 +32,16 @@ public class EventController : MonoBehaviour
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
-    }   
-    
+        EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
+        
+    }
+
     void RemoveEvents()
     {
         EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
+        EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
     }
 
     // MONSTER HIT EVENT
@@ -84,8 +87,6 @@ public class EventController : MonoBehaviour
         // 보스일경우 뼈조각 획득
         if(currentMonster.monsterType == MonsterType.boss)
             StartCoroutine(globalData.effectManager.bonePoolingCont.EnableGoldEffects(goldEnableCount));
-
-
 
         // 골드 획득
         GainGold(currentMonster);
@@ -198,7 +199,7 @@ public class EventController : MonoBehaviour
     // 몬스터 등장
     IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
     {
-        // 골드 OUT EFFECT
+        // 골드 OUT EFFECT ( 골드 화면에 뿌려진 경우에만 )
         StartCoroutine(globalData.effectManager.goldPoolingCont.DisableGoldEffects());
         
         // 보스의 경우 뼈조각 OUT EFF 추가
@@ -207,35 +208,77 @@ public class EventController : MonoBehaviour
         
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
-        // set current monster
-        globalData.player.currentMonster = monsterData;
         
+        // set current monster
+        globalData.player.SetCurrentMonster(monsterData);
+
+        // set prev monster type
+        globalData.player.SetPervMonsterType(globalData.player.curMonsterType);
+
+        // set current monster type
+        globalData.player.SetCurrentMonsterType(monsterType);
+
         // set monster data
-        globalData.monsterManager.SetMonsterData(monsterType, globalData.player.stageIdx);
+        if (monsterType == MonsterType.evolution)
+        {
+            globalData.monsterManager.SetMonsterDataOther(monsterType, globalData.player.evalutionLeveldx);
+        }
+        else
+        {
+            globalData.monsterManager.SetMonsterData(monsterType, globalData.player.stageIdx);
+        }
+
         // Monster In Animation
         yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionIn());
+        
         // 몬스터 UI 리셋 
         MonsterUiReset();
     }
 
 
+    #region 진화전 프로세스
+    /*
+     0 : 트랜지션 인
+     1 : 몬스터 및 스테이지 세팅
+     2 : 트랜지션 아웃
+     3 : 진화전 몬스터 등장
+     4 : 몬스터 사냥
+     5 : 몬스터 사냥 성공 -> 진화
+     6 : 몬스터 사냥 실패 -> 이전 몬스터 등장  
+    */
+    #endregion
+
+    // 진화전 도전 버튼 눌렀을때 ( 진화 몬스터 사냥 )
+    void EvnOnEvolutionGradeChallenge()
+    {
+        StartCoroutine(ProcessEvolutionGradeChallenge());
+    }
+
+    IEnumerator ProcessEvolutionGradeChallenge()
+    {
+
+        // 진화전 화면전환 이펙트
+        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() => {
+            
+            // 보스 도전 버튼 숨김
+            globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
+            
+            // 하프 라인 위 곤충 모두 제거
+            globalData.insectManager.DisableHalfLineInsects();
+
+            // 일반 몬스터 OUT
+            StartCoroutine(globalData.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
+
+        }));
+
+        // 진화 몬스터 등장
+        StartCoroutine(MonsterAppearCor(MonsterType.evolution));
+    }
+
     // 보스 몬스터 도전 버튼 눌렀을때 이벤트
     void EvnOnBossMonsterChalleng()
     {
         StartCoroutine(ProcessBossMonsterChallenge());
-    }
-
-    // 진화전 도전 버튼 눌렀을때 ( 진화 몬스터 사냥 )
-    void EvnOnEvolutionGradeChallenge(int dataId)
-    {
-
-    }
-
-    IEnumerator ProcessEvolutionGradeChallenge(int dataId)
-    {
-
-
-        yield return null;
     }
 
     IEnumerator ProcessBossMonsterChallenge()
@@ -282,7 +325,7 @@ public class EventController : MonoBehaviour
         // 보스 도전 타이머 활성화
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
-        // 일반 본스터 등장
+        // 일반 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
     }

@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngineInternal;
 
@@ -36,6 +37,12 @@ public class EffectManager : MonoBehaviour
     public List<Transform> goldSFX_RandomPoints = new List<Transform>();
     public GoodsPoolingConrtoller goldPoolingCont;
     public GoodsPoolingConrtoller bonePoolingCont;
+
+    [Header("=====================================================================================================================")]
+    [Header("진화전 이펙트 관련 항목")]
+    public AnimationController animContTransition;
+    public AnimData animDataTranIn;
+    public AnimData animDataTranOut;
 
 
     void Start()
@@ -129,4 +136,29 @@ public class EffectManager : MonoBehaviour
         return goldSFX_RandomPoints[(int)pointType];
     }
 
+
+    /// <summary> 진화전 트랜지션 이펙트 </summary>
+    public IEnumerator EffTransitioEvolutionUpgrade(UnityAction transitionEvent)
+    {
+        yield return null;
+
+        // 트랜지션 인
+        var image = UtilityMethod.GetCustomTypeImageById(20);
+        var colorAlpha_None = new Color(1, 1, 1, 1);
+        var colorAlpha = new Color(1, 1, 1, 0);
+        animContTransition.animData = animDataTranIn;
+        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha, colorAlpha_None));
+
+        transitionEvent.Invoke();
+        // UI PANEL 숨김
+        GlobalData.instance.uiController.AllDisableMenuPanels();
+
+        yield return new WaitForSeconds(1f);
+
+        // 트랜지션 아웃
+        animContTransition.animData = animDataTranOut;
+        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha_None, colorAlpha));
+
+
+    }
 }

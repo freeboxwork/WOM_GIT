@@ -20783,6 +20783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageIdx: 0
   upgradeLevelIdx: 0
+  traningLevelIdx: 0
+  evalutionLeveldx: 0
   gold: 0
   bone: 0
   gem: 0
@@ -20799,9 +20801,12 @@ MonoBehaviour:
     unlock: 
   pahseCountOriginalValue: 0
   currentMonster: {fileID: 0}
+  curMonsterType: 0
+  prevMonsterType: 0
   curStatData:
     statLevelDatas: 000000000000000000000000000000000000000000000000000000000000000000000000
     statValueDatas: []
+  isSpacialMonsterHunting: 0
 --- !u!1 &1432594858
 GameObject:
   m_ObjectHideFlags: 0
@@ -24823,7 +24828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataName: transition Out
-  animCurveType: 0
+  animCurveType: 8
   animDuration: 0.5
   value: 0
   animTime: 0
@@ -24842,7 +24847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataName: transition in
-  animCurveType: 6
+  animCurveType: 0
   animDuration: 0.5
   value: 0
   animTime: 0
@@ -32414,6 +32419,9 @@ MonoBehaviour:
   - {fileID: 539293748}
   goldPoolingCont: {fileID: 21124532}
   bonePoolingCont: {fileID: 914068805}
+  animContTransition: {fileID: 1684512860}
+  animDataTranIn: {fileID: 1684512862}
+  animDataTranOut: {fileID: 1684512861}
 --- !u!1001 &2100463062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34848,11 +34856,11 @@ PrefabInstance:
     - target: {fileID: 442527896207695065, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
       propertyPath: inOutAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5676643708908205510}
     - target: {fileID: 442527896207695065, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
       propertyPath: spriteLibraryChanged
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5676643708908205511}
     - target: {fileID: 1371630232589138690, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
       propertyPath: endPoint_MonsterIn
       value: 
@@ -34925,6 +34933,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa0045e0a517c75478807a3c2c6f3469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5676643708908205510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1371630232589138690, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
+  m_PrefabInstance: {fileID: 5676643708908205501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957350059a6597a479037b71590b83ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5676643708908205511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 704687152921164076, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
+  m_PrefabInstance: {fileID: 5676643708908205501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23323dbb09a73ff44809f7a218cad926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6050383728041413398

@@ -147,6 +147,15 @@ public class UiController : MonoBehaviour
         {
             UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
         }
+
+        // 진화전
+
+        // 진화전 버튼
+        UtilityMethod.SetBtnEventCustomTypeByID(20, () =>
+        {
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge);
+        });
+
     }
 
 
