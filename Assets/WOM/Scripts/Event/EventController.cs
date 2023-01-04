@@ -203,6 +203,9 @@ public class EventController : MonoBehaviour
         // 보스 도전 버튼 활성화 
         // globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
 
+        // 진화 보상 지급
+
+
         // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }
