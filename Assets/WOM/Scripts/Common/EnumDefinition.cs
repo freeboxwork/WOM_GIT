@@ -48,6 +48,7 @@ public class EnumDefinition
         monsterSpriteData,
         unionGambleData,
         summonGradeData,
+        rewardEvolutionGradeData
     }
 
     public enum SaleStatType

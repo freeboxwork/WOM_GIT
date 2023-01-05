@@ -64,6 +64,12 @@ public static class UtilityMethod
     }
 
 
+    public static void SetImageSpriteCustomTypeByID(int id , Sprite sprite)
+    {
+        GetCustomTypeImageById(id).sprite = sprite;
+    }
+
+
     public static void SetBtnEventCustomTypeByID(int id , UnityAction action)
     {
         var btn = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);

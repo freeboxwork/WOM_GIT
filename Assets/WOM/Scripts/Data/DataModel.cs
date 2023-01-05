@@ -6,6 +6,7 @@ using TMPro.EditorUtilities;
 using JetBrains.Annotations;
 using UnityEngine.Experimental.GlobalIllumination;
 using Unity.VisualScripting;
+using System.Security.Cryptography.X509Certificates;
 
 public class DataModel : MonoBehaviour
 {
@@ -305,4 +306,16 @@ public class SaleStatMsgData
     {
         this.saleStatType = saleStatType;
     }
+}
+
+
+[Serializable]
+public class RewardEvolutionGradeData
+{
+    public int id;
+    public string evolutionGradeType;
+    public int damageRate;
+    public int slotCount;
+    public string nameKR;
+    public string nameEN;
 }
