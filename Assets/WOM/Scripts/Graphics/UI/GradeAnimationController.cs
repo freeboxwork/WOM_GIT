@@ -29,6 +29,8 @@ namespace ProjectGraphics
 
         public List<GameObject> enableObjects;
 
+        // 추가 
+
         [Header("현재 시작하는 등급")]
         public int gradeIndex = 0;
         [SerializeField] ImageResources[] imageResources;

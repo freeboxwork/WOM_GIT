@@ -156,12 +156,21 @@ public class UiController : MonoBehaviour
             UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
         }
 
-        // 진화전
+        /* 진화전 */
 
         // 진화전 버튼
         UtilityMethod.SetBtnEventCustomTypeByID(20, () =>
         {
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge);
+        });
+
+        // 진화 업그레이드 이펙트 확인 버튼
+        UtilityMethod.SetBtnEventCustomTypeByID(23, () =>
+        {
+            // 기존 UI Canvas 활성화
+            UtilityMethod.GetCustomTypeGMById(6).SetActive(true);
+            // 진화 업그레이트 이펙트 비활성화
+            GlobalData.instance.gradeAnimCont.gameObject.SetActive(false);
         });
 
     }
