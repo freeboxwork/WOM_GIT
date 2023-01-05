@@ -1,3 +1,4 @@
+using ProjectGraphics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,8 @@ public class GlobalData : MonoBehaviour
     public LotteryManager lotteryManager;
     public SaleManager saleManager;
     public EvolutionManager evolutionManager;
-
+    public GradeAnimationController gradeAnimCont;
+         
     private void Awake()
     {
         SetInstance();

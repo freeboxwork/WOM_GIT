@@ -213,12 +213,15 @@ public class EventController : MonoBehaviour
         // 진화 보상 지급 및 UI 세팅
         globalData.uiController.SetUI_Pannel_Evolution(globalData.player.evalutionLeveldx + 1);
 
-        // 진화 idx 레벨업
-        globalData.player.evalutionLeveldx++;
-
+        // 기존 UI Canvas 비활성화
+        UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 
         // 등급 업그레이드 연출 등장
+        globalData.gradeAnimCont.gradeIndex = globalData.player.evalutionLeveldx;
+        globalData.gradeAnimCont.gameObject.SetActive(true);
 
+        // 진화 idx 레벨업
+        globalData.player.evalutionLeveldx++;
 
         // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
