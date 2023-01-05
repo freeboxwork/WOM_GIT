@@ -206,6 +206,9 @@ public class EventController : MonoBehaviour
     //진화 몬스터 사망시
     IEnumerator MonsterDie_Evolution()
     {
+        
+             
+        
         // 보스 도전 버튼 활성화 
         if (globalData.player.isBossMonsterChllengeEnable)
             globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
@@ -217,7 +220,7 @@ public class EventController : MonoBehaviour
         UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 
         // 등급 업그레이드 연출 등장
-        globalData.gradeAnimCont.gradeIndex = globalData.player.evalutionLeveldx;
+        globalData.gradeAnimCont.gradeIndex = globalData.player.evalutionLeveldx+1;
         globalData.gradeAnimCont.gameObject.SetActive(true);
 
         // 진화 idx 레벨업
