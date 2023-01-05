@@ -15,3 +15,11 @@ MonoBehaviour:
   url_Datas:
   - name: CUSTOM TYPE DATA SHEET
     url: https://docs.google.com/spreadsheets/d/101MDn8hJlg89ZEdgD3JqRDIVx9IaUi8MtTY1mhsE-90/edit#gid=0
+  - name: GAME DATA SHEET
+    url: https://docs.google.com/spreadsheets/d/1gsiAKac3UtyWZNIKr3T-RxqNeR6ZfgjRdC4_VC_49gA/edit?usp=sharing
+  - name: PROCESS FLO W
+    url: https://drive.google.com/file/d/1aNoBMGWbqcRNPFShxJaDvt4aZEFfXV5e/view?usp=sharing
+  - name: LOAD DATA SHEET
+    url: https://docs.google.com/spreadsheets/d/1pAQqh2KcdMaDiI4B16aE3hltGNlbZQWzyq-W1XuqiQw/edit?usp=sharing
+  - name: CSV TO JSON
+    url: https://www.convertcsv.com/csv-to-json.htm

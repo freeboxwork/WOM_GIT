@@ -162,6 +162,9 @@ public class EventController : MonoBehaviour
         // 보스 도전 버튼 활성화 
         globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
         
+        // 보스 도전 가능 상태 설정
+        globalData.player.isBossMonsterChllengeEnable = true;   
+
         // phaseCount 리셋
         PhaseCountReset();
 
@@ -182,6 +185,9 @@ public class EventController : MonoBehaviour
         // 타이머 UI Disable
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
+        // 보스 도전 가능 상태 설정
+        globalData.player.isBossMonsterChllengeEnable = false;
+
         // SET STAGE DATA ( 다음 스테이지로 변경 )
         globalData.player.stageIdx++;
 
@@ -201,9 +207,17 @@ public class EventController : MonoBehaviour
     IEnumerator MonsterDie_Evolution()
     {
         // 보스 도전 버튼 활성화 
-        // globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
+        if (globalData.player.isBossMonsterChllengeEnable)
+            globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
 
-        // 진화 보상 지급
+        // 진화 보상 지급 및 UI 세팅
+        globalData.uiController.SetUI_Pannel_Evolution(globalData.player.evalutionLeveldx + 1);
+
+        // 진화 idx 레벨업
+        globalData.player.evalutionLeveldx++;
+
+
+        // 등급 업그레이드 연출 등장
 
 
         // 일반 몬스터 등장
@@ -215,10 +229,9 @@ public class EventController : MonoBehaviour
     {
         // 골드 OUT EFFECT ( 골드 화면에 뿌려진 경우에만 )
         StartCoroutine(globalData.effectManager.goldPoolingCont.DisableGoldEffects());
-        
-        // 보스의 경우 뼈조각 OUT EFF 추가
-        if(monsterType == MonsterType.boss)
-            StartCoroutine(globalData.effectManager.bonePoolingCont.DisableGoldEffects());
+
+        // 보스의 경우 뼈조각 OUT EFF 추가 ( 뼈조각 화면에 뿌려진 경우에만 )
+        StartCoroutine(globalData.effectManager.bonePoolingCont.DisableGoldEffects());
         
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);

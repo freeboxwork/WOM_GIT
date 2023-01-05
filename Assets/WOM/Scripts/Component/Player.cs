@@ -14,10 +14,12 @@ public class Player : MonoBehaviour
     public int traningLevelIdx;
     // 진화 레벨
     public int evalutionLeveldx; 
+
     public int gold;
     public int bone;
     public int gem;
     public DateTime playTime;
+
 
    
     
@@ -40,6 +42,8 @@ public class Player : MonoBehaviour
     // 기본 몬스터를 제외한 몬스터 사냥중일때
     public bool isSpacialMonsterHunting;
 
+    // 보스 몬스터 도전 가능 상태 판단
+    public bool isBossMonsterChllengeEnable = false;
 
     void Start()
     {

@@ -26,6 +26,10 @@ public class UiController : MonoBehaviour
     public Transform trLotteryGameSet;
 
     List<GameObject> mainPanels = new List<GameObject>();
+
+    [Header("진화 UI 관련 항목")]
+    public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
+
     void Start()
     {
         
@@ -61,6 +65,10 @@ public class UiController : MonoBehaviour
 
         // 훈련 UI 초기 값 세팅
         SetStatInfoTxt();
+
+        // 진화 판넬 UI 초기 값 세팅
+        SetUI_Pannel_Evolution(GlobalData.instance.player.evalutionLeveldx);
+
     }
 
 
@@ -159,7 +167,22 @@ public class UiController : MonoBehaviour
     }
 
 
+    public void SetUI_Pannel_Evolution(int dataId)
+    {
+        var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(dataId);
 
+        // set badge image
+        UtilityMethod.SetImageSpriteCustomTypeByID(21, evolutionGradeBadgeImages[data.id]);
+
+        // set txt evolution grade 
+        UtilityMethod.SetTxtCustomTypeByID(61, data.evolutionGradeType);
+
+        // set txt damage rate
+        UtilityMethod.SetTxtCustomTypeByID(62, $"{data.damageRate}" );
+
+        // set txt slot count
+        UtilityMethod.SetTxtCustomTypeByID(63, $"{data.slotCount}");
+    }
 
 
 

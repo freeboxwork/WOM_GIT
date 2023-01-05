@@ -23,6 +23,7 @@ public class DataManager : MonoBehaviour
         monsterSpriteData
         unionGambleData,
         summonGradeData,
+        evolutionGradeData
      */
 
 
@@ -52,6 +53,9 @@ public class DataManager : MonoBehaviour
     public UpgradeDatas upgradeData;
     public MonsterSprites monsterSpriteData;
 
+    // REWARD DATA
+    public RewardEvolutionGradeDatas rewardEvolutionGradeDatas;
+
     // SALE STATS
     StatSaleDatas trainingDamageDatas;
     StatSaleDatas trainingCriticalChanceData;
@@ -63,6 +67,8 @@ public class DataManager : MonoBehaviour
     StatSaleDatas talentSpawnSpeed;
     StatSaleDatas talentGoldBonusData;
     public List<StatSaleDatas> statSaleDatas = new List<StatSaleDatas>();
+
+    
 
     void Start()
     {
@@ -80,8 +86,8 @@ public class DataManager : MonoBehaviour
         // EVOLUTION OPTION
         SetEvolutionOptionData();
 
-        // EVOLUTION GRADE
-
+        // REWARD EVOLUTION GRADE
+        SetRewardData();
 
         // MONSTER
         SetMonsterData();
@@ -163,6 +169,12 @@ public class DataManager : MonoBehaviour
         evolutionOptionDatas.Add(bee);
         evolutionOptionDatas.Add(beetle);
     }
+
+    void SetRewardData()
+    {
+        rewardEvolutionGradeDatas = GetData<RewardEvolutionGradeDatas>(SheetDataType.rewardEvolutionGradeData);
+    }
+
     void SetMonsterData() 
     {
         var boss = GetData<MonsterDatas>(SheetDataType.monsterData_boss);
@@ -264,6 +276,12 @@ public class DataManager : MonoBehaviour
     {
         return statSaleDatas[(int)statType];
     }
+
+    public RewardEvolutionGradeData GetRewaedEvolutionGradeDataByID(int id)
+    {
+        return rewardEvolutionGradeDatas.data.FirstOrDefault(f => f.id == id);
+    }
+
 }
 
 
@@ -320,4 +338,10 @@ public class SummonGradeDatas
 public class StatSaleDatas
 {
     public List<StatSaleData> data = new List<StatSaleData>();
+}
+
+[Serializable]
+public class RewardEvolutionGradeDatas
+{
+    public List<RewardEvolutionGradeData> data = new List<RewardEvolutionGradeData>();  
 }
