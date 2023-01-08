@@ -319,3 +319,11 @@ public class RewardEvolutionGradeData
     public string nameKR;
     public string nameEN;
 }
+
+[Serializable]
+public class GlobalMessageData
+{
+    public int id;
+    public string message_kor;
+    public string message_eng;
+ }

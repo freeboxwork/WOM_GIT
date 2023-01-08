@@ -1,0 +1,27 @@
+{"data":[
+ {
+   "id": 0,
+   "message_kor": "진화에 실패했습니다.",
+   "message_eng": "Evolution failed.",
+   "비고": ""
+ },
+ {
+   "id": 1,
+   "message_kor": "message_kor",
+   "message_eng": "message_eng",
+   "비고": ""
+ },
+ {
+   "id": 2,
+   "message_kor": "message_kor",
+   "message_eng": "message_eng",
+   "비고": ""
+ },
+ {
+   "id": 3,
+   "message_kor": "message_kor",
+   "message_eng": "message_eng",
+   "비고": ""
+ }
+]
+}
