@@ -81,18 +81,25 @@ public class EventController : MonoBehaviour
         yield return null;
 
         // GOLD 획득 애니메이션
-        var goldEnableCount = currentMonster.goldCount;
-        StartCoroutine(globalData.effectManager.goldPoolingCont.EnableGoldEffects(goldEnableCount));
-
-        // 보스일경우 뼈조각 획득
-        if(currentMonster.monsterType == MonsterType.boss)
-            StartCoroutine(globalData.effectManager.bonePoolingCont.EnableGoldEffects(goldEnableCount));
-
+        StartCoroutine(globalData.effectManager.goldPoolingCont.EnableGoldEffects(currentMonster.goldCount));
         // 골드 획득
         GainGold(currentMonster);
 
+
+        // 보스일경우 뼈조각 추가 획득
+        if (currentMonster.monsterType == MonsterType.boss)
+        {
+            StartCoroutine(globalData.effectManager.bonePoolingCont.EnableGoldEffects(currentMonster.boneCount));
+            // 뼈 조각 획득
+            GainBone(currentMonster);
+        }
+
+
         // set glod text ui
         globalData.uiController.SetTxtGold(globalData.player.gold);
+
+        // set bone text ui
+        globalData.uiController.SetTxtBone(globalData.player.bone);
 
         // hp text 0으로 표시
         globalData.uiController.SetTxtMonsterHp(0);
@@ -117,10 +124,13 @@ public class EventController : MonoBehaviour
     {
         var gold = monster.gold;
         globalData.player.AddGold(gold);
-
-        if (monster.monsterType == MonsterType.boss)
-            globalData.player.AddBone(monster.bone);
     }
+    void GainBone(MonsterBase monster)
+    {
+        var bone = monster.bone;
+        globalData.player.AddBone(bone);
+    }
+
 
     // 일반 몬스터 사망시
     IEnumerator MonsterDie_Normal()
@@ -207,7 +217,9 @@ public class EventController : MonoBehaviour
     IEnumerator MonsterDie_Evolution()
     {
 
-        
+        // 공격 막기
+        globalData.attackController.SetAttackableState(false);
+
         // 보스 도전 버튼 활성화 
         if (globalData.player.isBossMonsterChllengeEnable)
             globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
@@ -228,6 +240,8 @@ public class EventController : MonoBehaviour
         // 기존 UI Canvas 비활성화
         UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 
+        // TODO : 진화 UI 리셋
+
         // 등급 업그레이드 연출 등장
         globalData.gradeAnimCont.gradeIndex = globalData.player.evalutionLeveldx+1;
         globalData.gradeAnimCont.gameObject.SetActive(true);
@@ -237,6 +251,9 @@ public class EventController : MonoBehaviour
 
         // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
+
+        // 공격 가능 상태 변경
+        globalData.attackController.SetAttackableState(true);
     }
 
     // 몬스터 등장

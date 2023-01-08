@@ -247,7 +247,7 @@ public class DataManager : MonoBehaviour
     public MonsterData GetMonsterDataById(MonsterType monsterType, int id)
     {
 
-        return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.monsterId == id);
+        return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.id == id);
     }
 
     public UpgradeData GetUpgradeDataById(int id)

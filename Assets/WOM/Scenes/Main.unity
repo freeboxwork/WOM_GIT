@@ -12610,7 +12610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddd0af58e893ee4c9241082b00d9a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterId: 0
+  id: 0
   hp: 0
   exp: 0
   bone: 0
@@ -23911,8 +23911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTypeDatas:
-  - {fileID: 614465674}
-  - {fileID: 1747509667}
+  - {fileID: 1904633501}
   - {fileID: 25142335}
   - {fileID: 124550271}
   - {fileID: 129213001}
@@ -23937,6 +23936,7 @@ MonoBehaviour:
   - {fileID: 564454601}
   - {fileID: 585274272}
   - {fileID: 602763789}
+  - {fileID: 614465674}
   - {fileID: 623588768}
   - {fileID: 624335926}
   - {fileID: 638479361}
@@ -24002,6 +24002,7 @@ MonoBehaviour:
   - {fileID: 1719060501}
   - {fileID: 1735355603}
   - {fileID: 1740806786}
+  - {fileID: 1747509667}
   - {fileID: 1771520030}
   - {fileID: 1771520031}
   - {fileID: 1775955373}
@@ -24031,9 +24032,9 @@ MonoBehaviour:
   - {fileID: 3409305089524062622}
   customTypeDatas_animCont: []
   customTypeDatas_uiButton:
-  - {fileID: 614465674}
   - {fileID: 247686139}
   - {fileID: 527225162}
+  - {fileID: 614465674}
   - {fileID: 638479362}
   - {fileID: 653059483}
   - {fileID: 807080670}
@@ -24056,6 +24057,7 @@ MonoBehaviour:
   - {fileID: 3409305088193251360}
   - {fileID: 3409305089524062622}
   customTypeDatas_uiText:
+  - {fileID: 1904633501}
   - {fileID: 25142335}
   - {fileID: 124550271}
   - {fileID: 156771629}
@@ -24146,12 +24148,12 @@ MonoBehaviour:
   customTypeDatas_transform:
   - {fileID: 3409305089342743384}
   customTypeDatas_gameObject:
-  - {fileID: 1747509667}
   - {fileID: 129213001}
   - {fileID: 518427075}
   - {fileID: 926182306}
   - {fileID: 1415270891}
   - {fileID: 1502984283}
+  - {fileID: 1747509667}
   - {fileID: 2022430789}
 --- !u!1 &1647377567
 GameObject:
@@ -28994,8 +28996,9 @@ GameObject:
   - component: {fileID: 1904633498}
   - component: {fileID: 1904633500}
   - component: {fileID: 1904633499}
+  - component: {fileID: 1904633501}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29118,6 +29121,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904633497}
   m_CullTransparentMesh: 1
+--- !u!114 &1904633501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904633497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  components:
+    animController: {fileID: 0}
+    button: {fileID: 0}
+    text: {fileID: 1904633499}
+    image: {fileID: 0}
+    sr: {fileID: 0}
+    tr: {fileID: 1904633498}
+    gm: {fileID: 1904633497}
+  customType: 1
+  index: 60
 --- !u!114 &1908460476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1879935269263286960, guid: 9877a5dabd80c734d8d50a83aa7f98fd, type: 3}
@@ -30110,7 +30135,7 @@ MonoBehaviour:
   insects: []
   trHalfPoint: {fileID: 1073158299}
   damageDebug: 1
-  debugDamage: 20
+  debugDamage: 200
 --- !u!1 &1934829624
 GameObject:
   m_ObjectHideFlags: 0
@@ -33621,7 +33646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83831fcca6a4ca5478090525d91a0921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterId: 0
+  id: 0
   hp: 0
   exp: 0
   bone: 0
@@ -33809,6 +33834,7 @@ MonoBehaviour:
   - {fileID: 234574804}
   - {fileID: 234574803}
   - {fileID: 539293748}
+  - {fileID: 1904633498}
   goldPoolingCont: {fileID: 21124532}
   bonePoolingCont: {fileID: 914068805}
   animContTransition: {fileID: 1684512860}

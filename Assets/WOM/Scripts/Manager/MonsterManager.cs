@@ -27,7 +27,7 @@ public class MonsterManager : MonoBehaviour
     void AddMonsterList()
     {
         // add monsters list 
-        // ¼ø¼­ : normal ,  gold,  boss , evolution
+        // ìˆœì„œ : normal ,  gold,  boss , evolution
         monsters.Add(monsterNormal);
         monsters.Add(monsterGold);
         monsters.Add(monsterBoss);
@@ -76,7 +76,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    /// <summary> ±âº» ¸ó½ºÅÍ ( ³ë¸Ö,°ñµå,º¸½º Á¦¿Ü ) ÀÌ¿ÜÀÇ ¸ó½ºÅÍ µ¥ÀÌÅÍ ¼¼ÆÃ½Ã  </summary>
+    /// <summary> ê¸°ë³¸ ëª¬ìŠ¤í„° ( ë…¸ë©€,ê³¨ë“œ,ë³´ìŠ¤ ì œì™¸ ) ì´ì™¸ì˜ ëª¬ìŠ¤í„° ë°ì´í„° ì„¸íŒ…ì‹œ  </summary>
     public void SetMonsterDataOther(EnumDefinition.MonsterType monsterType, int dataId)
     {
 
@@ -130,7 +130,7 @@ public class MonsterManager : MonoBehaviour
         {
             if ((int)monsterType == i)
             {
-                //TODO : ²¨¾ß ÇÏ´ÂÁö È®ÀÎ ÇÊ¿ä
+                //TODO : êº¼ì•¼ í•˜ëŠ”ì§€ í™•ì¸ í•„ìš”
                 monsters[i].gameObject.SetActive(true);
             }
             else
@@ -146,7 +146,7 @@ public class MonsterManager : MonoBehaviour
         var data = GlobalData.instance.dataManager.GetMonsterDataById(monsterType,monsterId); 
         if(data == null)
         {
-            //TODO : ERROR PRINT °ü¸®ÀÚ ¸¸µé±â
+            //TODO : ERROR PRINT ê´€ë¦¬ì ë§Œë“¤ê¸°
             Debug.LogError("");
             return null;
         }
@@ -160,7 +160,7 @@ public class MonsterManager : MonoBehaviour
     {
         var monster = GetMonsterData(monsterType);
         
-        monster.monsterId = monsterData.monsterId;
+        monster.id = monsterData.id;
         monster.hp = monsterData.hp;
         monster.exp = monsterData.exp;
         monster.bone = monsterData.bone;

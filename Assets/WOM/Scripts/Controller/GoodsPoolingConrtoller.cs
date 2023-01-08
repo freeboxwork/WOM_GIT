@@ -6,23 +6,23 @@ using UnityEngine;
 public class GoodsPoolingConrtoller : MonoBehaviour
 {
 
-    // ÇÁ¸®ÆÕ »ı¼ºµÉ ºÎ¸ğ ¸ğµåÁ§Æ®
+    // í”„ë¦¬íŒ¹ ìƒì„±ë  ë¶€ëª¨ ëª¨ë“œì íŠ¸
     public Transform trEffects;
 
     public int goldPoolCount = 25;
-    // °ñµå ÇÁ¸®ÆÕ
+    // ê³¨ë“œ í”„ë¦¬íŒ¹
     public GoldAnimController prefabGoldAnimCont;
 
-    // °ñµå ¿ÀºêÁ§Æ® Ç®
+    // ê³¨ë“œ ì˜¤ë¸Œì íŠ¸ í’€
     public List<GoldAnimController> goldAnimConts = new List<GoldAnimController>();
-    // È°¼ºÈ­µÈ °ñµå ¿ÀºêÁ§Æ®µé
+    // í™œì„±í™”ëœ ê³¨ë“œ ì˜¤ë¸Œì íŠ¸ë“¤
     List<GoldAnimController> enableGoldAnimConts = new List<GoldAnimController>();
 
     public EnumDefinition.GoodsType goodsType;
 
     public void Init()
     {
-        //Ç®¸µ ¿ÀºêÁ§Æ® »ı¼º
+        //í’€ë§ ì˜¤ë¸Œì íŠ¸ ìƒì„±
         CreateInstanceGolds();
     }
 
@@ -31,6 +31,7 @@ public class GoodsPoolingConrtoller : MonoBehaviour
         for (int i = 0; i < goldPoolCount; i++)
         {
             var gold = Instantiate(prefabGoldAnimCont, trEffects);
+            gold.goodsType = goodsType;
             goldAnimConts.Add(gold);
             gold.gameObject.SetActive(false);
         }
@@ -52,7 +53,7 @@ public class GoodsPoolingConrtoller : MonoBehaviour
             }
             else
             {
-                Debug.Log(goodsType + " Pool ÀÌ ºñ¾î ÀÖ½À´Ï´Ù.");
+                Debug.Log(goodsType + " Pool ì´ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.");
             }
         }
     }
@@ -65,7 +66,7 @@ public class GoodsPoolingConrtoller : MonoBehaviour
             if (gold.gameObject.activeSelf)
             {
                 gold.GoldOutAnimStart(() => {
-                    // °ñµå°¡ UI ÂÊÀ¸·Î ÀÌµ¿ÈÄ °³º° ÀÌº¥Æ® ½ÇÇà
+                    // ê³¨ë“œê°€ UI ìª½ìœ¼ë¡œ ì´ë™í›„ ê°œë³„ ì´ë²¤íŠ¸ ì‹¤í–‰
                     //Debug.Log("gold goal event!!");
                 });
 

@@ -11,23 +11,23 @@ public class UiController : MonoBehaviour
 {
     public CustomTypeDataManager customTypeDataManager;
     
-    [Header("Monster °ü·Ã UI Ç×¸ñ")]
+    [Header("Monster ê´€ë ¨ UI í•­ëª©")]
     public TextMeshProUGUI txtMonsterHp;
     public TextMeshProUGUI txtPhaseCount;
     public TextMeshProUGUI txtGold;
     public Button btnBossChallenge;
 
-    [Header("º¸½º¸ó½ºÅÍ µµÀü °ü·Ã UI Ç×¸ñ" )]
+    [Header("ë³´ìŠ¤ëª¬ìŠ¤í„° ë„ì „ ê´€ë ¨ UI í•­ëª©" )]
     public TextMeshProUGUI txtBossMonChallengeTimer;
     public Image imgBossMonTimer;
     public Image imgBossMonTimerParent;
 
-    [Header("»Ì±â °ü·Ã UI Ç×¸ñ")]
+    [Header("ë½‘ê¸° ê´€ë ¨ UI í•­ëª©")]
     public Transform trLotteryGameSet;
 
     List<GameObject> mainPanels = new List<GameObject>();
 
-    [Header("ÁøÈ­ UI °ü·Ã Ç×¸ñ")]
+    [Header("ì§„í™” UI ê´€ë ¨ í•­ëª©")]
     public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
 
     void Start()
@@ -44,7 +44,7 @@ public class UiController : MonoBehaviour
         }
     }
 
-    /// <summary> UI °ü·Ã Á¤º¸ ¼¼ÆÃ </summary>
+    /// <summary> UI ê´€ë ¨ ì •ë³´ ì„¸íŒ… </summary>
     public IEnumerator Init()
     {
         // set panel gameObjcts
@@ -63,10 +63,10 @@ public class UiController : MonoBehaviour
 
         // Init Text Values
 
-        // ÈÆ·Ã UI ÃÊ±â °ª ¼¼ÆÃ
+        // í›ˆë ¨ UI ì´ˆê¸° ê°’ ì„¸íŒ…
         SetStatInfoTxt();
 
-        // ÁøÈ­ ÆÇ³Ú UI ÃÊ±â °ª ¼¼ÆÃ
+        // ì§„í™” íŒë„¬ UI ì´ˆê¸° ê°’ ì„¸íŒ…
         SetUI_Pannel_Evolution(GlobalData.instance.player.evalutionLeveldx);
 
     }
@@ -87,6 +87,12 @@ public class UiController : MonoBehaviour
     {
         txtGold.text = value.ToString();
     }
+
+    public void SetTxtBone(int value)
+    {
+        UtilityMethod.SetTxtCustomTypeByID(60, value.ToString());
+    }
+       
 
     public void SetTxtBossChallengeTimer(int value)
     {
@@ -114,12 +120,12 @@ public class UiController : MonoBehaviour
 
     void SetBtnEvent()
     {
-        // º¸½º ¸ó½ºÅÍ µµÀü ¹öÆ°
+        // ë³´ìŠ¤ ëª¬ìŠ¤í„° ë„ì „ ë²„íŠ¼
         btnBossChallenge.onClick.AddListener(() => {
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });
 
-        // »Ì±â °ÔÀÓ 10 , 30 , 50È¸
+        // ë½‘ê¸° ê²Œì„ 10 , 30 , 50íšŒ
         UtilityMethod.SetBtnEventCustomTypeByID(17, () => LotteryGameStart(10));
         UtilityMethod.SetBtnEventCustomTypeByID(18, () => LotteryGameStart(30));
         UtilityMethod.SetBtnEventCustomTypeByID(19, () => LotteryGameStart(50));
@@ -138,7 +144,7 @@ public class UiController : MonoBehaviour
         talentGoldBonus
          */
         #endregion
-        // STAT ±¸¸Å ¹öÆ° ÀÌº¥Æ® ¼¼ÆÃ
+        // STAT êµ¬ë§¤ ë²„íŠ¼ ì´ë²¤íŠ¸ ì„¸íŒ…
         int btnId = 8;
         foreach(EnumDefinition.SaleStatType type in Enum.GetValues(typeof(EnumDefinition.SaleStatType)))
         {
@@ -150,26 +156,26 @@ public class UiController : MonoBehaviour
         }
 
 
-        // ¸ŞÀÎ ÆÇ³Ú ¿­±â
+        // ë©”ì¸ íŒë„¬ ì—´ê¸°
         foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
         {
             UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
         }
 
-        /* ÁøÈ­Àü */
+        /* ì§„í™”ì „ */
 
-        // ÁøÈ­Àü ¹öÆ°
+        // ì§„í™”ì „ ë²„íŠ¼
         UtilityMethod.SetBtnEventCustomTypeByID(20, () =>
         {
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge);
         });
 
-        // ÁøÈ­ ¾÷±×·¹ÀÌµå ÀÌÆåÆ® È®ÀÎ ¹öÆ°
+        // ì§„í™” ì—…ê·¸ë ˆì´ë“œ ì´í™íŠ¸ í™•ì¸ ë²„íŠ¼
         UtilityMethod.SetBtnEventCustomTypeByID(23, () =>
         {
-            // ±âÁ¸ UI Canvas È°¼ºÈ­
+            // ê¸°ì¡´ UI Canvas í™œì„±í™”
             UtilityMethod.GetCustomTypeGMById(6).SetActive(true);
-            // ÁøÈ­ ¾÷±×·¹ÀÌÆ® ÀÌÆåÆ® ºñÈ°¼ºÈ­
+            // ì§„í™” ì—…ê·¸ë ˆì´íŠ¸ ì´í™íŠ¸ ë¹„í™œì„±í™”
             GlobalData.instance.gradeAnimCont.gameObject.SetActive(false);
         });
 
@@ -195,7 +201,7 @@ public class UiController : MonoBehaviour
 
 
 
-    #region ÈÆ·Ã ½ºÅÈ - ±¸¸Å °¡´ÉÇÑ ½ºÅÈ UI ¼¼ÆÃ 
+    #region í›ˆë ¨ ìŠ¤íƒ¯ - êµ¬ë§¤ ê°€ëŠ¥í•œ ìŠ¤íƒ¯ UI ì„¸íŒ… 
     // --- [ TRANING UI ] ---
 
     void SetStatInfoTxt() // title , maximum level
@@ -228,7 +234,7 @@ public class UiController : MonoBehaviour
 
         var data = GlobalData.instance.dataManager.GetSaleStatDataByType(statType);
         var curLevel = GlobalData.instance.player.curStatData.statLevelDatas[(int)statType];
-        // TODO: ´ÙÀ½ ·¹º§ Á¸ÀçÇÒ¶§ ¾î¶² °ªÀ¸·Î ³Ö¾î¾ß ÇÏ´ÂÁö Ã¼Å© ÇÊ¿äÇÔ
+        // TODO: ë‹¤ìŒ ë ˆë²¨ ì¡´ì¬í• ë•Œ ì–´ë–¤ ê°’ìœ¼ë¡œ ë„£ì–´ì•¼ í•˜ëŠ”ì§€ ì²´í¬ í•„ìš”í•¨
         if (data.data.Last().level > curLevel)
             return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel+1).value.ToString();
         else
@@ -241,7 +247,7 @@ public class UiController : MonoBehaviour
     }
     
 
-    // ÇöÀç ½ºÅÈ°ª°ú ´ÙÀ½ ½ºÅÈ°ª ÅØ½ºÆ®¸¦ ¼¼ÆÃ ÇÒ¶§ »ç¿ë
+    // í˜„ì¬ ìŠ¤íƒ¯ê°’ê³¼ ë‹¤ìŒ ìŠ¤íƒ¯ê°’ í…ìŠ¤íŠ¸ë¥¼ ì„¸íŒ… í• ë•Œ ì‚¬ìš©
     public void SetTxtTraningValues(SaleStatType statType, float[] values)
     {
         switch (statType)
@@ -281,12 +287,12 @@ public class UiController : MonoBehaviour
     {
         trLotteryGameSet.gameObject.SetActive(true);
         GlobalData.instance.lotteryManager.LotteryStart(roundCount, () => {
-            Debug.Log(roundCount + "È¸ »Ì±â °ÔÀÓ Á¾·á ÀÌº¥Æ® ½ÇÇà");
+            Debug.Log(roundCount + "íšŒ ë½‘ê¸° ê²Œì„ ì¢…ë£Œ ì´ë²¤íŠ¸ ì‹¤í–‰");
         });
     }
 
 
-    // ÃÊ±âÈ­½Ã UI ¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­ 
+    // ì´ˆê¸°í™”ì‹œ UI ì˜¤ë¸Œì íŠ¸ ë¹„í™œì„±í™” 
     void DisableUiElements()
     {
         btnBossChallenge.gameObject.SetActive(false);

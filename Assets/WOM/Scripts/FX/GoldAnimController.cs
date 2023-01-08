@@ -23,6 +23,8 @@ public class GoldAnimController : MonoBehaviour
     Vector2 pos_targetPoint;
     float rot_randomValue;
 
+    // 재화 타입
+    public EnumDefinition.GoodsType goodsType;
 
 
     void Start()
@@ -103,7 +105,8 @@ public class GoldAnimController : MonoBehaviour
     {
         goldOutAnimData.ResetAnimData();
         var curPos = transform.position;
-        var uiPoint = GlobalData.instance.effectManager.GetGoldSfxRandomPoint(EnumDefinition.GoldPosType.SCREEN_UI_POINT);
+        var posType = goodsType == EnumDefinition.GoodsType.gold ? EnumDefinition.GoldPosType.SCREEN_UI_POINT_GOLD : EnumDefinition.GoldPosType.SCREEN_UI_POINT_BONE;
+        var uiPoint = GlobalData.instance.effectManager.GetGoldSfxRandomPoint(posType);
         var targetPos = Camera.main.ScreenToWorldPoint(uiPoint.position);
         var centerPos = (curPos + targetPos) * 0.5f;
         float centerRandomX = Random.Range(-2f, 2f);

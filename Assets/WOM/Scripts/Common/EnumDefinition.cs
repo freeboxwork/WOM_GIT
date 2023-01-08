@@ -85,7 +85,8 @@ public class EnumDefinition
         END_POOINT_Y_MAX,
         END_POOINT_X_MIN,
         END_POOINT_X_MAX,
-        SCREEN_UI_POINT
+        SCREEN_UI_POINT_GOLD,
+        SCREEN_UI_POINT_BONE
     }
 
     public enum UnionGradeType
@@ -99,7 +100,7 @@ public class EnumDefinition
     }
 
 
-    /// <summary> ÀçÈ­Å¸ÀÔ </summary>
+    /// <summary> ìž¬í™”íƒ€ìž… </summary>
     public enum GoodsType
     {
         gold,
@@ -117,4 +118,7 @@ public class EnumDefinition
         dna,
         shop
     }
+
+
+   
 }
