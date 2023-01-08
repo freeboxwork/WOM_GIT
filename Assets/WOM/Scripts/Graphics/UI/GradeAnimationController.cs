@@ -29,9 +29,9 @@ namespace ProjectGraphics
 
         public List<GameObject> enableObjects;
 
-        // Ãß°¡ 
+        // ì¶”ê°€ 
 
-        [Header("ÇöÀç ½ÃÀÛÇÏ´Â µî±Ş")]
+        [Header("í˜„ì¬ ì‹œì‘í•˜ëŠ” ë“±ê¸‰")]
         public int gradeIndex = 0;
         [SerializeField] ImageResources[] imageResources;
 
@@ -43,7 +43,7 @@ namespace ProjectGraphics
 
         private void OnEnable()
         {
-            //½ÃÀÛ½Ã gradeIndex °ªÀ» Á¤ÀÇ ÇØÁÖ¼¼¿ä.
+            //ì‹œì‘ì‹œ gradeIndex ê°’ì„ ì •ì˜ í•´ì£¼ì„¸ìš”.
             int startIndex= 0;
             if (gradeIndex <= 0 || gradeIndex >= imageResources.Length) startIndex = 0;
             else startIndex = gradeIndex - 1;
@@ -52,6 +52,8 @@ namespace ProjectGraphics
             //animation Start
             anim.SetTrigger("Action");
         }
+
+        
 
         public void SetImageResources(int num)
         {

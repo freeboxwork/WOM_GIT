@@ -20,6 +20,10 @@ public class BossMonsterChallengeTimer : MonoBehaviour
         //}
     }
 
+    public void SetTimeValue(float value)
+    {
+        animData.animDuration = value;
+    }
 
     public void StartTimer()
     {

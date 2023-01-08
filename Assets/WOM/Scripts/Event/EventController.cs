@@ -5,7 +5,7 @@ using UnityEngine;
 using static EnumDefinition;
 using static UnityEngine.Rendering.DebugUI;
 /// <summary>
-/// ¸ó½ºÅÍÀü ÀÌº¥Æ® °ü¸®
+/// ëª¬ìŠ¤í„°ì „ ì´ë²¤íŠ¸ ê´€ë¦¬
 /// </summary>
 public class EventController : MonoBehaviour
 {
@@ -63,15 +63,15 @@ public class EventController : MonoBehaviour
         // monster hit shader effect
         currentMonster.inOutAnimator.MonsterHitAnim();
 
-        // ¸ó½ºÅÍ Á¦°Å½Ã ( hp ·Î ÆÇ´Ü )
+        // ëª¬ìŠ¤í„° ì œê±°ì‹œ ( hp ë¡œ íŒë‹¨ )
         if (IsMonseterKill(currentMonster.hp))
         {
             StartCoroutine(MonsterKill(currentMonster));
         }
-        // ¸ó½ºÅÍ ´Ü¼ø ÇÇ°İ½Ã
+        // ëª¬ìŠ¤í„° ë‹¨ìˆœ í”¼ê²©ì‹œ
         else
         {
-            // ¸ó½ºÅÍ hp text
+            // ëª¬ìŠ¤í„° hp text
             globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
         }
     }
@@ -80,27 +80,27 @@ public class EventController : MonoBehaviour
     {
         yield return null;
 
-        // GOLD È¹µæ ¾Ö´Ï¸ŞÀÌ¼Ç
+        // GOLD íšë“ ì• ë‹ˆë©”ì´ì…˜
         var goldEnableCount = currentMonster.goldCount;
         StartCoroutine(globalData.effectManager.goldPoolingCont.EnableGoldEffects(goldEnableCount));
 
-        // º¸½ºÀÏ°æ¿ì »ÀÁ¶°¢ È¹µæ
+        // ë³´ìŠ¤ì¼ê²½ìš° ë¼ˆì¡°ê° íšë“
         if(currentMonster.monsterType == MonsterType.boss)
             StartCoroutine(globalData.effectManager.bonePoolingCont.EnableGoldEffects(goldEnableCount));
 
-        // °ñµå È¹µæ
+        // ê³¨ë“œ íšë“
         GainGold(currentMonster);
 
         // set glod text ui
         globalData.uiController.SetTxtGold(globalData.player.gold);
 
-        // hp text 0À¸·Î Ç¥½Ã
+        // hp text 0ìœ¼ë¡œ í‘œì‹œ
         globalData.uiController.SetTxtMonsterHp(0);
 
-        // ÇÏÇÁ¶óÀÎ À§ÂÊ °ïÃæµé Á¦°Å
+        // í•˜í”„ë¼ì¸ ìœ„ìª½ ê³¤ì¶©ë“¤ ì œê±°
         globalData.insectManager.DisableHalfLineInsects();
 
-        // monster kill animation »ç¸Á ¾Ö´Ï¸ŞÀÌ¼Ç ´ë±â
+        // monster kill animation ì‚¬ë§ ì• ë‹ˆë©”ì´ì…˜ ëŒ€ê¸°
         yield return StartCoroutine(currentMonster.inOutAnimator.MonsterKillMatAnim());
 
         switch (currentMonster.monsterType)
@@ -122,17 +122,17 @@ public class EventController : MonoBehaviour
             globalData.player.AddBone(monster.bone);
     }
 
-    // ÀÏ¹İ ¸ó½ºÅÍ »ç¸Á½Ã
+    // ì¼ë°˜ ëª¬ìŠ¤í„° ì‚¬ë§ì‹œ
     IEnumerator MonsterDie_Normal()
     {
         // BG Scroll Animation
         globalData.stageManager.PlayAnimBgScroll();
         
-        //phaseCount 0 µµ´Ş½Ã °ñµå ¸ó½ºÅÍ µîÀå.
+        //phaseCount 0 ë„ë‹¬ì‹œ ê³¨ë“œ ëª¬ìŠ¤í„° ë“±ì¥.
         PhaseCounting(out int phaseCount);
         if (IsPhaseCountZero(phaseCount)) 
         {
-            // º¸½º µµÀü ¹öÆ° ¼û±è ( º¸½º µµÀü ¹öÆ° ÀÖ´Ù¸é ¼û±è - ¹«Á¶°Ç ¼û±è )
+            // ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ ìˆ¨ê¹€ ( ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ ìˆë‹¤ë©´ ìˆ¨ê¹€ - ë¬´ì¡°ê±´ ìˆ¨ê¹€ )
             globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
             yield return StartCoroutine( MonsterAppearCor(MonsterType.gold));  
         }
@@ -143,58 +143,58 @@ public class EventController : MonoBehaviour
     }
 
 
-    #region °ñµå ¸ó½ºÅÍ »ç¸Á½Ã ÇÁ·Î¼¼½º
-    // °ñµå ¸ó½ºÅÍ »ç¸Á½Ã
+    #region ê³¨ë“œ ëª¬ìŠ¤í„° ì‚¬ë§ì‹œ í”„ë¡œì„¸ìŠ¤
+    // ê³¨ë“œ ëª¬ìŠ¤í„° ì‚¬ë§ì‹œ
     /* process */
-    // 0 : °ñµå ¸ó½ºÅÍ »ç¸Á  
-    // 2 : º¸½º µµÀü ¹öÆ° È°¼ºÈ­
-    // 3 : ÀÏ¹İ ¸ó½ºÅÍ µ¥ÀÌÅÍ ¼¼ÆÃ
-    // 4 : ÇöÀç ¸ó½ºÅÍ ÀÏ¹İ ¸ó½ºÅÍ·Î º¯°æ
+    // 0 : ê³¨ë“œ ëª¬ìŠ¤í„° ì‚¬ë§  
+    // 2 : ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ í™œì„±í™”
+    // 3 : ì¼ë°˜ ëª¬ìŠ¤í„° ë°ì´í„° ì„¸íŒ…
+    // 4 : í˜„ì¬ ëª¬ìŠ¤í„° ì¼ë°˜ ëª¬ìŠ¤í„°ë¡œ ë³€ê²½
     // 4 : phaaseCount reset
-    // 5 : ui ¼¼ÆÃ
-    // 6 : ¸ó½ºÅÍ µîÀå
+    // 5 : ui ì„¸íŒ…
+    // 6 : ëª¬ìŠ¤í„° ë“±ì¥
     #endregion
     IEnumerator MonsterDie_Gold()
     {
         // BG Scroll Animation
         globalData.stageManager.PlayAnimBgScroll();
 
-        // º¸½º µµÀü ¹öÆ° È°¼ºÈ­ 
+        // ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ í™œì„±í™” 
         globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
         
-        // º¸½º µµÀü °¡´É »óÅÂ ¼³Á¤
+        // ë³´ìŠ¤ ë„ì „ ê°€ëŠ¥ ìƒíƒœ ì„¤ì •
         globalData.player.isBossMonsterChllengeEnable = true;   
 
-        // phaseCount ¸®¼Â
+        // phaseCount ë¦¬ì…‹
         PhaseCountReset();
 
-        // ÀÏ¹İ ¸ó½ºÅÍ µîÀå
+        // ì¼ë°˜ ëª¬ìŠ¤í„° ë“±ì¥
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }
 
-    //º¸½º ¸ó½ºÅÍ »ç¸Á½Ã
+    //ë³´ìŠ¤ ëª¬ìŠ¤í„° ì‚¬ë§ì‹œ
     IEnumerator MonsterDie_Boss()
     {
-        // Å¸ÀÌ¸Ó Á¾·á
+        // íƒ€ì´ë¨¸ ì¢…ë£Œ
         globalData.bossChallengeTimer.StopAllCoroutines();
 
-        // Å¸ÀÌ¸Ó UI ¸®¼Â
+        // íƒ€ì´ë¨¸ UI ë¦¬ì…‹
         globalData.uiController.SetImgTimerFilledRaidal(0);
         globalData.uiController.SetTxtBossChallengeTimer(0);
 
-        // Å¸ÀÌ¸Ó UI Disable
+        // íƒ€ì´ë¨¸ UI Disable
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
-        // º¸½º µµÀü °¡´É »óÅÂ ¼³Á¤
+        // ë³´ìŠ¤ ë„ì „ ê°€ëŠ¥ ìƒíƒœ ì„¤ì •
         globalData.player.isBossMonsterChllengeEnable = false;
 
-        // SET STAGE DATA ( ´ÙÀ½ ½ºÅ×ÀÌÁö·Î º¯°æ )
+        // SET STAGE DATA ( ë‹¤ìŒ ìŠ¤í…Œì´ì§€ë¡œ ë³€ê²½ )
         globalData.player.stageIdx++;
 
         // current stage setting
         globalData.player.SetCurrentStageData(globalData.player.stageIdx);
 
-        // stage setting - stage manager ½ºÅ×ÀÌÁö µ¥ÀÌÅÍ¿Í ¹è°æ ÀÌ¹ÌÁö ÀüÈ¯ ¾Ö´Ï¸ŞÀÌ¼Ç
+        // stage setting - stage manager ìŠ¤í…Œì´ì§€ ë°ì´í„°ì™€ ë°°ê²½ ì´ë¯¸ì§€ ì „í™˜ ì• ë‹ˆë©”ì´ì…˜
         yield return StartCoroutine( globalData.stageManager.SetStageById(globalData.player.stageIdx));
 
         // set monster data and monster skin
@@ -203,40 +203,40 @@ public class EventController : MonoBehaviour
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }
 
-    //ÁøÈ­ ¸ó½ºÅÍ »ç¸Á½Ã
+    //ì§„í™” ëª¬ìŠ¤í„° ì‚¬ë§ì‹œ
     IEnumerator MonsterDie_Evolution()
     {
         
              
         
-        // º¸½º µµÀü ¹öÆ° È°¼ºÈ­ 
+        // ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ í™œì„±í™” 
         if (globalData.player.isBossMonsterChllengeEnable)
             globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
 
-        // ÁøÈ­ º¸»ó Áö±Ş ¹× UI ¼¼ÆÃ
+        // ì§„í™” ë³´ìƒ ì§€ê¸‰ ë° UI ì„¸íŒ…
         globalData.uiController.SetUI_Pannel_Evolution(globalData.player.evalutionLeveldx + 1);
 
-        // ±âÁ¸ UI Canvas ºñÈ°¼ºÈ­
+        // ê¸°ì¡´ UI Canvas ë¹„í™œì„±í™”
         UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 
-        // µî±Ş ¾÷±×·¹ÀÌµå ¿¬Ãâ µîÀå
+        // ë“±ê¸‰ ì—…ê·¸ë ˆì´ë“œ ì—°ì¶œ ë“±ì¥
         globalData.gradeAnimCont.gradeIndex = globalData.player.evalutionLeveldx+1;
         globalData.gradeAnimCont.gameObject.SetActive(true);
 
-        // ÁøÈ­ idx ·¹º§¾÷
+        // ì§„í™” idx ë ˆë²¨ì—…
         globalData.player.evalutionLeveldx++;
 
-        // ÀÏ¹İ ¸ó½ºÅÍ µîÀå
+        // ì¼ë°˜ ëª¬ìŠ¤í„° ë“±ì¥
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }
 
-    // ¸ó½ºÅÍ µîÀå
+    // ëª¬ìŠ¤í„° ë“±ì¥
     IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
     {
-        // °ñµå OUT EFFECT ( °ñµå È­¸é¿¡ »Ñ·ÁÁø °æ¿ì¿¡¸¸ )
+        // ê³¨ë“œ OUT EFFECT ( ê³¨ë“œ í™”ë©´ì— ë¿Œë ¤ì§„ ê²½ìš°ì—ë§Œ )
         StartCoroutine(globalData.effectManager.goldPoolingCont.DisableGoldEffects());
 
-        // º¸½ºÀÇ °æ¿ì »ÀÁ¶°¢ OUT EFF Ãß°¡ ( »ÀÁ¶°¢ È­¸é¿¡ »Ñ·ÁÁø °æ¿ì¿¡¸¸ )
+        // ë³´ìŠ¤ì˜ ê²½ìš° ë¼ˆì¡°ê° OUT EFF ì¶”ê°€ ( ë¼ˆì¡°ê° í™”ë©´ì— ë¿Œë ¤ì§„ ê²½ìš°ì—ë§Œ )
         StartCoroutine(globalData.effectManager.bonePoolingCont.DisableGoldEffects());
         
         // get curret monster data
@@ -246,7 +246,7 @@ public class EventController : MonoBehaviour
         globalData.player.SetCurrentMonster(monsterData);
 
         // set prev monster type
-        globalData.player.SetPervMonsterType(globalData.player.curMonsterType);
+        globalData.player.SetPervMonsterType(monsterType);
 
         // set current monster type
         globalData.player.SetCurrentMonsterType(monsterType);
@@ -264,24 +264,24 @@ public class EventController : MonoBehaviour
         // Monster In Animation
         yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionIn());
         
-        // ¸ó½ºÅÍ UI ¸®¼Â 
+        // ëª¬ìŠ¤í„° UI ë¦¬ì…‹ 
         MonsterUiReset();
     }
 
 
-    #region ÁøÈ­Àü ÇÁ·Î¼¼½º
+    #region ì§„í™”ì „ í”„ë¡œì„¸ìŠ¤
     /*
-     0 : Æ®·£Áö¼Ç ÀÎ
-     1 : ¸ó½ºÅÍ ¹× ½ºÅ×ÀÌÁö ¼¼ÆÃ
-     2 : Æ®·£Áö¼Ç ¾Æ¿ô
-     3 : ÁøÈ­Àü ¸ó½ºÅÍ µîÀå
-     4 : ¸ó½ºÅÍ »ç³É
-     5 : ¸ó½ºÅÍ »ç³É ¼º°ø -> ÁøÈ­
-     6 : ¸ó½ºÅÍ »ç³É ½ÇÆĞ -> ÀÌÀü ¸ó½ºÅÍ µîÀå  
+     0 : íŠ¸ëœì§€ì…˜ ì¸
+     1 : ëª¬ìŠ¤í„° ë° ìŠ¤í…Œì´ì§€ ì„¸íŒ…
+     2 : íŠ¸ëœì§€ì…˜ ì•„ì›ƒ
+     3 : ì§„í™”ì „ ëª¬ìŠ¤í„° ë“±ì¥
+     4 : ëª¬ìŠ¤í„° ì‚¬ëƒ¥
+     5 : ëª¬ìŠ¤í„° ì‚¬ëƒ¥ ì„±ê³µ -> ì§„í™”
+     6 : ëª¬ìŠ¤í„° ì‚¬ëƒ¥ ì‹¤íŒ¨ -> ì´ì „ ëª¬ìŠ¤í„° ë“±ì¥  
     */
     #endregion
 
-    // ÁøÈ­Àü µµÀü ¹öÆ° ´­·¶À»¶§ ( ÁøÈ­ ¸ó½ºÅÍ »ç³É )
+    // ì§„í™”ì „ ë„ì „ ë²„íŠ¼ ëˆŒë €ì„ë•Œ ( ì§„í™” ëª¬ìŠ¤í„° ì‚¬ëƒ¥ )
     void EvnOnEvolutionGradeChallenge()
     {
         StartCoroutine(ProcessEvolutionGradeChallenge());
@@ -290,25 +290,34 @@ public class EventController : MonoBehaviour
     IEnumerator ProcessEvolutionGradeChallenge()
     {
 
-        // ÁøÈ­Àü È­¸éÀüÈ¯ ÀÌÆåÆ®
+        // ì§„í™”ì „ í™”ë©´ì „í™˜ ì´í™íŠ¸
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() => {
             
-            // º¸½º µµÀü ¹öÆ° ¼û±è
+            // ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ ìˆ¨ê¹€
             globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
             
-            // ÇÏÇÁ ¶óÀÎ À§ °ïÃæ ¸ğµÎ Á¦°Å
+            // í•˜í”„ ë¼ì¸ ìœ„ ê³¤ì¶© ëª¨ë‘ ì œê±°
             globalData.insectManager.DisableHalfLineInsects();
 
-            // ÀÏ¹İ ¸ó½ºÅÍ OUT
+            // ì¼ë°˜ ëª¬ìŠ¤í„° OUT
             StartCoroutine(globalData.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
+
+            // ë³´ìŠ¤ ë„ì „ íƒ€ì´ë¨¸ í™œì„±í™”
+            globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(true);
+
+            // íƒ€ì´ë¨¸ ì‹œê°„ ì„¤ì •
+            globalData.bossChallengeTimer.SetTimeValue(30f);
+
+            // íƒ€ì´ë¨¸ ê³„ì‚° ì‹œì‘
+            globalData.bossChallengeTimer.StartTimer();
 
         }));
 
-        // ÁøÈ­ ¸ó½ºÅÍ µîÀå
+        // ì§„í™” ëª¬ìŠ¤í„° ë“±ì¥
         StartCoroutine(MonsterAppearCor(MonsterType.evolution));
     }
 
-    // º¸½º ¸ó½ºÅÍ µµÀü ¹öÆ° ´­·¶À»¶§ ÀÌº¥Æ®
+    // ë³´ìŠ¤ ëª¬ìŠ¤í„° ë„ì „ ë²„íŠ¼ ëˆŒë €ì„ë•Œ ì´ë²¤íŠ¸
     void EvnOnBossMonsterChalleng()
     {
         StartCoroutine(ProcessBossMonsterChallenge());
@@ -317,48 +326,78 @@ public class EventController : MonoBehaviour
     IEnumerator ProcessBossMonsterChallenge()
     {
 
-        // ÇÏÇÁ ¶óÀÎ À§ °ïÃæ ¸ğµÎ Á¦°Å
+        // í•˜í”„ ë¼ì¸ ìœ„ ê³¤ì¶© ëª¨ë‘ ì œê±°
         globalData.insectManager.DisableHalfLineInsects();
 
-        // ÀÏ¹İ ¸ó½ºÅÍ OUT
+        // ì¼ë°˜ ëª¬ìŠ¤í„° OUT
         yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
 
-        // º¸½º µµÀü ¹öÆ° ¼û±è
+        // ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ ìˆ¨ê¹€
         globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
 
-        // º¸½º µµÀü Å¸ÀÌ¸Ó È°¼ºÈ­
+        // ë³´ìŠ¤ ë„ì „ íƒ€ì´ë¨¸ í™œì„±í™”
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(true);
 
-        // º¸½º ¸ó½ºÅÍ µîÀå
+        // íƒ€ì´ë¨¸ ì‹œê°„ ì„¤ì •
+        globalData.bossChallengeTimer.SetTimeValue(30f);
+
+        // ë³´ìŠ¤ ëª¬ìŠ¤í„° ë“±ì¥
         StartCoroutine(MonsterAppearCor(MonsterType.boss));
 
-        // Å¸ÀÌ¸Ó °è»ê ½ÃÀÛ
+        // íƒ€ì´ë¨¸ ê³„ì‚° ì‹œì‘
         globalData.bossChallengeTimer.StartTimer();
     }
     
-    // º¸½º ¸ó½ºÅÍ ½Ã°£³»¿¡ ÀâÁö ¸øÇßÀ»¶§.
+    // ë³´ìŠ¤ ëª¬ìŠ¤í„° ì‹œê°„ë‚´ì— ì¡ì§€ ëª»í–ˆì„ë•Œ.
     void EvnBossMonsterTimeOut()
     {
-        // ÇöÀç(º¸½º ¸ó½ºÅÍ µµÀü Àü) phaseCount ¸ó½ºÅÍ ÀçµîÀå ?? -> ³ë¸Ö ¸ó½ºÅÍ µîÀåÇÏ¸é µÊ phase count ´Â µû·Î Ä«¿îÆÃ µÇ°í ÀÖÀ¸¸ç ÇÏ³ªÀÇ ½ºÅ×ÀÌÁö¿¡ ³ë¸Ö ¸ó½ºÅÍ µ¥ÀÌÅÍ´Â ¸ğµÎ µ¿ÀÏÇÔ.
-        StartCoroutine(ProcessBossMonsterTimeOut());
-
+        // í˜„ì¬(ë³´ìŠ¤ ëª¬ìŠ¤í„° ë„ì „ ì „) phaseCount ëª¬ìŠ¤í„° ì¬ë“±ì¥ ?? -> ë…¸ë©€ ëª¬ìŠ¤í„° ë“±ì¥í•˜ë©´ ë¨ phase count ëŠ” ë”°ë¡œ ì¹´ìš´íŒ… ë˜ê³  ìˆìœ¼ë©° í•˜ë‚˜ì˜ ìŠ¤í…Œì´ì§€ì— ë…¸ë©€ ëª¬ìŠ¤í„° ë°ì´í„°ëŠ” ëª¨ë‘ ë™ì¼í•¨.
+        switch (globalData.player.curMonsterType)
+        {
+            case MonsterType.boss: StartCoroutine(ProcessBossMonsterTimeOut()); break;
+            case MonsterType.evolution: StartCoroutine(ProcessEvolutionMonsterTimeOut()); break;
+        }
     }
          
     IEnumerator ProcessBossMonsterTimeOut()
     {
-        // ÇÏÇÁ ¶óÀÎ À§ °ïÃæ ¸ğµÎ Á¦°Å
+        // í•˜í”„ ë¼ì¸ ìœ„ ê³¤ì¶© ëª¨ë‘ ì œê±°
         globalData.insectManager.DisableHalfLineInsects();
 
-        // º¸½º ¸ó½ºÅÍ OUT
+        // ë³´ìŠ¤ ëª¬ìŠ¤í„° OUT
         yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionOut());
 
-        // º¸½º µµÀü ¹öÆ° ¼û±è
+        // ë³´ìŠ¤ ë„ì „ ë²„íŠ¼ ìˆ¨ê¹€
         globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
 
-        // º¸½º µµÀü Å¸ÀÌ¸Ó È°¼ºÈ­
+        // ë³´ìŠ¤ ë„ì „ íƒ€ì´ë¨¸ ë¹„í™œì„±í™”
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
-        // ÀÏ¹İ ¸ó½ºÅÍ µîÀå
+        // ì¼ë°˜ ëª¬ìŠ¤í„° ë“±ì¥
+        StartCoroutine(MonsterAppearCor(MonsterType.normal));
+
+    }
+
+    IEnumerator ProcessEvolutionMonsterTimeOut()
+    {
+
+        // í•˜í”„ ë¼ì¸ ìœ„ ê³¤ì¶© ëª¨ë‘ ì œê±°
+        globalData.insectManager.DisableHalfLineInsects();
+
+        yield return StartCoroutine(globalData.globalPopupController.EnableGlobalPopupCor("message", 0));
+
+        // í™”ë©´ì „í™˜ ì´í™íŠ¸
+        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
+          {
+              // ë³´ìŠ¤ ëª¬ìŠ¤í„° OUT
+              StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionOut());
+
+              // ë³´ìŠ¤ ë„ì „ íƒ€ì´ë¨¸ ë¹„í™œì„±í™”
+              globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
+
+          }));
+
+        // ì¼ë°˜ ëª¬ìŠ¤í„° ë“±ì¥
         StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
     }
@@ -377,26 +416,26 @@ public class EventController : MonoBehaviour
 
     /* UTILITY METHOD */
     #region UTILITY MEHTOD
-    // ¸ó½ºÅÍ Á¦°Å ÆÇ´Ü
+    // ëª¬ìŠ¤í„° ì œê±° íŒë‹¨
     bool IsMonseterKill(float monster_hp)
     {
         return monster_hp <= 0;
     }
 
-    // °ñµå ¸ó½ºÅÍ ÁøÀÔ ´Ü°è ÆÇ´Ü
+    // ê³¨ë“œ ëª¬ìŠ¤í„° ì§„ì… ë‹¨ê³„ íŒë‹¨
     bool IsPhaseCountZero(int phaseCount)
     {
         return phaseCount <= 0;
     }
     
-    // °ñµå ¸ó½ºÅÍ ÁøÀÔ ´Ü°è Ä«¿îÆÃ
+    // ê³¨ë“œ ëª¬ìŠ¤í„° ì§„ì… ë‹¨ê³„ ì¹´ìš´íŒ…
     void PhaseCounting(out int value)
     {
         value = globalData.player.currentStageData.phaseCount -= 1;
         globalData.uiController.SetTxtPhaseCount(value);
     }
 
-    // °ñµå ¸ó½ºÅÍ ÁøÀÔ ´Ü°è ¸®¼Â
+    // ê³¨ë“œ ëª¬ìŠ¤í„° ì§„ì… ë‹¨ê³„ ë¦¬ì…‹
     void PhaseCountReset()
     {
         var resetValue = globalData.player.pahseCountOriginalValue;

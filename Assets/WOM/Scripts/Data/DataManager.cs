@@ -56,6 +56,10 @@ public class DataManager : MonoBehaviour
     // REWARD DATA
     public RewardEvolutionGradeDatas rewardEvolutionGradeDatas;
 
+    // GLOBAL POPUP DATA
+    public TextAsset globalPopupSheetData;
+    public GlobalMessageDatas globalMessageDatas;
+
     // SALE STATS
     StatSaleDatas trainingDamageDatas;
     StatSaleDatas trainingCriticalChanceData;
@@ -68,7 +72,6 @@ public class DataManager : MonoBehaviour
     StatSaleDatas talentGoldBonusData;
     public List<StatSaleDatas> statSaleDatas = new List<StatSaleDatas>();
 
-    
 
     void Start()
     {
@@ -86,6 +89,9 @@ public class DataManager : MonoBehaviour
         // EVOLUTION OPTION
         SetEvolutionOptionData();
 
+        // GLOBAL MSEEAGE
+        SetGlobalMessageData();
+
         // REWARD EVOLUTION GRADE
         SetRewardData();
 
@@ -98,17 +104,19 @@ public class DataManager : MonoBehaviour
         // MONSTER SPRETE
         SetMonsterSpriteData();
 
-        // SET UNION GAMBLE DATA ( ªÃ±‚ µ•¿Ã≈Õ , ªÃ±‚ ±◊∑π¿ÃµÂ µ•¿Ã≈Õ )
+        // SET UNION GAMBLE DATA ( ÎΩëÍ∏∞ Îç∞Ïù¥ÌÑ∞ , ÎΩëÍ∏∞ Í∑∏Î†àÏù¥Îìú Îç∞Ïù¥ÌÑ∞ )
         SetGamleData();
 
         // ADD SALE STAT LIST
         AddSaleStatElements();
 
-        // SET SALE STAT DATA ( ∆«∏≈ ∞°¥…«— Ω∫≈» µ•¿Ã≈Õ )
+        // SET SALE STAT DATA ( ÌåêÎß§ Í∞ÄÎä•Ìïú Ïä§ÌÉØ Îç∞Ïù¥ÌÑ∞ )
         SetSaleStatDatas();
 
         yield return null;
     }
+
+
 
     void AddSaleStatElements()
     {
@@ -141,6 +149,10 @@ public class DataManager : MonoBehaviour
     void SetStageData()
     {
         stageDatas = GetData<StageDatas>(SheetDataType.stageData);
+    }
+    private void SetGlobalMessageData()
+    {
+        globalMessageDatas = GetData<GlobalMessageDatas>(globalPopupSheetData);
     }
     void SetEvolutionData()
     {
@@ -209,7 +221,14 @@ public class DataManager : MonoBehaviour
         var data = GetSheetData(sheetDataType);
         return JsonUtility.FromJson<T>(data.text);
     }
-    
+    T GetData<T>(TextAsset sheetData)
+    {
+        return JsonUtility.FromJson<T>(sheetData.text);
+    }
+
+
+
+
     public StageData GetStageDataById(int stageId)
     {
         return stageDatas.data.FirstOrDefault(f=> f.stageId == stageId);
@@ -282,6 +301,11 @@ public class DataManager : MonoBehaviour
         return rewardEvolutionGradeDatas.data.FirstOrDefault(f => f.id == id);
     }
 
+
+    public GlobalMessageData GetGlobalMessageDataById(int id)
+    {
+        return globalMessageDatas.data.FirstOrDefault(f => f.id == id);
+    }
 }
 
 
@@ -345,3 +369,9 @@ public class RewardEvolutionGradeDatas
 {
     public List<RewardEvolutionGradeData> data = new List<RewardEvolutionGradeData>();  
 }
+
+[Serializable]
+public class GlobalMessageDatas
+{
+    public List<GlobalMessageData> data = new List<GlobalMessageData>();
+} 
