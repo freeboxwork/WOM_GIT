@@ -206,12 +206,21 @@ public class EventController : MonoBehaviour
     //진화 몬스터 사망시
     IEnumerator MonsterDie_Evolution()
     {
-        
-             
+
         
         // 보스 도전 버튼 활성화 
         if (globalData.player.isBossMonsterChllengeEnable)
             globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
+
+        // 타이머 종료
+        globalData.bossChallengeTimer.StopAllCoroutines();
+
+        // 타이머 UI 리셋
+        globalData.uiController.SetImgTimerFilledRaidal(0);
+        globalData.uiController.SetTxtBossChallengeTimer(0);
+
+        // 타이머 UI Disable
+        globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
         // 진화 보상 지급 및 UI 세팅
         globalData.uiController.SetUI_Pannel_Evolution(globalData.player.evalutionLeveldx + 1);
