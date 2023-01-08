@@ -99,7 +99,7 @@ public class NewData
 [Serializable]
 public class MonsterData
 {
-    public int monsterId;
+    public int id;
     public float hp;
     public float exp;
     public int bone;
@@ -230,19 +230,19 @@ public class SummonGradeData
 
 
 [Serializable]
-/// <summary> ÆÇ¸Å °¡´ÉÇÑ ½ºÅÈ µ¥ÀÌÅÍ</summary>
+/// <summary> íŒë§¤ ê°€ëŠ¥í•œ ìŠ¤íƒ¯ ë°ì´í„°</summary>
 public class StatSaleData
 {
     public int level;
     public int salePrice;
 
-    // gold ·Î È¹µæ
+    // gold ë¡œ íšë“
     public float value;
 
 }
 
 [Serializable]
-/// <summary> ÇöÀç À¯ÀúÀÇ ½ºÅÈ ·¹º§ ÀÎµ¦½º µ¥ÀÌÅÍ</summary>
+/// <summary> í˜„ì¬ ìœ ì €ì˜ ìŠ¤íƒ¯ ë ˆë²¨ ì¸ë±ìŠ¤ ë°ì´í„°</summary>
 public class PlayerStatData
 {
     int levelDamage;

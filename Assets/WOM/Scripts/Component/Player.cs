@@ -7,12 +7,12 @@ using static EnumDefinition;
 
 public class Player : MonoBehaviour
 {
-    // ½ºÅ×ÀÌÁö ·¹º§
+    // ìŠ¤í…Œì´ì§€ ë ˆë²¨
     public int stageIdx;
     public int upgradeLevelIdx;
-    // ÈÆ·Ã ·¹º§
+    // í›ˆë ¨ ë ˆë²¨
     public int traningLevelIdx;
-    // ÁøÈ­ ·¹º§
+    // ì§„í™” ë ˆë²¨
     public int evalutionLeveldx; 
 
     public int gold;
@@ -20,29 +20,27 @@ public class Player : MonoBehaviour
     public int gem;
     public DateTime playTime;
 
-
-   
     
-    /// <summary> ÇöÀç ÁøÇàÁßÀÎ ½ºÅ×ÀÌÁö µ¥ÀÌÅÍ </summary>
+    /// <summary> í˜„ì¬ ì§„í–‰ì¤‘ì¸ ìŠ¤í…Œì´ì§€ ë°ì´í„° </summary>
     public StageData currentStageData;
     public int pahseCountOriginalValue;
 
-    /// <summary> ÇöÀç ÀüÅõÁßÀÎ ¸ó½ºÅÍ </summary>
+    /// <summary> í˜„ì¬ ì „íˆ¬ì¤‘ì¸ ëª¬ìŠ¤í„° </summary>
     public MonsterBase currentMonster;
 
-    /// <summary> ÇöÀç ÀüÅõÁßÀÎ ¸ó½ºÅÍ Å¸ÀÔ </summary>
+    /// <summary> í˜„ì¬ ì „íˆ¬ì¤‘ì¸ ëª¬ìŠ¤í„° íƒ€ì… </summary>
     public MonsterType curMonsterType;
 
-    /// <summary> Á÷Àü¿¡ ÀüÅõÇÑ ¸ó½ºÅÍ Å¸ÀÔ </summary>
+    /// <summary> ì§ì „ì— ì „íˆ¬í•œ ëª¬ìŠ¤í„° íƒ€ì… </summary>
     public MonsterType prevMonsterType;
 
-    /// <summary> ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ ½ºÅÈ µ¥ÀÌÅÍ </summary>
+    /// <summary> í˜„ì¬ í”Œë ˆì´ì–´ì˜ ìŠ¤íƒ¯ ë°ì´í„° </summary>
     public PlayerStatData curStatData;
 
-    // ±âº» ¸ó½ºÅÍ¸¦ Á¦¿ÜÇÑ ¸ó½ºÅÍ »ç³ÉÁßÀÏ¶§
+    // ê¸°ë³¸ ëª¬ìŠ¤í„°ë¥¼ ì œì™¸í•œ ëª¬ìŠ¤í„° ì‚¬ëƒ¥ì¤‘ì¼ë•Œ
     public bool isSpacialMonsterHunting;
 
-    // º¸½º ¸ó½ºÅÍ µµÀü °¡´É »óÅÂ ÆÇ´Ü
+    // ë³´ìŠ¤ ëª¬ìŠ¤í„° ë„ì „ ê°€ëŠ¥ ìƒíƒœ íŒë‹¨
     public bool isBossMonsterChllengeEnable = false;
 
     void Start()
@@ -75,7 +73,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // TODO: ÀúÀåµÈ ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ¿¡¼­ ·¹º§°ªÀĞ¾î ¿Àµµ·Ï ¼öÁ¤ ÇöÀç ÃÊ±â °ªÀº 0
+    // TODO: ì €ì¥ëœ í”Œë ˆì´ì–´ ë°ì´í„°ì—ì„œ ë ˆë²¨ê°’ì½ì–´ ì˜¤ë„ë¡ ìˆ˜ì • í˜„ì¬ ì´ˆê¸° ê°’ì€ 0
     int GetStatLevelByStatType(SaleStatType statType)
     {
         return 0;
