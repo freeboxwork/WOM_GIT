@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// ìœ ë‹ˆì˜¨ ë½‘ê¸° , ì§„í™” ì£¼ì‚¬ìœ„ ë½‘ê¸°
+/// </summary>
 public class LotteryManager : MonoBehaviour
 {
-    public int curSummonGrade = 0; // ¼ÒÈ¯ µî±Ş µ¥ÀÌÅÍ 
-    public int lottreyRoundCount = 0;     // »Ì±â ½Ãµµ Ä«¿îÆ®
+    public int curSummonGrade = 0; // ì†Œí™˜ ë“±ê¸‰ ë°ì´í„° 
+    public int lottreyRoundCount = 0;     // ë½‘ê¸° ì‹œë„ ì¹´ìš´íŠ¸
     public UnionGambleData curGambleData;
     public SummonGradeData curSummonGradeData;
     public Transform trCardsParent;
-    public int cardsBirthCount = 50; // Ç®¸µÀ¸·Î »ç¿ëÇÒ Ä«µå ÀÌ¹ÌÁö - 50È¸ ¿¬¼Ó »Ì±â ±â´ÉÀ¸·Î ÃÖÃÊ 50°³ »ı¼º
+    public int cardsBirthCount = 50; // í’€ë§ìœ¼ë¡œ ì‚¬ìš©í•  ì¹´ë“œ ì´ë¯¸ì§€ - 50íšŒ ì—°ì† ë½‘ê¸° ê¸°ëŠ¥ìœ¼ë¡œ ìµœì´ˆ 50ê°œ ìƒì„±
 
     public LotteryCard prefabLotteryCard;
     public List<LotteryCard> lotteryCards = new List<LotteryCard>();
@@ -19,7 +21,7 @@ public class LotteryManager : MonoBehaviour
 
 
 
-    // Å×½ºÆ® ¿ëµµ µ¥ÀÌÅÍ
+    // í…ŒìŠ¤íŠ¸ ìš©ë„ ë°ì´í„°
     string[] unionNameNormal = { "normal-1", "normal-2", "normal-3", "normal-4", "normal-5", "normal-6", "normal-7", "normal-8" };
     string[] unionNameHigh = { "high-1", "high-2", "high-3", "high-4", "high-5", "high-6", "high-7", "high-8" };
     string[] unionNameRare = { "rare-1", "rare-2", "rare-3", "rare-4", "rare-5", "rare-6", "rare-7", "rare-8" };
@@ -36,11 +38,8 @@ public class LotteryManager : MonoBehaviour
     List<List<Sprite>> unionFaceDatas = new List<List<Sprite>>();
 
 
-
-    // Å×½ºÆ® ¿ëµµ
+    // í…ŒìŠ¤íŠ¸ ìš©ë„
     string[][] unionNameData;
- 
-
     float[] randomGradeValues;
     public List<Color> cardColors = new List<Color>();
     public List<EnumDefinition.UnionGradeType> openedUnionTypeCards;
@@ -62,7 +61,7 @@ public class LotteryManager : MonoBehaviour
         unionFaceDatas.Add(unionFaceUnique);
     }
 
-    // Å×½ºÆ® ¿ëµµ
+    // í…ŒìŠ¤íŠ¸ ìš©ë„
     void SetUnionNmaeData()
     {
         unionNameData = new string[6][];
@@ -93,7 +92,7 @@ public class LotteryManager : MonoBehaviour
         curSummonGradeData = summonGradeData;
     }
 
-    /// <summary> »Ì±â ÇÊ¿ä µ¥ÀÌÅÍ ÃÖÃÊ ¼¼ÆÃ </summary>
+    /// <summary> ë½‘ê¸° í•„ìš” ë°ì´í„° ìµœì´ˆ ì„¸íŒ… </summary>
     public IEnumerator Init(int gradeIndex)
     {
         SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(gradeIndex));
@@ -103,7 +102,7 @@ public class LotteryManager : MonoBehaviour
         yield return null;
     }
         
-    // Ç®¸µÀ¸·Î »ç¿ëÇÒ Ä«µå »ı¼º
+    // í’€ë§ìœ¼ë¡œ ì‚¬ìš©í•  ì¹´ë“œ ìƒì„±
     void CreateCards()
     {
         for (int i = 0; i < cardsBirthCount; i++)
@@ -124,7 +123,7 @@ public class LotteryManager : MonoBehaviour
     {
         yield return StartCoroutine(MakeCardOption(roundCount));
         
-        yield return new WaitForSeconds(0.3f); // 05ÃÊ ´ë±â ( ¿¬Ãâ )
+        yield return new WaitForSeconds(0.3f); // 05ì´ˆ ëŒ€ê¸° ( ì—°ì¶œ )
 
         yield return StartCoroutine(CardsOpenEffect());
         
@@ -141,7 +140,7 @@ public class LotteryManager : MonoBehaviour
         openedUnionTypeCards = new List<EnumDefinition.UnionGradeType>();
         for (int i = 0; i < gameCount; i++)
         {
-            var union = (EnumDefinition.UnionGradeType)ChooseUnionType(randomGradeValues);
+            var union = (EnumDefinition.UnionGradeType)UtilityMethod.GetWeightRandomValue(randomGradeValues);
             openedUnionTypeCards.Add(union);
             lottreyRoundCount++;
             yield return null;
@@ -159,7 +158,7 @@ public class LotteryManager : MonoBehaviour
             var name = unionNameData[unionTypeIndex][faceIndex];
             var face = unionFaceDatas[unionTypeIndex][faceIndex];
 
-            // INDEX ·Î Àü´Ş ÇÏµµ·Ï ¼öÁ¤ 
+            // INDEX ë¡œ ì „ë‹¬ í•˜ë„ë¡ ìˆ˜ì • 
             // https://docs.google.com/spreadsheets/d/1gsiAKac3UtyWZNIKr3T-RxqNeR6ZfgjRdC4_VC_49gA/edit#gid=548996693
 
             //var color = cardColors[faceIndex];
@@ -170,7 +169,7 @@ public class LotteryManager : MonoBehaviour
             card.gameObject.SetActive(true);
             card.Effect(openedUnionTypeCards[i]);
             
-            // µô·¹ÀÌ°¡ ÇÊ¿äÇÑ°æ¿ì ÄÚ·çÆ¾
+            // ë”œë ˆì´ê°€ í•„ìš”í•œê²½ìš° ì½”ë£¨í‹´
             // yield return StartCoroutine(card.EffectCor(openedUnionTypeCards[i]));
             
             yield return new WaitForSeconds(cardOpenDeayTime);
@@ -182,7 +181,7 @@ public class LotteryManager : MonoBehaviour
         return Random.Range(0, 7);
     }
 
-    // curGambleData ÀÇ °¢ ·£´ı ¹üÀ§ Àû¿ë 
+    // curGambleData ì˜ ê° ëœë¤ ë²”ìœ„ ì ìš© 
     float[] GetRandomArrayValue()
     {
         var data = curGambleData;
@@ -196,28 +195,28 @@ public class LotteryManager : MonoBehaviour
         return array;
     }
 
-    float ChooseUnionType(float[] probs)
-    {
-        float total = 0;
-        foreach (float elem in probs)
-        {
-            total += elem;
-        }
-        float randomPoint = Random.value * total;
+    //float ChooseUnionType(float[] probs)
+    //{
+    //    float total = 0;
+    //    foreach (float elem in probs)
+    //    {
+    //        total += elem;
+    //    }
+    //    float randomPoint = Random.value * total;
 
-        for (int i = 0; i < probs.Length; i++)
-        {
-            if (randomPoint < probs[i])
-            {
-                return i;
-            }
-            else
-            {
-                randomPoint -= probs[i];
-            }
-        }
-        return probs.Length - 1;
-    }
+    //    for (int i = 0; i < probs.Length; i++)
+    //    {
+    //        if (randomPoint < probs[i])
+    //        {
+    //            return i;
+    //        }
+    //        else
+    //        {
+    //            randomPoint -= probs[i];
+    //        }
+    //    }
+    //    return probs.Length - 1;
+    //}
 
 
     private void OnDisable()

@@ -327,3 +327,19 @@ public class GlobalMessageData
     public string message_kor;
     public string message_eng;
  }
+
+[Serializable]
+public class RewardDiceEvolutionData
+{
+    public int grade;
+    public string gradeColor;
+    public float insectDamage;
+    public float insectCriticalChance;
+    public float insectCriticalDamage;
+    public float goldBonus;
+    public float insectMoveSpeed;
+    public float insectSpawnTime;
+    public float insectBossDamage;
+    public int unLockCount;
+    public float gradeProbability;
+}
