@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public int gem;
     public DateTime playTime;
 
+    // 획득 골드
+    public int diceCount;
+
     
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>
     public StageData currentStageData;

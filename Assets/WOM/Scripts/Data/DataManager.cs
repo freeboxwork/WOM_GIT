@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using static EnumDefinition;
 using System;
+using JetBrains.Annotations;
 
 public class DataManager : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class DataManager : MonoBehaviour
         unionGambleData,
         summonGradeData,
         evolutionGradeData
+        rewardEvolutionGradeData,
+        rewardDiceEvolutionData
      */
 
 
@@ -55,6 +58,8 @@ public class DataManager : MonoBehaviour
 
     // REWARD DATA
     public RewardEvolutionGradeDatas rewardEvolutionGradeDatas;
+    public RewardDiceEvolutionDatas rewardDiceEvolutionDatas;
+
 
     // GLOBAL POPUP DATA
     public TextAsset globalPopupSheetData;
@@ -92,7 +97,7 @@ public class DataManager : MonoBehaviour
         // GLOBAL MSEEAGE
         SetGlobalMessageData();
 
-        // REWARD EVOLUTION GRADE
+        // REWARD EVOLUTION GRADE ,  REWARD EVOLUTION DICE DATA
         SetRewardData();
 
         // MONSTER
@@ -185,6 +190,7 @@ public class DataManager : MonoBehaviour
     void SetRewardData()
     {
         rewardEvolutionGradeDatas = GetData<RewardEvolutionGradeDatas>(SheetDataType.rewardEvolutionGradeData);
+        rewardDiceEvolutionDatas = GetData<RewardDiceEvolutionDatas>(SheetDataType.rewardDiceEvolutionData);
     }
 
     void SetMonsterData() 
@@ -306,6 +312,12 @@ public class DataManager : MonoBehaviour
     {
         return globalMessageDatas.data.FirstOrDefault(f => f.id == id);
     }
+
+    public RewardDiceEvolutionData GetRewardDiceEvolutionDataByGradeId(int id)
+    {
+        return rewardDiceEvolutionDatas.data.FirstOrDefault(f => f.grade == id); 
+    }
+
 }
 
 
@@ -374,4 +386,10 @@ public class RewardEvolutionGradeDatas
 public class GlobalMessageDatas
 {
     public List<GlobalMessageData> data = new List<GlobalMessageData>();
-} 
+}
+
+[Serializable]
+public class RewardDiceEvolutionDatas
+{
+    public List<RewardDiceEvolutionData> data = new List<RewardDiceEvolutionData>();
+}

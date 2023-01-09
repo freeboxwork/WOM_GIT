@@ -10,7 +10,7 @@ public static class UtilityMethod
     public static T CustomGetComponet<T>() where T : UnityEngine.Object
     {
         var returnValue = GameObject.FindObjectOfType<T>();
-        if (returnValue == null) Debug.Log($"¾À¿¡ Á¸ÀçÇÏÁö ¾Ê´Â Å¸ÀÔ ÀÔ´Ï´Ù.");
+        if (returnValue == null) Debug.Log($"ì”¬ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íƒ€ì… ì…ë‹ˆë‹¤.");
         return returnValue;
     }
 
@@ -22,7 +22,7 @@ public static class UtilityMethod
         }
         else
         {
-            //Debug.LogError($"{gameObject.name} °ÔÀÓ ¿ÀºêÁ§Æ®¿¡ ÄÄÆ÷³ÍÆ® Å¸ÀÔÀÌ ¾ø½À´Ï´Ù.");
+            //Debug.LogError($"{gameObject.name} ê²Œì„ ì˜¤ë¸Œì íŠ¸ì— ì»´í¬ë„ŒíŠ¸ íƒ€ì…ì´ ì—†ìŠµë‹ˆë‹¤.");
             return null;
         }
     }
@@ -53,7 +53,7 @@ public static class UtilityMethod
         }
         else
         {
-            Debug.LogError($"Custom Type Object - Text - {id} ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError($"Custom Type Object - Text - {id} ì˜¤ë¸Œì íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -79,7 +79,7 @@ public static class UtilityMethod
         }
         else
         {
-            Debug.LogError($"Custom Type Object - Button - {id} ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError($"Custom Type Object - Button - {id} ì˜¤ë¸Œì íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -98,5 +98,28 @@ public static class UtilityMethod
         return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Gameobject(id);
     }
 
+    /// <summary> ê°€ì¤‘ì¹˜ ëœë¤ ë½‘ê¸° </summary>
+    public static float GetWeightRandomValue(float[] probs)
+    {
+        float total = 0;
+        foreach (float elem in probs)
+        {
+            total += elem;
+        }
+        float randomPoint = Random.value * total;
+
+        for (int i = 0; i < probs.Length; i++)
+        {
+            if (randomPoint < probs[i])
+            {
+                return i;
+            }
+            else
+            {
+                randomPoint -= probs[i];
+            }
+        }
+        return probs.Length - 1;
+    }
 
 }
