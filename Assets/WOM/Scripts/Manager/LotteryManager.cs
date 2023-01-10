@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using ProjectGraphics;
 /// <summary>
 /// 유니온 뽑기 , 진화 주사위 뽑기
 /// </summary>
@@ -19,15 +20,15 @@ public class LotteryManager : MonoBehaviour
     public List<LotteryCard> lotteryCards = new List<LotteryCard>();
     public float cardOpenDeayTime = 0.2f;
 
+    public LotteryAnimationController lotteryAnimationController;
 
-
-    // 테스트 용도 데이터
-    string[] unionNameNormal = { "normal-1", "normal-2", "normal-3", "normal-4", "normal-5", "normal-6", "normal-7", "normal-8" };
-    string[] unionNameHigh = { "high-1", "high-2", "high-3", "high-4", "high-5", "high-6", "high-7", "high-8" };
-    string[] unionNameRare = { "rare-1", "rare-2", "rare-3", "rare-4", "rare-5", "rare-6", "rare-7", "rare-8" };
-    string[] unionNameHero = { "hero-1", "hero-2", "hero-3", "hero-4", "hero-5", "hero-6", "hero-7", "hero-8" };
-    string[] unionNameLegend = { "legend-1", "legend-2", "legend-3", "legend-4", "legend-5", "legend-6", "legend-7", "legend-8" };
-    string[] unionNameUnique = { "unique-1", "unique-2", "unique-3", "unique-4", "unique-5", "unique-6", "unique-7", "unique-8" };
+    //// 테스트 용도 데이터
+    //string[] unionNameNormal = { "normal-1", "normal-2", "normal-3", "normal-4", "normal-5", "normal-6", "normal-7", "normal-8" };
+    //string[] unionNameHigh = { "high-1", "high-2", "high-3", "high-4", "high-5", "high-6", "high-7", "high-8" };
+    //string[] unionNameRare = { "rare-1", "rare-2", "rare-3", "rare-4", "rare-5", "rare-6", "rare-7", "rare-8" };
+    //string[] unionNameHero = { "hero-1", "hero-2", "hero-3", "hero-4", "hero-5", "hero-6", "hero-7", "hero-8" };
+    //string[] unionNameLegend = { "legend-1", "legend-2", "legend-3", "legend-4", "legend-5", "legend-6", "legend-7", "legend-8" };
+    //string[] unionNameUnique = { "unique-1", "unique-2", "unique-3", "unique-4", "unique-5", "unique-6", "unique-7", "unique-8" };
 
     public List<Sprite> unionFaceNormal = new List<Sprite>();
     public List<Sprite> unionFaceHigh = new List<Sprite>();
@@ -39,15 +40,15 @@ public class LotteryManager : MonoBehaviour
 
 
     // 테스트 용도
-    string[][] unionNameData;
+    //string[][] unionNameData;
     float[] randomGradeValues;
-    public List<Color> cardColors = new List<Color>();
+    //public List<Color> cardColors = new List<Color>();
     public List<EnumDefinition.UnionGradeType> openedUnionTypeCards;
 
 
     void Start()
     {
-        SetUnionNmaeData();
+       // SetUnionNmaeData();
         SetUnionFaceList();
     }
 
@@ -61,17 +62,17 @@ public class LotteryManager : MonoBehaviour
         unionFaceDatas.Add(unionFaceUnique);
     }
 
-    // 테스트 용도
-    void SetUnionNmaeData()
-    {
-        unionNameData = new string[6][];
-        unionNameData[0] = unionNameNormal;
-        unionNameData[1] = unionNameHigh;
-        unionNameData[2] = unionNameRare;
-        unionNameData[3] = unionNameHero;
-        unionNameData[4] = unionNameLegend;
-        unionNameData[5] = unionNameUnique;
-    }
+    //// 테스트 용도
+    //void SetUnionNmaeData()
+    //{
+    //    unionNameData = new string[6][];
+    //    unionNameData[0] = unionNameNormal;
+    //    unionNameData[1] = unionNameHigh;
+    //    unionNameData[2] = unionNameRare;
+    //    unionNameData[3] = unionNameHero;
+    //    unionNameData[4] = unionNameLegend;
+    //    unionNameData[5] = unionNameUnique;
+    //}
 
 
     // Update is called once per frame
@@ -150,17 +151,18 @@ public class LotteryManager : MonoBehaviour
 
     public IEnumerator CardsOpenEffect()
     {
+        List<int> unionIndexList = new List<int>(); 
         for (int i = 0; i < openedUnionTypeCards.Count; i++)
         {
-            var unionTypeIndex = (int)openedUnionTypeCards[i];
+            var unionType = openedUnionTypeCards[i];
             var faceIndex = GetRandomFaceIndex();
-            // name , color , sprite image index
-            var name = unionNameData[unionTypeIndex][faceIndex];
-            var face = unionFaceDatas[unionTypeIndex][faceIndex];
 
+            /*
+            // name , color , sprite image index
+            //var name = unionNameData[unionTypeIndex][faceIndex];
+            var face = unionFaceDatas[unionTypeIndex][faceIndex];
             // INDEX 로 전달 하도록 수정 
             // https://docs.google.com/spreadsheets/d/1gsiAKac3UtyWZNIKr3T-RxqNeR6ZfgjRdC4_VC_49gA/edit#gid=548996693
-
             //var color = cardColors[faceIndex];
             //card.imgCard.color = color;
             var card = lotteryCards[i];
@@ -168,17 +170,34 @@ public class LotteryManager : MonoBehaviour
             card.SetCardFace(face);
             card.gameObject.SetActive(true);
             card.Effect(openedUnionTypeCards[i]);
-            
+            */
             // 딜레이가 필요한경우 코루틴
             // yield return StartCoroutine(card.EffectCor(openedUnionTypeCards[i]));
-            
+
+            var unionIdex = GetUnionIndex(unionType, faceIndex);
+            unionIndexList.Add(unionIdex);
             yield return new WaitForSeconds(cardOpenDeayTime);
         }
+
+        Debug.Log("뽑기 카운트 " + unionIndexList.Count);
+        foreach(var index in unionIndexList)
+        {
+            Debug.Log("union index : " + index);
+        }
+
+        // effect open
+        lotteryAnimationController.gameObject.SetActive(true);
+        lotteryAnimationController.StartLotteryAnimation(unionIndexList.ToArray());
     }
 
     int GetRandomFaceIndex()
     {
         return Random.Range(0, 7);
+    }
+
+    int GetUnionIndex(EnumDefinition.UnionGradeType unionGradeType , int faceIndex )
+    {
+        return faceIndex + ( 8 * (int)unionGradeType);
     }
 
     // curGambleData 의 각 랜덤 범위 적용 

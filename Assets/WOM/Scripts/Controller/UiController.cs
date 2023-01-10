@@ -328,7 +328,7 @@ public class UiController : MonoBehaviour
 
     void LotteryGameStart(int roundCount)
     {
-        trLotteryGameSet.gameObject.SetActive(true);
+        //trLotteryGameSet.gameObject.SetActive(true);
         GlobalData.instance.lotteryManager.LotteryStart(roundCount, () => {
             Debug.Log(roundCount + "회 뽑기 게임 종료 이벤트 실행");
         });
