@@ -53,7 +53,11 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         // TODO : 오픈된 슬롯 갯수만큼 뽑아야 함. 현재는 한번만 뽑음
         if(rollDice == false)
         {
-            StartCoroutine(DiceRoll());
+            var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(GlobalData.instance.player.evalutionLeveldx);
+            for (int i = 0; i < data.slotCount; i++)
+            {
+                StartCoroutine(DiceRoll());
+            }
         }
     }
          
@@ -88,7 +92,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             // 랜덤 능력치 뽑기
             var statValue = GetRandomStatValue(randomGradeData);
 
-            Debug.Log($"랜덤하게 뽑은 능력치값 :  {statValue}");
+            Debug.Log($"랜덤하게 뽑은 능력치값 :{randomStatType} / {statValue}");
 
             // 능력치 적용
         }
@@ -112,19 +116,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         return GlobalData.instance.dataManager.GetRewardDiceEvolutionDataByGradeId(grade + 1);
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.A))
-    //    {
-    //        for (int i = 0; i < 1000; i++)
-    //        {
-    //            Debug.Log(GetRandomStatType());
-
-    //        }
-          
-    //    }
-    //}
-
+    string randomStatType;
     EvolutionDiceStatType GetRandomStatType()
     {
         var randomValue = Random.Range(0, 7);
@@ -134,7 +126,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
     float GetRandomStatValue (RewardDiceEvolutionData data)
     {
         var statType = GetRandomStatType();
-        Debug.Log($"랜덤하게 뽑은 능력치값 타입 :  {statType}");
+        randomStatType = statType.ToString();
         switch (statType)
         {
             case EvolutionDiceStatType.insectDamage: return data.insectDamage;
@@ -155,3 +147,4 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
     //    Debug.Log(value);
     //}
 }
+
