@@ -120,6 +120,15 @@ public class EnumDefinition
         shop
     }
 
+    public enum EvolutionDiceStatType
+    {
+        insectDamage,
+        insectCriticalChance,
+        insectCriticalDamage,
+        goldBonus,
+        insectMoveSpeed,
+        insectSpawnTime,
+        insectBossDamage
+    }
 
-   
 }

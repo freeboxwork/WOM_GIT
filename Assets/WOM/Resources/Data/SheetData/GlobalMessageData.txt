@@ -7,7 +7,7 @@
  },
  {
    "id": 1,
-   "message_kor": "message_kor",
+   "message_kor": "주사위 개수가 충분하지 않습니다.",
    "message_eng": "message_eng",
    "비고": ""
  },

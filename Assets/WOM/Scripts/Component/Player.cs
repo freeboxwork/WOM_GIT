@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static EnumDefinition;
 
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
     public int gem;
     public DateTime playTime;
 
-    // 획득 골드
+    // 주사위 개수
     public int diceCount;
 
     
@@ -130,16 +131,29 @@ public class Player : MonoBehaviour
     {
         bone = bone + value;
     }
+    public void AddDice(int value)
+    {
+        diceCount = diceCount = value;
+
+    }
 
     public void PayGold(int value)
     {
         gold = gold - value;
+        if (gold < 0) gold = 0;
     }
 
     public void PayBone(int value)
     {
         bone = bone - value;
+        if (bone < 0) bone = 0;
     }
+    public void PayDice(int value )
+    {
+        diceCount = diceCount - value;
+        if (diceCount < 0) diceCount = 0;
+    }
+         
 
     public int GetStatLevel(SaleStatType statType)
     {

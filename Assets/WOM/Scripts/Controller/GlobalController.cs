@@ -15,6 +15,7 @@ public class GlobalController : MonoBehaviour
     public UiController uiController;
     public EffectManager effectManager;
     public LotteryManager lotteryManager;
+    public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
 
 
     void Start()
@@ -28,44 +29,47 @@ public class GlobalController : MonoBehaviour
         // set data
         yield return StartCoroutine(dataManager.SetDatas());
 
-        // get player data ( °ÔÀÓ Á¾·áÀü ÀúÀå µÇ¾îÀÖ´Â µ¥ÀÌÅÍ ·Îµå )
+        // get player data ( ê²Œì„ ì¢…ë£Œì „ ì €ì¥ ë˜ì–´ìˆëŠ” ë°ì´í„° ë¡œë“œ )
         yield return StartCoroutine(playerDataManager.InitPlayerData());
         
-        // ½ºÅ×ÀÌÁö ¼¼ÆÃ
+        // ìŠ¤í…Œì´ì§€ ì„¸íŒ…
         yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
 
-        // °ïÃæ ¼¼ÆÃ
+        // ê³¤ì¶© ì„¸íŒ…
         yield return StartCoroutine(insectManager.Init(playerDataManager));
 
-        // ¸ó½ºÅÍ ¼¼ÆÃ
+        // ëª¬ìŠ¤í„° ì„¸íŒ…
         yield return StartCoroutine(monsterManager.Init(stageManager.stageData.stageId));
 
-        // ÀÌÆåÆ® ¼¼ÆÃ
+        // ì´í™íŠ¸ ì„¸íŒ…
         yield return StartCoroutine(effectManager.Init());
 
-        // Player data ¼¼ÆÃ
+        // Player data ì„¸íŒ…
         yield return StartCoroutine(player.Init(playerDataManager.saveData));
 
-        // UI Controller ¼¼ÆÃ 
+        // UI Controller ì„¸íŒ… 
         yield return StartCoroutine(uiController.Init());
 
-        // »Ì±â ¸Å´ÏÀú ÃÊ±âÈ­ ( Ã¹ »Ì±â µ¥ÀÌÅÍ´Â ¸ğµÎ 0¹ø )
+        // ë½‘ê¸° ë§¤ë‹ˆì € ì´ˆê¸°í™” ( ì²« ë½‘ê¸° ë°ì´í„°ëŠ” ëª¨ë‘ 0ë²ˆ )
         yield return StartCoroutine(lotteryManager.Init(0));
 
-        // Å¸°Ù ¸ó½ºÅÍ ÁöÁ¤ -> Ã¹ ½ÃÀÛÀº ³ë¸Ö ¸ó½ºÅÍ
+        // ì§„í™” ì£¼ì‚¬ìœ„ ë½‘ê¸° ì„¸íŒ…
+        yield return StartCoroutine(evolutionDiceLotteryManager.Init());
+
+        // íƒ€ê²Ÿ ëª¬ìŠ¤í„° ì§€ì • -> ì²« ì‹œì‘ì€ ë…¸ë©€ ëª¬ìŠ¤í„°
         player.SetCurrentMonster(monsterManager.monsterNormal);
 
-        // µîÀå ¸ó½ºÅÍ È°¼ºÈ­ -> Ã¹ ½ÃÀÛÀº ³ë¸Ö ¸ó½ºÅÍ
-        // TODO : ÇÏ³ª¸¸ ÄÑ¾ß ÇÏ´ÂÁö È®ÀÎ ÇÊ¿ä ÇöÀç ¸ğµÎ ³ªÅ¸³ªµµ·Ï ¼öÁ¤
+        // ë“±ì¥ ëª¬ìŠ¤í„° í™œì„±í™” -> ì²« ì‹œì‘ì€ ë…¸ë©€ ëª¬ìŠ¤í„°
+        // TODO : í•˜ë‚˜ë§Œ ì¼œì•¼ í•˜ëŠ”ì§€ í™•ì¸ í•„ìš” í˜„ì¬ ëª¨ë‘ ë‚˜íƒ€ë‚˜ë„ë¡ ìˆ˜ì •
         monsterManager.EnableMonster(EnumDefinition.MonsterType.normal);
 
-        // UI ÃÊ±âÈ­
+        // UI ì´ˆê¸°í™”
         SetUI_Init();
 
         // Monster In Animation
         yield return StartCoroutine(player.currentMonster.inOutAnimator.AnimPositionIn());
 
-        // °ø°İ °¡´É »óÅÂ·Î ÀüÈ¯
+        // ê³µê²© ê°€ëŠ¥ ìƒíƒœë¡œ ì „í™˜
         attackController.SetAttackableState(true);
 
     }
