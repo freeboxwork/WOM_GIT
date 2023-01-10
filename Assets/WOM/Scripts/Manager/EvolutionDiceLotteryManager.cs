@@ -83,7 +83,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             GlobalData.instance.player.PayDice(usingDice);
 
             // 남은 주사위 UI 표시
-            UtilityMethod.SetTxtCustomTypeByID(64, GlobalData.instance.player.diceCount.ToString());
+            UtilityMethod.SetTxtCustomTypeByID(65, GlobalData.instance.player.diceCount.ToString());
 
             // 랜덤 그레이드 뽑기
             var randomGradeData = GetRandomWeightEvolutionGradeData();
