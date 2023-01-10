@@ -13,7 +13,7 @@ namespace ProjectGraphics
         private Lottery_Slot[] slots;
 
 #if UNITY_EDITOR
-        [SerializeField] int ii;
+        //[SerializeField] int ii;
 #endif
 
         private void Awake()
@@ -25,12 +25,14 @@ namespace ProjectGraphics
 #if UNITY_EDITOR
         void Start()
         {
+            /*
             int[] uIndex = new int[ii];
             for (int i = 0; i < uIndex.Length; i++)
             {
                 uIndex[i] = Random.Range(0, data.GetDataSize());
             }
             StartCoroutine(ShowUnionSlotCardOpenProcess(uIndex));
+            */
         }
 #endif
 
@@ -55,7 +57,7 @@ namespace ProjectGraphics
                 slots[i].SetSlotImage(effectColor[typeIndex], gradeBackImage[typeIndex], data.GetIconData(u[i]));
                 slots[i].gameObject.SetActive(true);
                 
-                //¿©±â ÃâÇö »ç¿îµå ÇÊ¿äÇÔ.
+                //ì—¬ê¸° ì¶œí˜„ ì‚¬ìš´ë“œ í•„ìš”í•¨.
 
                 for (int j = 0; j < i; j++)
                 {
