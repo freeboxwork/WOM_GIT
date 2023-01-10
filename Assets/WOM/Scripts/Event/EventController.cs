@@ -237,6 +237,10 @@ public class EventController : MonoBehaviour
         // 진화 보상 지급 및 UI 세팅
         globalData.uiController.SetUI_Pannel_Evolution(globalData.player.evalutionLeveldx + 1);
 
+        // 능력치 슬롯 오픈
+        globalData.uiController.SetUI_EvolutionSlots(globalData.player.evalutionLeveldx + 1);
+
+
         // 기존 UI Canvas 비활성화
         UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 

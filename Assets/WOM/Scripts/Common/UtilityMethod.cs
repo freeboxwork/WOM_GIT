@@ -122,4 +122,18 @@ public static class UtilityMethod
         return probs.Length - 1;
     }
 
+    ///<summary> 진화 주사위 사용 개수 </summary>
+    public static int GetEvolutionDiceUsingCount()
+    {
+        return 10 + (10 * GetUnLockCount());
+    }
+
+    static int GetUnLockCount()
+    {
+        var slotDatas = GlobalData.instance.uiController.evolutionSlots;
+        int unlock = 0;
+        foreach (var slot in slotDatas)
+            if (slot.isUnlock) unlock++;
+        return unlock;
+    }
 }

@@ -22,8 +22,9 @@ public class GlobalData : MonoBehaviour
     public SaleManager saleManager;
     public EvolutionManager evolutionManager;
     public GradeAnimationController gradeAnimCont;
-    public GlobalPopupController globalPopupController; 
-         
+    public GlobalPopupController globalPopupController;
+    public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
+
     private void Awake()
     {
         SetInstance();

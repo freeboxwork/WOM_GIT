@@ -29,6 +29,8 @@ public class UiController : MonoBehaviour
 
     [Header("진화 UI 관련 항목")]
     public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
+    public List<EvolutionSlot> evolutionSlots = new List<EvolutionSlot>();
+    
 
     void Start()
     {
@@ -69,6 +71,14 @@ public class UiController : MonoBehaviour
         // 진화 판넬 UI 초기 값 세팅
         SetUI_Pannel_Evolution(GlobalData.instance.player.evalutionLeveldx);
 
+        // 진화 슬롯 UI 초기 세팅 
+        SetUI_EvolutionSlots(GlobalData.instance.player.evalutionLeveldx);
+
+        // 진화 주사위 굴리기 버튼 상태 세팅
+        EanbleBtnEvolutionRollDice();
+
+        // 현재 남은 진화 주사위 개수 UI 적용
+        UtilityMethod.SetTxtCustomTypeByID(64,GlobalData.instance.player.diceCount.ToString());
     }
 
 
@@ -179,6 +189,10 @@ public class UiController : MonoBehaviour
             GlobalData.instance.gradeAnimCont.gameObject.SetActive(false);
         });
 
+        // 진화 주사위 뽑기 버튼
+        UtilityMethod.SetBtnEventCustomTypeByID(22, () => {
+            GlobalData.instance.evolutionDiceLotteryManager.RollEvolutionDice();
+        });
     }
 
 
@@ -198,6 +212,35 @@ public class UiController : MonoBehaviour
         // set txt slot count
         UtilityMethod.SetTxtCustomTypeByID(63, $"{data.slotCount}");
     }
+
+    public void SetUI_EvolutionSlots(int dataId)
+    {
+        var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(dataId);
+
+        // slot count 만큼 슬롯 열어줌
+        for (int i = 0; i < data.slotCount; i++)
+        {
+            evolutionSlots[i].UnLockSlot();
+        }
+    }
+
+    
+    public  void EanbleBtnEvolutionRollDice()
+    {
+        // 주사위 하나라도 오픈 되어 있으면 주사위 굴리기 버튼 활성화
+        var enableValue = evolutionSlots.Any(a=> a.isUnlock == true);
+        
+        // 22 : 주사위 굴리기 버튼
+        UtilityMethod.GetCustomTypeBtnByID(22).interactable = enableValue;
+        var diceImageColor = enableValue ? Color.white : Color.gray;
+        UtilityMethod.GetCustomTypeImageById(22).color = diceImageColor;
+
+        // 주사위 사용 개수 
+        var count = UtilityMethod.GetEvolutionDiceUsingCount();
+        UtilityMethod.SetTxtCustomTypeByID(64, count.ToString());
+    }
+
+
 
 
 
