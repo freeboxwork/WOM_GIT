@@ -124,7 +124,7 @@ public class LotteryManager : MonoBehaviour
     {
         yield return StartCoroutine(MakeCardOption(roundCount));
         
-        yield return new WaitForSeconds(0.3f); // 05초 대기 ( 연출 )
+        //yield return new WaitForSeconds(0.3f); // 05초 대기 ( 연출 )
 
         yield return StartCoroutine(CardsOpenEffect());
         
@@ -176,7 +176,8 @@ public class LotteryManager : MonoBehaviour
 
             var unionIdex = GetUnionIndex(unionType, faceIndex);
             unionIndexList.Add(unionIdex);
-            yield return new WaitForSeconds(cardOpenDeayTime);
+            yield return null;
+           // yield return new WaitForSeconds(cardOpenDeayTime);
         }
 
         Debug.Log("뽑기 카운트 " + unionIndexList.Count);

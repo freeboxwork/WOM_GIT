@@ -136,9 +136,9 @@ public class UiController : MonoBehaviour
         });
 
         // 뽑기 게임 10 , 30 , 50회
-        UtilityMethod.SetBtnEventCustomTypeByID(17, () => LotteryGameStart(10));
-        UtilityMethod.SetBtnEventCustomTypeByID(18, () => LotteryGameStart(30));
-        UtilityMethod.SetBtnEventCustomTypeByID(19, () => LotteryGameStart(50));
+        UtilityMethod.SetBtnEventCustomTypeByID(17, () => LotteryGameStart(5));
+        UtilityMethod.SetBtnEventCustomTypeByID(18, () => LotteryGameStart(15));
+        UtilityMethod.SetBtnEventCustomTypeByID(19, () => LotteryGameStart(33));
 
 
         #region btn type list
