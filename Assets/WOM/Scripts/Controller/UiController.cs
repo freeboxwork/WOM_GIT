@@ -78,7 +78,9 @@ public class UiController : MonoBehaviour
         EanbleBtnEvolutionRollDice();
 
         // 현재 남은 진화 주사위 개수 UI 적용
-        UtilityMethod.SetTxtCustomTypeByID(64,GlobalData.instance.player.diceCount.ToString());
+        UtilityMethod.SetTxtCustomTypeByID(65,GlobalData.instance.player.diceCount.ToString());
+
+        
     }
 
 

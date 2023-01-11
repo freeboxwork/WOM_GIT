@@ -78,6 +78,9 @@ public class EventController : MonoBehaviour
 
     IEnumerator MonsterKill(MonsterBase currentMonster)
     {
+        // 공격 막기
+        globalData.attackController.SetAttackableState(false);
+
         yield return null;
 
         // GOLD 획득 애니메이션
@@ -217,8 +220,7 @@ public class EventController : MonoBehaviour
     IEnumerator MonsterDie_Evolution()
     {
 
-        // 공격 막기
-        globalData.attackController.SetAttackableState(false);
+       
 
         // 보스 도전 버튼 활성화 
         if (globalData.player.isBossMonsterChllengeEnable)
@@ -256,8 +258,7 @@ public class EventController : MonoBehaviour
         // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
-        // 공격 가능 상태 변경
-        globalData.attackController.SetAttackableState(true);
+       
     }
 
     // 몬스터 등장
@@ -296,6 +297,9 @@ public class EventController : MonoBehaviour
         
         // 몬스터 UI 리셋 
         MonsterUiReset();
+
+        // 공격 가능 상태 변경
+        globalData.attackController.SetAttackableState(true);
     }
 
 
