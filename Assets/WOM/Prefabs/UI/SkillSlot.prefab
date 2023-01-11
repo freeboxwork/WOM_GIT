@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2915869773021839548}
   - component: {fileID: 2915869773021839549}
   m_Layer: 5
-  m_Name: BeforeDmgText (TMP) (1)
+  m_Name: txt_description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 2915869773889205361}
   - component: {fileID: 2915869773889205362}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txt_maxLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 2915869773893947980}
   - component: {fileID: 2915869773893947981}
   m_Layer: 5
-  m_Name: InfoText (TMP)
+  m_Name: txt_name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31a0881a49b31a44fb94b0645c746d13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e082b68057a78484493f52090e07a794, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -691,6 +691,7 @@ GameObject:
   - component: {fileID: 2915869774591331015}
   - component: {fileID: 2915869774591331013}
   - component: {fileID: 2915869774591331014}
+  - component: {fileID: 892220336144822991}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -745,7 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18356179, g: 0.25119892, b: 0.31132078, a: 1}
+  m_Color: {r: 0.16981132, g: 0.1791736, b: 0.2264151, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -762,6 +763,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3
+--- !u!114 &892220336144822991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915869774591331008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3066135594b2602448f5b73145d6480a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtLevel: {fileID: 2915869774687227027}
+  txtName: {fileID: 2915869773893947981}
+  txtDescription: {fileID: 2915869773021839549}
+  txtMaxLevel: {fileID: 2915869773889205362}
+  txtCost: {fileID: 2915869774681813352}
+  btnPay: {fileID: 2915869773779444241}
 --- !u!1 &2915869774681813354
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +793,7 @@ GameObject:
   - component: {fileID: 2915869774681813359}
   - component: {fileID: 2915869774681813352}
   m_Layer: 5
-  m_Name: DmgCostText (TMP)
+  m_Name: txt_cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,7 +928,7 @@ GameObject:
   - component: {fileID: 2915869774687227026}
   - component: {fileID: 2915869774687227027}
   m_Layer: 5
-  m_Name: LvText (TMP)
+  m_Name: txt_leve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

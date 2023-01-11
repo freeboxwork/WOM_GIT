@@ -88,17 +88,18 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             // 랜덤 그레이드 뽑기
             var randomGradeData = GetRandomWeightEvolutionGradeData();
 
-
             // 랜덤 능력치 뽑기
             var statValue = GetRandomStatValue(randomGradeData);
 
-            Debug.Log($"랜덤하게 뽑은 능력치값 :{randomStatType} / {statValue}");
+            Debug.Log($"랜덤하게 뽑은 능력치값 :{randomStatType.ToString()} / {statValue}");
 
             // 능력치 적용
+            GlobalData.instance.player.SetDiceEvolutionData(randomStatType, statValue);
+
         }
         else
         {
-            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("진화전 주사위 굴리기", 1);
+            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", 1);
         }
 
 
@@ -116,7 +117,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         return GlobalData.instance.dataManager.GetRewardDiceEvolutionDataByGradeId(grade + 1);
     }
 
-    string randomStatType;
+    EvolutionDiceStatType randomStatType;
     EvolutionDiceStatType GetRandomStatType()
     {
         var randomValue = Random.Range(0, 7);
@@ -126,7 +127,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
     float GetRandomStatValue (RewardDiceEvolutionData data)
     {
         var statType = GetRandomStatType();
-        randomStatType = statType.ToString();
+        randomStatType = statType;
         switch (statType)
         {
             case EvolutionDiceStatType.insectDamage: return data.insectDamage;

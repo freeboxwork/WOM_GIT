@@ -26,7 +26,8 @@ public class DataManager : MonoBehaviour
         summonGradeData,
         evolutionGradeData
         rewardEvolutionGradeData,
-        rewardDiceEvolutionData
+        rewardDiceEvolutionData,
+        skillData
      */
 
 
@@ -60,6 +61,8 @@ public class DataManager : MonoBehaviour
     public RewardEvolutionGradeDatas rewardEvolutionGradeDatas;
     public RewardDiceEvolutionDatas rewardDiceEvolutionDatas;
 
+    // SKILL DATA
+    public SkillDatas skillDatas;
 
     // GLOBAL POPUP DATA
     public TextAsset globalPopupSheetData;
@@ -100,6 +103,9 @@ public class DataManager : MonoBehaviour
         // REWARD EVOLUTION GRADE ,  REWARD EVOLUTION DICE DATA
         SetRewardData();
 
+        // SKILL DATA
+        SetSkillData();
+
         // MONSTER
         SetMonsterData();
 
@@ -120,7 +126,6 @@ public class DataManager : MonoBehaviour
 
         yield return null;
     }
-
 
 
     void AddSaleStatElements()
@@ -191,6 +196,11 @@ public class DataManager : MonoBehaviour
     {
         rewardEvolutionGradeDatas = GetData<RewardEvolutionGradeDatas>(SheetDataType.rewardEvolutionGradeData);
         rewardDiceEvolutionDatas = GetData<RewardDiceEvolutionDatas>(SheetDataType.rewardDiceEvolutionData);
+    }
+
+    private void SetSkillData()
+    {
+        skillDatas = GetData<SkillDatas>(SheetDataType.skillData);
     }
 
     void SetMonsterData() 
@@ -392,4 +402,10 @@ public class GlobalMessageDatas
 public class RewardDiceEvolutionDatas
 {
     public List<RewardDiceEvolutionData> data = new List<RewardDiceEvolutionData>();
+}
+
+[Serializable]
+public class SkillDatas
+{
+    public List<SkillData> data = new List<SkillData>();
 }

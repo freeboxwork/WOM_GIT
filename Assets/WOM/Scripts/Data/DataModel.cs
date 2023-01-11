@@ -195,18 +195,18 @@ public class DNAData
     public string explanation;
 }
 
-[Serializable]
-public class SkillData
-{
-    public int skillIndex;
-    public float duration;
-    public int power;
-    public string name;
-    public float coolTime;
-    public float addDurationTime;
-    public float addPowerRate;
-    public int maxLevel;
-}
+//[Serializable]
+//public class SkillData
+//{
+//    public int skillIndex;
+//    public float duration;
+//    public int power;
+//    public string name;
+//    public float coolTime;
+//    public float addDurationTime;
+//    public float addPowerRate;
+//    public int maxLevel;
+//}
 
 [Serializable]
 public class UnionGambleData
@@ -343,3 +343,41 @@ public class RewardDiceEvolutionData
     public int unLockCount;
     public float gradeProbability;
 }
+
+/// <summary>  진화 주사위 획득 값 저장 ( Player ) </summary>
+[Serializable]
+public class DiceEvolutionDataUsingPlayer
+{
+    public float insectDamage;
+    public float insectCriticalChance;
+    public float insectCriticalDamage;
+    public float insectMoveSpeed;
+    public float insectSpawnTime;
+    public float insectBossDamage;
+    public float goldBonus;
+}
+
+[Serializable]
+public class SkillData
+{
+    public int id;
+    public string skillType;
+    public float duration;
+    public float power;
+    public string name;
+    public float coolTime;
+    public float addDurationTime;
+    public float addPowerRate;
+    public int maxLevel;
+    public string desctiption;
+    public float defaultCost;
+    public float addCostAmount;
+    public int unLockLevel;
+}
+
+[Serializable]
+public class SkillDataUsingPlayer
+{
+
+}
+

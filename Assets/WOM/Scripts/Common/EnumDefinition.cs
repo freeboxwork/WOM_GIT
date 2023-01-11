@@ -49,7 +49,8 @@ public class EnumDefinition
         unionGambleData,
         summonGradeData,
         rewardEvolutionGradeData,
-        rewardDiceEvolutionData
+        rewardDiceEvolutionData,
+        skillData
     }
 
     public enum SaleStatType
@@ -129,6 +130,16 @@ public class EnumDefinition
         insectMoveSpeed,
         insectSpawnTime,
         insectBossDamage
+    }
+
+    public enum SkillType
+    {
+        insectDamageUp,
+        unionDamageUp,
+        allUnitSpeedUp,
+        glodBonusUp,
+        heroMonsterSummon,
+        allUnitCriticalDamageUp,
     }
 
 }
