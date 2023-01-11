@@ -180,11 +180,11 @@ public class LotteryManager : MonoBehaviour
            // yield return new WaitForSeconds(cardOpenDeayTime);
         }
 
-        Debug.Log("뽑기 카운트 " + unionIndexList.Count);
-        foreach(var index in unionIndexList)
-        {
-            Debug.Log("union index : " + index);
-        }
+        //Debug.Log("뽑기 카운트 " + unionIndexList.Count);
+        //foreach(var index in unionIndexList)
+        //{
+        //    Debug.Log("union index : " + index);
+        //}
 
         // effect open
         lotteryAnimationController.gameObject.SetActive(true);
