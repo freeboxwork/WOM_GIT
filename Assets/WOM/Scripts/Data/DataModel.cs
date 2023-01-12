@@ -344,10 +344,10 @@ public class RewardDiceEvolutionData
     public float gradeProbability;
 }
 
-/// <summary>  진화 주사위 획득 값 저장 ( Player ) </summary>
+/// <summary>  진화 주사위 획득 값 저장 </summary>
 [Serializable]
-public class DiceEvolutionDataUsingPlayer
-{
+public class DiceEvolutionInGameData
+{ 
     public float insectDamage;
     public float insectCriticalChance;
     public float insectCriticalDamage;
@@ -376,8 +376,13 @@ public class SkillData
 }
 
 [Serializable]
-public class SkillDataUsingPlayer
+public class Skill_InGameData
 {
+    public EnumDefinition.SkillType skillType;
+    public int level;
+    public float duaration;
+    public float power;
+    public float damage;
 
 }
 

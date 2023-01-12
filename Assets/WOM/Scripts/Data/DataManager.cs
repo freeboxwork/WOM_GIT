@@ -328,6 +328,11 @@ public class DataManager : MonoBehaviour
         return rewardDiceEvolutionDatas.data.FirstOrDefault(f => f.grade == id); 
     }
 
+    public SkillData GetSkillDataById(int id)
+    {
+        return skillDatas.data.FirstOrDefault(f => f.id == id);
+    }
+
 }
 
 

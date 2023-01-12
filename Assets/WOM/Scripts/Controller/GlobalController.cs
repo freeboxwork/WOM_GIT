@@ -16,6 +16,7 @@ public class GlobalController : MonoBehaviour
     public EffectManager effectManager;
     public LotteryManager lotteryManager;
     public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
+    public SkillManager skillManager;
 
 
     void Start()
@@ -55,6 +56,9 @@ public class GlobalController : MonoBehaviour
 
         // 진화 주사위 뽑기 세팅
         yield return StartCoroutine(evolutionDiceLotteryManager.Init());
+
+        // 스킬 데이터 및 UI 세팅
+        yield return StartCoroutine(skillManager.Init());
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);

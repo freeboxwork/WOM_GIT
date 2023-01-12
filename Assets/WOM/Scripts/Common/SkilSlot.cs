@@ -23,8 +23,8 @@ public class SkilSlot : MonoBehaviour
 
     void SetBtnEvent()
     {
-        btnPay.onClick.AddListener(() => { 
-        
+        btnPay.onClick.AddListener(() => {
+            GlobalData.instance.skillManager.LevelUpSkill(skillType);
         });
     }
 

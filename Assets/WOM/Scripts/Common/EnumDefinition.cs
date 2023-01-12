@@ -134,11 +134,17 @@ public class EnumDefinition
 
     public enum SkillType
     {
+        /// <summary> 곤충 공격력 증가 </summary>
         insectDamageUp,
+        /// <summary> 유니온 공격력 증가 </summary>
         unionDamageUp,
+        /// <summary> 아군 전체 속도 증가 </summary>
         allUnitSpeedUp,
+        /// <summary> 골드 획득량 증가 </summary>
         glodBonusUp,
-        heroMonsterSummon,
+        /// <summary> 괴수 몬스터 등장 </summary>
+        monsterKing,
+        /// <summary> 아군 전체 공격력이 치명타 ? </summary>
         allUnitCriticalDamageUp,
     }
 
