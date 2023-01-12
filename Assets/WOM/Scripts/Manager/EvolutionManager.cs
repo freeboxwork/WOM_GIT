@@ -2,33 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static EnumDefinition;
 
 /// <summary>
-/// ÁøÈ­ ¹× ÁøÈ­Àü °ü¸® - »ç¿ëÇÏÁö ¾ÊÀ½
+/// ì§„í™” ë° ì§„í™”ì „ ê´€ë¦¬ - ì‚¬ìš©í•˜ì§€ ì•ŠìŒ
 /// </summary>
 
 public class EvolutionManager : MonoBehaviour
 {
-    // current evolution grade id
-    public int curEvolGradeDataId = 0;
-    public int curEvolGradMonId = 0;
-    public AnimationController animContTransition;
-    public AnimData animDataTranIn;
-    public AnimData animDataTranOut;
-
-
-    //ÁøÈ­Àü ÇÁ·Î¼¼½º
-    /*
-     0 : Æ®·£Áö¼Ç ÀÎ
-     1 : ¸ó½ºÅÍ ¹× ½ºÅ×ÀÌÁö ¼¼ÆÃ
-     2 : Æ®·£Áö¼Ç ¾Æ¿ô
-     3 : ÁøÈ­Àü ¸ó½ºÅÍ µîÀå
-     4 : ¸ó½ºÅÍ »ç³É
-     5 : ¸ó½ºÅÍ »ç³É ¼º°ø -> ÁøÈ­
-     6 : ¸ó½ºÅÍ »ç³É ½ÇÆĞ -> ÀÌÀü ¸ó½ºÅÍ µîÀå  
-    */
-
-    bool isEvolutionGamePlaying = false;
+    // ì§„í™” ì£¼ì‚¬ìœ„ ëŒë ¤ì„œ íšë“í•œ ë°ì´í„° ì €ì¥
+    public DiceEvolutionInGameData diceEvolutionData;
 
     void Start()
     {
@@ -40,9 +23,21 @@ public class EvolutionManager : MonoBehaviour
     {
         yield return null;             
     }
-    
-    
 
+
+    public void SetDiceEvolutionData(EvolutionDiceStatType statType, float statValue)
+    {
+        switch (statType)
+        {
+            case EvolutionDiceStatType.insectDamage: diceEvolutionData.insectDamage += statValue; break;
+            case EvolutionDiceStatType.insectCriticalChance: diceEvolutionData.insectCriticalChance += statValue; break;
+            case EvolutionDiceStatType.insectCriticalDamage: diceEvolutionData.insectCriticalDamage += statValue; break;
+            case EvolutionDiceStatType.goldBonus: diceEvolutionData.goldBonus += statValue; break;
+            case EvolutionDiceStatType.insectMoveSpeed: diceEvolutionData.insectMoveSpeed += statValue; break;
+            case EvolutionDiceStatType.insectSpawnTime: diceEvolutionData.insectSpawnTime += statValue; break;
+            case EvolutionDiceStatType.insectBossDamage: diceEvolutionData.insectBossDamage += statValue; break;
+        }
+    }
 
 
 

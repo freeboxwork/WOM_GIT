@@ -24,8 +24,6 @@ public class Player : MonoBehaviour
     // 주사위 개수
     public int diceCount;
 
-    // 진화 주사위 돌려서 획득한 데이터 저장
-    public DiceEvolutionDataUsingPlayer diceEvolutionData;
 
     //
 
@@ -179,19 +177,7 @@ public class Player : MonoBehaviour
         curStatData.statValueDatas[(int)statType] = value;
     }
 
-    public void SetDiceEvolutionData(EvolutionDiceStatType statType, float statValue)
-    {
-        switch (statType)
-        {
-            case EvolutionDiceStatType.insectDamage:         diceEvolutionData.insectDamage         += statValue; break;
-            case EvolutionDiceStatType.insectCriticalChance: diceEvolutionData.insectCriticalChance += statValue; break;
-            case EvolutionDiceStatType.insectCriticalDamage: diceEvolutionData.insectCriticalDamage += statValue; break;
-            case EvolutionDiceStatType.goldBonus:            diceEvolutionData.goldBonus            += statValue; break;
-            case EvolutionDiceStatType.insectMoveSpeed:      diceEvolutionData.insectMoveSpeed      += statValue; break;
-            case EvolutionDiceStatType.insectSpawnTime:      diceEvolutionData.insectSpawnTime      += statValue; break;
-            case EvolutionDiceStatType.insectBossDamage:     diceEvolutionData.insectBossDamage     += statValue; break;
-        }
-    }
+
 
 
 }

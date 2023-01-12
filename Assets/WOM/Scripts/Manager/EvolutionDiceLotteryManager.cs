@@ -94,7 +94,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             Debug.Log($"랜덤하게 뽑은 능력치값 :{randomStatType.ToString()} / {statValue}");
 
             // 능력치 적용
-            GlobalData.instance.player.SetDiceEvolutionData(randomStatType, statValue);
+            GlobalData.instance.evolutionManager.SetDiceEvolutionData(randomStatType, statValue);
 
         }
         else

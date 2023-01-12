@@ -30,6 +30,9 @@ public class InsectManager : MonoBehaviour
     public bool damageDebug = false;
     public float debugDamage = 20;
     Player player;
+
+    public float dps;
+
     void Start()
     {
 
@@ -39,17 +42,17 @@ public class InsectManager : MonoBehaviour
 
     public IEnumerator Init(PlayerDataManager playerDataManager)
     {
-        // °ïÃæ »ı¼º
+        // ê³¤ì¶© ìƒì„±
         BirthInsectBullets();
 
-        // °ïÃæ ÀÎ½ºÅÏ½º »ı¼º
+        // ê³¤ì¶© ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
         SetInsectData(EnumDefinition.InsectType.bee, playerDataManager.saveData.beeSaveData.evolutionLastData);
         SetInsectData(EnumDefinition.InsectType.beetle, playerDataManager.saveData.beetleSaveData.evolutionLastData);
         SetInsectData(EnumDefinition.InsectType.mentis, playerDataManager.saveData.mentisSaveData.evolutionLastData);
 
 
         // add insects list 
-        // ¼ø¼­ : mentis, bee, beetle
+        // ìˆœì„œ : mentis, bee, beetle
         insects.Add(insectMentis);
         insects.Add(insectBee);
         insects.Add(insectBeetle);
@@ -57,10 +60,10 @@ public class InsectManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-
+    
     public void SetAllInsectData(StageData stageData)
     {
-        // ÁøÈ­ °ø½Ä ÇÊ¿ä    
+        // ì§„í™” ê³µì‹ í•„ìš”    
     }
 
     EvolutionData GetInsectEvolDataById(EnumDefinition.InsectType insectType, int idx)
@@ -69,7 +72,7 @@ public class InsectManager : MonoBehaviour
     }
 
 
-    /// <summary> ¸ó½ºÅÍ Á¦°Å½Ã ÇÏÇÁ¶óÀÎ À§ÀÇ °ïÃæµé Á¦°Å </summary>
+    /// <summary> ëª¬ìŠ¤í„° ì œê±°ì‹œ í•˜í”„ë¼ì¸ ìœ„ì˜ ê³¤ì¶©ë“¤ ì œê±° </summary>
     public void DisableHalfLineInsects()
     {
         DisableInsects(insectBullets_Bee);
@@ -96,22 +99,22 @@ public class InsectManager : MonoBehaviour
     }
 
 
-    /// <summary> °è»êµÈ °ïÃæ µ¥¹ÌÁö °ª </summary>
+    /// <summary> ê³„ì‚°ëœ ê³¤ì¶© ë°ë¯¸ì§€ ê°’ </summary>
     public float GetInsectDamage(EnumDefinition.InsectType insectType)
     {
         var insect = GetInsect(insectType);
         var damage = GetInsectDamage(insect);
-        if (HasCriticalDamage(insect)) // Å©¸®Æ¼ÄÃ µ¥¹ÌÁö ÅÍÁ³À»¶§
+        if (HasCriticalDamage(insect)) // í¬ë¦¬í‹°ì»¬ ë°ë¯¸ì§€ í„°ì¡Œì„ë•Œ
         {
             damage = damage * GetInsectCriticalDamage(insect);
         }
         if (damageDebug) return debugDamage;
         return damage;
     }
-    // ---------- ÈÆ·Ã ¾÷±×·¹ÀÌµå ½ÃÀÛ
+    // ---------- í›ˆë ¨ ì—…ê·¸ë ˆì´ë“œ ì‹œì‘
     float GetInsectDamage(InsectBase insect)
     {
-        // °ø°İ·Â °ø½Ä : (damage+ (damage* damageRate))
+        // ê³µê²©ë ¥ ê³µì‹ : (damage+ (damage* damageRate))
         //return insect.damage + (insect.damage * insect.damageRate);
         return (insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage));
         //return ((insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage) + RewardDiceEvolutionData insectDamage))  * RewardEvolutionGradeData damageRate ;
@@ -119,7 +122,7 @@ public class InsectManager : MonoBehaviour
 
     }
 
-    // Ä¡¸íÅ¸ µ¥¹ÌÁö °è»ê
+    // ì¹˜ëª…íƒ€ ë°ë¯¸ì§€ ê³„ì‚°
     float GetInsectCriticalDamage(InsectBase insect)
     {
         //return 2 + insect.criticalDamage;
@@ -127,7 +130,7 @@ public class InsectManager : MonoBehaviour
         //return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) + RewardPolishEvolutionData insectCriticalDamage;
 
     }
-    // Å©¸®Æ¼ÄÃ µ¥¹ÌÁö¸¦ °¡Áö°í ÀÖ´ÂÁö? ( Å©¸®Æ¼ÄÃ µ¥¹ÌÁöÄ« ÅÍÁ³´ÂÁö )
+    // í¬ë¦¬í‹°ì»¬ ë°ë¯¸ì§€ë¥¼ ê°€ì§€ê³  ìˆëŠ”ì§€? ( í¬ë¦¬í‹°ì»¬ ë°ë¯¸ì§€ì¹´ í„°ì¡ŒëŠ”ì§€ )
     bool HasCriticalDamage( InsectBase insect )
     {
         //var percentage = 1+insect.criticalChance;
@@ -137,13 +140,13 @@ public class InsectManager : MonoBehaviour
         return randomValue <= percentage;
     }
 
-    ///talentSpawnSpeed ¹æÄ¡ÇüÀ¸·Î °ÔÀÓÀÌ ÀüÈ¯µÉ °æ¿ì ÇÊ¿äÇÑ ½ºÅİ ÇöÀç »ç¿ëµÇÁö ¾ÊÀ¸³ª Å×½ºÆ® ÈÄ ÇÊ¿ä¿¡ ÀÇÇØ »ç¿ëµÉ ¼ö ÀÖÀ½
+    ///talentSpawnSpeed ë°©ì¹˜í˜•ìœ¼ë¡œ ê²Œì„ì´ ì „í™˜ë  ê²½ìš° í•„ìš”í•œ ìŠ¤í…Ÿ í˜„ì¬ ì‚¬ìš©ë˜ì§€ ì•Šìœ¼ë‚˜ í…ŒìŠ¤íŠ¸ í›„ í•„ìš”ì— ì˜í•´ ì‚¬ìš©ë  ìˆ˜ ìˆìŒ
     ///
-    ///talentMoveSpeed ÇöÀç ±¸ÇöµÇ¾î ÀÖ´Â °ïÃæÀÇ ½ºÇÇµå°¡ Max. Max Speed°ª = 500, Min Speed°ª = 0, InsectBullet.AttackAnim speed °ªÀÌ ÇÊ¿äÇÏ¸ç EvolutionData SpeedÀÇ °ªÀÌ ´ëÀÔµÇ°í + Player.GetStatValue(SaleStatType.trainingMoveSpeed) °¡ µÊ
+    ///talentMoveSpeed í˜„ì¬ êµ¬í˜„ë˜ì–´ ìˆëŠ” ê³¤ì¶©ì˜ ìŠ¤í”¼ë“œê°€ Max. Max Speedê°’ = 500, Min Speedê°’ = 0, InsectBullet.AttackAnim speed ê°’ì´ í•„ìš”í•˜ë©° EvolutionData Speedì˜ ê°’ì´ ëŒ€ì…ë˜ê³  + Player.GetStatValue(SaleStatType.trainingMoveSpeed) ê°€ ë¨
     
-    ///talentGoldBonus ÀçÈ­¸¦ È¹µæÇÏ´Â ¼ø°£ Ã¼Å© EventController.GainGold -> Player.AddGold 
+    ///talentGoldBonus ì¬í™”ë¥¼ íšë“í•˜ëŠ” ìˆœê°„ ì²´í¬ EventController.GainGold -> Player.AddGold 
 
-    //---------- ÈÆ·Ã ¾÷±×·¹ÀÌµå ³¡
+    //---------- í›ˆë ¨ ì—…ê·¸ë ˆì´ë“œ ë
 
 
     public void SetInsectData(EnumDefinition.InsectType insectType, EvolutionData evolutionData)
@@ -196,7 +199,7 @@ public class InsectManager : MonoBehaviour
         }
         else
         {
-            //TODO ¸ğµç ¿ÀºêÁ§Æ® ENABLE »óÅÂÀÏ¶§ »õ·Î¿î BULLET Ãß°¡ 
+            //TODO ëª¨ë“  ì˜¤ë¸Œì íŠ¸ ENABLE ìƒíƒœì¼ë•Œ ìƒˆë¡œìš´ BULLET ì¶”ê°€ 
 
         }
     }
@@ -221,6 +224,13 @@ public class InsectManager : MonoBehaviour
             bullets.Add(bullet);
             bullet.gameObject.SetActive(false);
         }
+    }
+
+    /// <summary> ê³¤ì¶© ê¸°ë³¸ ê³µê²©ë ¥ DPS </summary>
+    public float GetInsectsDps()
+    {
+        //TODO: DPS ê³„ì‚°ì‹ ì¶”ê°€ í•„ìš”í•¨.
+        return dps;
     }
   
 }
