@@ -64,11 +64,14 @@ public class DataManager : MonoBehaviour
     // SKILL DATA
     public SkillDatas skillDatas;
 
+    // UNION DATA
+    public UnionDatas unionDatas;
+
     // GLOBAL POPUP DATA
     public TextAsset globalPopupSheetData;
     public GlobalMessageDatas globalMessageDatas;
 
-    // SALE STATS
+    // SALE STATS   
     StatSaleDatas trainingDamageDatas;
     StatSaleDatas trainingCriticalChanceData;
     StatSaleDatas trainingCriticalDamageData;
@@ -105,6 +108,9 @@ public class DataManager : MonoBehaviour
 
         // SKILL DATA
         SetSkillData();
+
+        // UNION DATA
+        SetUnionData();
 
         // MONSTER
         SetMonsterData();
@@ -201,6 +207,11 @@ public class DataManager : MonoBehaviour
     private void SetSkillData()
     {
         skillDatas = GetData<SkillDatas>(SheetDataType.skillData);
+    }
+
+    void SetUnionData()
+    {
+        unionDatas = GetData<UnionDatas>(SheetDataType.unionData);
     }
 
     void SetMonsterData() 
@@ -413,4 +424,10 @@ public class RewardDiceEvolutionDatas
 public class SkillDatas
 {
     public List<SkillData> data = new List<SkillData>();
+}
+
+[Serializable]
+public class UnionDatas
+{
+    public List<UnionData> data = new List<UnionData>();
 }

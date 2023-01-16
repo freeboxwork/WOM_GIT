@@ -189,6 +189,7 @@ public class LotteryManager : MonoBehaviour
         // effect open
         lotteryAnimationController.gameObject.SetActive(true);
         lotteryAnimationController.StartLotteryAnimation(unionIndexList.ToArray());
+        GlobalData.instance.unionManager.AddUnions(unionIndexList);
     }
 
     int GetRandomFaceIndex()

@@ -130,16 +130,32 @@ public class InsectData
 public class UnionData
 {
     public int unionIndex;
-    public string grade;
+    public string gradeType;
+    public int grade;   
     public float damage;
     public float passiveDamage;
     public float spawnTime;
     public float moveSpeed;
-    public string name;
-    public int reqirementLevelUp;
-    public int increaseReqirement;
-    public float increaseAbilityRate;
+    public string spriteName;
+    public int reqirementCount;
+    public int addReqirementCount;
+    public float addPassiveDamage;
+    public float addDamage;
+    public int maxLevel;
 }
+
+[Serializable]
+public class UnionInGameData
+{
+    public int unionIndex;
+    public int level;
+    public int unionCount;
+    public bool isUnlock;
+}
+
+
+
+
 
 [Serializable]
 public class TrainingData

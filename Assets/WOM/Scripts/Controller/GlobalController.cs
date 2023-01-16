@@ -17,6 +17,7 @@ public class GlobalController : MonoBehaviour
     public LotteryManager lotteryManager;
     public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
     public SkillManager skillManager;
+    public UnionManager unionManager;
 
 
     void Start()
@@ -59,6 +60,9 @@ public class GlobalController : MonoBehaviour
 
         // 스킬 데이터 및 UI 세팅
         yield return StartCoroutine(skillManager.Init());
+
+        // 유니온 데이터및 UI 세팅
+        yield return StartCoroutine(unionManager.Init());
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
