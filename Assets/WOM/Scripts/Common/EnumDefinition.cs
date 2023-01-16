@@ -50,7 +50,8 @@ public class EnumDefinition
         summonGradeData,
         rewardEvolutionGradeData,
         rewardDiceEvolutionData,
-        skillData
+        skillData,
+        unionData
     }
 
     public enum SaleStatType
@@ -146,6 +147,13 @@ public class EnumDefinition
         monsterKing,
         /// <summary> 아군 전체 공격력이 치명타 ? </summary>
         allUnitCriticalDamageUp,
+    }
+
+    public enum UnionEquipType
+    {
+        Equipped,
+        NotEquipped
+
     }
 
 }

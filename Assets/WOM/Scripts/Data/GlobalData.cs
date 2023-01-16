@@ -22,6 +22,7 @@ public class GlobalData : MonoBehaviour
     public SaleManager saleManager;
     public EvolutionManager evolutionManager;
     public SkillManager skillManager;
+    public UnionManager unionManager;
     public GradeAnimationController gradeAnimCont;
     public GlobalPopupController globalPopupController;
     public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
