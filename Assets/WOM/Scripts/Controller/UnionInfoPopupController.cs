@@ -23,7 +23,7 @@ public class UnionInfoPopupController : MonoBehaviour
 
     void Start()
     {
-        
+        SetBtnEvent();
     }
 
     void SetBtnEvent()
@@ -43,7 +43,7 @@ public class UnionInfoPopupController : MonoBehaviour
             popup.SetActive(false); 
         });
     }
-    public void EnablePopup(UnionSlot slot, UnionData data, ref UnionInGameData inGameData)
+    public void EnablePopup(UnionSlot slot, UnionData data,  UnionInGameData inGameData)
     {
         // SET UI
         SetImgFace(slot.imgUnionFace.sprite);
@@ -59,6 +59,8 @@ public class UnionInfoPopupController : MonoBehaviour
         SetTxtPassiveDamage(inGameData.passiveDamage.ToString());
         SetSlider(slot.sliderReqirement.value);
         SetTxtReqirementCount(slot.txtReqirementCount.text);
+
+        popup.SetActive(true);
     }
   
     public void SetTxtUnionName(string value)
@@ -88,7 +90,7 @@ public class UnionInfoPopupController : MonoBehaviour
 
     public void SetTxtPassiveDamage(string value)
     {
-        txtPassiveDamage.text = value;
+        txtPassiveDamage.text = value+"%";
     }
 
     public void SetTxtReqirementCount(string value)

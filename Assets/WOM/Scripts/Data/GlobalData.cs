@@ -26,6 +26,7 @@ public class GlobalData : MonoBehaviour
     public GradeAnimationController gradeAnimCont;
     public GlobalPopupController globalPopupController;
     public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
+    public UnionInfoPopupController unionInfoPopupController;
     
 
     private void Awake()

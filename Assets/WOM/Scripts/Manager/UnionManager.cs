@@ -6,8 +6,10 @@ using UnityEngine;
 public class UnionManager : MonoBehaviour
 {
     public List<UnionSlot> unionSlots = new List<UnionSlot>();
-    public List<UnionInGameData> unionInGameDatas = new List<UnionInGameData>(); // 저장 데이터
+    //public List<UnionInGameData> unionInGameDatas = new List<UnionInGameData>(); // 저장 데이터
     public SpriteFileData spriteFileData;
+
+    
     void Start()
     {
         
@@ -21,24 +23,27 @@ public class UnionManager : MonoBehaviour
 
         for (int i = 0; i < unionDatas.Count; i++)
         {
-            var data = unionDatas[i];
-            var slot = unionSlots[i];
+            int index = i;
+            var data = unionDatas[index];
+            var slot = unionSlots[index];
+
+            //UnionInGameData inGameData = new UnionInGameData();
 
             // set id
-            slot.unionId = data.unionIndex;
+            slot.inGameData.unionIndex = data.unionIndex;
             // set type
             slot.unionGradeType = (EnumDefinition.UnionGradeType)System.Enum.Parse( typeof(EnumDefinition.UnionGradeType), data.gradeType);
 
             // set face image
             slot.SetUIImageUnion(spriteFileData.GetIconData(data.unionIndex));
-
+                                   
             // TODO: 저장된 데이터에서 불러와야 함
 
             // set level 
-            slot.curLevel = 0;
+            slot.inGameData.level = 0;
 
             // set reqirement count
-            slot.LevelUpReqirementCount = data.reqirementCount;
+            slot.inGameData.LevelUpReqirementCount = data.reqirementCount;
 
             // set equip type
             slot.unionEquipType = EnumDefinition.UnionEquipType.NotEquipped;
@@ -51,6 +56,18 @@ public class UnionManager : MonoBehaviour
             slot.SetUITxtUnionCount();
             slot.SetUITxtUnionEquipState();
 
+            // set BtnAction
+            slot.btn.onClick.AddListener(() => {
+                GlobalData.instance.unionInfoPopupController.EnablePopup(slot, data, slot.inGameData);
+            });
+
+
+            // SET IN GAME DATA ( TODO: 저장된 데이터에서 불러와야 함 )
+            slot.inGameData.damage = data.damage;
+            slot.inGameData.spawnTime = data.spawnTime;
+            slot.inGameData.moveSpeed = data.moveSpeed;
+            slot.inGameData.passiveDamage = data.passiveDamage;
+
             yield return null;
         }
     }
@@ -58,14 +75,19 @@ public class UnionManager : MonoBehaviour
 
     UnionSlot GetUnionSlotByID(int id)
     {
-        return unionSlots.FirstOrDefault(f => f.unionId == id);
+        return unionSlots.FirstOrDefault(f => f.inGameData.unionIndex == id);
     }
+
 
     public void AddUnion(int unionId)
     {
         var slot = GetUnionSlotByID(unionId);
-        if (slot.isUnlock == false) slot.EnableSlot();
+        if (slot.inGameData.isUnlock == false)
+        {
+            slot.EnableSlot();
+        }
 
+        // set slot data
         slot.AddUnion(1);
         slot.SetUITxtUnionCount();
         slot.SetSliderValue();
