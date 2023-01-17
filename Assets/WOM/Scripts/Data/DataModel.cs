@@ -131,7 +131,9 @@ public class UnionData
 {
     public int unionIndex;
     public string gradeType;
-    public int grade;   
+    public int grade;
+    public string name;
+    public string gradeName;
     public float damage;
     public float passiveDamage;
     public float spawnTime;
@@ -150,7 +152,15 @@ public class UnionInGameData
     public int unionIndex;
     public int level;
     public int unionCount;
+      
     public bool isUnlock;
+
+    // stat
+    public float damage;
+    public float spawnTime;
+    public float moveSpeed;
+    public float passiveDamage;
+
 }
 
 
