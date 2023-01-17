@@ -8,10 +8,10 @@ public class UnionSlot : MonoBehaviour
 {
     public EnumDefinition.UnionGradeType unionGradeType;
     public EnumDefinition.UnionEquipType unionEquipType;
-    public int unionId;
-    public int curLevel;   // 현재 레벨
-    public int unionCount; // 유니온 보수 수
-    public int LevelUpReqirementCount;         // 레벨업에 필요한 유니온 수
+    //public int unionId;
+    //public int curLevel;   // 현재 레벨
+    //public int unionCount; // 유니온 보수 수
+    //public int LevelUpReqirementCount;         // 레벨업에 필요한 유니온 수
     public TextMeshProUGUI txtLevel;           // 현재 레벨
     public TextMeshProUGUI txtEquipState;      // 장착 여부
     public TextMeshProUGUI txtReqirementCount; // 레벨업에 필요한 유니온 수
@@ -19,7 +19,9 @@ public class UnionSlot : MonoBehaviour
     public Image imgUnionFace;
     public Button btn;
     public GameObject unlock;
-    public bool isUnlock = false;
+    //public bool isUnlock = false;
+
+    public UnionInGameData inGameData;
 
     void Start()
     {
@@ -34,12 +36,12 @@ public class UnionSlot : MonoBehaviour
    
     public void AddUnion(int count)
     {
-        unionCount += count;
+        inGameData.unionCount += count;
     }
         
     public void PayUnion(int count)
     {
-        unionCount -= count;
+        inGameData.unionCount -= count;
     }
 
 
@@ -51,13 +53,13 @@ public class UnionSlot : MonoBehaviour
 
     public void SetUITxtUnionCount()
     {
-        var text = $"{unionCount}/{LevelUpReqirementCount}";
+        var text = $"{inGameData.unionCount}/{inGameData.LevelUpReqirementCount}";
         txtReqirementCount.text = text;
     }
 
     public void SetUITxtLevel()
     {
-        txtLevel.text = "Lv" + curLevel.ToString();
+        txtLevel.text = "Lv" + inGameData.level.ToString();
     }
 
     public void SetUITxtUnionEquipState()
@@ -68,18 +70,19 @@ public class UnionSlot : MonoBehaviour
 
     public void SetSliderValue()
     {
-        if (unionCount >= LevelUpReqirementCount) sliderReqirement.value = 1;
+        if (inGameData.unionCount >= inGameData.LevelUpReqirementCount) sliderReqirement.value = 1;
         else
         {
-            float value = ((float)unionCount / (float)LevelUpReqirementCount);
+            float value = ((float)inGameData.unionCount / (float)inGameData.LevelUpReqirementCount);
             sliderReqirement.value = value;
-            Debug.Log("slider! " + value);
+            //Debug.Log("slider! " + value);
         }
     }
 
     public void EnableSlot()
     {
-        isUnlock = true;
+        inGameData.isUnlock = true;
+        btn.enabled = true;
         unlock.SetActive(false);
     }
 

@@ -85,6 +85,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fe63f86b302fca341931905b138077b3, type: 3}
   - {fileID: 21300000, guid: 232abf5cc78b9a642b62e77798c95419, type: 3}
   - {fileID: 21300000, guid: 3f9f499d2866d59499e9d380d50b8238, type: 3}
+  - {fileID: 21300000, guid: 9a6d154e73502c743a7556d77b511c59, type: 3}
   - {fileID: 21300000, guid: 941b932fc973ecd46a57e6c4eea42973, type: 3}
   - {fileID: 21300000, guid: a72d955f404d8624b80f6151f3aaa1d4, type: 3}
   - {fileID: 21300000, guid: c700a4bf8ff230349a38aef46992418b, type: 3}
@@ -136,6 +137,7 @@ SpriteAtlas:
   - U_LadyBugs00
   - U_Locust04
   - U_StagBettle01
+  - defualt
   - U_StagBettle04
   - U_Moth01
   - U_Cicada00

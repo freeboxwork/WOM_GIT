@@ -309,10 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unionGradeType: 0
   unionEquipType: 0
-  unionId: 0
-  curLevel: 0
-  unionCount: 0
-  LevelUpReqirementCount: 0
   txtLevel: {fileID: 3919498988931361614}
   txtEquipState: {fileID: 3919498987805910242}
   txtReqirementCount: {fileID: 7318788078636497851}
@@ -320,7 +316,16 @@ MonoBehaviour:
   imgUnionFace: {fileID: 3919498989158104963}
   btn: {fileID: 4712073510211022939}
   unlock: {fileID: 5073128666033923069}
-  isUnlock: 0
+  inGameData:
+    unionIndex: 0
+    level: 0
+    unionCount: 0
+    LevelUpReqirementCount: 0
+    isUnlock: 0
+    damage: 0
+    spawnTime: 0
+    moveSpeed: 0
+    passiveDamage: 0
 --- !u!114 &4712073510211022939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +333,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3919498988385440445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 

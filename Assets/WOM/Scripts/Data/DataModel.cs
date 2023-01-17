@@ -152,7 +152,7 @@ public class UnionInGameData
     public int unionIndex;
     public int level;
     public int unionCount;
-      
+    public int LevelUpReqirementCount;
     public bool isUnlock;
 
     // stat
