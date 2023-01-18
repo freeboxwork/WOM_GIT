@@ -161,6 +161,8 @@ public class UnionInGameData
     public float moveSpeed;
     public float passiveDamage;
 
+   
+
 }
 
 

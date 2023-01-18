@@ -4,9 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static EnumDefinition;
 
-/// <summary>
-/// 진화 및 진화전 관리 - 사용하지 않음
-/// </summary>
+
 
 public class EvolutionManager : MonoBehaviour
 {

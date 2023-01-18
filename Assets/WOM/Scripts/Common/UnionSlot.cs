@@ -22,6 +22,7 @@ public class UnionSlot : MonoBehaviour
     //public bool isUnlock = false;
 
     public UnionInGameData inGameData;
+    public UnionData unionData;
 
     void Start()
     {
@@ -44,6 +45,19 @@ public class UnionSlot : MonoBehaviour
         inGameData.unionCount -= count;
     }
 
+    public void LevelUp()
+    {
+        ++inGameData.level;
+    }
+
+
+
+    public void RelodUISet()
+    {
+        SetUITxtUnionCount();
+        SetUITxtLevel();
+        SetSliderValue();
+    }
 
     public void SetUIImageUnion(Sprite unionFace)
     {

@@ -242,6 +242,9 @@ public class EventController : MonoBehaviour
         // 능력치 슬롯 오픈
         globalData.uiController.SetUI_EvolutionSlots(globalData.player.evalutionLeveldx + 1);
 
+        // 유니온 장착 슬롯 오픈
+        globalData.unionManager.UnlockEquipSlots(globalData.player.evalutionLeveldx + 1);
+
 
         // 기존 UI Canvas 비활성화
         UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
