@@ -9318,6 +9318,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: unionEquipSlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &495615338 stripped
@@ -9325,6 +9337,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5976742349486006029, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
   m_PrefabInstance: {fileID: 495615337}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &495615339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+  m_PrefabInstance: {fileID: 495615337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cae358bee5c754b8fdcb1478f05e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &496609042 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4657263445232188000, guid: cdc56977043929646b52844b4648f5c6, type: 3}
@@ -19089,6 +19112,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: unionEquipSlot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &985232967 stripped
@@ -19096,6 +19131,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5976742349486006029, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
   m_PrefabInstance: {fileID: 985232966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &985232968 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+  m_PrefabInstance: {fileID: 985232966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cae358bee5c754b8fdcb1478f05e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &986508841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23404,6 +23450,12 @@ MonoBehaviour:
   - {fileID: 1549374651}
   - {fileID: 511196239}
   - {fileID: 456853986}
+  unionEquipSlots:
+  - {fileID: 1361064361}
+  - {fileID: 1999919759}
+  - {fileID: 495615339}
+  - {fileID: 985232968}
+  - {fileID: 1868217264}
   spriteFileData: {fileID: 11400000, guid: bf49968d02ea26f458e496432a5ea578, type: 2}
 --- !u!224 &1207637239 stripped
 RectTransform:
@@ -26213,6 +26265,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357342488}
   m_CullTransparentMesh: 1
+--- !u!114 &1361064361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+  m_PrefabInstance: {fileID: 5976742350841479023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cae358bee5c754b8fdcb1478f05e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1361386694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4657263446157785688, guid: cdc56977043929646b52844b4648f5c6, type: 3}
@@ -26928,6 +26991,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: unionEquipSlot (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &1412009232 stripped
@@ -27429,6 +27504,7 @@ MonoBehaviour:
   btnEquip: {fileID: 617929004}
   btnLevelUp: {fileID: 1323590284}
   btnClose: {fileID: 2085558517}
+  unionSlot: {fileID: 0}
 --- !u!1 &1432594858
 GameObject:
   m_ObjectHideFlags: 0
@@ -34057,6 +34133,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: unionEquipSlot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &1741528998 stripped
@@ -36847,6 +36935,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1868217264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+  m_PrefabInstance: {fileID: 1412009231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cae358bee5c754b8fdcb1478f05e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1871493194
 GameObject:
   m_ObjectHideFlags: 0
@@ -40131,6 +40230,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1999919759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+  m_PrefabInstance: {fileID: 1741528997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cae358bee5c754b8fdcb1478f05e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2010346645
@@ -46365,6 +46475,22 @@ PrefabInstance:
     - target: {fileID: 5976742349486006030, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
       propertyPath: m_Name
       value: unionEquipSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742349874249662, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976742350319862012, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}

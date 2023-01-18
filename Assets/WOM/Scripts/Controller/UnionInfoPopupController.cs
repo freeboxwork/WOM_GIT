@@ -19,7 +19,10 @@ public class UnionInfoPopupController : MonoBehaviour
     public Button btnEquip;
     public Button btnLevelUp;
     public Button btnClose;
-    UnionInGameData unionInGameData;
+    public UnionSlot unionSlot;
+
+    
+
 
     void Start()
     {
@@ -30,12 +33,17 @@ public class UnionInfoPopupController : MonoBehaviour
     {
         btnEquip.onClick.AddListener(() =>
         {
-
+            GlobalData.instance.unionManager.SetSelectedSlot(unionSlot);
+            GlobalData.instance.unionManager.EnableEquipSlotBtns();
+            popup.SetActive(false);
         });
 
         btnLevelUp.onClick.AddListener(() =>
         {
-
+            if (GlobalData.instance.unionManager.LevelUpUnion(unionSlot))
+            {
+                ReloadUiSet();
+            }
         });
 
         btnClose.onClick.AddListener(() =>
@@ -50,7 +58,7 @@ public class UnionInfoPopupController : MonoBehaviour
         SetTxtUnionName(data.name);
         SetTxtUinonGrade(data.gradeName);
 
-        unionInGameData = inGameData;
+        unionSlot = slot;
 
         // SET STAT UI
         SetTxtDamage(inGameData.damage.ToString());
@@ -63,6 +71,16 @@ public class UnionInfoPopupController : MonoBehaviour
         popup.SetActive(true);
     }
   
+    void ReloadUiSet()
+    {
+        SetTxtDamage(unionSlot.inGameData.damage.ToString());
+        SetTxtSpawnTime(unionSlot.inGameData.spawnTime.ToString());
+        SetTxtMoveSpeed(unionSlot.inGameData.moveSpeed.ToString());
+        SetTxtPassiveDamage(unionSlot.inGameData.passiveDamage.ToString());
+        SetSlider(unionSlot.sliderReqirement.value);
+        SetTxtReqirementCount(unionSlot.txtReqirementCount.text);
+    }
+
     public void SetTxtUnionName(string value)
     {
         txtUinonName.text = value;

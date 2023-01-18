@@ -6,13 +6,28 @@ using UnityEngine;
 public class UnionManager : MonoBehaviour
 {
     public List<UnionSlot> unionSlots = new List<UnionSlot>();
-    //public List<UnionInGameData> unionInGameDatas = new List<UnionInGameData>(); // 저장 데이터
+    public List<UnionEquipSlot> unionEquipSlots = new List<UnionEquipSlot>();
     public SpriteFileData spriteFileData;
-
     
+    // 장착된 유니온 데이터
+   // public List<UnionSlot> equipUnionSlots = new List<UnionSlot>();
+
+    UnionSlot selectedSlot;
+
     void Start()
     {
-        
+        UnlockEquipSlots(GlobalData.instance.player.evalutionLeveldx);
+    }
+
+    public void UnlockEquipSlots(int dataId)
+    {
+        var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(dataId);
+
+        // slot count 만큼 슬롯 열어줌
+        for (int i = 0; i < data.slotCount; i++)
+        {
+            unionEquipSlots[i].UnLockSlot();
+        }
     }
 
 
@@ -27,16 +42,16 @@ public class UnionManager : MonoBehaviour
             var data = unionDatas[index];
             var slot = unionSlots[index];
 
-            //UnionInGameData inGameData = new UnionInGameData();
-
             // set id
             slot.inGameData.unionIndex = data.unionIndex;
             // set type
             slot.unionGradeType = (EnumDefinition.UnionGradeType)System.Enum.Parse( typeof(EnumDefinition.UnionGradeType), data.gradeType);
-
             // set face image
             slot.SetUIImageUnion(spriteFileData.GetIconData(data.unionIndex));
-                                   
+            // set data
+            slot.unionData = data;
+
+
             // TODO: 저장된 데이터에서 불러와야 함
 
             // set level 
@@ -72,6 +87,32 @@ public class UnionManager : MonoBehaviour
         }
     }
 
+    public void EnableEquipSlotBtns()
+    {
+        var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(GlobalData.instance.player.evalutionLeveldx);
+        // slot count 만큼 슬롯 열어줌
+        for (int i = 0; i < data.slotCount; i++)
+        {
+            unionEquipSlots[i].SetBtnEnableState(true);
+        }
+    }
+
+    public void EquipSlot(UnionEquipSlot equipSlot)
+    {
+        equipSlot.EquipUnion(selectedSlot);
+        unionEquipSlots.ForEach(f => f.SetBtnEnableState(false));
+    }
+
+    public void SetSelectedSlot(UnionSlot slot)
+    {
+        selectedSlot = slot;
+    }
+        
+    public UnionSlot GetSelectedSlotData()
+    {
+        return selectedSlot;
+    }
+        
 
     UnionSlot GetUnionSlotByID(int id)
     {
@@ -101,4 +142,48 @@ public class UnionManager : MonoBehaviour
             AddUnion(id);
         }
     }
+
+    public float GetUnionDamage(UnionSlot slot)
+    {
+        var damage = slot.unionData.damage + (slot.inGameData.level * slot.unionData.addDamage); 
+        return damage;
+    }
+
+    public float GetUnionPassiveDamage(UnionSlot slot) 
+    {
+        var passiveDamage = slot.unionData.passiveDamage + (slot.inGameData.level * slot.unionData.addPassiveDamage); 
+        return passiveDamage;
+    }
+
+    public int GetUnionReqireCount(UnionSlot slot)
+    {
+        var reqieCount = slot.unionData.reqirementCount + (slot.inGameData.level * slot.unionData.addReqirementCount);
+        return reqieCount;
+    }
+
+    public bool IsValidLevelUpCount(UnionSlot slot)
+    {
+        return slot.inGameData.unionCount >= GetUnionReqireCount(slot);
+    }
+
+    public bool LevelUpUnion(UnionSlot slot)
+    {
+        var isValidLevelUp = IsValidLevelUpCount(slot);
+        if (isValidLevelUp)
+        {
+            var cost = GetUnionReqireCount(slot);
+            slot.PayUnion(cost);
+            slot.LevelUp();
+            slot.inGameData.LevelUpReqirementCount = GetUnionReqireCount(slot);
+            slot.inGameData.damage = GetUnionDamage(slot);
+            slot.inGameData.passiveDamage = GetUnionPassiveDamage(slot);
+            slot.RelodUISet();
+        }
+        else
+        {
+            Debug.Log($"레벨업에 필요한 유니온이 부족합니다. {slot.unionData.name} _ {slot.inGameData.unionCount}");
+        }
+        return isValidLevelUp;
+    }
+
 }
