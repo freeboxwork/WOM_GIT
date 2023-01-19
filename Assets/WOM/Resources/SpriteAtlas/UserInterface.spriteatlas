@@ -50,6 +50,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7633baa0c2ce3164392a87f1237404c1, type: 3}
   - {fileID: 21300000, guid: 013589b0790749243ae715e4f52e2bee, type: 3}
   - {fileID: 21300000, guid: d7cd9cd0c210f0141b3dc0ff62c93af7, type: 3}
+  - {fileID: 21300000, guid: 323b0ae0b028fb447942121a899f0099, type: 3}
   - {fileID: 21300000, guid: b5cf9561b1652e14ab35927b66be36cd, type: 3}
   - {fileID: 21300000, guid: 3819d8b16d191c044a46fbdeff09e5fb, type: 3}
   - {fileID: 21300000, guid: 7ea79f42de0eeaa4a983ed1ca0c3d217, type: 3}
@@ -60,6 +61,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 40e17be2181be8e4fb48bf67984e2d5a, type: 3}
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
+  - {fileID: 21300000, guid: f562abf327dc2c04cb5deb29621b7f78, type: 3}
   - {fileID: 21300000, guid: 340d1564ed4494e4b8417382c081075c, type: 3}
   - {fileID: 21300000, guid: eced51b430ffb5a43b3c04631438dd6a, type: 3}
   - {fileID: 21300000, guid: fa9c8ab4585c04c41a755bc5ec44ec46, type: 3}
@@ -109,6 +111,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cdb17eeea6a28354c8affba06db7934c, type: 3}
   - {fileID: 21300000, guid: ff5cea0f48a6d2445b7aeda46f001b7f, type: 3}
   - {fileID: 21300000, guid: 062b375fb7e6c8f4cae752dffd4767e7, type: 3}
+  - {fileID: 21300000, guid: 48f815dff14dfef43b1b4991b89e9740, type: 3}
   m_PackedSpriteNamesToIndex:
   - U_Frame_White
   - Bar_Hp
@@ -120,6 +123,7 @@ SpriteAtlas:
   - U_Frame_Rare
   - UI_Skull
   - Icon_CriticalChance_Per
+  - Icon_OutLine0
   - UI_Dice
   - Dna
   - Skill_Critical
@@ -130,6 +134,7 @@ SpriteAtlas:
   - U_Frame_Unique
   - Icon_CriticalDamage
   - ClearBox_TopRound
+  - Arrow
   - Icon_DamageUp_Per
   - UI_Lock
   - btn_inside
@@ -179,6 +184,7 @@ SpriteAtlas:
   - U_Frame_High
   - DNA_BettleAttack
   - ClearBox
+  - Icon_OutLine1
   m_RenderDataMap: {}
   m_Tag: UserInterface
   m_IsVariant: 0
