@@ -8,11 +8,19 @@ public class SkillManager : MonoBehaviour
 {
     public List<SkilSlot> skillSlots = new List<SkilSlot>();
     public List<Skill_InGameData> skill_InGameDatas = new List<Skill_InGameData>();
+    public List<SkillBtn> skillBtns = new List<SkillBtn>();
+    
     void Start()
     {
       
     }
 
+    public void UnLockSkillButton(SkillType skillType)
+    {
+        var btn = skillBtns[(int)skillType];
+        btn.gameObject.SetActive(true);
+        btn.skillReady = true;
+    }
 
     public IEnumerator Init()
     {
@@ -25,14 +33,17 @@ public class SkillManager : MonoBehaviour
     {
         foreach (SkillType type in System.Enum.GetValues(typeof(SkillType)))
         {
+            var skillData = GetSkillData(type);
+            
             Skill_InGameData data = new Skill_InGameData();
             data.skillType = type;
 
             //TODO : 추 후 저장된 값에서 불러와야 함
             data.level = 0;
-            data.duaration = 0;
-            data.power = 0;
+            data.duaration = skillData.duration;
+            data.power = skillData.power;
             data.damage = 0;
+            data.coolTime = skillData.coolTime;
 
             skill_InGameDatas.Add(data);
         }
@@ -131,6 +142,9 @@ public class SkillManager : MonoBehaviour
                     SetUIAllUnitCDU(ref skillSlot, skillData, inGameData);
                     break;
             }
+
+            // UNLOCK SKILL
+            UnLockSkillButton(skillType);
         }
         else
         {
@@ -236,8 +250,8 @@ public class SkillManager : MonoBehaviour
     {
         return skillSlots.FirstOrDefault(f => f.skillType == skillType);
     }
-    
-    Skill_InGameData GetSkillInGameDataByType(SkillType skillType)
+
+    public Skill_InGameData GetSkillInGameDataByType(SkillType skillType)
     {
         return skill_InGameDatas.FirstOrDefault(f => f.skillType == skillType);
     }

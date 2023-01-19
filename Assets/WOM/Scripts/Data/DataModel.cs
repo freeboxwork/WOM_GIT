@@ -411,6 +411,7 @@ public class Skill_InGameData
     public float duaration;
     public float power;
     public float damage;
+    public float coolTime;
 
 }
 
