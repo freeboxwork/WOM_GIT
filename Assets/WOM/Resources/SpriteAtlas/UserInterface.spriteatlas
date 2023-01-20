@@ -62,6 +62,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
   - {fileID: 21300000, guid: f562abf327dc2c04cb5deb29621b7f78, type: 3}
+  - {fileID: 21300000, guid: 5de53164a29e57740a86d962b8865fd9, type: 3}
   - {fileID: 21300000, guid: 340d1564ed4494e4b8417382c081075c, type: 3}
   - {fileID: 21300000, guid: eced51b430ffb5a43b3c04631438dd6a, type: 3}
   - {fileID: 21300000, guid: fa9c8ab4585c04c41a755bc5ec44ec46, type: 3}
@@ -135,6 +136,7 @@ SpriteAtlas:
   - Icon_CriticalDamage
   - ClearBox_TopRound
   - Arrow
+  - btn_Base_White
   - Icon_DamageUp_Per
   - UI_Lock
   - btn_inside
