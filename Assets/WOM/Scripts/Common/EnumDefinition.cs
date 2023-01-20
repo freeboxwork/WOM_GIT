@@ -51,7 +51,8 @@ public class EnumDefinition
         rewardEvolutionGradeData,
         rewardDiceEvolutionData,
         skillData,
-        unionData
+        unionData,
+        dnaData
     }
 
     public enum SaleStatType
@@ -154,6 +155,26 @@ public class EnumDefinition
         Equipped,
         NotEquipped
 
+    }
+
+    public enum DNAType
+    {
+        insectDamage,
+        insectCriticalChance,
+        insectCriticalDamage,
+        unionDamage,
+        glodBonus,
+        insectMoveSpeed,
+        unionMoveSpeed,
+        unionSpawnTime,
+        goldPig,
+        skillDuration,
+        skillCoolTime,
+        bossDamage,
+        monsterHpLess,
+        boneBonus,
+        goldMonsterBonus,
+        offlineBonus
     }
 
 }

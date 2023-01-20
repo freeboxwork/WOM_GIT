@@ -126,34 +126,43 @@ public class Player : MonoBehaviour
     {
         //var sum = value + (value * GetStatValue(SaleStatType.talentGoldBonus));
 
-        gold = gold + value;
+        gold += value;
     }
 
     public void AddBone(int value)
     {
-        bone = bone + value;
+        bone += value;
     }
     public void AddDice(int value)
     {
-        diceCount = diceCount = value;
+        diceCount += value;
+    }
 
+    public void AddGem(int value)
+    {
+        gem += value; 
     }
 
     public void PayGold(int value)
     {
-        gold = gold - value;
+        gold -= value;
         if (gold < 0) gold = 0;
     }
 
     public void PayBone(int value)
     {
-        bone = bone - value;
+        bone -= value;
         if (bone < 0) bone = 0;
     }
     public void PayDice(int value )
     {
-        diceCount = diceCount - value;
+        diceCount -= value;
         if (diceCount < 0) diceCount = 0;
+    }
+    public void PayGem(int value)
+    {
+        gem -= value;
+        if (gem < 0) gem = 0;
     }
          
 
