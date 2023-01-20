@@ -28,6 +28,7 @@ public class DataManager : MonoBehaviour
         rewardEvolutionGradeData,
         rewardDiceEvolutionData,
         skillData
+        dnaData
      */
 
 
@@ -67,6 +68,10 @@ public class DataManager : MonoBehaviour
     // UNION DATA
     public UnionDatas unionDatas;
 
+    // DNA DATA
+    public DNADatas dnaDatas;
+        
+
     // GLOBAL POPUP DATA
     public TextAsset globalPopupSheetData;
     public GlobalMessageDatas globalMessageDatas;
@@ -86,7 +91,7 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     public IEnumerator SetDatas()
@@ -112,6 +117,9 @@ public class DataManager : MonoBehaviour
         // UNION DATA
         SetUnionData();
 
+        // DNA DATA
+        SetDNAData();
+
         // MONSTER
         SetMonsterData();
 
@@ -132,6 +140,7 @@ public class DataManager : MonoBehaviour
 
         yield return null;
     }
+
 
 
     void AddSaleStatElements()
@@ -212,6 +221,11 @@ public class DataManager : MonoBehaviour
     void SetUnionData()
     {
         unionDatas = GetData<UnionDatas>(SheetDataType.unionData);
+    }
+
+    void SetDNAData()
+    {
+        dnaDatas = GetData<DNADatas>(SheetDataType.dnaData);
     }
 
     void SetMonsterData() 
@@ -344,6 +358,11 @@ public class DataManager : MonoBehaviour
         return skillDatas.data.FirstOrDefault(f => f.id == id);
     }
 
+    public DNAData GetDNADataById(int id)
+    {
+        return dnaDatas.data.FirstOrDefault(f => f.dnaIndex == id);
+    }
+
 }
 
 
@@ -430,4 +449,10 @@ public class SkillDatas
 public class UnionDatas
 {
     public List<UnionData> data = new List<UnionData>();
+}
+
+[Serializable]
+public class DNADatas
+{
+    public List<DNAData> data = new List<DNAData>();
 }

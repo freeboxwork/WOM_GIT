@@ -215,26 +215,30 @@ public class TalentData
 [Serializable]
 public class DNAData
 {
-    public int dnaIndex;
-    public float increaseValue;
-    public float decreaseProbability;
-    public int maxLevel;
-    public string abilityType;
-    public string explanation;
+    public int dnaIndex ;
+    public float power ;
+    public int maxLevel ;
+    public string spriteName ;
+    public string infoFront ;
+    public string infoBack ;
+    public string dnaName ;
+    public string dnaType ;
 }
 
-//[Serializable]
-//public class SkillData
-//{
-//    public int skillIndex;
-//    public float duration;
-//    public int power;
-//    public string name;
-//    public float coolTime;
-//    public float addDurationTime;
-//    public float addPowerRate;
-//    public int maxLevel;
-//}
+public class DNAInGameData
+{
+    public int level;
+    public int maxLevel;
+    public float power;
+    public float dataPower;
+    public string name;
+
+    public void LevelUp()
+    {
+        ++level;
+        power = (level * dataPower);
+    }
+}
 
 [Serializable]
 public class UnionGambleData
