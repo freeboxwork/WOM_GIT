@@ -8,9 +8,13 @@ namespace ProjectGraphics
     public class LotteryAnimationController : MonoBehaviour
     {
         public SpriteFileData data;
+        [Header("DNA Icon 이미지"), SerializeField]
+        private Sprite[] dnaIcons;
+
         public Color[] effectColor;
         public Sprite[] gradeBackImage;
         private Lottery_Slot[] slots;
+
 
 #if UNITY_EDITOR
         //[SerializeField] int ii;
@@ -72,6 +76,36 @@ namespace ProjectGraphics
                 {
                     yield return new WaitForSeconds(0.1f);
                 }
+            }
+        }
+
+        public void StartDNASlotAnimation(int[] u)
+        {
+            StartCoroutine(ShowDNAIconSlotCardOpenProcess(u));
+        }
+
+        //슬롯 형태 확인 하고, 백 이미지 지우고 아이콘 이미지만 처리 이펙트 컬러 통일.
+        IEnumerator ShowDNAIconSlotCardOpenProcess(int[] u)
+        {
+            yield return new WaitForSeconds(0.05f);
+
+            for (int i = 0; i < u.Length; i++)
+            {
+                //타입 없음
+                //GradeBackImage = DNA Icon
+                int typeIndex = 0;
+
+                slots[i].SetSlotImage(effectColor[typeIndex], gradeBackImage[u[i]]);
+                slots[i].gameObject.SetActive(true);
+
+                //여기 출현 사운드 필요함.
+
+                for (int j = 0; j < i; j++)
+                {
+                    slots[j].SetShakeAction();
+                }
+
+                yield return new WaitForSeconds(0.1f);
             }
         }
 
