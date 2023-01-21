@@ -836,9 +836,8 @@ GameObject:
   - component: {fileID: 1879935269847859202}
   - component: {fileID: 1879935269847859205}
   - component: {fileID: 1538384838}
-  - component: {fileID: 3013245744808513897}
   m_Layer: 5
-  m_Name: TrainingButton
+  m_Name: TrainingDamageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,7 +894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f002302a82c425b41bb6b513089544d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50d03bb8b652d3445b74839c24b7070d, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -904,7 +903,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!114 &1879935269847859202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,7 +967,7 @@ MonoBehaviour:
     image: {fileID: 1879935269847859203}
     sr: {fileID: 0}
     tr: {fileID: 1879935269847859201}
-    gm: {fileID: 0}
+    gm: {fileID: 1879935269847859200}
   customType: 0
   index: 8
 --- !u!114 &1538384838
@@ -993,21 +992,6 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 2
   index: 2
---- !u!114 &3013245744808513897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879935269847859200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 3, y: 3}
-  m_UseGraphicAlpha: 1
 --- !u!1 &8119822724589575653
 GameObject:
   m_ObjectHideFlags: 0
