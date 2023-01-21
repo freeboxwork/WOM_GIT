@@ -95,7 +95,7 @@ namespace ProjectGraphics
                 //GradeBackImage = DNA Icon
                 int typeIndex = 0;
 
-                slots[i].SetSlotImage(effectColor[typeIndex], dnaIcons[u[i]]);
+                slots[i].SetSlotImage(effectColor[typeIndex], dnaIcons[u[i]], effectColor[0]);
                 slots[i].gameObject.SetActive(true);
 
                 //여기 출현 사운드 필요함.

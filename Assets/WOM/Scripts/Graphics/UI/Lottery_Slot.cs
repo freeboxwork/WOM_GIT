@@ -23,11 +23,12 @@ namespace ProjectGraphics
             this.insect.sprite = insect;
         }
 
-        public void SetSlotImage(Color glow, Sprite grade)
+        public void SetSlotImage(Color glow, Sprite grade, Color insect)
         {
             this.glow.color = this.shine.color = glow;
             this.grade.sprite = grade;
             this.insect.sprite = null;
+            this.insect.color = insect;
         }
 
         public void SetShakeAction()
