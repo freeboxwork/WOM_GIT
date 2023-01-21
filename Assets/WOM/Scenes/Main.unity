@@ -24424,6 +24424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda947c6e0fa8ac42bdc621e80d8ccfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lotteryAnimCont: {fileID: 1653342318}
   dnaSlots:
   - {fileID: 3718116304277590986}
   - {fileID: 1919298706}
@@ -25553,9 +25554,9 @@ MonoBehaviour:
   upgradeLevelIdx: 0
   traningLevelIdx: 0
   evalutionLeveldx: 0
-  gold: 0
-  bone: 0
-  gem: 0
+  gold: 5000000
+  bone: 5000
+  gem: 5000
   diceCount: 200
   currentStageData:
     stageId: 0
@@ -41035,7 +41036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754012, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754018, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_Color.b
@@ -41067,7 +41068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_AnchorMin.x
@@ -41075,15 +41076,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41115,11 +41116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 62.5
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -62.5
       objectReference: {fileID: 0}
     - target: {fileID: 2876859116523754019, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -41148,6 +41149,14 @@ PrefabInstance:
     - target: {fileID: 2876859116741140198, guid: beb86881f0e997048952ecd844779da3, type: 3}
       propertyPath: m_FillAmount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340413377852995814, guid: beb86881f0e997048952ecd844779da3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952115062556793316, guid: beb86881f0e997048952ecd844779da3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beb86881f0e997048952ecd844779da3, type: 3}

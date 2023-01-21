@@ -10,6 +10,7 @@ public class SkillBtn : MonoBehaviour
     public Image imgSkillBack;
     public Image imgSkillFront;
     public TextMeshProUGUI txtTime;
+    public TextMeshProUGUI txtTimeAnim;
     public Button btnSkill;
 
     public Color colorDeem;
@@ -73,7 +74,10 @@ public class SkillBtn : MonoBehaviour
             
             //TODO : 스킬 추가 스탯 사용 이벤트 추가
             skillAddValue = true;
+            txtTimeAnim.enabled = true;
+            StartCoroutine(animCont.UI_TextAnim(txtTimeAnim, data.duaration,0));
             yield return StartCoroutine(animCont.UI_ImageFillAmountAnim(imgSkillFront, 0, 1));
+            txtTimeAnim.enabled = false;
             skillAddValue = false;
 
             imgSkillBack.color = colorDeem; 
