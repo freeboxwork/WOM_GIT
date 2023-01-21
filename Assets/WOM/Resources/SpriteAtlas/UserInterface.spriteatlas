@@ -116,7 +116,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - U_Frame_White
   - Bar_Hp
-  - Dna_CriticalChance
+  - DNA_insectCriticalChance
   - Icon_Grade_00
   - Skill_UnionAttack
   - btn_Base
@@ -128,10 +128,10 @@ SpriteAtlas:
   - UI_Dice
   - Dna
   - Skill_Critical
-  - Dna_UnionAttack
+  - DNA_unionDamage
   - Icon_GoldBonus
-  - Dna_UnionSpeed
-  - Dna_WaitTime
+  - DNA_unionMoveSpeed
+  - DNA_skillCoolTime
   - U_Frame_Unique
   - Icon_CriticalDamage
   - ClearBox_TopRound
@@ -140,14 +140,14 @@ SpriteAtlas:
   - Icon_DamageUp_Per
   - UI_Lock
   - btn_inside
-  - Dna_BeeAttack
+  - DNA_insectDamage
   - Union
   - UI_Lock_un
   - Icon_CriticalDamage_Per
   - Icon_Grade_04
   - Icon_DamageUP
   - U_Frame_Hero
-  - DNA_MantisAttack
+  - DNA_skillDuration
   - Icon_MoveSpeed
   - 1pixel_black
   - Skill_Speed
@@ -157,34 +157,34 @@ SpriteAtlas:
   - Frame_Concave
   - Skill_Power
   - Icon_Grade_03
-  - DNA_OffLine
-  - Dna_BoneUp
+  - DNA_offlineBonus
+  - DNA_boneBonus
   - Bar_Hp_Back
   - Icon_SpawnSpeed
-  - Dna_UnionSpawn
+  - DNA_unionSpawnTime
   - Training
   - Skill_Gold
   - Bar_Slot00
   - Icon_Grade_02
   - U_Frame_Normal
-  - DNA_GoldUp
-  - Dna_InsectSpeed
+  - DNA_glodBonus
+  - DNA_insectMoveSpeed
   - 256
   - btn_Base_RollOver
-  - Dna_Dice
+  - DNA_goldMonsterBonus
   - Evolution
-  - DNA_CriticalDamage
+  - DNA_insectCriticalDamage
   - Shop
   - UI_Coin
-  - Dna_BossHp
+  - DNA_monsterHpLess
   - Icon_CriticalChance
   - btn_Base_Select
   - btn_Base_Press
   - btn_small
   - Icon_Grade_01
-  - DNA_BossDamage
+  - DNA_bossDamage
   - U_Frame_High
-  - DNA_BettleAttack
+  - DNA_goldPig
   - ClearBox
   - Icon_OutLine1
   m_RenderDataMap: {}
