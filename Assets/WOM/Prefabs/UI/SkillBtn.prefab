@@ -257,6 +257,7 @@ MonoBehaviour:
   imgSkillBack: {fileID: 2876859116523754018}
   imgSkillFront: {fileID: 2876859116741140198}
   txtTime: {fileID: 2876859116285229132}
+  txtTimeAnim: {fileID: 5340413377852995814}
   btnSkill: {fileID: 1245384679}
   colorDeem: {r: 1, g: 1, b: 1, a: 1}
   colorWhite: {r: 1, g: 1, b: 1, a: 1}
@@ -494,7 +495,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8952115062556793316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -507,7 +508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5.00s
+  m_text: 0.00s
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a84c7c7ed1199b649929d0e361600268, type: 2}
   m_sharedMaterial: {fileID: -6733094077056668716, guid: a84c7c7ed1199b649929d0e361600268, type: 2}

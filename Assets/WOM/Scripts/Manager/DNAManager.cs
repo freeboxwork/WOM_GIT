@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using ProjectGraphics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using static UtilityMethod;
 
 public class DNAManager : MonoBehaviour
 {
+    public LotteryAnimationController lotteryAnimCont;
     public List<DNASlot> dnaSlots = new List<DNASlot>();
     public string powerColorCode;
     const int btnLottery30 = 29;
@@ -101,6 +103,9 @@ public class DNAManager : MonoBehaviour
             // 랜덤하게 뽑은 DNA TYPES ( UI 리셋할때 활용, 중복제외 ) 
             List<EnumDefinition.DNAType> dnaTypes = new List<EnumDefinition.DNAType>();
 
+            // 연출을 위한 DNA TYPES ( 중복 포함 )
+            List<EnumDefinition.DNAType> dnaEffectTypes = new List<EnumDefinition.DNAType>();
+
             for (int i = 0; i < gameCount; i++)
             {
                 var lotteryTypes = GetLotteryDNATypes();
@@ -108,6 +113,8 @@ public class DNAManager : MonoBehaviour
                 var slot = GetSlotByDNAType(randomType);
                 slot.inGameData.LevelUp();
                 lotteryTypes.Add(randomType);
+
+                dnaEffectTypes.Add(randomType); 
 
                 if (!dnaTypes.Contains(randomType))
                     dnaTypes.Add(randomType);
@@ -121,6 +128,10 @@ public class DNAManager : MonoBehaviour
             // UI RESET
             foreach(var type in dnaTypes)
                 ResetUI(type);
+
+            // 연출 등장
+            lotteryAnimCont.gameObject.SetActive(true);
+            lotteryAnimCont.StartDNASlotAnimation(GetTypeListToInt(dnaEffectTypes));
 
             // 뽑기버튼 비활성화
             EnableValidButtons();
@@ -136,8 +147,21 @@ public class DNAManager : MonoBehaviour
         isGambling = false; 
     }
 
-    
-    
+    int[] GetTypeListToInt(List<EnumDefinition.DNAType> types)
+    {
+        int[] values = new int[types.Count];
+        for (int i = 0; i < types.Count; i++)
+        {
+            values[i] = (int)types[i];
+        }
+
+        foreach (var t in values)
+            Debug.Log(t);
+
+        return values;
+    }
+
+
 
     void ResetUI(EnumDefinition.DNAType type)
     {

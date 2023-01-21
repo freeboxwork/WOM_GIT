@@ -182,7 +182,7 @@ SpriteAtlas:
   - btn_Base_Press
   - btn_small
   - Icon_Grade_01
-  - DNA_bossDamage
+  - DNA_BossDamage
   - U_Frame_High
   - DNA_goldPig
   - ClearBox

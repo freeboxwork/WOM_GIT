@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class AnimationController : MonoBehaviour
 {
@@ -150,5 +150,23 @@ public class AnimationController : MonoBehaviour
             callBackEvent.Invoke();
     }
 
+
+    // UI TEXT ANIMATION
+    public IEnumerator UI_TextAnim(TextMeshProUGUI text, float start, float end, UnityAction callBackEvent = null)
+    {
+        isAnimPlay = true;
+        animData.ResetAnimData();
+        while (animData.animTime < 0.999f)
+        {
+            animData.animTime = (Time.time - animData.animStartTime) / animData.animDuration;
+            animData.animValue = EaseValues.instance.GetAnimCurve(animData.animCurveType, animData.animTime);
+            var textValue = Mathf.Lerp(start, end, animData.animValue);
+            text.text = string.Format("{0:0.00} ", textValue) +"s";
+            yield return null;
+        }
+        isAnimPlay = false;
+        if (callBackEvent != null)
+            callBackEvent.Invoke();
+    }
 
 }
