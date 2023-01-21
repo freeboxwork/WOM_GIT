@@ -258,12 +258,12 @@ public class UiController : MonoBehaviour
         {
             var titleIdx =     6 + (4 * idx);
             var curValueIdx =  7 + (4 * idx);
-            var nextValueIdx = 8 + (4 * idx);
-            var maxLevIdx =    9 + (4 * idx);
-            UtilityMethod.SetTxtCustomTypeByID(titleIdx, names[idx]);
+            //var nextValueIdx = 8 + (4 * idx);
+            //var maxLevIdx =    9 + (4 * idx);
+            //UtilityMethod.SetTxtCustomTypeByID(titleIdx, names[idx]);
             UtilityMethod.SetTxtCustomTypeByID(curValueIdx, GetCurStatValue(stat));
-            UtilityMethod.SetTxtCustomTypeByID(nextValueIdx, GetNextStatValue(stat));
-            UtilityMethod.SetTxtCustomTypeByID(maxLevIdx,  GetStatMaxLevel(stat));
+            //UtilityMethod.SetTxtCustomTypeByID(nextValueIdx, GetNextStatValue(stat));
+            //UtilityMethod.SetTxtCustomTypeByID(maxLevIdx,  GetStatMaxLevel(stat));
             idx++;
         }
     }
