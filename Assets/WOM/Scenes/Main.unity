@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9176238869860319852, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.6880035
+      value: -1.6880188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
@@ -3426,7 +3426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9176238869860319852, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.6880035
+      value: -1.6880188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
@@ -4054,6 +4054,7 @@ GameObject:
   - component: {fileID: 247686137}
   - component: {fileID: 247686136}
   - component: {fileID: 247686139}
+  - component: {fileID: 247686140}
   m_Layer: 5
   m_Name: UnionButton
   m_TagString: Untagged
@@ -4102,7 +4103,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4187,6 +4188,22 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 0
   index: 4
+--- !u!114 &247686140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247686134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a3b06c584b5143b53b10739a3b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMain: {fileID: 247686136}
+  sprSelect: {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
+  sprUnSelect: {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
+  imgSelect: {fileID: 247686137}
 --- !u!1 &261012094
 GameObject:
   m_ObjectHideFlags: 0
@@ -15765,6 +15782,7 @@ GameObject:
   - component: {fileID: 911633398}
   - component: {fileID: 911633397}
   - component: {fileID: 911633400}
+  - component: {fileID: 911633401}
   m_Layer: 5
   m_Name: ShopButton
   m_TagString: Untagged
@@ -15813,7 +15831,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -15898,6 +15916,22 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 0
   index: 6
+--- !u!114 &911633401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911633395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a3b06c584b5143b53b10739a3b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMain: {fileID: 911633397}
+  sprSelect: {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
+  sprUnSelect: {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
+  imgSelect: {fileID: 911633398}
 --- !u!1 &913273870
 GameObject:
   m_ObjectHideFlags: 0
@@ -16336,6 +16370,7 @@ GameObject:
   - component: {fileID: 939886110}
   - component: {fileID: 939886109}
   - component: {fileID: 939886112}
+  - component: {fileID: 939886113}
   m_Layer: 5
   m_Name: DNAButton
   m_TagString: Untagged
@@ -16384,7 +16419,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -16469,6 +16504,22 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 0
   index: 5
+--- !u!114 &939886113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939886107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a3b06c584b5143b53b10739a3b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMain: {fileID: 939886109}
+  sprSelect: {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
+  sprUnSelect: {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
+  imgSelect: {fileID: 939886110}
 --- !u!114 &940994669 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1245384678, guid: beb86881f0e997048952ecd844779da3, type: 3}
@@ -18665,6 +18716,7 @@ GameObject:
   - component: {fileID: 1064235332}
   - component: {fileID: 1064235331}
   - component: {fileID: 1064235334}
+  - component: {fileID: 1064235335}
   m_Layer: 5
   m_Name: EvolutionButton
   m_TagString: Untagged
@@ -18713,7 +18765,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -18798,6 +18850,22 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 0
   index: 2
+--- !u!114 &1064235335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064235329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a3b06c584b5143b53b10739a3b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMain: {fileID: 1064235331}
+  sprSelect: {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
+  sprUnSelect: {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
+  imgSelect: {fileID: 1064235332}
 --- !u!1 &1073158298
 GameObject:
   m_ObjectHideFlags: 0
@@ -20209,7 +20277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9176238869860319852, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.6880035
+      value: -1.6880188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
@@ -20798,7 +20866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9176238869860319852, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.6880035
+      value: -1.6880188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
@@ -27743,6 +27811,7 @@ GameObject:
   - component: {fileID: 1569533614}
   - component: {fileID: 1569533613}
   - component: {fileID: 1569533616}
+  - component: {fileID: 1569533617}
   m_Layer: 5
   m_Name: TrainingButton
   m_TagString: Untagged
@@ -27791,7 +27860,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -27876,6 +27945,22 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 0
   index: 1
+--- !u!114 &1569533617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569533611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a3b06c584b5143b53b10739a3b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMain: {fileID: 1569533613}
+  sprSelect: {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
+  sprUnSelect: {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
+  imgSelect: {fileID: 1569533614}
 --- !u!1 &1569820058
 GameObject:
   m_ObjectHideFlags: 0
@@ -30500,6 +30585,13 @@ MonoBehaviour:
   imgBossMonTimer: {fileID: 0}
   imgBossMonTimerParent: {fileID: 0}
   trLotteryGameSet: {fileID: 0}
+  mainButtons:
+  - {fileID: 1569533617}
+  - {fileID: 1064235335}
+  - {fileID: 1740806787}
+  - {fileID: 247686140}
+  - {fileID: 939886113}
+  - {fileID: 911633401}
   evolutionGradeBadgeImages:
   - {fileID: 21300000, guid: 053bf0206cb7ebc4db712eb29a88700a, type: 3}
   - {fileID: 21300000, guid: 8daaabce56b11294790b2dd87f746913, type: 3}
@@ -31284,6 +31376,7 @@ GameObject:
   - component: {fileID: 1740806784}
   - component: {fileID: 1740806783}
   - component: {fileID: 1740806786}
+  - component: {fileID: 1740806787}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -31332,7 +31425,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -31417,6 +31510,22 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 0
   index: 3
+--- !u!114 &1740806787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740806781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4a3b06c584b5143b53b10739a3b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMain: {fileID: 1740806783}
+  sprSelect: {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
+  sprUnSelect: {fileID: 21300000, guid: a325e290e584e0e4faccc5b618596a4b, type: 3}
+  imgSelect: {fileID: 1740806784}
 --- !u!1001 &1741528997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43016,6 +43125,10 @@ PrefabInstance:
     - target: {fileID: 7571924734940279689, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176238869860319852, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.6880188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2aa9579f258b42418ada885fe16bf58, type: 3}

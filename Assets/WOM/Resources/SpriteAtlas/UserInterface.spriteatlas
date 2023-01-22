@@ -190,13 +190,13 @@ SpriteAtlas:
   - UI_Coin
   - DNA_monsterHpLess
   - Icon_CriticalChance
-  - DNA_goldpig
+  - DNA_goldPig
   - btn_Base_Select
   - btn_Base_Press
   - btn_small
   - Icon_Grade_01
   - DNA_goldMonsterBonus
-  - DNA_bossDamage
+  - DNA_BossDamage
   - U_Frame_High
   - DNA_goldPig__
   - ClearBox
