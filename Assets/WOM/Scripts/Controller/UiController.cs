@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using static EnumDefinition;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class UiController : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class UiController : MonoBehaviour
     public Transform trLotteryGameSet;
 
     List<GameObject> mainPanels = new List<GameObject>();
+    public List<MainBtnSlot> mainButtons = new List<MainBtnSlot>();
 
     [Header("진화 UI 관련 항목")]
     public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
@@ -317,9 +319,17 @@ public class UiController : MonoBehaviour
         for (int i = 0; i < mainPanels.Count; i++)
         {
             if (i == (int)type)
-                mainPanels[i].SetActive(!mainPanels[i].activeSelf);
+            {
+                var enableValue = !mainPanels[i].activeSelf;
+                mainPanels[i].SetActive(enableValue);
+                mainButtons[i].Select(enableValue);
+            }
             else
+            {
+                mainButtons[i].Select(false);
                 mainPanels[i].SetActive(false);
+            }
+
         }
     }
     public void AllDisableMenuPanels()
