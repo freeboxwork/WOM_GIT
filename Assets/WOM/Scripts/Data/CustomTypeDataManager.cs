@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager;
 
 public class CustomTypeDataManager : MonoBehaviour
 {
@@ -62,12 +63,23 @@ public class CustomTypeDataManager : MonoBehaviour
 
     public TextMeshProUGUI GetCustomTypeData_Text(int index)
     {
-        var data = customTypeDatas_uiText?.FirstOrDefault(f => f.index == index).components.text;
-        if (data != null)
-            return data;
-        else
-            Debug.LogError($"{EnumDefinition.CustomDataType.text}_{index} custom type data 가 없습니다.");
-        return null;
+        TextMeshProUGUI data = null;
+        try
+        {
+            data = customTypeDatas_uiText.FirstOrDefault(f => f.index == index).components.text;
+        }
+        catch(System.Exception e)
+        {
+            Debug.Log(e);
+            Debug.LogError($"커스텀 데이터 {EnumDefinition.CustomDataType.text} 타입의 인덱스 넘버 : {index} 가 없습니다.");
+        }
+        return data;
+        
+        //if (data != null)
+        //    return data;
+        //else
+        //    Debug.LogError($"{EnumDefinition.CustomDataType.text}_{index} custom type data 가 없습니다.");
+        //return null;
     }
 
     public Image GetCustomTypeData_Image(int index)
