@@ -55,6 +55,7 @@ public class EnumDefinition
         dnaData
     }
 
+    /// <summary> 훈련 메뉴 </summary>
     public enum SaleStatType
     {
         trainingDamage,
