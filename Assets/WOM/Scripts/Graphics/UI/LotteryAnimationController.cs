@@ -42,6 +42,7 @@ namespace ProjectGraphics
 
         public void StartLotteryAnimation(int[] unionIndex)
         {
+            foreach (var slot in slots) slot.gameObject.SetActive(false);
             StartCoroutine(ShowUnionSlotCardOpenProcess(unionIndex));
         }
 
@@ -81,6 +82,7 @@ namespace ProjectGraphics
 
         public void StartDNASlotAnimation(int[] u)
         {
+            foreach (var slot in slots) slot.gameObject.SetActive(false);
             StartCoroutine(ShowDNAIconSlotCardOpenProcess(u));
         }
 

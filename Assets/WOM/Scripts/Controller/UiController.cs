@@ -99,12 +99,14 @@ public class UiController : MonoBehaviour
 
     public void SetTxtGold(int value)
     {
-        txtGold.text = value.ToString();
+        var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+        txtGold.text = changeValue.ToString();
     }
 
     public void SetTxtBone(int value)
     {
-        UtilityMethod.SetTxtCustomTypeByID(60, value.ToString());
+        var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+        UtilityMethod.SetTxtCustomTypeByID(60, changeValue.ToString());
     }
        
 

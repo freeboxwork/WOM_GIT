@@ -136,4 +136,72 @@ public static class UtilityMethod
             if (slot.isUnlock) unlock++;
         return unlock;
     }
+
+    ///<summary> 골드 및 뼛조각 숫자 Text를 심볼로 변경 </summary>
+    public static string ChangeSymbolNumber(float value)
+    {
+        //char[] temp = new char[64];
+        //string strNum = new string(temp);
+        string strNum = string.Format("{0:F0}", value);
+        //Debug.Log("넘겨받은 값:" + strNum);
+
+        int strLength = strNum.Length;
+
+        if (strLength < 4)
+        {
+            return strNum;
+        }
+
+        int unit = 7;
+
+        string[] symbol = { "K", "M", "G", "T", "P", "E", "Z" };
+
+        for (int i = 0; i < symbol.Length; i++)
+        {
+            int b;
+
+            unit += i * 3;
+
+            if (i == 0)
+            {
+                if (strLength < unit)
+                {
+                    if (strLength == unit - (unit - 4))
+                    {
+                        b = 2;
+                        strNum = strNum.Substring(0, b);//앞에 2개 자르고
+                        strNum = string.Format("{0}.{1}", strNum.Substring(0, strNum.Length - 1), strNum.Substring(strNum.Length - 1));
+                    }
+                    else
+                    {
+                        b = (i + 1) * 3;
+                        strNum = strNum.Substring(0, strNum.Length - b);
+                    }
+
+                    strNum += symbol[i];
+                    break;
+                }
+            }
+            else
+            {
+                if (strLength < unit)
+                {
+                    if (strLength == unit - 3)
+                    {
+                        b = 2;
+                        strNum = strNum.Substring(0, b);
+                        strNum = string.Format("{0}.{1}", strNum.Substring(0, strNum.Length - 1), strNum.Substring(strNum.Length - 1));
+                    }
+                    else
+                    {
+                        b = (i + 1) * 3;
+                        strNum = strNum.Substring(0, strNum.Length - b);
+                    }
+                    strNum += symbol[i]; break;
+                }
+            }
+        }
+
+        return strNum;
+    }
 }
