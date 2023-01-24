@@ -70,13 +70,15 @@ public class DataManager : MonoBehaviour
 
     // DNA DATA
     public DNADatas dnaDatas;
-        
+
+    // TRAINING ELEMENT DATA
+    public TrainingElementDatas trainingElementDatas;
 
     // GLOBAL POPUP DATA
     public TextAsset globalPopupSheetData;
     public GlobalMessageDatas globalMessageDatas;
 
-    // SALE STATS   
+    // Traning Data ( 판매 데이터 )
     StatSaleDatas trainingDamageDatas;
     StatSaleDatas trainingCriticalChanceData;
     StatSaleDatas trainingCriticalDamageData;
@@ -120,6 +122,9 @@ public class DataManager : MonoBehaviour
         // DNA DATA
         SetDNAData();
 
+        // TRAINING ELEMENT DATA
+        SetTraningElementsData();
+
         // MONSTER
         SetMonsterData();
 
@@ -141,7 +146,7 @@ public class DataManager : MonoBehaviour
         yield return null;
     }
 
-
+ 
 
     void AddSaleStatElements()
     {
@@ -227,6 +232,12 @@ public class DataManager : MonoBehaviour
     {
         dnaDatas = GetData<DNADatas>(SheetDataType.dnaData);
     }
+
+    private void SetTraningElementsData()
+    {
+        trainingElementDatas = GetData<TrainingElementDatas>(SheetDataType.TrainingElementData);
+    }
+
 
     void SetMonsterData() 
     {
@@ -363,6 +374,11 @@ public class DataManager : MonoBehaviour
         return dnaDatas.data.FirstOrDefault(f => f.dnaIndex == id);
     }
 
+    public TrainingElementData GetTrainingElementData(EnumDefinition.SaleStatType type)
+    {
+        return trainingElementDatas.data.FirstOrDefault(f => f.trainingType == type.ToString());
+    }
+
 }
 
 
@@ -455,4 +471,10 @@ public class UnionDatas
 public class DNADatas
 {
     public List<DNAData> data = new List<DNAData>();
+}
+
+[Serializable]
+public class TrainingElementDatas
+{
+    public List<TrainingElementData> data = new List<TrainingElementData>();
 }

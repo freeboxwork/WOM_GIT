@@ -28,9 +28,10 @@ public class GlobalData : MonoBehaviour
     public GlobalPopupController globalPopupController;
     public EvolutionDiceLotteryManager evolutionDiceLotteryManager;
     public UnionInfoPopupController unionInfoPopupController;
-   
-         
-    
+    public TraningManager traningManager;
+
+
+
 
     private void Awake()
     {

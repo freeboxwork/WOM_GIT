@@ -30,6 +30,7 @@ public class InsectManager : MonoBehaviour
     public bool damageDebug = false;
     public float debugDamage = 20;
     Player player;
+    TraningManager traningManager;
 
     public float dps;
 
@@ -37,6 +38,7 @@ public class InsectManager : MonoBehaviour
     {
 
         player = GlobalData.instance.player;
+        traningManager = GlobalData.instance.traningManager;
         //StartCoroutine(Init());
     }
 
@@ -116,7 +118,7 @@ public class InsectManager : MonoBehaviour
     {
         // 공격력 공식 : (damage+ (damage* damageRate))
         //return insect.damage + (insect.damage * insect.damageRate);
-        return (insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage));
+        return (insect.damage + traningManager.GetStatPower(SaleStatType.trainingDamage)) * (insect.damageRate + traningManager.GetStatPower(SaleStatType.talentDamage));
         //return ((insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage) + RewardDiceEvolutionData insectDamage))  * RewardEvolutionGradeData damageRate ;
 
 
@@ -126,7 +128,7 @@ public class InsectManager : MonoBehaviour
     float GetInsectCriticalDamage(InsectBase insect)
     {
         //return 2 + insect.criticalDamage;
-        return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) ;
+        return 2 + insect.criticalDamage + traningManager.GetStatPower(SaleStatType.trainingCriticalChance) + traningManager.GetStatPower(SaleStatType.talentCriticalChance) ;
         //return 2 + insect.criticalDamage + player.GetStatValue(SaleStatType.trainingCriticalChance) + player.GetStatValue(SaleStatType.talentCriticalChance) + RewardPolishEvolutionData insectCriticalDamage;
 
     }
@@ -135,7 +137,7 @@ public class InsectManager : MonoBehaviour
     {
         //var percentage = 1+insect.criticalChance;
         //var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage)+ RewardPolishEvolutionData insectCriticalChance;
-        var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage);
+        var percentage = 1+insect.criticalChance + traningManager.GetStatPower(SaleStatType.trainingCriticalDamage) + traningManager.GetStatPower(SaleStatType.talentCriticalDamage);
         var randomValue = Random.Range(0f, 100f);
         return randomValue <= percentage;
     }
