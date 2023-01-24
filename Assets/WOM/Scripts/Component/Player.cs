@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     public MonsterType prevMonsterType;
 
     /// <summary> 현재 플레이어의 스탯 데이터 </summary>
-    public PlayerStatData curStatData;
+    
 
     // 기본 몬스터를 제외한 몬스터 사냥중일때
     public bool isSpacialMonsterHunting;
@@ -56,34 +56,19 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        curStatData = new PlayerStatData();
+        
     }
 
     public  IEnumerator Init(SaveData saveData)
     {
         SetPlayerDataFromSaveData(saveData);
 
-        // Set stat data 
-        SetStatData();
+        
+        
 
         yield return null;
     }
 
-    void SetStatData()
-    {
-        foreach (SaleStatType stat in Enum.GetValues(typeof(SaleStatType)))
-        {
-            var level = GetStatLevelByStatType(stat);
-            var data = GlobalData.instance.dataManager.GetSaleStatDataByTypeId(stat, level);
-            SetStatValue(stat, data.value);
-        }
-    }
-
-    // TODO: 저장된 플레이어 데이터에서 레벨값읽어 오도록 수정 현재 초기 값은 0
-    int GetStatLevelByStatType(SaleStatType statType)
-    {
-        return 0;
-    }
 
     public void SetCurrentMonster(MonsterBase monsterBase)
     {
@@ -124,14 +109,14 @@ public class Player : MonoBehaviour
 
     public void AddGold(int value)
     {
-        //var sum = value + (value * GetStatValue(SaleStatType.talentGoldBonus));
-
         gold += value;
+        GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
     }
 
     public void AddBone(int value)
     {
         bone += value;
+        GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
     }
     public void AddDice(int value)
     {
@@ -147,12 +132,14 @@ public class Player : MonoBehaviour
     {
         gold -= value;
         if (gold < 0) gold = 0;
+        GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
     }
 
     public void PayBone(int value)
     {
         bone -= value;
         if (bone < 0) bone = 0;
+        GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
     }
     public void PayDice(int value )
     {
@@ -166,25 +153,7 @@ public class Player : MonoBehaviour
     }
          
 
-    public int GetStatLevel(SaleStatType statType)
-    {
-        return curStatData.statLevelDatas[(int)statType];
-    }
-
-    public void SetStatLevel(SaleStatType statType, int level)
-    {
-        curStatData.statLevelDatas[(int)statType] = level;
-    }
-    
-    public float GetStatValue(SaleStatType statType)
-    {
-        return curStatData.statValueDatas[(int)statType];
-    }
-
-    public void SetStatValue(SaleStatType statType, float value)
-    {
-        curStatData.statValueDatas[(int)statType] = value;
-    }
+   
 
 
 

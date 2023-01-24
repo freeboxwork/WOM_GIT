@@ -7,6 +7,7 @@ using static EnumDefinition;
 public class SaleManager : MonoBehaviour
 {
     Player player;
+    TraningManager traningManager;
     Queue<SaleStatMsgData> saleStatMsgs = new Queue<SaleStatMsgData>();
 
     void Start()
@@ -18,6 +19,7 @@ public class SaleManager : MonoBehaviour
     void GetPlayer()
     {
         player = GlobalData.instance.player;
+        traningManager = GlobalData.instance.traningManager;
     }
 
     public void AddData(SaleStatMsgData data)
@@ -45,74 +47,75 @@ public class SaleManager : MonoBehaviour
         // get current level & next statData by statType
         var payData = GetPayData(statType);
 
-        // ÃÖ´ë ·¹º§ Ã¼Å©
+        // ìµœëŒ€ ë ˆë²¨ ì²´í¬
         if (payData.isValidMaximumLevel)
         {
-            //ÀçÈ­ : GOLD
+            //ìž¬í™” : GOLD
             if (IsGoldItem(statType))
             {
-                // ÀçÈ­ ÃæºÐ ÇÑÁö ÆÇ´Ü
+                // ìž¬í™” ì¶©ë¶„ í•œì§€ íŒë‹¨
                 if (IsValidPurchaseGold(payData.statData.salePrice))
                 {
-                    // ±¸¸Å 
+                    // êµ¬ë§¤ 
                     player.PayGold(payData.statData.salePrice);
 
-                    // µ¥ÀÌÅÍ Àû¿ë
-                    player.SetStatLevel(statType, payData.statData.level);
+                    // ë°ì´í„° ì ìš©
+                    traningManager.SetInGameStatLevel(statType, payData.statData.level);
 
-
-                    // UI Àû¿ë
+                    // UI ì ìš©
                     if (payData.nextStatSaleData != null)
                     {
-                        GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
-                        //Debug.Log($"{statType}ÀÇ ÇöÀç ·¹º§ ½ºÅÈ°ª : { payData.statData.value} - ´ÙÀ½ ·¹º§ ½ºÅÈ°ª : {payData.nextStatSaleData.value} ");
+                        //GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
+                        //Debug.Log($"{statType}ì˜ í˜„ìž¬ ë ˆë²¨ ìŠ¤íƒ¯ê°’ : { payData.statData.value} - ë‹¤ìŒ ë ˆë²¨ ìŠ¤íƒ¯ê°’ : {payData.nextStatSaleData.value} ");
+                        traningManager.SetUI_LevelInfo(statType);
                     }
-                    else // ÃÖÁ¾·¹º§ µµ´Þ
+                    else // ìµœì¢…ë ˆë²¨ ë„ë‹¬
                     {
-                        Debug.Log("ÃÖÁ¾·¹º§ µµ´Þ");
+                        Debug.Log("ìµœì¢…ë ˆë²¨ ë„ë‹¬");
                     }
                     
 
                 }
                 else
                 {
-                    // °ñµå°¡ ºÎÁ· ÇÕ´Ï´Ù.
-                    Debug.Log($"{statType} - °ñµå°¡ ºÎÁ· ÇÕ´Ï´Ù.");
+                    // ê³¨ë“œê°€ ë¶€ì¡± í•©ë‹ˆë‹¤.
+                    Debug.Log($"{statType} - ê³¨ë“œê°€ ë¶€ì¡± í•©ë‹ˆë‹¤.");
                 }
             }
-            //ÀçÈ­ : BONE
+            //ìž¬í™” : BONE
             else
             {
                 if (IsValidPurchaseBone(payData.statData.salePrice))
                 {
-                    // ±¸¸Å
+                    // êµ¬ë§¤
                     player.PayBone(payData.statData.salePrice);
 
-                    // µ¥ÀÌÅÍ Àû¿ë
-                    player.SetStatLevel(statType, payData.statData.level);
+                    // ë°ì´í„° ì ìš©
+                    traningManager.SetInGameStatLevel(statType, payData.statData.level);
 
-                    // UI Àû¿ë
+                    // UI ì ìš©
                     if (payData.nextStatSaleData != null)
                     {
-                        GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
-                        //Debug.Log($"{statType}ÀÇ ´ÙÀ½ ·¹º§ : {payData.nextStatSaleData.level} , ´ÙÀ½ ·¹º§ ½ºÅÈ°ª : {payData.nextStatSaleData.value} ");
+                        //GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
+                        //Debug.Log($"{statType}ì˜ ë‹¤ìŒ ë ˆë²¨ : {payData.nextStatSaleData.level} , ë‹¤ìŒ ë ˆë²¨ ìŠ¤íƒ¯ê°’ : {payData.nextStatSaleData.value} ");
+                        traningManager.SetUI_LevelInfo(statType);
                     }
-                    else // ÃÖÁ¾·¹º§ µµ´Þ
+                    else // ìµœì¢…ë ˆë²¨ ë„ë‹¬
                     {
-                        Debug.Log("ÃÖÁ¾·¹º§ µµ´Þ");
+                        Debug.Log("ìµœì¢…ë ˆë²¨ ë„ë‹¬");
                     }
                 }
                 else
                 {
-                    // »À Á¶°¢ÀÌ ºÎÁ· ÇÕ´Ï´Ù.
-                    Debug.Log($"{statType} - »À Á¶°¢ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+                    // ë¼ˆ ì¡°ê°ì´ ë¶€ì¡± í•©ë‹ˆë‹¤.
+                    Debug.Log($"{statType} - ë¼ˆ ì¡°ê°ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                 }
             }
         }
         else
         {
-            // ÃÖ´ë ·¹º§ µµ´Þ
-            Debug.Log($"{statType} - ÃÖ´ë ·¹º§¿¡ µµ´ÞÇß½À´Ï´Ù..");
+            // ìµœëŒ€ ë ˆë²¨ ë„ë‹¬
+            Debug.Log($"{statType} - ìµœëŒ€ ë ˆë²¨ì— ë„ë‹¬í–ˆìŠµë‹ˆë‹¤..");
         }
 
         yield return null;
@@ -122,8 +125,9 @@ public class SaleManager : MonoBehaviour
     {
         (int m_level, StatSaleData m_statData,bool m_isValidMaxLevel, StatSaleData m_nextStatData) items;
         var statDatas = GlobalData.instance.dataManager.GetSaleStatDataByType(statType);
-        items.m_level = player.GetStatLevel(statType);
-        // ¸Æ½Ã¸Ø Ã¼Å©
+        items.m_level = traningManager.GetInGameStatLevel(statType);
+    
+        // ë§¥ì‹œë©ˆ ì²´í¬
         var lastData = statDatas.data.Last();
         items.m_isValidMaxLevel =  lastData.level > items.m_level;
         if (items.m_isValidMaxLevel)
@@ -137,7 +141,7 @@ public class SaleManager : MonoBehaviour
 
         
 
-        // ´ÙÀ½ ·¹º§ µ¥ÀÌÅÍ Á¸Àç ÇÏ´ÂÁö Ã¼Å©
+        // ë‹¤ìŒ ë ˆë²¨ ë°ì´í„° ì¡´ìž¬ í•˜ëŠ”ì§€ ì²´í¬
         if(lastData.level > items.m_level+2)
         {
             items.m_nextStatData = GetStatSaleData(statDatas, items.m_level + 2);

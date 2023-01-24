@@ -52,7 +52,8 @@ public class EnumDefinition
         rewardDiceEvolutionData,
         skillData,
         unionData,
-        dnaData
+        dnaData,
+        TrainingElementData
     }
 
     /// <summary> 훈련 메뉴 </summary>
@@ -109,7 +110,7 @@ public class EnumDefinition
     public enum GoodsType
     {
         gold,
-        boone,
+        bone,
         jewel
     }
 

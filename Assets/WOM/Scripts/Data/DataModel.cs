@@ -270,63 +270,76 @@ public class StatSaleData
 
     // gold 로 획득
     public float value;
-
+    public string unitName;
 }
+
+
 
 [Serializable]
-/// <summary> 현재 유저의 스탯 레벨 인덱스 데이터</summary>
-public class PlayerStatData
+// 훈련 스탯 인게임 데이터 ( 리펙토링으로 추가됨, StatSaleData 를 대체 함 )
+public class TraningInGameData
 {
-    int levelDamage;
-    int levelCriticalChance;
-    int levelCriticalDamage;
-    int levelTalentDamage;
-    int levelTalentCriticalChance;
-    int levelTalentCriticalDamage;
-    int levelTalentMoveSpeed;
-    int levelTalentSpawnSpeed;
-    int levelTalentGoldBonus;
-
-    float valueDamage;
-    float valueCriticalChance;
-    float valueCriticalDamage;
-    float valueTalentDamage;
-    float valueTalentCriticalChance;
-    float valueTalentCriticalDamage;
-    float valueTalentMoveSpeed;
-    float valueTalentSpawnSpeed;
-    float valueTalentGoldBonus;
-
-
-    public List<int> statLevelDatas;
-    public List<float> statValueDatas;
-    
-    
-    public PlayerStatData()
-    {
-        statLevelDatas = new List<int>();
-        statLevelDatas.Add(levelDamage);
-        statLevelDatas.Add(levelCriticalChance);
-        statLevelDatas.Add(levelCriticalDamage);
-        statLevelDatas.Add(levelTalentDamage);
-        statLevelDatas.Add(levelTalentCriticalChance);
-        statLevelDatas.Add(levelTalentCriticalDamage);
-        statLevelDatas.Add(levelTalentMoveSpeed);
-        statLevelDatas.Add(levelTalentSpawnSpeed);
-        statLevelDatas.Add(levelTalentGoldBonus);
-
-        statValueDatas = new List<float>();
-        statValueDatas.Add(valueDamage);
-        statValueDatas.Add(valueCriticalChance);
-        statValueDatas.Add(valueCriticalDamage);
-        statValueDatas.Add(valueTalentDamage);
-        statValueDatas.Add(valueTalentCriticalChance);
-        statValueDatas.Add(valueTalentCriticalDamage);
-        statValueDatas.Add(valueTalentMoveSpeed);
-        statValueDatas.Add(valueTalentSpawnSpeed);
-        statValueDatas.Add(valueTalentGoldBonus);
-    }
+    public int level;
+    public int salePrice;
+    public float value; 
+    public string unitName;
+    public string trainingName;
 }
+
+//[Serializable]
+/// <summary> 현재 유저의 스탯 레벨 인덱스 데이터</summary>
+//public class PlayerStatData
+//{
+//    int levelDamage;
+//    int levelCriticalChance;
+//    int levelCriticalDamage;
+//    int levelTalentDamage;
+//    int levelTalentCriticalChance;
+//    int levelTalentCriticalDamage;
+//    int levelTalentMoveSpeed;
+//    int levelTalentSpawnSpeed;
+//    int levelTalentGoldBonus;
+
+//    float valueDamage;
+//    float valueCriticalChance;
+//    float valueCriticalDamage;
+//    float valueTalentDamage;
+//    float valueTalentCriticalChance;
+//    float valueTalentCriticalDamage;
+//    float valueTalentMoveSpeed;
+//    float valueTalentSpawnSpeed;
+//    float valueTalentGoldBonus;
+
+
+//    public List<int> statLevelDatas;
+//    public List<float> statValueDatas;
+    
+    
+//    public PlayerStatData()
+//    {
+//        statLevelDatas = new List<int>();
+//        statLevelDatas.Add(levelDamage);
+//        statLevelDatas.Add(levelCriticalChance);
+//        statLevelDatas.Add(levelCriticalDamage);
+//        statLevelDatas.Add(levelTalentDamage);
+//        statLevelDatas.Add(levelTalentCriticalChance);
+//        statLevelDatas.Add(levelTalentCriticalDamage);
+//        statLevelDatas.Add(levelTalentMoveSpeed);
+//        statLevelDatas.Add(levelTalentSpawnSpeed);
+//        statLevelDatas.Add(levelTalentGoldBonus);
+
+//        statValueDatas = new List<float>();
+//        statValueDatas.Add(valueDamage);
+//        statValueDatas.Add(valueCriticalChance);
+//        statValueDatas.Add(valueCriticalDamage);
+//        statValueDatas.Add(valueTalentDamage);
+//        statValueDatas.Add(valueTalentCriticalChance);
+//        statValueDatas.Add(valueTalentCriticalDamage);
+//        statValueDatas.Add(valueTalentMoveSpeed);
+//        statValueDatas.Add(valueTalentSpawnSpeed);
+//        statValueDatas.Add(valueTalentGoldBonus);
+//    }
+//}
 
 
 [Serializable]
@@ -419,3 +432,14 @@ public class Skill_InGameData
 
 }
 
+[Serializable]
+public class TrainingElementData
+{
+    public int id;
+    public string buttonSprite;
+    public string currencySprite;
+    public string trainingName;
+    public string trainingType;
+    public string goodsType;
+
+}

@@ -282,7 +282,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.65753174, w: 0}
+  m_margin: {x: 0, y: 0, z: -238.82764, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 1879935269054851284}
   - component: {fileID: 1879935269054851286}
   - component: {fileID: 1879935269054851285}
+  - component: {fileID: 1045636925758334920}
   m_Layer: 5
   m_Name: TrainingSlot
   m_TagString: Untagged
@@ -664,6 +665,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1045636925758334920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879935269054851283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b854babc7b4694aafc2fcdc1f56e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtInfo: {fileID: 1879935268393447518}
+  txtPower: {fileID: 1879935269263286958}
+  txtCost: {fileID: 1879935268746400635}
+  btnBuy: {fileID: 1879935269847859202}
+  statType: 0
+  goodsType: 0
+  traningInGameData:
+    level: 0
+    salePrice: 0
+    value: 0
+    unitName: 
+    trainingName: 
 --- !u!1 &1879935269263286956
 GameObject:
   m_ObjectHideFlags: 0
