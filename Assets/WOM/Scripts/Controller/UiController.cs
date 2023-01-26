@@ -6,7 +6,6 @@ using TMPro;
 using System;
 using static EnumDefinition;
 using System.Linq;
-using Unity.VisualScripting;
 
 public class UiController : MonoBehaviour
 {
@@ -267,6 +266,15 @@ public class UiController : MonoBehaviour
         }
     }
 
+    public void SetEvolutuinSlotName(EvolutionDiceStatType type, int slotId)
+    {
+        var nameData = GlobalData.instance.dataManager.GetConvertTextDataByEvolutionDiceStatType(type);
+        //evolutionSlots[i]
+
+
+    }
+
+    
     
     public  void EanbleBtnEvolutionRollDice()
     {

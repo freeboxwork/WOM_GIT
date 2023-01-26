@@ -96,6 +96,8 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             // 능력치 적용
             GlobalData.instance.evolutionManager.SetDiceEvolutionData(randomStatType, statValue);
 
+            // UI TEXT 적용
+
         }
         else
         {

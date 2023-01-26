@@ -53,7 +53,8 @@ public class EnumDefinition
         skillData,
         unionData,
         dnaData,
-        TrainingElementData
+        TrainingElementData,
+        convertTextData
     }
 
     /// <summary> 훈련 메뉴 </summary>

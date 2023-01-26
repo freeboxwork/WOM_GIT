@@ -429,6 +429,7 @@ public class Skill_InGameData
     public float power;
     public float damage;
     public float coolTime;
+    public string skilName;
 
 }
 
@@ -442,4 +443,12 @@ public class TrainingElementData
     public string trainingType;
     public string goodsType;
 
+}
+
+[Serializable]
+public class ConvertTextData
+{
+    public string en_EN;
+    public string ko_KR;
+    public string type;
 }

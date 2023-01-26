@@ -48,6 +48,11 @@ public class SkilSlot : MonoBehaviour
         txtMaxLevel.text = value;
     }
 
+    public void SetTxt_Level_SkillName(string value)
+    {
+        txtLevel.text = value;
+    }
+
     public void SetTxt_Cost(string value)
     {
         var txtSymbolValue = UtilityMethod.ChangeSymbolNumber(float.Parse(value));

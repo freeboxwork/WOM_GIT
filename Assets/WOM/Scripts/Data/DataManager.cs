@@ -27,8 +27,11 @@ public class DataManager : MonoBehaviour
         evolutionGradeData
         rewardEvolutionGradeData,
         rewardDiceEvolutionData,
-        skillData
-        dnaData
+        skillData,
+        dnaData,
+        TrainingElementData,
+        convertTextData
+    
      */
 
 
@@ -74,9 +77,14 @@ public class DataManager : MonoBehaviour
     // TRAINING ELEMENT DATA
     public TrainingElementDatas trainingElementDatas;
 
+    // CONVERT TEXT DATA
+    public ConvertTextDatas convertTextDatas;
+
     // GLOBAL POPUP DATA
     public TextAsset globalPopupSheetData;
     public GlobalMessageDatas globalMessageDatas;
+
+
 
     // Traning Data ( 판매 데이터 )
     StatSaleDatas trainingDamageDatas;
@@ -124,6 +132,9 @@ public class DataManager : MonoBehaviour
 
         // TRAINING ELEMENT DATA
         SetTraningElementsData();
+
+        // CONVERT TEXT DATA
+        SetConvertTextDatas();
 
         // MONSTER
         SetMonsterData();
@@ -233,11 +244,15 @@ public class DataManager : MonoBehaviour
         dnaDatas = GetData<DNADatas>(SheetDataType.dnaData);
     }
 
-    private void SetTraningElementsData()
+    void SetTraningElementsData()
     {
         trainingElementDatas = GetData<TrainingElementDatas>(SheetDataType.TrainingElementData);
     }
-
+    
+    void SetConvertTextDatas()
+    {
+        convertTextDatas = GetData<ConvertTextDatas>(SheetDataType.convertTextData);    
+    }
 
     void SetMonsterData() 
     {
@@ -379,6 +394,11 @@ public class DataManager : MonoBehaviour
         return trainingElementDatas.data.FirstOrDefault(f => f.trainingType == type.ToString());
     }
 
+    public ConvertTextData GetConvertTextDataByEvolutionDiceStatType(EvolutionDiceStatType type)
+    {
+        return convertTextDatas.data.FirstOrDefault(f => f.type == type.ToString());
+    }
+
 }
 
 
@@ -477,4 +497,11 @@ public class DNADatas
 public class TrainingElementDatas
 {
     public List<TrainingElementData> data = new List<TrainingElementData>();
+}
+
+
+[Serializable]
+public class ConvertTextDatas
+{
+    public List<ConvertTextData> data = new List<ConvertTextData>();
 }
