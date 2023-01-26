@@ -50,7 +50,8 @@ public class SkilSlot : MonoBehaviour
 
     public void SetTxt_Cost(string value)
     {
-        txtCost.text = value;
+        var txtSymbolValue = UtilityMethod.ChangeSymbolNumber(float.Parse(value));
+        txtCost.text = txtSymbolValue;
     }
 
     // 초기 데이터 세팅

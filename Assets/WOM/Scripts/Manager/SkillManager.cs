@@ -27,6 +27,7 @@ public class SkillManager : MonoBehaviour
         yield return null;
         SetSkillInGameData();
         SetSlotUI();
+        EnableBuyButtons();
     }
 
     void SetSkillInGameData()
@@ -231,7 +232,7 @@ public class SkillManager : MonoBehaviour
     // 현재 골드로 구매 가능한지 확인
     bool IsPaySkill(float price)
     {
-        return GlobalData.instance.player.gold > price;
+        return GlobalData.instance.player.gold >= price;
     }
 
     float GetSkillPrice(SkillData data, Skill_InGameData skill_InGameData)
@@ -255,6 +256,20 @@ public class SkillManager : MonoBehaviour
     {
         return skill_InGameDatas.FirstOrDefault(f => f.skillType == skillType);
     }
+
+    // 골드 보류량에 따라 스킬 구매 버튼 활성, 비활성화
+    public void EnableBuyButtons()
+    {
+        foreach(var slot in skillSlots)
+        {
+            var data = GetSkillData(slot.skillType);
+            var inGameData = GetSkillInGameDataByType(slot.skillType);
+            var price = GetSkillPrice(data, inGameData);
+            slot.btnPay.interactable = IsPaySkill(price);
+        }
+    }
+
+
 
 
 }

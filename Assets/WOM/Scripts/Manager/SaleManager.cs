@@ -67,7 +67,7 @@ public class SaleManager : MonoBehaviour
                     {
                         //GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
                         //Debug.Log($"{statType}의 현재 레벨 스탯값 : { payData.statData.value} - 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
-                        traningManager.SetUI_LevelInfo(statType);
+                        traningManager.SetUI_TraningSlot(statType);
                     }
                     else // 최종레벨 도달
                     {
@@ -98,7 +98,7 @@ public class SaleManager : MonoBehaviour
                     {
                         //GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
                         //Debug.Log($"{statType}의 다음 레벨 : {payData.nextStatSaleData.level} , 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
-                        traningManager.SetUI_LevelInfo(statType);
+                        traningManager.SetUI_TraningSlot(statType);
                     }
                     else // 최종레벨 도달
                     {

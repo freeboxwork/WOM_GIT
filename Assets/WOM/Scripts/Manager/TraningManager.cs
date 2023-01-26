@@ -73,6 +73,8 @@ public class TraningManager : MonoBehaviour
             yield return null;
 
         }
+
+        EnableBuyButtons();
     }
 
     IEnumerator SetBtnEvent()
@@ -117,13 +119,25 @@ public class TraningManager : MonoBehaviour
 
     
     
-    public void SetUI_LevelInfo(SaleStatType statType )
+    public void SetUI_TraningSlot(SaleStatType statType )
     {
         var inGameData = GetTraningInGameData(statType);
         var slot = GetTraningInSlotByType(statType);
+        
+        // INFO TEXT
         var txtInfoValue = $"Lv{inGameData.level} {inGameData.trainingName}";
         slot.SetTxtInfo(txtInfoValue);
+
+        // COST TEXT
+        var txtCostValue = GetCostStrValue(statType, inGameData);
+        slot.SetTxtCost(txtCostValue);
+
+        // POWER TEXT
+        var txtPowerValue = $"{inGameData.value} {inGameData.unitName}";
+        slot.SetTxtPower(txtPowerValue);
     }
+
+    
 
     public TraningSlot GetTraningInSlotByType(SaleStatType statType)
     {
@@ -177,8 +191,8 @@ public class TraningManager : MonoBehaviour
     {
         switch (goodsType)
         {
-            case GoodsType.gold: return GlobalData.instance.player.gold > price;
-            case GoodsType.bone: return GlobalData.instance.player.bone > price;
+            case GoodsType.gold: return GlobalData.instance.player.gold >= price;
+            case GoodsType.bone: return GlobalData.instance.player.bone >= price;
         }
         return false;
     }
