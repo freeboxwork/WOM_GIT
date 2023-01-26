@@ -60,15 +60,8 @@ public class UiController : MonoBehaviour
         // set btn event
         SetBtnEvent();
 
-        yield return null;
-
         // Disable Ui Elements
         DisableUiElements();
-
-        // Init Text Values
-
-        // 훈련 UI 초기 값 세팅 -> TraningManager 로 이동
-        // SetStatInfoTxt();
 
         // 진화 판넬 UI 초기 값 세팅
         SetUI_Pannel_Evolution(GlobalData.instance.player.evalutionLeveldx);
@@ -76,14 +69,32 @@ public class UiController : MonoBehaviour
         // 진화 슬롯 UI 초기 세팅 
         SetUI_EvolutionSlots(GlobalData.instance.player.evalutionLeveldx);
 
+        // 골드 , 뼈조각 , 보석 UI 초기 세팅
+
+
         // 진화 주사위 굴리기 버튼 상태 세팅
         EanbleBtnEvolutionRollDice();
 
-        // 현재 남은 진화 주사위 개수 UI 적용
-        UtilityMethod.SetTxtCustomTypeByID(65,GlobalData.instance.player.diceCount.ToString());
+        // 재화 UI 세팅
+        SetGoodsUI();
 
-        
+
+
+        yield return null;
+
     }
+
+
+    // SET PLAYER UI
+    void SetGoodsUI()
+    {
+        //TODO: 저장된 데이터에서 불어와야 함
+        SetTxtGold(0);
+        SetTxtBone(0);
+        SetTxtGem(0);
+        SetTxtDice(0);  // 현재 남은 진화 주사위 개수 UI 적용
+    }
+
 
 
     /* SET MONSTER UI */
@@ -97,6 +108,11 @@ public class UiController : MonoBehaviour
         txtPhaseCount.text = value.ToString();
     }
 
+    public void SetSliderPhaseValue()
+    {
+
+    }
+
     public void SetTxtGold(int value)
     {
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
@@ -108,7 +124,19 @@ public class UiController : MonoBehaviour
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
         UtilityMethod.SetTxtCustomTypeByID(60, changeValue.ToString());
     }
-       
+
+    public void SetTxtGem(int value)
+    {
+        var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+        UtilityMethod.SetTxtCustomTypeByID(79, changeValue.ToString());
+    }
+
+    public void SetTxtDice(int value)
+    {
+        var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+        UtilityMethod.SetTxtCustomTypeByID(65, changeValue);
+    }
+         
 
     public void SetTxtBossChallengeTimer(int value)
     {
@@ -184,6 +212,15 @@ public class UiController : MonoBehaviour
         UtilityMethod.SetBtnEventCustomTypeByID(20, () =>
         {
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge);
+            
+            // 메뉴 판넬 숨김
+            AllDisableMenuPanels();
+            // 진화전 버튼 선택 효과 숨김
+            EnableMenuPanel(MenuPanelType.evolution);
+
+            // 진화전 버튼 비활성화
+            EnableBtnEvolutionMonsterChange(false);
+
         });
 
         // 진화 업그레이드 이펙트 확인 버튼
@@ -249,73 +286,6 @@ public class UiController : MonoBehaviour
 
 
 
-
-    #region 훈련 스탯 - 구매 가능한 스탯 UI 세팅 
-    // --- [ TRANING UI ] ---
-
-    //void SetStatInfoTxt() // title , maximum level
-    //{
-    //    // SET TITLE , MAXIMUM LEVEL
-    //    string[] names = { "Traning Damage", "Traning Critical Chance", "Traning Critical Damage", "Talent Damage", "Talent Critical Chance", "Talent Critical Damage" , "Talent Spawn Speed" , "Talent Move Speed", "Talent Gold Bonus" };
-    //    int idx = 0;
-    //    foreach(SaleStatType stat in Enum.GetValues(typeof(SaleStatType)))
-    //    {
-    //        var titleIdx =     6 + (4 * idx);
-    //        var curValueIdx =  7 + (4 * idx);
-    //        //var nextValueIdx = 8 + (4 * idx);
-    //        //var maxLevIdx =    9 + (4 * idx);
-    //        //UtilityMethod.SetTxtCustomTypeByID(titleIdx, names[idx]);
-    //        UtilityMethod.SetTxtCustomTypeByID(curValueIdx, GetCurStatValue(stat));
-    //        //UtilityMethod.SetTxtCustomTypeByID(nextValueIdx, GetNextStatValue(stat));
-    //        //UtilityMethod.SetTxtCustomTypeByID(maxLevIdx,  GetStatMaxLevel(stat));
-    //        idx++;
-    //    }
-    //}
-
-    //string GetCurStatValue(SaleStatType statType)
-    //{
-    //    var curLevel = GlobalData.instance.player.curStatData.statLevelDatas[(int)statType];
-    //    return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel).value.ToString();
-    //}
-
-    //string GetNextStatValue(SaleStatType statType)
-    //{
-
-    //    var data = GlobalData.instance.dataManager.GetSaleStatDataByType(statType);
-    //    var curLevel = GlobalData.instance.player.curStatData.statLevelDatas[(int)statType];
-    //    // TODO: 다음 레벨 존재할때 어떤 값으로 넣어야 하는지 체크 필요함
-    //    if (data.data.Last().level > curLevel)
-    //        return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel+1).value.ToString();
-    //    else
-    //        return GlobalData.instance.dataManager.GetSaleStatDataByTypeId(statType, curLevel).value.ToString();
-    //}
-
-    //string GetStatMaxLevel(SaleStatType statType)
-    //{
-    //    return "Max : " +  GlobalData.instance.dataManager.GetSaleStatDataByType(statType).data.Last().level.ToString();
-    //}
-    
-
-    //// 현재 스탯값과 다음 스탯값 텍스트를 세팅 할때 사용
-    //public void SetTxtTraningValues(SaleStatType statType, float[] values)
-    //{
-    //    switch (statType)
-    //    {
-    //        case SaleStatType.trainingDamage: UtilityMethod.SetTxtsCustomTypeByIDs(new int[] { 7 },values); break;
-    //        case SaleStatType.trainingCriticalChance: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 11 },values); break;
-    //        case SaleStatType.trainingCriticalDamage: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 15 },values); break;
-    //        case SaleStatType.talentDamage: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 19 },values); break;
-    //        case SaleStatType.talentCriticalChance: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 23 },values); break;
-    //        case SaleStatType.talentCriticalDamage: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 27 },values); break;
-    //        case SaleStatType.talentSpawnSpeed: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 31 },values); break;
-    //        case SaleStatType.talentMoveSpeed: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 35 },values); break;
-    //        case SaleStatType.talentGoldBonus: UtilityMethod.SetTxtsCustomTypeByIDs( new int[] { 39 },values); break;
-    //    }
-    //}
-
-    #endregion
-
-
     public void EnableMenuPanel(MenuPanelType type)
     {
         for (int i = 0; i < mainPanels.Count; i++)
@@ -338,6 +308,11 @@ public class UiController : MonoBehaviour
     {
         foreach(var panel in mainPanels)
             panel.SetActive(false);
+    }
+
+    public void EnableBtnEvolutionMonsterChange(bool value)
+    {
+        UtilityMethod.GetCustomTypeBtnByID(20).interactable = value;
     }
 
     void LotteryGameStart(int roundCount)

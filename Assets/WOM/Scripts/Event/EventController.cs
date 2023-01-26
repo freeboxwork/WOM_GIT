@@ -98,11 +98,11 @@ public class EventController : MonoBehaviour
         }
 
 
-        // set glod text ui
-        globalData.uiController.SetTxtGold(globalData.player.gold);
+        //// set glod text ui
+        //globalData.uiController.SetTxtGold(globalData.player.gold);
 
-        // set bone text ui
-        globalData.uiController.SetTxtBone(globalData.player.bone);
+        //// set bone text ui
+        //globalData.uiController.SetTxtBone(globalData.player.bone);
 
         // hp text 0으로 표시
         globalData.uiController.SetTxtMonsterHp(0);
@@ -219,9 +219,6 @@ public class EventController : MonoBehaviour
     //진화 몬스터 사망시
     IEnumerator MonsterDie_Evolution()
     {
-
-       
-
         // 보스 도전 버튼 활성화 
         if (globalData.player.isBossMonsterChllengeEnable)
             globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
@@ -261,7 +258,8 @@ public class EventController : MonoBehaviour
         // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
-       
+        //진화 몬스터 도전 버튼 활성화
+        globalData.uiController.EnableBtnEvolutionMonsterChange(true);
     }
 
     // 몬스터 등장
@@ -437,6 +435,8 @@ public class EventController : MonoBehaviour
         // 일반 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
+        // 진화 몬스터 도전 버튼 활성화
+        globalData.uiController.EnableBtnEvolutionMonsterChange(true);
     }
 
     void MonsterUiReset()
