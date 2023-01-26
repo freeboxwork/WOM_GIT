@@ -1,0 +1,83 @@
+{"data":[
+ {
+   "en_EN": "baseDamage",
+   "ko_KR": "곤충 공격력",
+   "type": "baseDamage"
+ },
+ {
+   "en_EN": "baseCriticalChance",
+   "ko_KR": "곤충 치명타 확률",
+   "type": "baseCriticalChance"
+ },
+ {
+   "en_EN": "baseCriticalDamage",
+   "ko_KR": "곤충 치명타 공격력",
+   "type": "baseCriticalDamage"
+ },
+ {
+   "en_EN": "talentDamage",
+   "ko_KR": "공격력 증가율",
+   "type": "talentDamage"
+ },
+ {
+   "en_EN": "talentCriticalChance",
+   "ko_KR": "추가 치명타 확률",
+   "type": "talentCriticalChance"
+ },
+ {
+   "en_EN": "talentCriticalDamage",
+   "ko_KR": "추가 치명타 공격력",
+   "type": "talentCriticalDamage"
+ },
+ {
+   "en_EN": "talentSpawnSpeed",
+   "ko_KR": "생성 속도",
+   "type": "talentSpawnSpeed"
+ },
+ {
+   "en_EN": "talentMoveSpeed",
+   "ko_KR": "이동 속도",
+   "type": "talentMoveSpeed"
+ },
+ {
+   "en_EN": "talentGoldBonus",
+   "ko_KR": "골드 보너스",
+   "type": "talentGoldBonus"
+ },
+ {
+   "en_EN": "insectDamage",
+   "ko_KR": "곤충 공격력",
+   "type": "insectDamage"
+ },
+ {
+   "en_EN": "insectCriticalChance",
+   "ko_KR": "곤충 치명타 확률",
+   "type": "insectCriticalChance"
+ },
+ {
+   "en_EN": "insectCriticalDamage",
+   "ko_KR": "곤충 치명타 공격력",
+   "type": "insectCriticalDamage"
+ },
+ {
+   "en_EN": "goldBonus",
+   "ko_KR": "골드 보너스",
+   "type": "goldBonus"
+ },
+ {
+   "en_EN": "insectMoveSpeed",
+   "ko_KR": "곤충 이동 속도",
+   "type": "insectMoveSpeed"
+ },
+ {
+   "en_EN": "insectSpawnTime",
+   "ko_KR": "곤충 소환 시간",
+   "type": "insectSpawnTime"
+ },
+ {
+   "en_EN": "insectBossDamage",
+   "ko_KR": "보스 추가 데미지",
+   "type": "insectBossDamage"
+ }
+]
+}

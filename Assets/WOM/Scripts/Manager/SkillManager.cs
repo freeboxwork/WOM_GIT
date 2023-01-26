@@ -45,6 +45,7 @@ public class SkillManager : MonoBehaviour
             data.power = skillData.power;
             data.damage = 0;
             data.coolTime = skillData.coolTime;
+            data.skilName = skillData.name;
 
             skill_InGameDatas.Add(data);
         }
@@ -58,9 +59,11 @@ public class SkillManager : MonoBehaviour
             var slot = skillSlots[i];
             var data = GetSkillData(slot.skillType);
             var inGameData = GetSkillInGameDataByType(slot.skillType);
+            var levelName = $"Lv{inGameData.level} {inGameData.skilName}";
 
-            slot.SetTxt_Level(inGameData.level.ToString());
-            slot.SetTxt_Name(data.name);
+            slot.SetTxt_Level(levelName);
+           // slot.SetTxt_Name(data.name);
+
             slot.SetTxt_MaxLevel(data.maxLevel.ToString());
             slot.SetTxt_Cost(GetSkillPrice(data, inGameData).ToString());
 
@@ -184,33 +187,38 @@ public class SkillManager : MonoBehaviour
     {
         var description = GetDesicriptionDP(skillSlot.skillType, skillData, inGameData);
         skillSlot.SetTxt_Cost(GetSkillPrice(skillData, inGameData).ToString());
-        skillSlot.SetTxt_Level(inGameData.level.ToString());
+        var levelName = $"Lv{inGameData.level} {inGameData.skilName}";
+        skillSlot.SetTxt_Level(levelName);
+        
         skillSlot.SetTxt_Description(description);
+
     }
     void SetUIAllUnitCDU(ref SkilSlot skillSlot, SkillData skillData, Skill_InGameData inGameData)
     {
         var description = GetDesicriptionD(skillSlot.skillType, skillData, inGameData);
         skillSlot.SetTxt_Cost(GetSkillPrice(skillData, inGameData).ToString());
-        skillSlot.SetTxt_Level(inGameData.level.ToString());
+        var levelName = $"Lv{inGameData.level} {inGameData.skilName}";
+        skillSlot.SetTxt_Level(levelName);
         skillSlot.SetTxt_Description(description);
     }
     void SetUI_MonsterKing(ref SkilSlot skillSlot, SkillData skillData, Skill_InGameData inGameData)
     {
         skillSlot.SetTxt_Cost(GetSkillPrice(skillData, inGameData).ToString());
-        skillSlot.SetTxt_Level(inGameData.level.ToString());
+        var levelName = $"Lv{inGameData.level} {inGameData.skilName}";
+        skillSlot.SetTxt_Level(levelName);
     }
 
     // duration , power
     string GetDesicriptionDP(SkillType skillType, SkillData skillData, Skill_InGameData inGameData)
     {
         var orl_description = skillData.desctiption;
-        return orl_description.Replace("<Duration>", $"{inGameData.duaration}").Replace("<Power>", $"{inGameData.power}");
+        return orl_description.Replace("<Duration>초", $"<#40ff80>{inGameData.duaration}초</color>").Replace("<Power>", $"<#40ff80>{inGameData.power}%</color>");
     }
     // duration
     string GetDesicriptionD(SkillType skillType, SkillData skillData, Skill_InGameData inGameData)
     {
         var orl_description = skillData.desctiption;
-        return orl_description.Replace("<Duration>", $"{inGameData.duaration}");
+        return orl_description.Replace("<Duration>초", $"<#40ff80>{inGameData.duaration}초</color>");
     }
 
 
