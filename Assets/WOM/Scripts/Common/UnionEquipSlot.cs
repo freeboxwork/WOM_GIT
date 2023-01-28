@@ -42,10 +42,18 @@ public class UnionEquipSlot : MonoBehaviour
     public void SetUI()
     {
         imgUnionFace.sprite = unionSlot.imgUnionFace.sprite;
+        unionSlot.unionEquipType = EnumDefinition.UnionEquipType.Equipped;
+        unionSlot.SetUITxtUnionEquipState();
     }
 
     public void EquipUnion(UnionSlot _unionSlot)
     {
+        if (unionSlot != null)
+        {
+            unionSlot.unionEquipType = EnumDefinition.UnionEquipType.NotEquipped;
+            unionSlot.SetUITxtUnionEquipState();
+        }
+
         unionSlot = _unionSlot;
         SetUI();
     }
