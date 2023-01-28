@@ -48,16 +48,30 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
     }
 
 
-    public void RollEvolutionDice()
+    public IEnumerator RollEvolutionDice()
     {
-        // TODO : 오픈된 슬롯 갯수만큼 뽑아야 함. 현재는 한번만 뽑음
+
         if(rollDice == false)
         {
-            var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(GlobalData.instance.player.evalutionLeveldx);
-            for (int i = 0; i < data.slotCount; i++)
+            rollDice = true;
+
+            var slots = GlobalData.instance.uiController.evolutionSlots;
+            for (int i = 0; i < slots.Count; i++)
             {
-                StartCoroutine(DiceRoll());
+                var slot = slots[i];
+                if (slot.isUnlock && slot.statOpend)
+                {
+                  yield return  StartCoroutine(DiceRoll(slot));
+                }
             }
+
+            //var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(GlobalData.instance.player.evalutionLeveldx);
+            //for (int i = 0; i < data.slotCount; i++)
+            //{
+            //    StartCoroutine(DiceRoll());
+            //}
+
+            rollDice = false;
         }
     }
          
@@ -65,7 +79,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
 
     // 주사위 굴리기
     
-    IEnumerator DiceRoll()
+    IEnumerator DiceRoll(EvolutionSlot slot)
     {
         yield return null;
 
@@ -76,9 +90,6 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         // 주사위 개수 충분한지 판단
         if (IsReadyDiceCount(usingDice))
         {
-
-            rollDice = true;
-
             // 주사위 사용
             GlobalData.instance.player.PayDice(usingDice);
 
@@ -97,7 +108,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             GlobalData.instance.evolutionManager.SetDiceEvolutionData(randomStatType, statValue);
 
             // UI TEXT 적용
-
+            GlobalData.instance.uiController.SetEvolutuinSlotName(randomStatType, slot, statValue);
         }
         else
         {
@@ -105,7 +116,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         }
 
 
-        rollDice = false;
+       
     }
 
     bool IsReadyDiceCount(int usingDiceCount)

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SkillBtn : MonoBehaviour
 {
 
     public Image imgSkillBack;
     public Image imgSkillFront;
-    public TextMeshProUGUI txtTime;
+    public TextMeshProUGUI txtTime; // -> cool time
     public TextMeshProUGUI txtTimeAnim;
     public Button btnSkill;
 
@@ -52,6 +53,12 @@ public class SkillBtn : MonoBehaviour
         StartCoroutine(UsingKill_Cor());
     }
 
+    public void SetTxtCoolTime(int time)
+    {
+        TimeSpan t = TimeSpan.FromSeconds(time);
+        string answer = string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
+        txtTime.text = answer;
+    }
    
     public bool skillAddValue = false;
 
@@ -71,14 +78,16 @@ public class SkillBtn : MonoBehaviour
 
            
             animCont.animData = animDataUsingSkill;
-            
+
             //TODO : 스킬 추가 스탯 사용 이벤트 추가
+            txtTime.enabled = false;
             skillAddValue = true;
             txtTimeAnim.enabled = true;
             StartCoroutine(animCont.UI_TextAnim(txtTimeAnim, data.duaration,0));
             yield return StartCoroutine(animCont.UI_ImageFillAmountAnim(imgSkillFront, 0, 1));
             txtTimeAnim.enabled = false;
             skillAddValue = false;
+            txtTime.enabled = true;
 
             imgSkillBack.color = colorDeem; 
             imgSkillFront.color = colorWhite;

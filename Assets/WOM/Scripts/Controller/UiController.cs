@@ -68,13 +68,12 @@ public class UiController : MonoBehaviour
         // 진화 슬롯 UI 초기 세팅 
         SetUI_EvolutionSlots(GlobalData.instance.player.evalutionLeveldx);
 
-        // 골드 , 뼈조각 , 보석 UI 초기 세팅
-
+        
 
         // 진화 주사위 굴리기 버튼 상태 세팅
-        EanbleBtnEvolutionRollDice();
+        //EanbleBtnEvolutionRollDice();
 
-        // 재화 UI 세팅
+        // 재화 UI 세팅 ( 골드 , 뼈조각 , 보석 UI 초기 세팅 )
         SetGoodsUI();
 
 
@@ -188,15 +187,15 @@ public class UiController : MonoBehaviour
          */
         #endregion
         // STAT 구매 버튼 이벤트 세팅
-        int btnId = 8;
-        foreach(EnumDefinition.SaleStatType type in Enum.GetValues(typeof(EnumDefinition.SaleStatType)))
-        {
-            UtilityMethod.SetBtnEventCustomTypeByID(btnId, () =>
-            {
-                GlobalData.instance.saleManager.AddData(new SaleStatMsgData(type));
-            });
-            btnId++;
-        }
+        //int btnId = 8;
+        //foreach(EnumDefinition.SaleStatType type in Enum.GetValues(typeof(EnumDefinition.SaleStatType)))
+        //{
+        //    UtilityMethod.SetBtnEventCustomTypeByID(btnId, () =>
+        //    {
+        //        GlobalData.instance.saleManager.AddData(new SaleStatMsgData(type));
+        //    });
+        //    btnId++;
+        //}
 
 
         // 메인 판넬 열기
@@ -214,11 +213,15 @@ public class UiController : MonoBehaviour
             
             // 메뉴 판넬 숨김
             AllDisableMenuPanels();
+
             // 진화전 버튼 선택 효과 숨김
-            EnableMenuPanel(MenuPanelType.evolution);
+            // EnableMenuPanel(MenuPanelType.evolution);
 
             // 진화전 버튼 비활성화
             EnableBtnEvolutionMonsterChange(false);
+
+            // 진화전 포기 버튼 활성화
+            UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(true);
 
         });
 
@@ -233,7 +236,15 @@ public class UiController : MonoBehaviour
 
         // 진화 주사위 뽑기 버튼
         UtilityMethod.SetBtnEventCustomTypeByID(22, () => {
-            GlobalData.instance.evolutionDiceLotteryManager.RollEvolutionDice();
+            if (evolutionSlots.Any(a => a.isUnlock == true))
+                StartCoroutine(GlobalData.instance.evolutionDiceLotteryManager.RollEvolutionDice());
+            else
+                GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("", 10);
+        });
+
+        // 진화전 포기 버튼
+        UtilityMethod.SetBtnEventCustomTypeByID(30, () => {
+            StartCoroutine(GlobalData.instance.eventController.ProcessEvolutionMonsterGiveUp());
         });
     }
 
@@ -264,14 +275,17 @@ public class UiController : MonoBehaviour
         {
             evolutionSlots[i].UnLockSlot();
         }
+
+        // 자물쇠 기본 열림상태
+        foreach(var slot in evolutionSlots)
+            slot.LockEvent();
     }
 
-    public void SetEvolutuinSlotName(EvolutionDiceStatType type, int slotId)
+    public void SetEvolutuinSlotName(EvolutionDiceStatType type, EvolutionSlot slot, float value)
     {
-        var nameData = GlobalData.instance.dataManager.GetConvertTextDataByEvolutionDiceStatType(type);
-        //evolutionSlots[i]
-
-
+        var data = GlobalData.instance.dataManager.GetConvertTextDataByEvolutionDiceStatType(type);
+        var txtValue = $"{data.kr_Front} {value}{data.kr_Back}";
+        slot.SettxtStatName(txtValue);
     }
 
     
@@ -337,5 +351,6 @@ public class UiController : MonoBehaviour
     {
         btnBossChallenge.gameObject.SetActive(false);
         imgBossMonTimerParent.gameObject.SetActive(false);
+        UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(false);
     }
 }

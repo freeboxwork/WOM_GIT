@@ -28,14 +28,14 @@ public class EvolutionSlot : MonoBehaviour
         btnLock.onClick.AddListener(LockEvent);
     }
 
-    void LockEvent()
+    public void LockEvent()
     {
         isUnlock = !isUnlock;
         var sprit = isUnlock ? sprUnLock : sprLock;
         imgLock.sprite = sprit;
 
         // 주사위 굴리기 버튼 활성화
-        GlobalData.instance.uiController.EanbleBtnEvolutionRollDice();
+        // GlobalData.instance.uiController.EanbleBtnEvolutionRollDice();
     }
 
     public void UnLockSlot()

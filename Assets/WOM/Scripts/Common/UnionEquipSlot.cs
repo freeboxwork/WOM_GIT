@@ -12,6 +12,7 @@ public class UnionEquipSlot : MonoBehaviour
     public Button btnSlot;
     public bool isUnLock = false;
     public UnionSlot unionSlot;
+    public GameObject objEquipHighlight;
     void Start()
     {
         SetBtnEvent();
@@ -23,6 +24,7 @@ public class UnionEquipSlot : MonoBehaviour
         btnSlot.onClick.AddListener(() =>
         {
             GlobalData.instance.unionManager.EquipSlot(this);
+            EnableEffHighlight(false);
         });
     }
 
@@ -46,6 +48,11 @@ public class UnionEquipSlot : MonoBehaviour
     {
         unionSlot = _unionSlot;
         SetUI();
+    }
+
+    public void EnableEffHighlight(bool value)
+    {
+        objEquipHighlight.gameObject.SetActive(value);
     }
     
 }

@@ -11,6 +11,7 @@ public class EvolutionManager : MonoBehaviour
     // 진화 주사위 돌려서 획득한 데이터 저장
     public DiceEvolutionInGameData diceEvolutionData;
 
+   
 
     void Start()
     {
@@ -22,8 +23,11 @@ public class EvolutionManager : MonoBehaviour
 
     public IEnumerator Init()
     {
+      
+
         yield return null;             
     }
+
 
 
     public void SetDiceEvolutionData(EvolutionDiceStatType statType, float statValue)
@@ -39,7 +43,5 @@ public class EvolutionManager : MonoBehaviour
             case EvolutionDiceStatType.insectBossDamage: diceEvolutionData.insectBossDamage += statValue; break;
         }
     }
-
-
 
 }

@@ -17,7 +17,9 @@ public class SkillManager : MonoBehaviour
 
     public void UnLockSkillButton(SkillType skillType)
     {
+        var skillData = GetSkillData(skillType);
         var btn = skillBtns[(int)skillType];
+        btn.SetTxtCoolTime((int)skillData.coolTime);
         btn.gameObject.SetActive(true);
         btn.skillReady = true;
     }
