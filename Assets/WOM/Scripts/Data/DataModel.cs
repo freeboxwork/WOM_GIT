@@ -450,5 +450,11 @@ public class ConvertTextData
 {
     public string en_EN;
     public string ko_KR;
+
+    public string en_Front;
+    public string en_Back;
+    public string kr_Front;
+    public string kr_Back;
+
     public string type;
 }

@@ -260,6 +260,9 @@ public class EventController : MonoBehaviour
 
         //진화 몬스터 도전 버튼 활성화
         globalData.uiController.EnableBtnEvolutionMonsterChange(true);
+
+        //진화 메뉴 활성화
+        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
     }
 
     // 몬스터 등장
@@ -437,7 +440,44 @@ public class EventController : MonoBehaviour
 
         // 진화 몬스터 도전 버튼 활성화
         globalData.uiController.EnableBtnEvolutionMonsterChange(true);
+
+        //진화 메뉴 활성화
+        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
     }
+
+
+    // 진화전 포기 했을때
+    public IEnumerator ProcessEvolutionMonsterGiveUp()
+    {
+       
+        // 진화전 포기 버튼 비활성화
+        UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(false);
+
+        // 하프 라인 위 곤충 모두 제거
+        globalData.insectManager.DisableHalfLineInsects();
+
+        // 화면전환 이펙트
+        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
+        {
+            // 보스 몬스터 OUT
+            StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionOut());
+
+            // 보스 도전 타이머 비활성화
+            globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
+
+        }));
+
+        // 일반 몬스터 등장
+        StartCoroutine(MonsterAppearCor(MonsterType.normal));
+
+        // 진화 몬스터 도전 버튼 활성화
+        globalData.uiController.EnableBtnEvolutionMonsterChange(true);
+
+        //진화 메뉴 활성화
+        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+
+    }
+
 
     void MonsterUiReset()
     {

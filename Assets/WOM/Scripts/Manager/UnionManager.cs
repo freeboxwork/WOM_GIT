@@ -94,12 +94,24 @@ public class UnionManager : MonoBehaviour
         for (int i = 0; i < data.slotCount; i++)
         {
             unionEquipSlots[i].SetBtnEnableState(true);
+            unionEquipSlots[i].EnableEffHighlight(true);
         }
     }
 
     public void EquipSlot(UnionEquipSlot equipSlot)
     {
         equipSlot.EquipUnion(selectedSlot);
+        
+        foreach(var slot in unionEquipSlots)
+        {
+            slot.SetBtnEnableState(false);
+            if(slot.unionSlot != null)
+            {
+                slot.unionSlot.unionEquipType = EnumDefinition.UnionEquipType.Equipped;
+                slot.unionSlot.SetUITxtUnionEquipState();
+            }
+        }
+        
         unionEquipSlots.ForEach(f => f.SetBtnEnableState(false));
     }
 

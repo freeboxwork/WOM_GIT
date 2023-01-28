@@ -59,6 +59,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3adf1fa25f7270d4eaf74a562fff0845, type: 3}
   - {fileID: 21300000, guid: 285011b2d702dda4e9848005c985c3d8, type: 3}
   - {fileID: 21300000, guid: 40e17be2181be8e4fb48bf67984e2d5a, type: 3}
+  - {fileID: 21300000, guid: 3aca79f2bb7b652489f75113b6358ef6, type: 3}
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
   - {fileID: 21300000, guid: f562abf327dc2c04cb5deb29621b7f78, type: 3}
@@ -72,6 +73,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 25c171d44276e344f961ab90c7eeeb8d, type: 3}
   - {fileID: 21300000, guid: 23d58bf421dcbc14ba855f1c014c87c1, type: 3}
   - {fileID: 21300000, guid: bef97d45548138b459d3736d332c56aa, type: 3}
+  - {fileID: 21300000, guid: d624e9950c7e3c44188bd7bf89e126b3, type: 3}
   - {fileID: 21300000, guid: 871cb5a5f3d3b85438ea46efeec7d0b2, type: 3}
   - {fileID: 21300000, guid: 6dabe6d57c9063b40949a33c26fe949d, type: 3}
   - {fileID: 21300000, guid: 67b5fe063942b0d499f15abf9e8dcfc6, type: 3}
@@ -106,6 +108,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6de8483c3b1af88419f42542eb8fd87d, type: 3}
   - {fileID: 21300000, guid: e759a93cdf8ba64488c83f51d486fe44, type: 3}
   - {fileID: 21300000, guid: 49a5664cee8d3de47847e2c47c9d1819, type: 3}
+  - {fileID: 21300000, guid: db6f5e6c72eba3b48a6b342a55b0d13d, type: 3}
   - {fileID: 21300000, guid: e2ff8c9cb6eb23f4aa2737407a12ae05, type: 3}
   - {fileID: 21300000, guid: 5f42644d249712e4b91c1bda413bb12b, type: 3}
   - {fileID: 21300000, guid: a32dfc5d9d2788641a2e67a9f0a6dbab, type: 3}
@@ -140,6 +143,7 @@ SpriteAtlas:
   - DNA_unionMoveSpeed
   - DNA_skillCoolTime
   - U_Frame_Unique
+  - btn_Escape
   - Icon_CriticalDamage
   - ClearBox_TopRound
   - Arrow
@@ -153,6 +157,7 @@ SpriteAtlas:
   - UI_Lock_un
   - Icon_CriticalDamage_Per
   - Icon_Grade_04
+  - U_Frame_OutLine
   - Icon_DamageUP
   - U_Frame_Hero
   - DNA_skillDuration__
@@ -187,6 +192,7 @@ SpriteAtlas:
   - Evolution
   - DNA_insectCriticalDamage
   - Shop
+  - Check
   - UI_Coin
   - DNA_monsterHpLess
   - Icon_CriticalChance
