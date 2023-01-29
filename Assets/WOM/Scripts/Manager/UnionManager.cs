@@ -242,8 +242,12 @@ public class UnionManager : MonoBehaviour
         for (int i = 0; i < unionSlots.Count; i++)
         {
             var slot = unionSlots[i];
-            if (IsValidLevelUpCount(slot))
+            while (IsValidLevelUpCount(slot))
+            {
                 LevelUpUnion(slot);
+            }
+            //if (IsValidLevelUpCount(slot))
+            //    LevelUpUnion(slot);
         }
     }
 
