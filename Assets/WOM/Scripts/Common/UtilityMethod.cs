@@ -133,7 +133,7 @@ public static class UtilityMethod
         var slotDatas = GlobalData.instance.uiController.evolutionSlots;
         int unlock = 0;
         foreach (var slot in slotDatas)
-            if (slot.isUnlock) unlock++;
+            if (slot.isUnlock && slot.statOpend) unlock++;
         return unlock;
     }
 

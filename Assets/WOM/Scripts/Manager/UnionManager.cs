@@ -42,6 +42,8 @@ public class UnionManager : MonoBehaviour
             var data = unionDatas[index];
             var slot = unionSlots[index];
 
+            slot.inGameData = new UnionInGameData();
+
             // set id
             slot.inGameData.unionIndex = data.unionIndex;
             // set type
@@ -78,13 +80,30 @@ public class UnionManager : MonoBehaviour
 
 
             // SET IN GAME DATA ( TODO: 저장된 데이터에서 불러와야 함 )
-            slot.inGameData.damage = data.damage;
+            slot.inGameData.damage = GetUnionDamage(slot); // data.damage;
             slot.inGameData.spawnTime = data.spawnTime;
             slot.inGameData.moveSpeed = data.moveSpeed;
-            slot.inGameData.passiveDamage = data.passiveDamage;
+            slot.inGameData.passiveDamage = GetUnionPassiveDamage(slot); //data.passiveDamage;
+            Debug.Log(slot.inGameData.passiveDamage);
 
             yield return null;
         }
+
+        // 전체 강화 버튼 활성, 비활성화
+        EnableBtnTotalLevelUp();
+
+        // 전체 추가 공격력 텍스트 UI 셋팅
+        SetTxtTotalPassiveDamage();
+
+        // 버튼 이벤트 설정
+        SetBtnEvent();
+    }
+
+    void SetBtnEvent()
+    {
+        UtilityMethod.SetBtnEventCustomTypeByID(7, () => {
+            TotlaUnionLevelUp();
+        });
     }
 
     public void EnableEquipSlotBtns()
@@ -98,11 +117,35 @@ public class UnionManager : MonoBehaviour
         }
     }
 
+    // 유니온 장착
     public void EquipSlot(UnionEquipSlot equipSlot)
     {
+        // 장착 슬롯에 이미 같은 유니온이 포함 되어 있는지 판단하여 이미 같은 유니온이 장착 되어 있다면 해제 한다.
+        if (IsEquipedSlotBySelectSlot())
+            UnEquipSameUnion();
+
+        // 유니온 장착
         equipSlot.EquipUnion(selectedSlot);
+
+        // 장착후 버튼 활성화 해제
         unionEquipSlots.ForEach(f => f.SetBtnEnableState(false));
     }
+
+
+    bool IsEquipedSlotBySelectSlot()
+    {
+        return unionEquipSlots.Any(a => a.unionSlot == selectedSlot);
+    }
+
+    void UnEquipSameUnion()
+    {
+        foreach(var equipSlot in unionEquipSlots)   
+            if(equipSlot.unionSlot == selectedSlot)
+            {
+                equipSlot.UnEquipSlot();
+            }
+    }
+
 
     public void SetSelectedSlot(UnionSlot slot)
     {
@@ -142,6 +185,9 @@ public class UnionManager : MonoBehaviour
             var id = indexList[i];
             AddUnion(id);
         }
+
+        // 전체 강화 버튼 활성, 비활성화
+        EnableBtnTotalLevelUp();
     }
 
     public float GetUnionDamage(UnionSlot slot)
@@ -179,6 +225,9 @@ public class UnionManager : MonoBehaviour
             slot.inGameData.damage = GetUnionDamage(slot);
             slot.inGameData.passiveDamage = GetUnionPassiveDamage(slot);
             slot.RelodUISet();
+
+            EnableBtnTotalLevelUp();
+            SetTxtTotalPassiveDamage();
         }
         else
         {
@@ -187,4 +236,50 @@ public class UnionManager : MonoBehaviour
         return isValidLevelUp;
     }
 
+    // 전체 유니온 레벨업
+    void TotlaUnionLevelUp()
+    {
+        for (int i = 0; i < unionSlots.Count; i++)
+        {
+            var slot = unionSlots[i];
+            if (IsValidLevelUpCount(slot))
+                LevelUpUnion(slot);
+        }
+    }
+
+    public void SetTxtTotalPassiveDamage()
+    {
+        var txtValue = $"전체 추가 공격력 : {GetAllUnionPassiveDamage()}";
+        UtilityMethod.SetTxtCustomTypeByID(80, txtValue);
+    }
+
+    /// <summary> 유니온 슬롯중 강화가 가능한 슬롯이 하나라도 있다면 전체 강화 버튼 활성화 없다면 비활성화 </summary>
+    public void EnableBtnTotalLevelUp()
+    {
+        UtilityMethod.GetCustomTypeBtnByID(7).interactable = IsTotalLevelUp();
+    }
+    bool IsTotalLevelUp()
+    {
+        return unionSlots.Any(a => IsValidLevelUpCount(a));
+    }
+
+    float GetAllUnionPassiveDamage()
+    {
+        float totalPassiveValue = 0f;
+        
+        foreach(var slot in unionSlots)
+        {
+            if(slot.inGameData.level > 0)
+                totalPassiveValue+= slot.inGameData.passiveDamage;
+        }
+        return totalPassiveValue;
+    }
+
+    public void AllDisableEquipSlotHighlightEff()
+    {
+        foreach (var equipSlot in unionEquipSlots)
+        {
+            equipSlot.EnableEffHighlight(false);
+        }
+    }
 }

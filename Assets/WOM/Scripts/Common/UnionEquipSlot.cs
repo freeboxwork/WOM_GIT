@@ -9,6 +9,7 @@ public class UnionEquipSlot : MonoBehaviour
     public Image imgFrame;
     public Image imgUnionFace;
     public Image imgUnlock;
+    public Sprite spriteUnionEmpty;
     public Button btnSlot;
     public bool isUnLock = false;
     public UnionSlot unionSlot;
@@ -24,9 +25,14 @@ public class UnionEquipSlot : MonoBehaviour
         btnSlot.onClick.AddListener(() =>
         {
             GlobalData.instance.unionManager.EquipSlot(this);
-            EnableEffHighlight(false);
+            // 전체 장착 슬롯의 하이라이트 끄기
+            GlobalData.instance.unionManager.AllDisableEquipSlotHighlightEff();
         });
     }
+    
+    //장착 해제 
+
+
 
     public void SetBtnEnableState(bool value)
     {
@@ -56,6 +62,12 @@ public class UnionEquipSlot : MonoBehaviour
 
         unionSlot = _unionSlot;
         SetUI();
+    }
+
+    public void UnEquipSlot()
+    {
+        unionSlot = null;
+        imgUnionFace.sprite = spriteUnionEmpty;
     }
 
     public void EnableEffHighlight(bool value)

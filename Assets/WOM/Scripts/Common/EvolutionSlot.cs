@@ -36,6 +36,9 @@ public class EvolutionSlot : MonoBehaviour
 
         // 주사위 굴리기 버튼 활성화
         // GlobalData.instance.uiController.EanbleBtnEvolutionRollDice();
+        
+        // 사용에 필요한 주사위 개수 변경
+        GlobalData.instance.uiController.SetTxtUsingDiceCount();
     }
 
     public void UnLockSlot()
