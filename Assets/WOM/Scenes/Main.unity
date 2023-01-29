@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4657263446157785690, guid: cdc56977043929646b52844b4648f5c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e759a93cdf8ba64488c83f51d486fe44, type: 3}
     - target: {fileID: 4657263446397382680, guid: cdc56977043929646b52844b4648f5c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4418,6 +4422,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4657263446157785690, guid: cdc56977043929646b52844b4648f5c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c20d34527d6a7604790af1fd65744d03, type: 3}
     - target: {fileID: 4657263446397382680, guid: cdc56977043929646b52844b4648f5c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8824,6 +8832,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: spriteUnionEmpty
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a6d154e73502c743a7556d77b511c59, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &495615338 stripped
@@ -17988,6 +18000,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: spriteUnionEmpty
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a6d154e73502c743a7556d77b511c59, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &985232967 stripped
@@ -25481,6 +25497,26 @@ MonoBehaviour:
   - {fileID: 433229079}
   - {fileID: 1109005198}
   - {fileID: 2147264439}
+  dnaIconImages:
+  - {fileID: 21300000, guid: be6a80c841fd78f478865bf329f79ed2, type: 3}
+  - {fileID: 21300000, guid: 1d757ceecb40bd14fbe0de3377602452, type: 3}
+  - {fileID: 21300000, guid: 51684d9ad211c0a4dbf5ecf529383488, type: 3}
+  - {fileID: 21300000, guid: a8bea4ee892eb5748abbc28325db3536, type: 3}
+  - {fileID: 21300000, guid: 7a452b0c63fc99745a1678bb73e1d9bb, type: 3}
+  - {fileID: 21300000, guid: 7f289cbdf9a682741aa10bc5b149f244, type: 3}
+  - {fileID: 21300000, guid: ff5cea0f48a6d2445b7aeda46f001b7f, type: 3}
+  - {fileID: 21300000, guid: 17c5360042407064d95968bde4eb0653, type: 3}
+  - {fileID: 21300000, guid: e759a93cdf8ba64488c83f51d486fe44, type: 3}
+  - {fileID: 21300000, guid: bfb01db40316c7040837f1596f856552, type: 3}
+  - {fileID: 21300000, guid: 0a7c072bbbfe15f45a1806e6a2269c1c, type: 3}
+  - {fileID: 21300000, guid: 5f42644d249712e4b91c1bda413bb12b, type: 3}
+  - {fileID: 21300000, guid: 316f7a982ac613049a81bd5ec5a75e8a, type: 3}
+  - {fileID: 21300000, guid: 285011b2d702dda4e9848005c985c3d8, type: 3}
+  - {fileID: 21300000, guid: 475bc94972f8305418c404834561ae28, type: 3}
+  - {fileID: 21300000, guid: 67b5fe063942b0d499f15abf9e8dcfc6, type: 3}
+  - {fileID: 21300000, guid: c20d34527d6a7604790af1fd65744d03, type: 3}
+  - {fileID: 21300000, guid: 3adf1fa25f7270d4eaf74a562fff0845, type: 3}
+  - {fileID: 21300000, guid: 9b2526e9b28aa0043909226489c98288, type: 3}
   powerColorCode: '#40ff80'
 --- !u!224 &1356193890 stripped
 RectTransform:
@@ -26173,6 +26209,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: spriteUnionEmpty
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a6d154e73502c743a7556d77b511c59, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &1412009232 stripped
@@ -29468,7 +29508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTypeDatas:
-  - {fileID: 687573960}
+  - {fileID: 1708634479}
   - {fileID: 25142335}
   - {fileID: 124550271}
   - {fileID: 129213001}
@@ -29498,6 +29538,7 @@ MonoBehaviour:
   - {fileID: 638479361}
   - {fileID: 638479362}
   - {fileID: 653059483}
+  - {fileID: 687573960}
   - {fileID: 697387117}
   - {fileID: 700414583}
   - {fileID: 746366117}
@@ -29581,13 +29622,13 @@ MonoBehaviour:
   - {fileID: 3409305089524062622}
   customTypeDatas_animCont: []
   customTypeDatas_uiButton:
-  - {fileID: 687573960}
   - {fileID: 200051268}
   - {fileID: 247686139}
   - {fileID: 614465674}
   - {fileID: 617929007}
   - {fileID: 638479362}
   - {fileID: 653059483}
+  - {fileID: 687573960}
   - {fileID: 807080670}
   - {fileID: 911633400}
   - {fileID: 939886112}
@@ -29612,6 +29653,7 @@ MonoBehaviour:
   - {fileID: 3409305088193251360}
   - {fileID: 3409305089524062622}
   customTypeDatas_uiText:
+  - {fileID: 1708634479}
   - {fileID: 25142335}
   - {fileID: 124550271}
   - {fileID: 156771629}
@@ -31720,7 +31762,7 @@ GameObject:
   - component: {fileID: 1696223317}
   - component: {fileID: 1696223319}
   m_Layer: 5
-  m_Name: MENU_PANELS
+  m_Name: '>> MENU_PANELS <<'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31771,8 +31813,9 @@ GameObject:
   - component: {fileID: 1708634476}
   - component: {fileID: 1708634478}
   - component: {fileID: 1708634477}
+  - component: {fileID: 1708634479}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TxtAllAddDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31895,6 +31938,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708634475}
   m_CullTransparentMesh: 1
+--- !u!114 &1708634479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708634475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  components:
+    animController: {fileID: 0}
+    button: {fileID: 0}
+    text: {fileID: 1708634477}
+    image: {fileID: 0}
+    sr: {fileID: 0}
+    tr: {fileID: 1708634476}
+    gm: {fileID: 1708634475}
+  customType: 1
+  index: 80
 --- !u!1 &1709296641
 GameObject:
   m_ObjectHideFlags: 0
@@ -32582,6 +32647,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: spriteUnionEmpty
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a6d154e73502c743a7556d77b511c59, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!224 &1741528998 stripped
@@ -32603,7 +32672,7 @@ GameObject:
   - component: {fileID: 1747509663}
   - component: {fileID: 1747509667}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: '[ CANVAS UI SET ]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36116,6 +36185,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4657263446157785690, guid: cdc56977043929646b52844b4648f5c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17c5360042407064d95968bde4eb0653, type: 3}
     - target: {fileID: 4657263446397382680, guid: cdc56977043929646b52844b4648f5c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -43927,6 +44000,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8339500907970783195, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
+      propertyPath: spriteUnionEmpty
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a6d154e73502c743a7556d77b511c59, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683b5ccdf2db781409980bc3791ece34, type: 3}
 --- !u!1 &6050383728041413398

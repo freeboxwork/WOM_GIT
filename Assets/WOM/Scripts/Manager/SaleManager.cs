@@ -174,13 +174,13 @@ public class SaleManager : MonoBehaviour
 
     bool IsValidPurchaseGold(int value)
     {
-        return 0 < player.gold - value;
+        return 0 <= player.gold - value;
     }
 
 
     bool IsValidPurchaseBone(int value)
     {
-        return 0 < player.bone - value;
+        return 0 <= player.bone - value;
     }
 
 

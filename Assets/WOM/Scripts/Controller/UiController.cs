@@ -68,10 +68,13 @@ public class UiController : MonoBehaviour
         // 진화 슬롯 UI 초기 세팅 
         SetUI_EvolutionSlots(GlobalData.instance.player.evalutionLeveldx);
 
-        
+
 
         // 진화 주사위 굴리기 버튼 상태 세팅
-        //EanbleBtnEvolutionRollDice();
+        // EanbleBtnEvolutionRollDice();
+
+        // 진화 주사위 사용 개수 세팅
+        SetTxtUsingDiceCount();
 
         // 재화 UI 세팅 ( 골드 , 뼈조각 , 보석 UI 초기 세팅 )
         SetGoodsUI();
@@ -305,7 +308,12 @@ public class UiController : MonoBehaviour
         UtilityMethod.SetTxtCustomTypeByID(64, count.ToString());
     }
 
-
+    public void SetTxtUsingDiceCount()
+    {
+        // 주사위 사용 개수 
+        var count = UtilityMethod.GetEvolutionDiceUsingCount();
+        UtilityMethod.SetTxtCustomTypeByID(64, count.ToString());
+    }
 
 
     public void EnableMenuPanel(MenuPanelType type)

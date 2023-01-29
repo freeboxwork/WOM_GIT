@@ -202,7 +202,7 @@ SpriteAtlas:
   - btn_small
   - Icon_Grade_01
   - DNA_goldMonsterBonus
-  - DNA_BossDamage
+  - DNA_bossDamage
   - U_Frame_High
   - DNA_goldPig__
   - ClearBox
