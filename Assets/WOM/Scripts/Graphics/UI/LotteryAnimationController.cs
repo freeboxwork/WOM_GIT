@@ -57,9 +57,9 @@ namespace ProjectGraphics
                 
                 if(isSkip == false)
                 {
-                    if (typeIndex == 5)
+                    if (typeIndex == 2)
                     {
-                        yield return new WaitForSeconds(0.2F);
+                        yield return new WaitForSeconds(0.7F);
                     }
                 }
 
@@ -74,15 +74,15 @@ namespace ProjectGraphics
                     {
                         slots[j].SetShakeAction();
                     }
-
-                    if (typeIndex == 5)
-                    {
-                        yield return new WaitForSeconds(0.5F);
-                    }
-                    else
-                    {
-                        yield return new WaitForSeconds(0.1f);
-                    }
+                    yield return new WaitForSeconds(0.05f);
+                    //if (typeIndex == 2)
+                    //{
+                    //    yield return new WaitForSeconds(1F);
+                    //}
+                    //else
+                    //{
+                    //    yield return new WaitForSeconds(0.1f);
+                    //}
                 }
             }
 
@@ -117,7 +117,7 @@ namespace ProjectGraphics
                 }
 
                 if (isSkip) continue;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
             }
         }
 
