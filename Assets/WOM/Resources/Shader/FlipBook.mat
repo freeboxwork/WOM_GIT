@@ -78,11 +78,14 @@ Material:
     - Vector1_9C92912: 2
     - Vector1_FDC20162: 25
     - _EnableExternalAlpha: 0
+    - _IsOutLine: 1
+    - _OffSet: 0.01
     - _offsetY: 0
     - _speed: 0.1
     - _transition: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 1, g: 0.7535765, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
