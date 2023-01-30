@@ -15,6 +15,7 @@ namespace ProjectGraphics
         public Sprite[] gradeBackImage;
         private Lottery_Slot[] slots;
 
+        private bool isSkip = false;
 
 #if UNITY_EDITOR
         //[SerializeField] int ii;
@@ -54,30 +55,38 @@ namespace ProjectGraphics
             {
                 int typeIndex = SetImageFromUnionType(data.GetGradeData(u[i]));
                 
-                if (typeIndex == 5)
+                if(isSkip == false)
                 {
-                    yield return new WaitForSeconds(0.2F);
+                    if (typeIndex == 5)
+                    {
+                        yield return new WaitForSeconds(0.2F);
+                    }
                 }
 
                 slots[i].SetSlotImage(effectColor[typeIndex], gradeBackImage[typeIndex], data.GetIconData(u[i]));
                 slots[i].gameObject.SetActive(true);
-                
+
                 //여기 출현 사운드 필요함.
 
-                for (int j = 0; j < i; j++)
+                if (isSkip == false)
                 {
-                    slots[j].SetShakeAction();
-                }
+                    for (int j = 0; j < i; j++)
+                    {
+                        slots[j].SetShakeAction();
+                    }
 
-                if (typeIndex == 5)
-                {
-                    yield return new WaitForSeconds(0.5F);
-                }
-                else
-                {
-                    yield return new WaitForSeconds(0.1f);
+                    if (typeIndex == 5)
+                    {
+                        yield return new WaitForSeconds(0.5F);
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                    }
                 }
             }
+
+            isSkip = false;
         }
 
         public void StartDNASlotAnimation(int[] u)
@@ -107,6 +116,7 @@ namespace ProjectGraphics
                     slots[j].SetShakeAction();
                 }
 
+                if (isSkip) continue;
                 yield return new WaitForSeconds(0.1f);
             }
         }
@@ -122,6 +132,11 @@ namespace ProjectGraphics
                 case EnumDefinition.UnionGradeType.unique: return 5;
                 default: return 0;
             }
+        }
+
+        public void OnClickSkipButton()
+        {
+            isSkip = true;
         }
 
         private void OnDisable()
