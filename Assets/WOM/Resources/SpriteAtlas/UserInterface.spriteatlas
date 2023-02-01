@@ -76,6 +76,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d624e9950c7e3c44188bd7bf89e126b3, type: 3}
   - {fileID: 21300000, guid: 871cb5a5f3d3b85438ea46efeec7d0b2, type: 3}
   - {fileID: 21300000, guid: 6dabe6d57c9063b40949a33c26fe949d, type: 3}
+  - {fileID: 21300000, guid: 0ec3abf5d80765b408c67aa4a051b937, type: 3}
   - {fileID: 21300000, guid: 67b5fe063942b0d499f15abf9e8dcfc6, type: 3}
   - {fileID: 21300000, guid: 1e13e576a7f11924e9db1622c482dba7, type: 3}
   - {fileID: 21300000, guid: 746121869a5fb7a4c834f5c76412f884, type: 3}
@@ -160,6 +161,7 @@ SpriteAtlas:
   - U_Frame_OutLine
   - Icon_DamageUP
   - U_Frame_Hero
+  - Icon_GoldBoss
   - DNA_skillDuration__
   - Icon_MoveSpeed
   - 1pixel_black
