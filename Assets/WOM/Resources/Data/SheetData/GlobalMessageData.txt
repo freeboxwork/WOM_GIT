@@ -1,3 +1,59 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:acf4bd028bcabf9d2dacaf2f01ca13e3ab96ea1c4c88747f0af5e139f182dd9e
-size 1313
+{"data":[
+ {
+   "id": 0,
+   "message_kor": "진화에 실패 했습니다.",
+   "message_eng": "Evolution failed."
+ },
+ {
+   "id": 1,
+   "message_kor": "주사위 개수가 충분하지 않습니다.",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 2,
+   "message_kor": "골드가 부족합니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 3,
+   "message_kor": "보석이 부족합니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 4,
+   "message_kor": "뼈조각이 부족합니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 5,
+   "message_kor": "네트워크가 원할하지 않습니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 6,
+   "message_kor": "골드량 증가 버프가 활성화 되었습니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 7,
+   "message_kor": "광고 시청 횟수가 소진되었습니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 8,
+   "message_kor": "보스, 금광전갈 전투중엔 진화전에 도전할 수 없습니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 9,
+   "message_kor": "주사위가 부족합니다",
+   "message_eng": "message_eng"
+ },
+ {
+   "id": 10,
+   "message_kor": "모든 자물쇠가 잠겨 있습니다",
+   "message_eng": "message_eng"
+ }
+
+]
+}

@@ -1,3 +1,183 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1572f7186e27c739a9910d74b1d01aedd5a17b6cdb8b0012cfce27f6d460c891
-size 3875
+
+public class EnumDefinition 
+{
+    public enum CustomDataType
+    {
+        button,
+        text,
+        image,
+        animCont,
+        tr, 
+        gm // gameobject
+    }
+
+    public enum InsectType
+    {
+        mentis,
+        bee,
+        beetle,
+        none
+    }
+    public enum MonsterType
+    {
+        normal,
+        gold,
+        boss,
+        evolution
+    }
+
+    public enum AttackType
+    {
+        normal,
+    }
+
+    public enum SheetDataType
+    {
+        evolutionData_bee,
+        evolutionData_beetle,
+        evolutionData_mentis,
+        evolutionOptionData_bee,
+        evolutionOptionData_beetle,
+        evolutionOptionData_mentis,
+        monsterData_boss,
+        monsterData_gold,
+        monsterData_normal,
+        monsterData_evolution,
+        stageData,
+        upgradeData,
+        monsterSpriteData,
+        unionGambleData,
+        summonGradeData,
+        rewardEvolutionGradeData,
+        rewardDiceEvolutionData,
+        skillData,
+        unionData,
+        dnaData,
+        TrainingElementData,
+        convertTextData
+    }
+
+    /// <summary> 훈련 메뉴 </summary>
+    public enum SaleStatType
+    {
+        trainingDamage,
+        trainingCriticalChance,
+        trainingCriticalDamage,
+        talentDamage,
+        talentCriticalChance,
+        talentCriticalDamage,
+        talentMoveSpeed,
+        talentSpawnSpeed,
+        talentGoldBonus
+    }
+
+    public enum AnimCurveType
+    {
+        EaseInQuad,
+        EaseOutQuad,
+        EaseInOutQuad,
+        EaseOutCubic,
+        EaseInOutCubic,
+        Spring,
+        EaseInQuint,
+        EaseInOutSine,
+        EaseOutQuint,
+        Linear
+    }
+
+    public enum GoldPosType
+    {
+        START_POINT_Y,
+        END_POOINT_Y_MIN,
+        END_POOINT_Y_MAX,
+        END_POOINT_X_MIN,
+        END_POOINT_X_MAX,
+        SCREEN_UI_POINT_GOLD,
+        SCREEN_UI_POINT_BONE
+    }
+
+    public enum UnionGradeType
+    {
+        normal,
+        high,
+        rare,
+        hero,
+        legend,
+        unique
+    }
+
+
+    /// <summary> 재화타입 </summary>
+    public enum GoodsType
+    {
+        gold,
+        bone,
+        jewel
+    }
+
+
+    public enum MenuPanelType
+    {
+        training,
+        evolution,
+        skill,
+        union,
+        dna,
+        shop
+    }
+
+    public enum EvolutionDiceStatType
+    {
+        insectDamage,
+        insectCriticalChance,
+        insectCriticalDamage,
+        goldBonus,
+        insectMoveSpeed,
+        insectSpawnTime,
+        insectBossDamage
+    }
+
+    public enum SkillType
+    {
+        /// <summary> 곤충 공격력 증가 </summary>
+        insectDamageUp,
+        /// <summary> 유니온 공격력 증가 </summary>
+        unionDamageUp,
+        /// <summary> 아군 전체 속도 증가 </summary>
+        allUnitSpeedUp,
+        /// <summary> 골드 획득량 증가 </summary>
+        glodBonusUp,
+        /// <summary> 괴수 몬스터 등장 </summary>
+        monsterKing,
+        /// <summary> 아군 전체 공격력이 치명타 ? </summary>
+        allUnitCriticalDamageUp,
+    }
+
+    public enum UnionEquipType
+    {
+        Equipped,
+        NotEquipped
+
+    }
+
+    public enum DNAType
+    {
+        insectDamage,
+        insectCriticalChance,
+        insectCriticalDamage,
+        unionDamage,
+        glodBonus,
+        insectMoveSpeed,
+        unionMoveSpeed,
+        unionSpawnTime,
+        goldPig,
+        skillDuration,
+        skillCoolTime,
+        bossDamage,
+        monsterHpLess,
+        boneBonus,
+        goldMonsterBonus,
+        offlineBonus
+    }
+
+}
