@@ -1,23 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AnimData : MonoBehaviour
-{
-    public string dataName;
-    public EnumDefinition.AnimCurveType animCurveType;
-    public float animDuration = 0.5f;
-    [HideInInspector] public float value;
-    [HideInInspector] public float animTime;
-    [HideInInspector] public float animValue;
-    [HideInInspector] public float animStartTime;
-
-    public void ResetAnimData()
-    {
-        value = 0;
-        animTime = 0f;
-        animValue = 0f;
-        animStartTime = Time.time;
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:595e16dc8cbebb3dfb4e254f1b4768dd2abf2a0fd39130abf1f0aee884c4d5b0
+size 599
