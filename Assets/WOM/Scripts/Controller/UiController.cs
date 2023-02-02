@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using static EnumDefinition;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class UiController : MonoBehaviour
 {
@@ -31,7 +32,11 @@ public class UiController : MonoBehaviour
     //[Header("진화 UI 관련 항목")]
     //public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
     //public List<EvolutionSlot> evolutionSlots = new List<EvolutionSlot>();
-    
+
+    public float menuPannelScrollView_posY_traning;
+    public float menuPannelScrollView_posY_union;
+    public float menuPannelScrollView_posY_dna;
+    public float menuPannelScrollView_posY_shop;
 
     void Start()
     {
@@ -62,12 +67,11 @@ public class UiController : MonoBehaviour
         // Disable Ui Elements
         DisableUiElements();
 
-       
-
         // 재화 UI 세팅 ( 골드 , 뼈조각 , 보석 UI 초기 세팅 )
         SetGoodsUI();
 
-
+        // 메인 판넬 스크롤뷰 시작 위치 가져오기 ( 리셋을 위해 )
+        GetMainPannelsScrollViewPosY();
 
         yield return null;
 
@@ -192,7 +196,6 @@ public class UiController : MonoBehaviour
             UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
         }
 
-     
     }
 
 
@@ -207,15 +210,56 @@ public class UiController : MonoBehaviour
                 var enableValue = !mainPanels[i].activeSelf;
                 mainPanels[i].SetActive(enableValue);
                 mainButtons[i].Select(enableValue);
+                ResetMainPannelScrollViewPosY(type);
             }
             else
             {
                 mainButtons[i].Select(false);
                 mainPanels[i].SetActive(false);
             }
-
         }
     }
+
+    void ResetMainPannelScrollViewPosY(MenuPanelType type)
+    {
+        switch(type)
+        {
+            case MenuPanelType.training:
+                SetMenuPannelScrollView_Pos(0, menuPannelScrollView_posY_traning);
+                break;
+            case MenuPanelType.union:
+                SetMenuPannelScrollView_Pos(1, menuPannelScrollView_posY_union);
+                break;
+            case MenuPanelType.dna:
+                SetMenuPannelScrollView_Pos(2, menuPannelScrollView_posY_dna);
+                break;
+            case MenuPanelType.shop:
+                SetMenuPannelScrollView_Pos(3, menuPannelScrollView_posY_shop);
+                break;
+        }
+    }
+
+    void SetMenuPannelScrollView_Pos(int id, float changePosY)
+    {
+        var curPos = UtilityMethod.GetCustomTypeTrById(id).localPosition;
+        var changePos = new Vector3(curPos.x, changePosY, curPos.z);
+        UtilityMethod.GetCustomTypeTrById(id).localPosition = changePos;
+    }
+
+    void GetMainPannelsScrollViewPosY()
+    {
+        menuPannelScrollView_posY_traning = UtilityMethod.GetCustomTypeTrById(0).localPosition.y;
+        menuPannelScrollView_posY_union = UtilityMethod.GetCustomTypeTrById(1).localPosition.y;
+        menuPannelScrollView_posY_dna = UtilityMethod.GetCustomTypeTrById(2).localPosition.y;
+        menuPannelScrollView_posY_shop = UtilityMethod.GetCustomTypeTrById(3).localPosition.y;
+    }
+
+
+    void AllRestScrollViewMainPannel()
+    {
+
+    }
+
     public void AllDisableMenuPanels()
     {
         foreach(var panel in mainPanels)

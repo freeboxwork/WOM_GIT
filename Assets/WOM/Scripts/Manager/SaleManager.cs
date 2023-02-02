@@ -61,6 +61,7 @@ public class SaleManager : MonoBehaviour
 
                     // 데이터 적용
                     traningManager.SetInGameStatLevel(statType, payData.statData.level);
+                    traningManager.SetInGameStatValue(statType, payData.statData.value);
 
                     // UI 적용
                     if (payData.nextStatSaleData != null)
@@ -92,6 +93,7 @@ public class SaleManager : MonoBehaviour
 
                     // 데이터 적용
                     traningManager.SetInGameStatLevel(statType, payData.statData.level);
+                    traningManager.SetInGameStatValue(statType, payData.statData.value);
 
                     // UI 적용
                     if (payData.nextStatSaleData != null)
