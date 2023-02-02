@@ -81,6 +81,7 @@ public class GlobalController : MonoBehaviour
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
+        player.SetCurrentMonsterHP(monsterManager.monsterNormal.hp);
 
         // 등장 몬스터 활성화 -> 첫 시작은 노멀 몬스터
         // TODO : 하나만 켜야 하는지 확인 필요 현재 모두 나타나도록 수정
@@ -103,7 +104,9 @@ public class GlobalController : MonoBehaviour
         var hp = player.currentMonster.hp;
         var phaseCount = player.currentStageData.phaseCount;
         uiController.SetTxtMonsterHp(hp);
+        uiController.SetSliderMonsterHp(hp);
         uiController.SetTxtPhaseCount(phaseCount);
+        uiController.SetSliderPhaseValue(phaseCount);
     }
 
 

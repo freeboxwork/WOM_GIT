@@ -73,6 +73,10 @@ public class EventController : MonoBehaviour
         {
             // 몬스터 hp text
             globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
+
+            // 몬스터 hp slider
+            globalData.uiController.SetSliderMonsterHp(currentMonster.hp); 
+
         }
     }
 
@@ -106,6 +110,9 @@ public class EventController : MonoBehaviour
 
         // hp text 0으로 표시
         globalData.uiController.SetTxtMonsterHp(0);
+
+        // hp slider
+        globalData.uiController.SetSliderMonsterHp(0);
 
         // 하프라인 위쪽 곤충들 제거
         globalData.insectManager.DisableHalfLineInsects();
@@ -276,6 +283,8 @@ public class EventController : MonoBehaviour
         
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
+
+
         
         // set current monster
         globalData.player.SetCurrentMonster(monsterData);
@@ -298,7 +307,12 @@ public class EventController : MonoBehaviour
 
         // Monster In Animation
         yield return StartCoroutine(globalData.player.currentMonster.inOutAnimator.AnimPositionIn());
+
+        // set current monster hp
+        // TODO: 이펙트 연출 추가
+        globalData.player.SetCurrentMonsterHP(monsterData.hp);
         
+
         // 몬스터 UI 리셋 
         MonsterUiReset();
 
@@ -486,7 +500,7 @@ public class EventController : MonoBehaviour
         // SET HP
         globalData.uiController.SetTxtMonsterHp(monsterData.hp);
         // SLIDE BAR
-
+        globalData.uiController.SetSliderMonsterHp(monsterData.hp);
     }
 
 
@@ -510,6 +524,7 @@ public class EventController : MonoBehaviour
     {
         value = globalData.player.currentStageData.phaseCount -= 1;
         globalData.uiController.SetTxtPhaseCount(value);
+        globalData.uiController.SetSliderPhaseValue(value);
     }
 
     // 골드 몬스터 진입 단계 리셋
@@ -518,6 +533,7 @@ public class EventController : MonoBehaviour
         var resetValue = globalData.player.pahseCountOriginalValue;
         globalData.player.currentStageData.phaseCount = resetValue;
         globalData.uiController.SetTxtPhaseCount(resetValue);
+        globalData.uiController.SetSliderPhaseValue(resetValue);    
     }
 
     #endregion
