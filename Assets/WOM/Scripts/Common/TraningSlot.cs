@@ -1,3 +1,68 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f58613cf2aeace4b6119a0840ac902612d21e9d398ad798158602dfab6c24cab
-size 1288
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class TraningSlot : MonoBehaviour
+{
+    //level + sheet TrainingElementData : trainingName
+    public TextMeshProUGUI txtInfo;
+    
+    // Sheet 에서 value + unitName 
+    public TextMeshProUGUI txtPower;
+    
+    // 심볼 단위 구성
+    public TextMeshProUGUI txtCost;
+         
+    public Button btnBuy;
+
+    public EnumDefinition.SaleStatType statType;
+    public EnumDefinition.GoodsType goodsType;
+
+    public TraningInGameData traningInGameData;
+
+
+    public void Start()
+    {
+        
+    }
+
+    public void SetTxtInfo(string value)
+    {
+        txtInfo.text = value;   
+    }
+
+    public void SetTxtPower(string value)
+    {
+        txtPower.text = value;
+    }
+
+    public void SetTxtCost(string value)
+    {
+        if (value != "Max")
+        {
+            var txtSymbolValue = UtilityMethod.ChangeSymbolNumber(float.Parse(value));
+            txtCost.text = txtSymbolValue;
+        }
+        else
+            txtCost.text = value;
+    }
+
+    public void SetBtnEvent()
+    {
+
+    }
+
+    public void BtnEnable(bool value)
+    {
+        btnBuy.interactable = value;
+    }
+
+
+
+
+
+
+
+}

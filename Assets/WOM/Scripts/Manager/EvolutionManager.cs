@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:68f3b3931359ecec883ce7562dbcfc1739bdbb61a9332936a3bf1d9d8f14229b
-size 6860
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using static EnumDefinition;
+
+
+
+public class EvolutionManager : MonoBehaviour
+{
+    // 진화 주사위 돌려서 획득한 데이터 저장
+    public DiceEvolutionInGameData diceEvolutionData;
+
+   
+
+    void Start()
+    {
+        
+    }
+
+
+
+
+    public IEnumerator Init()
+    {
+      
+
+        yield return null;             
+    }
+
+
+
+    public void SetDiceEvolutionData(EvolutionDiceStatType statType, float statValue)
+    {
+        switch (statType)
+        {
+            case EvolutionDiceStatType.insectDamage: diceEvolutionData.insectDamage += statValue; break;
+            case EvolutionDiceStatType.insectCriticalChance: diceEvolutionData.insectCriticalChance += statValue; break;
+            case EvolutionDiceStatType.insectCriticalDamage: diceEvolutionData.insectCriticalDamage += statValue; break;
+            case EvolutionDiceStatType.goldBonus: diceEvolutionData.goldBonus += statValue; break;
+            case EvolutionDiceStatType.insectMoveSpeed: diceEvolutionData.insectMoveSpeed += statValue; break;
+            case EvolutionDiceStatType.insectSpawnTime: diceEvolutionData.insectSpawnTime += statValue; break;
+            case EvolutionDiceStatType.insectBossDamage: diceEvolutionData.insectBossDamage += statValue; break;
+        }
+    }
+
+}

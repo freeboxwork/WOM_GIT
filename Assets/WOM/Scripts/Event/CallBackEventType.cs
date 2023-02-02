@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5492b62e687251423585f2f92d8f98d489b51204200f9887e76bba0cde58679a
-size 488
+
+
+public class CallBackEventType 
+{
+    public enum TYPES
+    {
+        OnMonsterHit,                   /// <summary> 곤충이 몬스터를 타격 했을때  </summary>
+        OnBossMonsterChallenge,         /// <summary> 보스 몬스터 도전 버튼을 눌렀을때  </summary>
+        OnBossMonsterChallengeTimeOut,  /// <summary> 보스 몬스터 도전 타이머 종료 되었을때  </summary>
+        OnEvolutionMonsterChallenge,    /// <summary> 진화전 버튼 눌렀을때  </summary>
+
+
+        None,
+    }
+}
+ 

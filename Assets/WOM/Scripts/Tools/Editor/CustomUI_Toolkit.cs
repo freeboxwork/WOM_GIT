@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e3822daadab480559b23b01f6e42befea00509cc5e6c4bd4d1fabac9e94b3d3b
-size 853
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEditor;
+using UnityEditor.UIElements;
+
+public class CustomUI_Toolkit : EditorWindow
+{
+    [SerializeField]
+    VisualTreeAsset _visualTreeAsset;
+
+    ObjectField _objectField;
+    Button _button;
+
+    [MenuItem("Tools/UI_ToolKit_TEST")]
+    public static void ShowWindow()
+    {
+        var window = GetWindow( typeof(CustomUI_Toolkit));
+        window.Show();
+    }
+
+
+    private void CreateGUI()
+    {
+        _visualTreeAsset.CloneTree(rootVisualElement);
+        _objectField = rootVisualElement.Q<ObjectField>("_obj");
+        _button = rootVisualElement.Q<Button>("_btn");
+
+        _button.clickable.clicked += Click;
+    }
+
+    void Click()
+    {
+        Debug.Log("btn click");
+    }
+
+}
