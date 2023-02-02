@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c1e46a3299df16efbdedd62cf48188ae599ff5159e21f90dc087f1d7b864e239
-size 586
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+
+public class ShopSlot : MonoBehaviour
+{
+    public TextMeshProUGUI txtTitle;
+    public Image imgIcon;
+    public EnumDefinition.ShopSlotType shopSlotType;
+
+    public void SetTxtTitle( string value)
+    {
+        txtTitle.text = value;  
+    }    
+
+    public void SetImageIcon(Sprite sprite)
+    {
+        imgIcon.sprite = sprite;    
+    }
+
+    public EnumDefinition.ShopSlotType GetShopType()
+    {
+        return shopSlotType;
+    }
+
+}

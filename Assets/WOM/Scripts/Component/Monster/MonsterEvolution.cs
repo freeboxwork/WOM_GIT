@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1f3c64cb8545af438082ab7da9bd87aee6537a065f2e20129e54735774f39930
-size 316
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MonsterEvolution : MonsterBase
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
