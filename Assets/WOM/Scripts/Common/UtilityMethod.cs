@@ -129,6 +129,11 @@ public static class UtilityMethod
         return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Gameobject(id);
     }
 
+    public static Transform GetCustomTypeTrById(int id)
+    {
+        return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Transform(id);
+    }
+
     /// <summary> 가중치 랜덤 뽑기 </summary>
     public static float GetWeightRandomValue(float[] probs)
     {

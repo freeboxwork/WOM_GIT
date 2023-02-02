@@ -36,6 +36,8 @@ public class TraningSlot : MonoBehaviour
     public void SetTxtPower(string value)
     {
         txtPower.text = value;
+
+        Debug.Log(value);
     }
 
     public void SetTxtCost(string value)

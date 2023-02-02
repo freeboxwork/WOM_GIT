@@ -196,4 +196,7 @@ public class TraningManager : MonoBehaviour
         }
         return false;
     }
+
+
+
 }
