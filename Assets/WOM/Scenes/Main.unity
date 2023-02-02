@@ -16762,7 +16762,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1284567407
-  m_SortingOrder: 1
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!224 &742764190
 RectTransform:
@@ -19215,6 +19215,10 @@ PrefabInstance:
     - target: {fileID: 8709659281224663758, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
       propertyPath: m_Size.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709659281226063203, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
@@ -24828,6 +24832,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1499204843700722562, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499204843700722564, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
+      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1499204843700722564, guid: d22bd4c465594ad4787fd124e4f497ce, type: 3}
@@ -36275,32 +36283,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTypeDatas:
-  - {fileID: 570158001}
-  - {fileID: 185642875}
-  - {fileID: 228340507}
-  - {fileID: 1159817508}
-  - {fileID: 1570622884}
-  - {fileID: 619601455}
-  - {fileID: 390615690}
-  - {fileID: 905939695}
-  - {fileID: 602882579}
-  - {fileID: 1298527494}
-  - {fileID: 865105366}
-  - {fileID: 187901013}
   - {fileID: 25142335}
   - {fileID: 124550271}
   - {fileID: 129213001}
   - {fileID: 156771629}
   - {fileID: 160010086}
+  - {fileID: 185642875}
   - {fileID: 186876810}
+  - {fileID: 187901013}
   - {fileID: 200051268}
   - {fileID: 209298458}
+  - {fileID: 228340507}
   - {fileID: 247686139}
   - {fileID: 285371262}
   - {fileID: 287633516}
   - {fileID: 323413459}
   - {fileID: 345622663}
   - {fileID: 367587517}
+  - {fileID: 390615690}
   - {fileID: 392346079}
   - {fileID: 439615257}
   - {fileID: 506979640}
@@ -36309,10 +36309,13 @@ MonoBehaviour:
   - {fileID: 518427075}
   - {fileID: 539293749}
   - {fileID: 564454601}
+  - {fileID: 570158001}
   - {fileID: 585274272}
   - {fileID: 602763789}
+  - {fileID: 602882579}
   - {fileID: 614465674}
   - {fileID: 617929007}
+  - {fileID: 619601455}
   - {fileID: 624335926}
   - {fileID: 638479361}
   - {fileID: 638479362}
@@ -36325,7 +36328,9 @@ MonoBehaviour:
   - {fileID: 764715032}
   - {fileID: 807080670}
   - {fileID: 821801244}
+  - {fileID: 865105366}
   - {fileID: 879956398}
+  - {fileID: 905939695}
   - {fileID: 911633400}
   - {fileID: 926182306}
   - {fileID: 939886112}
@@ -36337,6 +36342,7 @@ MonoBehaviour:
   - {fileID: 1064235334}
   - {fileID: 1077364577}
   - {fileID: 1156971954}
+  - {fileID: 1159817508}
   - {fileID: 1166893747}
   - {fileID: 1208855129}
   - {fileID: 1210583655}
@@ -36346,6 +36352,7 @@ MonoBehaviour:
   - {fileID: 1257712587}
   - {fileID: 1260158053}
   - {fileID: 1269213788}
+  - {fileID: 1298527494}
   - {fileID: 1311909110}
   - {fileID: 1311909111}
   - {fileID: 1323590287}
@@ -36363,6 +36370,7 @@ MonoBehaviour:
   - {fileID: 1533232497}
   - {fileID: 1540814364}
   - {fileID: 1569533616}
+  - {fileID: 1570622884}
   - {fileID: 1617475371}
   - {fileID: 1620267294}
   - {fileID: 1665875510}
@@ -36400,44 +36408,43 @@ MonoBehaviour:
   - {fileID: 2134828299}
   - {fileID: 3409305087878420424}
   - {fileID: 3409305088193251360}
-  - {fileID: 0}
   - {fileID: 3409305089524062622}
   customTypeDatas_animCont: []
   customTypeDatas_uiButton:
-  - {fileID: 570158001}
   - {fileID: 185642875}
-  - {fileID: 228340507}
-  - {fileID: 1159817508}
-  - {fileID: 1570622884}
-  - {fileID: 619601455}
-  - {fileID: 390615690}
-  - {fileID: 905939695}
-  - {fileID: 602882579}
-  - {fileID: 1298527494}
-  - {fileID: 865105366}
   - {fileID: 187901013}
   - {fileID: 200051268}
+  - {fileID: 228340507}
   - {fileID: 247686139}
   - {fileID: 323413459}
+  - {fileID: 390615690}
+  - {fileID: 570158001}
+  - {fileID: 602882579}
   - {fileID: 614465674}
   - {fileID: 617929007}
+  - {fileID: 619601455}
   - {fileID: 638479362}
   - {fileID: 653059483}
   - {fileID: 687573960}
   - {fileID: 807080670}
+  - {fileID: 865105366}
+  - {fileID: 905939695}
   - {fileID: 911633400}
   - {fileID: 939886112}
   - {fileID: 976151408}
   - {fileID: 1013679669}
   - {fileID: 1064235334}
+  - {fileID: 1159817508}
   - {fileID: 1257712585}
   - {fileID: 1260158053}
   - {fileID: 1269213788}
+  - {fileID: 1298527494}
   - {fileID: 1311909111}
   - {fileID: 1323590287}
   - {fileID: 1405295735}
   - {fileID: 1476301014}
   - {fileID: 1569533616}
+  - {fileID: 1570622884}
   - {fileID: 1715602211}
   - {fileID: 1740806786}
   - {fileID: 1771520031}
@@ -36525,8 +36532,7 @@ MonoBehaviour:
   - {fileID: 2037423677}
   - {fileID: 2126685504}
   - {fileID: 2132688166}
-  customTypeDatas_transform:
-  - {fileID: 0}
+  customTypeDatas_transform: []
   customTypeDatas_gameObject:
   - {fileID: 129213001}
   - {fileID: 518427075}
@@ -38505,7 +38511,6 @@ MonoBehaviour:
   txtBossMonChallengeTimer: {fileID: 0}
   imgBossMonTimer: {fileID: 0}
   imgBossMonTimerParent: {fileID: 0}
-  trLotteryGameSet: {fileID: 0}
   mainButtons:
   - {fileID: 1569533617}
   - {fileID: 1064235335}
@@ -40578,7 +40583,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 326555537
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3f70fd7066b0505459fc6c58c27ce4d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -49118,6 +49123,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2456668813117325133, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2955134244880892434, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_SpriteKey
       value: 0.67888993
@@ -51326,6 +51335,10 @@ PrefabInstance:
     - target: {fileID: 6166133284995099075, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057556532523519118, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
