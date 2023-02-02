@@ -18,12 +18,10 @@ public class Player : MonoBehaviour
     public int bone;
     public int gem;
     public DateTime playTime;
+    public float currentMonsterHp;
 
     // 주사위 개수
     public int diceCount;
-
-
-    //
 
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>
     public StageData currentStageData;
@@ -38,8 +36,9 @@ public class Player : MonoBehaviour
     /// <summary> 직전에 전투한 몬스터 타입 </summary>
     public MonsterType prevMonsterType;
 
+
     /// <summary> 현재 플레이어의 스탯 데이터 </summary>
-    
+
 
     // 기본 몬스터를 제외한 몬스터 사냥중일때
     public bool isSpacialMonsterHunting;
@@ -60,10 +59,6 @@ public class Player : MonoBehaviour
     public  IEnumerator Init(SaveData saveData)
     {
         SetPlayerDataFromSaveData(saveData);
-
-        
-        
-
         yield return null;
     }
 
@@ -72,6 +67,7 @@ public class Player : MonoBehaviour
     {
         currentMonster = monsterBase;
     }
+
 
     public MonsterBase GetCurrntMonster()
     {
@@ -89,13 +85,18 @@ public class Player : MonoBehaviour
     }
 
 
+    public void SetCurrentMonsterHP(float hpValue)
+    {
+        currentMonsterHp = hpValue;
+    }
+        
+
     public void SetPlayerDataFromSaveData(SaveData saveData)
     {
         stageIdx = saveData.stageIdx;
         upgradeLevelIdx = saveData.upgradeLevelIdx;
         gold = saveData.gold;
         SetCurrentStageData(stageIdx);
-
     }
 
     public void SetCurrentStageData(int stageIdx)

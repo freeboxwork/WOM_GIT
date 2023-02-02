@@ -98,12 +98,25 @@ public class UiController : MonoBehaviour
       
     public void SetTxtPhaseCount(int value)
     {
-        txtPhaseCount.text = value.ToString();
+        var countValue = GlobalData.instance.player.pahseCountOriginalValue - value;
+        txtPhaseCount.text = countValue.ToString();
+
+        
     }
 
-    public void SetSliderPhaseValue()
+    public void SetSliderMonsterHp(float value)
     {
+        var sliderValue = value / GlobalData.instance.player.currentMonsterHp ;
+        UtilityMethod.GetCustomTypeImageById(41).fillAmount = sliderValue;
+    }
 
+    public void SetSliderPhaseValue(float value)
+    {
+        var calcValue = (float)value / GlobalData.instance.player.pahseCountOriginalValue;
+        var sliderValue = 1 - calcValue;
+        UtilityMethod.GetCustomTypeImageById(42).fillAmount = sliderValue;
+
+        EnableGlodMonsterIconOutlineEffect(sliderValue >= 1);
     }
 
     public void SetTxtGold(int value)
@@ -138,9 +151,15 @@ public class UiController : MonoBehaviour
 
     public void SetImgTimerFilledRaidal(float value)
     {
-        imgBossMonTimer.fillAmount = value; 
+        var sliderValue = 1 - value;
+        imgBossMonTimer.fillAmount = sliderValue; 
     }
         
+    public void EnableGlodMonsterIconOutlineEffect( bool value)
+    {
+        UtilityMethod.GetCustomTypeImageById(43).enabled = value;
+    }
+
 
     void SetUiData()
     {
@@ -199,8 +218,6 @@ public class UiController : MonoBehaviour
     }
 
 
-
-
     public void EnableMenuPanel(MenuPanelType type)
     {
         for (int i = 0; i < mainPanels.Count; i++)
@@ -254,11 +271,6 @@ public class UiController : MonoBehaviour
         menuPannelScrollView_posY_shop = UtilityMethod.GetCustomTypeTrById(3).localPosition.y;
     }
 
-
-    void AllRestScrollViewMainPannel()
-    {
-
-    }
 
     public void AllDisableMenuPanels()
     {
