@@ -99,7 +99,7 @@ public class LotteryManager : MonoBehaviour
         SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(gradeIndex));
         SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(gradeIndex));
         randomGradeValues = GetRandomArrayValue();
-        CreateCards();
+        //CreateCards();
         yield return null;
     }
         
