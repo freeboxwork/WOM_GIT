@@ -1,21 +1,3 @@
-fileFormatVersion: 2
-guid: 251f98b6209cd1e47ac868003423fa03
-TrueTypeFontImporter:
-  externalObjects: {}
-  serializedVersion: 4
-  fontSize: 16
-  forceTextureCase: -2
-  characterSpacing: 0
-  characterPadding: 1
-  includeFontData: 1
-  fontNames:
-  - NEXON Lv1 Gothic OTF
-  fallbackFontReferences: []
-  customCharacters: 
-  fontRenderingMode: 0
-  ascentCalculationMode: 1
-  useLegacyBoundsCalculation: 0
-  shouldRoundAdvanceValue: 1
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:a50f2e1df63444a66bc10095d5b128a036e6fbe0fe39ecaedf643e7e50c1fff1
+size 506
