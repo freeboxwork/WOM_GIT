@@ -9,6 +9,9 @@ public class UnionSpwanTimer : MonoBehaviour
     public bool isTimerReady;
     public int timerIndex;
 
+    UnionSlot unionSlot;
+    
+
     void Start()
     {
         
@@ -19,29 +22,38 @@ public class UnionSpwanTimer : MonoBehaviour
         spwanTime = time;   
     }
     
-    public void TimerStart(InsectBullet insectBullet)
+    public void TimerStart( UnionSlot unionSlot )
     {
+        this.unionSlot = unionSlot;
         isTimerReady = true;
-        StartCoroutine(SpwanTimer(insectBullet));
+        SetSpwanTime(unionSlot.inGameData.spawnTime);
+        StartCoroutine(SpwanTimer());
     }
 
     public void TimerStop()
     {
+        unionSlot = null;
         isTimerReady= false;
         StopAllCoroutines();
     }
 
-    IEnumerator SpwanTimer(InsectBullet insectBullet)
+    IEnumerator SpwanTimer()
     {
         while (isTimerReady)
         {
-            //yield return new WaitForSeconds(spwanTime);
-            // TODO: insect bullet 불러 오는 방식 수정
-            yield return new WaitForSeconds(3f);
+            // set union data
+            var union = GlobalData.instance.insectManager.GetDisableUnion();
+            union.inGameData = unionSlot.inGameData;
+          
+            // set union face
+            var sprite = spwanManager.spriteFileData.GetSpriteData(unionSlot.inGameData.unionIndex);
+            union.SetInsectFace(sprite);
+
+            yield return new WaitForSeconds(spwanTime);
 
             var randomPos = spwanManager.GetRandomPos();
-            insectBullet.gameObject.transform.position = randomPos;
-            insectBullet.gameObject.SetActive(true);
+            union.gameObject.transform.position = randomPos;
+            union.gameObject.SetActive(true);
         }
     }
 
