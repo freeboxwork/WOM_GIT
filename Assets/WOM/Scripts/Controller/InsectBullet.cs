@@ -36,12 +36,23 @@ public class InsectBullet : MonoBehaviour
             StartCoroutine(AttackAnim());
     }
 
+    float GetSpeed()
+    {
+        if(insectType == EnumDefinition.InsectType.union)
+        {
+            return inGameData.moveSpeed;
+        }
+        else
+        {
+            return GlobalData.instance.insectManager.GetInsect(insectType).speed;
+        }
+    }
 
     IEnumerator AttackAnim()
     {
         animData.ResetAnimData();
         var animPoints = GetAnimPoints();
-        speed = GlobalData.instance.insectManager.GetInsect(insectType).speed;
+        speed = GetSpeed();
         while (animData.animValue < 0.99f)
         {
             // TODO : DATA ÀÇ SPEED Àû¿ë
