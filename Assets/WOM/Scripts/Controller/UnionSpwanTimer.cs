@@ -35,7 +35,9 @@ public class UnionSpwanTimer : MonoBehaviour
     {
         while (isTimerReady)
         {
-            yield return new WaitForSeconds(spwanTime);
+            //yield return new WaitForSeconds(spwanTime);
+            // TODO: insect bullet 불러 오는 방식 수정
+            yield return new WaitForSeconds(3f);
 
             var randomPos = spwanManager.GetRandomPos();
             insectBullet.gameObject.transform.position = randomPos;
