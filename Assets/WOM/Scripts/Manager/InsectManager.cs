@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,14 +33,23 @@ public class InsectManager : MonoBehaviour
     Player player;
     TraningManager traningManager;
 
+    public InsectSpriteFileData insectSpriteFileData;
+
     public float dps;
+
+
+
+    //UNION 발사체
+    public SpriteFileData spriteFileData;
+    public InsectBullet prefabUnion;
+    public List<InsectBullet> insectBullets_Union = new List<InsectBullet>();
+    public int unionBirthCount = 20;
+    public Transform tr_UnionPool;
 
     void Start()
     {
-
         player = GlobalData.instance.player;
         traningManager = GlobalData.instance.traningManager;
-        //StartCoroutine(Init());
     }
 
     public IEnumerator Init(PlayerDataManager playerDataManager)
@@ -52,6 +62,8 @@ public class InsectManager : MonoBehaviour
         SetInsectData(EnumDefinition.InsectType.beetle, playerDataManager.saveData.beetleSaveData.evolutionLastData);
         SetInsectData(EnumDefinition.InsectType.mentis, playerDataManager.saveData.mentisSaveData.evolutionLastData);
 
+        // 유니온 풀링 생성
+        CreateUnionPooling(unionBirthCount);
 
         // add insects list 
         // 순서 : mentis, bee, beetle
@@ -60,6 +72,10 @@ public class InsectManager : MonoBehaviour
         insects.Add(insectBeetle);
 
         yield return new WaitForEndOfFrame();
+     
+
+        // Set insect face
+        SetAllInsectFace(GlobalData.instance.evolutionManager.evalutionLeveldx);
     }
 
     
@@ -234,7 +250,50 @@ public class InsectManager : MonoBehaviour
         //TODO: DPS 계산식 추가 필요함.
         return dps;
     }
-  
+
+    public void SetAllInsectFace(int faceID)
+    {
+        foreach (InsectType type in System.Enum.GetValues(typeof(InsectType)))
+        {
+            SetInsectFace(type, faceID);
+        }
+    }
+    public void SetInsectFace(InsectType insectType, int id)
+    {
+        var insects = GetBulletsByInsectType(insectType);
+        if(insects != null)
+        {
+            foreach (var insect in insects)
+            {
+                insect.SetInsectFace(insectSpriteFileData.GetInsectFaceSprite(insectType, id));
+            }
+        }
+    }
+    void CreateUnionPooling(int birthCount)
+    {
+        for (int i = 0; i < birthCount; i++)
+        {
+            var union = Instantiate(prefabUnion, tr_UnionPool);
+            union.SetInsectType(EnumDefinition.InsectType.union);
+            union.gameObject.SetActive(false);
+            insectBullets_Union.Add(union);
+        }
+    }
+
+    public InsectBullet GetDisableUnion()
+    {
+        var union = insectBullets_Union.FirstOrDefault(f => !f.gameObject.activeSelf);
+        if (union != null)
+        {
+            return union;
+        }
+        else
+        {
+            //TODO: Pool 부족시 자동생성 및 추가 
+            Debug.Log("유니온 풀링 부족 추가 생성 필요함");
+            return null;
+        }
+    }
 }
 
 

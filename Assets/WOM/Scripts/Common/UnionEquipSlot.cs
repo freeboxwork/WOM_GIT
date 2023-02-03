@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UnionEquipSlot : MonoBehaviour
 {
+    public int slotIndex = 0;
     public Image imgFrame;
     public Image imgUnionFace;
     public Image imgUnlock;
@@ -14,6 +15,9 @@ public class UnionEquipSlot : MonoBehaviour
     public bool isUnLock = false;
     public UnionSlot unionSlot;
     public GameObject objEquipHighlight;
+
+    // union spwan timer 와 1:1 매칭
+   
     void Start()
     {
         SetBtnEvent();

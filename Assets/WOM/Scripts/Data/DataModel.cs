@@ -154,6 +154,7 @@ public class UnionInGameData
     public int unionCount;
     public int LevelUpReqirementCount;
     public bool isUnlock;
+    public EnumDefinition.UnionGradeType unionGradeType;
 
     // stat
     public float damage;

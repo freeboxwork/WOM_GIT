@@ -24,6 +24,8 @@ public class UnionSlot : MonoBehaviour
     public UnionInGameData inGameData;
     public UnionData unionData;
 
+ 
+
     void Start()
     {
         

@@ -177,11 +177,19 @@ public class TraningManager : MonoBehaviour
     /// <summary> 골드 , 뼈조각 획득 하거나 구매 했을때 버튼 상태 활성, 비활성화  </summary>
     public void EnableBuyButtons()
     {
+        StartCoroutine(EnableBuyButtons_Cor());
+    }
+
+    IEnumerator EnableBuyButtons_Cor()
+    {
+
+        yield return new WaitForEndOfFrame();
+
         // 보유 금액으로 구매 가능한지 확인
         foreach (var slot in traningSlots)
         {
             var inGameData = GetTraningInGameData(slot.statType);
-            var enableValue = IsValidPayItem(GetCostIntValue(slot.statType, inGameData),slot.goodsType);
+            var enableValue = IsValidPayItem(GetCostIntValue(slot.statType, inGameData), slot.goodsType);
             slot.BtnEnable(enableValue);
         }
     }

@@ -270,7 +270,13 @@ public class SkillManager : MonoBehaviour
     // 골드 보류량에 따라 스킬 구매 버튼 활성, 비활성화
     public void EnableBuyButtons()
     {
-        foreach(var slot in skillSlots)
+        StartCoroutine(EnableBuyButtons_Cor());
+    }
+
+    IEnumerator EnableBuyButtons_Cor()
+    {
+        yield return new WaitForEndOfFrame();
+        foreach (var slot in skillSlots)
         {
             var data = GetSkillData(slot.skillType);
             var inGameData = GetSkillInGameDataByType(slot.skillType);
@@ -278,7 +284,6 @@ public class SkillManager : MonoBehaviour
             slot.btnPay.interactable = IsPaySkill(price);
         }
     }
-
 
 
 

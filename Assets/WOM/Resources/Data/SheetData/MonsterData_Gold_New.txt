@@ -5,7 +5,7 @@
    "exp": 0,
    "gold": 500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -15,7 +15,7 @@
    "exp": 0,
    "gold": 600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -25,7 +25,7 @@
    "exp": 0,
    "gold": 700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -35,7 +35,7 @@
    "exp": 0,
    "gold": 800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -45,7 +45,7 @@
    "exp": 0,
    "gold": 900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -55,7 +55,7 @@
    "exp": 0,
    "gold": 1000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -65,7 +65,7 @@
    "exp": 0,
    "gold": 1100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -75,7 +75,7 @@
    "exp": 0,
    "gold": 1200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -85,7 +85,7 @@
    "exp": 0,
    "gold": 1300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -95,7 +95,7 @@
    "exp": 0,
    "gold": 1400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -105,7 +105,7 @@
    "exp": 0,
    "gold": 1500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -115,7 +115,7 @@
    "exp": 0,
    "gold": 1600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -125,7 +125,7 @@
    "exp": 0,
    "gold": 1700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -135,7 +135,7 @@
    "exp": 0,
    "gold": 1800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -145,7 +145,7 @@
    "exp": 0,
    "gold": 1900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -155,7 +155,7 @@
    "exp": 0,
    "gold": 2000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -165,7 +165,7 @@
    "exp": 0,
    "gold": 2100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -175,7 +175,7 @@
    "exp": 0,
    "gold": 2200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -185,7 +185,7 @@
    "exp": 0,
    "gold": 2300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -195,7 +195,7 @@
    "exp": 0,
    "gold": 2400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -205,7 +205,7 @@
    "exp": 0,
    "gold": 2500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -215,7 +215,7 @@
    "exp": 0,
    "gold": 2600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -225,7 +225,7 @@
    "exp": 0,
    "gold": 2700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -235,7 +235,7 @@
    "exp": 0,
    "gold": 2800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -245,7 +245,7 @@
    "exp": 0,
    "gold": 2900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -255,7 +255,7 @@
    "exp": 0,
    "gold": 3000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -265,7 +265,7 @@
    "exp": 0,
    "gold": 3100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -275,7 +275,7 @@
    "exp": 0,
    "gold": 3200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -285,7 +285,7 @@
    "exp": 0,
    "gold": 3300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -295,7 +295,7 @@
    "exp": 0,
    "gold": 3400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -305,7 +305,7 @@
    "exp": 0,
    "gold": 3500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -315,7 +315,7 @@
    "exp": 0,
    "gold": 3600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -325,7 +325,7 @@
    "exp": 0,
    "gold": 3700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -335,7 +335,7 @@
    "exp": 0,
    "gold": 3800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -345,7 +345,7 @@
    "exp": 0,
    "gold": 3900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -355,7 +355,7 @@
    "exp": 0,
    "gold": 4000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -365,7 +365,7 @@
    "exp": 0,
    "gold": 4100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -375,7 +375,7 @@
    "exp": 0,
    "gold": 4200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -385,7 +385,7 @@
    "exp": 0,
    "gold": 4300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -395,7 +395,7 @@
    "exp": 0,
    "gold": 4400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -405,7 +405,7 @@
    "exp": 0,
    "gold": 4500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -415,7 +415,7 @@
    "exp": 0,
    "gold": 4600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -425,7 +425,7 @@
    "exp": 0,
    "gold": 4700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -435,7 +435,7 @@
    "exp": 0,
    "gold": 4800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -445,7 +445,7 @@
    "exp": 0,
    "gold": 4900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -455,7 +455,7 @@
    "exp": 0,
    "gold": 5000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -465,7 +465,7 @@
    "exp": 0,
    "gold": 5100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -475,7 +475,7 @@
    "exp": 0,
    "gold": 5200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -485,7 +485,7 @@
    "exp": 0,
    "gold": 5300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -495,7 +495,7 @@
    "exp": 0,
    "gold": 5400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -505,7 +505,7 @@
    "exp": 0,
    "gold": 5500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -515,7 +515,7 @@
    "exp": 0,
    "gold": 5600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -525,7 +525,7 @@
    "exp": 0,
    "gold": 5700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -535,7 +535,7 @@
    "exp": 0,
    "gold": 5800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -545,7 +545,7 @@
    "exp": 0,
    "gold": 5900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -555,7 +555,7 @@
    "exp": 0,
    "gold": 6000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -565,7 +565,7 @@
    "exp": 0,
    "gold": 6100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -575,7 +575,7 @@
    "exp": 0,
    "gold": 6200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -585,7 +585,7 @@
    "exp": 0,
    "gold": 6300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -595,7 +595,7 @@
    "exp": 0,
    "gold": 6400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -605,7 +605,7 @@
    "exp": 0,
    "gold": 6500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -615,7 +615,7 @@
    "exp": 0,
    "gold": 6600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -625,7 +625,7 @@
    "exp": 0,
    "gold": 6700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -635,7 +635,7 @@
    "exp": 0,
    "gold": 6800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -645,7 +645,7 @@
    "exp": 0,
    "gold": 6900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -655,7 +655,7 @@
    "exp": 0,
    "gold": 7000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -665,7 +665,7 @@
    "exp": 0,
    "gold": 7100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -675,7 +675,7 @@
    "exp": 0,
    "gold": 7200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -685,7 +685,7 @@
    "exp": 0,
    "gold": 7300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -695,7 +695,7 @@
    "exp": 0,
    "gold": 7400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -705,7 +705,7 @@
    "exp": 0,
    "gold": 7500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -715,7 +715,7 @@
    "exp": 0,
    "gold": 7600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -725,7 +725,7 @@
    "exp": 0,
    "gold": 7700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -735,7 +735,7 @@
    "exp": 0,
    "gold": 7800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -745,7 +745,7 @@
    "exp": 0,
    "gold": 7900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -755,7 +755,7 @@
    "exp": 0,
    "gold": 8000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -765,7 +765,7 @@
    "exp": 0,
    "gold": 8100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -775,7 +775,7 @@
    "exp": 0,
    "gold": 8200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -785,7 +785,7 @@
    "exp": 0,
    "gold": 8300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -795,7 +795,7 @@
    "exp": 0,
    "gold": 8400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -805,7 +805,7 @@
    "exp": 0,
    "gold": 8500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -815,7 +815,7 @@
    "exp": 0,
    "gold": 8600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -825,7 +825,7 @@
    "exp": 0,
    "gold": 8700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -835,7 +835,7 @@
    "exp": 0,
    "gold": 8800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -845,7 +845,7 @@
    "exp": 0,
    "gold": 8900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -855,7 +855,7 @@
    "exp": 0,
    "gold": 9000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -865,7 +865,7 @@
    "exp": 0,
    "gold": 9100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -875,7 +875,7 @@
    "exp": 0,
    "gold": 9200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -885,7 +885,7 @@
    "exp": 0,
    "gold": 9300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -895,7 +895,7 @@
    "exp": 0,
    "gold": 9400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -905,7 +905,7 @@
    "exp": 0,
    "gold": 9500,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -915,7 +915,7 @@
    "exp": 0,
    "gold": 9600,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -925,7 +925,7 @@
    "exp": 0,
    "gold": 9700,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -935,7 +935,7 @@
    "exp": 0,
    "gold": 9800,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -945,7 +945,7 @@
    "exp": 0,
    "gold": 9900,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -955,7 +955,7 @@
    "exp": 0,
    "gold": 10000,
    "goldCount": 20,
-   "imageId": 1,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -965,7 +965,7 @@
    "exp": 0,
    "gold": 10100,
    "goldCount": 20,
-   "imageId": 2,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -975,7 +975,7 @@
    "exp": 0,
    "gold": 10200,
    "goldCount": 20,
-   "imageId": 3,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -985,7 +985,7 @@
    "exp": 0,
    "gold": 10300,
    "goldCount": 20,
-   "imageId": 4,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  },
@@ -995,7 +995,7 @@
    "exp": 0,
    "gold": 10400,
    "goldCount": 20,
-   "imageId": 0,
+   "imageId": 98,
    "type": "GOLD",
    "bgId": 1
  }
