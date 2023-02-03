@@ -52,17 +52,9 @@ public class UnionSpwanManager : MonoBehaviour
         GetSpwanTimer(equipSlotIndex).TimerStop();
 
         yield return new WaitForEndOfFrame();
-
-        // set data
-        var union = GlobalData.instance.insectManager.GetDisableUnion();
-        union.inGameData = unionSlot.inGameData;
-
-        // set face
-        var sprite = spriteFileData.GetSpriteData(unionSlot.inGameData.unionIndex);
-        union.SetInsectFace(sprite);
         
         // start spawn
-        GetSpwanTimer(equipSlotIndex).TimerStart(union);
+        GetSpwanTimer(equipSlotIndex).TimerStart( unionSlot);
     }
 
     

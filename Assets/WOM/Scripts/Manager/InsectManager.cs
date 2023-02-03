@@ -43,7 +43,7 @@ public class InsectManager : MonoBehaviour
     public SpriteFileData spriteFileData;
     public InsectBullet prefabUnion;
     public List<InsectBullet> insectBullets_Union = new List<InsectBullet>();
-    public int unionBirthCount = 20;
+    public int unionBirthCount = 30;
     public Transform tr_UnionPool;
 
     void Start()
@@ -96,6 +96,7 @@ public class InsectManager : MonoBehaviour
         DisableInsects(insectBullets_Bee);
         DisableInsects(insectBullets_Beetle);
         DisableInsects(insectBullets_Mentis);
+        DisableInsects(insectBullets_Union);
     }
 
     bool IsHalfPointUpSide(InsectBullet insectBullet)
@@ -120,14 +121,22 @@ public class InsectManager : MonoBehaviour
     /// <summary> 계산된 곤충 데미지 값 </summary>
     public float GetInsectDamage(EnumDefinition.InsectType insectType)
     {
-        var insect = GetInsect(insectType);
-        var damage = GetInsectDamage(insect);
-        if (HasCriticalDamage(insect)) // 크리티컬 데미지 터졌을때
+        if(insectType == InsectType.union)
         {
-            damage = damage * GetInsectCriticalDamage(insect);
+            // TODO 데미지 계산 공식 필요
+            return 0;
         }
-        if (damageDebug) return debugDamage;
-        return damage;
+        else
+        {
+            var insect = GetInsect(insectType);
+            var damage = GetInsectDamage(insect);
+            if (HasCriticalDamage(insect)) // 크리티컬 데미지 터졌을때
+            {
+                damage = damage * GetInsectCriticalDamage(insect);
+            }
+            if (damageDebug) return debugDamage;
+            return damage;
+        }
     }
     // ---------- 훈련 업그레이드 시작
     float GetInsectDamage(InsectBase insect)
@@ -136,8 +145,6 @@ public class InsectManager : MonoBehaviour
         //return insect.damage + (insect.damage * insect.damageRate);
         return (insect.damage + traningManager.GetStatPower(SaleStatType.trainingDamage)) * (insect.damageRate + traningManager.GetStatPower(SaleStatType.talentDamage));
         //return ((insect.damage + player.GetStatValue(SaleStatType.trainingDamage)) * (insect.damageRate + player.GetStatValue(SaleStatType.talentDamage) + RewardDiceEvolutionData insectDamage))  * RewardEvolutionGradeData damageRate ;
-
-
     }
 
     // 치명타 데미지 계산

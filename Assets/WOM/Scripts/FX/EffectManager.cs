@@ -23,6 +23,7 @@ public class EffectManager : MonoBehaviour
     public List<ParticleRoate> insectAttackEffMentis = new List<ParticleRoate>();
     public List<ParticleRoate> insectAttackEffBee = new List<ParticleRoate>();
     public List<ParticleRoate> insectAttackEffBeetle = new List<ParticleRoate>();
+    public List<ParticleRoate> insectAttackEffUnion = new List<ParticleRoate>();
     [Header("=====================================================================================================================")]
 
 
@@ -63,6 +64,8 @@ public class EffectManager : MonoBehaviour
         CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.bee], insectAttackEffBee);
         // attack effect beetle
         CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.beetle], insectAttackEffBeetle);
+        // attack effect Union
+        CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.union], insectAttackEffUnion);
 
         // 골드 풀링 오브젝트 생성
         goldPoolingCont.Init();
@@ -106,6 +109,7 @@ public class EffectManager : MonoBehaviour
             case EnumDefinition.InsectType.mentis: EnableAttackEffect(insectAttackEffMentis, tr); break;
             case EnumDefinition.InsectType.bee:    EnableAttackEffect(insectAttackEffBee, tr);    break;
             case EnumDefinition.InsectType.beetle: EnableAttackEffect(insectAttackEffBeetle, tr); break;
+            case EnumDefinition.InsectType.union: EnableAttackEffect(insectAttackEffUnion, tr); break;
         }
     }
         

@@ -49987,9 +49987,11 @@ MonoBehaviour:
   - {fileID: -6060545426311559759, guid: 9dc31c37c97746c4d9672da7b1191966, type: 3}
   - {fileID: 5587835252236862654, guid: 83e1d446b122a4f44a23322d93590770, type: 3}
   - {fileID: 1698673197798735947, guid: 7bfa227991be5cc46bc1825bf5203a5f, type: 3}
+  - {fileID: 5587835252236862654, guid: 83e1d446b122a4f44a23322d93590770, type: 3}
   insectAttackEffMentis: []
   insectAttackEffBee: []
   insectAttackEffBeetle: []
+  insectAttackEffUnion: []
   trEffects: {fileID: 1710370011}
   goldSFX_RandomPoints:
   - {fileID: 234574807}
