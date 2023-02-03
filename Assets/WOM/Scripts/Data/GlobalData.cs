@@ -30,6 +30,7 @@ public class GlobalData : MonoBehaviour
     public UnionInfoPopupController unionInfoPopupController;
     public TraningManager traningManager;
     public ShopManager shopManager;
+    public UnionSpwanManager unionSpwanManager;
 
 
 

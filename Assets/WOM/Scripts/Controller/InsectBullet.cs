@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 /// <summary>
@@ -11,10 +9,14 @@ public class InsectBullet : MonoBehaviour
     public EnumDefinition.InsectType insectType;
     public AnimData animData;
     public ParticleSystem effDisable;
-        
+    public SpriteRenderer spriteRenderer;    
     
     float speed = 1;
     Vector3 lookDir;
+
+    // UNION
+    public UnionInGameData inGameData;
+
     void Start()
     {
         
@@ -24,6 +26,8 @@ public class InsectBullet : MonoBehaviour
     {
         this.insectType = insectType;
     }
+
+    
 
     private void OnEnable()
     {
@@ -92,4 +96,12 @@ public class InsectBullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void SetInsectFace(Sprite insectFace)
+    {
+        spriteRenderer.sprite = insectFace; 
+    }
+
+    
 }
+
+

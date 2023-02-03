@@ -288,4 +288,9 @@ public class UiController : MonoBehaviour
         imgBossMonTimerParent.gameObject.SetActive(false);
         UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(false);
     }
+
+    public void SetEnablePhaseCountUI(bool value)
+    {
+        UtilityMethod.GetCustomTypeGMById(7).SetActive(value);
+    }
 }

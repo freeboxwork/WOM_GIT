@@ -7,12 +7,8 @@ public class UnionManager : MonoBehaviour
 {
     public List<UnionSlot> unionSlots = new List<UnionSlot>();
     public List<UnionEquipSlot> unionEquipSlots = new List<UnionEquipSlot>();
-    public SpriteFileData spriteFileData;
-    
-    // 장착된 유니온 데이터
-   // public List<UnionSlot> equipUnionSlots = new List<UnionSlot>();
-
     UnionSlot selectedSlot;
+    public SpriteFileData spriteFileData;
 
     void Start()
     {
@@ -41,9 +37,9 @@ public class UnionManager : MonoBehaviour
             int index = i;
             var data = unionDatas[index];
             var slot = unionSlots[index];
-
+            
             slot.inGameData = new UnionInGameData();
-
+            
             // set id
             slot.inGameData.unionIndex = data.unionIndex;
             // set type
@@ -84,6 +80,7 @@ public class UnionManager : MonoBehaviour
             slot.inGameData.spawnTime = data.spawnTime;
             slot.inGameData.moveSpeed = data.moveSpeed;
             slot.inGameData.passiveDamage = GetUnionPassiveDamage(slot); //data.passiveDamage;
+            slot.inGameData.unionGradeType = (EnumDefinition.UnionGradeType)System.Enum.Parse(typeof(EnumDefinition.UnionGradeType), data.gradeType);
             Debug.Log(slot.inGameData.passiveDamage);
 
             yield return null;
@@ -97,6 +94,7 @@ public class UnionManager : MonoBehaviour
 
         // 버튼 이벤트 설정
         SetBtnEvent();
+       
     }
 
     void SetBtnEvent()
@@ -129,6 +127,10 @@ public class UnionManager : MonoBehaviour
 
         // 장착후 버튼 활성화 해제
         unionEquipSlots.ForEach(f => f.SetBtnEnableState(false));
+
+        // Union Spwan
+        GlobalData.instance.unionSpwanManager.UnionSpwan(selectedSlot, equipSlot.slotIndex);
+
     }
 
 
@@ -286,4 +288,6 @@ public class UnionManager : MonoBehaviour
             equipSlot.EnableEffHighlight(false);
         }
     }
+
+
 }

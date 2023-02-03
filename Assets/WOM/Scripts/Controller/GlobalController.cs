@@ -22,6 +22,7 @@ public class GlobalController : MonoBehaviour
     public TraningManager traningManager;
     public EvolutionManager evolutionManager;
     public ShopManager shopManager;
+    public UnionSpwanManager unionSpwanManager;
 
     void Start()
     {
@@ -78,6 +79,9 @@ public class GlobalController : MonoBehaviour
 
         // 훈련 데이터및 UI 세팅
         yield return StartCoroutine(traningManager.Init());
+
+        // 유니온 스폰 매니저 세팅
+        yield return StartCoroutine(unionSpwanManager.Init());  
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);

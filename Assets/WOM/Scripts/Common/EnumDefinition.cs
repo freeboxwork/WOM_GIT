@@ -16,6 +16,7 @@ public class EnumDefinition
         mentis,
         bee,
         beetle,
+        union,
         none
     }
     public enum MonsterType
