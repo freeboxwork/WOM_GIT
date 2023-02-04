@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static EnumDefinition;
 
 /// <summary>
@@ -8,15 +9,31 @@ using static EnumDefinition;
 /// </summary>
 public class StatManager : MonoBehaviour
 {
+    DataManager dataManager;
+    EvolutionManager evolutionManager;
+    TraningManager traningManager;
+    UnionManager unionManager;
+    DNAManager dnaManager;
 
     void Start()
     {
+       
 
     }
 
     public IEnumerator Init()
     {
         yield return null;
+        GetManagers();
+    }
+
+    void GetManagers()
+    {
+        dataManager = GlobalData.instance.dataManager;
+        evolutionManager = GlobalData.instance.evolutionManager;
+        traningManager = GlobalData.instance.traningManager;
+        unionManager = GlobalData.instance.unionManager;
+        dnaManager = GlobalData.instance.dnaManger;
     }
 
     #region INSECT 
@@ -24,38 +41,57 @@ public class StatManager : MonoBehaviour
     /// <summary> 곤충 공격력 </summary>
     public float GetInsectDamage(InsectType insectType)
     {
-        return 0;
+        var itd = GetEvolutionData(insectType).damage;
+        var ttd = GetTraningData(SaleStatType.trainingDamage).value;
+        var value = itd + ttd;
+        return value;
     }
 
     /// <summary> 곤충 치명타 확율 </summary>
     public float GetInsectCriticalChance(InsectType insectType)
     {
-        return 0;
+        var trcc = GetTraningData(SaleStatType.trainingCriticalChance).value;
+        var tacc = GetTraningData(SaleStatType.talentCriticalChance).value;
+        var icc = GetDnaData(DNAType.insectCriticalChance).power;
+        var value = trcc + tacc + icc;
+        return value;
     }
 
     /// <summary> 곤충 치명타 공격력 </summary>
     public float GetInsectCriticalDamage(InsectType insectType)
     {
-        return 0;
+        var trcd = GetTraningData(SaleStatType.trainingCriticalDamage).value;
+        var tacd = GetTraningData(SaleStatType.talentCriticalDamage).value;
+        var icc = GetDnaData(DNAType.insectCriticalChance).power;
+        var value = trcd + tacd + icc;
+        return value;
     }
 
     /// <summary> 곤충 공격력 증가율 </summary>
     public float GetInsectTalentDamage(InsectType insectType)
     {
-        return 0;
+        var ttd = GetTraningData(SaleStatType.trainingDamage).value;
+        var upd = unionManager.GetAllUnionPassiveDamage();
+        var did = GetDnaData(DNAType.insectDamage).power;
+        var value = ttd + upd + did;
+        return value;
     }
 
     /// <summary> 곤충 이동 속도 </summary>
     public float GetInsectMoveSpeed(InsectType insectType)
     {
-        return 0;
+        var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
+        var ims = GetDnaData(DNAType.insectMoveSpeed).power;
+        var value = tms + ims;
+        return value;
     }
 
     //  클릭하면 나오는 방식인데 스폰 타임 어떻게 적용 되는지?
     /// <summary> 곤충 생성 속도 </summary>
     public float GetInsectSpwanTime(InsectType insectType)
     {
-        return 0;
+        var tss = GetTraningData(SaleStatType.talentSpawnSpeed).value;
+        return tss;
     }
 
     #endregion
@@ -193,4 +229,27 @@ public class StatManager : MonoBehaviour
 
 
     #endregion
+
+
+    /*---------------------------------------------------------------------------------------------------------------*/
+
+
+    #region UTILITY METHOD
+    EvolutionData GetEvolutionData(InsectType insectType)
+    {
+        return dataManager.GetEvolutionDataById(insectType, evolutionManager.evalutionLeveldx);
+    }
+
+    TraningInGameData GetTraningData(SaleStatType saleStatType)
+    {
+        return traningManager.GetTraningInSlotByType(saleStatType).traningInGameData;
+    }
+
+    DNAInGameData GetDnaData(DNAType dnaType)
+    {
+        return dnaManager.GetDNAInGameData(dnaType);
+    }
+
+    #endregion
+
 }

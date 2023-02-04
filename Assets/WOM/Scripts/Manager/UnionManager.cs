@@ -269,7 +269,7 @@ public class UnionManager : MonoBehaviour
         return unionSlots.Any(a => IsValidLevelUpCount(a));
     }
 
-    float GetAllUnionPassiveDamage()
+    public float GetAllUnionPassiveDamage()
     {
         float totalPassiveValue = 0f;
         
