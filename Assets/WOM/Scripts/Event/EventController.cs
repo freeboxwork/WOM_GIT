@@ -29,7 +29,7 @@ public class EventController : MonoBehaviour
 
     void AddEvents()
     {
-        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
@@ -38,18 +38,21 @@ public class EventController : MonoBehaviour
 
     void RemoveEvents()
     {
-        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType, int>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
     }
 
     // MONSTER HIT EVENT
-    void EvnOnMonsterHit(EnumDefinition.InsectType insectType)
+    void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex= 0)
     {
-
         // GET DAMAGE
-        var damage = globalData.insectManager.GetInsectDamage(insectType);
+        float damage;
+        if(insectType == InsectType.union)
+            damage = globalData.insectManager.GetInsectDamage(insectType, unionIndex);
+        else
+            damage = globalData.insectManager.GetInsectDamage(insectType);
 
         // GET MONSTER
         var currentMonster = globalData.player.currentMonster;

@@ -150,8 +150,8 @@ public class EnumDefinition
         glodBonusUp,
         /// <summary> 괴수 몬스터 등장 </summary>
         monsterKing,
-        /// <summary> 아군 전체 공격력이 치명타 ? </summary>
-        allUnitCriticalDamageUp,
+        /// <summary> 아군 전체 치명타  </summary>
+        allUnitCriticalChanceUp,
     }
 
     public enum UnionEquipType

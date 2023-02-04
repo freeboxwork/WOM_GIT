@@ -76,7 +76,7 @@
  },
  {
    "id": 5,
-   "skillType": "allUnitCriticalDamageUp",
+   "skillType": "allUnitCriticalChanceUp",
    "duration": 5,
    "power": 0,
    "name": "광란",

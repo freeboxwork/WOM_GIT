@@ -165,6 +165,10 @@ public class UnionManager : MonoBehaviour
         return unionSlots.FirstOrDefault(f => f.inGameData.unionIndex == id);
     }
 
+    public UnionInGameData GetUnionInGameDataByID(int id)
+    {
+        return unionSlots.FirstOrDefault(f => f.inGameData.unionIndex == id).inGameData;
+    }
 
     public void AddUnion(int unionId)
     {
