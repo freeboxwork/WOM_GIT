@@ -15,6 +15,7 @@ public class StatManager : MonoBehaviour
     UnionManager unionManager;
     DNAManager dnaManager;
 
+
     void Start()
     {
        
@@ -105,6 +106,7 @@ public class StatManager : MonoBehaviour
     /// <summary> 유니온 공격력 </summary>
     public float GetUnionDamage(int unionIndex)
     {
+        
         return 0;
     }
 
@@ -249,6 +251,8 @@ public class StatManager : MonoBehaviour
     {
         return dnaManager.GetDNAInGameData(dnaType);
     }
+
+    
 
     #endregion
 
