@@ -87,7 +87,7 @@ public class SkillManager : MonoBehaviour
     }
     bool IsD_Type(SkillType skillType)
     {
-        return skillType == SkillType.allUnitCriticalDamageUp;
+        return skillType == SkillType.allUnitCriticalChanceUp;
     }
 
     public void LevelUpSkill(SkillType skillType)
@@ -143,7 +143,7 @@ public class SkillManager : MonoBehaviour
                     SetUI_MonsterKing(ref skillSlot, skillData, inGameData);
                     break;
 
-                case SkillType.allUnitCriticalDamageUp:
+                case SkillType.allUnitCriticalChanceUp:
                     AddInGameDataDamage(skillData, ref inGameData);
                     SetUIAllUnitCDU(ref skillSlot, skillData, inGameData);
                     break;

@@ -2725,6 +2725,7 @@ MonoBehaviour:
   traningManager: {fileID: 82140815}
   shopManager: {fileID: 1596687456}
   unionSpwanManager: {fileID: 724018906}
+  statManager: {fileID: 1513546982}
 --- !u!1 &136407795
 GameObject:
   m_ObjectHideFlags: 0
@@ -16852,6 +16853,7 @@ MonoBehaviour:
   evolutionManager: {fileID: 466438108}
   shopManager: {fileID: 1596687456}
   unionSpwanManager: {fileID: 724018906}
+  statManager: {fileID: 1513546982}
 --- !u!1 &742764186
 GameObject:
   m_ObjectHideFlags: 0
@@ -24036,50 +24038,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2915869774591331015, guid: e97b33537867af1438799617a7edce2f, type: 3}
   m_PrefabInstance: {fileID: 1024056096}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1030131405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1030131406}
-  - component: {fileID: 1030131407}
-  m_Layer: 0
-  m_Name: StatManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1030131406
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030131405}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1561350215}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1030131407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030131405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef3567815c1ef484fbb785fe9910e542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1032416027
 GameObject:
   m_ObjectHideFlags: 0
@@ -35602,7 +35560,6 @@ Transform:
   - {fileID: 82140814}
   - {fileID: 1596687455}
   - {fileID: 724018905}
-  - {fileID: 1030131406}
   m_Father: {fileID: 1249124945}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44799,7 +44756,7 @@ MonoBehaviour:
   insectBirthCount: 15
   insects: []
   trHalfPoint: {fileID: 1073158299}
-  damageDebug: 1
+  damageDebug: 0
   debugDamage: 10
   insectSpriteFileData: {fileID: 11400000, guid: 54c0ae9259423854ba32f19ff91abff9, type: 2}
   dps: 0

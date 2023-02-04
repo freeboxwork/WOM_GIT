@@ -95,7 +95,10 @@ public class InsectBullet : MonoBehaviour
             // ¼Ò¸ê
             gameObject.SetActive(false);
             // monster hit event!
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType);
+            if(insectType == EnumDefinition.InsectType.union)
+                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex);
+            else
+                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType);
         }
     }
 

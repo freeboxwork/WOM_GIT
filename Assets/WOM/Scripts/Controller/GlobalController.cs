@@ -23,7 +23,7 @@ public class GlobalController : MonoBehaviour
     public EvolutionManager evolutionManager;
     public ShopManager shopManager;
     public UnionSpwanManager unionSpwanManager;
-
+    public StatManager statManager;
     void Start()
     {
         if (dataManager == null) dataManager = FindObjectOfType<DataManager>();
@@ -81,7 +81,10 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(traningManager.Init());
 
         // 유니온 스폰 매니저 세팅
-        yield return StartCoroutine(unionSpwanManager.Init());  
+        yield return StartCoroutine(unionSpwanManager.Init());
+
+        // 스탯 매니저 초기 세팅
+        yield return StartCoroutine(statManager.Init());
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);

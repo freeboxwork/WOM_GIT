@@ -32,7 +32,7 @@ public class InsectManager : MonoBehaviour
     public float debugDamage = 20;
     Player player;
     TraningManager traningManager;
-
+    StatManager statManager;
     public InsectSpriteFileData insectSpriteFileData;
 
     public float dps;
@@ -50,6 +50,7 @@ public class InsectManager : MonoBehaviour
     {
         player = GlobalData.instance.player;
         traningManager = GlobalData.instance.traningManager;
+        statManager = GlobalData.instance.statManager;
     }
 
     public IEnumerator Init(PlayerDataManager playerDataManager)
@@ -119,20 +120,23 @@ public class InsectManager : MonoBehaviour
 
 
     /// <summary> 계산된 곤충 데미지 값 </summary>
-    public float GetInsectDamage(EnumDefinition.InsectType insectType)
+    public float GetInsectDamage(EnumDefinition.InsectType insectType, int unionIndex = 0)
     {
         if(insectType == InsectType.union)
         {
-            // TODO 데미지 계산 공식 필요
-            return 0;
+            var damage = statManager.GetUnionDamage(unionIndex);
+            var talentDamage = statManager.GetUnionTalentDamage(unionIndex);
+            return damage + talentDamage;
         }
         else
         {
-            var insect = GetInsect(insectType);
-            var damage = GetInsectDamage(insect);
-            if (HasCriticalDamage(insect)) // 크리티컬 데미지 터졌을때
+
+            var damage = statManager.GetInsectDamage(insectType);
+            var talentDamage = statManager.GetInsectTalentDamage(insectType);
+            damage = damage + talentDamage;
+            if (HasCriticalDamage(insectType)) // 크리티컬 데미지 터졌을때
             {
-                damage = damage * GetInsectCriticalDamage(insect);
+                damage = damage * statManager.GetInsectCriticalDamage(insectType); 
             }
             if (damageDebug) return debugDamage;
             return damage;
@@ -156,11 +160,12 @@ public class InsectManager : MonoBehaviour
 
     }
     // 크리티컬 데미지를 가지고 있는지? ( 크리티컬 데미지카 터졌는지 )
-    bool HasCriticalDamage( InsectBase insect )
+    bool HasCriticalDamage( InsectType insectType )
     {
         //var percentage = 1+insect.criticalChance;
         //var percentage = 1+insect.criticalChance + player.GetStatValue(SaleStatType.trainingCriticalDamage) + player.GetStatValue(SaleStatType.talentCriticalDamage)+ RewardPolishEvolutionData insectCriticalChance;
-        var percentage = 1+insect.criticalChance + traningManager.GetStatPower(SaleStatType.trainingCriticalDamage) + traningManager.GetStatPower(SaleStatType.talentCriticalDamage);
+        //var percentage = 1+insect.criticalChance + traningManager.GetStatPower(SaleStatType.trainingCriticalDamage) + traningManager.GetStatPower(SaleStatType.talentCriticalDamage);
+        var percentage = statManager.GetInsectCriticalChance(insectType);
         var randomValue = Random.Range(0f, 100f);
         return randomValue <= percentage;
     }

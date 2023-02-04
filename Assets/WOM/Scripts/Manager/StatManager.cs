@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 using static EnumDefinition;
 
@@ -14,6 +17,15 @@ public class StatManager : MonoBehaviour
     TraningManager traningManager;
     UnionManager unionManager;
     DNAManager dnaManager;
+    SkillManager skillManager;
+
+    //SKILL VALUES
+    float skill_InsectDamageUp = 0;
+    float skill_UnionDamageUp = 0;
+    float skill_AllUnitSpeedUp = 0;
+    float skill_GoldBounsUp = 0;
+    float skill_MonsterKing = 0;
+    float skill_AllUnitCriticalChanceUp = 0;
 
 
     void Start()
@@ -35,6 +47,7 @@ public class StatManager : MonoBehaviour
         traningManager = GlobalData.instance.traningManager;
         unionManager = GlobalData.instance.unionManager;
         dnaManager = GlobalData.instance.dnaManger;
+        skillManager = GlobalData.instance.skillManager;
     }
 
     #region INSECT 
@@ -44,7 +57,7 @@ public class StatManager : MonoBehaviour
     {
         var itd = GetEvolutionData(insectType).damage;
         var ttd = GetTraningData(SaleStatType.trainingDamage).value;
-        var value = itd + ttd;
+        var value = itd + ttd  + skill_InsectDamageUp;
         return value;
     }
 
@@ -54,7 +67,7 @@ public class StatManager : MonoBehaviour
         var trcc = GetTraningData(SaleStatType.trainingCriticalChance).value;
         var tacc = GetTraningData(SaleStatType.talentCriticalChance).value;
         var icc = GetDnaData(DNAType.insectCriticalChance).power;
-        var value = trcc + tacc + icc;
+        var value = trcc + tacc + icc + skill_AllUnitCriticalChanceUp;
         return value;
     }
 
@@ -63,7 +76,7 @@ public class StatManager : MonoBehaviour
     {
         var trcd = GetTraningData(SaleStatType.trainingCriticalDamage).value;
         var tacd = GetTraningData(SaleStatType.talentCriticalDamage).value;
-        var icc = GetDnaData(DNAType.insectCriticalChance).power;
+        var icc = GetDnaData(DNAType.insectCriticalDamage).power;
         var value = trcd + tacd + icc;
         return value;
     }
@@ -71,7 +84,7 @@ public class StatManager : MonoBehaviour
     /// <summary> 곤충 공격력 증가율 </summary>
     public float GetInsectTalentDamage(InsectType insectType)
     {
-        var ttd = GetTraningData(SaleStatType.trainingDamage).value;
+        var ttd = GetTraningData(SaleStatType.talentDamage).value;
         var upd = unionManager.GetAllUnionPassiveDamage();
         var did = GetDnaData(DNAType.insectDamage).power;
         var value = ttd + upd + did;
@@ -83,11 +96,11 @@ public class StatManager : MonoBehaviour
     {
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
-        var value = tms + ims;
+        var value = tms + ims + skill_AllUnitSpeedUp;
         return value;
     }
 
-    //  클릭하면 나오는 방식인데 스폰 타임 어떻게 적용 되는지?
+    //  클릭하면 나오는 방식인데 스폰 타임 어떻게 적용 되는지 -> 신규 로직 추가
     /// <summary> 곤충 생성 속도 </summary>
     public float GetInsectSpwanTime(InsectType insectType)
     {
@@ -106,26 +119,31 @@ public class StatManager : MonoBehaviour
     /// <summary> 유니온 공격력 </summary>
     public float GetUnionDamage(int unionIndex)
     {
-        
-        return 0;
+        var ud = GetUnionData(unionIndex).damage + skill_UnionDamageUp;
+        return ud;
     }
 
     /// <summary> 유니온 이동속도 </summary>
     public float GetUnionMoveSpeed(int unionIndex)
     {
-        return 0;
+        var ums = GetUnionData(unionIndex).moveSpeed;
+        var dms = GetDnaData(DNAType.insectMoveSpeed).power;
+        var value = ums + dms + skill_AllUnitSpeedUp;
+        return value;
     }
 
     /// <summary> 유니온 생성속도 </summary>
     public float GetUnionSpwanSpeed(int unionIndex)
     {
-        return 0;
+        var dst = GetDnaData(DNAType.unionSpawnTime).power; 
+        return dst;
     }
 
     /// <summary> 유니온 공격력 증가율 </summary>
     public float GetUnionTalentDamage(int unionIndex)
     {
-        return 0;
+        var dud = GetDnaData(DNAType.unionDamage).power;
+        return dud;
     }
 
     #endregion
@@ -139,7 +157,10 @@ public class StatManager : MonoBehaviour
     /// <summary> 골드 획득량 </summary>
     public float GetTalentGoldBonus()
     {
-        return 0;
+        var dgb = GetDnaData(DNAType.glodBonus).power;
+        var tgb = GetTraningData(SaleStatType.talentGoldBonus).value;
+        var value = dgb + tgb + skill_GoldBounsUp;
+        return value;
     }
 
     #endregion
@@ -152,32 +173,50 @@ public class StatManager : MonoBehaviour
 
     public IEnumerator EnableSkill_InsectDamageUP() 
     {
-        yield return null;
+        var data = GetSkillData(SkillType.insectDamageUp);
+        skill_InsectDamageUp = data.damage;
+        yield return new WaitForSeconds(data.duaration);
+        skill_InsectDamageUp = 0;
     }
 
     public IEnumerator EnableSkill_UnionDamageUP()
     {
-        yield return null;
+        var data = GetSkillData(SkillType.unionDamageUp);
+        skill_UnionDamageUp = data.damage;
+        yield return new WaitForSeconds(data.duaration);
+        skill_UnionDamageUp = 0;
     }
 
     public IEnumerator EnableSkill_AllUnitSpeedUP()
     {
-        yield return null;
+        var data = GetSkillData(SkillType.allUnitSpeedUp);
+        skill_AllUnitSpeedUp = data.power;
+        yield return new WaitForSeconds(data.duaration);
+        skill_UnionDamageUp = 0;
     }
 
     public IEnumerator EnableSkill_GoldBonusUP()
     {
-        yield return null;
+        var data = GetSkillData(SkillType.glodBonusUp);
+        skill_GoldBounsUp = data.power;
+        yield return new WaitForSeconds(data.duaration);
+        skill_GoldBounsUp = 0;
     }
 
     public IEnumerator EnableSkill_MonsterKing()
     {
-        yield return null;
+        var data = GetSkillData(SkillType.monsterKing);
+        skill_MonsterKing = data.power;
+        yield return new WaitForSeconds(data.duaration);
+        skill_MonsterKing = 0;
     }
 
     public IEnumerator EnableSkill_AllUnitCriticalChanceUP()
     {
-        yield return null;
+        var data = GetSkillData(SkillType.allUnitCriticalChanceUp);
+        skill_AllUnitCriticalChanceUp = data.power;
+        yield return new WaitForSeconds(data.duaration);
+        skill_AllUnitCriticalChanceUp = 0;
     }
 
 
@@ -189,44 +228,44 @@ public class StatManager : MonoBehaviour
 
     #region 개별 DATA
 
-    public void GoldPig()
+    public float GoldPig()
     {
-
+        return GetDnaData(DNAType.goldPig).power;
     }
 
-    public void SkillDuration()
+    public float SkillDuration()
     {
-
+        return GetDnaData(DNAType.skillDuration).power;
     }
 
-    public void SkillCoolTime()
+    public float SkillCoolTime()
     {
-
+        return GetDnaData(DNAType.skillCoolTime).power;
     }
 
-    public void BossDamage()
+    public float BossDamage()
     {
-
+        return GetDnaData(DNAType.bossDamage).power;
     }
 
-    public void MonsterHpLess()
+    public float MonsterHpLess()
     {
-
+        return GetDnaData(DNAType.monsterHpLess).power;
     }
 
-    public void BoneBonus()
+    public float BoneBonus()
     {
-
+        return GetDnaData(DNAType.boneBonus).power;
     }
 
-    public void GoldMonsterBonus()
+    public float GoldMonsterBonus()
     {
-
+        return GetDnaData(DNAType.goldMonsterBonus).power;
     }
 
-    public void OfflineBonus()
+    public float OfflineBonus()
     {
-
+        return GetDnaData(DNAType.offlineBonus).power;
     }
 
 
@@ -244,7 +283,7 @@ public class StatManager : MonoBehaviour
 
     TraningInGameData GetTraningData(SaleStatType saleStatType)
     {
-        return traningManager.GetTraningInSlotByType(saleStatType).traningInGameData;
+        return traningManager.GetTraningInGameData(saleStatType);
     }
 
     DNAInGameData GetDnaData(DNAType dnaType)
@@ -252,7 +291,15 @@ public class StatManager : MonoBehaviour
         return dnaManager.GetDNAInGameData(dnaType);
     }
 
-    
+    UnionInGameData GetUnionData(int unionIndex)
+    {
+        return unionManager.GetUnionInGameDataByID(unionIndex);
+    }
+    Skill_InGameData GetSkillData(SkillType skillType)
+    {
+        return skillManager.GetSkillInGameDataByType(skillType);
+    }
+
 
     #endregion
 

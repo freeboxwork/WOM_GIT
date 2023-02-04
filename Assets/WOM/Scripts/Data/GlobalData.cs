@@ -31,6 +31,7 @@ public class GlobalData : MonoBehaviour
     public TraningManager traningManager;
     public ShopManager shopManager;
     public UnionSpwanManager unionSpwanManager;
+    public StatManager statManager;
 
 
 
