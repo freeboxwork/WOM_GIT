@@ -34,6 +34,8 @@ public class InsectBullet : MonoBehaviour
         // 공격 가능 상태에서만 애니메이션 진행
         if (GlobalData.instance.attackController.GetAttackableState() == true)
             StartCoroutine(AttackAnim());
+        else
+            gameObject.SetActive(false);
     }
 
     float GetSpeed()
@@ -48,7 +50,7 @@ public class InsectBullet : MonoBehaviour
         }
     }
 
-    IEnumerator AttackAnim()
+    public IEnumerator AttackAnim()
     {
         animData.ResetAnimData();
         var animPoints = GetAnimPoints();
@@ -98,7 +100,7 @@ public class InsectBullet : MonoBehaviour
             if(insectType == EnumDefinition.InsectType.union)
                 EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex);
             else
-                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType);
+                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType,0);
         }
     }
 
