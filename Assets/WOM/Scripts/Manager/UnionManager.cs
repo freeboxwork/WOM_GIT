@@ -81,7 +81,7 @@ public class UnionManager : MonoBehaviour
             slot.inGameData.moveSpeed = data.moveSpeed;
             slot.inGameData.passiveDamage = GetUnionPassiveDamage(slot); //data.passiveDamage;
             slot.inGameData.unionGradeType = (EnumDefinition.UnionGradeType)System.Enum.Parse(typeof(EnumDefinition.UnionGradeType), data.gradeType);
-            Debug.Log(slot.inGameData.passiveDamage);
+            //Debug.Log(slot.inGameData.passiveDamage);
 
             yield return null;
         }

@@ -41,6 +41,9 @@ public class UnionSpwanTimer : MonoBehaviour
     {
         while (isTimerReady)
         {
+
+           // yield return new WaitUntil(() => GlobalData.instance.attackController.GetAttackableState() == true);
+
             // set union data
             var union = GlobalData.instance.insectManager.GetDisableUnion();
             union.inGameData = unionSlot.inGameData;

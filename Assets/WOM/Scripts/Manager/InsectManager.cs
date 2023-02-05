@@ -46,6 +46,8 @@ public class InsectManager : MonoBehaviour
     public int unionBirthCount = 30;
     public Transform tr_UnionPool;
 
+  
+
     void Start()
     {
         player = GlobalData.instance.player;
@@ -292,19 +294,40 @@ public class InsectManager : MonoBehaviour
         }
     }
 
+    int disableUnionIndex = 0;
     public InsectBullet GetDisableUnion()
     {
-        var union = insectBullets_Union.FirstOrDefault(f => !f.gameObject.activeSelf);
-        if (union != null)
+        var union = insectBullets_Union[disableUnionIndex];
+        if (union.gameObject.activeSelf)
         {
-            return union;
-        }
-        else
-        {
-            //TODO: Pool 부족시 자동생성 및 추가 
+            //TODO: Pool 부족시 자동생성 및 추가
             Debug.Log("유니온 풀링 부족 추가 생성 필요함");
             return null;
         }
+        else
+        {
+            disableUnionIndex++;
+            if (disableUnionIndex == insectBullets_Union.Count - 1)
+                disableUnionIndex = 0;
+
+            Debug.Log("선택된 유니온 프리팹 인덱스 : " + insectBullets_Union.IndexOf(union));
+            return union;
+        }
+
+
+
+        //var union = insectBullets_Union.FirstOrDefault(f => !f.gameObject.activeSelf);
+        //if (union != null)
+        //{
+        //    Debug.Log("선택된 유니온 프리팹 인덱스 : " + insectBullets_Union.IndexOf(union));
+        //    return union;
+        //}
+        //else
+        //{
+        //    //TODO: Pool 부족시 자동생성 및 추가 
+        //    Debug.Log("유니온 풀링 부족 추가 생성 필요함");
+        //    return null;
+        //}
     }
 }
 

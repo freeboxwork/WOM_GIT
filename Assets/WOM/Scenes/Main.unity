@@ -43899,7 +43899,7 @@ MonoBehaviour:
   spriteFileData: {fileID: 11400000, guid: bf49968d02ea26f458e496432a5ea578, type: 2}
   prefabUnion: {fileID: -151419926794647515, guid: da8295fbdf100c145901127ed30059a7, type: 3}
   insectBullets_Union: []
-  unionBirthCount: 20
+  unionBirthCount: 30
   tr_UnionPool: {fileID: 326428545}
 --- !u!1 &1934829624
 GameObject:
