@@ -190,4 +190,10 @@ public class EnumDefinition
         FreeDNASummon
     }
 
+    public enum LotteryPageType
+    {
+        UNION,
+        DNA
+    }
+
 }

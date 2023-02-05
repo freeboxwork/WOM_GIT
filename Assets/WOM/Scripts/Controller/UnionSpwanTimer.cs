@@ -32,8 +32,8 @@ public class UnionSpwanTimer : MonoBehaviour
 
     public void TimerStop()
     {
+        isTimerReady = false;
         unionSlot = null;
-        isTimerReady= false;
         StopAllCoroutines();
     }
 
@@ -44,16 +44,20 @@ public class UnionSpwanTimer : MonoBehaviour
             // set union data
             var union = GlobalData.instance.insectManager.GetDisableUnion();
             union.inGameData = unionSlot.inGameData;
-          
-            // set union face
-            var sprite = spwanManager.spriteFileData.GetSpriteData(unionSlot.inGameData.unionIndex);
-            union.SetInsectFace(sprite);
+        
 
             yield return new WaitForSeconds(spwanTime);
 
             var randomPos = spwanManager.GetRandomPos();
             union.gameObject.transform.position = randomPos;
             union.gameObject.SetActive(true);
+
+
+            // set union face
+            var sprite = spwanManager.spriteFileData.GetSpriteData(unionSlot.inGameData.unionIndex);
+            Debug.Log(sprite.name);
+
+            union.SetInsectFace(sprite);
         }
     }
 

@@ -181,34 +181,6 @@ public class UiController : MonoBehaviour
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });
 
-     
-
-
-        #region btn type list
-        /*
-        trainingDamage,
-        trainingCriticalChance,
-        trainingCriticalDamage,
-        talentDamage,
-        talentCriticalChance,
-        talentCriticalDamage,
-        talentMoveSpeed,
-        talentSpawnSpeed,
-        talentGoldBonus
-         */
-        #endregion
-        // STAT 구매 버튼 이벤트 세팅
-        //int btnId = 8;
-        //foreach(EnumDefinition.SaleStatType type in Enum.GetValues(typeof(EnumDefinition.SaleStatType)))
-        //{
-        //    UtilityMethod.SetBtnEventCustomTypeByID(btnId, () =>
-        //    {
-        //        GlobalData.instance.saleManager.AddData(new SaleStatMsgData(type));
-        //    });
-        //    btnId++;
-        //}
-
-
         // 메인 판넬 열기
         foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
         {
