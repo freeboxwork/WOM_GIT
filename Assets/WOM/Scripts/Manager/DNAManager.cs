@@ -27,22 +27,23 @@ public class DNAManager : MonoBehaviour
         // 27 : 1회 , 28: 10회 , 29 : 30회
 
         SetBtnEventCustomTypeByID(btnLottery01, () => {
-            if(isGambling == false)
-                StartCoroutine(LotteryStart(1));
+            DNALotteryGameStart(1);
         });
 
         SetBtnEventCustomTypeByID(btnLottery10, () => {
-            if (isGambling == false)
-                StartCoroutine(LotteryStart(10));
+            DNALotteryGameStart(10);
         });
 
         SetBtnEventCustomTypeByID(btnLottery30, () => {
-            if (isGambling == false)
-                StartCoroutine(LotteryStart(30));
+            DNALotteryGameStart(30);
         });
     }
 
-   
+   public void DNALotteryGameStart(int gameCount)
+    {
+        if (isGambling == false)
+            StartCoroutine(LotteryStart(gameCount));
+    }
 
 
     public IEnumerator Init()

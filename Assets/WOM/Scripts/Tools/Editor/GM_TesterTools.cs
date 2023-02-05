@@ -29,7 +29,7 @@ public class GM_TesterTools : EditorWindow
     {
         var player = GlobalData.instance.player;
         player.currentMonster.hp = 0;
-        EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, EnumDefinition.InsectType.bee);
+        EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, EnumDefinition.InsectType.bee,0);
     }
 
 }
