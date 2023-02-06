@@ -99,13 +99,14 @@ public class StatManager : MonoBehaviour
         var value = tms + ims + skill_AllUnitSpeedUp;
         return value;
     }
-
-    //  클릭하면 나오는 방식인데 스폰 타임 어떻게 적용 되는지 -> 신규 로직 추가
+    
     /// <summary> 곤충 생성 속도 </summary>
     public float GetInsectSpwanTime(InsectType insectType)
     {
-        var tss = GetTraningData(SaleStatType.talentSpawnSpeed).value;
-        return tss;
+        var ist = GetEvolutionData(insectType).spawnTime;
+        var tst = GetTraningData(SaleStatType.talentSpawnSpeed).value;
+        var value = ist + tst;
+        return value;
     }
 
     #endregion

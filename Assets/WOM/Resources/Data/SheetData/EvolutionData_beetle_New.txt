@@ -1,1 +1,63 @@
-{"data":[{"depthId":0,"damage":200,"damageRate":1,"criticalChance":0.2,"criticalDamage":0.1,"speed":1,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_1"},{"depthId":1,"damage":100,"damageRate":1,"criticalChance":0.2,"criticalDamage":0.1,"speed":0,"goldBonus":30,"bossDamage":0,"name":"딱정벌레_2"},{"depthId":2,"damage":100,"damageRate":1.5,"criticalChance":0.2,"criticalDamage":0.1,"speed":0,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_3"},{"depthId":3,"damage":100,"damageRate":2,"criticalChance":0.2,"criticalDamage":0.1,"speed":0,"goldBonus":0,"bossDamage":0.05,"name":"딱정벌레_4"},{"depthId":4,"damage":100,"damageRate":2,"criticalChance":0.2,"criticalDamage":0.1,"speed":100,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_5"},{"depthId":5,"damage":100,"damageRate":3,"criticalChance":0.2,"criticalDamage":0.1,"speed":200,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_6"},{"depthId":6,"damage":100,"damageRate":5,"criticalChance":0.2,"criticalDamage":0.1,"speed":0,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_7"},{"depthId":7,"damage":100,"damageRate":4,"criticalChance":0.2,"criticalDamage":0.1,"speed":0,"goldBonus":50,"bossDamage":0.05,"name":"딱정벌레_8"},{"depthId":8,"damage":100,"damageRate":2,"criticalChance":0.2,"criticalDamage":0.1,"speed":0,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_9"},{"depthId":9,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_10"},{"depthId":10,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_11"},{"depthId":11,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_12"},{"depthId":12,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_13"},{"depthId":13,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_14"},{"depthId":14,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_15"},{"depthId":15,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_16"},{"depthId":16,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_17"},{"depthId":17,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_18"},{"depthId":18,"damage":100,"damageRate":3,"criticalChance":0,"criticalDamage":200,"speed":50,"goldBonus":0,"bossDamage":0,"name":"딱정벌레_19"}]}
+{"data":[
+ {
+   "depthId": 0,
+   "damage": 200,
+   "damageRate": 1,
+   "criticalChance": 0,
+   "criticalDamage": 0,
+   "speed": 1,
+   "goldBonus": 0,
+   "bossDamage": 0,
+   "name": "딱정벌레_1",
+   "spawnTime": 2
+ },
+ {
+   "depthId": 1,
+   "damage": 100,
+   "damageRate": 1,
+   "criticalChance": 0,
+   "criticalDamage": 0,
+   "speed": 0,
+   "goldBonus": 30,
+   "bossDamage": 0,
+   "name": "딱정벌레_2",
+   "spawnTime": 2
+ },
+ {
+   "depthId": 2,
+   "damage": 100,
+   "damageRate": 1.5,
+   "criticalChance": 0,
+   "criticalDamage": 100,
+   "speed": 0,
+   "goldBonus": 0,
+   "bossDamage": 0,
+   "name": "딱정벌레_3",
+   "spawnTime": 2
+ },
+ {
+   "depthId": 3,
+   "damage": 100,
+   "damageRate": 2,
+   "criticalChance": 0,
+   "criticalDamage": 0,
+   "speed": 0,
+   "goldBonus": 0,
+   "bossDamage": 0.05,
+   "name": "딱정벌레_4",
+   "spawnTime": 2
+ },
+ {
+   "depthId": 4,
+   "damage": 100,
+   "damageRate": 2,
+   "criticalChance": 0,
+   "criticalDamage": 0,
+   "speed": 100,
+   "goldBonus": 0,
+   "bossDamage": 0,
+   "name": "딱정벌레_5",
+   "spawnTime": 2
+ }
+]
+}
