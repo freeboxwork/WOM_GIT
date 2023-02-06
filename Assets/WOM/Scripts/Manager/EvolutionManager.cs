@@ -121,7 +121,7 @@ public class EvolutionManager : MonoBehaviour
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge);
 
             // 메뉴 판넬 숨김
-           GlobalData.instance.uiController.AllDisableMenuPanels();
+            GlobalData.instance.uiController.AllDisableMenuPanels();
 
             // 진화전 버튼 선택 효과 숨김
             // EnableMenuPanel(MenuPanelType.evolution);

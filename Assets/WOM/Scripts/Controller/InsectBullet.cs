@@ -82,7 +82,8 @@ public class InsectBullet : MonoBehaviour
     }
     Vector3 GetRandomMonsterPoint()
     {
-        var monPos = GlobalData.instance.player.currentMonster.transform.position;
+        //var monPos = GlobalData.instance.player.currentMonster.transform.position;
+        var monPos = GlobalData.instance.insectManager.insectTargetPoint.position;
         var x = Random.Range(monPos.x - 1, monPos.x + 1);
         return new Vector3(x, monPos.y, monPos.z);
     }

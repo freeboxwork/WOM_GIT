@@ -37,7 +37,7 @@ public class InsectManager : MonoBehaviour
 
     public float dps;
 
-
+    public Transform insectTargetPoint;
 
     //UNION 발사체
     public SpriteFileData spriteFileData;
@@ -310,7 +310,7 @@ public class InsectManager : MonoBehaviour
             if (disableUnionIndex == insectBullets_Union.Count - 1)
                 disableUnionIndex = 0;
 
-            Debug.Log("선택된 유니온 프리팹 인덱스 : " + insectBullets_Union.IndexOf(union));
+            //Debug.Log("선택된 유니온 프리팹 인덱스 : " + insectBullets_Union.IndexOf(union));
             return union;
         }
 
