@@ -32,6 +32,9 @@ public class GlobalController : MonoBehaviour
    
     IEnumerator Init()
     {
+        // 공격 불가능 상태로 전환
+        attackController.SetAttackableState(false);
+
         // set data
         yield return StartCoroutine(dataManager.SetDatas());
 

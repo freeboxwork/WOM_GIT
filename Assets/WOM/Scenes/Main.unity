@@ -41468,6 +41468,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2957bfb0b586144f826e2c0d54225ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1872986009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872986010}
+  m_Layer: 0
+  m_Name: '>> InsectTargetPoint'
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1872986010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872986009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.89, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1876191370
 GameObject:
   m_ObjectHideFlags: 0
@@ -43896,6 +43927,7 @@ MonoBehaviour:
   debugDamage: 10
   insectSpriteFileData: {fileID: 11400000, guid: 54c0ae9259423854ba32f19ff91abff9, type: 2}
   dps: 0
+  insectTargetPoint: {fileID: 1872986010}
   spriteFileData: {fileID: 11400000, guid: bf49968d02ea26f458e496432a5ea578, type: 2}
   prefabUnion: {fileID: -151419926794647515, guid: da8295fbdf100c145901127ed30059a7, type: 3}
   insectBullets_Union: []

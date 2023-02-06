@@ -145,6 +145,11 @@ public class UnionManager : MonoBehaviour
             if(equipSlot.unionSlot == selectedSlot)
             {
                 equipSlot.UnEquipSlot();
+                
+                // 스폰 타이머 해제
+                var timarIndex = equipSlot.slotIndex;
+                var timer = GlobalData.instance.unionSpwanManager.spwanTimerList[timarIndex];
+                timer.TimerStop();
             }
     }
 

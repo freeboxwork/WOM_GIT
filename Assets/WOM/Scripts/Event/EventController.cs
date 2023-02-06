@@ -86,7 +86,7 @@ public class EventController : MonoBehaviour
     IEnumerator MonsterKill(MonsterBase currentMonster)
     {
         // 공격 막기
-        globalData.attackController.SetAttackableState(false);
+        // globalData.attackController.SetAttackableState(false);
 
         yield return null;
 
@@ -326,7 +326,7 @@ public class EventController : MonoBehaviour
         MonsterUiReset();
 
         // 공격 가능 상태 변경
-        globalData.attackController.SetAttackableState(true);
+        // globalData.attackController.SetAttackableState(true);
     }
 
 
@@ -350,6 +350,8 @@ public class EventController : MonoBehaviour
 
     IEnumerator ProcessEvolutionGradeChallenge()
     {
+        // 공격 불가능 상태로 전환
+        globalData.attackController.SetAttackableState(false);
 
         // 진화전 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() => {
@@ -377,8 +379,12 @@ public class EventController : MonoBehaviour
 
         }));
 
+        // 공격 가능 상태로 전환
+        globalData.attackController.SetAttackableState(true);
+
         // 진화 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.evolution));
+
     }
 
     // 보스 몬스터 도전 버튼 눌렀을때 이벤트
@@ -444,6 +450,8 @@ public class EventController : MonoBehaviour
 
     IEnumerator ProcessEvolutionMonsterTimeOut()
     {
+        // 공격 불가능 상태로 전환
+        globalData.attackController.SetAttackableState(false);
 
         // 하프 라인 위 곤충 모두 제거
         globalData.insectManager.DisableHalfLineInsects();
@@ -464,6 +472,9 @@ public class EventController : MonoBehaviour
 
           }));
 
+        // 공격 가능 상태로 전환
+        globalData.attackController.SetAttackableState(true);
+
         // 일반 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
@@ -478,7 +489,9 @@ public class EventController : MonoBehaviour
     // 진화전 포기 했을때
     public IEnumerator ProcessEvolutionMonsterGiveUp()
     {
-       
+        // 공격 불가능 상태로 전환
+        globalData.attackController.SetAttackableState(false);
+
         // 진화전 포기 버튼 비활성화
         UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(false);
 
@@ -495,6 +508,9 @@ public class EventController : MonoBehaviour
             globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
         }));
+
+        // 공격 가능 상태로 전환
+        globalData.attackController.SetAttackableState(true);
 
         // 일반 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.normal));

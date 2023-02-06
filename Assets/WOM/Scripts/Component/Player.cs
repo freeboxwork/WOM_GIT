@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     // 보스 몬스터 도전 가능 상태 판단
     public bool isBossMonsterChllengeEnable = false;
 
+    
+
     void Start()
     {
         
