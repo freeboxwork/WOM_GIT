@@ -49,6 +49,7 @@ public class InsectManager : MonoBehaviour
 
     //INSECT 발사체 ( Spwan Timer 활용 )
     int insectStBirthCount = 20;
+    int disableInsectBeeIndex, disableInsectBeetleIndex, disableInsectMentisIndex = 0;
     public List<InsectBullet> st_insectBullets_Bee;
     public List<InsectBullet> st_insectBullets_Beetle;
     public List<InsectBullet> st_insectBullets_Mentis;
@@ -70,8 +71,11 @@ public class InsectManager : MonoBehaviour
         SetInsectData(EnumDefinition.InsectType.beetle, playerDataManager.saveData.beetleSaveData.evolutionLastData);
         SetInsectData(EnumDefinition.InsectType.mentis, playerDataManager.saveData.mentisSaveData.evolutionLastData);
 
-        // 유니온 풀링 생성
+        // 스폰 유니온 풀링 생성
         CreateUnionPooling(unionBirthCount);
+
+        // 스폰 곤충 풀링 생성
+
 
         // add insects list 
         // 순서 : mentis, bee, beetle
@@ -105,6 +109,10 @@ public class InsectManager : MonoBehaviour
         DisableInsects(insectBullets_Beetle);
         DisableInsects(insectBullets_Mentis);
         DisableInsects(insectBullets_Union);
+        DisableInsects(st_insectBullets_Bee);
+        DisableInsects(st_insectBullets_Beetle);
+        DisableInsects(st_insectBullets_Mentis);
+
     }
 
     bool IsHalfPointUpSide(InsectBullet insectBullet)
@@ -219,9 +227,16 @@ public class InsectManager : MonoBehaviour
 
     void BirthInsectBullets()
     {
+        // 사용자가 터치 하여 나오는 곤충 풀
         InitancingInsects(prefabInsectBee, insectBullets_Bee);
         InitancingInsects(prefabInsectBeetle, insectBullets_Beetle);
         InitancingInsects(prefabInsectMentis, insectBullets_Mentis);
+
+        // 자동으로 생성되는 곤충 풀
+        InitancingInsects(prefabInsectBee, st_insectBullets_Bee);
+        InitancingInsects(prefabInsectBeetle, st_insectBullets_Beetle);
+        InitancingInsects(prefabInsectMentis, st_insectBullets_Mentis);
+
     }
 
     // pooling system
@@ -241,16 +256,29 @@ public class InsectManager : MonoBehaviour
         }
     }
 
-    List<InsectBullet> GetBulletsByInsectType(EnumDefinition.InsectType insectType)
+    List<InsectBullet> GetBulletsByInsectType(InsectType insectType)
     {
         switch (insectType)
         {
-            case EnumDefinition.InsectType.mentis: return insectBullets_Mentis;
-            case EnumDefinition.InsectType.bee: return insectBullets_Bee;
-            case EnumDefinition.InsectType.beetle: return insectBullets_Beetle; 
+            case InsectType.mentis: return insectBullets_Mentis;
+            case InsectType.bee: return insectBullets_Bee;
+            case InsectType.beetle: return insectBullets_Beetle; 
+            default: return null;
         }
-        return null;
     }
+
+    List<InsectBullet> GetST_BulletsByInsectType(InsectType insectType)
+    {
+        switch (insectType)
+        {
+            case InsectType.mentis: return st_insectBullets_Mentis;
+            case InsectType.bee: return st_insectBullets_Bee;
+            case InsectType.beetle: return st_insectBullets_Beetle;
+            default: return null;
+        }
+    }
+
+
 
 
     void InitancingInsects(InsectBullet prefab, List<InsectBullet> bullets)
@@ -280,13 +308,25 @@ public class InsectManager : MonoBehaviour
     public void SetInsectFace(InsectType insectType, int id)
     {
         var insects = GetBulletsByInsectType(insectType);
-        if(insects != null)
+        if (insects != null)
         {
+            var face = insectSpriteFileData.GetInsectFaceSprite(insectType, id);
             foreach (var insect in insects)
             {
-                insect.SetInsectFace(insectSpriteFileData.GetInsectFaceSprite(insectType, id));
+                insect.SetInsectFace(face);
             }
         }
+
+        var insects_st = GetST_BulletsByInsectType(insectType);
+        if (insects_st != null)
+        {
+            var face = insectSpriteFileData.GetInsectFaceSprite(insectType, id);
+            foreach (var insect in insects_st)
+            {
+                insect.SetInsectFace(face);
+            }
+        }
+
     }
     void CreateUnionPooling(int birthCount)
     {
@@ -298,6 +338,8 @@ public class InsectManager : MonoBehaviour
             insectBullets_Union.Add(union);
         }
     }
+
+    
 
     
     public InsectBullet GetDisableUnion()
@@ -318,22 +360,37 @@ public class InsectManager : MonoBehaviour
             //Debug.Log("선택된 유니온 프리팹 인덱스 : " + insectBullets_Union.IndexOf(union));
             return union;
         }
-
-
-
-        //var union = insectBullets_Union.FirstOrDefault(f => !f.gameObject.activeSelf);
-        //if (union != null)
-        //{
-        //    Debug.Log("선택된 유니온 프리팹 인덱스 : " + insectBullets_Union.IndexOf(union));
-        //    return union;
-        //}
-        //else
-        //{
-        //    //TODO: Pool 부족시 자동생성 및 추가 
-        //    Debug.Log("유니온 풀링 부족 추가 생성 필요함");
-        //    return null;
-        //}
     }
+
+    public InsectBullet GetDisableST_InsectByType(InsectType insectType)
+    {
+        switch (insectType)
+        {
+            case InsectType.bee: return GetDisableST_Insect(ref disableInsectBeeIndex, st_insectBullets_Bee);
+            case InsectType.beetle: return GetDisableST_Insect(ref disableInsectBeetleIndex, st_insectBullets_Beetle);
+            case InsectType.mentis: return GetDisableST_Insect(ref disableInsectMentisIndex, st_insectBullets_Mentis);
+            default: return null;
+        }
+    }
+   
+    public InsectBullet GetDisableST_Insect(ref int idCount , List<InsectBullet> insectBullets)
+    {
+        var insect = insectBullets[idCount];
+        if (insect.gameObject.activeSelf)
+        {
+            Debug.Log("곤충 BEE 풀링 부족 추가 생성 필요함");
+            return null;
+        }
+        else
+        {
+            idCount++;
+            if (idCount == insectBullets.Count - 1)
+                idCount = 0;
+            
+            return insect;
+        }
+    }
+
 }
 
 
