@@ -65,6 +65,7 @@ public class EvolutionData
     public float speed;
     public float goldBonus;
     public float bossDamage;
+    public float spawnTime;
 
     public EvolutionData CopyInstance()
     {

@@ -20034,6 +20034,37 @@ Transform:
   m_Father: {fileID: 710764206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &899322430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899322431}
+  m_Layer: 0
+  m_Name: InsectSpwanManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899322431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899322430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1561350215}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &900206205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29216,6 +29247,7 @@ MonoBehaviour:
         speed: 0
         goldBonus: 0
         bossDamage: 0
+        spawnTime: 0
     beetleSaveData:
       evolutionIdx: 0
       upgradeLevel: 0
@@ -29231,6 +29263,7 @@ MonoBehaviour:
         speed: 0
         goldBonus: 0
         bossDamage: 0
+        spawnTime: 0
     mentisSaveData:
       evolutionIdx: 0
       upgradeLevel: 0
@@ -29246,6 +29279,7 @@ MonoBehaviour:
         speed: 0
         goldBonus: 0
         bossDamage: 0
+        spawnTime: 0
     upgradeLevelIdx: 0
     gold: 0
     offlineTime: 
@@ -34645,6 +34679,7 @@ Transform:
   - {fileID: 82140814}
   - {fileID: 1596687455}
   - {fileID: 724018905}
+  - {fileID: 899322431}
   m_Father: {fileID: 1249124945}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

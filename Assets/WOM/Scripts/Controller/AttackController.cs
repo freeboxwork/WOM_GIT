@@ -8,6 +8,8 @@ public class AttackController : MonoBehaviour
     public InsectManager insectManager;
     /// <summary> 공격 가능 상태  </summary>
     bool isAttackableState = false ; 
+    
+
     void Start()
     {
         insectManager = GlobalData.instance.insectManager;
@@ -73,5 +75,7 @@ public class AttackController : MonoBehaviour
         }
         return EnumDefinition.InsectType.none;
     }
+
+
 
 }

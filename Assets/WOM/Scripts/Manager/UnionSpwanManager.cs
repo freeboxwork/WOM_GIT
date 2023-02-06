@@ -12,6 +12,7 @@ public class UnionSpwanManager : MonoBehaviour
     public List<UnionSpwanTimer> spwanTimerList = new List<UnionSpwanTimer>();
     public SpriteFileData spriteFileData;
 
+
     void Start()
     {
 
