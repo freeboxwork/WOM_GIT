@@ -14,9 +14,42 @@ public class InsectSpwanManager : MonoBehaviour
         
     }
 
-    IEnumerator Init()
+    public IEnumerator Init()
     {
+        CreateTimer();
         yield return null;
+    }
+
+    void CreateTimer()
+    {
+        var types = System.Enum.GetValues(typeof(EnumDefinition.InsectType));
+        foreach (EnumDefinition.InsectType type in types)
+        {
+            if ((int)type <= 2)
+            {
+                var timer = Instantiate(new GameObject(), this.transform).AddComponent<InsectSpwanTimer>();
+                timer.insectType = type;
+                timer.insectSpwanManager = this;
+                spwanTimers.Add(timer);
+            }
+
+        }
+    }
+
+    public void AllTimerStart()
+    {
+        foreach(var timer in spwanTimers)
+        {
+            timer.TimerStart();
+        }
+    }
+
+    public void AllTimerStop()
+    {
+        foreach (var timer in spwanTimers)
+        {
+            timer.TimerStop();
+        }
     }
 
     public void StartInsectSpwan()

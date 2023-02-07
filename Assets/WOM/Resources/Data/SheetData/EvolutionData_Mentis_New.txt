@@ -9,7 +9,7 @@
    "goldBonus": 0,
    "bossDamage": 0,
    "name": "사마귀_1",
-   "spawnTime": 1
+   "spawnTime": 3
  },
  {
    "depthId": 1,
@@ -21,7 +21,7 @@
    "goldBonus": 30,
    "bossDamage": 0,
    "name": "사마귀_2",
-   "spawnTime": 1
+   "spawnTime": 3
  },
  {
    "depthId": 2,
@@ -33,7 +33,7 @@
    "goldBonus": 0,
    "bossDamage": 0,
    "name": "사마귀_3",
-   "spawnTime": 1
+   "spawnTime": 3
  },
  {
    "depthId": 3,
@@ -45,7 +45,7 @@
    "goldBonus": 0,
    "bossDamage": 0.05,
    "name": "사마귀_4",
-   "spawnTime": 1
+   "spawnTime": 3
  },
  {
    "depthId": 4,
@@ -57,7 +57,7 @@
    "goldBonus": 0,
    "bossDamage": 0,
    "name": "사마귀_5",
-   "spawnTime": 1
+   "spawnTime": 3
  }
 ]
 }

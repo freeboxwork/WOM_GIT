@@ -9,7 +9,7 @@
    "goldBonus": 0,
    "bossDamage": 0,
    "name": "딱정벌레_1",
-   "spawnTime": 2
+   "spawnTime": 3
  },
  {
    "depthId": 1,
@@ -21,7 +21,7 @@
    "goldBonus": 30,
    "bossDamage": 0,
    "name": "딱정벌레_2",
-   "spawnTime": 2
+   "spawnTime": 3
  },
  {
    "depthId": 2,
@@ -33,7 +33,7 @@
    "goldBonus": 0,
    "bossDamage": 0,
    "name": "딱정벌레_3",
-   "spawnTime": 2
+   "spawnTime": 3
  },
  {
    "depthId": 3,
@@ -45,7 +45,7 @@
    "goldBonus": 0,
    "bossDamage": 0.05,
    "name": "딱정벌레_4",
-   "spawnTime": 2
+   "spawnTime": 3
  },
  {
    "depthId": 4,
@@ -57,7 +57,7 @@
    "goldBonus": 0,
    "bossDamage": 0,
    "name": "딱정벌레_5",
-   "spawnTime": 2
+   "spawnTime": 3
  }
 ]
 }
