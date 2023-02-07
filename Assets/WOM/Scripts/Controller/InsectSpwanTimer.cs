@@ -31,13 +31,22 @@ public class InsectSpwanTimer : MonoBehaviour
         while (isTimerReady)
         {
             var insect = insectManager.GetDisableST_InsectByType(insectType);
-            // set position
-            var randomPos = insectSpwanManager.GetRandomPos();
-            insect.gameObject.transform.position = randomPos;
+            var waitTime = GlobalData.instance.statManager.GetInsectSpwanTime(insectType);
 
-            yield return new WaitForSeconds(GlobalData.instance.statManager.GetInsectSpwanTime(insectType));
+            Debug.Log(" T Y P E " + insectType + " -- " +waitTime);
 
-            insect.gameObject.SetActive(true);
+            if (insect != null)
+            {
+                // set position
+                var randomPos = insectSpwanManager.GetRandomPos();
+                insect.gameObject.transform.position = randomPos;
+                
+                yield return new WaitForSeconds(waitTime);
+                insect.gameObject.SetActive(true);
+            }
+            else
+                yield return new WaitForSeconds(waitTime);
+
         }
     }
 }

@@ -11,7 +11,7 @@
    "bossDamage": 0,
    "name": "벌_1",
    "grade": "D",
-   "spawnTime": 0.5
+   "spawnTime": 3
  },
  {
    "depthId": 1,
@@ -25,7 +25,7 @@
    "bossDamage": 0,
    "name": "벌_2",
    "grade": "C",
-   "spawnTime": 0.5
+   "spawnTime": 3
  },
  {
    "depthId": 2,
@@ -39,7 +39,7 @@
    "bossDamage": 0,
    "name": "벌_3",
    "grade": "B",
-   "spawnTime": 0.5
+   "spawnTime": 3
  },
  {
    "depthId": 3,
@@ -53,7 +53,7 @@
    "bossDamage": 0.05,
    "name": "벌_4",
    "grade": "A",
-   "spawnTime": 0.5
+   "spawnTime": 3
  },
  {
    "depthId": 4,
@@ -67,6 +67,6 @@
    "bossDamage": 0,
    "name": "벌_5",
    "grade": "S",
-   "spawnTime": 0.5
+   "spawnTime": 3
  }
 ]}

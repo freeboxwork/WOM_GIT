@@ -23,7 +23,9 @@ public class GlobalController : MonoBehaviour
     public EvolutionManager evolutionManager;
     public ShopManager shopManager;
     public UnionSpwanManager unionSpwanManager;
+    public InsectSpwanManager insectSpwanManager;
     public StatManager statManager;
+    
     void Start()
     {
         if (dataManager == null) dataManager = FindObjectOfType<DataManager>();
@@ -83,11 +85,14 @@ public class GlobalController : MonoBehaviour
         // 훈련 데이터및 UI 세팅
         yield return StartCoroutine(traningManager.Init());
 
+        // 스탯 매니저 초기 세팅
+        yield return StartCoroutine(statManager.Init());
+
         // 유니온 스폰 매니저 세팅
         yield return StartCoroutine(unionSpwanManager.Init());
 
-        // 스탯 매니저 초기 세팅
-        yield return StartCoroutine(statManager.Init());
+        // 곤충 스폰 매니저 세팅
+        yield return StartCoroutine(insectSpwanManager.Init()); 
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
@@ -103,8 +108,14 @@ public class GlobalController : MonoBehaviour
         // Monster In Animation
         yield return StartCoroutine(player.currentMonster.inOutAnimator.AnimPositionIn());
 
+        // 한 프레임 대기
+        yield return new WaitForEndOfFrame();
+
         // 공격 가능 상태로 전환
         attackController.SetAttackableState(true);
+
+        // 곤충 스폰 활성화
+        insectSpwanManager.AllTimerStart(); 
 
     }
 

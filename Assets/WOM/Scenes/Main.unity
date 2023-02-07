@@ -2588,6 +2588,7 @@ MonoBehaviour:
   traningManager: {fileID: 82140815}
   shopManager: {fileID: 1596687456}
   unionSpwanManager: {fileID: 724018906}
+  insectSpwanManager: {fileID: 899322432}
   statManager: {fileID: 1513546982}
 --- !u!1 &136407795
 GameObject:
@@ -16276,6 +16277,7 @@ MonoBehaviour:
   evolutionManager: {fileID: 466438108}
   shopManager: {fileID: 1596687456}
   unionSpwanManager: {fileID: 724018906}
+  insectSpwanManager: {fileID: 899322432}
   statManager: {fileID: 1513546982}
 --- !u!1 &742764186
 GameObject:
@@ -20043,6 +20045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899322431}
+  - component: {fileID: 899322432}
   m_Layer: 0
   m_Name: InsectSpwanManager
   m_TagString: Untagged
@@ -20065,6 +20068,23 @@ Transform:
   m_Father: {fileID: 1561350215}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899322432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899322430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084b93381760f3c47ab142a19500c8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomPoint:
+  - {fileID: 880713174}
+  - {fileID: 1046964632}
+  - {fileID: 2001790313}
+  spwanTimers: []
 --- !u!1001 &900206205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24013,7 +24033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1073158299}
   m_Layer: 0
-  m_Name: '>> HalfPoint'
+  m_Name: '>> HalfPoint <<'
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24027,7 +24047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073158298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -7.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43968,6 +43988,9 @@ MonoBehaviour:
   insectBullets_Union: []
   unionBirthCount: 30
   tr_UnionPool: {fileID: 326428545}
+  st_insectBullets_Bee: []
+  st_insectBullets_Beetle: []
+  st_insectBullets_Mentis: []
 --- !u!1 &1934829624
 GameObject:
   m_ObjectHideFlags: 0

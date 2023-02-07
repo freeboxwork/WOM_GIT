@@ -366,9 +366,9 @@ public class InsectManager : MonoBehaviour
     {
         switch (insectType)
         {
-            case InsectType.bee: return GetDisableST_Insect(ref disableInsectBeeIndex, st_insectBullets_Bee);
-            case InsectType.beetle: return GetDisableST_Insect(ref disableInsectBeetleIndex, st_insectBullets_Beetle);
-            case InsectType.mentis: return GetDisableST_Insect(ref disableInsectMentisIndex, st_insectBullets_Mentis);
+            case InsectType.bee: return GetDisableST_Insect(ref disableInsectBeeIndex,  st_insectBullets_Bee);
+            case InsectType.beetle: return GetDisableST_Insect(ref disableInsectBeetleIndex,  st_insectBullets_Beetle);
+            case InsectType.mentis: return GetDisableST_Insect(ref disableInsectMentisIndex,  st_insectBullets_Mentis);
             default: return null;
         }
     }
