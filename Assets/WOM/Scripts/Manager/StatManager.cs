@@ -172,6 +172,33 @@ public class StatManager : MonoBehaviour
 
     #region SKILLS
 
+    
+    public void UsingSkill(SkillType skillType)
+    {
+        switch (skillType)
+        {
+            case SkillType.insectDamageUp:
+                StartCoroutine(EnableSkill_InsectDamageUP());
+                break;
+            case SkillType.unionDamageUp:
+                StartCoroutine(EnableSkill_UnionDamageUP());
+                break;
+            case SkillType.allUnitSpeedUp:
+                StartCoroutine(EnableSkill_AllUnitSpeedUP());
+                break;
+            case SkillType.glodBonusUp:
+                StartCoroutine(EnableSkill_GoldBonusUP()); 
+                break;
+            case SkillType.monsterKing:
+                StartCoroutine(EnableSkill_MonsterKing()); 
+                break;
+            case SkillType.allUnitCriticalChanceUp:
+                StartCoroutine(EnableSkill_AllUnitCriticalChanceUP());
+                break;
+        }
+    }
+
+
     public IEnumerator EnableSkill_InsectDamageUP() 
     {
         var data = GetSkillData(SkillType.insectDamageUp);

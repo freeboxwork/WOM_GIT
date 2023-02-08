@@ -79,7 +79,9 @@ public class SkillBtn : MonoBehaviour
            
             animCont.animData = animDataUsingSkill;
 
-            //TODO : 스킬 추가 스탯 사용 이벤트 추가
+            //스킬 사용
+            GlobalData.instance.statManager.UsingSkill(skillType);
+
             txtTime.enabled = false;
             skillAddValue = true;
             txtTimeAnim.enabled = true;

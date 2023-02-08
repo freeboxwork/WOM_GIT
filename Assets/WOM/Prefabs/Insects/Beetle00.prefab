@@ -203,6 +203,17 @@ MonoBehaviour:
   animData: {fileID: -868726394049380404}
   effDisable: {fileID: 0}
   spriteRenderer: {fileID: 4133864425603818101}
+  inGameData:
+    unionIndex: 0
+    level: 0
+    unionCount: 0
+    LevelUpReqirementCount: 0
+    isUnlock: 0
+    unionGradeType: 0
+    damage: 0
+    spawnTime: 0
+    moveSpeed: 0
+    passiveDamage: 0
 --- !u!114 &-868726394049380404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataName: 
   animCurveType: 2
-  animDuration: 2
+  animDuration: 6
   value: 0
   animTime: 0
   animValue: 0
