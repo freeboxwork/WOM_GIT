@@ -42,11 +42,12 @@ public class InsectBullet : MonoBehaviour
     {
         if(insectType == EnumDefinition.InsectType.union)
         {
-            return inGameData.moveSpeed;
+            return GlobalData.instance.statManager.GetUnionMoveSpeed(inGameData.unionIndex);
         }
         else
         {
-            return GlobalData.instance.insectManager.GetInsect(insectType).speed;
+            return GlobalData.instance.statManager.GetInsectMoveSpeed(insectType);
+            // return GlobalData.instance.insectManager.GetInsect(insectType).speed;
         }
     }
 
@@ -55,10 +56,11 @@ public class InsectBullet : MonoBehaviour
         animData.ResetAnimData();
         var animPoints = GetAnimPoints();
         speed = GetSpeed();
+        
         while (animData.animValue < 0.99f)
         {
             // TODO : DATA 의 SPEED 적용
-            animData.animTime = ((Time.time - animData.animStartTime) / animData.animDuration);  //* speed;
+            animData.animTime = ((Time.time - animData.animStartTime) / (animData.animDuration * speed)) ;
             animData.animValue = EaseValues.instance.GetAnimCurve(animData.animCurveType, animData.animTime);
 
             // 직선이동

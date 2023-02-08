@@ -131,7 +131,20 @@ public class EffectManager : MonoBehaviour
 
     ParticleSystem GetInsectDisableEff()
     {
-        return insectDisableEffects.FirstOrDefault(f => !f.gameObject.activeSelf);
+
+        foreach(var eff in insectDisableEffects)
+        {
+            if (!eff.gameObject.activeInHierarchy)
+            {
+                return eff;
+            }
+        }
+        var effect = Instantiate(prefabInsectDisableEff, trEffects);
+        insectDisableEffects.Add(effect);
+        return effect;
+
+
+        //return insectDisableEffects.FirstOrDefault(f => !f.gameObject.activeSelf);
     }
 
     // 골드 생성 포인트
