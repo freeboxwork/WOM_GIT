@@ -27,6 +27,10 @@ public class StatManager : MonoBehaviour
     float skill_MonsterKing = 0;
     float skill_AllUnitCriticalChanceUp = 0;
 
+    #region STAT INFOMATION
+
+
+    #endregion
 
     void Start()
     {
