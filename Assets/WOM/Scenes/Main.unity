@@ -19063,6 +19063,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8709659281226063203, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d5767723b0d6b74ea95110e5699a8ac, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ed951ff9794504ab8dad74afb90d0f, type: 3}
 --- !u!4 &841547812 stripped
@@ -49296,6 +49300,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2456668813117325133, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20e57f65328800943a0cca6f21086029, type: 2}
     - target: {fileID: 2955134244880892434, guid: f0e99507833286f4da11db8d0657dcb7, type: 3}
       propertyPath: m_SpriteKey
       value: 0.67888993
@@ -51593,6 +51601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_Evolution
       objectReference: {fileID: 0}
+    - target: {fileID: 4997474245837795744, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6166133284995099075, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -51641,6 +51653,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8057556532523519118, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac6f66d1279fa94438fcb73d127a0f6f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7728c1da5a8d40d4a8afdf06d2cd75f2, type: 3}
 --- !u!4 &5676643708908205502 stripped
