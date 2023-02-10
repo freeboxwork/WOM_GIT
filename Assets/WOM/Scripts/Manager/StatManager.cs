@@ -101,7 +101,7 @@ public class StatManager : MonoBehaviour
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
         var value = tms + ims + skill_AllUnitSpeedUp;
-        return value;
+        return value * 0.01f;
     }
     
     /// <summary> 帮面 积己 加档 </summary>
@@ -134,7 +134,7 @@ public class StatManager : MonoBehaviour
         var ums = GetUnionData(unionIndex).moveSpeed;
         var dms = GetDnaData(DNAType.insectMoveSpeed).power;
         var value = ums + dms + skill_AllUnitSpeedUp;
-        return value;
+        return value * 0.01f;
     }
 
     /// <summary> 蜡聪柯 积己加档 </summary>
