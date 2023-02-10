@@ -43,10 +43,8 @@ public class EvolutionSlot : MonoBehaviour
 
     public void UnLock()
     {
-        isUnlock = false;
+        isUnlock = true;
         imgLock.sprite = sprUnLock;
-        // 사용에 필요한 주사위 개수 변경
-        GlobalData.instance.evolutionManager.SetTxtUsingDiceCount();
     }
          
 

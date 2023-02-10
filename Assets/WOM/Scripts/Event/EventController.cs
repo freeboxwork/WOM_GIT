@@ -254,14 +254,11 @@ public class EventController : MonoBehaviour
         // 유니온 장착 슬롯 오픈
         globalData.unionManager.UnlockEquipSlots(evalutionLeveld);
 
-
         // 기존 UI Canvas 비활성화
         UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 
-        // TODO : 진화 UI 리셋
-
         // 등급 업그레이드 연출 등장
-        globalData.gradeAnimCont.gradeIndex = globalData.evolutionManager.evalutionLeveldx+1;
+        globalData.gradeAnimCont.gradeIndex = evalutionLeveld;
         globalData.gradeAnimCont.gameObject.SetActive(true);
 
         // 금광보스 카운트 UI 활성화
@@ -273,14 +270,21 @@ public class EventController : MonoBehaviour
         // 곤충 페이스 변경
         GlobalData.instance.insectManager.SetAllInsectFace(evalutionLeveld);
 
-        // 일반 몬스터 등장
-        yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
-
         //진화 몬스터 도전 버튼 활성화
         globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
 
+        // 프레임 대기 ( evalutionLeveld 업데이트 대기 )
+        yield return new WaitForEndOfFrame();
+
+        // 진화 자물쇠 UnLock 상태로 Enable 및 필요 주사위 개수 계산하여 적용함.
+        globalData.evolutionManager.SetUI_EvolutuinSlotsLockerItems(evalutionLeveld);
+        
         //진화 메뉴 활성화
         globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+
+        // 일반 몬스터 등장
+        yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
+
     }
 
     // 몬스터 등장

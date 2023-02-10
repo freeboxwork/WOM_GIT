@@ -69,9 +69,24 @@ public class EvolutionManager : MonoBehaviour
         }
 
         // 자물쇠 기본 열림상태
-        foreach (var slot in evolutionSlots)
-            slot.LockEvent();
+        //foreach (var slot in evolutionSlots)
+        //    slot.LockEvent();
     }
+
+    public void SetUI_EvolutuinSlotsLockerItems(int dataId)
+    {
+        var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(dataId);
+        
+        // 자물쇠 오픈
+        for (int i = 0; i < data.slotCount; i++)
+        {
+            evolutionSlots[i].UnLock();
+        }
+
+        //사용에 필요한 주사위 개수 변경
+        GlobalData.instance.evolutionManager.SetTxtUsingDiceCount();
+    }
+         
 
     public void SetEvolutuinSlotName(EvolutionDiceStatType type, EvolutionSlot slot, float value)
     {

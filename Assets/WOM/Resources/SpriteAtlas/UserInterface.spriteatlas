@@ -52,6 +52,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d7cd9cd0c210f0141b3dc0ff62c93af7, type: 3}
   - {fileID: 21300000, guid: 323b0ae0b028fb447942121a899f0099, type: 3}
   - {fileID: 21300000, guid: b5cf9561b1652e14ab35927b66be36cd, type: 3}
+  - {fileID: 21300000, guid: ef974ea1ac354fa43934356446b33f21, type: 3}
   - {fileID: 21300000, guid: 3819d8b16d191c044a46fbdeff09e5fb, type: 3}
   - {fileID: 21300000, guid: 7ea79f42de0eeaa4a983ed1ca0c3d217, type: 3}
   - {fileID: 21300000, guid: c20d34527d6a7604790af1fd65744d03, type: 3}
@@ -72,6 +73,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 37485fc41ab25f64596b1ff9a21c7ad9, type: 3}
   - {fileID: 21300000, guid: 25c171d44276e344f961ab90c7eeeb8d, type: 3}
   - {fileID: 21300000, guid: 23d58bf421dcbc14ba855f1c014c87c1, type: 3}
+  - {fileID: 21300000, guid: c5c6a725c117a9e469f2bfab9ec32ef9, type: 3}
   - {fileID: 21300000, guid: bef97d45548138b459d3736d332c56aa, type: 3}
   - {fileID: 21300000, guid: 5bd8555513722d2468d4350778716d69, type: 3}
   - {fileID: 21300000, guid: d624e9950c7e3c44188bd7bf89e126b3, type: 3}
@@ -81,13 +83,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 67b5fe063942b0d499f15abf9e8dcfc6, type: 3}
   - {fileID: 21300000, guid: 1e13e576a7f11924e9db1622c482dba7, type: 3}
   - {fileID: 21300000, guid: 746121869a5fb7a4c834f5c76412f884, type: 3}
+  - {fileID: 21300000, guid: 2cc30fa6eae2ebc4899c139afbe690bb, type: 3}
   - {fileID: 21300000, guid: 73aeb03795f6b1348a9ce60379521905, type: 3}
   - {fileID: 21300000, guid: d2062647fece186459f78707b0c454a6, type: 3}
+  - {fileID: 21300000, guid: 814886674cb74b243aa938e552a62ef6, type: 3}
   - {fileID: 21300000, guid: d0beeb87bb5b7d04aaef118add229269, type: 3}
   - {fileID: 21300000, guid: 5cddf297184708f4a8823457102c25ad, type: 3}
   - {fileID: 21300000, guid: bff705582d324e34ebdfaf8b57acd7c9, type: 3}
   - {fileID: 21300000, guid: ce45c56873753dd4a9c5c459643e22c3, type: 3}
   - {fileID: 21300000, guid: 8b899768403e0c846a1b3d9f675a4631, type: 3}
+  - {fileID: 21300000, guid: 7fcfa4781a6dcf14cad9c347f59f5067, type: 3}
   - {fileID: 21300000, guid: 316f7a982ac613049a81bd5ec5a75e8a, type: 3}
   - {fileID: 21300000, guid: 50d03bb8b652d3445b74839c24b7070d, type: 3}
   - {fileID: 21300000, guid: be6a80c841fd78f478865bf329f79ed2, type: 3}
@@ -138,6 +143,7 @@ SpriteAtlas:
   - Icon_CriticalChance_Per
   - Icon_OutLine0
   - UI_Dice
+  - Color_C
   - Dna
   - Skill_Critical
   - DNA_unionDamage
@@ -158,6 +164,7 @@ SpriteAtlas:
   - Union
   - UI_Lock_un
   - Icon_CriticalDamage_Per
+  - Color_D
   - Icon_Grade_04
   - Icon_GoldBoss_OutLine
   - U_Frame_OutLine
@@ -167,13 +174,16 @@ SpriteAtlas:
   - DNA_skillDuration__
   - Icon_MoveSpeed
   - 1pixel_black
+  - Color_A
   - Skill_Speed
   - Skill_Super
+  - Color_S
   - U_Frame_Legend
   - Skill
   - Frame_Concave
   - Skill_Power
   - Icon_Grade_03
+  - Color_B
   - DNA_offlineBonus
   - btn_Base_White_Border3
   - DNA_boneBonus
