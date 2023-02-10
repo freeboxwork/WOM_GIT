@@ -254,8 +254,8 @@ public class EventController : MonoBehaviour
         // 유니온 장착 슬롯 오픈
         globalData.unionManager.UnlockEquipSlots(evalutionLeveld);
 
-        // 기존 UI Canvas 비활성화
-        UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
+        // 기존 UI Canvas 비활성화  ( 현재 사용하지 않음 )
+        // UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
 
         // 등급 업그레이드 연출 등장
         globalData.gradeAnimCont.gradeIndex = evalutionLeveld;
@@ -279,6 +279,9 @@ public class EventController : MonoBehaviour
         // 진화 자물쇠 UnLock 상태로 Enable 및 필요 주사위 개수 계산하여 적용함.
         globalData.evolutionManager.SetUI_EvolutuinSlotsLockerItems(evalutionLeveld);
         
+        // 등급 업그레이트 연출 시간 후 몬스터 등장
+        yield return new WaitForSeconds(3f);
+
         //진화 메뉴 활성화
         globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
 
