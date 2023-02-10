@@ -7,13 +7,16 @@ public class AttackController : MonoBehaviour
 {
     public InsectManager insectManager;
     /// <summary> 공격 가능 상태  </summary>
-    bool isAttackableState = false ; 
-    
+    bool isAttackableState = false ;
+    public float spawnInterval = 0.1f;
+    float lastSpawnTime;
 
     void Start()
     {
         insectManager = GlobalData.instance.insectManager;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -22,11 +25,16 @@ public class AttackController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                var pos = Input.mousePosition;
-                // 포인터 위치가 UI 위에 있는지 판단
-                var isPointerOnUI = EventSystem.current.IsPointerOverGameObject();
-                if (isPointerOnUI == false)
-                    EnableInsectBullet(pos);
+                if (Time.time - lastSpawnTime >= spawnInterval)
+                {
+                    lastSpawnTime = Time.time;
+
+                    var pos = Input.mousePosition;
+                    // 포인터 위치가 UI 위에 있는지 판단
+                    var isPointerOnUI = EventSystem.current.IsPointerOverGameObject();
+                    if (isPointerOnUI == false)
+                        EnableInsectBullet(pos);
+                }
             }
         }
     }

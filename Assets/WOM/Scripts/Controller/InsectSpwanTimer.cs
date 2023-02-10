@@ -33,7 +33,7 @@ public class InsectSpwanTimer : MonoBehaviour
             var insect = insectManager.GetDisableST_InsectByType(insectType);
             var waitTime = GlobalData.instance.statManager.GetInsectSpwanTime(insectType);
 
-            Debug.Log(" T Y P E " + insectType + " -- " +waitTime);
+            //Debug.Log(" T Y P E " + insectType + " -- " +waitTime);
 
             if (insect != null)
             {
