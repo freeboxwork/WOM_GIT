@@ -397,12 +397,12 @@ public class EventController : MonoBehaviour
     // 보스 몬스터 도전 버튼 눌렀을때 이벤트
     void EvnOnBossMonsterChalleng()
     {
+        StopAllCoroutines();
         StartCoroutine(ProcessBossMonsterChallenge());
     }
-
+    bool isbossMonsterChallenge;
     IEnumerator ProcessBossMonsterChallenge()
     {
-
         // 하프 라인 위 곤충 모두 제거
         globalData.insectManager.DisableHalfLineInsects();
 
