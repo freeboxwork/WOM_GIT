@@ -36,7 +36,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     public IEnumerator AnimPositionIn()
     {
         // collider disable
-        monsterCol.enabled = false;
+        // monsterCol.enabled = false;
         ResetMat();
 
         var startPos = startPoint_MonsterIn.position;
@@ -80,7 +80,7 @@ public class MonsterInOutAnimator : MonoBehaviour
 
         monsterAnim.SetBool("Run", isAnimPlay = false);
         // collider enable
-        monsterCol.enabled = true;
+        // monsterCol.enabled = true;
     }
 
 
