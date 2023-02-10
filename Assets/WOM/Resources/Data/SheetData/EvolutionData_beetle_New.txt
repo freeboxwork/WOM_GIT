@@ -1,63 +1,63 @@
 {"data":[
  {
    "depthId": 0,
-   "damage": 200,
+   "damage": 150,
    "damageRate": 1,
    "criticalChance": 0,
    "criticalDamage": 0,
-   "speed": 1,
+   "speed": 50,
    "goldBonus": 0,
    "bossDamage": 0,
-   "name": "딱정벌레_1",
-   "spawnTime": 3
+   "name": "Beetle00",
+   "spawnTime": 4.5
  },
  {
    "depthId": 1,
-   "damage": 100,
-   "damageRate": 1,
+   "damage": 150,
+   "damageRate": 2,
    "criticalChance": 0,
    "criticalDamage": 0,
    "speed": 0,
-   "goldBonus": 30,
+   "goldBonus": 0,
    "bossDamage": 0,
-   "name": "딱정벌레_2",
-   "spawnTime": 3
+   "name": "Beetle01",
+   "spawnTime": 4.5
  },
  {
    "depthId": 2,
-   "damage": 100,
-   "damageRate": 1.5,
-   "criticalChance": 0,
-   "criticalDamage": 100,
-   "speed": 0,
-   "goldBonus": 0,
-   "bossDamage": 0,
-   "name": "딱정벌레_3",
-   "spawnTime": 3
- },
- {
-   "depthId": 3,
-   "damage": 100,
-   "damageRate": 2,
+   "damage": 150,
+   "damageRate": 4,
    "criticalChance": 0,
    "criticalDamage": 0,
    "speed": 0,
    "goldBonus": 0,
-   "bossDamage": 0.05,
-   "name": "딱정벌레_4",
-   "spawnTime": 3
+   "bossDamage": 0,
+   "name": "Beetle02",
+   "spawnTime": 4.5
+ },
+ {
+   "depthId": 3,
+   "damage": 150,
+   "damageRate": 8,
+   "criticalChance": 0,
+   "criticalDamage": 0,
+   "speed": 0,
+   "goldBonus": 0,
+   "bossDamage": 0,
+   "name": "Beetle03",
+   "spawnTime": 4.5
  },
  {
    "depthId": 4,
-   "damage": 100,
-   "damageRate": 2,
+   "damage": 150,
+   "damageRate": 16,
    "criticalChance": 0,
    "criticalDamage": 0,
    "speed": 100,
    "goldBonus": 0,
    "bossDamage": 0,
-   "name": "딱정벌레_5",
-   "spawnTime": 3
+   "name": "Beetle04",
+   "spawnTime": 4.5
  }
 ]
 }
