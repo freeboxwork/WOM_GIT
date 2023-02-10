@@ -33,9 +33,10 @@ public class InsectBullet : MonoBehaviour
     {
         // 공격 가능 상태에서만 애니메이션 진행
         if (GlobalData.instance.attackController.GetAttackableState() == true)
-            StartCoroutine(AttackAnim());
+            StartCoroutine(AttackMove());
+          //StartCoroutine(AttackAnim());
         else
-            gameObject.SetActive(false);
+                    gameObject.SetActive(false);
     }
 
     float GetSpeed()
@@ -73,6 +74,41 @@ public class InsectBullet : MonoBehaviour
 
         }
         gameObject.SetActive(false);
+    }
+
+    public IEnumerator AttackMove()
+    {
+        var targetPoint = GetRandomMonsterPoint();
+        var speed = GetSpeed();
+
+        while (!IsGoalTargetPoint(targetPoint))
+        {
+            // 이동 방향
+            var direction = transform.position- targetPoint;    
+            
+            // 방향 벡터 정규화 ( 이동거리간 일정한 속도를 위해 )
+            direction.Normalize();
+            
+            // 직선 이동
+            transform.position = GetMovePosition(direction,speed);
+
+            // 회전
+            lookDir = (targetPoint - transform.position);
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f));
+            yield return null;
+        }
+    }
+
+    Vector3 GetMovePosition(Vector3 direction, float speed)
+    {
+        return transform.position - direction * speed * Time.deltaTime;
+    }
+
+    bool IsGoalTargetPoint(Vector3 targetPoint)
+    {
+        var offset = transform.position - targetPoint;
+        int length = (int)offset.sqrMagnitude;
+        return length <= 0;
     }
 
     (Vector3 startPoint, Vector3 targetPoint) GetAnimPoints()
