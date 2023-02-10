@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - monster
+  - monster_normal
+  - monster_gold
+  - monster_boss
+  - monster_evolution
   layers:
   - Default
   - TransparentFX

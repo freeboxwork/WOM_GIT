@@ -44,9 +44,13 @@ public class EventController : MonoBehaviour
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
     }
 
+    bool isMonsterDie = false;
+
     // MONSTER HIT EVENT
     void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex= 0)
     {
+        if (isMonsterDie) return;
+        
         // GET DAMAGE
         float damage;
         if(insectType == InsectType.union)
@@ -85,6 +89,9 @@ public class EventController : MonoBehaviour
 
     IEnumerator MonsterKill(MonsterBase currentMonster)
     {
+
+        isMonsterDie = true;
+
         // 공격 막기
         // globalData.attackController.SetAttackableState(false);
 
@@ -103,13 +110,6 @@ public class EventController : MonoBehaviour
             // 뼈 조각 획득
             GainBone(currentMonster);
         }
-
-
-        //// set glod text ui
-        //globalData.uiController.SetTxtGold(globalData.player.gold);
-
-        //// set bone text ui
-        //globalData.uiController.SetTxtBone(globalData.player.bone);
 
         // hp text 0으로 표시
         globalData.uiController.SetTxtMonsterHp(0);
@@ -131,6 +131,7 @@ public class EventController : MonoBehaviour
             case MonsterType.evolution: StartCoroutine(MonsterDie_Evolution()); break;
         }
 
+        isMonsterDie = false;
     }
 
     void GainGold(MonsterBase monster)
@@ -333,7 +334,7 @@ public class EventController : MonoBehaviour
         MonsterUiReset();
 
         // 공격 가능 상태 변경
-        // globalData.attackController.SetAttackableState(true);
+        globalData.attackController.SetAttackableState(true);
     }
 
 
@@ -397,7 +398,6 @@ public class EventController : MonoBehaviour
     // 보스 몬스터 도전 버튼 눌렀을때 이벤트
     void EvnOnBossMonsterChalleng()
     {
-        StopAllCoroutines();
         StartCoroutine(ProcessBossMonsterChallenge());
     }
     bool isbossMonsterChallenge;

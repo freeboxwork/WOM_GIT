@@ -34,9 +34,10 @@ public class InsectBullet : MonoBehaviour
         // 공격 가능 상태에서만 애니메이션 진행
         if (GlobalData.instance.attackController.GetAttackableState() == true)
             StartCoroutine(AttackMove());
-          //StartCoroutine(AttackAnim());
+        //StartCoroutine(AttackAnim());
         else
-                    gameObject.SetActive(false);
+            gameObject.SetActive(false);
+
     }
 
     float GetSpeed()
@@ -97,6 +98,8 @@ public class InsectBullet : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f));
             yield return null;
         }
+
+        gameObject.SetActive(false);
     }
 
     Vector3 GetMovePosition(Vector3 direction, float speed)
@@ -128,20 +131,25 @@ public class InsectBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("monster"))
+        if (GlobalData.instance.attackController.GetAttackableState() == true)
         {
-            // Attack Effect Enable
-            GlobalData.instance.effectManager.EnableAttackEffectByInsectType(insectType, this.transform);
+            if (collision.transform.CompareTag("monster"))
+            {
+                // Attack Effect Enable
+                GlobalData.instance.effectManager.EnableAttackEffectByInsectType(insectType, this.transform);
 
-            // 소멸
-            gameObject.SetActive(false);
-            // monster hit event!
-            if(insectType == EnumDefinition.InsectType.union)
-                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex);
-            else
-                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType,0);
+                // 소멸
+                gameObject.SetActive(false);
+                // monster hit event!
+                if (insectType == EnumDefinition.InsectType.union)
+                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex);
+                else
+                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, 0);
+            }
         }
     }
+
+    
 
     // 어떠한 이유로 곤충 갑자기 사라져야 할 때
     public void DisableInsect()
