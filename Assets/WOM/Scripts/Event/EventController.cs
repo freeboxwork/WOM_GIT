@@ -180,6 +180,8 @@ public class EventController : MonoBehaviour
     #endregion
     IEnumerator MonsterDie_Gold()
     {
+
+
         // BG Scroll Animation
         globalData.stageManager.PlayAnimBgScroll();
 
@@ -218,6 +220,9 @@ public class EventController : MonoBehaviour
         // current stage setting
         globalData.player.SetCurrentStageData(globalData.player.stageIdx);
 
+        // phaseCount 리셋
+        PhaseCountReset();
+
         // stage setting - stage manager 스테이지 데이터와 배경 이미지 전환 애니메이션
         yield return StartCoroutine( globalData.stageManager.SetStageById(globalData.player.stageIdx));
 
@@ -225,6 +230,8 @@ public class EventController : MonoBehaviour
         yield return StartCoroutine(globalData.monsterManager.Init(globalData.player.stageIdx));
 
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
+
+      
     }
 
     //진화 몬스터 사망시
@@ -353,6 +360,7 @@ public class EventController : MonoBehaviour
     // 진화전 도전 버튼 눌렀을때 ( 진화 몬스터 사냥 )
     void EvnOnEvolutionGradeChallenge()
     {
+        StopAllCoroutines();
         StartCoroutine(ProcessEvolutionGradeChallenge());
     }
 
@@ -393,11 +401,13 @@ public class EventController : MonoBehaviour
         // 진화 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.evolution));
 
+        isMonsterDie = false;
     }
 
     // 보스 몬스터 도전 버튼 눌렀을때 이벤트
     void EvnOnBossMonsterChalleng()
     {
+        StopAllCoroutines();
         StartCoroutine(ProcessBossMonsterChallenge());
     }
     bool isbossMonsterChallenge;
@@ -423,6 +433,9 @@ public class EventController : MonoBehaviour
 
         // 타이머 계산 시작
         globalData.bossChallengeTimer.StartTimer();
+
+        // TODO: 구조적인 변경 필요함. ( MONSTER HIT 이벤트 막는 처리 )
+        isMonsterDie = false;
     }
     
     // 보스 몬스터 시간내에 잡지 못했을때.
