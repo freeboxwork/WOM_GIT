@@ -99,10 +99,10 @@ public class StatManager : MonoBehaviour
     /// <summary> 곤충 이동 속도 </summary>
     public float GetInsectMoveSpeed(InsectType insectType)
     {
+        var ies = GetEvolutionData(insectType).speed;
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
-        var ies = GetEvolutionData(insectType).speed;
-        var value = tms + ims + ies + skill_AllUnitSpeedUp;
+        var value = ies + (ies * (tms + ims + skill_AllUnitSpeedUp));
         return value;
     }
     
@@ -111,7 +111,7 @@ public class StatManager : MonoBehaviour
     {
         var ist = GetEvolutionData(insectType).spawnTime;
         var tst = GetTraningData(SaleStatType.talentSpawnSpeed).value;
-        var value = ist + tst;
+        var value = ist - (ist * tst);
         return value;
     }
 
