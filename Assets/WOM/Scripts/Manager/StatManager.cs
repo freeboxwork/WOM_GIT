@@ -91,7 +91,8 @@ public class StatManager : MonoBehaviour
         var ttd = GetTraningData(SaleStatType.talentDamage).value;
         var upd = unionManager.GetAllUnionPassiveDamage();
         var did = GetDnaData(DNAType.insectDamage).power;
-        var value = ttd + upd + did;
+        var idr = GetEvolutionData(insectType).damageRate;
+        var value = ttd + upd + did + idr;
         return value;
     }
 
@@ -100,7 +101,8 @@ public class StatManager : MonoBehaviour
     {
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
-        var value = tms + ims + skill_AllUnitSpeedUp;
+        var ies = GetEvolutionData(insectType).speed;
+        var value = tms + ims + ies + skill_AllUnitSpeedUp;
         return value;
     }
     
