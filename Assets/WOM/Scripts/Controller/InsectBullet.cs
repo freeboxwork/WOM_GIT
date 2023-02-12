@@ -44,12 +44,12 @@ public class InsectBullet : MonoBehaviour
     {
         if(insectType == EnumDefinition.InsectType.union)
         {
-            return GlobalData.instance.statManager.GetUnionMoveSpeed(inGameData.unionIndex) * 0.01f;
+            return GlobalData.instance.statManager.GetUnionMoveSpeed(inGameData.unionIndex);
         }
         else
         {
             
-            return GlobalData.instance.statManager.GetInsectMoveSpeed(insectType) * 0.01f;
+            return GlobalData.instance.statManager.GetInsectMoveSpeed(insectType);
             // return GlobalData.instance.insectManager.GetInsect(insectType).speed;
         }
     }
