@@ -102,7 +102,7 @@ public class StatManager : MonoBehaviour
         var ies = GetEvolutionData(insectType).speed;
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
-        var value = ies + (ies * (tms + ims + skill_AllUnitSpeedUp));
+        var value = ies + (ies * ((tms + ims + skill_AllUnitSpeedUp) * 0.01f));
         return value;
     }
     
@@ -135,8 +135,8 @@ public class StatManager : MonoBehaviour
     {
         var ums = GetUnionData(unionIndex).moveSpeed;
         var dms = GetDnaData(DNAType.insectMoveSpeed).power;
-        var value = ums + dms + skill_AllUnitSpeedUp;
-        return value * 0.01f;
+        var value = ums + (ums * ((dms + skill_AllUnitSpeedUp) *0.01f));
+        return value;
     }
 
     /// <summary> 유니온 생성속도 </summary>
