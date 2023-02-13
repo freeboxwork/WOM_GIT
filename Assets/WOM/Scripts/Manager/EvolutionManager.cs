@@ -188,6 +188,21 @@ public class EvolutionManager : MonoBehaviour
         }
     }
 
+    public float GetDiceEvolutionDataValueByStatType(EvolutionDiceStatType statType)
+    {
+        switch (statType)
+        {
+            case EvolutionDiceStatType.insectDamage: return diceEvolutionData.insectDamage;
+            case EvolutionDiceStatType.insectCriticalChance: return diceEvolutionData.insectCriticalChance;
+            case EvolutionDiceStatType.insectCriticalDamage: return diceEvolutionData.insectCriticalDamage;
+            case EvolutionDiceStatType.goldBonus: return diceEvolutionData.goldBonus;
+            case EvolutionDiceStatType.insectMoveSpeed: return diceEvolutionData.insectMoveSpeed;
+            case EvolutionDiceStatType.insectSpawnTime: return diceEvolutionData.insectSpawnTime;
+            case EvolutionDiceStatType.insectBossDamage: return diceEvolutionData.insectBossDamage;
+            default: return 0;
+        }
+    }
+
     // 유니온 뽑기
     public void UnionLotteryGameStart(int roundCount)
     {

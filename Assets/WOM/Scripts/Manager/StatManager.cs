@@ -71,7 +71,8 @@ public class StatManager : MonoBehaviour
         var trcc = GetTraningData(SaleStatType.trainingCriticalChance).value;
         var tacc = GetTraningData(SaleStatType.talentCriticalChance).value;
         var icc = GetDnaData(DNAType.insectCriticalChance).power;
-        var value = trcc + tacc + icc + skill_AllUnitCriticalChanceUp;
+        var diceIcc = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectCriticalChance); 
+        var value = trcc + tacc + icc + diceIcc + skill_AllUnitCriticalChanceUp;
         return value;
     }
 
@@ -81,7 +82,8 @@ public class StatManager : MonoBehaviour
         var trcd = GetTraningData(SaleStatType.trainingCriticalDamage).value;
         var tacd = GetTraningData(SaleStatType.talentCriticalDamage).value;
         var icc = GetDnaData(DNAType.insectCriticalDamage).power;
-        var value = trcd + tacd + icc;
+        var diceIcd = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectCriticalDamage);
+        var value = trcd + tacd + icc + diceIcd;
         return value;
     }
 
@@ -92,7 +94,8 @@ public class StatManager : MonoBehaviour
         var upd = unionManager.GetAllUnionPassiveDamage();
         var did = GetDnaData(DNAType.insectDamage).power;
         var idr = GetEvolutionData(insectType).damageRate;
-        var value = ttd + upd + did + idr;
+        var diceId = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectDamage);
+        var value = ttd + upd + did + idr + diceId;
         return value;
     }
 
@@ -102,7 +105,8 @@ public class StatManager : MonoBehaviour
         var ies = GetEvolutionData(insectType).speed;
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
-        var value = ies + (ies * ((tms + ims + skill_AllUnitSpeedUp) * 0.01f));
+        var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);
+        var value = ies + (ies * ((tms + ims + skill_AllUnitSpeedUp) * 0.01f)) + diceIms;
         return value * 0.01f;
     }
     
@@ -111,7 +115,8 @@ public class StatManager : MonoBehaviour
     {
         var ist = GetEvolutionData(insectType).spawnTime;
         var tst = GetTraningData(SaleStatType.talentSpawnSpeed).value;
-        var value = ist - (ist * tst);
+        var diceIst = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectSpawnTime);
+        var value = ist - (ist * tst) + diceIst;
         return value;
     }
 
@@ -135,7 +140,8 @@ public class StatManager : MonoBehaviour
     {
         var ums = GetUnionData(unionIndex).moveSpeed;
         var dms = GetDnaData(DNAType.insectMoveSpeed).power;
-        var value = ums + (ums * ((dms + skill_AllUnitSpeedUp) *0.01f));
+        var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);
+        var value = ums + (ums * ((dms + skill_AllUnitSpeedUp) *0.01f)) + diceIms;
         return value * 0.01f;
     }
 
@@ -166,7 +172,8 @@ public class StatManager : MonoBehaviour
     {
         var dgb = GetDnaData(DNAType.glodBonus).power;
         var tgb = GetTraningData(SaleStatType.talentGoldBonus).value;
-        var value = dgb + tgb + skill_GoldBounsUp;
+        var diceGb = GetEvolutionDiceValueByType(EvolutionDiceStatType.goldBonus);
+        var value = dgb + tgb + diceGb + skill_GoldBounsUp;
         return value;
     }
 
@@ -332,6 +339,11 @@ public class StatManager : MonoBehaviour
     Skill_InGameData GetSkillData(SkillType skillType)
     {
         return skillManager.GetSkillInGameDataByType(skillType);
+    }
+
+    float GetEvolutionDiceValueByType(EvolutionDiceStatType statType)
+    {
+        return evolutionManager.GetDiceEvolutionDataValueByStatType(statType);
     }
 
 
