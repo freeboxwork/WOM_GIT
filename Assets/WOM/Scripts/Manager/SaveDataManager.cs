@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-using UnityEngine.Networking;
-
+using static EnumDefinition;
 public class SaveDataManager : MonoBehaviour
 {
     public SaveDataTotal saveDataTotal;
     const string dataFileName = "saveData.json";
     public GlobalData globalData;
 
+    /* 맥스 레벨 제한값 추가 되어야 함 */
+    // 데이터 로드 했을때 현재 레벨이 맥스 레벨임에도 그 이상의 레벨을 요구할 경우 문제가 생기기 때문에 필히 예외 처리 해야함
     void Start()
     {
         globalData = FindObjectOfType<GlobalData>();
@@ -72,6 +73,7 @@ public class SaveDataManager : MonoBehaviour
 
 
     #region UTILITY METHOD
+    
     public SaveDataTraning GetSaveDataTraningByTraningType(EnumDefinition.SaleStatType traningType)
     {
         foreach (SaveDataTraning traning in saveDataTotal.saveDataTranings.tranings)
@@ -84,6 +86,7 @@ public class SaveDataManager : MonoBehaviour
         return null;
     }
 
+    // 트레이닝 데이터 레벨 세팅
     public void SetLevelByTraningType(EnumDefinition.SaleStatType traningType, int newLevel)
     {
         SaveDataTraning traning = GetSaveDataTraningByTraningType(traningType);
@@ -94,6 +97,22 @@ public class SaveDataManager : MonoBehaviour
         }
     }
 
+    public SaveDataDNA GetDNADataByType(DNAType dnaType)
+    {
+        foreach (SaveDataDNA dna in saveDataTotal.saveDataDNAs.saveDatas)
+        {
+            if (dna.dnaType  == dnaType)
+            {
+                return dna;
+            }
+        }
+        return null;
+    }
+
+    public void SetLevelDNAByType(DNAType dNAType, int level)
+    {
+        GetDNADataByType(dNAType).level = level;
+    }
 
 
 
@@ -135,7 +154,7 @@ public class SaveDataTotal
     public SaveDataTranings saveDataTranings;
     public SaveDataEvolution saveDataEvolution;
     public SaveDataUnions saveDataUnions;
-    public SaveDataDNA saveDataDNA;
+    public SaveDataDNAs saveDataDNAs;
     public SaveDataSkills saveDataSkills;
     public SaveDataShop saveDataShop;
     public SaveDataStage saveDataStage;
@@ -173,7 +192,7 @@ public class SaveDataTraning
 [System.Serializable]
 public class SaveDataEvolution
 {
-    // 진화 레벨 
+    // 진화 레벨 ( 진화 레벨에 따라 슬롯 오픈됨 )
     public int level_evolution;
     // 진화 주사위 돌려서 획득한 데이터 저장
     public DiceEvolutionInGameData diceEvolutionData;
@@ -197,26 +216,38 @@ public class SaveDataUnion
 
 
 [System.Serializable]
-public class SaveDataDNA
+public class SaveDataDNAs
 {
-    public int level_insectDamage;
-    public int level_insectCriticalChance;
-    public int level_insectCriticalDamage;
-    public int level_unionDamage;
-    public int level_glodBonus;
-    public int level_insectMoveSpeed;
-    public int level_unionMoveSpeed;
-    public int level_unionSpawnTime;
-    public int level_goldPig;
-    public int level_skillDuration;
-    public int level_skillCoolTime;
-    public int level_bossDamage;
-    public int level_monsterHpLess;
-    public int level_boneBonus;
-    public int level_goldMonsterBonus;
-    public int level_offlineBonus;
+    #region data list
+    /*
+        insectDamage,
+        insectCriticalChance,
+        insectCriticalDamage,
+        unionDamage,
+        glodBonus,
+        insectMoveSpeed,
+        unionMoveSpeed,
+        unionSpawnTime,
+        goldPig,
+        skillDuration,
+        skillCoolTime,
+        bossDamage,
+        monsterHpLess,
+        boneBonus,
+        goldMonsterBonus,
+        offlineBonus
+     */
+    #endregion
+
+    public List<SaveDataDNA> saveDatas = new List<SaveDataDNA>();
 }
 
+[System.Serializable]
+public class SaveDataDNA
+{
+    public int level;
+    public DNAType dnaType;
+}
 
 [System.Serializable]
 public class SaveDataSkills
