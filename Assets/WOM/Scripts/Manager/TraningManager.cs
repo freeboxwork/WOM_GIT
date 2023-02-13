@@ -2,10 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Accessibility;
-using UnityEngine.Video;
 using static EnumDefinition;
 
 public class TraningManager : MonoBehaviour
