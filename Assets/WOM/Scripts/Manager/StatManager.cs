@@ -106,7 +106,7 @@ public class StatManager : MonoBehaviour
         var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
         var ims = GetDnaData(DNAType.insectMoveSpeed).power;
         var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);
-        var value = ies + (ies * ((tms + ims + skill_AllUnitSpeedUp) * 0.01f)) + diceIms;
+        var value = ies + (ies * ((tms + ims + diceIms + skill_AllUnitSpeedUp) * 0.01f)) ;
         return value * 0.01f;
     }
     
@@ -116,7 +116,7 @@ public class StatManager : MonoBehaviour
         var ist = GetEvolutionData(insectType).spawnTime;
         var tst = GetTraningData(SaleStatType.talentSpawnSpeed).value;
         var diceIst = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectSpawnTime);
-        var value = ist - (ist * tst) + diceIst;
+        var value = ist - (ist * (tst+ diceIst)) ;
         return value;
     }
 
@@ -141,7 +141,7 @@ public class StatManager : MonoBehaviour
         var ums = GetUnionData(unionIndex).moveSpeed;
         var dms = GetDnaData(DNAType.insectMoveSpeed).power;
         var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);
-        var value = ums + (ums * ((dms + skill_AllUnitSpeedUp) *0.01f)) + diceIms;
+        var value = ums + (ums * ((dms + diceIms + skill_AllUnitSpeedUp) *0.01f)) ;
         return value * 0.01f;
     }
 
@@ -216,15 +216,36 @@ public class StatManager : MonoBehaviour
     {
         var data = GetSkillData(SkillType.insectDamageUp);
         skill_InsectDamageUp = data.damage;
-        yield return new WaitForSeconds(data.duaration);
+        data.isSkilUsing = true;
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < data.duaration)
+        {
+            elapsedTime += Time.deltaTime;
+            data.skillLeftTime = data.duaration - elapsedTime;
+            yield return null;
+        }
+
+        data.skillLeftTime = 0;
         skill_InsectDamageUp = 0;
+        data.isSkilUsing = false;
     }
 
     public IEnumerator EnableSkill_UnionDamageUP()
     {
         var data = GetSkillData(SkillType.unionDamageUp);
         skill_UnionDamageUp = data.damage;
-        yield return new WaitForSeconds(data.duaration);
+        data.isSkilUsing = true;
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < data.duaration)
+        {
+            elapsedTime += Time.deltaTime;
+            data.skillLeftTime = data.duaration - elapsedTime;
+            yield return null;
+        }
+        
+        data.isSkilUsing = false;
         skill_UnionDamageUp = 0;
     }
 
@@ -232,7 +253,17 @@ public class StatManager : MonoBehaviour
     {
         var data = GetSkillData(SkillType.allUnitSpeedUp);
         skill_AllUnitSpeedUp = data.power;
-        yield return new WaitForSeconds(data.duaration);
+        data.isSkilUsing = true;
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < data.duaration)
+        {
+            elapsedTime += Time.deltaTime;
+            data.skillLeftTime = data.duaration - elapsedTime;
+            yield return null;
+        }
+
+        data.isSkilUsing = false;
         skill_UnionDamageUp = 0;
     }
 
@@ -240,7 +271,17 @@ public class StatManager : MonoBehaviour
     {
         var data = GetSkillData(SkillType.glodBonusUp);
         skill_GoldBounsUp = data.power;
-        yield return new WaitForSeconds(data.duaration);
+        data.isSkilUsing = true;
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < data.duaration)
+        {
+            elapsedTime += Time.deltaTime;
+            data.skillLeftTime = data.duaration - elapsedTime;
+            yield return null;
+        }
+
+        data.isSkilUsing = false;
         skill_GoldBounsUp = 0;
     }
 
@@ -248,7 +289,17 @@ public class StatManager : MonoBehaviour
     {
         var data = GetSkillData(SkillType.monsterKing);
         skill_MonsterKing = data.power;
-        yield return new WaitForSeconds(data.duaration);
+        data.isSkilUsing = true;
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < data.duaration)
+        {
+            elapsedTime += Time.deltaTime;
+            data.skillLeftTime = data.duaration - elapsedTime;
+            yield return null;
+        }
+
+        data.isSkilUsing = false;
         skill_MonsterKing = 0;
     }
 
@@ -256,7 +307,17 @@ public class StatManager : MonoBehaviour
     {
         var data = GetSkillData(SkillType.allUnitCriticalChanceUp);
         skill_AllUnitCriticalChanceUp = data.power;
-        yield return new WaitForSeconds(data.duaration);
+        data.isSkilUsing = true;
+
+        float elapsedTime = 0.0f;
+        while (elapsedTime < data.duaration)
+        {
+            elapsedTime += Time.deltaTime;
+            data.skillLeftTime = data.duaration - elapsedTime;
+            yield return null;
+        }
+
+        data.isSkilUsing = false;
         skill_AllUnitCriticalChanceUp = 0;
     }
 

@@ -8,10 +8,6 @@ public class UnionSlot : MonoBehaviour
 {
     public EnumDefinition.UnionGradeType unionGradeType;
     public EnumDefinition.UnionEquipType unionEquipType;
-    //public int unionId;
-    //public int curLevel;   // 현재 레벨
-    //public int unionCount; // 유니온 보수 수
-    //public int LevelUpReqirementCount;         // 레벨업에 필요한 유니온 수
     public TextMeshProUGUI txtLevel;           // 현재 레벨
     public TextMeshProUGUI txtEquipState;      // 장착 여부
     public TextMeshProUGUI txtReqirementCount; // 레벨업에 필요한 유니온 수
@@ -23,7 +19,7 @@ public class UnionSlot : MonoBehaviour
 
     public UnionInGameData inGameData;
     public UnionData unionData;
-
+    public UnionEquipSlot unionEquipSlot;
  
 
     void Start()
@@ -51,8 +47,6 @@ public class UnionSlot : MonoBehaviour
     {
         ++inGameData.level;
     }
-
-
 
     public void RelodUISet()
     {
@@ -82,6 +76,11 @@ public class UnionSlot : MonoBehaviour
     {
         var equipTxt = unionEquipType == EnumDefinition.UnionEquipType.Equipped ? "장착중" : "";
         txtEquipState.text = equipTxt;
+    }
+
+    public void SetEquipSlot(UnionEquipSlot unionEquipSlot)
+    {
+        this.unionEquipSlot = unionEquipSlot;
     }
 
     public void SetSliderValue()

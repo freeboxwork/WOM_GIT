@@ -62,6 +62,7 @@ public class UnionEquipSlot : MonoBehaviour
         {
             unionSlot.unionEquipType = EnumDefinition.UnionEquipType.NotEquipped;
             unionSlot.SetUITxtUnionEquipState();
+            unionSlot.SetEquipSlot(this);
         }
 
         unionSlot = _unionSlot;
@@ -70,6 +71,7 @@ public class UnionEquipSlot : MonoBehaviour
 
     public void UnEquipSlot()
     {
+        unionSlot.SetEquipSlot(null);
         unionSlot = null;
         imgUnionFace.sprite = spriteUnionEmpty;
     }

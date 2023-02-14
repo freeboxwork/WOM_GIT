@@ -4,6 +4,9 @@ using UnityEngine;
 using System.IO;
 using System;
 using static EnumDefinition;
+using System.Linq;
+using UnityEngine.Playables;
+
 public class SaveDataManager : MonoBehaviour
 {
     public SaveDataTotal saveDataTotal;
@@ -73,49 +76,177 @@ public class SaveDataManager : MonoBehaviour
 
 
     #region UTILITY METHOD
-    
-    public SaveDataTraning GetSaveDataTraningByTraningType(EnumDefinition.SaleStatType traningType)
+
+    public T GetSaveDataByType<T>(IEnumerable<T> saveDataList, Func<T, bool> predicate, string type)
     {
-        foreach (SaveDataTraning traning in saveDataTotal.saveDataTranings.tranings)
+        var saveData = saveDataList.FirstOrDefault(predicate);
+        if (saveData == null)
         {
-            if (traning.traningType == traningType)
-            {
-                return traning;
-            }
+            throw new Exception($"{type}은 존재하지 않습니다.");
         }
-        return null;
+        return saveData;
     }
 
-    // 트레이닝 데이터 레벨 세팅
+    //public SaveDataTraning GetSaveDataTraningByTraningType(EnumDefinition.SaleStatType traningType)
+    //{
+    //    var traningData = saveDataTotal.saveDataTranings.tranings.FirstOrDefault(f=> f.traningType == traningType);  
+    //    if(traningData == null)
+    //    {
+    //        throw new Exception($"{traningType} 은 존재 하지 않습니다.");
+    //    }
+    //    return traningData;
+    //}
+
+   
+    // 트레이닝 데이터 세팅
+
     public void SetLevelByTraningType(EnumDefinition.SaleStatType traningType, int newLevel)
     {
-        SaveDataTraning traning = GetSaveDataTraningByTraningType(traningType);
+        SaveDataTraning traningData = GetSaveDataByType(saveDataTotal.saveDataTranings.tranings, 
+            f => f.traningType == traningType, traningType.ToString());
 
-        if (traning != null)
+        if (traningData != null)
         {
-            traning.level = newLevel;
+            traningData.level = newLevel;
         }
     }
 
-    public SaveDataDNA GetDNADataByType(DNAType dnaType)
+
+    //public SaveDataDNA GetDNADataByType(DNAType dnaType)
+    //{
+    //    var dna = saveDataTotal.saveDataDNAs.saveDatas.FirstOrDefault(f => f.dnaType == dnaType);
+    //    if (dna == null)
+    //    {
+    //        throw new Exception($"{dnaType} 저장 데이터에서 존재 하지 않습니다.");
+    //    }
+    //    return dna;
+    //}
+
+
+    // DNA 데이터 세팅
+    public void SetLevelDNAByType(DNAType dnaType, int level)
     {
-        foreach (SaveDataDNA dna in saveDataTotal.saveDataDNAs.saveDatas)
+        SaveDataDNA dnaData = GetSaveDataByType(saveDataTotal.saveDataDNAs.saveDatas, 
+            f => f.dnaType == dnaType, dnaType.ToString());
+        dnaData.level = level;
+    }
+
+    // 진화 데이터 세팅
+    public void SetEvolutionLevel(int evolutionLevel)
+    {
+        saveDataTotal.saveDataEvolution.level_evolution = evolutionLevel;
+    }
+    public void SetEvolutionInGameData(int evolutionLevel, DiceEvolutionInGameData inGameData)
+    {
+        saveDataTotal.saveDataEvolution.diceEvolutionData = inGameData.CopyInstance();
+    }
+
+    //public SaveDataUnion GetUnionDataById(int unionID)
+    //{
+    //    var union = saveDataTotal.saveDataUnions.unions.FirstOrDefault(f=> f.unionId == unionID);
+    //    if (union == null)
+    //    {
+    //        throw new Exception($"Union with ID {unionID} not found.");
+    //    }
+    //    return union;
+    //}
+
+
+    // 유니온 데이터 세팅
+    public void SaveUnionData(UnionSlot unionSlot)
+    {
+        var inGmaeData = unionSlot.inGameData;
+        var unionID = inGmaeData.unionIndex;
+        SaveDataUnion union = GetSaveDataByType(saveDataTotal.saveDataUnions.unions, 
+            f => f.unionId == unionID, $"유니온 ID : {unionID}");
+
+        union.unionId = inGmaeData.unionIndex;
+        union.level = inGmaeData.level;
+        union.isEquip = unionSlot.unionEquipType == UnionEquipType.Equipped;
+        if (union.isEquip)
         {
-            if (dna.dnaType  == dnaType)
-            {
-                return dna;
-            }
+            union.equipSlotId = unionSlot.unionEquipSlot.slotIndex;
         }
-        return null;
     }
 
-    public void SetLevelDNAByType(DNAType dNAType, int level)
+    //스킬 데이터 세팅
+    public void SaveSkillData(SkillType skillType, Skill_InGameData skill_InGameData)
     {
-        GetDNADataByType(dNAType).level = level;
+        SaveDataSkill skillData = GetSaveDataByType(saveDataTotal.saveDataSkills.saveDataSkills,
+            f => f.skillType == skillType, skillType.ToString());
+
+        skillData.skillType = skillType;
+        skillData.level = skill_InGameData.level;
+        skillData.isUsingSkill = skill_InGameData.isSkilUsing;
+        skillData.leftSkillTime = skill_InGameData.skillLeftTime;
+    }
+
+    // SHOP 데이터 세팅
+
+
+    // 스테이지 데이터 세팅
+    public void SaveStageDataLevel(int stageLevel)
+    {
+        saveDataTotal.saveDataStage.stageLevel = stageLevel;
+    }
+
+    public void SaveStageDataPhaseCount(int phaseCount)
+    {
+        saveDataTotal.saveDataStage.phaseCount = phaseCount;
     }
 
 
+    // 재화 데이터 세팅
+    public void SaveDataGoodsGold(int gold)
+    {
+        saveDataTotal.saveDataGoods.gold = gold;    
+    }
+    public void SaveDataGoodsGem(int gem)
+    {
+        saveDataTotal.saveDataGoods.gem = gem;
+    }
+    public void SaveDataGoodsBone(int bone)
+    {
+        saveDataTotal.saveDataGoods.bone = bone;
+    }
+    public void SaveDataGoodsDice(int dice)
+    {
+        saveDataTotal.saveDataGoods.dice = dice;
+    }
 
+    // 타임 데이터 세팅
+    public void SaveDataTimeGameEnd(DateTime time)
+    {
+        saveDataTotal.saveDataDateTime.time_gameEnd = time;
+    }
+
+    public void SaveDataTimeAD_Reset(DateTime time)
+    {
+        saveDataTotal.saveDataDateTime.time_AD_Reset = time;
+    }
+
+    // 시스템 데이터 세팅
+    public void SaveDataSystem_SFX_BG(bool value)
+    {
+        saveDataTotal.saveDataSystem.sfx_bgOnOff = value;
+    }
+    public void SaveDataSystem_SFX_EFF(bool value)
+    {
+        saveDataTotal.saveDataSystem.sfx_eff = value;
+    }
+
+    public void SaveDataSystem_SFX_BG_Volume(float value)
+    {
+        saveDataTotal.saveDataSystem.sfx_bg_Volume = value; 
+    }
+    public void SaveDataSystem_SFX_BG_Eff(float value)
+    {
+        saveDataTotal.saveDataSystem.sfx_eff_Volume = value;
+    }
+    public void SaveDataSystem_TutorialStap(int value)
+    {
+        saveDataTotal.saveDataSystem.tutorial_step = value;
+    }
 
 
     string GetSaveDataFilePaht()
@@ -267,7 +398,7 @@ public class SaveDataSkills
 public class SaveDataSkill
 {
     public int level;
-    public bool isUsing; // 스킬 사용중 표시
+    public bool isUsingSkill; // 스킬 사용중 표시
     public float leftSkillTime; // 스킬 남은 시간 
     public EnumDefinition.SkillType skillType;
 }
@@ -304,13 +435,14 @@ public class SaveDataDateTime
 }
 
 [System.Serializable]
-
 public class SaveDataSystem
 {
     // 배경음 OnOff
-    public bool sfx_bg;
+    public bool sfx_bgOnOff;
+    public float sfx_bg_Volume;
     // 효과음 OnOff
     public bool sfx_eff;
+    public float sfx_eff_Volume;
     // 투토리얼 진행 스탭
     public int tutorial_step;
 }

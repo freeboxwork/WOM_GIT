@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Linq;
 using static EnumDefinition;
 using System;
-using JetBrains.Annotations;
 
 public class DataManager : MonoBehaviour
 {
