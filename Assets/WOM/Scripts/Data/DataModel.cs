@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using TMPro.EditorUtilities;
-using JetBrains.Annotations;
-using UnityEngine.Experimental.GlobalIllumination;
-using Unity.VisualScripting;
-using System.Security.Cryptography.X509Certificates;
 
 public class DataModel : MonoBehaviour
 {
@@ -402,6 +397,11 @@ public class DiceEvolutionInGameData
     public float insectSpawnTime;
     public float insectBossDamage;
     public float goldBonus;
+
+    public DiceEvolutionInGameData CopyInstance()
+    {
+        return (DiceEvolutionInGameData)this.MemberwiseClone();
+    }
 }
 
 [Serializable]
@@ -432,7 +432,8 @@ public class Skill_InGameData
     public float damage;
     public float coolTime;
     public string skilName;
-
+    public bool isSkilUsing = false;
+    public float skillLeftTime;
 }
 
 [Serializable]
