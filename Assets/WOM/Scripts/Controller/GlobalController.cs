@@ -25,6 +25,7 @@ public class GlobalController : MonoBehaviour
     public UnionSpwanManager unionSpwanManager;
     public InsectSpwanManager insectSpwanManager;
     public StatManager statManager;
+    public SaveDataManager saveDataManager;
     
     void Start()
     {
@@ -36,6 +37,9 @@ public class GlobalController : MonoBehaviour
     {
         // 공격 불가능 상태로 전환
         attackController.SetAttackableState(false);
+
+        // save data load
+        saveDataManager.Init();
 
         // set data
         yield return StartCoroutine(dataManager.SetDatas());

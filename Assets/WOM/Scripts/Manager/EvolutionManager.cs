@@ -186,6 +186,9 @@ public class EvolutionManager : MonoBehaviour
             case EvolutionDiceStatType.insectSpawnTime: diceEvolutionData.insectSpawnTime += statValue; break;
             case EvolutionDiceStatType.insectBossDamage: diceEvolutionData.insectBossDamage += statValue; break;
         }
+
+        // set save data
+        GlobalData.instance.saveDataManager.SetEvolutionInGameData(diceEvolutionData);
     }
 
     public float GetDiceEvolutionDataValueByStatType(EvolutionDiceStatType statType)

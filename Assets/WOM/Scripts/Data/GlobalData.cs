@@ -33,7 +33,7 @@ public class GlobalData : MonoBehaviour
     public UnionSpwanManager unionSpwanManager;
     public InsectSpwanManager insectSpwanManager;
     public StatManager statManager;
-
+    public SaveDataManager saveDataManager;
 
 
     private void Awake()

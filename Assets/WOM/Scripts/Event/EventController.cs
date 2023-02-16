@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEditor;
 using UnityEngine;
 using static EnumDefinition;
@@ -215,7 +216,11 @@ public class EventController : MonoBehaviour
         globalData.player.isBossMonsterChllengeEnable = false;
 
         // SET STAGE DATA ( 다음 스테이지로 변경 )
-        globalData.player.stageIdx++;
+        var newStageIdx = globalData.player.stageIdx + 1;
+        globalData.player.stageIdx = newStageIdx;
+
+        // set save data
+        globalData.saveDataManager.SaveStageDataLevel(newStageIdx);
 
         // current stage setting
         globalData.player.SetCurrentStageData(globalData.player.stageIdx);
@@ -252,6 +257,9 @@ public class EventController : MonoBehaviour
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
         var evalutionLeveld = globalData.evolutionManager.evalutionLeveldx + 1;
+
+        // set save data
+        globalData.saveDataManager.SetEvolutionLevel(evalutionLeveld);
 
         // 진화 보상 지급 및 UI 세팅
         globalData.evolutionManager.SetUI_Pannel_Evolution(evalutionLeveld);

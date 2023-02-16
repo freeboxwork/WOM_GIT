@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
         GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
         GlobalData.instance.skillManager.EnableBuyButtons();// RELOAD BTN UI
         GlobalData.instance.uiController.SetTxtGold(gold); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsGold(gold); // set save data
     }
 
     public void AddBone(int value)
@@ -121,17 +122,20 @@ public class Player : MonoBehaviour
         bone += value;
         GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
         GlobalData.instance.uiController.SetTxtBone(bone); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsBone(bone); // set save data
     }
     public void AddDice(int value)
     {
         diceCount += value;
         GlobalData.instance.uiController.SetTxtDice(diceCount); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsDice(diceCount); // set save data
     }
 
     public void AddGem(int value)
     {
         gem += value;
         GlobalData.instance.uiController.SetTxtGem(gem); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsGem(gem); // set save data
     }
 
     public void PayGold(int value)
@@ -141,6 +145,7 @@ public class Player : MonoBehaviour
         GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
         GlobalData.instance.skillManager.EnableBuyButtons();// RELOAD BTN UI
         GlobalData.instance.uiController.SetTxtGold(gold); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsGold(gold); // set save data
     }
 
     public void PayBone(int value)
@@ -149,18 +154,21 @@ public class Player : MonoBehaviour
         if (bone < 0) bone = 0;
         GlobalData.instance.traningManager.EnableBuyButtons(); // RELOAD BTN UI
         GlobalData.instance.uiController.SetTxtBone(bone); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsBone(bone); // set save data
     }
     public void PayDice(int value )
     {
         diceCount -= value;
         if (diceCount < 0) diceCount = 0;
         GlobalData.instance.uiController.SetTxtDice(diceCount); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsDice(diceCount); // set save data
     }
     public void PayGem(int value)
     {
         gem -= value;
         if (gem < 0) gem = 0;
         GlobalData.instance.uiController.SetTxtGem(gem); // RELOAD UI
+        GlobalData.instance.saveDataManager.SaveDataGoodsGem(gem); // set save data
     }
          
 

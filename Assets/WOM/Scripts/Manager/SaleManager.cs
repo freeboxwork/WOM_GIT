@@ -62,20 +62,19 @@ public class SaleManager : MonoBehaviour
                     // 데이터 적용
                     traningManager.SetInGameStatLevel(statType, payData.statData.level);
                     traningManager.SetInGameStatValue(statType, payData.statData.value);
+                    
+                    // 세이브 데이터 업데이트
+                    GlobalData.instance.saveDataManager.SetLevelByTraningType(statType, payData.statData.level);
 
                     // UI 적용
                     if (payData.nextStatSaleData != null)
                     {
-                        //GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
-                        //Debug.Log($"{statType}의 현재 레벨 스탯값 : { payData.statData.value} - 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
                         traningManager.SetUI_TraningSlot(statType);
                     }
                     else // 최종레벨 도달
                     {
                         Debug.Log("최종레벨 도달");
                     }
-                    
-
                 }
                 else
                 {
@@ -95,11 +94,12 @@ public class SaleManager : MonoBehaviour
                     traningManager.SetInGameStatLevel(statType, payData.statData.level);
                     traningManager.SetInGameStatValue(statType, payData.statData.value);
 
+                    // 세이브 데이터 업데이트
+                    GlobalData.instance.saveDataManager.SetLevelByTraningType(statType, payData.statData.level);
+
                     // UI 적용
                     if (payData.nextStatSaleData != null)
                     {
-                        //GlobalData.instance.uiController.SetTxtTraningValues(statType, new float[] { payData.statData.value, payData.nextStatSaleData.value });
-                        //Debug.Log($"{statType}의 다음 레벨 : {payData.nextStatSaleData.level} , 다음 레벨 스탯값 : {payData.nextStatSaleData.value} ");
                         traningManager.SetUI_TraningSlot(statType);
                     }
                     else // 최종레벨 도달

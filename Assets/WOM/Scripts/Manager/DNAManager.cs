@@ -115,8 +115,11 @@ public class DNAManager : MonoBehaviour
                 var randomType = GetRandomType(lotteryTypes);
                 var slot = GetSlotByDNAType(randomType);
                 slot.inGameData.LevelUp();
-                lotteryTypes.Add(randomType);
 
+                // set save data
+                GlobalData.instance.saveDataManager.SetLevelDNAByType(randomType, slot.inGameData.level);
+                
+                lotteryTypes.Add(randomType);
                 dnaEffectTypes.Add(randomType); 
 
                 if (!dnaTypes.Contains(randomType))
