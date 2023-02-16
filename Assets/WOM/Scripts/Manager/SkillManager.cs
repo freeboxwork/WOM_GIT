@@ -151,6 +151,9 @@ public class SkillManager : MonoBehaviour
 
             // UNLOCK SKILL
             UnLockSkillButton(skillType);
+
+            // set save data
+            GlobalData.instance.saveDataManager.SaveSkillData(skillType, inGameData);
         }
         else
         {

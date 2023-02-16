@@ -26,7 +26,7 @@ public class SaveDataManager : MonoBehaviour
 
     public IEnumerator Init()
     {
-        LoadDataFromFile(); 
+        //LoadDataFromFile(); 
         
         yield return new WaitForEndOfFrame();
 
@@ -71,7 +71,7 @@ public class SaveDataManager : MonoBehaviour
 
     void SetData()
     {
-
+        saveDataTotal = new SaveDataTotal();
     }
 
 
@@ -136,7 +136,7 @@ public class SaveDataManager : MonoBehaviour
     {
         saveDataTotal.saveDataEvolution.level_evolution = evolutionLevel;
     }
-    public void SetEvolutionInGameData(int evolutionLevel, DiceEvolutionInGameData inGameData)
+    public void SetEvolutionInGameData( DiceEvolutionInGameData inGameData)
     {
         saveDataTotal.saveDataEvolution.diceEvolutionData = inGameData.CopyInstance();
     }
@@ -157,8 +157,7 @@ public class SaveDataManager : MonoBehaviour
     {
         var inGmaeData = unionSlot.inGameData;
         var unionID = inGmaeData.unionIndex;
-        SaveDataUnion union = GetSaveDataByType(saveDataTotal.saveDataUnions.unions, 
-            f => f.unionId == unionID, $"유니온 ID : {unionID}");
+        SaveDataUnion union = GetSaveDataByType(saveDataTotal.saveDataUnions.unions, f => f.unionId == unionID, $"유니온 ID : {unionID}");
 
         union.unionId = inGmaeData.unionIndex;
         union.level = inGmaeData.level;

@@ -131,6 +131,7 @@ public class UnionManager : MonoBehaviour
         // Union Spwan
         GlobalData.instance.unionSpwanManager.UnionSpwan(selectedSlot, equipSlot.slotIndex);
 
+       
     }
 
 
@@ -141,16 +142,19 @@ public class UnionManager : MonoBehaviour
 
     void UnEquipSameUnion()
     {
-        foreach(var equipSlot in unionEquipSlots)   
-            if(equipSlot.unionSlot == selectedSlot)
+        foreach (var equipSlot in unionEquipSlots)
+        {
+            if (equipSlot.unionSlot == selectedSlot)
             {
                 equipSlot.UnEquipSlot();
-                
+
                 // 스폰 타이머 해제
                 var timarIndex = equipSlot.slotIndex;
                 var timer = GlobalData.instance.unionSpwanManager.spwanTimerList[timarIndex];
                 timer.TimerStop();
             }
+        }
+
     }
 
 
