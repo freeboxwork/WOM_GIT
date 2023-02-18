@@ -38,11 +38,11 @@ public class GlobalController : MonoBehaviour
         // 공격 불가능 상태로 전환
         attackController.SetAttackableState(false);
 
-        // save data load
-        saveDataManager.Init();
-
         // set data
         yield return StartCoroutine(dataManager.SetDatas());
+
+        // save data load
+        yield return StartCoroutine(saveDataManager.Init());
 
         // get player data ( 게임 종료전 저장 되어있는 데이터 로드 )
         yield return StartCoroutine(playerDataManager.InitPlayerData());

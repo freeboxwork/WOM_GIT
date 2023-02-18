@@ -153,7 +153,7 @@ public class DataManager : MonoBehaviour
         // SET SALE STAT DATA ( 판매 가능한 스탯 데이터 )
         SetSaleStatDatas();
 
-        yield return null;
+        yield return new WaitForEndOfFrame();
     }
 
  
