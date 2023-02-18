@@ -5392,7 +5392,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1284567407
-  m_SortingOrder: 102
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &242862827
 RectTransform:
@@ -13382,28 +13382,13 @@ GameObject:
   - component: {fileID: 589403045}
   - component: {fileID: 589403044}
   - component: {fileID: 589403043}
-  - component: {fileID: 589403042}
   m_Layer: 0
-  m_Name: DamageText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &589403042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589403041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a964d5bf45e64f342a9b6eca51ae5da9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
-  fontsSize: 4
 --- !u!114 &589403043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13535,7 +13520,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1531691317
-  m_SortingLayer: 0
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!224 &589403045
@@ -13545,18 +13530,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589403041}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 974722318}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 5}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &598765624
 GameObject:
@@ -22548,6 +22533,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df83bd27ff8c25c43a083c650174b058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &974722316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974722318}
+  - component: {fileID: 974722317}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &974722317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974722316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a964d5bf45e64f342a9b6eca51ae5da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textTransform: {fileID: 589403045}
+  duration: 1
+  targetPosY: 1
+  fontsSize: 4
+--- !u!4 &974722318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974722316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 589403045}
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &976151408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 976151408, guid: 7fd1179315e6d924298181be0682252c, type: 3}
@@ -28630,9 +28664,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: -1
+  m_AdditionalShaderChannelsFlag: 7
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1212708855
 RectTransform:
@@ -37722,7 +37756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3409305087878420423, guid: 7fd1179315e6d924298181be0682252c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 73.505
+      value: 73.50499
       objectReference: {fileID: 0}
     - target: {fileID: 3409305087878420423, guid: 7fd1179315e6d924298181be0682252c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -39996,7 +40030,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 31
   m_SortingLayerID: -1284567407
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1747509666
 RectTransform:
