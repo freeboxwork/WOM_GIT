@@ -83,7 +83,7 @@ public class SaveDataManager : MonoBehaviour
         }
     }
 
-    void SetData()
+    public void SetData()
     {
         saveDataTotal = new SaveDataTotal();
 
@@ -99,9 +99,15 @@ public class SaveDataManager : MonoBehaviour
 
         // set union 
         saveDataTotal.saveDataUnions = new SaveDataUnions();
-        foreach(var union in globalData.dataManager.unionDatas.data)
+        //foreach(var union in globalData.dataManager.unionDatas.data)
+        //{
+        //    saveDataTotal.saveDataUnions.unions.Add(new SaveDataUnion {unionId = union.unionIndex });
+        //}
+
+        // 성능 테스트
+        for (int i = 0; i < 64; i++)
         {
-            saveDataTotal.saveDataUnions.unions.Add(new SaveDataUnion {unionId = union.unionIndex });
+            saveDataTotal.saveDataUnions.unions.Add(new SaveDataUnion { unionId = i });
         }
 
         // set DNA
