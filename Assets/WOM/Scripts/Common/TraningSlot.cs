@@ -22,10 +22,11 @@ public class TraningSlot : MonoBehaviour
 
     public TraningInGameData traningInGameData;
 
+    public ParticleSystem effLevelUp;
 
     public void Start()
     {
-        
+        SetBtnEvent();
     }
 
     public void SetTxtInfo(string value)
@@ -53,7 +54,11 @@ public class TraningSlot : MonoBehaviour
 
     public void SetBtnEvent()
     {
+        btnBuy.onClick.AddListener(() => {
 
+            effLevelUp.Play();
+
+        });
     }
 
     public void BtnEnable(bool value)

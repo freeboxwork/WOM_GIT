@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public delegate void CallBackEvent();
     public delegate void CallBackEvent<F>(F arg);
     public delegate void CallBackEvent<F, S>(F arg_1, S arg_2);
+    public delegate void CallBackEvent<F, S, T >(F arg_1, S arg_2, T arg_3);
 
     public Hashtable eventHash = new Hashtable();
 
@@ -108,6 +109,39 @@ public class EventManager : MonoBehaviour
         else
             PrintRunException(_type);
     }
+
+
+    // 3 ARGUMENT
+    public void AddCallBackEvent<F, S, T>(CallBackEventType.TYPES _type, CallBackEvent<F, S , T> _event)
+    {
+        var callBacks = (List<CallBackEvent<F, S, T>>)eventHash[_type];
+        if (callBacks == null)
+        {
+            callBacks = new List<CallBackEvent<F, S, T>>();
+            eventHash.Add(_type, callBacks);
+        }
+        callBacks.Add(_event);
+    }
+
+    public void RemoveCallBackEvent<F, S, T>(CallBackEventType.TYPES _type, CallBackEvent<F, S, T> _event)
+    {
+        var callBakcs = (List<CallBackEvent<F, S, T>>)eventHash[_type];
+        if (callBakcs != null)
+            callBakcs.Remove(_event);
+        else
+            PrintRemoveException(_type);
+    }
+
+    public void RunEvent<F, S, T>(CallBackEventType.TYPES _type, F arg_1, S arg_2, T arg_3)
+    {
+        var callbacks = (List<CallBackEvent<F, S, T>>)eventHash[_type];
+        if (callbacks != null)
+            foreach (var callback in callbacks)
+                callback(arg_1, arg_2, arg_3);
+        else
+            PrintRunException(_type);
+    }
+
 
 
     void PrintRemoveException(CallBackEventType.TYPES _type)

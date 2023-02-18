@@ -135,9 +135,10 @@ public class InsectManager : MonoBehaviour
 
 
     /// <summary> 계산된 곤충 데미지 값 </summary>
-    public float GetInsectDamage(EnumDefinition.InsectType insectType, int unionIndex = 0)
+    public float GetInsectDamageOld(EnumDefinition.InsectType insectType, int unionIndex, out bool isCritical)
     {
-        if(insectType == InsectType.union)
+        isCritical = false;
+        if (insectType == InsectType.union)
         {
             var damage = statManager.GetUnionDamage(unionIndex);
             var talentDamage = statManager.GetUnionTalentDamage(unionIndex);
@@ -145,18 +146,50 @@ public class InsectManager : MonoBehaviour
         }
         else
         {
-
             var damage = statManager.GetInsectDamage(insectType);
             var talentDamage = statManager.GetInsectTalentDamage(insectType);
             damage = damage + talentDamage;
             if (HasCriticalDamage(insectType)) // 크리티컬 데미지 터졌을때
             {
-                damage = damage * statManager.GetInsectCriticalDamage(insectType); 
+                damage = damage * statManager.GetInsectCriticalDamage(insectType);
+                isCritical = true;
             }
+            
             if (damageDebug) return debugDamage;
             return damage;
         }
     }
+
+    public float GetInsectDamage(EnumDefinition.InsectType insectType, int unionIndex, out bool isCritical)
+    {
+        float damage = 0;
+        float talentDamage = 0;
+        isCritical = false;
+
+        if (insectType == InsectType.union)
+        {
+            damage = statManager.GetUnionDamage(unionIndex);
+            talentDamage = statManager.GetUnionTalentDamage(unionIndex);
+        }
+        else
+        {
+            damage = statManager.GetInsectDamage(insectType);
+            talentDamage = statManager.GetInsectTalentDamage(insectType);
+
+            if (HasCriticalDamage(insectType)) // 크리티컬 데미지 터졌을때
+            {
+                damage *= statManager.GetInsectCriticalDamage(insectType);
+                isCritical = true;
+            }
+        }
+
+        damage += talentDamage;
+        if (damageDebug) return debugDamage;
+        return damage;
+    }
+
+
+
     // ---------- 훈련 업그레이드 시작
     float GetInsectDamage(InsectBase insect)
     {

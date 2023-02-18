@@ -14,7 +14,7 @@ public class SkilSlot : MonoBehaviour
     public TextMeshProUGUI txtCost;
     public Button btnPay;
     public EnumDefinition.SkillType skillType;
-
+    public ParticleSystem effLevelUp;
     void Start()
     {
         SetBtnEvent();
@@ -25,6 +25,7 @@ public class SkilSlot : MonoBehaviour
     {
         btnPay.onClick.AddListener(() => {
             GlobalData.instance.skillManager.LevelUpSkill(skillType);
+            effLevelUp.Play();
         });
     }
 

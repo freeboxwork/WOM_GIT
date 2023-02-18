@@ -30,7 +30,7 @@ public class EventController : MonoBehaviour
 
     void AddEvents()
     {
-        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int, Transform>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
@@ -39,7 +39,7 @@ public class EventController : MonoBehaviour
 
     void RemoveEvents()
     {
-        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType, int>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
+        EventManager.instance.RemoveCallBackEvent<EnumDefinition.InsectType, int, Transform>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
         EventManager.instance.RemoveCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
@@ -48,16 +48,33 @@ public class EventController : MonoBehaviour
     bool isMonsterDie = false;
 
     // MONSTER HIT EVENT
-    void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex= 0)
+    void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex= 0, Transform tr = null )
     {
         if (isMonsterDie) return;
         
+
         // GET DAMAGE
         float damage;
-        if(insectType == InsectType.union)
-            damage = globalData.insectManager.GetInsectDamage(insectType, unionIndex);
-        else
-            damage = globalData.insectManager.GetInsectDamage(insectType);
+        //bool _isCritical = false;
+        //if (insectType == InsectType.union)
+        //{
+        //    damage = globalData.insectManager.GetInsectDamage(insectType, unionIndex, out bool isCritical);
+        //    _isCritical = isCritical;
+        //}
+
+        //else
+        //{
+        //    damage = globalData.insectManager.GetInsectDamage(insectType, 0, out bool isCritical);
+        //    _isCritical = isCritical;
+        //}
+
+        //float damage;
+        //bool isCritical;
+        damage = globalData.insectManager.GetInsectDamage(insectType, insectType == InsectType.union ? unionIndex : 0, out bool isCritical);
+
+        // ENABLE Floting Text Effect 
+        globalData.effectManager.EnableFloatingText(damage, isCritical, tr);
+
 
         // GET MONSTER
         var currentMonster = globalData.player.currentMonster;
