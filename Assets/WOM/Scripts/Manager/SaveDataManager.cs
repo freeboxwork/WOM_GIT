@@ -26,11 +26,16 @@ public class SaveDataManager : MonoBehaviour
 
     public IEnumerator Init()
     {
-        //LoadDataFromFile(); 
+        LoadDataFromFile(); 
         
+        
+
+        //SetData();
+
         yield return new WaitForEndOfFrame();
 
-        SetData();
+        // Save Json File
+        //SaveDataToFile();
     }
 
     // Update is called once per frame
@@ -66,12 +71,53 @@ public class SaveDataManager : MonoBehaviour
     void LoadDataFromFile()
     {
         var path = GetSaveDataFilePaht();
-        saveDataTotal = JsonUtility.FromJson<SaveDataTotal>(path);
+        if (File.Exists(path))
+        {
+            var file = File.ReadAllText(path);
+            saveDataTotal = JsonUtility.FromJson<SaveDataTotal>(file);
+        }
+        else
+        {
+            SetData();
+            SaveDataToFile();
+        }
     }
 
     void SetData()
     {
         saveDataTotal = new SaveDataTotal();
+
+        // TODO: JSON 데이터에서 파일 읽어와야 함
+
+        // set traning 
+        saveDataTotal.saveDataTranings = new SaveDataTranings();
+        foreach (SaleStatType type in Enum.GetValues(typeof(SaleStatType)))
+        {
+            SaveDataTraning saveData = new SaveDataTraning { traningType = type, level = 0 };
+            saveDataTotal.saveDataTranings.tranings.Add(saveData);
+        }
+
+        // set union 
+        saveDataTotal.saveDataUnions = new SaveDataUnions();
+        foreach(var union in globalData.dataManager.unionDatas.data)
+        {
+            saveDataTotal.saveDataUnions.unions.Add(new SaveDataUnion {unionId = union.unionIndex });
+        }
+
+        // set DNA
+        saveDataTotal.saveDataDNAs = new SaveDataDNAs();
+        foreach(DNAType type in Enum.GetValues(typeof(DNAType)))
+        {
+            saveDataTotal.saveDataDNAs.saveDatas.Add(new SaveDataDNA { dnaType = type });
+        }
+
+        // set skill
+        saveDataTotal.saveDataSkills = new SaveDataSkills();
+        foreach (SkillType type in Enum.GetValues(typeof(SkillType)))
+        {
+            saveDataTotal.saveDataSkills.saveDataSkills.Add(new SaveDataSkill { skillType = type });
+        }
+
     }
 
 
@@ -87,16 +133,6 @@ public class SaveDataManager : MonoBehaviour
         return saveData;
     }
 
-    //public SaveDataTraning GetSaveDataTraningByTraningType(EnumDefinition.SaleStatType traningType)
-    //{
-    //    var traningData = saveDataTotal.saveDataTranings.tranings.FirstOrDefault(f=> f.traningType == traningType);  
-    //    if(traningData == null)
-    //    {
-    //        throw new Exception($"{traningType} 은 존재 하지 않습니다.");
-    //    }
-    //    return traningData;
-    //}
-
    
     // 트레이닝 데이터 세팅
 
@@ -110,17 +146,6 @@ public class SaveDataManager : MonoBehaviour
             traningData.level = newLevel;
         }
     }
-
-
-    //public SaveDataDNA GetDNADataByType(DNAType dnaType)
-    //{
-    //    var dna = saveDataTotal.saveDataDNAs.saveDatas.FirstOrDefault(f => f.dnaType == dnaType);
-    //    if (dna == null)
-    //    {
-    //        throw new Exception($"{dnaType} 저장 데이터에서 존재 하지 않습니다.");
-    //    }
-    //    return dna;
-    //}
 
 
     // DNA 데이터 세팅
@@ -153,20 +178,50 @@ public class SaveDataManager : MonoBehaviour
 
 
     // 유니온 데이터 세팅
-    public void SaveUnionData(UnionSlot unionSlot)
+    //public void SaveUnionData(UnionSlot unionSlot)
+    //{
+    //    var inGmaeData = unionSlot.inGameData;
+    //    var unionID = inGmaeData.unionIndex;
+    //    var union = GetSaveDataByType(saveDataTotal.saveDataUnions.unions, f => f.unionId == unionID, $"유니온 ID : {unionID}");
+
+    //    // union.unionId = inGmaeData.unionIndex;
+    //    union.level = inGmaeData.level;
+    //    union.isEquip = unionSlot.unionEquipType == UnionEquipType.Equipped;
+    //    if (union.isEquip)
+    //    {
+    //        union.equipSlotId = unionSlot.unionEquipSlot.slotIndex;
+    //    }
+    //}
+
+    public void SaveUnionLevelData(UnionSlot unionSlot)
+    {
+        var inGmaeData = unionSlot.inGameData;
+        GetSaveDataUnion(unionSlot).level = inGmaeData.level;
+    }
+
+    public void SaveUnionEquipSlotData_(UnionSlot unionSlot)
+    {
+        var union = GetSaveDataUnion(unionSlot);
+        union.isEquip = unionSlot.unionEquipType == UnionEquipType.Equipped;
+        union.equipSlotId = union.isEquip ? unionSlot.unionEquipSlot.slotIndex : 999;
+    }
+
+    public void SaveUnionEquipSlotData(UnionSlot unionSlot, UnionEquipSlot unionEquipSlot)
+    {
+        var union = GetSaveDataUnion(unionSlot);
+        union.isEquip = unionEquipSlot != null;
+        union.equipSlotId = unionEquipSlot?.slotIndex ?? 999;
+    }
+
+
+    SaveDataUnion GetSaveDataUnion(UnionSlot unionSlot)
     {
         var inGmaeData = unionSlot.inGameData;
         var unionID = inGmaeData.unionIndex;
-        SaveDataUnion union = GetSaveDataByType(saveDataTotal.saveDataUnions.unions, f => f.unionId == unionID, $"유니온 ID : {unionID}");
-
-        union.unionId = inGmaeData.unionIndex;
-        union.level = inGmaeData.level;
-        union.isEquip = unionSlot.unionEquipType == UnionEquipType.Equipped;
-        if (union.isEquip)
-        {
-            union.equipSlotId = unionSlot.unionEquipSlot.slotIndex;
-        }
+        var union = GetSaveDataByType(saveDataTotal.saveDataUnions.unions, f => f.unionId == unionID, $"유니온 ID : {unionID}");
+        return union;
     }
+
 
     //스킬 데이터 세팅
     public void SaveSkillData(SkillType skillType, Skill_InGameData skill_InGameData)
@@ -376,6 +431,7 @@ public class SaveDataDNAs
 public class SaveDataDNA
 {
     public int level;
+    public int dnaIndex;
     public DNAType dnaType;
 }
 

@@ -12,7 +12,7 @@ public class UnionManager : MonoBehaviour
 
     void Start()
     {
-        UnlockEquipSlots(GlobalData.instance.evolutionManager.evalutionLeveldx);
+       // UnlockEquipSlots(GlobalData.instance.evolutionManager.evalutionLeveldx);
     }
 
     public void UnlockEquipSlots(int dataId)
@@ -94,7 +94,9 @@ public class UnionManager : MonoBehaviour
 
         // 버튼 이벤트 설정
         SetBtnEvent();
-       
+
+        UnlockEquipSlots(GlobalData.instance.evolutionManager.evalutionLeveldx);
+
     }
 
     void SetBtnEvent()

@@ -46,6 +46,9 @@ public class UnionSlot : MonoBehaviour
     public void LevelUp()
     {
         ++inGameData.level;
+
+        // set save data
+        GlobalData.instance.saveDataManager.SaveUnionLevelData(this);
     }
 
     public void RelodUISet()
@@ -81,6 +84,8 @@ public class UnionSlot : MonoBehaviour
     public void SetEquipSlot(UnionEquipSlot unionEquipSlot)
     {
         this.unionEquipSlot = unionEquipSlot;
+        // set save data
+        GlobalData.instance.saveDataManager.SaveUnionEquipSlotData(this, unionEquipSlot);   
     }
 
     public void SetSliderValue()
