@@ -17,15 +17,14 @@ namespace ProjectGraphics
         public float duration = 1.0f;
         [Header("목표 Y 위치")]
         public float targetPosY = 0.5f;
-        [Header("글자크기")]
-        public int fontsSize = 4;
 
         //임시
-        private bool isCritical = false;
-        
+        //public bool isCritical = false;
+
         //노말 텍스트 컬러, 크리티컬 텍스트 컬러,
         //크리티컬 글자!
-        private Color setColor = Color.white;
+        public Color nomalColor;
+        public Color criticalColor;
 
         private void Awake()
         {
@@ -38,12 +37,42 @@ namespace ProjectGraphics
 
         private void OnEnable()
         {
+            /*
+            if (isCritical)
+            {
+                textMesh.fontSize = 4;
+                textMesh.text = "Critical!\n" + "0000";
+                textMesh.color = criticalColor;
+                textMesh.fontStyle = FontStyles.Italic | FontStyles.Bold | FontStyles.UpperCase;
+            }
+            else
+            {
+                textMesh.fontSize = 3;
+                textMesh.text = "0000";
+                textMesh.color = nomalColor;
+                textMesh.fontStyle = FontStyles.Bold | FontStyles.UpperCase;
+            }
+            */
             StartAnimation();
         }
 
-        public void SetText(string text)
+        public void SetText(string text, bool crit)
         {
-
+            if (crit)
+            {
+                textMesh.fontSize = 4;
+                textMesh.text = "Critical!\n" + text;
+                textMesh.color = criticalColor;
+                textMesh.fontStyle = FontStyles.Italic | FontStyles.Bold | FontStyles.UpperCase;
+            }
+            else
+            {
+                textMesh.fontSize = 3;
+                textMesh.text = text;
+                textMesh.color = nomalColor;
+                textMesh.fontStyle = FontStyles.Bold | FontStyles.UpperCase;
+            }
+            
         }
 
         private void StartAnimation()
