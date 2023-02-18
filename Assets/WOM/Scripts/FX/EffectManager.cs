@@ -9,6 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngineInternal;
 
+
 public class EffectManager : MonoBehaviour
 {
     [Header("곤충 이펙트 관련 항목")]
@@ -44,6 +45,14 @@ public class EffectManager : MonoBehaviour
     public AnimationController animContTransition;
     public AnimData animDataTranIn;
     public AnimData animDataTranOut;
+    
+    [Header("=====================================================================================================================")]
+    [Header("몬스터 타격시 나타나는 텍스트")]
+    int flotingTextPoolCount = 20;
+    public FloatingText prefabFloatingText;
+    public List<FloatingText> floatingTextPool = new List<FloatingText>();
+         
+
 
 
     void Start()
@@ -66,6 +75,9 @@ public class EffectManager : MonoBehaviour
         CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.beetle], insectAttackEffBeetle);
         // attack effect Union
         CreateInstanceAttackEffects(prefabInsectAttackEff[(int)EnumDefinition.InsectType.union], insectAttackEffUnion);
+
+        // 플로팅 텍스트 오브젝트 풀 생성
+        CreateFloatingTextPool();
 
         // 골드 풀링 오브젝트 생성
         goldPoolingCont.Init();
@@ -98,7 +110,7 @@ public class EffectManager : MonoBehaviour
     public void EnableInsectDisableEffect(Transform tr)
     {
         var effect = GetInsectDisableEff();
-        effect.transform.position = tr.transform.position;
+        effect.transform.position = tr.position;
         effect.gameObject.SetActive(true);
     }
 
@@ -117,7 +129,7 @@ public class EffectManager : MonoBehaviour
     {
         var effect = GetDisableParticleRoate(particles);
         var zRot = tr.eulerAngles.z;
-        effect.transform.position = tr.transform.position;
+        effect.transform.position = tr.position;
         effect.SetParticleRotateDirection(zRot);
         effect.gameObject.SetActive(true);
     }
@@ -152,6 +164,42 @@ public class EffectManager : MonoBehaviour
     {
         return goldSFX_RandomPoints[(int)pointType];
     }
+
+    public void EnableFloatingText(float damage, bool isCritical, Transform tr)
+    {
+        var flotingTxt = GetFloatingText();
+        flotingTxt.transform.position = tr.position;
+        flotingTxt.gameObject.SetActive(true);
+        flotingTxt.SetText(damage.ToString(), isCritical);
+    }
+
+    // 플로팅 텍스트 Pool
+    void CreateFloatingTextPool()
+    {
+        for (int i = 0; i < flotingTextPoolCount; i++)
+        {
+            FloatingText floatingText = Instantiate(prefabFloatingText, trEffects);
+            floatingText.gameObject.SetActive(false);
+            floatingTextPool.Add(floatingText);
+        }
+    }
+
+    public FloatingText GetFloatingText()
+    {
+        for (int i = 0; i < floatingTextPool.Count; i++)
+        {
+            if (!floatingTextPool[i].gameObject.activeInHierarchy)
+            {
+                return floatingTextPool[i];
+            }
+        }
+
+        FloatingText floatingText = Instantiate(prefabFloatingText, trEffects);
+        floatingTextPool.Add(floatingText);
+        return floatingText;
+    }
+
+
 
 
     /// <summary> 진화전 트랜지션 이펙트 </summary>

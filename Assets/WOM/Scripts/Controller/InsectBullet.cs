@@ -138,13 +138,14 @@ public class InsectBullet : MonoBehaviour
                 // Attack Effect Enable
                 GlobalData.instance.effectManager.EnableAttackEffectByInsectType(insectType, this.transform);
 
-                // ¼Ò¸ê
-                gameObject.SetActive(false);
                 // monster hit event!
                 if (insectType == EnumDefinition.InsectType.union)
-                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex);
+                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex, this.transform);
                 else
-                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, 0);
+                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, 0, this.transform);
+
+                // ¼Ò¸ê
+                gameObject.SetActive(false);
             }
         }
     }

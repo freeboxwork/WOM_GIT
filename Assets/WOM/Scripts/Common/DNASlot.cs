@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Rendering;
-using TMPro.EditorUtilities;
-using UnityEditor.Rendering.LookDev;
-using Unity.VisualScripting;
 
 public class DNASlot : MonoBehaviour
 {
