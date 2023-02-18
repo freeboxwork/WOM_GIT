@@ -86,7 +86,7 @@ namespace ProjectGraphics
         private void OnDisable()
         {
             textTransform.localPosition = Vector3.zero;
-            textMesh.color = Color.white;
+            textMesh.color = nomalColor;
         }
     }
 }

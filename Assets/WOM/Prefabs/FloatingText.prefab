@@ -48,7 +48,7 @@ MonoBehaviour:
   textTransform: {fileID: 6388282251647746621}
   duration: 0.5
   targetPosY: 0.5
-  nomalColor: {r: 1, g: 1, b: 1, a: 1}
+  nomalColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   criticalColor: {r: 1, g: 0.73324853, b: 0, a: 1}
 --- !u!1 &6388282251647746617
 GameObject:
@@ -108,7 +108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73ca0ebc99f86034ca1971116c694682, type: 2}
+  - {fileID: 2100000, guid: 31e49a55934a3f44db2ae13d2d58f846, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154,8 +154,8 @@ MonoBehaviour:
 
     000000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 73ca0ebc99f86034ca1971116c694682, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a84c7c7ed1199b649929d0e361600268, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 31e49a55934a3f44db2ae13d2d58f846, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
