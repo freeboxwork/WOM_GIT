@@ -6,11 +6,23 @@ using static EnumDefinition;
 
 public class GM_TesterTools : EditorWindow
 {
+    Transform t;
+
     [MenuItem("GM_TOOLS/TesterTools")]
     public static void ShowWindwo()
     {
         var window = GetWindow<GM_TesterTools>();
         window.Show();
+    }
+
+    private void OnEnable()
+    {
+        var tg = GameObject.Find("TesterTransform");
+        if (tg == null)
+        {
+            tg = new GameObject("TesterTransform");
+        }
+        t = tg.transform;
     }
 
     private void OnGUI()
@@ -24,12 +36,13 @@ public class GM_TesterTools : EditorWindow
         EditorCustomGUI.GUI_Button("몬스터 즉시 사냥", () => { KillMonster(); });
     }
 
+   
 
     void KillMonster()
     {
         var player = GlobalData.instance.player;
         player.currentMonster.hp = 0;
-        EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, EnumDefinition.InsectType.bee,0);
+        EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, EnumDefinition.InsectType.bee,0, t);
     }
 
 }
