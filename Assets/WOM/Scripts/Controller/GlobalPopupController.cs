@@ -8,12 +8,16 @@ using UnityEngine.Events;
 
 public class GlobalPopupController : MonoBehaviour
 {
+
+    // GLOBAL MESSAGE POPUP
     public GameObject popupSet;
     public TextMeshProUGUI txtTtile;
     public TextMeshProUGUI txtMessage;
-
     public Button btnConfirm;
-    
+
+    // GLOBAL MESSAGE TWO BUTTON POPUP
+    public GlobalMessageTwoBtnPopup twoBtnPopup;
+
     void Start()
     {
         SetButtonEvent();
