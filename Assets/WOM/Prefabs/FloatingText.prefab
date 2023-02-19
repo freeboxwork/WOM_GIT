@@ -48,8 +48,8 @@ MonoBehaviour:
   textTransform: {fileID: 6388282251647746621}
   duration: 0.5
   targetPosY: 0.5
-  nomalColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
-  criticalColor: {r: 1, g: 0.73324853, b: 0, a: 1}
+  nomalColor: {r: 1, g: 1, b: 1, a: 1}
+  criticalColor: {r: 1, g: 0.49023116, b: 0.25943398, a: 1}
 --- !u!1 &6388282251647746617
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 19
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
