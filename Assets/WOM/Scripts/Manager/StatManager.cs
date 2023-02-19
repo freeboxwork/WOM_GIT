@@ -102,11 +102,13 @@ public class StatManager : MonoBehaviour
     /// <summary> 곤충 이동 속도 </summary>
     public float GetInsectMoveSpeed(InsectType insectType)
     {
-        var ies = GetEvolutionData(insectType).speed;
-        var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;
-        var ims = GetDnaData(DNAType.insectMoveSpeed).power;
-        var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);
-        var value = ies + (ies * ((tms + ims + diceIms + skill_AllUnitSpeedUp) * 0.01f)) ;
+        var ies = GetEvolutionData(insectType).speed;//150
+        var tms = GetTraningData(SaleStatType.talentMoveSpeed).value;//5
+        var ims = GetDnaData(DNAType.insectMoveSpeed).power;//1
+        var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);//50
+        var value = ies * (1 + ((tms + ims + diceIms + skill_AllUnitSpeedUp) * 0.01f));
+        //var value = ies + (ies * ((tms + ims + diceIms + skill_AllUnitSpeedUp) * 0.01f));
+        Debug.Log($"진화속도:{ies}/특성속도:{tms}/DNA속도:{ims}/주사위속도{diceIms} = 합계 : {value}");
         return value * 0.01f;
     }
     
