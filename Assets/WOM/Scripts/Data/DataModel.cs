@@ -366,6 +366,7 @@ public class RewardEvolutionGradeData
 public class GlobalMessageData
 {
     public int id;
+    public string popupType;
     public string message_kor;
     public string message_eng;
  }

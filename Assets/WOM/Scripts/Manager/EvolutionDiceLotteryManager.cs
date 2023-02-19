@@ -36,7 +36,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         
         // 랜덤 가중치 설정
         SetWeightValues();
-        yield return null;  
+        yield return new WaitForEndOfFrame();  
     }
 
     void SetWeightValues()
@@ -100,12 +100,25 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
 
             // 랜덤 그레이드 뽑기
             var randomGradeData = GetRandomWeightEvolutionGradeData();
+           // randomGradeData.grade = 1;
 
+            
+            bool isPervGradeS = slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S;
             // 기존 Grade 가 S등급일 경우 팝업창 띄워서 더 진행 할것인지 확인.
-            if ( slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S )
+            if (isPervGradeS)
             {
-                // TODO : 
+                bool btnApply = false;
+                bool btnCancel = false;
+
+                // 팝업 실행
+                GlobalData.instance.globalPopupController.EnableMessageTwoBtnPopup(11, (btnApply) => { } , (btnCancel) => { });
+                // 팝업 버튼 클릭 대기
+                yield return new WaitUntil(() => btnApply || btnCancel);
+
+                if (isPervGradeS && btnCancel) yield break;
             }
+
+            
 
             // SET GRADE
             slot.SetEvolutionRewardGrade((EvolutionRewardGrade)randomGradeData.grade);
