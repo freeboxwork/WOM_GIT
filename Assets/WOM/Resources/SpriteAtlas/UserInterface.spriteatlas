@@ -86,6 +86,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2cc30fa6eae2ebc4899c139afbe690bb, type: 3}
   - {fileID: 21300000, guid: 73aeb03795f6b1348a9ce60379521905, type: 3}
   - {fileID: 21300000, guid: d2062647fece186459f78707b0c454a6, type: 3}
+  - {fileID: 21300000, guid: 3f798657faf957544a836ef06bad8ba3, type: 3}
   - {fileID: 21300000, guid: 814886674cb74b243aa938e552a62ef6, type: 3}
   - {fileID: 21300000, guid: d0beeb87bb5b7d04aaef118add229269, type: 3}
   - {fileID: 21300000, guid: 5cddf297184708f4a8823457102c25ad, type: 3}
@@ -177,6 +178,7 @@ SpriteAtlas:
   - Color_A
   - Skill_Speed
   - Skill_Super
+  - SymbolNone
   - Color_S
   - U_Frame_Legend
   - Skill
@@ -216,7 +218,7 @@ SpriteAtlas:
   - btn_small
   - Icon_Grade_01
   - DNA_goldMonsterBonus
-  - DNA_BossDamage
+  - DNA_bossDamage
   - U_Frame_High
   - DNA_goldPig__
   - ClearBox
