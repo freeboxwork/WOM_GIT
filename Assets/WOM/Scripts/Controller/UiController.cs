@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using static EnumDefinition;
 using System.Linq;
+using ProjectGraphics;
 using Unity.VisualScripting;
 
 public class UiController : MonoBehaviour
@@ -37,6 +38,10 @@ public class UiController : MonoBehaviour
     public float menuPannelScrollView_posY_union;
     public float menuPannelScrollView_posY_dna;
     public float menuPannelScrollView_posY_shop;
+
+    public FloatingTextValues floatingTextGold;
+    public FloatingTextValues floatingTextBone;
+    public FloatingTextValues floatingTextGem;
 
     void Start()
     {
@@ -122,18 +127,33 @@ public class UiController : MonoBehaviour
     public void SetTxtGold(int value)
     {
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+
+        // floting text effect
+        floatingTextGold.gameObject.SetActive(true);
+        floatingTextGold.SetText(changeValue, FloatingTextValues.ValueType.Gold);
+
         txtGold.text = changeValue.ToString();
     }
 
     public void SetTxtBone(int value)
     {
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+
+        // floting text effect
+        floatingTextBone.gameObject.SetActive(true);
+        floatingTextBone.SetText(changeValue, FloatingTextValues.ValueType.Bone);
+
         UtilityMethod.SetTxtCustomTypeByID(60, changeValue.ToString());
     }
 
     public void SetTxtGem(int value)
     {
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
+        
+        // floting text effect
+        floatingTextGem.gameObject.SetActive(true);
+        floatingTextGem.SetText(changeValue, FloatingTextValues.ValueType.jewel);
+
         UtilityMethod.SetTxtCustomTypeByID(79, changeValue.ToString());
     }
 
@@ -143,6 +163,9 @@ public class UiController : MonoBehaviour
         UtilityMethod.SetTxtCustomTypeByID(65, changeValue);
     }
          
+
+
+
 
     public void SetTxtBossChallengeTimer(int value)
     {
