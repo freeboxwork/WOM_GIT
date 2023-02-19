@@ -2,7 +2,7 @@
  {
    "grade": 1,
    "symbol": "S",
-   "gradeColor": "Red",
+   "gradeColor": "FF7F7F",
    "insectDamage": 1,
    "insectCriticalChance": 0.025,
    "insectCriticalDamage": 1.1,
@@ -16,7 +16,7 @@
  {
    "grade": 2,
    "symbol": "A",
-   "gradeColor": "Purple",
+   "gradeColor": "E300FF",
    "insectDamage": 0.8,
    "insectCriticalChance": 0.02,
    "insectCriticalDamage": 0.9,
@@ -30,7 +30,7 @@
  {
    "grade": 3,
    "symbol": "B",
-   "gradeColor": "Yellow",
+   "gradeColor": "FFD684",
    "insectDamage": 0.6,
    "insectCriticalChance": 0.015,
    "insectCriticalDamage": 0.7,
@@ -44,7 +44,7 @@
  {
    "grade": 4,
    "symbol": "C",
-   "gradeColor": "Green",
+   "gradeColor": "8EFF86",
    "insectDamage": 0.4,
    "insectCriticalChance": 0.01,
    "insectCriticalDamage": 0.5,
@@ -58,7 +58,7 @@
  {
    "grade": 5,
    "symbol": "D",
-   "gradeColor": "Grey",
+   "gradeColor": "C1C1C1",
    "insectDamage": 0.2,
    "insectCriticalChance": 0.005,
    "insectCriticalDamage": 0.3,

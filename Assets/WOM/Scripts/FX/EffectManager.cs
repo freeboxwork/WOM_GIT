@@ -118,16 +118,16 @@ public class EffectManager : MonoBehaviour
     {
         switch (insectType)
         {
-            case EnumDefinition.InsectType.mentis: EnableAttackEffect(insectAttackEffMentis, tr); break;
-            case EnumDefinition.InsectType.bee:    EnableAttackEffect(insectAttackEffBee, tr);    break;
-            case EnumDefinition.InsectType.beetle: EnableAttackEffect(insectAttackEffBeetle, tr); break;
-            case EnumDefinition.InsectType.union: EnableAttackEffect(insectAttackEffUnion, tr); break;
+            case EnumDefinition.InsectType.mentis: EnableAttackEffect(insectAttackEffMentis, tr, insectType); break;
+            case EnumDefinition.InsectType.bee: EnableAttackEffect(insectAttackEffBee, tr, insectType); break;
+            case EnumDefinition.InsectType.beetle: EnableAttackEffect(insectAttackEffBeetle, tr, insectType); break;
+            case EnumDefinition.InsectType.union: EnableAttackEffect(insectAttackEffUnion, tr, insectType); break;
         }
     }
         
-    void EnableAttackEffect(List<ParticleRoate> particles ,Transform tr)
+    void EnableAttackEffect(List<ParticleRoate> particles ,Transform tr, EnumDefinition.InsectType insectType)
     {
-        var effect = GetDisableParticleRoate(particles);
+        var effect = GetDisableParticleRoate(particles, insectType);
         var zRot = tr.eulerAngles.z;
         effect.transform.position = tr.position;
         effect.SetParticleRotateDirection(zRot);
@@ -136,9 +136,21 @@ public class EffectManager : MonoBehaviour
 
 
 
-    ParticleRoate GetDisableParticleRoate(List<ParticleRoate> particles)
+    ParticleRoate GetDisableParticleRoate(List<ParticleRoate> particles , EnumDefinition.InsectType insectType)
     {
-        return particles.FirstOrDefault(f => !f.gameObject.activeSelf);
+
+        foreach (var eff in particles)
+        {
+            if (!eff.gameObject.activeInHierarchy)
+            {
+                return eff;
+            }
+        }
+        var effect = Instantiate(prefabInsectAttackEff[(int)insectType], trEffects);
+        particles.Add(effect);
+        return effect;
+
+        //return particles.FirstOrDefault(f => !f.gameObject.activeSelf);
     }
 
     ParticleSystem GetInsectDisableEff()

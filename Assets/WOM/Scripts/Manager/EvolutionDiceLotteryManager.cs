@@ -22,6 +22,8 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
     // 주사위 굴리고 있는지 판단
     bool rollDice = false;
 
+    public Sprite[] symbols;
+
     void Start()
     {
         
@@ -99,6 +101,19 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             // 랜덤 그레이드 뽑기
             var randomGradeData = GetRandomWeightEvolutionGradeData();
 
+            // 기존 Grade 가 S등급일 경우 팝업창 띄워서 더 진행 할것인지 확인.
+            if ( slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S )
+            {
+                // TODO : 
+            }
+
+            // SET GRADE
+            slot.SetEvolutionRewardGrade((EvolutionRewardGrade)randomGradeData.grade);
+
+            // SET SLOT UI
+            slot.SetSymbol(symbols[randomGradeData.grade]);
+            //slot.SetGradeTxtColor(randomGradeData.gradeColor);
+
             // 랜덤 능력치 뽑기
             var statValue = GetRandomStatValue(randomGradeData);
 
@@ -108,16 +123,16 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             GlobalData.instance.evolutionManager.SetDiceEvolutionData(randomStatType, statValue);
 
             // UI TEXT 적용
-            GlobalData.instance.evolutionManager.SetEvolutuinSlotName(randomStatType, slot, statValue);
+            GlobalData.instance.evolutionManager.SetEvolutuinSlotName(randomStatType, slot, statValue, randomGradeData.gradeColor);
         }
         else
         {
             GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", 1);
         }
-
-
        
     }
+
+
 
     bool IsReadyDiceCount(int usingDiceCount)
     {

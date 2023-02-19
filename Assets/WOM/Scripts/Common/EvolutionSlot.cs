@@ -12,9 +12,11 @@ public class EvolutionSlot : MonoBehaviour
     public Image imgLock;
     public Sprite sprUnLock;
     public Sprite sprLock;
-
     public bool isUnlock = false;
-    
+
+    public Image imgSymbol;
+    public EnumDefinition.EvolutionRewardGrade evolutionRewardGrade;  
+
     // 능력치 오픈 되어 있는지 판단
     public bool statOpend = false;
 
@@ -60,4 +62,24 @@ public class EvolutionSlot : MonoBehaviour
     }
    
 
+    public void SetEvolutionRewardGrade(EnumDefinition.EvolutionRewardGrade gradeType)
+    {
+        evolutionRewardGrade = gradeType;
+    }
+
+    public EnumDefinition.EvolutionRewardGrade GetEvolutionRewardGrade()
+    {
+        return evolutionRewardGrade;
+    }
+
+    public void SetSymbol(Sprite symbol)
+    {
+        imgSymbol.sprite = symbol;  
+    }
+
+    public void SetGradeTxtColor(string hexCode)
+    {
+        ColorUtility.TryParseHtmlString("#"+hexCode, out Color color);
+        txtStatName.color = color;
+    }
 }

@@ -374,6 +374,7 @@ public class GlobalMessageData
 public class RewardDiceEvolutionData
 {
     public int grade;
+    public string symbol;
     public string gradeColor;
     public float insectDamage;
     public float insectCriticalChance;

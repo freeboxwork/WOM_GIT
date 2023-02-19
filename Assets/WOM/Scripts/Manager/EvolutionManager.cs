@@ -88,11 +88,11 @@ public class EvolutionManager : MonoBehaviour
     }
          
 
-    public void SetEvolutuinSlotName(EvolutionDiceStatType type, EvolutionSlot slot, float value)
+    public void SetEvolutuinSlotName(EvolutionDiceStatType type, EvolutionSlot slot, float value , string clorHexCode)
     {
         var data = GlobalData.instance.dataManager.GetConvertTextDataByEvolutionDiceStatType(type);
         var txtValue = $"{data.kr_Front} {value}{data.kr_Back}";
-        slot.SettxtStatName(txtValue);
+        slot.SettxtStatName($"<color=#{clorHexCode}>{txtValue}</color>");
     }
 
 

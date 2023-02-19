@@ -138,6 +138,16 @@ public class EnumDefinition
         insectBossDamage
     }
 
+    public enum EvolutionRewardGrade
+    {
+        NONE = 0,
+        S = 1,
+        A = 2,
+        B = 3,
+        C = 4,
+        D = 5,
+    }
+
     public enum SkillType
     {
         /// <summary> 곤충 공격력 증가 </summary>
