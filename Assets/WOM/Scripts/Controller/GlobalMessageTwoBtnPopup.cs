@@ -18,20 +18,27 @@ public class GlobalMessageTwoBtnPopup : MonoBehaviour
     }
 
 
+
     public void SetTxtMessage(string message)
     {
         txtMessage.text = message;
     }
 
-    public void SetBtnApplyEvent(UnityAction action)
+    public void SetBtnApplyEvent(UnityAction<bool> action)
     {
         btnApply.onClick.RemoveAllListeners();
-        btnApply.onClick.AddListener(action);   
+        btnApply.onClick.AddListener(()=> { 
+            action.Invoke(true); 
+            gameObject.SetActive(false); 
+        });   
     }
-    public void SetBtnCancelEvent(UnityAction action)
+    public void SetBtnCancelEvent(UnityAction<bool> action)
     {
-        btnApply.onClick.RemoveAllListeners();
-        btnApply.onClick.AddListener(action);
+        btnCancel.onClick.RemoveAllListeners();
+        btnCancel.onClick.AddListener(()=> { 
+            action.Invoke(true); 
+            gameObject.SetActive(false); 
+        });
     }
 
 }
