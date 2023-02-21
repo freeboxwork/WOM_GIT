@@ -23,7 +23,11 @@ public class GlobalPopupController : MonoBehaviour
         SetButtonEvent();
     }
 
-    public void EnableMessageTwoBtnPopup(int messageId, UnityAction<bool> apply , UnityAction<bool> cancel)
+
+    
+    
+
+    public void EnableMessageTwoBtnPopup(int messageId, UnityAction apply , UnityAction cancel)
     {
         twoBtnPopup.gameObject.SetActive(true);
         twoBtnPopup.SetTxtMessage(GetMessageById(messageId));

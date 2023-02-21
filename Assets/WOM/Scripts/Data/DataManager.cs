@@ -375,7 +375,13 @@ public class DataManager : MonoBehaviour
 
     public RewardDiceEvolutionData GetRewardDiceEvolutionDataByGradeId(int id)
     {
-        return rewardDiceEvolutionDatas.data.FirstOrDefault(f => f.grade == id); 
+        var data = rewardDiceEvolutionDatas?.data?.FirstOrDefault(f => f.grade == id);
+        if (data == null)
+        {
+            throw new ArgumentNullException("rewardDiceEvolutionDatas", "Could not find data for the given grade id. - " + id);
+        }
+        return data;
+        //return rewardDiceEvolutionDatas.data.FirstOrDefault(f => f.grade == id); 
     }
 
     public SkillData GetSkillDataById(int id)

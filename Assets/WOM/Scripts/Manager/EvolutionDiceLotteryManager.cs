@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using static EnumDefinition;
 
@@ -77,10 +78,23 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         }
     }
          
-
+   
 
     // 주사위 굴리기
     
+    void Apply()
+    {
+        btnApply = true;
+        Debug.Log("btn apply " + btnApply);
+    }
+
+    void Cancel()
+    {
+        btnCancel = true;
+        Debug.Log("btn cancel" + btnCancel);
+    }
+    bool btnApply = false;
+    bool btnCancel = false;
     IEnumerator DiceRoll(EvolutionSlot slot)
     {
         yield return null;
@@ -100,25 +114,25 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
 
             // 랜덤 그레이드 뽑기
             var randomGradeData = GetRandomWeightEvolutionGradeData();
-           // randomGradeData.grade = 1;
-
             
             bool isPervGradeS = slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S;
             // 기존 Grade 가 S등급일 경우 팝업창 띄워서 더 진행 할것인지 확인.
-            if (isPervGradeS)
+            if (true)
             {
-                bool btnApply = false;
-                bool btnCancel = false;
+                btnApply = false;
+                btnCancel = false;
 
                 // 팝업 실행
-                GlobalData.instance.globalPopupController.EnableMessageTwoBtnPopup(11, (btnApply) => { } , (btnCancel) => { });
+                GlobalData.instance.globalPopupController.EnableMessageTwoBtnPopup(11, Apply, Cancel);
+           
+                
                 // 팝업 버튼 클릭 대기
                 yield return new WaitUntil(() => btnApply || btnCancel);
 
+                Debug.Log("this!!!!!");
+
                 if (isPervGradeS && btnCancel) yield break;
             }
-
-            
 
             // SET GRADE
             slot.SetEvolutionRewardGrade((EvolutionRewardGrade)randomGradeData.grade);
@@ -137,11 +151,15 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
 
             // UI TEXT 적용
             GlobalData.instance.evolutionManager.SetEvolutuinSlotName(randomStatType, slot, statValue, randomGradeData.gradeColor);
+            
+            
+
         }
         else
         {
             GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", 1);
         }
+
        
     }
 
