@@ -117,7 +117,7 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             
             bool isPervGradeS = slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S;
             // 기존 Grade 가 S등급일 경우 팝업창 띄워서 더 진행 할것인지 확인.
-            if (true)
+            if (isPervGradeS)
             {
                 btnApply = false;
                 btnCancel = false;
