@@ -178,13 +178,13 @@ public class EvolutionManager : MonoBehaviour
     {
         switch (statType)
         {
-            case EvolutionDiceStatType.insectDamage: diceEvolutionData.insectDamage += statValue; break;
-            case EvolutionDiceStatType.insectCriticalChance: diceEvolutionData.insectCriticalChance += statValue; break;
-            case EvolutionDiceStatType.insectCriticalDamage: diceEvolutionData.insectCriticalDamage += statValue; break;
-            case EvolutionDiceStatType.goldBonus: diceEvolutionData.goldBonus += statValue; break;
-            case EvolutionDiceStatType.insectMoveSpeed: diceEvolutionData.insectMoveSpeed += statValue; break;
-            case EvolutionDiceStatType.insectSpawnTime: diceEvolutionData.insectSpawnTime += statValue; break;
-            case EvolutionDiceStatType.insectBossDamage: diceEvolutionData.insectBossDamage += statValue; break;
+            case EvolutionDiceStatType.insectDamage: diceEvolutionData.insectDamage = statValue; break;
+            case EvolutionDiceStatType.insectCriticalChance: diceEvolutionData.insectCriticalChance = statValue; break;
+            case EvolutionDiceStatType.insectCriticalDamage: diceEvolutionData.insectCriticalDamage = statValue; break;
+            case EvolutionDiceStatType.goldBonus: diceEvolutionData.goldBonus = statValue; break;
+            case EvolutionDiceStatType.insectMoveSpeed: diceEvolutionData.insectMoveSpeed = statValue; break;
+            case EvolutionDiceStatType.insectSpawnTime: diceEvolutionData.insectSpawnTime = statValue; break;
+            case EvolutionDiceStatType.insectBossDamage: diceEvolutionData.insectBossDamage = statValue; break;
         }
 
         // set save data

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using Unity.VisualScripting;
+using static GlobalPopupController;
 
 public class GlobalMessageTwoBtnPopup : MonoBehaviour
 {
@@ -24,19 +26,19 @@ public class GlobalMessageTwoBtnPopup : MonoBehaviour
         txtMessage.text = message;
     }
 
-    public void SetBtnApplyEvent(UnityAction<bool> action)
+    public void SetBtnApplyEvent(UnityAction action )
     {
         btnApply.onClick.RemoveAllListeners();
-        btnApply.onClick.AddListener(()=> { 
-            action.Invoke(true); 
+        btnApply.onClick.AddListener(()=> {
+            action.Invoke(); 
             gameObject.SetActive(false); 
         });   
     }
-    public void SetBtnCancelEvent(UnityAction<bool> action)
+    public void SetBtnCancelEvent(UnityAction action)
     {
         btnCancel.onClick.RemoveAllListeners();
         btnCancel.onClick.AddListener(()=> { 
-            action.Invoke(true); 
+            action.Invoke(); 
             gameObject.SetActive(false); 
         });
     }
