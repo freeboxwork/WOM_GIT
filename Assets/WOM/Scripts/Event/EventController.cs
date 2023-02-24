@@ -75,7 +75,7 @@ public class EventController : MonoBehaviour
         // ENABLE Floting Text Effect 
         globalData.effectManager.EnableFloatingText(damage, isCritical, tr);
 
-
+        
         // GET MONSTER
         var currentMonster = globalData.player.currentMonster;
 
