@@ -313,18 +313,18 @@ public class EventController : MonoBehaviour
         globalData.evolutionManager.SetUI_EvolutuinSlotsLockerItems(evalutionLeveld);
         
         // 등급 업그레이트 연출 시간 후 몬스터 등장
-        yield return new WaitForSeconds(3f);
+        //yield return new WaitForSeconds(3f);
 
-        //진화 메뉴 활성화
-        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+        // 진화 메뉴 활성화
+        // globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
 
         // 일반 몬스터 등장
-        yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
+         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
     }
 
     // 몬스터 등장
-    IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
+    public IEnumerator MonsterAppearCor(EnumDefinition.MonsterType monsterType)
     {
         // 골드 OUT EFFECT ( 골드 화면에 뿌려진 경우에만 )
         StartCoroutine(globalData.effectManager.goldPoolingCont.DisableGoldEffects());
@@ -370,6 +370,11 @@ public class EventController : MonoBehaviour
     }
 
 
+
+    public void NormalMonsterIn()
+    {
+        StartCoroutine(MonsterAppearCor(MonsterType.normal));
+    }
     #region 진화전 프로세스
     /*
      0 : 트랜지션 인

@@ -75,13 +75,15 @@ public class EvolutionManager : MonoBehaviour
 
     public void SetUI_EvolutuinSlotsLockerItems(int dataId)
     {
+      
         var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(dataId);
-        
+
         // 자물쇠 오픈
-        for (int i = 0; i < data.slotCount; i++)
-        {
-            evolutionSlots[i].UnLock();
-        }
+        evolutionSlots[data.id].UnLock();
+        //for (int i = 0; i < data.slotCount; i++)
+        //{
+        //    evolutionSlots[i].UnLock();
+        //}
 
         //사용에 필요한 주사위 개수 변경
         GlobalData.instance.evolutionManager.SetTxtUsingDiceCount();

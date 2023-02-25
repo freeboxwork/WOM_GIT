@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
@@ -59,6 +60,28 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
             rollDice = true;
 
             var slots = GlobalData.instance.evolutionManager.evolutionSlots;
+            var isPervGradeS = IsContainsSgrade(slots);
+            if (isPervGradeS)
+            {
+                btnApply = false;
+                btnCancel = false;
+
+                // 팝업 실행
+                GlobalData.instance.globalPopupController.EnableMessageTwoBtnPopup(11, Apply, Cancel);
+
+                // 팝업 버튼 클릭 대기
+                yield return new WaitUntil(() => btnApply || btnCancel);
+
+                if (isPervGradeS && btnCancel)
+                {
+                    rollDice = false;
+                    yield break;
+                }
+
+            }
+            
+            
+            
             for (int i = 0; i < slots.Count; i++)
             {
                 var slot = slots[i];
@@ -68,20 +91,20 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
                 }
             }
 
-            //var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(GlobalData.instance.player.evalutionLeveldx);
-            //for (int i = 0; i < data.slotCount; i++)
-            //{
-            //    StartCoroutine(DiceRoll());
-            //}
-
             rollDice = false;
         }
+
+        yield return null;
     }
-         
-   
+
+    bool IsContainsSgrade(List<EvolutionSlot> slots)
+    {
+        return slots.Any(a => a.GetEvolutionRewardGrade() == EvolutionRewardGrade.S && a.isUnlock == true);
+    }
+
 
     // 주사위 굴리기
-    
+
     void Apply()
     {
         btnApply = true;
@@ -106,21 +129,21 @@ public class EvolutionDiceLotteryManager : MonoBehaviour
         // 주사위 개수 충분한지 판단
         if (IsReadyDiceCount(usingDice))
         {
-            bool isPervGradeS = slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S;
-            // 기존 Grade 가 S등급일 경우 팝업창 띄워서 더 진행 할것인지 확인.
-            if (isPervGradeS)
-            {
-                btnApply = false;
-                btnCancel = false;
+            //bool isPervGradeS = slot.GetEvolutionRewardGrade() == EvolutionRewardGrade.S;
+            //// 기존 Grade 가 S등급일 경우 팝업창 띄워서 더 진행 할것인지 확인.
+            //if (isPervGradeS)
+            //{
+            //    btnApply = false;
+            //    btnCancel = false;
 
-                // 팝업 실행
-                GlobalData.instance.globalPopupController.EnableMessageTwoBtnPopup(11, Apply, Cancel);
+            //    // 팝업 실행
+            //    GlobalData.instance.globalPopupController.EnableMessageTwoBtnPopup(11, Apply, Cancel);
 
-                // 팝업 버튼 클릭 대기
-                yield return new WaitUntil(() => btnApply || btnCancel);
+            //    // 팝업 버튼 클릭 대기
+            //    yield return new WaitUntil(() => btnApply || btnCancel);
 
-                if (isPervGradeS && btnCancel) yield break;
-            }
+            //    if (isPervGradeS && btnCancel) yield break;
+            //}
 
             // 주사위 사용
             GlobalData.instance.player.PayDice(usingDice);
