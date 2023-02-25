@@ -87,6 +87,12 @@ public class EvolutionManager : MonoBehaviour
 
         //사용에 필요한 주사위 개수 변경
         GlobalData.instance.evolutionManager.SetTxtUsingDiceCount();
+
+        //모든 slot 오픈시 진화전 이동 버튼 비활성화
+        if(data.slotCount == GlobalData.instance.dataManager.rewardEvolutionGradeDatas.data.Max(m => m.slotCount))
+        {
+            UtilityMethod.GetCustomTypeBtnByID(20).interactable = false;
+        }
     }
          
 

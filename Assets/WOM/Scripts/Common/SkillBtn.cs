@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.Rendering;
 
 public class SkillBtn : MonoBehaviour
 {
@@ -65,8 +66,10 @@ public class SkillBtn : MonoBehaviour
     IEnumerator UsingKill_Cor()
     {
         var data = GlobalData.instance.skillManager.GetSkillInGameDataByType(skillType);
+        float totalCoolTime = data.coolTime * (1 - GlobalData.instance.statManager.SkillCoolTime());
+
         animDataUsingSkill.animDuration = data.duaration;
-        animDataReloadSkill.animDuration = data.coolTime;
+        animDataReloadSkill.animDuration = totalCoolTime;
         if (skillReady == true)
         {
             btnSkill.enabled = false;

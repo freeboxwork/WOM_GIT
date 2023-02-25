@@ -48,6 +48,7 @@ namespace ProjectGraphics
 
         private void Start()
         {
+            btnClose = GetComponent<Button>();  
             SetBtnEvent();
         }
 
