@@ -122,6 +122,9 @@ public class LotteryManager : MonoBehaviour
 
     public IEnumerator CardOpen(int roundCount, UnityAction gameEndEvent)
     {
+        // 닫기 버튼 비활성화
+        UtilityMethod.GetCustomTypeBtnByID(44).interactable = false; 
+        
         // 다시 뽑기 버튼 비활성화
         UtilityMethod.SetBtnsInteractableEnable(new List<int> { 17, 18, 19 }, false);
 
@@ -139,6 +142,9 @@ public class LotteryManager : MonoBehaviour
 
         // 스킵 버튼 비활성화
         UtilityMethod.SetBtnInteractableEnable(33, false);
+
+        // 닫기 버튼 활성화
+        UtilityMethod.GetCustomTypeBtnByID(44).interactable = true; 
 
         gameEndEvent.Invoke();
     }
@@ -163,6 +169,8 @@ public class LotteryManager : MonoBehaviour
 
     public IEnumerator CardsOpenEffect()
     {
+      
+
         List<int> unionIndexList = new List<int>(); 
         for (int i = 0; i < openedUnionTypeCards.Count; i++)
         {
@@ -199,10 +207,12 @@ public class LotteryManager : MonoBehaviour
         //}
 
         // effect open
+       
         lotteryAnimationController.gameObject.SetActive(true);
         lotteryAnimationController.StartLotteryAnimation();
         yield return StartCoroutine(lotteryAnimationController.ShowUnionSlotCardOpenProcess(unionIndexList.ToArray()));
         GlobalData.instance.unionManager.AddUnions(unionIndexList);
+      
     }
 
     int GetRandomFaceIndex()

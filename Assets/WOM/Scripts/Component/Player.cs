@@ -89,9 +89,11 @@ public class Player : MonoBehaviour
 
     public void SetCurrentMonsterHP(float hpValue)
     {
-        currentMonsterHp = hpValue;
+        currentMonsterHp = hpValue ;
+
+        //* (1- GlobalData.instance.statManager.MonsterHpLess())
     }
-        
+
 
     public void SetPlayerDataFromSaveData(SaveData saveData)
     {
