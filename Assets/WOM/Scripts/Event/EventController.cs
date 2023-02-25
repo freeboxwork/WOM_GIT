@@ -343,9 +343,14 @@ public class EventController : MonoBehaviour
         
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
-        
+
+        // set hp 
+        monsterData.hp = monsterData.hp  *(1 - GlobalData.instance.statManager.MonsterHpLess());
+
         // set current monster
         globalData.player.SetCurrentMonster(monsterData);
+
+
 
         // set prev monster type
         globalData.player.SetPervMonsterType(monsterType);
