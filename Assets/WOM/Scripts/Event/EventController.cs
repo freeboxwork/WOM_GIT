@@ -47,6 +47,11 @@ public class EventController : MonoBehaviour
 
     bool isMonsterDie = false;
 
+
+    bool IsBossOrEvolutionMonster()
+    {
+        return globalData.player.curMonsterType == MonsterType.boss || globalData.player.curMonsterType == MonsterType.evolution;
+    }
     // MONSTER HIT EVENT
     void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex= 0, Transform tr = null )
     {
@@ -79,8 +84,12 @@ public class EventController : MonoBehaviour
         // GET MONSTER
         var currentMonster = globalData.player.currentMonster;
 
+        var curDamage = damage;
+        if (IsBossOrEvolutionMonster())
+            curDamage = damage * (1 + globalData.statManager.BossDamage());
+
         // set monster damage
-        currentMonster.hp -= damage;
+        currentMonster.hp -= curDamage;
 
         // monster hit animation 
         currentMonster.inOutAnimator.monsterAnim.SetBool("Hit",true);
