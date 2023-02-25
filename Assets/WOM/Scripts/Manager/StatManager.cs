@@ -221,10 +221,11 @@ public class StatManager : MonoBehaviour
         data.isSkilUsing = true;
 
         float elapsedTime = 0.0f;
-        while (elapsedTime < data.duaration)
+        var totalDuration = data.duaration * (1 + SkillDuration());
+        while (elapsedTime < totalDuration)
         {
             elapsedTime += Time.deltaTime;
-            data.skillLeftTime = data.duaration - elapsedTime;
+            data.skillLeftTime = totalDuration - elapsedTime;
             yield return null;
         }
 
