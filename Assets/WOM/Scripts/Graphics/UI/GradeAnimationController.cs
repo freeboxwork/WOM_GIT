@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static EnumDefinition;
 
 namespace ProjectGraphics
 {
@@ -29,6 +30,8 @@ namespace ProjectGraphics
 
         public List<GameObject> enableObjects;
 
+        public Button btnClose;
+
         // 추가 
 
         [Header("현재 시작하는 등급")]
@@ -39,8 +42,29 @@ namespace ProjectGraphics
         {
             anim = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
+            
         }
 
+
+        private void Start()
+        {
+            SetBtnEvent();
+        }
+
+        void SetBtnEvent()
+        {
+
+            btnClose.onClick.AddListener(() => {
+                // 진화 메뉴 등장
+                GlobalData.instance.uiController.EnableMenuPanel(MenuPanelType.evolution);
+                // 일반 몬스터 등장
+                GlobalData.instance.eventController.NormalMonsterIn();
+
+                gameObject.SetActive(false);
+
+            });
+        
+        }
         private void OnEnable()
         {
             //시작시 gradeIndex 값을 정의 해주세요.
