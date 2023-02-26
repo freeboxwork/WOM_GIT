@@ -1,88 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
-//TODO : AUDIO MANAGER 분리...
+
 public class SettingPopupController : MonoBehaviour
 {
-
-    public AudioSource playerBgm;
-    public AudioSource playerSfxInGame;   // 몬스터 공격과 같은 효과음
-    public AudioSource playerSfxUiPlayer; // UI 에서 사용되는 효과음
-
 
     public Button btnBgmOnOff;
     public Button btnSfxOnOff;
     public Button btnReview;
+    public Button btnSetting;
+    public Button btnClose;
 
-    public List<AudioClip> bgmList = new List<AudioClip>();
-    public List<AudioClip> sfxList = new List<AudioClip>();
 
-    bool bgmOn = true;
-    bool sfxInGame = true;
-    bool sfxUI = true;
+    public GameObject popupSetting;
+    public TextMeshProUGUI txtBGM_OnOff;
+    public TextMeshProUGUI txtSFX_OnOff;
+
 
     void Start()
     {
         SetBtnEvents();
     }
-
-    public IEnumerator Init()
-    {
-
-        // BGM PLAY
-        PlayBgm(EnumDefinition.BGM_TYPE.BGM_01);
-        yield return null;
-    }
     
+
     void SetBtnEvents()
     {
         btnBgmOnOff.onClick.AddListener(() => {
+            GlobalData.instance.soundManager.BGM_OnOff();
 
-            BGM_OnOff(bgmOn = !bgmOn);
+            var txtValue = GlobalData.instance.soundManager.bgmOn ? "배경음 OFF" : "배경음 ON";
+            txtBGM_OnOff.text = txtValue;
         });
 
+        btnSfxOnOff.onClick.AddListener(() => {
+            GlobalData.instance.soundManager.SFX_OnOff();
+
+            var txtValue = GlobalData.instance.soundManager.sfxOn ? "효과음 OFF" : "효과음 ON";
+            txtSFX_OnOff.text = txtValue;
+        });
+
+        btnReview.onClick.AddListener(() => {
+            Debug.Log("review...");
+        });
+
+        btnClose.onClick.AddListener(() => {
+            popupSetting.SetActive(false);
+        });
+
+        btnSetting.onClick.AddListener(() =>
+        {
+            popupSetting.SetActive(true);
+        });
 
     }
 
-    public void BGM_OnOff(bool bgmOn)
-    {
-        if(bgmOn)
-            playerBgm.Play();
-        else
-            playerBgm.Stop();
-    }
-    
-    public void SFX_InGameOnOff(bool sfxOn)
-    {
-        var volume = sfxOn ? 1 : 0;
-        playerSfxInGame.volume = volume;
-    }
-
-    public void SFX_UI_OnOff(bool sfxOn)
-    {
-        var volume = sfxOn ? 1 : 0;
-        playerSfxUiPlayer.volume = volume;
-    }
-
-    public void PlayBgm(EnumDefinition.BGM_TYPE bgmType)
-    {
-        playerBgm.clip = bgmList[(int)bgmType];
-        playerBgm.Play();
-    }
-
-    public void PlaySfxInGame(EnumDefinition.SFX_TYPE sfxType)
-    {
-        playerSfxInGame.clip = sfxList[(int)sfxType];
-        playerSfxInGame.Play();
-    }
-
-    public void PlaySfxUI(EnumDefinition.SFX_TYPE sfxType)
-    {
-        playerSfxUiPlayer.clip = sfxList[(int)sfxType];
-        playerSfxUiPlayer.Play();
-    }
+  
 
 }
 

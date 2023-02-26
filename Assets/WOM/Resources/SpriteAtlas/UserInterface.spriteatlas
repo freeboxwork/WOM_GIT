@@ -60,6 +60,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3adf1fa25f7270d4eaf74a562fff0845, type: 3}
   - {fileID: 21300000, guid: 285011b2d702dda4e9848005c985c3d8, type: 3}
   - {fileID: 21300000, guid: 40e17be2181be8e4fb48bf67984e2d5a, type: 3}
+  - {fileID: 21300000, guid: 0ef6ffe25e43e7f4fb0604b0a9ff67dc, type: 3}
+  - {fileID: 21300000, guid: e42150f229f699b49b2fe88ddf3f357a, type: 3}
   - {fileID: 21300000, guid: 3aca79f2bb7b652489f75113b6358ef6, type: 3}
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
@@ -105,6 +107,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 95e53ee9124aceb4d98e28dd2d0d0d9f, type: 3}
   - {fileID: 21300000, guid: 31a0881a49b31a44fb94b0645c746d13, type: 3}
   - {fileID: 21300000, guid: f002302a82c425b41bb6b513089544d2, type: 3}
+  - {fileID: 21300000, guid: bc10395a18dfe5d4b947026402e17074, type: 3}
   - {fileID: 21300000, guid: 4350b48ae6800844e90f41c3a14d7da8, type: 3}
   - {fileID: 21300000, guid: d7f2cb8ad61ddb14b8e6171cb085392b, type: 3}
   - {fileID: 21300000, guid: 51684d9ad211c0a4dbf5ecf529383488, type: 3}
@@ -116,6 +119,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6de8483c3b1af88419f42542eb8fd87d, type: 3}
   - {fileID: 21300000, guid: e759a93cdf8ba64488c83f51d486fe44, type: 3}
   - {fileID: 21300000, guid: 49a5664cee8d3de47847e2c47c9d1819, type: 3}
+  - {fileID: 21300000, guid: a3ac396cb57cc7d4ead20eea411b3c5b, type: 3}
   - {fileID: 21300000, guid: db6f5e6c72eba3b48a6b342a55b0d13d, type: 3}
   - {fileID: 21300000, guid: e2ff8c9cb6eb23f4aa2737407a12ae05, type: 3}
   - {fileID: 21300000, guid: 5f42644d249712e4b91c1bda413bb12b, type: 3}
@@ -129,6 +133,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1d757ceecb40bd14fbe0de3377602452, type: 3}
   - {fileID: 21300000, guid: cdb17eeea6a28354c8affba06db7934c, type: 3}
   - {fileID: 21300000, guid: ff5cea0f48a6d2445b7aeda46f001b7f, type: 3}
+  - {fileID: 21300000, guid: d05b1f2fee21206498cafb5ca0700004, type: 3}
   - {fileID: 21300000, guid: 062b375fb7e6c8f4cae752dffd4767e7, type: 3}
   - {fileID: 21300000, guid: 48f815dff14dfef43b1b4991b89e9740, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -152,6 +157,8 @@ SpriteAtlas:
   - DNA_unionMoveSpeed
   - DNA_skillCoolTime
   - U_Frame_Unique
+  - Option_BGM_OFF
+  - Option_Review
   - btn_Escape
   - Icon_CriticalDamage
   - ClearBox_TopRound
@@ -197,6 +204,7 @@ SpriteAtlas:
   - Training
   - Skill_Gold
   - Bar_Slot00
+  - Option_SFX_ON
   - Icon_Grade_02
   - U_Frame_Normal
   - DNA_glodBonus
@@ -208,6 +216,7 @@ SpriteAtlas:
   - Evolution
   - DNA_insectCriticalDamage
   - Shop
+  - Option_SFX_OFF
   - Check
   - UI_Coin
   - DNA_monsterHpLess
@@ -221,6 +230,7 @@ SpriteAtlas:
   - DNA_bossDamage
   - U_Frame_High
   - DNA_goldPig__
+  - Option_BGM_ON
   - ClearBox
   - Icon_OutLine1
   m_RenderDataMap: {}

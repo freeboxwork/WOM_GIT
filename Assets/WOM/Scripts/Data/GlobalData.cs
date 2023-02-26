@@ -34,6 +34,8 @@ public class GlobalData : MonoBehaviour
     public InsectSpwanManager insectSpwanManager;
     public StatManager statManager;
     public SaveDataManager saveDataManager;
+    public SettingPopupController settingPopupController;
+    public SoundManager soundManager;
 
 
     private void Awake()
