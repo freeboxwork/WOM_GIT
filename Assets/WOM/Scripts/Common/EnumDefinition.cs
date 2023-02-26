@@ -206,4 +206,16 @@ public class EnumDefinition
         DNA
     }
 
+
+    public enum BGM_TYPE
+    {
+        BGM_01,
+
+    }
+    public enum SFX_TYPE
+    {
+        MONSTER_HIT,
+    }
+
+
 }
