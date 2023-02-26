@@ -129,6 +129,7 @@ public class UnionData
     public string gradeType;
     public int grade;
     public string name;
+    public string textColor;
     public string gradeName;
     public float damage;
     public float passiveDamage;
