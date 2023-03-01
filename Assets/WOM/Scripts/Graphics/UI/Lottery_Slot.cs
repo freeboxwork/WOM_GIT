@@ -36,5 +36,11 @@ namespace ProjectGraphics
         {
             anim.SetTrigger("Shake");
         }
+
+        private void OnDisable()
+        {
+            // 애니메이터 구조 변경 해서 종료되었을때 최초 형태 유지.
+            anim.keepAnimatorControllerStateOnDisable = false;
+        }
     }
 }
