@@ -23,17 +23,6 @@ namespace ProjectGraphics
             currentIndex = 0;
         }
 
-        void Update()
-        {
-            #if UNITY_EDITOR
-            //키를 눌러 다음 것이 잘 나오는지 확인 순차적으로
-            if (Input.GetKeyUp(KeyCode.Y))
-            {
-                OpenThePopup("테스트", "테스트");
-            }
-            #endif
-        }
-
         public void OpenThePopup(string title, string message)
         {
             //내 자신이 안켜져 있을땐 실행 안됨.
