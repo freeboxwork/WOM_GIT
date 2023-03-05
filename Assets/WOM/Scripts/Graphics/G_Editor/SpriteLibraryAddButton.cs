@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using ProjectGraphics;
 
 namespace ProjectGraphics
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(SpriteLibraryAdd))]
     public class SpriteLibraryAddButton : Editor
     {
@@ -24,4 +27,5 @@ namespace ProjectGraphics
             }
         }
     }
+#endif
 }

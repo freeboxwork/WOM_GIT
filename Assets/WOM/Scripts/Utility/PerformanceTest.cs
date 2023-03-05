@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using TMPro.EditorUtilities;
 using TMPro;
 
 public class PerformanceTest : MonoBehaviour
@@ -80,7 +79,7 @@ public class PerformanceTest : MonoBehaviour
 #if UNITY_EDITOR
         path = Application.dataPath + "/" + fileName;
 #elif UNITY_ANDROID
-            path = Application.persistentDataPath + "/"+ dataFileName;
+            path = Application.persistentDataPath + "/"+ fileName;
 #endif
         return path;
     }

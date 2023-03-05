@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.PackageManager;
 
 public class CustomTypeDataManager : MonoBehaviour
 {
