@@ -383,6 +383,7 @@ public class StatManager : MonoBehaviour
     #region UTILITY METHOD
     EvolutionData GetEvolutionData(InsectType insectType)
     {
+        Debug.Log(insectType);
         return dataManager.GetEvolutionDataById(insectType, evolutionManager.evalutionLeveldx);
     }
 
