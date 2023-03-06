@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using GoogleSheetsToUnity;
+using System.Reflection;
+
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public static class UtilityMethod 
 {
@@ -240,4 +247,83 @@ public static class UtilityMethod
 
         return strNum;
     }
+
+
+
+#if UNITY_EDITOR
+ 
+    public static void AssignFieldsWithSameName<T, U>(T target, U source)
+    {
+        FieldInfo[] fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+        foreach (FieldInfo field in fields)
+        {
+            FieldInfo sourceField = typeof(U).GetField(field.Name, BindingFlags.Public | BindingFlags.Instance);
+
+            if (sourceField != null && sourceField.FieldType == field.FieldType)
+            {
+                object sourceValue = sourceField.GetValue(source);
+                field.SetValue(target, sourceValue);
+            }
+        }
+    }
+
+    public static void UpdateStats<T>(T target, List<GSTU_Cell> list)
+    {
+       System.Type type = target.GetType();
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            string fieldName = list[i].columnId;
+            FieldInfo field = type.GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+            if (field == null)
+            {
+                // 필드가 존재하지 않는 경우 예외 처리
+                Debug.Log($"Field '{fieldName}' not found in type '{type.Name}'.");
+                continue;
+            }
+
+            if (field.FieldType == typeof(int))
+            {
+                int value = int.Parse(list[i].value);
+                field.SetValue(target, value);
+            }
+            else if (field.FieldType == typeof(bool))
+            {
+                bool value = bool.Parse(list[i].value);
+                field.SetValue(target, value);
+            }
+            else if (field.FieldType == typeof(string))
+            {
+                string value = list[i].value;
+                field.SetValue(target, value);
+            }
+            else if (field.FieldType == typeof(float))
+            {
+                float value = float.Parse(list[i].value);
+                field.SetValue(target, value);
+            }
+        }
+    }
+
+
+    public static void UpdateStats<T>(string sheetName, string dataId, T data, OnSpreedSheetLoaded callback, bool mergedCells = false) where T : ScriptableObject
+    {
+        var search = new GSTU_Search(SheetDataGlobalValues.associatedSheetName, sheetName, "A2", "Z100", "A", 2);
+        SpreadsheetManager.ReadPublicSpreadsheet(search, (ss) => {
+            callback(ss);
+            AppayData(ss, dataId, data);
+        });
+    }
+
+    public static void UpdateMethodOne(GstuSpreadSheet ss) { }
+    public static void AppayData<T>(GstuSpreadSheet ss, string dataId, T data) where T : ScriptableObject
+    {
+        UtilityMethod.UpdateStats(data, ss.rows[dataId]);
+        EditorUtility.SetDirty(data);
+    }
+
+#endif
+
 }
