@@ -62,7 +62,7 @@ public class UnionSpwanTimer : MonoBehaviour
             // enable insect
             union.gameObject.SetActive(true);
 
-            Debug.Log($"타이머 인덱스 : {timerIndex} _ 스폰 유니온 : {sprite.name} _ 스폰 타임 : {spwanTime}");
+            Debug.Log($"타이머 인덱스 : {timerIndex} _ 스폰 유니온 : {sprite[0].name} _ 스폰 타임 : {spwanTime}");
 
         
         }

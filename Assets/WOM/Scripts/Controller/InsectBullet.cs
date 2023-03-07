@@ -4,12 +4,14 @@ using UnityEngine;
 /// <summary>
 /// 몬스터 향해 이동 하는 발사체 ( 공격 )
 /// </summary>
+[RequireComponent(typeof(InsectSpriteAnimation))]
 public class InsectBullet : MonoBehaviour
 {
     public EnumDefinition.InsectType insectType;
     public AnimData animData;
     public ParticleSystem effDisable;
-    public SpriteRenderer spriteRenderer;    
+    //public SpriteRenderer spriteRenderer;
+    public InsectSpriteAnimation spriteAnim;
     
     float speed = 1;
     Vector3 lookDir;
@@ -26,7 +28,6 @@ public class InsectBullet : MonoBehaviour
     {
         this.insectType = insectType;
     }
-
     
 
     private void OnEnable()
@@ -154,8 +155,6 @@ public class InsectBullet : MonoBehaviour
         }
     }
 
-    
-
     // 어떠한 이유로 곤충 갑자기 사라져야 할 때
     public void DisableInsect()
     {
@@ -164,12 +163,10 @@ public class InsectBullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetInsectFace(Sprite insectFace)
+    public void SetInsectFace(Sprite[] sprites)
     {
-        spriteRenderer.sprite = insectFace; 
+        spriteAnim.SetSprite(sprites);
     }
-
-    
 }
 
 
