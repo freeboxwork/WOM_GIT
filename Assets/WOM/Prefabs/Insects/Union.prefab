@@ -318,7 +318,7 @@ MonoBehaviour:
   - {fileID: 125057707, guid: ffc0ef827447068449cf048a20fe04a6, type: 3}
   - {fileID: 388907516, guid: ffc0ef827447068449cf048a20fe04a6, type: 3}
   - {fileID: 724707979, guid: ffc0ef827447068449cf048a20fe04a6, type: 3}
-  samplelate: 24
+  samplelate: 12
 --- !u!1 &1628228706359443775
 GameObject:
   m_ObjectHideFlags: 0
