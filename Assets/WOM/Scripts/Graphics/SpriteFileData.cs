@@ -9,7 +9,7 @@ public class SpriteFileData : ScriptableObject
     [SerializeField]
     SpriteDataInfo[] data;
 
-    public Sprite GetSpriteData(int num) => data[num].sprite;
+    public Sprite[] GetSpriteData(int num) => data[num].sprites;
     public Sprite GetIconData(int num) => data[num].icon;
     public EnumDefinition.UnionGradeType GetGradeData(int num) => data[num].type;
     public int GetDataSize() => data.Length;
@@ -19,9 +19,9 @@ public class SpriteFileData : ScriptableObject
     public struct SpriteDataInfo
     {
         public EnumDefinition.UnionGradeType type;
-        public string discription;
+        //public string discription;
         public Sprite icon;
-        public Sprite sprite;
+        public Sprite[] sprites;
     }
 }
 

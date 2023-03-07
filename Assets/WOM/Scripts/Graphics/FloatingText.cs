@@ -72,7 +72,6 @@ namespace ProjectGraphics
                 textMesh.color = nomalColor;
                 textMesh.fontStyle = FontStyles.Bold | FontStyles.UpperCase;
             }
-            
         }
 
         private void StartAnimation()
