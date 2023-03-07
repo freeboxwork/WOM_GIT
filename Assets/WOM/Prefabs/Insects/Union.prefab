@@ -160,7 +160,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b492e9ec1bd86d43a994e2045d9e934, type: 2}
+  - {fileID: 2100000, guid: 42e3c55354b88184c94685cf9c7a6599, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -371,7 +371,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81189eab38bbc694fb054b76d2b8ea98, type: 2}
+  - {fileID: 2100000, guid: 42e3c55354b88184c94685cf9c7a6599, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -604,7 +604,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81189eab38bbc694fb054b76d2b8ea98, type: 2}
+  - {fileID: 2100000, guid: 42e3c55354b88184c94685cf9c7a6599, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
