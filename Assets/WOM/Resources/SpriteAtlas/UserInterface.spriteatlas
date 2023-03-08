@@ -38,7 +38,7 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
+      enableRotation: 0
       enableTightPacking: 1
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
@@ -76,12 +76,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e42150f229f699b49b2fe88ddf3f357a, type: 3}
   - {fileID: 21300000, guid: 3aca79f2bb7b652489f75113b6358ef6, type: 3}
   - {fileID: 21300000, guid: 5b5d7303be0e3334c9831aa8d4ee9aaf, type: 3}
+  - {fileID: 21300000, guid: b7f5cb038b250184cb6e27688bdf3dab, type: 3}
   - {fileID: 21300000, guid: 029b7c13fe520c542866b6dea66e56bb, type: 3}
   - {fileID: 21300000, guid: b7f8bfd392d81274a908c044ed3ab170, type: 3}
   - {fileID: 21300000, guid: f562abf327dc2c04cb5deb29621b7f78, type: 3}
   - {fileID: 21300000, guid: 2a6cd024548dd744687d7b542726d203, type: 3}
   - {fileID: 21300000, guid: 5de53164a29e57740a86d962b8865fd9, type: 3}
   - {fileID: 21300000, guid: 340d1564ed4494e4b8417382c081075c, type: 3}
+  - {fileID: 21300000, guid: 37fdea646e2a2f242a17524c6067ae00, type: 3}
   - {fileID: 21300000, guid: eced51b430ffb5a43b3c04631438dd6a, type: 3}
   - {fileID: 21300000, guid: fa9c8ab4585c04c41a755bc5ec44ec46, type: 3}
   - {fileID: 21300000, guid: bfb01db40316c7040837f1596f856552, type: 3}
@@ -91,6 +93,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c5c6a725c117a9e469f2bfab9ec32ef9, type: 3}
   - {fileID: 21300000, guid: bef97d45548138b459d3736d332c56aa, type: 3}
   - {fileID: 21300000, guid: 5bd8555513722d2468d4350778716d69, type: 3}
+  - {fileID: 21300000, guid: 58ecd765d0e461f45810a70f0d8d64e1, type: 3}
   - {fileID: 21300000, guid: d624e9950c7e3c44188bd7bf89e126b3, type: 3}
   - {fileID: 21300000, guid: 871cb5a5f3d3b85438ea46efeec7d0b2, type: 3}
   - {fileID: 21300000, guid: 6dabe6d57c9063b40949a33c26fe949d, type: 3}
@@ -123,6 +126,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 31a0881a49b31a44fb94b0645c746d13, type: 3}
   - {fileID: 21300000, guid: f002302a82c425b41bb6b513089544d2, type: 3}
   - {fileID: 21300000, guid: bc10395a18dfe5d4b947026402e17074, type: 3}
+  - {fileID: 21300000, guid: 586eef5acaf23ba4dbe58a2717c11092, type: 3}
   - {fileID: 21300000, guid: 4350b48ae6800844e90f41c3a14d7da8, type: 3}
   - {fileID: 21300000, guid: d7f2cb8ad61ddb14b8e6171cb085392b, type: 3}
   - {fileID: 21300000, guid: 51684d9ad211c0a4dbf5ecf529383488, type: 3}
@@ -178,12 +182,14 @@ SpriteAtlas:
   - Option_Review
   - btn_Escape
   - Icon_CriticalDamage
+  - Shop_Jewel_Free
   - Button_1
   - ClearBox_TopRound
   - Arrow
   - btn_Boss
   - btn_Base_White
   - Icon_DamageUp_Per
+  - Shop_Union
   - UI_Lock
   - btn_inside
   - DNA_insectDamage
@@ -193,6 +199,7 @@ SpriteAtlas:
   - Color_D
   - Icon_Grade_04
   - Icon_GoldBoss_OutLine
+  - EmptyBlueBgBox_LightEdge
   - U_Frame_OutLine
   - Icon_DamageUP
   - U_Frame_Hero
@@ -225,6 +232,7 @@ SpriteAtlas:
   - Skill_Gold
   - Bar_Slot00
   - Option_SFX_ON
+  - EmptyBlueBgBox
   - Icon_Grade_02
   - U_Frame_Normal
   - DNA_glodBonus
