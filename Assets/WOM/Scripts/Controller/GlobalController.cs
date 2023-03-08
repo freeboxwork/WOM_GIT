@@ -30,6 +30,7 @@ public class GlobalController : MonoBehaviour
     void Start()
     {
         if (dataManager == null) dataManager = FindObjectOfType<DataManager>();
+        
         StartCoroutine(Init());
     }
    
