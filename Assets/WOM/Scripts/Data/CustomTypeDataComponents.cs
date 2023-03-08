@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using TMPro;
+
 
 [System.Serializable]
 public class CustomTypeDataComponents
