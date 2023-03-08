@@ -39,8 +39,8 @@ namespace ProjectGraphics
 
         private void OnDisable()
         {
-            // ¾Ö´Ï¸ÞÀÌÅÍ ±¸Á¶ º¯°æ ÇØ¼­ Á¾·áµÇ¾úÀ»¶§ ÃÖÃÊ ÇüÅÂ À¯Áö.
-            anim.keepAnimatorControllerStateOnDisable = false;
+            // ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+            anim.keepAnimatorStateOnDisable = false;
         }
     }
 }
