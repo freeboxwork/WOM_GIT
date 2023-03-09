@@ -114,7 +114,10 @@ SpriteAtlas:
   - {fileID: -1796398713, guid: 10dcdc731c4cefa42a4ed780f946b37b, type: 3}
   - {fileID: -1536065599, guid: 10dcdc731c4cefa42a4ed780f946b37b, type: 3}
   - {fileID: -553524954, guid: 10dcdc731c4cefa42a4ed780f946b37b, type: 3}
-  - {fileID: 21300000, guid: b673e714e3b871f40b30dc8c597942d1, type: 3}
+  - {fileID: 927038323, guid: b673e714e3b871f40b30dc8c597942d1, type: 3}
+  - {fileID: -1243206696, guid: b673e714e3b871f40b30dc8c597942d1, type: 3}
+  - {fileID: -1469714658, guid: b673e714e3b871f40b30dc8c597942d1, type: 3}
+  - {fileID: -507647584, guid: b673e714e3b871f40b30dc8c597942d1, type: 3}
   - {fileID: 619261696, guid: c2d0d0240355a514d9037b7f9514590c, type: 3}
   - {fileID: 269270402, guid: c2d0d0240355a514d9037b7f9514590c, type: 3}
   - {fileID: -986119293, guid: c2d0d0240355a514d9037b7f9514590c, type: 3}
@@ -377,7 +380,10 @@ SpriteAtlas:
   - Mantis04_3
   - Mantis04_0
   - Mantis04_1
-  - Pig
+  - Pig_0
+  - Pig_1
+  - Pig_2
+  - Pig_3
   - U_DragonFly00_0
   - U_DragonFly00_1
   - U_DragonFly00_2
