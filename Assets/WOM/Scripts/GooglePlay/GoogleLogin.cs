@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SceneManagement;
 
 public class GoogleLogin : MonoBehaviour
 {
@@ -11,8 +13,10 @@ public class GoogleLogin : MonoBehaviour
 
     void Start()
     {
+        PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder().Build());
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
+        SetBtnEvents();
     }
 
     void SetBtnEvents()
@@ -24,21 +28,27 @@ public class GoogleLogin : MonoBehaviour
 
     void LogIn()
     {
-        if(PlayGamesPlatform.Instance.localUser.authenticated == false)
+        Debug.Log("로그인 시도");
+        //로그인이 안되어 있으면
+        if (!Social.localUser.authenticated)
         {
-            Social.localUser.Authenticate((bool sucess) =>
+
+            Social.localUser.Authenticate((bool isSuccess) =>
             {
-                if (sucess)
+                if (isSuccess)
                 {
                     Debug.Log("구글 로그인 성공");
+                    SceneManager.LoadScene("Main");
                 }
                 else
                 {
                     Debug.Log("구글 로그인 실패");
-                }
 
+                }
             });
+
         }
+        
     }
 
     void LogOut()
