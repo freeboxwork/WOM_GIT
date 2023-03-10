@@ -1239,8 +1239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16da61aab46727f4bb14226bf24ecf2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnLogIn: {fileID: 0}
-  btnLogOut: {fileID: 0}
+  btnLogIn: {fileID: 2110634521}
+  btnLogOut: {fileID: 1644272336}
 --- !u!4 &1953747088
 Transform:
   m_ObjectHideFlags: 0
