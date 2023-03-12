@@ -475,4 +475,5 @@ public class TutorialStep
     public int tutorialBtnId;   // 버튼 ID
     public string goal;         // 튜토리얼 목표
     public string description;  // 튜토리얼 설명
+    public bool isStepComplete = false; // 현재 스탭 완료 판단
 }
