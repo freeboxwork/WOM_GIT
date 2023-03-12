@@ -22,6 +22,7 @@ public class TutorialManager : MonoBehaviour
     // 현재 진행중인 투토리얼 세트의 스텝 아이디
     public int curTutorialStepID = 0;
 
+    public TutorialUiController tutorialUiCont;
 
     void Start()
     {
@@ -61,7 +62,34 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-    
+    TutorialStepSetData GetTutorialSetById(int setID)
+    {
+        return tutorialStepSetDatas.FirstOrDefault(f => f.setId == setID);
+    }
+
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EnableTutorialSet();
+        }
+    }
+
+    public void EnableTutorialSet()
+    {
+        var tutorialSet = GetTutorialSetById(curTutorialSetID);   
+        var step = tutorialSet.steps[curTutorialStepID];
+        var buttonId = GetTutorialButtonById(step.tutorialBtnId);
+        tutorialUiCont.EnableTutorial(step.description, buttonId.image);
+    }
+
+    TutorialButton GetTutorialButtonById(int id)
+    {
+        return tutorialButtons.FirstOrDefault(f => f.id == id);
+    }
+
+
 }
 
 [System.Serializable]
@@ -74,5 +102,6 @@ public class TutorialStepDatas
 public class TutorialStepSetData
 {
     public int setId;
+    public bool isSetComplete = false;
     public List<TutorialStep> steps = new List<TutorialStep>();
 }
