@@ -52,9 +52,9 @@ public class CustomTypeDataManager : MonoBehaviour
     public Button GetCustomTypeData_Button(int index)
     {
         //Debug.Log(index);
-        var data = customTypeDatas_uiButton?.FirstOrDefault(f=> f.index == index).components.button;
+        var data = customTypeDatas_uiButton?.FirstOrDefault(f=> f.index == index);
         if (data != null)
-            return data;
+            return data.components.button;
         else
             Debug.LogError($"{EnumDefinition.CustomDataType.button}_{index} custom type data 가 없습니다.");
         return null;
