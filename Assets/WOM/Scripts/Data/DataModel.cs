@@ -464,3 +464,15 @@ public class ConvertTextData
 
     public string type;
 }
+
+
+[Serializable]
+public class TutorialStep
+{
+    public int id;              // 튜토리얼 스텝 ID
+    public int setId;           // 튜토리얼 세트 ID
+    public int step;            // 튜토리얼 스텝 번호
+    public int tutorialBtnId;   // 버튼 ID
+    public string goal;         // 튜토리얼 목표
+    public string description;  // 튜토리얼 설명
+}
