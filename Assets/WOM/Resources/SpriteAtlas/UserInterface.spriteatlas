@@ -117,7 +117,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 316f7a982ac613049a81bd5ec5a75e8a, type: 3}
   - {fileID: 21300000, guid: 50d03bb8b652d3445b74839c24b7070d, type: 3}
   - {fileID: 21300000, guid: be6a80c841fd78f478865bf329f79ed2, type: 3}
+  - {fileID: 21300000, guid: 9060b1c87c3203249a912a162dcf88d1, type: 3}
   - {fileID: 21300000, guid: ea7035c85be35fa419b431ee663fd910, type: 3}
+  - {fileID: 21300000, guid: 775529d836fdf1343ace006ea2e1f5d5, type: 3}
   - {fileID: 21300000, guid: 475bc94972f8305418c404834561ae28, type: 3}
   - {fileID: 21300000, guid: 7179677902a33ee4e9b5c14e61ac2872, type: 3}
   - {fileID: 21300000, guid: a0e5f499560bea74ca7f01c2d82a9a9b, type: 3}
@@ -143,12 +145,15 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a3ac396cb57cc7d4ead20eea411b3c5b, type: 3}
   - {fileID: 21300000, guid: db6f5e6c72eba3b48a6b342a55b0d13d, type: 3}
   - {fileID: 21300000, guid: e2ff8c9cb6eb23f4aa2737407a12ae05, type: 3}
+  - {fileID: 21300000, guid: f323c3acba0b92941974cc5dafe28fb4, type: 3}
   - {fileID: 21300000, guid: 5f42644d249712e4b91c1bda413bb12b, type: 3}
   - {fileID: 21300000, guid: a32dfc5d9d2788641a2e67a9f0a6dbab, type: 3}
+  - {fileID: 21300000, guid: e0838dadf4fa764459db5d7e4a20ed3b, type: 3}
   - {fileID: 21300000, guid: 7f289cbdf9a682741aa10bc5b149f244, type: 3}
   - {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
   - {fileID: 21300000, guid: 6a4431dd713dd3c44b0a76abf5625e0f, type: 3}
   - {fileID: 21300000, guid: 7328a8fd2286a5449b40d2768e6931de, type: 3}
+  - {fileID: 21300000, guid: 6267691eb77b0144f9939e4ddbcf022e, type: 3}
   - {fileID: 21300000, guid: e395104e80d98e94eba88b5e95fec101, type: 3}
   - {fileID: 21300000, guid: 8daaabce56b11294790b2dd87f746913, type: 3}
   - {fileID: 21300000, guid: a8bea4ee892eb5748abbc28325db3536, type: 3}
@@ -158,6 +163,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d05b1f2fee21206498cafb5ca0700004, type: 3}
   - {fileID: 21300000, guid: 865a644fdadf03143b3c8dfc1f35b880, type: 3}
   - {fileID: 21300000, guid: 062b375fb7e6c8f4cae752dffd4767e7, type: 3}
+  - {fileID: 21300000, guid: 63489b8fde573de4bb6c4e9b3f5e5f9a, type: 3}
   - {fileID: 21300000, guid: 48f815dff14dfef43b1b4991b89e9740, type: 3}
   m_PackedSpriteNamesToIndex:
   - U_Frame_White
@@ -225,7 +231,9 @@ SpriteAtlas:
   - DNA_offlineBonus
   - btn_Base_White_Border3
   - DNA_boneBonus
+  - Option_Alarm_ON
   - B2
+  - Option_Safety_ON
   - DNA_skillDuration
   - btn_Base_White_Border2
   - Bar_Hp_Back
@@ -251,12 +259,15 @@ SpriteAtlas:
   - Option_SFX_OFF
   - Check
   - UI_Coin
+  - Option_Safety_OFF
   - DNA_monsterHpLess
   - Icon_CriticalChance
+  - Small_Button_Edge
   - DNA_goldPig
   - btn_Base_Select
   - btn_Base_Press
   - Frame_Metal
+  - Option_Alarm_OFF
   - btn_small
   - Icon_Grade_01
   - DNA_goldMonsterBonus
@@ -266,6 +277,7 @@ SpriteAtlas:
   - Option_BGM_ON
   - B4
   - ClearBox
+  - Option_SaveCloude
   - Icon_OutLine1
   m_RenderDataMap: {}
   m_Tag: UserInterface
