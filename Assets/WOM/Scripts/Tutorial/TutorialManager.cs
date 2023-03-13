@@ -29,6 +29,14 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(Init());
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EnableTutorialSet();
+        }
+    }
+
     IEnumerator Init()
     {
         // get json data
@@ -68,20 +76,44 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            EnableTutorialSet();
-        }
-    }
-
     public void EnableTutorialSet()
     {
         var tutorialSet = GetTutorialSetById(curTutorialSetID);   
         var step = tutorialSet.steps[curTutorialStepID];
-        var buttonId = GetTutorialButtonById(step.tutorialBtnId);
-        tutorialUiCont.EnableTutorial(step.description, buttonId.image);
+        var tutoBtn = GetTutorialButtonById(step.tutorialBtnId);
+        tutorialUiCont.EnableTutorial(step.description, tutoBtn.image, tutoBtn.button);
+    }
+
+    public void CompleteStep()
+    {
+        var tutorialSet = GetTutorialSetById(curTutorialSetID);
+
+        // 현재 스텝 완료
+        tutorialSet.steps[curTutorialStepID].isStepComplete= true;
+
+        
+        // 다음 스텝 있는지 확인
+        if (tutorialSet.steps.Any(a=> a.step == curTutorialStepID+1))
+        {
+            // 다음 스텝 실행
+            ++curTutorialStepID;
+            var step = tutorialSet.steps[curTutorialStepID];
+            var tutoBtn = GetTutorialButtonById(step.tutorialBtnId);
+            tutorialUiCont.EnableTutorial(step.description, tutoBtn.image, tutoBtn.button);
+        }
+        else
+        {
+            // 투토리얼 세트 완료
+            tutorialSet.isSetComplete = true;
+            tutorialSet.steps[curTutorialStepID].isStepComplete = true;
+            
+            curTutorialSetID++;
+            curTutorialStepID = 0;
+            
+            tutorialUiCont.DisableTutorial();
+        }
+
+        //Debug.Log(curTutorialStepID);
     }
 
     TutorialButton GetTutorialButtonById(int id)

@@ -28,7 +28,10 @@ public class TutorialManagerEditor : Editor
         foreach (TutorialButton go in Resources.FindObjectsOfTypeAll(typeof(TutorialButton)) as TutorialButton[])
         {
             if (!EditorUtility.IsPersistent(go.transform.root.gameObject) && !(go.hideFlags == HideFlags.NotEditable || go.hideFlags == HideFlags.HideAndDontSave))
+            {
+                go.GetButton();
                 objectsInScene.Add(go);
+            }
         }
 
         target.tutorialButtons = objectsInScene.ToList();

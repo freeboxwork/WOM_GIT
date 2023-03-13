@@ -5,7 +5,7 @@
    "step": 0,
    "tutorialBtnId": 0,
    "goal": "훈련 버튼을 누른다",
-   "description": "훈련 버튼을 눌러 훈련 메뉴를 여세요.",
+   "description": "훈련 버튼을 눌러 <#A3FF00>훈련 메뉴를 여세요.</color>",
    "비고": "훈련 버튼을 누르면 스텝 종료"
  },
  {
@@ -14,7 +14,7 @@
    "step": 1,
    "tutorialBtnId": 0,
    "goal": "훈련 버튼을 누른다",
-   "description": "훈련 버튼을 눌러 훈련 메뉴를 닫으세요.",
+   "description": "훈련 버튼을 눌러  <#A3FF00>훈련 메뉴를 닫으세요.</color>",
    "비고": "훈련 버튼을 누르면 스텝 종료"
  },
  {
@@ -32,7 +32,7 @@
    "step": 1,
    "tutorialBtnId": 6,
    "goal": "곤충 공격력 강화 버튼을 누른다",
-   "description": "곤충 공격력 강화 버튼을 눌러 공격력 레벨을 높여 보세요.",
+   "description": "곤충 <#A3FF00>공격력 강화</color> 버튼을 눌러\n공격력 레벨을 높여 보세요.",
    "비고": ""
  },
  {
