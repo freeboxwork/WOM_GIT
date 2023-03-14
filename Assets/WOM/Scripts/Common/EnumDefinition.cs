@@ -24,7 +24,11 @@ public class EnumDefinition
         normal,
         gold,
         boss,
-        evolution
+        evolution,
+        dungenGold,
+        dungenDice,
+        dungenBone,
+        dungenCoal,
     }
 
     public enum AttackType
@@ -113,7 +117,8 @@ public class EnumDefinition
     {
         gold,
         bone,
-        jewel
+        jewel,
+        Coal
     }
 
 
