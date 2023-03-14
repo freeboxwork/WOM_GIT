@@ -477,3 +477,36 @@ public class TutorialStep
     public string description;  // 튜토리얼 설명
     public bool isStepComplete = false; // 현재 스탭 완료 판단
 }
+
+// 던전 몬스터 기본 정보 클래스
+[Serializable]
+public class DungeonMonsterBase : MonoBehaviour
+{
+    public EnumDefinition.GoodsType goodsType;
+    public EnumDefinition.MonsterType monsterType;
+    //public string currencyType; 
+    //public string monsterType;
+    public float battleTime;
+    public int maxKeyCount;
+    public int maxAdCount;
+    public int bgID;
+
+    [Header("Monster Data")]
+    public TextAsset jsonData;
+    
+}
+
+// 던전 몬스터 데이터 클래스
+[Serializable]
+public class DungeonMonsterData
+{
+    public int level;
+    public int currencyCount;
+    public int monsterHP;
+}
+
+[Serializable]
+public class DungeonMonsterDatas
+{
+    public List<DungeonMonsterData> data = new List<DungeonMonsterData>();
+}
