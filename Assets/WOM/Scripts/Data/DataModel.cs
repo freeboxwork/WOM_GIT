@@ -26,7 +26,19 @@ public class StageData
 
     public StageData CopyInstance()
     {
-        return (StageData)this.MemberwiseClone();
+        return new StageData
+        {
+            stageId = this.stageId,
+            stageName = this.stageName,
+            monsterNormalId = this.monsterNormalId,
+            monsterBossId = this.monsterBossId,
+            monsterGoldId = this.monsterGoldId,
+            monsterEvolId = this.monsterEvolId,
+            phaseCount = this.phaseCount,
+            bgId = this.bgId,
+            rewardEvent = this.rewardEvent,
+            unlock = this.unlock
+        };
     }
 }
 
@@ -64,7 +76,20 @@ public class EvolutionData
 
     public EvolutionData CopyInstance()
     {
-        return (EvolutionData)this.MemberwiseClone();
+        return new EvolutionData
+        {
+            depthId = this.depthId,
+            name = this.name,
+            insectType = this.insectType,
+            damage = this.damage,
+            damageRate = this.damageRate,
+            criticalChance = this.criticalChance,
+            criticalDamage = this.criticalDamage,
+            speed = this.speed,
+            goldBonus = this.goldBonus,
+            bossDamage = this.bossDamage,
+            spawnTime = this.spawnTime
+        };
     }
 }
 
