@@ -59,7 +59,11 @@ public class EnumDefinition
         unionData,
         dnaData,
         TrainingElementData,
-        convertTextData
+        convertTextData,
+        monsterDataDungeonGold,
+        monsterDataDungeonDice,
+        monsterDataDungeonBone,
+        monsterDataDungeonCoal,
     }
 
     /// <summary> 훈련 메뉴 </summary>

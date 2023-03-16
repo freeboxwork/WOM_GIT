@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class DungenMonsterGold : DungeonMonsterBase
 {
-
-    public DungeonMonsterDatas datas;
-
+    public int curLevel = 0;
+    public DungeonMonsterData curData;
 
     void Start()
     {
-        datas = JsonUtility.FromJson<DungeonMonsterDatas>(jsonData.text);
+       
     }
+
+    public void SetNextLevelData() 
+    {
+        curLevel++;
+        curData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(monsterType,curLevel).CloneInstance();
+    }
+
+
 
     
 }

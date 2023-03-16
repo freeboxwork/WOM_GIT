@@ -83,6 +83,12 @@ public class DataManager : MonoBehaviour
     public TextAsset globalPopupSheetData;
     public GlobalMessageDatas globalMessageDatas;
 
+    // DUNGEN MONSTER DATA 
+    public DungeonMonsterDatas dungeonMonsterDataGold;
+    public DungeonMonsterDatas dungeonMonsterDataDice;
+    public DungeonMonsterDatas dungeonMonsterDataBone;
+    public DungeonMonsterDatas dungeonMonsterDataCoal;
+
 
 
     // Traning Data ( 판매 데이터 )
@@ -153,6 +159,9 @@ public class DataManager : MonoBehaviour
         // SET SALE STAT DATA ( 판매 가능한 스탯 데이터 )
         SetSaleStatDatas();
 
+        // SET DUNGEON DATA
+        SetDungeonData();
+
         yield return new WaitForEndOfFrame();
     }
 
@@ -184,6 +193,14 @@ public class DataManager : MonoBehaviour
     {
         unionGambleDatas = GetData<UnionGambleDatas>(SheetDataType.unionGambleData);
         summonGradeDatas = GetData<SummonGradeDatas>(SheetDataType.summonGradeData);
+    }
+
+    void SetDungeonData()
+    {
+        dungeonMonsterDataGold = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonGold);
+        dungeonMonsterDataDice = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonDice);
+        dungeonMonsterDataBone = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonBone);
+        dungeonMonsterDataCoal = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonCoal);
     }
 
     void SetStageData()
@@ -312,8 +329,34 @@ public class DataManager : MonoBehaviour
 
     public MonsterData GetMonsterDataById(MonsterType monsterType, int id)
     {
-
         return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.id == id);
+    }
+
+    public DungeonMonsterData GetDungeonMonsterDataByTypeLevel(EnumDefinition.MonsterType monsterType, int level)
+    {
+        switch (monsterType)
+        {
+            case MonsterType.dungenGold: return GetDungeonMonsterDataByLevel(dungeonMonsterDataGold, level);
+            case MonsterType.dungenDice: return GetDungeonMonsterDataByLevel(dungeonMonsterDataDice, level);
+            case MonsterType.dungenBone: return GetDungeonMonsterDataByLevel(dungeonMonsterDataBone, level);
+            case MonsterType.dungenCoal: return GetDungeonMonsterDataByLevel(dungeonMonsterDataCoal, level);
+            default: return null;
+        }
+    }
+
+    DungeonMonsterData GetDungeonMonsterDataByLevel(DungeonMonsterDatas monsterDatas, int level)
+    {
+        var maxLevel = monsterDatas.data.Max(f => f.level);
+        if(maxLevel >= level)
+        {
+            return monsterDatas.data.FirstOrDefault((f) => f.level == level);
+        }
+        else
+        {
+            // 데이터 없음
+            Debug.Log("맥시멈 레벨 도달 하였습니다.");
+            return new DungeonMonsterData { level = 999, currencyCount = 1, monsterHP = 999 };
+        }
     }
 
     public UpgradeData GetUpgradeDataById(int id)

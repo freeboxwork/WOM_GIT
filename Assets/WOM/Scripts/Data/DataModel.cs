@@ -503,6 +503,15 @@ public class DungeonMonsterData
     public int level;
     public int currencyCount;
     public int monsterHP;
+
+    public DungeonMonsterData CloneInstance()
+    {
+        DungeonMonsterData dungeonMonsterData = new DungeonMonsterData();   
+        dungeonMonsterData.level = level;
+        dungeonMonsterData.currencyCount = currencyCount;
+        dungeonMonsterData.monsterHP = monsterHP;   
+        return dungeonMonsterData;
+    }
 }
 
 [Serializable]

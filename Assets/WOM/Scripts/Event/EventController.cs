@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEditor;
 using UnityEngine;
 using static EnumDefinition;
-using static UnityEngine.Rendering.DebugUI;
 /// <summary>
 /// 몬스터전 이벤트 관리
 /// </summary>
@@ -261,9 +259,39 @@ public class EventController : MonoBehaviour
         yield return StartCoroutine(globalData.monsterManager.Init(globalData.player.stageIdx));
 
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
-
-      
     }
+
+    // 던전 몬스터 도전으로 인한 현재 몬스터 잠시 사라지도록
+    // 던전 몬스터 등장
+
+    IEnumerator DungeonMonsterAppear(MonsterType monsterType)
+    {
+        // 현재 몬스터 OUT
+
+        // 던전 몬스터 데이터 셋팅
+
+        // UI 세팅
+
+        // 던전 몬스터 등장 연출
+
+        // 던전 몬스터 등장
+
+        yield return null;
+
+    }
+
+    // 던전 몬스터 사망시
+    public IEnumerator KillDungeonMonsterKill(MonsterType monsterType)
+    {
+        // 던전 몬스터 데이터 셋팅
+
+        // UI 세팅
+
+        yield return null;
+    }
+
+
+
 
     //진화 몬스터 사망시
     IEnumerator MonsterDie_Evolution()
