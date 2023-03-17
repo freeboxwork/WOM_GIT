@@ -509,16 +509,13 @@ public class DungeonMonsterBase : MonoBehaviour
 {
     public EnumDefinition.GoodsType goodsType;
     public EnumDefinition.MonsterType monsterType;
+    public int monsterFaceId;
     //public string currencyType; 
     //public string monsterType;
     public float battleTime;
     public int maxKeyCount;
     public int maxAdCount;
     public int bgID;
-
-    [Header("Monster Data")]
-    public TextAsset jsonData;
-    
 }
 
 // 던전 몬스터 데이터 클래스

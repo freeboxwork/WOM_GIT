@@ -122,7 +122,8 @@ public class EnumDefinition
         gold,
         bone,
         jewel,
-        Coal
+        dice,
+        coal
     }
 
 

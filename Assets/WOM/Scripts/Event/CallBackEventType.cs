@@ -8,8 +8,9 @@ public class CallBackEventType
         OnBossMonsterChallenge,         /// <summary> 보스 몬스터 도전 버튼을 눌렀을때  </summary>
         OnBossMonsterChallengeTimeOut,  /// <summary> 보스 몬스터 도전 타이머 종료 되었을때  </summary>
         OnEvolutionMonsterChallenge,    /// <summary> 진화전 버튼 눌렀을때  </summary>
-        OnReloaUITranuing,               /// <summary> 훈련 UI 금액에 따라 버튼 활성 , 비활성화 시킬때  </summary>
-        OnReloaUISkill,               /// <summary> 스킬 UI 금액에 따라 버튼 활성 , 비활성화 시킬때  </summary>
+        OnReloaUITranuing,              /// <summary> 훈련 UI 금액에 따라 버튼 활성 , 비활성화 시킬때  </summary>
+        OnReloaUISkill,                 /// <summary> 스킬 UI 금액에 따라 버튼 활성 , 비활성화 시킬때  </summary>
+        OnDungeonMonsterChallenge,      /// <summary> 던전 몬스터 도전 버튼을 눌렀을때  </summary>
 
 
         None,
