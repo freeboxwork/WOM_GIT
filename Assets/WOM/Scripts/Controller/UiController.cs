@@ -204,6 +204,11 @@ public class UiController : MonoBehaviour
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });
 
+        // 던전 몬스터 - 골드 도전 버튼
+        UtilityMethod.SetBtnEventCustomTypeByID(45, () => {
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungenGold);
+        });
+
         // 메인 판넬 열기
         foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
         {

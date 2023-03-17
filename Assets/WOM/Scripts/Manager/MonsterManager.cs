@@ -9,6 +9,7 @@ public class MonsterManager : MonoBehaviour
     public MonsterGold monsterGold;
     public MonsterBoss monsterBoss;
     public MonsterEvolution monsterEvolution;
+    public DungeonMonster monsterDungeon;
 
     public int monsterId_normal;
     public int monsterId_gold;
@@ -39,13 +40,13 @@ public class MonsterManager : MonoBehaviour
 
         yield return null;
 
-        var monNormalData = GetMonsterData(EnumDefinition.MonsterType.normal, stageData.monsterNormalId);
-        var monGoldData =   GetMonsterData(EnumDefinition.MonsterType.gold,   stageData.monsterGoldId);
-        var monBossData =   GetMonsterData(EnumDefinition.MonsterType.boss,   stageData.monsterBossId);
+        var monNormalData = GetMonsterData(MonsterType.normal, stageData.monsterNormalId);
+        var monGoldData =   GetMonsterData(MonsterType.gold,   stageData.monsterGoldId);
+        var monBossData =   GetMonsterData(MonsterType.boss,   stageData.monsterBossId);
 
-        SetMonsterData(EnumDefinition.MonsterType.normal, monNormalData);
-        SetMonsterData(EnumDefinition.MonsterType.gold, monGoldData);
-        SetMonsterData(EnumDefinition.MonsterType.boss, monBossData);
+        SetMonsterData(MonsterType.normal, monNormalData);
+        SetMonsterData(MonsterType.gold, monGoldData);
+        SetMonsterData(MonsterType.boss, monBossData);
 
         // set sprite image
         SetMonsterBodyImage(monNormalData, monsterNormal);
@@ -53,22 +54,22 @@ public class MonsterManager : MonoBehaviour
         SetMonsterBodyImage(monBossData, monsterBoss);
     }
 
-    public void SetMonsterData(EnumDefinition.MonsterType monsterType, int stageId)
+    public void SetMonsterData(MonsterType monsterType, int stageId)
     {
         StageData stageData = GlobalData.instance.dataManager.GetStageDataById(stageId);
         switch (monsterType)
         {
-            case EnumDefinition.MonsterType.normal:
+            case MonsterType.normal:
                 var monNormalData = GetMonsterData(monsterType, stageData.monsterNormalId);
                 SetMonsterData(monsterType, monNormalData);
                 break;
             
-            case EnumDefinition.MonsterType.gold:
+            case MonsterType.gold:
                 var monGoldData = GetMonsterData(monsterType, stageData.monsterGoldId);
                 SetMonsterData(monsterType, monGoldData);
                 break;
             
-            case EnumDefinition.MonsterType.boss:
+            case MonsterType.boss:
                 var monBossData = GetMonsterData(monsterType, stageData.monsterBossId); 
                 SetMonsterData(monsterType , monBossData);  
                 break;
@@ -76,23 +77,23 @@ public class MonsterManager : MonoBehaviour
     }
 
     /// <summary> 기본 몬스터 ( 노멀,골드,보스 제외 ) 이외의 몬스터 데이터 세팅시  </summary>
-    public void SetMonsterDataOther(EnumDefinition.MonsterType monsterType, int dataId)
+    public void SetMonsterDataOther(MonsterType monsterType, int dataId)
     {
 
         switch (monsterType)
         {
-            case EnumDefinition.MonsterType.evolution:
+            case MonsterType.evolution:
                 var monsterData = GetMonsterData(monsterType, dataId);
                 SetMonsterData(monsterType, monsterData);
                 break;
         }
     }
 
-    //int GetMonsterID(StageData stageData, EnumDefinition.MonsterType monsterType)
+    //int GetMonsterID(StageData stageData, MonsterType monsterType)
     //{
     //    switch (monsterType)
     //    {
-    //        case EnumDefinition.MonsterType.normal: return stageData.monsterNormalId);
+    //        case MonsterType.normal: return stageData.monsterNormalId);
     //    }
     //}
 
@@ -123,7 +124,7 @@ public class MonsterManager : MonoBehaviour
     }
 
 
-    public void EnableMonster(EnumDefinition.MonsterType monsterType)
+    public void EnableMonster(MonsterType monsterType)
     {
         for (int i = 0; i < monsters.Count; i++)
         {
@@ -140,7 +141,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    MonsterData GetMonsterData(EnumDefinition.MonsterType monsterType, int monsterId)
+    MonsterData GetMonsterData(MonsterType monsterType, int monsterId)
     {
         var data = GlobalData.instance.dataManager.GetMonsterDataById(monsterType,monsterId); 
         if(data == null)
@@ -155,7 +156,7 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
-    void SetMonsterData(EnumDefinition.MonsterType monsterType , MonsterData monsterData)
+    void SetMonsterData(MonsterType monsterType , MonsterData monsterData)
     {
         var monster = GetMonsterData(monsterType);
         
@@ -175,16 +176,21 @@ public class MonsterManager : MonoBehaviour
 
 
 
-    public MonsterBase GetMonsterData(EnumDefinition.MonsterType monsterType)
+    public MonsterBase GetMonsterData(MonsterType monsterType)
     {
         switch (monsterType)
         {
-            case EnumDefinition.MonsterType.normal: return monsterNormal;
-            case EnumDefinition.MonsterType.gold: return monsterGold;
-            case EnumDefinition.MonsterType.boss: return monsterBoss;
-            case EnumDefinition.MonsterType.evolution: return monsterEvolution; 
+            case MonsterType.normal: return monsterNormal;
+            case MonsterType.gold: return monsterGold;
+            case MonsterType.boss: return monsterBoss;
+            case MonsterType.evolution: return monsterEvolution; 
         }
         return null;
+    }
+
+    public DungeonMonster GetMonsterDungeon()
+    {
+        return monsterDungeon;
     }
 
 }
