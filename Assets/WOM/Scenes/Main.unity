@@ -36941,6 +36941,7 @@ MonoBehaviour:
   gold: 0
   bone: 0
   gem: 0
+  coal: 0
   currentMonsterHp: 0
   diceCount: 0
   currentStageData:
@@ -38749,6 +38750,105 @@ MonoBehaviour:
     gm: {fileID: 0}
   customType: 2
   index: 9
+--- !u!1 &1539894133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1539894134}
+  - component: {fileID: 1539894137}
+  - component: {fileID: 1539894136}
+  - component: {fileID: 1539894135}
+  m_Layer: 5
+  m_Name: Hp_Back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1539894134
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539894133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2020157563}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.16015625, y: 1.1961975}
+  m_SizeDelta: {x: -36.2535, y: -6.461}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1539894135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539894133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09e43e2e6511f248919379982c4bd2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  components:
+    animController: {fileID: 0}
+    button: {fileID: 0}
+    text: {fileID: 0}
+    image: {fileID: 1539894136}
+    sr: {fileID: 0}
+    tr: {fileID: 1539894134}
+    gm: {fileID: 1539894133}
+  customType: 2
+  index: 44
+--- !u!114 &1539894136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539894133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 46411574f6cfdfb4a92abfabca1eeea4, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1539894137
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539894133}
+  m_CullTransparentMesh: 1
 --- !u!114 &1540814364 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1879935269263286960, guid: 9877a5dabd80c734d8d50a83aa7f98fd, type: 3}
@@ -40874,7 +40974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTypeDatas:
-  - {fileID: 1020895174}
+  - {fileID: 1539894135}
   - {fileID: 25142335}
   - {fileID: 41152417}
   - {fileID: 48172187}
@@ -40934,6 +41034,7 @@ MonoBehaviour:
   - {fileID: 976151408}
   - {fileID: 991658484}
   - {fileID: 1013679669}
+  - {fileID: 1020895174}
   - {fileID: 1051334031}
   - {fileID: 1055044170}
   - {fileID: 1064235334}
@@ -41018,7 +41119,6 @@ MonoBehaviour:
   - {fileID: 3409305089524062622}
   customTypeDatas_animCont: []
   customTypeDatas_uiButton:
-  - {fileID: 1020895174}
   - {fileID: 48172187}
   - {fileID: 185642875}
   - {fileID: 187901013}
@@ -41041,6 +41141,7 @@ MonoBehaviour:
   - {fileID: 939886112}
   - {fileID: 976151408}
   - {fileID: 1013679669}
+  - {fileID: 1020895174}
   - {fileID: 1064235334}
   - {fileID: 1159817508}
   - {fileID: 1257712585}
@@ -41120,6 +41221,7 @@ MonoBehaviour:
   - {fileID: 1047927174800691650}
   - {fileID: 1047927175231469340}
   customTypeDatas_uiImage:
+  - {fileID: 1539894135}
   - {fileID: 160010086}
   - {fileID: 186876810}
   - {fileID: 345622663}
@@ -46724,7 +46826,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020157563}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -47757,7 +47859,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020157563}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -52521,6 +52623,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1539894134}
   - {fileID: 1806955490}
   - {fileID: 1863401081}
   m_Father: {fileID: 546225919}
@@ -64153,9 +64256,10 @@ MonoBehaviour:
   maxAdCount: 2
   bgID: 1
   curLevel: 1
+  curMonsterHP: 0
   curData:
     level: 0
-    currencyCount: 0
+    currencyAmount: 0
     monsterHP: 0
   spriteLibraryChanged: {fileID: 3767942350608220462}
   inOutAnimator: {fileID: 2343091466427354349}

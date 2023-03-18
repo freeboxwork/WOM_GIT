@@ -113,14 +113,31 @@ public class UiController : MonoBehaviour
     {
         var sliderValue = value / GlobalData.instance.player.currentMonsterHp ;
         UtilityMethod.GetCustomTypeImageById(41).fillAmount = sliderValue;
+        
+        // 0.1초 뒤에 실행
+        StartCoroutine(SetSliderBgWithDelay(sliderValue, 0.15f));
     }
 
     public void SetSliderDungeonMonsterHP(float value)
     {
         var sliderValue = value / GlobalData.instance.monsterManager.GetMonsterDungeon().curMonsterHP;
         UtilityMethod.GetCustomTypeImageById(41).fillAmount = sliderValue;
+
+        // 0.1초 뒤에 실행
+        StartCoroutine(SetSliderBgWithDelay(sliderValue, 0.15f));
     }
-        
+
+    public void SetSliderBg(float value)
+    {
+        UtilityMethod.GetCustomTypeImageById(44).fillAmount = value;
+    }
+
+    private IEnumerator SetSliderBgWithDelay(float value, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SetSliderBg(value);
+    }
+
 
     public void SetSliderPhaseValue(float value)
     {
