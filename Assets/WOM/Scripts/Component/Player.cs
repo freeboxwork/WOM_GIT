@@ -17,11 +17,15 @@ public class Player : MonoBehaviour
     public int gold;
     public int bone;
     public int gem;
+    public int coal;
+    
     public DateTime playTime;
     public float currentMonsterHp;
 
     // 주사위 개수
     public int diceCount;
+
+
 
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>
     public StageData currentStageData;
@@ -133,6 +137,14 @@ public class Player : MonoBehaviour
         GlobalData.instance.saveDataManager.SaveDataGoodsDice(diceCount); // set save data
     }
 
+
+    public void AddCoal(int value)
+    {
+        coal += value;
+        // set ui;
+    }
+
+
     public void AddGem(int value)
     {
         gem += value;
@@ -173,7 +185,14 @@ public class Player : MonoBehaviour
         GlobalData.instance.saveDataManager.SaveDataGoodsGem(gem); // set save data
     }
          
+    public void PayCoal(int value)
+    {
+        coal -= value;
+        if (coal < 0) coal = 0;
 
+        // set ui
+
+    }
    
 
 

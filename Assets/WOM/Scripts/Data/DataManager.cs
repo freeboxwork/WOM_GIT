@@ -336,10 +336,10 @@ public class DataManager : MonoBehaviour
     {
         switch (monsterType)
         {
-            case MonsterType.dungenGold: return GetDungeonMonsterDataByLevel(dungeonMonsterDataGold, level);
-            case MonsterType.dungenDice: return GetDungeonMonsterDataByLevel(dungeonMonsterDataDice, level);
-            case MonsterType.dungenBone: return GetDungeonMonsterDataByLevel(dungeonMonsterDataBone, level);
-            case MonsterType.dungenCoal: return GetDungeonMonsterDataByLevel(dungeonMonsterDataCoal, level);
+            case MonsterType.dungeonGold: return GetDungeonMonsterDataByLevel(dungeonMonsterDataGold, level);
+            case MonsterType.dungeonDice: return GetDungeonMonsterDataByLevel(dungeonMonsterDataDice, level);
+            case MonsterType.dungeonBone: return GetDungeonMonsterDataByLevel(dungeonMonsterDataBone, level);
+            case MonsterType.dungeonCoal: return GetDungeonMonsterDataByLevel(dungeonMonsterDataCoal, level);
             default: return null;
         }
     }
@@ -355,7 +355,7 @@ public class DataManager : MonoBehaviour
         {
             // 데이터 없음
             Debug.Log("맥시멈 레벨 도달 하였습니다.");
-            return new DungeonMonsterData { level = 999, currencyCount = 1, monsterHP = 999 };
+            return new DungeonMonsterData { level = 999, currencyAmount = 1, monsterHP = 999 };
         }
     }
 

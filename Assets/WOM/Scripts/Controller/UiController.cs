@@ -115,6 +115,13 @@ public class UiController : MonoBehaviour
         UtilityMethod.GetCustomTypeImageById(41).fillAmount = sliderValue;
     }
 
+    public void SetSliderDungeonMonsterHP(float value)
+    {
+        var sliderValue = value / GlobalData.instance.monsterManager.GetMonsterDungeon().curMonsterHP;
+        UtilityMethod.GetCustomTypeImageById(41).fillAmount = sliderValue;
+    }
+        
+
     public void SetSliderPhaseValue(float value)
     {
         var calcValue = (float)value / GlobalData.instance.player.pahseCountOriginalValue;
@@ -206,7 +213,7 @@ public class UiController : MonoBehaviour
 
         // 던전 몬스터 - 골드 도전 버튼
         UtilityMethod.SetBtnEventCustomTypeByID(45, () => {
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungenGold);
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonGold);
         });
 
         // 메인 판넬 열기

@@ -25,10 +25,11 @@ public class EnumDefinition
         gold,
         boss,
         evolution,
-        dungenGold,
-        dungenDice,
-        dungenBone,
-        dungenCoal,
+        dungeon,
+        dungeonGold,
+        dungeonDice,
+        dungeonBone,
+        dungeonCoal,
     }
 
     public enum AttackType

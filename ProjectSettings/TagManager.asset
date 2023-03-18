@@ -9,6 +9,7 @@ TagManager:
   - monster_gold
   - monster_boss
   - monster_evolution
+  - monsterDungeon
   layers:
   - Default
   - TransparentFX

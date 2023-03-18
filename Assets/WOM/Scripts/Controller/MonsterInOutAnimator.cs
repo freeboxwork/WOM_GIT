@@ -13,7 +13,7 @@ public class MonsterInOutAnimator : MonoBehaviour
     public Transform endPoint_MonsterIn;
     public Animator monsterAnim;
     public Collider2D monsterCol;
-    public MonsterBase monster;
+    
 
 
     bool isAnimPlay;
