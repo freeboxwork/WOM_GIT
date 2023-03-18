@@ -9,24 +9,25 @@ using static EnumDefinition;
 public class DungeonMonster : DungeonMonsterBase
 {
     public int curLevel = 1;
+    public float curMonsterHP;
     public DungeonMonsterData curData;
     public SpriteLibraryChanged spriteLibraryChanged;
     public MonsterInOutAnimator inOutAnimator;
 
     Dictionary<MonsterType, GoodsType> monsterToGoodsMap = new Dictionary<MonsterType, GoodsType>()
     {
-        { MonsterType.dungenGold, GoodsType.gold },
-        { MonsterType.dungenDice, GoodsType.dice },
-        { MonsterType.dungenBone, GoodsType.bone },
-        { MonsterType.dungenCoal, GoodsType.coal },
+        { MonsterType.dungeonGold, GoodsType.gold },
+        { MonsterType.dungeonDice, GoodsType.dice },
+        { MonsterType.dungeonBone, GoodsType.bone },
+        { MonsterType.dungeonCoal, GoodsType.coal },
     };
 
     Dictionary<MonsterType, int> monsterToFaceIdMap = new Dictionary<MonsterType, int>()
     {
-        { MonsterType.dungenGold, 99 },
-        { MonsterType.dungenDice, 90 },
-        { MonsterType.dungenBone, 80 },
-        { MonsterType.dungenCoal, 70 },
+        { MonsterType.dungeonGold, 99 },
+        { MonsterType.dungeonDice, 90 },
+        { MonsterType.dungeonBone, 80 },
+        { MonsterType.dungeonCoal, 70 },
     };
 
     void Start()
@@ -42,8 +43,16 @@ public class DungeonMonster : DungeonMonsterBase
         // SET DATA
         curData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(monsterType, curLevel).CloneInstance();
 
+        curMonsterHP = curData.monsterHP;
+
         // SET FACE
         SetMonsterFace(monsterToFaceIdMap[monsterType]);
+        
+        // 몬스터 hp text
+        GlobalData.instance.uiController.SetTxtMonsterHp(curMonsterHP);
+        
+        // 몬스터 hp slider
+        GlobalData.instance.uiController.SetSliderDungeonMonsterHP(curMonsterHP);
 
         yield return new WaitForEndOfFrame();
     }
@@ -85,9 +94,13 @@ public class DungeonMonster : DungeonMonsterBase
     {
         curLevel++;
         curData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(monsterType, curLevel).CloneInstance();
+        curMonsterHP = curData.monsterHP; 
     }
 
-
+    public void DungeonMonsterOut()
+    {
+        curLevel = 0;
+    }
 
 
 }

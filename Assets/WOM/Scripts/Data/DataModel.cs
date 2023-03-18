@@ -523,14 +523,14 @@ public class DungeonMonsterBase : MonoBehaviour
 public class DungeonMonsterData
 {
     public int level;
-    public int currencyCount;
-    public int monsterHP;
+    public int currencyAmount;
+    public float monsterHP;
 
     public DungeonMonsterData CloneInstance()
     {
         DungeonMonsterData dungeonMonsterData = new DungeonMonsterData();   
         dungeonMonsterData.level = level;
-        dungeonMonsterData.currencyCount = currencyCount;
+        dungeonMonsterData.currencyAmount = currencyAmount;
         dungeonMonsterData.monsterHP = monsterHP;   
         return dungeonMonsterData;
     }

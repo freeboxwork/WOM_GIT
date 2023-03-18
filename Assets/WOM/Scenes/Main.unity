@@ -21976,7 +21976,6 @@ MonoBehaviour:
   endPoint_MonsterIn: {fileID: 424950010}
   monsterAnim: {fileID: 841547816}
   monsterCol: {fileID: 841547817}
-  monster: {fileID: 841547814}
 --- !u!114 &841547820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56009,7 +56008,6 @@ MonoBehaviour:
   endPoint_MonsterIn: {fileID: 424950010}
   monsterAnim: {fileID: 2093046813}
   monsterCol: {fileID: 2093046814}
-  monster: {fileID: 2093046811}
 --- !u!114 &2093046817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61521,7 +61519,6 @@ MonoBehaviour:
   endPoint_MonsterIn: {fileID: 424950010}
   monsterAnim: {fileID: 3767942350608220451}
   monsterCol: {fileID: 3767942350608220463}
-  monster: {fileID: 0}
 --- !u!114 &2520244060998289592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63602,7 +63599,7 @@ GameObject:
   - component: {fileID: 8372033983472356523}
   m_Layer: 0
   m_Name: Monster_Dungeon
-  m_TagString: monster
+  m_TagString: monsterDungeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

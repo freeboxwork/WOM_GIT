@@ -134,7 +134,10 @@ public class InsectBullet : MonoBehaviour
     {
         if (GlobalData.instance.attackController.GetAttackableState() == true)
         {
-            if (collision.transform.CompareTag("monster"))
+            var tag = collision.tag;
+
+            //if (collision.transform.CompareTag("monster"))
+            if (tag.Contains("monster"))
             {
                 // Attack Effect Enable
                 GlobalData.instance.effectManager.EnableAttackEffectByInsectType(insectType, this.transform);
@@ -142,15 +145,44 @@ public class InsectBullet : MonoBehaviour
                 // SFX PLAY
                 GlobalData.instance.soundManager.PlaySfxInGame(EnumDefinition.SFX_TYPE.MONSTER_HIT);
 
+                CallBackEventType.TYPES hitEventType = tag == "monster" ? CallBackEventType.TYPES.OnMonsterHit : CallBackEventType.TYPES.OnDungeonMonsterHit;
+
+                int parameter = insectType == EnumDefinition.InsectType.union ? inGameData.unionIndex : 0;
 
                 // monster hit event!
-                if (insectType == EnumDefinition.InsectType.union)
-                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, inGameData.unionIndex, this.transform);
-                else
-                    EventManager.instance.RunEvent(CallBackEventType.TYPES.OnMonsterHit, insectType, 0, this.transform);
+                EventManager.instance.RunEvent(hitEventType, insectType, parameter, this.transform);
 
                 // ¼Ò¸ê
                 gameObject.SetActive(false);
+
+
+
+                //// Attack Effect Enable
+                //GlobalData.instance.effectManager.EnableAttackEffectByInsectType(insectType, this.transform);
+
+                //// SFX PLAY
+                //GlobalData.instance.soundManager.PlaySfxInGame(EnumDefinition.SFX_TYPE.MONSTER_HIT);
+
+                //CallBackEventType.TYPES hitEventType;
+
+                //if (tag == "monster")
+                //{
+                //    hitEventType = CallBackEventType.TYPES.OnMonsterHit;
+                //}
+                //else //if(tag == "monsterDungeon")
+                //{
+                //    hitEventType = CallBackEventType.TYPES.OnDungeonMonsterHit;
+                //}
+
+                //// monster hit event!
+                //if (insectType == EnumDefinition.InsectType.union)
+                //    EventManager.instance.RunEvent(hitEventType, insectType, inGameData.unionIndex, this.transform);
+                //else
+                //    EventManager.instance.RunEvent(hitEventType, insectType, 0, this.transform);
+
+
+                //// ¼Ò¸ê
+                //gameObject.SetActive(false);
             }
         }
     }

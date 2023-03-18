@@ -11,6 +11,7 @@ public class CallBackEventType
         OnReloaUITranuing,              /// <summary> 훈련 UI 금액에 따라 버튼 활성 , 비활성화 시킬때  </summary>
         OnReloaUISkill,                 /// <summary> 스킬 UI 금액에 따라 버튼 활성 , 비활성화 시킬때  </summary>
         OnDungeonMonsterChallenge,      /// <summary> 던전 몬스터 도전 버튼을 눌렀을때  </summary>
+        OnDungeonMonsterHit,            /// <summary> 곤충이 던전 몬스터를 타격 했을때  </summary>
 
 
         None,
