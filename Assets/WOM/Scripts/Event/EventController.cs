@@ -31,6 +31,7 @@ public class EventController : MonoBehaviour
     void AddEvents()
     {
         globalData.dungeonPopup.OnButtonClick += DungeonPopupApplyEvent;
+        globalData.dungeonPopup.OnFinishParticle += DungeonPopupFinishParticle;
 
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int, Transform>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int, Transform>(CallBackEventType.TYPES.OnDungeonMonsterHit, EvnOnDungeonMonsterHit);
@@ -54,6 +55,7 @@ public class EventController : MonoBehaviour
     bool isMonsterDie = false;
     bool isDungeonMonsterNextLevel = false;
     bool dungeonMonsterPopupClose = false;
+    bool dungeonMonsterPopupFinishParticle = false;
 
     bool IsBossOrEvolutionMonster()
     {
@@ -685,8 +687,11 @@ public class EventController : MonoBehaviour
     {
         dungeonMonsterPopupClose = true;
     }
+    private void DungeonPopupFinishParticle()
+    {
+        dungeonMonsterPopupFinishParticle = true;
+    }
 
-  
     IEnumerator ProcessDungeonMonsterTimeOut()
     {
         
@@ -709,12 +714,17 @@ public class EventController : MonoBehaviour
 
         globalData.dungeonPopup.SetDungeonPopup(goodsType, totalCurrencyAmount);
 
+
+
+        // 팝업 파티클이 종료될때까지 대기
+        yield return new WaitUntil(() => dungeonMonsterPopupFinishParticle);
+        
         // 재화 획득 TODO: 재화 획득 연출
         AddDungeonMonsterKillReward(goodsType, totalCurrencyAmount);
 
-        // 팝업 클릭시까지 대기
+        //팝업 닫기 버튼을 누를때까지 대기
         yield return new WaitUntil(() => dungeonMonsterPopupClose);
-        
+
 
         // 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
@@ -745,7 +755,7 @@ public class EventController : MonoBehaviour
         UtilityMethod.GetCustomTypeBtnByID(47).interactable = true;
         UtilityMethod.GetCustomTypeBtnByID(48).interactable = true;
 
-
+        dungeonMonsterPopupFinishParticle = false;
         dungeonMonsterPopupClose = false;
         // 진화 몬스터 도전 버튼 활성화
         // globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
