@@ -49,6 +49,8 @@ public class DungeonMonster : DungeonMonsterBase
 
         curMonsterHP = curData.monsterHP;
 
+        yield return new WaitForEndOfFrame();
+
         // SET FACE
         SetMonsterFace(monsterToDataMap[monsterType].monsterFaceId);
         
@@ -71,6 +73,7 @@ public class DungeonMonster : DungeonMonsterBase
 
     void SetMonsterFace(int faceId)
     {
+        Debug.Log("face id " + faceId);
         spriteLibraryChanged.ChangedSpriteAllImage(faceId);
     }
 
