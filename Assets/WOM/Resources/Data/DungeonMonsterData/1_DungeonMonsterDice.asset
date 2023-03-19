@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodsType: 3
   monsterType: 6
-  monsterFaceId: 1
+  monsterFaceId: 3
   battleTime: 30
   maxKeyCount: 2
   maxAdCount: 2
