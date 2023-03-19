@@ -73,7 +73,6 @@ public class DungeonMonster : DungeonMonsterBase
 
     void SetMonsterFace(int faceId)
     {
-        Debug.Log("face id " + faceId);
         spriteLibraryChanged.ChangedSpriteAllImage(faceId);
     }
 

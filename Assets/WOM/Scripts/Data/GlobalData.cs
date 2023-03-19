@@ -36,6 +36,7 @@ public class GlobalData : MonoBehaviour
     public SaveDataManager saveDataManager;
     public SettingPopupController settingPopupController;
     public SoundManager soundManager;
+    public DungeonPopup dungeonPopup;
 
 
     private void Awake()

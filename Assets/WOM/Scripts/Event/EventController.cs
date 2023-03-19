@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using static EnumDefinition;
@@ -9,6 +10,7 @@ using static EnumDefinition;
 public class EventController : MonoBehaviour
 {
     GlobalData globalData;
+   
     void Start()
     {
         GetManagers();
@@ -28,6 +30,8 @@ public class EventController : MonoBehaviour
 
     void AddEvents()
     {
+        globalData.dungeonPopup.OnButtonClick += DungeonPopupApplyEvent;
+
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int, Transform>(CallBackEventType.TYPES.OnMonsterHit, EvnOnMonsterHit);
         EventManager.instance.AddCallBackEvent<EnumDefinition.InsectType, int, Transform>(CallBackEventType.TYPES.OnDungeonMonsterHit, EvnOnDungeonMonsterHit);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallengeTimeOut, EvnBossMonsterTimeOut);
@@ -49,7 +53,7 @@ public class EventController : MonoBehaviour
 
     bool isMonsterDie = false;
     bool isDungeonMonsterNextLevel = false;
-
+    bool dungeonMonsterPopupClose = false;
 
     bool IsBossOrEvolutionMonster()
     {
@@ -677,9 +681,15 @@ public class EventController : MonoBehaviour
         //진화 메뉴 활성화
         globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
     }
+    private void DungeonPopupApplyEvent()
+    {
+        dungeonMonsterPopupClose = true;
+    }
 
+  
     IEnumerator ProcessDungeonMonsterTimeOut()
     {
+        
         // 공격 불가능 상태로 전환
         globalData.attackController.SetAttackableState(false);
 
@@ -687,6 +697,24 @@ public class EventController : MonoBehaviour
         globalData.insectManager.DisableHalfLineInsects();
 
         // yield return StartCoroutine(globalData.globalPopupController.EnableGlobalPopupCor("message", 0));
+
+        // 총 보상 재화 가지고 오기
+        var monster = globalData.monsterManager.GetMonsterDungeon();
+        var monsterType = monster.curMonsterData.monsterType;
+        var goodsType = monster.curMonsterData.goodsType;
+        var totalCurrencyAmount = globalData.dataManager.GetDungeonMonsterKillRewardByLevel(monsterType, monster.curLevel);
+
+        // 던전 몬스터 팝업 
+        globalData.dungeonPopup.gameObject.SetActive(true);
+
+        globalData.dungeonPopup.SetDungeonPopup(goodsType, totalCurrencyAmount);
+
+        // 재화 획득 TODO: 재화 획득 연출
+        AddDungeonMonsterKillReward(goodsType, totalCurrencyAmount);
+
+        // 팝업 클릭시까지 대기
+        yield return new WaitUntil(() => dungeonMonsterPopupClose);
+        
 
         // 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
@@ -717,6 +745,8 @@ public class EventController : MonoBehaviour
         UtilityMethod.GetCustomTypeBtnByID(47).interactable = true;
         UtilityMethod.GetCustomTypeBtnByID(48).interactable = true;
 
+
+        dungeonMonsterPopupClose = false;
         // 진화 몬스터 도전 버튼 활성화
         // globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
 
@@ -724,9 +754,20 @@ public class EventController : MonoBehaviour
         // globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
     }
 
+    public void AddDungeonMonsterKillReward(GoodsType goodsType, int totalCurrencyAmount)
+    {
+        switch (goodsType)
+        {
+            case GoodsType.gold: globalData.player.AddGold(totalCurrencyAmount); break;
+            case GoodsType.bone: globalData.player.AddBone(totalCurrencyAmount); break;
+            case GoodsType.dice: globalData.player.AddDice(totalCurrencyAmount); break;
+            case GoodsType.coal: globalData.player.AddCoal(totalCurrencyAmount); break;
+            default: return;
+        }
+    }
 
-    // 진화전 포기 했을때
-    public IEnumerator ProcessEvolutionMonsterGiveUp()
+        // 진화전 포기 했을때
+        public IEnumerator ProcessEvolutionMonsterGiveUp()
     {
         // 공격 불가능 상태로 전환
         globalData.attackController.SetAttackableState(false);

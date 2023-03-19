@@ -332,6 +332,18 @@ public class DataManager : MonoBehaviour
         return monsterDatas[TypeIdx(monsterType)].data.FirstOrDefault(f => f.id == id);
     }
 
+    public DungeonMonsterDatas GetBuGetDungeonMonsterDatasByType(EnumDefinition.MonsterType monsterType)
+    {
+        switch (monsterType)
+        {
+            case MonsterType.dungeonGold: return dungeonMonsterDataGold;
+            case MonsterType.dungeonDice: return dungeonMonsterDataDice;
+            case MonsterType.dungeonBone: return dungeonMonsterDataBone;
+            case MonsterType.dungeonCoal: return dungeonMonsterDataCoal;
+            default: return null;
+        }
+    }
+
     public DungeonMonsterData GetDungeonMonsterDataByTypeLevel(EnumDefinition.MonsterType monsterType, int level)
     {
         switch (monsterType)
@@ -343,6 +355,21 @@ public class DataManager : MonoBehaviour
             default: return null;
         }
     }
+
+    public int GetDungeonMonsterKillRewardByLevel(MonsterType monsterType, int targetLevel)
+    {
+        var dataList = GetBuGetDungeonMonsterDatasByType(monsterType);
+
+        if (!dataList.data.Any(data => data.level == targetLevel))
+        {
+            Debug.LogError($"Level {targetLevel} data not found.");
+            return 0;
+        }
+
+        int totalCurrencyAmount = dataList.data.Where(data => data.level <= targetLevel).Sum(data => data.currencyAmount);
+        return totalCurrencyAmount;
+    }
+         
 
     DungeonMonsterData GetDungeonMonsterDataByLevel(DungeonMonsterDatas monsterDatas, int level)
     {

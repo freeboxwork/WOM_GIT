@@ -148,6 +148,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f323c3acba0b92941974cc5dafe28fb4, type: 3}
   - {fileID: 21300000, guid: 5f42644d249712e4b91c1bda413bb12b, type: 3}
   - {fileID: 21300000, guid: a32dfc5d9d2788641a2e67a9f0a6dbab, type: 3}
+  - {fileID: 21300000, guid: d40c9aad39848394f953bfde1cfa7fa3, type: 3}
   - {fileID: 21300000, guid: e0838dadf4fa764459db5d7e4a20ed3b, type: 3}
   - {fileID: 21300000, guid: 7f289cbdf9a682741aa10bc5b149f244, type: 3}
   - {fileID: 21300000, guid: dd4a1dcdc9e9fd345a52392e5436edbf, type: 3}
@@ -262,6 +263,7 @@ SpriteAtlas:
   - Option_Safety_OFF
   - DNA_monsterHpLess
   - Icon_CriticalChance
+  - Popup_Panel_3
   - Small_Button_Edge
   - DNA_goldPig
   - btn_Base_Select
