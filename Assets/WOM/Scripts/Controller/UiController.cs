@@ -232,6 +232,16 @@ public class UiController : MonoBehaviour
         UtilityMethod.SetBtnEventCustomTypeByID(45, () => {
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonGold);
         });
+        UtilityMethod.SetBtnEventCustomTypeByID(46, () => {
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonDice);
+        });
+        UtilityMethod.SetBtnEventCustomTypeByID(47, () => {
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonBone);
+        });
+        UtilityMethod.SetBtnEventCustomTypeByID(48, () => {
+            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonCoal);
+        });
+
 
         // 메인 판넬 열기
         foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))

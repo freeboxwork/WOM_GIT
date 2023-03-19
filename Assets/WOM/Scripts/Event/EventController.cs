@@ -330,6 +330,9 @@ public class EventController : MonoBehaviour
 
         // 골드 몬스터 도전 버튼 비활성화 TODO: 던전 몬스터별 버튼 비활성화
         UtilityMethod.GetCustomTypeBtnByID(45).interactable = false;
+        UtilityMethod.GetCustomTypeBtnByID(46).interactable = false;
+        UtilityMethod.GetCustomTypeBtnByID(47).interactable = false;
+        UtilityMethod.GetCustomTypeBtnByID(48).interactable = false;
 
         // 현재 몬스터 타입 세팅 ( 타이머 종료 이벤트를 위한...)
         globalData.player.curMonsterType = MonsterType.dungeon;
@@ -710,6 +713,9 @@ public class EventController : MonoBehaviour
         // 던전 몬스터 도전 버튼 활성화 TODO: 모든 던전 몬스터 고려
         // 골드 몬스터 도전 버튼 비활성화 TODO: 던전 몬스터별 버튼 비활성화
         UtilityMethod.GetCustomTypeBtnByID(45).interactable = true;
+        UtilityMethod.GetCustomTypeBtnByID(46).interactable = true;
+        UtilityMethod.GetCustomTypeBtnByID(47).interactable = true;
+        UtilityMethod.GetCustomTypeBtnByID(48).interactable = true;
 
         // 진화 몬스터 도전 버튼 활성화
         // globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
