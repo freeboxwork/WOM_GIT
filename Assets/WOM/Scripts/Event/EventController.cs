@@ -363,7 +363,7 @@ public class EventController : MonoBehaviour
         globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(true);
 
         // 타이머 시간 설정 
-        globalData.bossChallengeTimer.SetTimeValue(monster.battleTime);
+        globalData.bossChallengeTimer.SetTimeValue(monster.curMonsterData.battleTime);
 
         // 타이머 계산 시작
         globalData.bossChallengeTimer.StartTimer();

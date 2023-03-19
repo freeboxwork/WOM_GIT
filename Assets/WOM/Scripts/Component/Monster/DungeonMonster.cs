@@ -8,31 +8,35 @@ using static EnumDefinition;
 
 public class DungeonMonster : DungeonMonsterBase
 {
+    [HideInInspector]
+    public DungenMonsterFileData curMonsterData;
+
     public int curLevel = 1;
     public float curMonsterHP;
     public DungeonMonsterData curData;
     public SpriteLibraryChanged spriteLibraryChanged;
     public MonsterInOutAnimator inOutAnimator;
+    
+ 
+    public  DungenMonsterFileData[] dungenMonsterFileDatas;
 
-    Dictionary<MonsterType, GoodsType> monsterToGoodsMap = new Dictionary<MonsterType, GoodsType>()
-    {
-        { MonsterType.dungeonGold, GoodsType.gold },
-        { MonsterType.dungeonDice, GoodsType.dice },
-        { MonsterType.dungeonBone, GoodsType.bone },
-        { MonsterType.dungeonCoal, GoodsType.coal },
-    };
+    public Dictionary<MonsterType, DungenMonsterFileData> monsterToDataMap;
 
-    Dictionary<MonsterType, int> monsterToFaceIdMap = new Dictionary<MonsterType, int>()
-    {
-        { MonsterType.dungeonGold, 99 },
-        { MonsterType.dungeonDice, 90 },
-        { MonsterType.dungeonBone, 80 },
-        { MonsterType.dungeonCoal, 70 },
-    };
 
     void Start()
     {
-      
+        SetDataMap();
+    }
+
+    void SetDataMap()
+    {
+        monsterToDataMap = new Dictionary<MonsterType, DungenMonsterFileData>()
+        {
+            { MonsterType.dungeonGold, dungenMonsterFileDatas[0] },
+            { MonsterType.dungeonDice, dungenMonsterFileDatas[1] },
+            { MonsterType.dungeonBone, dungenMonsterFileDatas[2] },
+            { MonsterType.dungeonCoal, dungenMonsterFileDatas[3] }
+        };
     }
 
     public IEnumerator Init(MonsterType monsterType)
@@ -46,7 +50,7 @@ public class DungeonMonster : DungeonMonsterBase
         curMonsterHP = curData.monsterHP;
 
         // SET FACE
-        SetMonsterFace(monsterToFaceIdMap[monsterType]);
+        SetMonsterFace(monsterToDataMap[monsterType].monsterFaceId);
         
         // 몬스터 hp text
         GlobalData.instance.uiController.SetTxtMonsterHp(curMonsterHP);
@@ -60,40 +64,20 @@ public class DungeonMonster : DungeonMonsterBase
     // 현재 던전 몬스터의 타입과 재화 타입 설정
     public void SetMonsterType(MonsterType monsterType)
     {
-        this.monsterType = monsterType;
-        goodsType = monsterToGoodsMap[monsterType];
+        curMonsterData = monsterToDataMap[monsterType];
+        //this.monsterType = monsterType;
+        //goodsType = monsterToDataMap[monsterType].goodsType;
     }
 
     void SetMonsterFace(int faceId)
     {
-        var spriteData = GlobalData.instance.dataManager.GetMonsterSpriteDataById(faceId);
-
-        // set tail
-        spriteLibraryChanged.ChangedSpritePartImage("tail", spriteData.tail);
-        // set hand
-        spriteLibraryChanged.ChangedSpritePartImage("hand", spriteData.hand);
-        // set finger
-        spriteLibraryChanged.ChangedSpritePartImage("finger", spriteData.finger);
-        // set foreArm
-        spriteLibraryChanged.ChangedSpritePartImage("foreArm", spriteData.foreArm);
-        // set upperArm
-        spriteLibraryChanged.ChangedSpritePartImage("upperArm", spriteData.upperArm);
-        // set head
-        spriteLibraryChanged.ChangedSpritePartImage("head", spriteData.head);
-        // set body
-        spriteLibraryChanged.ChangedSpritePartImage("body", spriteData.body);
-        // set leg_0
-        spriteLibraryChanged.ChangedSpritePartImage("leg_0", spriteData.leg_0);
-        // set leg_1
-        spriteLibraryChanged.ChangedSpritePartImage("leg_1", spriteData.leg_1);
-        // set leg_2
-        spriteLibraryChanged.ChangedSpritePartImage("leg_2", spriteData.leg_2);
+        spriteLibraryChanged.ChangedSpriteAllImage(faceId);
     }
 
     public void SetNextLevelData()
     {
         curLevel++;
-        curData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(monsterType, curLevel).CloneInstance();
+        curData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(curMonsterData.monsterType, curLevel).CloneInstance();
         curMonsterHP = curData.monsterHP; 
     }
 

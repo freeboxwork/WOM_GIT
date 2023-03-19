@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f0033070105fc4b809d54b091baf5e, type: 3}
-  m_Name: DungeonMonsterDice
+  m_Name: 1_DungeonMonsterDice
   m_EditorClassIdentifier: 
-  goodsType: 1
-  monsterType: 7
-  monsterFaceId: 80
+  goodsType: 3
+  monsterType: 6
+  monsterFaceId: 1
   battleTime: 30
   maxKeyCount: 2
   maxAdCount: 2
