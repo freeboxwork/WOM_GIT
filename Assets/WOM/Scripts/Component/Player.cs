@@ -215,7 +215,29 @@ public class Player : MonoBehaviour
     }
 
 
+    public int GetCurrentDungeonKeyCount(MonsterType monsterType)
+    {
+        switch (monsterType)
+        {
+            case MonsterType.dungeonGold: return dungeonKeys[GoodsType.gold];
+            case MonsterType.dungeonBone: return dungeonKeys[GoodsType.bone];
+            case MonsterType.dungeonDice: return dungeonKeys[GoodsType.dice];
+            case MonsterType.dungeonCoal: return dungeonKeys[GoodsType.coal];
+            default: return 0;
+        }
+    }
 
+    public void PayDungeonKeyByMonsterType(MonsterType monsterType, int count)
+    {
+        switch (monsterType)
+        {
+            case MonsterType.dungeonGold: PayDungeonKey(GoodsType.gold,count); break;
+            case MonsterType.dungeonBone: PayDungeonKey(GoodsType.bone, count); break;
+            case MonsterType.dungeonDice: PayDungeonKey(GoodsType.dice, count); break;
+            case MonsterType.dungeonCoal: PayDungeonKey(GoodsType.coal, count); break;
+        }
+    }
+         
 
 }
 

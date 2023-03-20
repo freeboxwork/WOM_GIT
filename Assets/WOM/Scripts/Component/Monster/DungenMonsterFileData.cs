@@ -12,4 +12,5 @@ public class DungenMonsterFileData : ScriptableObject
     public int maxKeyCount;
     public int maxAdCount;
     public int bgID;
+    public int usingKeyCount;
 }

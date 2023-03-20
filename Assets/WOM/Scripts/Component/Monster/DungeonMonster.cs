@@ -22,7 +22,6 @@ public class DungeonMonster : DungeonMonsterBase
 
     public Dictionary<MonsterType, DungenMonsterFileData> monsterToDataMap;
 
-
     void Start()
     {
         SetDataMap();

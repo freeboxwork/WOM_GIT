@@ -325,6 +325,30 @@ public class EventController : MonoBehaviour
 
     void EvnOnDungenMonsterChalleng(MonsterType monsterType)
     {
+        // 열쇠 사용 가능 체크
+        var usingKeyCount = globalData.monsterManager.GetMonsterDungeon().monsterToDataMap[monsterType].usingKeyCount;
+        var curKeyCount = globalData.player.GetCurrentDungeonKeyCount(monsterType);
+        if(curKeyCount < usingKeyCount)
+        {
+            // enable popup
+            // TODO: 코드 간결화 및 리펙토링
+            int messageId = 12;
+            switch (monsterType)
+            {
+                case MonsterType.dungeonGold: messageId = 12; break;
+                case MonsterType.dungeonBone: messageId = 13; break;
+                case MonsterType.dungeonDice: messageId = 14; break;
+                case MonsterType.dungeonCoal: messageId = 15; break;
+            }
+            // message popup (열쇠가 부족합니다)
+            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", messageId);
+
+            return;
+        }
+
+        // 열쇠 사용
+        globalData.player.PayDungeonKeyByMonsterType(monsterType, usingKeyCount);
+
         StopAllCoroutines();
         StartCoroutine(DungeonMonsterAppear(monsterType));
     }
