@@ -18,13 +18,15 @@ public class Player : MonoBehaviour
     public int bone;
     public int gem;
     public int coal;
-    
+
+    // Dungeon Key
+    public SerializableDictionary<GoodsType, int> dungeonKeys;
+
     public DateTime playTime;
     public float currentMonsterHp;
 
     // 주사위 개수
     public int diceCount;
-
 
 
     /// <summary> 현재 진행중인 스테이지 데이터 </summary>
@@ -193,7 +195,24 @@ public class Player : MonoBehaviour
         // set ui
 
     }
-   
+
+    
+    public void AddDungeonKey(GoodsType goodsType , int addKeyCount)
+    {
+        dungeonKeys[goodsType] += addKeyCount;
+
+        // RELOAD UI
+        // ...
+    }
+
+    public void PayDungeonKey(GoodsType goodsType, int keyCount)
+    {
+        dungeonKeys[goodsType] -= keyCount;
+        if (dungeonKeys[goodsType] < 0) dungeonKeys[goodsType] = 0;
+
+        // RELOAD UI
+        // ...
+    }
 
 
 
