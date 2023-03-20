@@ -33,10 +33,11 @@ public class GM_TesterTools : EditorWindow
         EditorCustomGUI.GUI_Button("뼈조각 10000 추가", () => { GlobalData.instance.player.AddBone(1000); });
         EditorCustomGUI.GUI_Button("보석 10000 추가", () => { GlobalData.instance.player.AddGem(1000); });
         EditorCustomGUI.GUI_Button("주사위 10000 추가", () => { GlobalData.instance.player.AddDice(1000); });
-        EditorCustomGUI.GUI_Button("던전 몬스터 골드 키 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.gold, 100); });
-        EditorCustomGUI.GUI_Button("던전 몬스터 뼈조각 키 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.bone, 100); }); EditorCustomGUI.GUI_Button("주사위 100 추가", () => { GlobalData.instance.player.AddDice(1000); });
-        EditorCustomGUI.GUI_Button("던전 몬스터 주사위 키 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.dice, 100); });
-        EditorCustomGUI.GUI_Button("던전 몬스터 석탄 키 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.coal, 100); });
+
+        EditorCustomGUI.GUI_Button("던전 몬스터 키 - 골드 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.gold, 100); });
+        EditorCustomGUI.GUI_Button("던전 몬스터 키 - 뼈조각 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.bone, 100); }); EditorCustomGUI.GUI_Button("주사위 100 추가", () => { GlobalData.instance.player.AddDice(1000); });
+        EditorCustomGUI.GUI_Button("던전 몬스터 키 - 주사위  100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.dice, 100); });
+        EditorCustomGUI.GUI_Button("던전 몬스터 키 - 석탄  100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.coal, 100); });
 
         EditorCustomGUI.GUI_Button("몬스터 즉시 사냥", () => { KillMonster(); });
     }
