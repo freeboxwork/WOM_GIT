@@ -35,7 +35,7 @@ public class GM_TesterTools : EditorWindow
         EditorCustomGUI.GUI_Button("주사위 10000 추가", () => { GlobalData.instance.player.AddDice(1000); });
 
         EditorCustomGUI.GUI_Button("던전 몬스터 키 - 골드 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.gold, 100); });
-        EditorCustomGUI.GUI_Button("던전 몬스터 키 - 뼈조각 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.bone, 100); }); EditorCustomGUI.GUI_Button("주사위 100 추가", () => { GlobalData.instance.player.AddDice(1000); });
+        EditorCustomGUI.GUI_Button("던전 몬스터 키 - 뼈조각 100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.bone, 100); });
         EditorCustomGUI.GUI_Button("던전 몬스터 키 - 주사위  100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.dice, 100); });
         EditorCustomGUI.GUI_Button("던전 몬스터 키 - 석탄  100 추가", () => { GlobalData.instance.player.AddDungeonKey(GoodsType.coal, 100); });
 

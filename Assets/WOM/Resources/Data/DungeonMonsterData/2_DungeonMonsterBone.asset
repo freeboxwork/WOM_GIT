@@ -19,3 +19,4 @@ MonoBehaviour:
   maxKeyCount: 2
   maxAdCount: 2
   bgID: 1
+  usingKeyCount: 1
