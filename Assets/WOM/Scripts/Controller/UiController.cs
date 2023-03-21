@@ -27,8 +27,9 @@ public class UiController : MonoBehaviour
     //[Header("뽑기 관련 UI 항목")]
     //public Transform trLotteryGameSet;
 
+    [SerializeField]
     List<GameObject> mainPanels = new List<GameObject>();
-    public List<MainBtnSlot> mainButtons = new List<MainBtnSlot>();
+    public List< MainBtnSlot> mainButtons = new List<MainBtnSlot>();
 
     //[Header("진화 UI 관련 항목")]
     //public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
@@ -61,7 +62,7 @@ public class UiController : MonoBehaviour
     public IEnumerator Init()
     {
         // set panel gameObjcts
-        SetMainPanels();
+        // SetMainPanels();
 
         // set ui data
         SetUiData();
@@ -225,30 +226,72 @@ public class UiController : MonoBehaviour
     {
         // 보스 몬스터 도전 버튼
         btnBossChallenge.onClick.AddListener(() => {
+            
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });
 
         // 던전 몬스터 - 골드 도전 버튼
         UtilityMethod.SetBtnEventCustomTypeByID(45, () => {
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonGold);
+            EnableDungeonEnterPopup(MonsterType.dungeonGold);
         });
         UtilityMethod.SetBtnEventCustomTypeByID(46, () => {
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonDice);
+            EnableDungeonEnterPopup(MonsterType.dungeonDice);
         });
         UtilityMethod.SetBtnEventCustomTypeByID(47, () => {
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonBone);
+            EnableDungeonEnterPopup(MonsterType.dungeonBone);
         });
         UtilityMethod.SetBtnEventCustomTypeByID(48, () => {
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EnumDefinition.MonsterType.dungeonCoal);
+            EnableDungeonEnterPopup(MonsterType.dungeonCoal);
         });
 
 
         // 메인 판넬 열기
-        foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
+        //foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
+        //{
+        //    UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
+        //}
+
+
+        foreach(var btn in mainButtons)
         {
-            UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
+            btn.btnMain.onClick.AddListener(() => {
+                EnableMenuPanel(btn.menuPanelType);
+            });
         }
 
+    }
+
+    void EnableDungeonEnterPopup(MonsterType monsterType)
+    {
+        AllDisableMenuPanels();
+        AllUnSelectMenuBtns();
+        if (IsValidDungeonKeyCount(monsterType))
+            GlobalData.instance.dungeonEnterPopup.EnablePopup(monsterType);
+    }
+
+    // 던전 몬스터 열쇠 사용 가능 체크
+    bool IsValidDungeonKeyCount(MonsterType monsterType)
+    {
+        var usingKeyCount = GlobalData.instance.monsterManager.GetMonsterDungeon().monsterToDataMap[monsterType].usingKeyCount;
+        var curKeyCount = GlobalData.instance.player.GetCurrentDungeonKeyCount(monsterType);
+        if (curKeyCount < usingKeyCount)
+        {
+            // enable popup
+            // TODO: 코드 간결화 및 리펙토링
+            int messageId = 12;
+            switch (monsterType)
+            {
+                case MonsterType.dungeonGold: messageId = 12; break;
+                case MonsterType.dungeonBone: messageId = 13; break;
+                case MonsterType.dungeonDice: messageId = 14; break;
+                case MonsterType.dungeonCoal: messageId = 15; break;
+            }
+            // message popup (열쇠가 부족합니다)
+            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", messageId);
+
+            return false ;
+        }
+        return true;
     }
 
 
@@ -258,6 +301,7 @@ public class UiController : MonoBehaviour
         {
             if (i == (int)type)
             {
+                Debug.Log(type);
                 var enableValue = !mainPanels[i].activeSelf;
                 mainPanels[i].SetActive(enableValue);
                 mainButtons[i].Select(enableValue);
@@ -312,7 +356,12 @@ public class UiController : MonoBehaviour
             panel.SetActive(false);
     }
 
-
+    public void AllUnSelectMenuBtns()
+    {
+        foreach (var mainBtn in mainButtons)
+            mainBtn.Select(false);
+    }
+        
 
 
     // 초기화시 UI 오브젝트 비활성화 
