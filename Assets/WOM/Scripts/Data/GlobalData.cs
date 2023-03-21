@@ -37,7 +37,8 @@ public class GlobalData : MonoBehaviour
     public SettingPopupController settingPopupController;
     public SoundManager soundManager;
     public DungeonPopup dungeonPopup;
-
+    public DungeonManager dungeonManager;
+    public DungeonEnterPopup dungeonEnterPopup;
 
     private void Awake()
     {

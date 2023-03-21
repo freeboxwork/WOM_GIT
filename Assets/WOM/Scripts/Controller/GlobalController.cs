@@ -96,7 +96,10 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(unionSpwanManager.Init());
 
         // 곤충 스폰 매니저 세팅
-        yield return StartCoroutine(insectSpwanManager.Init()); 
+        yield return StartCoroutine(insectSpwanManager.Init());
+
+        // 던전 매니저 세팅
+        yield return StartCoroutine(GlobalData.instance.dungeonManager.Init());
 
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);

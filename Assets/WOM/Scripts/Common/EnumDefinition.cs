@@ -133,9 +133,11 @@ public class EnumDefinition
         training,
         evolution,
         skill,
+        castle,
+        dungeon,
+        shop,
         union,
-        dna,
-        shop
+        dna
     }
 
     public enum EvolutionDiceStatType

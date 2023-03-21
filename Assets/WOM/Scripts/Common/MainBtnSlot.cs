@@ -10,6 +10,7 @@ public class MainBtnSlot : MonoBehaviour
     public Sprite sprSelect;
     public Sprite sprUnSelect;
     public Image imgSelect;
+    public EnumDefinition.MenuPanelType menuPanelType;
 
     void Start()
     {
