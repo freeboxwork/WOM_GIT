@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static EnumDefinition;
 
 public class DungeonEnterPopup : MonoBehaviour
 {
@@ -35,8 +36,11 @@ public class DungeonEnterPopup : MonoBehaviour
     void SetBtnEvents()
     {
         btn_KeyDungeon.onClick.AddListener(() => {
-            EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, curMonsterType);
-            contents.SetActive(false); 
+            if (IsValidDungeonKeyCount(curMonsterType))
+            {
+                EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, curMonsterType);
+            }
+            contents.SetActive(false);
         });
     }
 
@@ -47,7 +51,33 @@ public class DungeonEnterPopup : MonoBehaviour
         contents.SetActive(true);
         SetKeyUI(monsterType);
     }
-    
+
+    // 던전 몬스터 열쇠 사용 가능 체크
+    bool IsValidDungeonKeyCount(EnumDefinition.MonsterType monsterType)
+    {
+        var usingKeyCount = GlobalData.instance.monsterManager.GetMonsterDungeon().monsterToDataMap[monsterType].usingKeyCount;
+        var curKeyCount = GlobalData.instance.player.GetCurrentDungeonKeyCount(monsterType);
+        if (curKeyCount < usingKeyCount)
+        {
+            // enable popup
+            // TODO: 코드 간결화 및 리펙토링
+            int messageId = 12;
+            switch (monsterType)
+            {
+                case EnumDefinition.MonsterType.dungeonGold: messageId = 12; break;
+                case EnumDefinition.MonsterType.dungeonBone: messageId = 13; break;
+                case EnumDefinition.MonsterType.dungeonDice: messageId = 14; break;
+                case EnumDefinition.MonsterType.dungeonCoal: messageId = 15; break;
+            }
+            // message popup (열쇠가 부족합니다)
+            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", messageId);
+
+            return false;
+        }
+        return true;
+    }
+
+
     public void SetKeyUI(EnumDefinition.MonsterType monsterType)
     {
         keyIcon.sprite = monsterTypeToIconMap[monsterType];
