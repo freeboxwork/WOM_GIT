@@ -699,6 +699,7 @@ public class EventController : MonoBehaviour
         dungeonMonsterPopupFinishParticle = true;
     }
 
+    //던전 몬스터 전투 종료
     IEnumerator ProcessDungeonMonsterTimeOut()
     {
         
@@ -715,6 +716,10 @@ public class EventController : MonoBehaviour
         var monsterType = monster.curMonsterData.monsterType;
         var goodsType = monster.curMonsterData.goodsType;
         var totalCurrencyAmount = globalData.dataManager.GetDungeonMonsterKillRewardByLevel(monsterType, monster.curLevel);
+
+        //Addrate = 던전 추가보상량
+        //totalCurrencyAmount = totalCurrencyAmount * ( 1 * Addrate)
+
 
         // 던전 몬스터 팝업 
         globalData.dungeonPopup.gameObject.SetActive(true);
