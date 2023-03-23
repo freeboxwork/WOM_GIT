@@ -711,7 +711,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -20932,7 +20932,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -26028,7 +26028,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -54027,7 +54027,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -86221,7 +86221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6219573943932394273}
   m_Layer: 0
-  m_Name: UnionBuild
+  m_Name: CampBuild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86259,34 +86259,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5b8ad3bd906a84695e023eb51eb66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unionBuild:
+  campBuild:
   - {fileID: 3558430584150134456}
   - {fileID: 6911426712913529725}
   - {fileID: 3112888043428334830}
   - {fileID: 2091250400730901590}
   - {fileID: 8529065079536550034}
-  skullBuild:
+  factoryBuild:
   - {fileID: 4954081054978304581}
   - {fileID: 4643430576707953160}
   - {fileID: 4998019509001837547}
   - {fileID: 7112541818363299151}
   - {fileID: 4562519616116341020}
-  goldBuild:
+  mineBuild:
   - {fileID: 5547051330227590585}
   - {fileID: 3375298775812101001}
   - {fileID: 8311473845241838871}
   - {fileID: 597803130021067740}
   - {fileID: 4022871391404808054}
-  dungeonBuild:
+  labBuild:
   - {fileID: 6973021492556926286}
   - {fileID: 6044729717748692274}
   - {fileID: 2537914213422358947}
   - {fileID: 40637898606843443}
   - {fileID: 3372766480365455057}
-  unionBuildLv: 0
-  skullBuildLv: 0
-  goldBuildLv: 0
-  dungeonBuildLv: 0
+  campBuildLv: 0
+  factoryBuildLv: 0
+  mineBuildLv: 0
+  labBuildLv: 0
 --- !u!1 &6219573944270962565
 GameObject:
   m_ObjectHideFlags: 0
