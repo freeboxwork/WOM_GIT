@@ -18,19 +18,28 @@ public class DataManager : MonoBehaviour
         monsterData_boss,
         monsterData_gold,
         monsterData_normal,
+        monsterData_evolution,
         stageData,
         upgradeData,
-        monsterSpriteData
+        monsterSpriteData,
         unionGambleData,
         summonGradeData,
-        evolutionGradeData
         rewardEvolutionGradeData,
         rewardDiceEvolutionData,
         skillData,
+        unionData,
         dnaData,
         TrainingElementData,
-        convertTextData
-    
+        convertTextData,
+        monsterDataDungeonGold,
+        monsterDataDungeonDice,
+        monsterDataDungeonBone,
+        monsterDataDungeonCoal,
+        buildingDataMine,
+        buildingDataFactory,
+        buindingDataCamp,
+        buindingDataLab
+
      */
 
 
@@ -104,6 +113,13 @@ public class DataManager : MonoBehaviour
     public List<StatSaleDatas> statSaleDatas = new List<StatSaleDatas>();
 
 
+    // 캐슬 데이터.
+    public MineAndFactoryBuildingDatas buildDatasMine;
+    public MineAndFactoryBuildingDatas buildDatasFactory;
+    public CampBuildingData buildDatasCamp; 
+    public LabBuildingDatas buildDataLab;
+
+
     void Start()
     {
 
@@ -162,6 +178,9 @@ public class DataManager : MonoBehaviour
         // SET DUNGEON DATA
         SetDungeonData();
 
+        // SET CASTLE DATA
+        SetCastleData();
+
         yield return new WaitForEndOfFrame();
     }
 
@@ -201,6 +220,14 @@ public class DataManager : MonoBehaviour
         dungeonMonsterDataDice = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonDice);
         dungeonMonsterDataBone = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonBone);
         dungeonMonsterDataCoal = GetData<DungeonMonsterDatas>(SheetDataType.monsterDataDungeonCoal);
+    }
+
+    void SetCastleData()
+    {
+        buildDatasMine = GetData<MineAndFactoryBuildingDatas>(SheetDataType.buildingDataMine);
+        buildDatasFactory = GetData<MineAndFactoryBuildingDatas>(SheetDataType.buildingDataFactory);
+        buildDatasCamp = GetData<CampBuildingData>(SheetDataType.buindingDataCamp);
+        buildDataLab = GetData<LabBuildingDatas>(SheetDataType.buindingDataLab);
     }
 
     void SetStageData()
@@ -580,3 +607,22 @@ public class ConvertTextDatas
 {
     public List<ConvertTextData> data = new List<ConvertTextData>();
 }
+
+[Serializable]
+public class MineAndFactoryBuildingDatas
+{
+    public List<MineAndFactoryBuildingData> data = new List<MineAndFactoryBuildingData>();
+}
+
+[Serializable]
+public class CampBuildingDatas
+{
+    public List<CampBuildingData> data = new List<CampBuildingData>();
+}
+
+[Serializable]
+public class LabBuildingDatas
+{
+    public List<LabBuildingData> data = new List<LabBuildingData>();
+}
+

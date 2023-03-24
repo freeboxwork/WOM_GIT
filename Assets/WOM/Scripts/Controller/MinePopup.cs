@@ -12,9 +12,8 @@ public class MinePopup : MonoBehaviour
     public TextMeshProUGUI levelText;//레벨
     public TextMeshProUGUI priceText;//업그레이드 석탄 비용
 
-
-    
-
+    public Button btnGetGold;
+    public Button btnUpgrade;
 
 
 

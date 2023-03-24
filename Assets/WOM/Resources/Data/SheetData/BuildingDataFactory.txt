@@ -1,0 +1,49 @@
+﻿{
+   "data":[
+ {
+   "level": 0,
+   "productionCount": 0,
+   "productionSpeed": 0,
+   "maxProductionAmount": 0,
+   "price": 0,
+   "time": 0,
+   "currencyType": "Bone"
+ },
+ {
+   "level": 1,
+   "productionCount": 10,
+   "productionSpeed": 1,
+   "maxProductionAmount": 100,
+   "price": 100,
+   "time": 60,
+   "currencyType": "Bone"
+ },
+ {
+   "level": 2,
+   "productionCount": 20,
+   "productionSpeed": 1.1,
+   "maxProductionAmount": 200,
+   "price": 200,
+   "time": 60,
+   "currencyType": "Bone"
+ },
+ {
+   "level": 3,
+   "productionCount": 30,
+   "productionSpeed": 1.2,
+   "maxProductionAmount": 300,
+   "price": 300,
+   "time": 60,
+   "currencyType": "Bone"
+ },
+ {
+   "level": 4,
+   "productionCount": 40,
+   "productionSpeed": 1.3,
+   "maxProductionAmount": 400,
+   "price": 400,
+   "time": 60,
+   "currencyType": "Bone"
+ }
+]
+}
