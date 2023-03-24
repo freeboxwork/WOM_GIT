@@ -65,6 +65,10 @@ public class EnumDefinition
         monsterDataDungeonDice,
         monsterDataDungeonBone,
         monsterDataDungeonCoal,
+        buildingDataMine,
+        buildingDataFactory,
+        buindingDataCamp,
+        buindingDataLab
     }
 
     /// <summary> 훈련 메뉴 </summary>

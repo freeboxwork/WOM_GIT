@@ -9897,7 +9897,7 @@ GameObject:
   - component: {fileID: 258901644}
   - component: {fileID: 258901643}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: BtnUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31075,6 +31075,10 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 50ef20e0244a17d4d99984af581d0c57, type: 3}
   - {fileID: 4900000, guid: 14ccf0ec915bd844ca175c38e5d5fbf1, type: 3}
   - {fileID: 4900000, guid: 30aeddad1834f804189842f4d38c7cf6, type: 3}
+  - {fileID: 4900000, guid: 484352944a4dad04d85d5b705ae63ae8, type: 3}
+  - {fileID: 4900000, guid: c5ba46c0a092bbf40a1bf6f31a57dc24, type: 3}
+  - {fileID: 4900000, guid: 3efb4a8c64a6be14bba24899996a0b3a, type: 3}
+  - {fileID: 4900000, guid: 377f20604f2062f40af2c480c57dbb0a, type: 3}
   sheetDatas_saleStats:
   - {fileID: 4900000, guid: d9d0207d5010e46458b2a5fe4af26f50, type: 3}
   - {fileID: 4900000, guid: 7c9a2f69513c44e4b95add4ff39e1490, type: 3}
@@ -31124,6 +31128,10 @@ MonoBehaviour:
   dungeonMonsterDataCoal:
     data: []
   statSaleDatas: []
+  buildDatasMine:
+    data: []
+  buildDatasFactory:
+    data: []
 --- !u!1001 &858051684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31381,6 +31389,8 @@ MonoBehaviour:
   productionTimeText: {fileID: 1700683083}
   levelText: {fileID: 232353664}
   priceText: {fileID: 621047098}
+  btnGetGold: {fileID: 0}
+  btnUpgrade: {fileID: 0}
 --- !u!1 &864288298
 GameObject:
   m_ObjectHideFlags: 0
@@ -52369,6 +52379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1452894175}
+  - component: {fileID: 1452894176}
   m_Layer: 0
   m_Name: CastleManager
   m_TagString: Untagged
@@ -52391,6 +52402,18 @@ Transform:
   m_Father: {fileID: 1561350215}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1452894176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452894174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188ebd6754259f84abf1a53edb535c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1455574523
 GameObject:
   m_ObjectHideFlags: 0
@@ -55429,7 +55452,7 @@ GameObject:
   - component: {fileID: 1562460180}
   - component: {fileID: 1562460179}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BtnGetGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62608,6 +62631,90 @@ MonoBehaviour:
   txtTitle: {fileID: 1582853643}
   txtKeyCount: {fileID: 456969729}
   monsterType: 6
+--- !u!1 &1740636871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740636872}
+  - component: {fileID: 1740636873}
+  m_Layer: 0
+  m_Name: BackGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1740636872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740636871}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
+  m_LocalScale: {x: 4.2, y: 4.2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4719644350630922353}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1740636873
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740636871}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 326555537
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f629838e9335c814ab6b4ef611d38e90, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4.6, y: 3.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1740806781
 GameObject:
   m_ObjectHideFlags: 0
@@ -65985,7 +66092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.17}
-  m_AnchoredPosition: {x: 0, y: -7.799286}
+  m_AnchoredPosition: {x: 0, y: -7.7992935}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863561721
@@ -82400,7 +82507,7 @@ RectTransform:
   - {fileID: 2066062016}
   - {fileID: 895051258}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -84781,6 +84888,7 @@ Transform:
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1740636872}
   - {fileID: 7223000170625583462}
   - {fileID: 6219573943834627918}
   - {fileID: 6219573945214642500}
@@ -85410,7 +85518,7 @@ GameObject:
   - component: {fileID: 4719644350630922355}
   - component: {fileID: 4719644350630922354}
   - component: {fileID: 4719644350630922357}
-  - component: {fileID: 6219573943992181293}
+  - component: {fileID: 6219573943992181294}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Untagged
@@ -85940,7 +86048,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6219573943677688953
 SpriteRenderer:
@@ -86147,7 +86255,7 @@ Transform:
   - {fileID: 6219573945287842176}
   - {fileID: 6219573944749881320}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6219573943836928720
 Transform:
@@ -86245,9 +86353,9 @@ Transform:
   - {fileID: 3309814653724134224}
   - {fileID: 2532713694693115365}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6219573943992181293
+--- !u!114 &6219573943992181294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86256,37 +86364,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5888335923745280018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5b8ad3bd906a84695e023eb51eb66f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e1dc1f45ef0c9a43b577ab6a296a041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  campBuild:
-  - {fileID: 3558430584150134456}
-  - {fileID: 6911426712913529725}
-  - {fileID: 3112888043428334830}
-  - {fileID: 2091250400730901590}
-  - {fileID: 8529065079536550034}
-  factoryBuild:
-  - {fileID: 4954081054978304581}
-  - {fileID: 4643430576707953160}
-  - {fileID: 4998019509001837547}
-  - {fileID: 7112541818363299151}
-  - {fileID: 4562519616116341020}
-  mineBuild:
-  - {fileID: 5547051330227590585}
-  - {fileID: 3375298775812101001}
-  - {fileID: 8311473845241838871}
-  - {fileID: 597803130021067740}
-  - {fileID: 4022871391404808054}
-  labBuild:
-  - {fileID: 6973021492556926286}
-  - {fileID: 6044729717748692274}
-  - {fileID: 2537914213422358947}
-  - {fileID: 40637898606843443}
-  - {fileID: 3372766480365455057}
-  campBuildLv: 0
-  factoryBuildLv: 0
-  mineBuildLv: 0
-  labBuildLv: 0
 --- !u!1 &6219573944270962565
 GameObject:
   m_ObjectHideFlags: 0
@@ -86391,7 +86471,7 @@ Transform:
   - {fileID: 6990974993096854896}
   - {fileID: 9120266313042585752}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6219573944347037012
 GameObject:
@@ -86629,7 +86709,7 @@ Transform:
   - {fileID: 7339895174514767540}
   - {fileID: 5155670279261045404}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6219573945034725880
 GameObject:
@@ -86665,7 +86745,7 @@ Transform:
   - {fileID: 1969475562905814419}
   - {fileID: 1291182195562774814}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6219573945071689384
 GameObject:
@@ -86902,7 +86982,7 @@ Transform:
   - {fileID: 8145027081944355560}
   - {fileID: 7477933662621323204}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6219573945287842176
 Transform:
@@ -88170,7 +88250,7 @@ Transform:
   - {fileID: 7681916711330865322}
   - {fileID: 9162646672393732659}
   m_Father: {fileID: 4719644350630922353}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7326975765379499544
 Transform:

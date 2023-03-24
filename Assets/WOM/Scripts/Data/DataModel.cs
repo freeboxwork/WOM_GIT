@@ -309,60 +309,6 @@ public class TraningInGameData
     public string trainingName;
 }
 
-//[Serializable]
-/// <summary> 현재 유저의 스탯 레벨 인덱스 데이터</summary>
-//public class PlayerStatData
-//{
-//    int levelDamage;
-//    int levelCriticalChance;
-//    int levelCriticalDamage;
-//    int levelTalentDamage;
-//    int levelTalentCriticalChance;
-//    int levelTalentCriticalDamage;
-//    int levelTalentMoveSpeed;
-//    int levelTalentSpawnSpeed;
-//    int levelTalentGoldBonus;
-
-//    float valueDamage;
-//    float valueCriticalChance;
-//    float valueCriticalDamage;
-//    float valueTalentDamage;
-//    float valueTalentCriticalChance;
-//    float valueTalentCriticalDamage;
-//    float valueTalentMoveSpeed;
-//    float valueTalentSpawnSpeed;
-//    float valueTalentGoldBonus;
-
-
-//    public List<int> statLevelDatas;
-//    public List<float> statValueDatas;
-    
-    
-//    public PlayerStatData()
-//    {
-//        statLevelDatas = new List<int>();
-//        statLevelDatas.Add(levelDamage);
-//        statLevelDatas.Add(levelCriticalChance);
-//        statLevelDatas.Add(levelCriticalDamage);
-//        statLevelDatas.Add(levelTalentDamage);
-//        statLevelDatas.Add(levelTalentCriticalChance);
-//        statLevelDatas.Add(levelTalentCriticalDamage);
-//        statLevelDatas.Add(levelTalentMoveSpeed);
-//        statLevelDatas.Add(levelTalentSpawnSpeed);
-//        statLevelDatas.Add(levelTalentGoldBonus);
-
-//        statValueDatas = new List<float>();
-//        statValueDatas.Add(valueDamage);
-//        statValueDatas.Add(valueCriticalChance);
-//        statValueDatas.Add(valueCriticalDamage);
-//        statValueDatas.Add(valueTalentDamage);
-//        statValueDatas.Add(valueTalentCriticalChance);
-//        statValueDatas.Add(valueTalentCriticalDamage);
-//        statValueDatas.Add(valueTalentMoveSpeed);
-//        statValueDatas.Add(valueTalentSpawnSpeed);
-//        statValueDatas.Add(valueTalentGoldBonus);
-//    }
-//}
 
 
 [Serializable]
@@ -540,4 +486,34 @@ public class DungeonMonsterData
 public class DungeonMonsterDatas
 {
     public List<DungeonMonsterData> data = new List<DungeonMonsterData>();
+}
+
+
+// 광산, 팩토리 빌딩 데이터
+[Serializable]
+public class MineAndFactoryBuildingData
+{
+    public int Level;
+    public int ProductionCount;
+    public int MaxSupplyAmount;
+    public int Price;
+    public int ProductionTime;
+    public string CurrencyType;
+}
+
+public class CampBuildingData
+{
+    public int level;
+    public int upgradeCount;
+    public string reward;
+}
+
+public class LabBuildingData
+{
+    public int level;
+    public int price;
+    public int gold;
+    public int bone;
+    public int dice;
+    public int coal;
 }

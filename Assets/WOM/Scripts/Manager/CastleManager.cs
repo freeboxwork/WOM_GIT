@@ -15,4 +15,15 @@ public class CastleManager : MonoBehaviour
     {
         
     }
+
+    public IEnumerator Init()
+    {
+
+        yield return null;
+
+    }
+
+    void SetBtnEvents() { }
+
+
 }
