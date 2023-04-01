@@ -230,6 +230,31 @@ public class DataManager : MonoBehaviour
         buildDataLab = GetData<LabBuildingDatas>(SheetDataType.buindingDataLab);
     }
 
+    public MineAndFactoryBuildingData GetBuildDataMineByLevel(int level)
+    {
+        //any 를 이용한 예외처리
+        if(buildDatasMine.data.Any(f => f.level == level) == false)
+        {
+            Debug.LogError("Mine Data is not exist. level : " + level);
+            return null;
+        }
+        return buildDatasMine.data.Find(f => f.level == level);
+    }
+
+    public MineAndFactoryBuildingData GetBuildDataFactoryByLevel(int level)
+    {
+        //any 를 이용한 예외처리
+        if (buildDatasFactory.data.Any(f => f.level == level) == false)
+        {
+            Debug.LogError("Factory Data is not exist. level : " + level);
+            return null;
+        }
+        return buildDatasFactory.data.Find(f => f.level == level);
+    }
+
+
+
+
     void SetStageData()
     {
         stageDatas = GetData<StageDatas>(SheetDataType.stageData);

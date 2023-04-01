@@ -234,5 +234,12 @@ public class EnumDefinition
         MONSTER_HIT,
     }
 
+    public enum CastlePopupType
+    {
+        mine,
+        factory,
+        camp,
+        lab
+    }
 
 }

@@ -3464,7 +3464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.00055}
+  m_AnchoredPosition: {x: 0, y: -50.00049}
   m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115326143
@@ -20551,7 +20551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &569265819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -57641,29 +57641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customTypeDatas:
-  - {fileID: 2094845844}
-  - {fileID: 664839917}
-  - {fileID: 258901643}
-  - {fileID: 366246912}
-  - {fileID: 2054724031}
-  - {fileID: 2041879029}
-  - {fileID: 1871976344}
-  - {fileID: 884543003}
-  - {fileID: 1922887189}
-  - {fileID: 1556808426}
-  - {fileID: 653627207}
-  - {fileID: 18956615}
-  - {fileID: 179622742}
-  - {fileID: 1384972072}
-  - {fileID: 1202177480}
-  - {fileID: 769604369}
-  - {fileID: 1123094863}
-  - {fileID: 621047100}
-  - {fileID: 1700683085}
-  - {fileID: 268856010}
-  - {fileID: 421504113}
-  - {fileID: 232353666}
   - {fileID: 9690202}
+  - {fileID: 18956615}
   - {fileID: 25142335}
   - {fileID: 41152417}
   - {fileID: 48172187}
@@ -57673,6 +57652,7 @@ MonoBehaviour:
   - {fileID: 130040745}
   - {fileID: 156771629}
   - {fileID: 160010086}
+  - {fileID: 179622742}
   - {fileID: 185642875}
   - {fileID: 186876810}
   - {fileID: 187901013}
@@ -57680,17 +57660,22 @@ MonoBehaviour:
   - {fileID: 209298458}
   - {fileID: 213814383}
   - {fileID: 228340507}
+  - {fileID: 232353666}
   - {fileID: 247686139}
+  - {fileID: 258901643}
+  - {fileID: 268856010}
   - {fileID: 285371262}
   - {fileID: 287633516}
   - {fileID: 323413459}
   - {fileID: 345622663}
   - {fileID: 349494582}
+  - {fileID: 366246912}
   - {fileID: 367587517}
   - {fileID: 390615690}
   - {fileID: 392346079}
   - {fileID: 398408211}
   - {fileID: 408297822}
+  - {fileID: 421504113}
   - {fileID: 439615257}
   - {fileID: 506979640}
   - {fileID: 510912723}
@@ -57704,10 +57689,13 @@ MonoBehaviour:
   - {fileID: 602882579}
   - {fileID: 617929007}
   - {fileID: 619601455}
+  - {fileID: 621047100}
   - {fileID: 624335926}
   - {fileID: 638479361}
   - {fileID: 638479362}
   - {fileID: 653059483}
+  - {fileID: 653627207}
+  - {fileID: 664839917}
   - {fileID: 687573960}
   - {fileID: 696965220}
   - {fileID: 697387117}
@@ -57716,12 +57704,14 @@ MonoBehaviour:
   - {fileID: 751158946}
   - {fileID: 762115815}
   - {fileID: 764715032}
+  - {fileID: 769604369}
   - {fileID: 792158083}
   - {fileID: 807080670}
   - {fileID: 821144005}
   - {fileID: 821801244}
   - {fileID: 865105366}
   - {fileID: 879956398}
+  - {fileID: 884543003}
   - {fileID: 895051262}
   - {fileID: 905939695}
   - {fileID: 911633400}
@@ -57736,9 +57726,11 @@ MonoBehaviour:
   - {fileID: 1055044170}
   - {fileID: 1064235334}
   - {fileID: 1077364577}
+  - {fileID: 1123094863}
   - {fileID: 1156971954}
   - {fileID: 1159817508}
   - {fileID: 1166893747}
+  - {fileID: 1202177480}
   - {fileID: 1208855129}
   - {fileID: 1210583655}
   - {fileID: 1226130365}
@@ -57753,6 +57745,7 @@ MonoBehaviour:
   - {fileID: 1311909110}
   - {fileID: 1311909111}
   - {fileID: 1323590287}
+  - {fileID: 1384972072}
   - {fileID: 1392404997}
   - {fileID: 1405295734}
   - {fileID: 1405295735}
@@ -57768,6 +57761,7 @@ MonoBehaviour:
   - {fileID: 1533232497}
   - {fileID: 1539894135}
   - {fileID: 1540814364}
+  - {fileID: 1556808426}
   - {fileID: 1562460179}
   - {fileID: 1569533616}
   - {fileID: 1570622884}
@@ -57775,6 +57769,7 @@ MonoBehaviour:
   - {fileID: 1620267294}
   - {fileID: 1665875510}
   - {fileID: 1684512859}
+  - {fileID: 1700683085}
   - {fileID: 1708634479}
   - {fileID: 1709296645}
   - {fileID: 1715602210}
@@ -57791,6 +57786,7 @@ MonoBehaviour:
   - {fileID: 1831419075}
   - {fileID: 1831419076}
   - {fileID: 1863401082}
+  - {fileID: 1871976344}
   - {fileID: 1883986643}
   - {fileID: 1887977168}
   - {fileID: 1904633501}
@@ -57798,6 +57794,7 @@ MonoBehaviour:
   - {fileID: 1908556357}
   - {fileID: 1918152313}
   - {fileID: 1922671892}
+  - {fileID: 1922887189}
   - {fileID: 1922970549}
   - {fileID: 1930840229}
   - {fileID: 1989788016}
@@ -57806,9 +57803,12 @@ MonoBehaviour:
   - {fileID: 2022430789}
   - {fileID: 2037423677}
   - {fileID: 2040866842}
+  - {fileID: 2041879029}
+  - {fileID: 2054724031}
   - {fileID: 2065814530}
   - {fileID: 2066062017}
   - {fileID: 2077744916}
+  - {fileID: 2094845844}
   - {fileID: 2097738753}
   - {fileID: 2120865312}
   - {fileID: 2126685504}
@@ -57821,8 +57821,6 @@ MonoBehaviour:
   - {fileID: 3409305089524062622}
   customTypeDatas_animCont: []
   customTypeDatas_uiButton:
-  - {fileID: 2094845844}
-  - {fileID: 258901643}
   - {fileID: 9690202}
   - {fileID: 48172187}
   - {fileID: 185642875}
@@ -57831,6 +57829,7 @@ MonoBehaviour:
   - {fileID: 213814383}
   - {fileID: 228340507}
   - {fileID: 247686139}
+  - {fileID: 258901643}
   - {fileID: 323413459}
   - {fileID: 349494582}
   - {fileID: 390615690}
@@ -57878,80 +57877,81 @@ MonoBehaviour:
   - {fileID: 1995167196}
   - {fileID: 2065814530}
   - {fileID: 2066062017}
+  - {fileID: 2094845844}
   - {fileID: 2120865312}
   - {fileID: 3409305087878420424}
   - {fileID: 3409305088193251360}
   - {fileID: 3409305089524062622}
   customTypeDatas_uiText:
-  - {fileID: 664839917}
-  - {fileID: 366246912}
-  - {fileID: 2054724031}
-  - {fileID: 2041879029}
-  - {fileID: 1871976344}
-  - {fileID: 884543003}
-  - {fileID: 1922887189}
-  - {fileID: 1556808426}
-  - {fileID: 653627207}
   - {fileID: 18956615}
-  - {fileID: 179622742}
-  - {fileID: 1384972072}
-  - {fileID: 1202177480}
-  - {fileID: 769604369}
-  - {fileID: 1123094863}
-  - {fileID: 621047100}
-  - {fileID: 1700683085}
-  - {fileID: 268856010}
-  - {fileID: 421504113}
-  - {fileID: 232353666}
   - {fileID: 25142335}
   - {fileID: 64356026}
   - {fileID: 124550271}
   - {fileID: 156771629}
+  - {fileID: 179622742}
   - {fileID: 209298458}
+  - {fileID: 232353666}
+  - {fileID: 268856010}
   - {fileID: 285371262}
   - {fileID: 287633516}
+  - {fileID: 366246912}
   - {fileID: 367587517}
   - {fileID: 392346079}
+  - {fileID: 421504113}
   - {fileID: 439615257}
   - {fileID: 539293749}
   - {fileID: 564454601}
   - {fileID: 585274272}
   - {fileID: 602763789}
+  - {fileID: 621047100}
+  - {fileID: 653627207}
+  - {fileID: 664839917}
   - {fileID: 696965220}
   - {fileID: 697387117}
   - {fileID: 700414583}
   - {fileID: 764715032}
+  - {fileID: 769604369}
   - {fileID: 821801244}
   - {fileID: 879956398}
+  - {fileID: 884543003}
   - {fileID: 1051334031}
   - {fileID: 1055044170}
   - {fileID: 1077364577}
+  - {fileID: 1123094863}
   - {fileID: 1156971954}
   - {fileID: 1166893747}
+  - {fileID: 1202177480}
   - {fileID: 1208855129}
   - {fileID: 1210583655}
   - {fileID: 1226130365}
   - {fileID: 1242829205}
+  - {fileID: 1384972072}
   - {fileID: 1392404997}
   - {fileID: 1432594862}
   - {fileID: 1492253096}
   - {fileID: 1509775329}
   - {fileID: 1526637410}
   - {fileID: 1540814364}
+  - {fileID: 1556808426}
   - {fileID: 1617475371}
   - {fileID: 1620267294}
   - {fileID: 1665875510}
+  - {fileID: 1700683085}
   - {fileID: 1708634479}
   - {fileID: 1709296645}
   - {fileID: 1793199461}
   - {fileID: 1812598518}
   - {fileID: 1863401082}
+  - {fileID: 1871976344}
   - {fileID: 1904633501}
   - {fileID: 1908460476}
   - {fileID: 1922671892}
+  - {fileID: 1922887189}
   - {fileID: 1930840229}
   - {fileID: 1989788016}
   - {fileID: 2040866842}
+  - {fileID: 2041879029}
+  - {fileID: 2054724031}
   - {fileID: 2097738753}
   - {fileID: 2134828299}
   - {fileID: 1047927174800691650}
@@ -66092,7 +66092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.17}
-  m_AnchoredPosition: {x: 0, y: -7.799301}
+  m_AnchoredPosition: {x: 0, y: -7.7993317}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863561721
@@ -85525,7 +85525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5910672937033844830
 Transform:
   m_ObjectHideFlags: 0

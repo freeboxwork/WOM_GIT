@@ -493,12 +493,14 @@ public class DungeonMonsterDatas
 [Serializable]
 public class MineAndFactoryBuildingData
 {
-    public int Level;
-    public int ProductionCount;
-    public int MaxSupplyAmount;
-    public int Price;
-    public int ProductionTime;
-    public string CurrencyType;
+    public int level;
+    public int productionCount;
+    public int maxSupplyAmount;
+    public int price;
+    public int productionTime;
+    public string currencyType;
+    EnumDefinition.GoodsType goodsType;
+     
 }
 
 public class CampBuildingData
