@@ -39,6 +39,7 @@ public class GlobalData : MonoBehaviour
     public DungeonPopup dungeonPopup;
     public DungeonManager dungeonManager;
     public DungeonEnterPopup dungeonEnterPopup;
+    public CastleManager castleManager;     
 
     private void Awake()
     {
