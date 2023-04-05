@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.2}
-  m_AnchoredPosition: {x: 0, y: 27.999992}
+  m_AnchoredPosition: {x: 0, y: 27.99997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2551771
@@ -317,8 +317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 724, y: -182.07458}
-  m_SizeDelta: {x: 456, y: 364.14917}
+  m_AnchoredPosition: {x: 724, y: -181.90085}
+  m_SizeDelta: {x: 456, y: 363.8017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7820340
 MonoBehaviour:
@@ -3464,7 +3464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.00049}
+  m_AnchoredPosition: {x: 0, y: -50.00061}
   m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115326143
@@ -4406,6 +4406,7 @@ MonoBehaviour:
   dungeonPopup: {fileID: 1236872305}
   dungeonManager: {fileID: 1065218485}
   dungeonEnterPopup: {fileID: 569265820}
+  castleManager: {fileID: 1452894176}
 --- !u!1 &136407795
 GameObject:
   m_ObjectHideFlags: 0
@@ -9897,7 +9898,7 @@ GameObject:
   - component: {fileID: 258901644}
   - component: {fileID: 258901643}
   m_Layer: 5
-  m_Name: BtnUpgrade
+  m_Name: BtnGetGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10596,8 +10597,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 388.8, y: -748.7935}
-  m_SizeDelta: {x: 737.6, y: 191.08386}
+  m_AnchoredPosition: {x: 388.8, y: -748.10956}
+  m_SizeDelta: {x: 737.6, y: 190.88844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &282382212
 MonoBehaviour:
@@ -17519,8 +17520,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 388.8, y: -115.54193}
-  m_SizeDelta: {x: 737.6, y: 191.08386}
+  m_AnchoredPosition: {x: 388.8, y: -115.44422}
+  m_SizeDelta: {x: 737.6, y: 190.88844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449399264
 MonoBehaviour:
@@ -18633,8 +18634,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 388.8, y: -537.70966}
-  m_SizeDelta: {x: 737.6, y: 191.08386}
+  m_AnchoredPosition: {x: 388.8, y: -537.2211}
+  m_SizeDelta: {x: 737.6, y: 190.88844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505172590
 MonoBehaviour:
@@ -31338,7 +31339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &860636411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31384,13 +31385,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626cea57fa7a6294d89abec77f37539b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupType: 0
   productionCountText: {fileID: 421504111}
   maxSupplyText: {fileID: 268856008}
   productionTimeText: {fileID: 1700683083}
   levelText: {fileID: 232353664}
   priceText: {fileID: 621047098}
-  btnGetGold: {fileID: 0}
-  btnUpgrade: {fileID: 0}
+  totlaMiningValue: {fileID: 366246913}
+  btnGetGold: {fileID: 258901644}
+  btnUpgrade: {fileID: 1562460180}
 --- !u!1 &864288298
 GameObject:
   m_ObjectHideFlags: 0
@@ -38338,6 +38341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd012245555d87b49bcf7bb1a03b03e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupType: 2
 --- !u!1 &1032416027
 GameObject:
   m_ObjectHideFlags: 0
@@ -51621,7 +51625,7 @@ MonoBehaviour:
   gold: 0
   bone: 0
   gem: 0
-  coal: 0
+  coal: 90000000
   dungeonKeys:
     keys: 00000000010000000300000004000000
     values: 01000000010000000100000001000000
@@ -52414,6 +52418,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188ebd6754259f84abf1a53edb535c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  castlePopupList:
+  - {fileID: 860636415}
+  - {fileID: 2146160739}
+  - {fileID: 1028788419}
+  - {fileID: 1710716718}
+  BuildDataMine:
+    level: 0
+    productionCount: 0
+    maxSupplyAmount: 0
+    productionTime: 0
+    price: 0
+    currencyType: 
+    totlaMiningValue: 0
+  BuildDataFactory:
+    level: 0
+    productionCount: 0
+    maxSupplyAmount: 0
+    productionTime: 0
+    price: 0
+    currencyType: 
+    totlaMiningValue: 0
+  mineLevel: 0
+  factoryLevel: 0
 --- !u!1 &1455574523
 GameObject:
   m_ObjectHideFlags: 0
@@ -55452,7 +55479,7 @@ GameObject:
   - component: {fileID: 1562460180}
   - component: {fileID: 1562460179}
   m_Layer: 5
-  m_Name: BtnGetGold
+  m_Name: BtnUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61440,8 +61467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 248, y: -182.07458}
-  m_SizeDelta: {x: 456, y: 364.14917}
+  m_AnchoredPosition: {x: 248, y: -181.90085}
+  m_SizeDelta: {x: 456, y: 363.8017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704188023
 MonoBehaviour:
@@ -61915,6 +61942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab10ef7da65e69458fb57cf1c2ffec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupType: 3
 --- !u!1 &1710927189
 GameObject:
   m_ObjectHideFlags: 0
@@ -66092,7 +66120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.17}
-  m_AnchoredPosition: {x: 0, y: -7.7993317}
+  m_AnchoredPosition: {x: 0, y: -7.799309}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863561721
@@ -70243,8 +70271,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 388.8, y: -326.6258}
-  m_SizeDelta: {x: 737.6, y: 191.08386}
+  m_AnchoredPosition: {x: 388.8, y: -326.33267}
+  m_SizeDelta: {x: 737.6, y: 190.88844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956228541
 MonoBehaviour:
@@ -72328,7 +72356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0.35}
   m_AnchorMax: {x: 0.35, y: 0.5}
-  m_AnchoredPosition: {x: -11.799942, y: 0}
+  m_AnchoredPosition: {x: -11.799927, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032837688
@@ -76589,7 +76617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.2}
-  m_AnchoredPosition: {x: 0, y: 27.999992}
+  m_AnchoredPosition: {x: 0, y: 27.99997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097338218
@@ -78283,6 +78311,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7829048a709965c46af874eead219827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupType: 1
+  productionCountText: {fileID: 0}
+  maxSupplyText: {fileID: 0}
+  productionTimeText: {fileID: 0}
+  levelText: {fileID: 0}
+  priceText: {fileID: 0}
+  totlaMiningValue: {fileID: 0}
+  btnGetGold: {fileID: 0}
+  btnUpgrade: {fileID: 0}
 --- !u!1001 &2147264437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85525,7 +85562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5910672937033844830
 Transform:
   m_ObjectHideFlags: 0

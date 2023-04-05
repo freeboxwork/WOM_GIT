@@ -31,12 +31,13 @@ public class CastleManager : MonoBehaviour
     {
         // GET SAVE DATA
         SetCastleData();
-        yield return null;
         
         // 골드 채굴 시작
-        StartCoroutine(MiningGold(BuildDataMine));
+        StartCoroutine(MiningGold());
         // 뼈조각 채굴 시작 
-        StartCoroutine(MiningBone(BuildDataFactory));
+        // StartCoroutine(MiningBone(BuildDataFactory));
+
+          yield return null;
     }
 
 
@@ -47,6 +48,11 @@ public class CastleManager : MonoBehaviour
 
         BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(refBuildDataMine);
         BuildDataFactory = new CastleBuildingData().Create().SetGoodsType(GoodsType.bone).Clone(refBuildDataFactory);
+
+        // SET UI , TODO: 저장된 데이터에서 불러와야 함.
+        // 초기 UI 설정
+        var minePopup = (MinePopup)GetCastlePopupByType(CastlePopupType.mine);
+        minePopup.InitUIText(BuildDataMine);
     }
 
 
@@ -83,22 +89,36 @@ public class CastleManager : MonoBehaviour
         switch (type)
         {
             case CastlePopupType.mine:
-                UpgradeMine((isSuccess) => {
+                UpgradeMine((isSuccess, upgradeData) =>
+                {
                     if (isSuccess)
                     {
-                         var popup = (MinePopup)GetCastlePopupByType(type);
+                        var popup = (MinePopup)GetCastlePopupByType(type);
+                        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel + 1);
+                        CastleBuildingData nextBuildData = null;
+                        if (nextLevelData != null)
+                        {
+                            nextBuildData = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(nextLevelData);
+                        }
+                        popup.SetUpGradeText(upgradeData, nextBuildData);
+
+                        // 성공 로그
+                        Debug.Log("Upgrade Success");
                     }
                     else
                     {
                         // 골드 부족 POPUP
+                        // 실패 로그
+                        Debug.Log("Upgrade Fail");
                     }
                 });
                 break;
             case CastlePopupType.factory:
-                UpgradeFactory((isSuccess) => {
+                UpgradeFactory((isSuccess) =>
+                {
                     if (isSuccess)
                     {
-                        var popup = (FactoryPopup)GetCastlePopupByType(type);
+                        // 팩토리 업그레이드 성공 처리
                     }
                     else
                     {
@@ -107,32 +127,43 @@ public class CastleManager : MonoBehaviour
                 });
                 break;
             case CastlePopupType.camp:
-                break;
             case CastlePopupType.lab:
-                break;
             default:
                 break;
         }
     }
-    
 
 
-    public void UpgradeMine(UnityAction<bool> completeCallback)
+
+/*
+ * UpgradeMine - 광산 업그레이드 메소드
+ * 
+ * @param completeCallback: UnityAction<bool, CastleBuildingData> 타입의 콜백 함수. 업그레이드 성공 여부와 다음 레벨 정보를 전달합니다.
+ */
+public void UpgradeMine(UnityAction<bool,CastleBuildingData > completeCallback)
+{
+    // 플레이어가 가진 coal(resource)이 광산의 가격보다 많을 때 업그레이드 진행
+    if (GlobalData.instance.player.coal >= BuildDataMine.price)
     {
-        if (GlobalData.instance.player.coal >= BuildDataMine.price)
-        {
-            GlobalData.instance.player.PayCoal(BuildDataMine.price);
-            mineLevel++;
-            var refBuildDataMine = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel);
-            BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(refBuildDataMine);
-            completeCallback(true);
-        }
-        else
-        {
-            completeCallback(false);
-        }
-    }
+        // 가격만큼 resource 차감 후 레벨 업그레이드 진행
+        GlobalData.instance.player.PayCoal(BuildDataMine.price);
+        mineLevel++;
 
+        // 다음 레벨의 광산 정보 가져오기
+        var refBuildDataMine = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel);
+
+        // Clone 메소드를 이용하여 BuildDataMine 객체의 데이터 갱신
+        BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(refBuildDataMine);
+
+        // 업그레이드 성공 처리를 위해 completeCallback 호출
+        completeCallback(true, BuildDataMine);
+    }
+    else
+    {
+        // Coal(resource) 부족으로 업그레이드 실패 시 completeCallback 호출
+        completeCallback(false,null);
+    }
+}
     public void UpgradeFactory(UnityAction<bool> completeCallback)
     {
         if (GlobalData.instance.player.coal >= BuildDataFactory.price)
@@ -153,32 +184,50 @@ public class CastleManager : MonoBehaviour
 
     // 골드 채굴
     // CastleBuildingData 클래스를 기준으로 코루틴을 사용하여 productionTime 한번씩 productionCount을 totlaValue에 더해주고 maxSupplyAmount을 넘어가면 더이상 totlaValue에 더하지 않는다
-    IEnumerator MiningGold(CastleBuildingData building)
+    // 이 함수는 CastleBuildingData를 인자로 받아 골드 채굴을 하는 IEnumerator입니다.
+    IEnumerator MiningGold()
     {
+        // true일 동안 무한히 반복하는 while문입니다.
         while (true)
         {
-            if(GlobalData.instance.player.coal >= building.price)
+            // 이 조건문은 player의 coal이 충분한지 검사합니다.
+            if (GlobalData.instance.player.coal >= BuildDataMine.price)
             {
-                // 석탄 사용
-                GlobalData.instance.player.PayCoal(building.price);
-                // productionCount 만큼 totlaValue에 더하되, maxSupplyAmount를 넘지 않도록 한다.
-                building.totlaMiningValue = Mathf.Min(building.totlaMiningValue + building.productionCount, building.maxSupplyAmount);      
-                // set ui  
-                 var popup = (MinePopup)GetCastlePopupByType(CastlePopupType.mine);
-                 popup.SetTextTotalMiningValue(building.totlaMiningValue.ToString());
+                // 아래 두 줄은 player의 coal을 사용하여 채굴하고, productionCount만큼 totlaMiningValue를 업데이트합니다. 단, maxSupplyAmount를 넘지 않도록 합니다.
+                GlobalData.instance.player.PayCoal(BuildDataMine.price);
+                BuildDataMine.totlaMiningValue = Mathf.Min(BuildDataMine.totlaMiningValue + BuildDataMine.productionCount, BuildDataMine.maxSupplyAmount);
+
+                // MinePopup UI를 설정하고 현재의 totalMiningValue를 팝업에 표시합니다. 
+                var popup = (MinePopup)GetCastlePopupByType(CastlePopupType.mine);
+                popup.SetTextTotalMiningValue(BuildDataMine.totlaMiningValue.ToString());
+
+                Debug.Log("채굴된 골드: " + BuildDataMine.totlaMiningValue + " 남은 시간: " + BuildDataMine.productionTime);
             }
-            yield return new WaitForSeconds(building.productionTime);
+
+            // 해당 시간만큼 대기 후 다시 while문을 반복합니다.
+            //yield return new WaitForSeconds(building.productionTime);
+            yield return new WaitForSeconds(1f);
         }
     }
 
+
     /// <summary> 골드 인출 </summary>
-    void WithdrawGold()
+    // 이 함수는 골드 인출 버튼을 눌렀을 때 호출됩니다.
+    public void WithdrawGold()
     {
+        // BuildDataMine이 가지고 있는 총 채굴량을 withdrawnGold 변수에 저장합니다.
         int withdrawnGold = BuildDataMine.totlaMiningValue;
+
+        // Debug.Log를 사용하여 인출된 골드 양을 디버그 창에 출력합니다.
         Debug.Log("인출된 골드: " + withdrawnGold);
+
+        // GlobalData의 instance에서 player를 가져와, AddGold() 함수를 사용하여 player의 소지금에 withdrawnGold만큼 추가합니다.
         GlobalData.instance.player.AddGold(withdrawnGold);
+
+        // 모든 금 채굴량을 인출했으므로 BuildDataMine 객체의 totlaMiningValue를 0으로 설정합니다. 
         BuildDataMine.totlaMiningValue = 0;
     }
+
 
     // 뼈조각 채굴
     IEnumerator MiningBone(CastleBuildingData building)
@@ -198,7 +247,7 @@ public class CastleManager : MonoBehaviour
     }
 
     /// <summary> 뼈조각 인출 </summary>
-    void WithdrawBone()
+    public void WithdrawBone()
     {
         int withdrawnBone = BuildDataFactory.totlaMiningValue;
         Debug.Log("인출된 뼈조각: " + withdrawnBone);

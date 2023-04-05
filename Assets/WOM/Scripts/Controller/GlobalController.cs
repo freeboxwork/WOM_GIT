@@ -112,6 +112,9 @@ public class GlobalController : MonoBehaviour
         // UI 초기화
         SetUI_Init();
 
+        // 캐슬 초기화
+        yield return StartCoroutine(GlobalData.instance.castleManager.Init());
+
         // Monster In Animation
         yield return StartCoroutine(player.currentMonster.inOutAnimator.AnimPositionIn());
 
