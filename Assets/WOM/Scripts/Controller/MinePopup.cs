@@ -41,6 +41,27 @@ public class MinePopup : CastlePopupBase
         priceText.text = text;
     }
 
+  
+    private void Start()
+    {
+        SetButtonEvents();
+    }
+
+    void SetButtonEvents()
+    {
+        btnGetGold.onClick.AddListener(() =>
+        {
+            GlobalData.instance.castleManager.WithdrawGold();
+        });
+
+        btnUpgrade.onClick.AddListener(() =>
+        {
+            GlobalData.instance.castleManager.UpGradeCastle(popupType);
+        });
+    }
+     
+
+
     //CastleBuildingData 객체를 인자로 받아서 각각의 맴버변수의 text 값을 설정하는 함수
     /*
     public void SetUpGradeText(CastleBuildingData data, CastleBuildingData nextLevelData =null)
@@ -116,6 +137,38 @@ public class MinePopup : CastlePopupBase
         SetTextProductionTime(_productionTimeText);
         SetTextLevel(_levelText);
         SetTextPrice(_priceText);
+    }
+
+    //CastleBuildingData 객체를 인자로 받아서 각각의 맴버변수의 text 값을 설정하는 함수
+    public void InitUIText(CastleBuildingData data)
+    {
+        // 생산량, 최대 저장량, 생산 시간 계산
+        var productionCount = data.productionCount;
+        var maxSupply = data.maxSupplyAmount;
+        var productionTime = data.productionTime;
+
+        // 문자열 초기값 설정
+        string _productionCountText = $"{data.productionCount}";
+        string _maxSupplyText = $"{data.maxSupplyAmount}";
+        string _productionTimeText = $"{data.productionTime}";
+        string _levelText = $"{data.level}";
+        string _priceText = data.price.ToString();
+
+        // UI에 값을 설정
+        SetTextProductionCount(_productionCountText);
+        SetTextMaxSupply(_maxSupplyText);
+        SetTextProductionTime(_productionTimeText);
+        SetTextLevel(_levelText);
+        SetTextPrice(_priceText);
+
+        //data 의 모든 변수값 출력
+        Debug.Log($"data.productionCount : {data.productionCount}");
+        Debug.Log($"data.maxSupplyAmount : {data.maxSupplyAmount}");
+        Debug.Log($"data.productionTime : {data.productionTime}");
+        Debug.Log($"data.level : {data.level}");
+        Debug.Log($"data.price : {data.price}");
+
+
     }
 
 
