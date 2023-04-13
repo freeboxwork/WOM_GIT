@@ -51,7 +51,15 @@ public class MinePopup : CastlePopupBase
     {
         btnGetGold.onClick.AddListener(() =>
         {
-            GlobalData.instance.castleManager.WithdrawGold();
+            switch(popupType)
+            {
+                case EnumDefinition.CastlePopupType.mine:
+                    GlobalData.instance.castleManager.WithdrawGold();
+                    break;
+                case EnumDefinition.CastlePopupType.factory:
+                    GlobalData.instance.castleManager.WithdrawBone();
+                    break;
+            }
         });
 
         btnUpgrade.onClick.AddListener(() =>
@@ -162,7 +170,7 @@ public class MinePopup : CastlePopupBase
         SetTextProductionTime(_productionTimeText);
         SetTextLevel(_levelText);
         SetTextPrice(_priceText);
-        
+
          //TOD0: 저장된 데이터에서 불러 와야 함
         data.TotlaMiningValue = 0;
 
