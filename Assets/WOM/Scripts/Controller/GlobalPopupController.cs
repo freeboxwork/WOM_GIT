@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using ProjectGraphics;
 
 public class GlobalPopupController : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GlobalPopupController : MonoBehaviour
     public TextMeshProUGUI txtTtile;
     public TextMeshProUGUI txtMessage;
     public Button btnConfirm;
+
+    // ANIMATION GLOBLA POPUP
+    public GlobalPopupAnimationController animationController;
 
     // GLOBAL MESSAGE TWO BUTTON POPUP
     public GlobalMessageTwoBtnPopup twoBtnPopup;
@@ -28,8 +32,9 @@ public class GlobalPopupController : MonoBehaviour
 
     public void EnableMessageTwoBtnPopup(int messageId, UnityAction apply , UnityAction cancel)
     {
+        var messageData = GetMessageById(messageId);
         twoBtnPopup.gameObject.SetActive(true);
-        twoBtnPopup.SetTxtMessage(GetMessageById(messageId));
+        twoBtnPopup.SetTxtMessage(messageData.message_kor);
         twoBtnPopup.SetBtnApplyEvent(apply);
         twoBtnPopup.SetBtnCancelEvent(cancel);
     }
@@ -41,11 +46,12 @@ public class GlobalPopupController : MonoBehaviour
         });
     }
 
-    public void EnableGlobalPopupByMessageId(string title,int messageId)
+    public void EnableGlobalPopupByMessageId(string title = null,int messageId=0)
     {
-        SetTxtTitle(title);
-        SetTxtMessage(GetMessageById(messageId));
-        popupSet.SetActive(true);
+        var messageData = GetMessageById(messageId);
+     
+        animationController.gameObject.SetActive(true);
+        animationController.OpenThePopup(messageData.title, messageData.message_kor);   
     }
 
 
@@ -65,8 +71,10 @@ public class GlobalPopupController : MonoBehaviour
             ResetBtnEvent();
         });
 
-        SetTxtTitle(title);
-        SetTxtMessage(GetMessageById(messageId));
+          var messageData = GetMessageById(messageId);
+
+        SetTxtTitle(messageData.title);
+        SetTxtMessage(messageData.message_kor);
         popupSet.SetActive(true);
 
     }
@@ -75,17 +83,20 @@ public class GlobalPopupController : MonoBehaviour
     {
         bool confirmValue = false;
         btnConfirm.onClick.RemoveAllListeners();
-        btnConfirm.onClick.AddListener(() => {
+        btnConfirm.onClick.AddListener(() =>
+        {
             confirmValue = true;
             ResetBtnEvent();
         });
 
-        SetTxtTitle(title);
-        SetTxtMessage(GetMessageById(messageId));
+        var messageData = GetMessageById(messageId);
+
+        SetTxtTitle(messageData.title);
+        SetTxtMessage(messageData.message_kor);
         popupSet.SetActive(true);
 
 
-        value = confirmValue; 
+        value = confirmValue;
     }
 
     public IEnumerator EnableGlobalPopupCor(string title, int messageId)
@@ -97,8 +108,10 @@ public class GlobalPopupController : MonoBehaviour
             ResetBtnEvent();
         });
 
-        SetTxtTitle(title);
-        SetTxtMessage(GetMessageById(messageId));
+    var messageData = GetMessageById(messageId);
+
+        SetTxtTitle(messageData.title);
+        SetTxtMessage(messageData.message_kor);
         popupSet.SetActive(true);
 
         yield return new WaitUntil(() => confirmValue);
@@ -115,10 +128,10 @@ public class GlobalPopupController : MonoBehaviour
         popupSet.SetActive(false);
     }
 
-    string GetMessageById(int id)
+    GlobalMessageData GetMessageById(int id)
     {
         //TODO: 영문 국문 시세템 언어에 따라 적용
-        return GlobalData.instance.dataManager.GetGlobalMessageDataById(id).message_kor;
+        return GlobalData.instance.dataManager.GetGlobalMessageDataById(id);
     }
 
 
