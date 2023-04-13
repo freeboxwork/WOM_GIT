@@ -137,6 +137,8 @@ public class MinePopup : CastlePopupBase
         SetTextProductionTime(_productionTimeText);
         SetTextLevel(_levelText);
         SetTextPrice(_priceText);
+        
+       
     }
 
     //CastleBuildingData 객체를 인자로 받아서 각각의 맴버변수의 text 값을 설정하는 함수
@@ -160,6 +162,9 @@ public class MinePopup : CastlePopupBase
         SetTextProductionTime(_productionTimeText);
         SetTextLevel(_levelText);
         SetTextPrice(_priceText);
+        
+         //TOD0: 저장된 데이터에서 불러 와야 함
+        data.TotlaMiningValue = 0;
 
         //data 의 모든 변수값 출력
         Debug.Log($"data.productionCount : {data.productionCount}");

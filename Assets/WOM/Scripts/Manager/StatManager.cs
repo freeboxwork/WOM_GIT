@@ -108,7 +108,7 @@ public class StatManager : MonoBehaviour
         var diceIms = GetEvolutionDiceValueByType(EvolutionDiceStatType.insectMoveSpeed);//50
         var value = ies * (1 + ((tms + ims + diceIms + skill_AllUnitSpeedUp) * 0.01f));
         //var value = ies + (ies * ((tms + ims + diceIms + skill_AllUnitSpeedUp) * 0.01f));
-        Debug.Log($"진화속도:{ies}/특성속도:{tms}/DNA속도:{ims}/주사위속도{diceIms} = 합계 : {value}");
+        // Debug.Log($"진화속도:{ies}/특성속도:{tms}/DNA속도:{ims}/주사위속도{diceIms} = 합계 : {value}");
         return value * 0.01f;
     }
     
@@ -383,7 +383,7 @@ public class StatManager : MonoBehaviour
     #region UTILITY METHOD
     EvolutionData GetEvolutionData(InsectType insectType)
     {
-        Debug.Log(insectType);
+       // Debug.Log(insectType);
         return dataManager.GetEvolutionDataById(insectType, evolutionManager.evalutionLeveldx);
     }
 

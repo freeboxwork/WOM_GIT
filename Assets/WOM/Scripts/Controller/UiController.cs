@@ -276,7 +276,7 @@ public class UiController : MonoBehaviour
         {
             if (i == (int)type)
             {
-                Debug.Log(type);
+                //Debug.Log(type);
                 var enableValue = !mainPanels[i].activeSelf;
                 mainPanels[i].SetActive(enableValue);
                 mainButtons[i].Select(enableValue);
