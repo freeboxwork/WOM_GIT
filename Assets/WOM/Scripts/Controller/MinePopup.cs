@@ -175,11 +175,11 @@ public class MinePopup : CastlePopupBase
         data.TotlaMiningValue = 0;
 
         //data 의 모든 변수값 출력
-        Debug.Log($"data.productionCount : {data.productionCount}");
-        Debug.Log($"data.maxSupplyAmount : {data.maxSupplyAmount}");
-        Debug.Log($"data.productionTime : {data.productionTime}");
-        Debug.Log($"data.level : {data.level}");
-        Debug.Log($"data.price : {data.price}");
+        // Debug.Log($"data.productionCount : {data.productionCount}");
+        // Debug.Log($"data.maxSupplyAmount : {data.maxSupplyAmount}");
+        // Debug.Log($"data.productionTime : {data.productionTime}");
+        // Debug.Log($"data.level : {data.level}");
+        // Debug.Log($"data.price : {data.price}");
 
 
     }
