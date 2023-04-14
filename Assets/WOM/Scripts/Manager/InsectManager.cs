@@ -112,7 +112,23 @@ public class InsectManager : MonoBehaviour
         DisableInsects(st_insectBullets_Bee);
         DisableInsects(st_insectBullets_Beetle);
         DisableInsects(st_insectBullets_Mentis);
+    }
 
+    /// <summary> 활성화된 곤충들 모두 제거 </summary>
+    public void DisableAllAvtiveInsects()
+    {
+        DisableActiveInsects(insectBullets_Bee);
+        DisableActiveInsects(insectBullets_Beetle);
+        DisableActiveInsects(insectBullets_Mentis);
+        DisableActiveInsects(insectBullets_Union);
+        DisableActiveInsects(st_insectBullets_Bee);
+        DisableActiveInsects(st_insectBullets_Beetle);
+        DisableActiveInsects(st_insectBullets_Mentis);
+    }
+
+    void DisableActiveInsects(List<InsectBullet> insectBullets)
+    {
+        insectBullets.Where(w => w.gameObject.activeSelf).ToList().ForEach(f => f.DisableInsect());
     }
 
     bool IsHalfPointUpSide(InsectBullet insectBullet)
@@ -127,6 +143,8 @@ public class InsectManager : MonoBehaviour
                 if(IsHalfPointUpSide(insect))
                     insect.DisableInsect();
     }
+
+
 
     public InsectBase GetInsect(EnumDefinition.InsectType insectType)
     {
