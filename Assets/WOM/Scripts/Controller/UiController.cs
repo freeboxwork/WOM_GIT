@@ -244,6 +244,10 @@ public class UiController : MonoBehaviour
             EnableDungeonEnterPopup(MonsterType.dungeonCoal);
         });
 
+        // 캐슬 빠저 나가기.
+        UtilityMethod.SetBtnEventCustomTypeByID(55, () => {
+            StartCoroutine(ExitCastlePanel());
+        });
 
         // 메인 판넬 열기
         //foreach (MenuPanelType type in Enum.GetValues(typeof(MenuPanelType)))
@@ -252,13 +256,107 @@ public class UiController : MonoBehaviour
         //}
 
 
-        foreach(var btn in mainButtons)
+        for(int i = 0; i < mainButtons.Count; i++)
         {
-            btn.btnMain.onClick.AddListener(() => {
-                EnableMenuPanel(btn.menuPanelType);
-            });
+            var index = i;
+            var btn = mainButtons[index];
+            if(btn.menuPanelType == MenuPanelType.castle)
+            {
+                btn.btnMain.onClick.AddListener(() =>
+                {
+                    StartCoroutine(EnableCastlePanel());
+                });
+            }
+            else
+            {
+                btn.btnMain.onClick.AddListener(() =>
+                {
+                    EnableMenuPanel(btn.menuPanelType);
+                });
+            }
+
         }
 
+
+        // foreach (var btn in mainButtons)
+        // {
+        //     btn.btnMain.onClick.AddListener(() =>
+        //     {
+
+        //     EnableMenuPanel(btn.menuPanelType);
+
+        //         // 무빙캐슬 트랜지션
+        //         // if (btn.menuPanelType == MenuPanelType.castle)
+        //         // {
+        //         //     StartCoroutine(EnableCastlePanel());
+        //         // }
+        //         // else
+        //         // {
+        //         //     EnableMenuPanel(btn.menuPanelType);
+        //         // }
+        //     });
+        // }
+
+    }
+
+
+    IEnumerator EnableCastlePanel()
+    {
+        // 공격 불가능 상태 전환
+        GlobalData.instance.attackController.SetAttackableState(false);
+        StartCoroutine(EnableCastle());
+        // 화면전환 효과
+        yield return StartCoroutine(GlobalData.instance.effectManager.EffTransitioEvolutionUpgrade(() =>
+        {
+
+            // 현재 몬스터 OUT
+            StartCoroutine(GlobalData.instance.player.currentMonster.inOutAnimator.MonsterKillMatAnim());
+
+            // 활성화된 곤충 모두 비활성화
+            GlobalData.instance.insectManager.DisableAllAvtiveInsects();
+
+            // UI 비활성화
+            UtilityMethod.GetCustomTypeGMById(6).gameObject.SetActive(false);
+          
+        }));
+    }
+
+    //TODO : 캐슬 활성화 타이밍 수정 ( 제대로 활성화 안된느 문제 해결)
+    IEnumerator EnableCastle()
+    {
+        yield return new WaitForSeconds(1f);
+        while (mainPanels[(int)MenuPanelType.castle].activeSelf == false)
+        {
+            mainPanels[(int)MenuPanelType.castle].SetActive(true);
+            yield return null;
+        }
+    }
+
+    IEnumerator ExitCastlePanel()
+    {
+
+        // 화면전환 효과
+        yield return StartCoroutine(GlobalData.instance.effectManager.EffTransitioEvolutionUpgrade(() =>
+        {
+
+
+            // 캐슬창 비활성화
+            mainPanels[(int)MenuPanelType.castle].gameObject.SetActive(false);
+
+            // UI 활성화
+            UtilityMethod.GetCustomTypeGMById(6).gameObject.SetActive(true);
+
+            // Monster IN
+            var curMonsterType = GlobalData.instance.player.curMonsterType;
+            StartCoroutine(GlobalData.instance.eventController.MonsterAppearCor(curMonsterType));
+
+           // EnableMenuPanel(MenuPanelType.castle);
+
+
+        }));
+
+        // 공격 가능 상태 전환
+        GlobalData.instance.attackController.SetAttackableState(true);
     }
 
     void EnableDungeonEnterPopup(MonsterType monsterType)
@@ -281,6 +379,8 @@ public class UiController : MonoBehaviour
                 mainPanels[i].SetActive(enableValue);
                 mainButtons[i].Select(enableValue);
                 ResetMainPannelScrollViewPosY(type);
+
+                Debug.Log("EnableMenuPanel : " + type + " / " + enableValue );
             }
             else
             {

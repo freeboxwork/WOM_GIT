@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
 using static EnumDefinition;
+using ProjectGraphics;
 
 public class CastleManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class CastleManager : MonoBehaviour
     
     public CastleBuildingData BuildDataMine;
     public CastleBuildingData BuildDataFactory;
+
+    public CastleController castleController;
 
     public int mineLevel = 0;
     public int factoryLevel = 0;
@@ -97,6 +100,15 @@ public class CastleManager : MonoBehaviour
                 {
                     if (isSuccess)
                     {
+                        //TODO: 코드 정리....
+                        // if(type == CastlePopupType.mine)
+                        // {
+                        //     mineLevel++;
+                        // }
+                        // else if(type == CastlePopupType.factory)
+                        // {
+                        //     factoryLevel++;
+                        // }
                         var popup = (MinePopup)GetCastlePopupByType(type);
                         var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel + 1);
                         CastleBuildingData nextBuildData = null;
@@ -105,6 +117,9 @@ public class CastleManager : MonoBehaviour
                             nextBuildData = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(nextLevelData);
                         }
                         popup.SetUpGradeText(upgradeData, nextBuildData);
+                        var _type = type == CastlePopupType.mine ? CastleController.BuildingType.MINE : CastleController.BuildingType.FACTORY;
+                        var _level = type == CastlePopupType.mine ? mineLevel : factoryLevel;
+                        castleController.SetBuildUpgrade( _type,_level );
 
                         // 성공 로그
                         Debug.Log("Upgrade Success " + type);
