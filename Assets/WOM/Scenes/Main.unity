@@ -90747,7 +90747,7 @@ MonoBehaviour:
   - {fileID: 2537914213422358947}
   - {fileID: 40637898606843443}
   - {fileID: 3372766480365455057}
-  campBuildLv: 0
+  campBuildLv: 1
   factoryBuildLv: 0
   mineBuildLv: 0
   labBuildLv: 0
