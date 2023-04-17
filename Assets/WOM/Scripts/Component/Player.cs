@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public int bone;
     public int gem;
     public int coal;
+    // 소탕권
+    public int clearTicket; 
 
     // Dungeon Key
     public SerializableDictionary<GoodsType, int> dungeonKeys;
@@ -153,6 +155,12 @@ public class Player : MonoBehaviour
         coal += value;
         // set ui;
     }
+    
+    public void AddClearTicket(int value)
+    {
+        clearTicket += value;
+    }
+         
 
 
     public void AddGem(int value)
@@ -204,7 +212,12 @@ public class Player : MonoBehaviour
 
     }
 
-    
+    public void PayClearTicekt(int value)
+    {
+        clearTicket -= value;
+        if (clearTicket < 0) clearTicket = 0;
+    }
+
     public void AddDungeonKey(GoodsType goodsType , int addKeyCount)
     {
         dungeonKeys[goodsType] += addKeyCount;

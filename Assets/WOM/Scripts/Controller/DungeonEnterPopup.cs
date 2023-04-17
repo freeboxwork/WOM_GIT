@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using static EnumDefinition;
@@ -26,15 +27,25 @@ public class DungeonEnterPopup : MonoBehaviour
     public Button btn_KeyDungeon;
     public Button btn_Ticket_Dungeon;
 
+
+    // 소탕권 관련
+    int curLevel;
+    public int clearTicketCount = 2;
+    DungeonMonsterData curDungeonMonData;
+    Dictionary<MonsterType, UnityAction<int>> addRewardMap;
+
     private void Start()
     {
         SetBtnEvents();
+        addRewardMap = new Dictionary<MonsterType, UnityAction<int>>() {
+        { MonsterType.dungeonGold, GlobalData.instance.player.AddGold },
+        { MonsterType.dungeonBone, GlobalData.instance.player.AddBone },
+        { MonsterType.dungeonDice, GlobalData.instance.player.AddDice },
+        { MonsterType.dungeonCoal, GlobalData.instance.player.AddCoal },
+    };
     }
 
-    public void SetTicketUI(int count)
-    {
 
-    }
 
     void SetBtnEvents()
     {
@@ -45,17 +56,43 @@ public class DungeonEnterPopup : MonoBehaviour
             }
             contents.SetActive(false);
         });
+
+        btn_Ticket_Dungeon.onClick.AddListener(() => {
+            UsingClearTicket();
+        });
+    }
+
+
+    
+
+    void UsingClearTicket()
+    {
+        var player = GlobalData.instance.player;
+        var curTicketCount = player.clearTicket;
+        if(curTicketCount > clearTicketCount)
+        {
+            // pay ticket
+
+            // reward
+            addRewardMap[curMonsterType].Invoke(curDungeonMonData.currencyAmount);
+        }
+        else
+        {
+            // 티켓 부족 팝업
+        }
     }
 
 
     public void EnablePopup(EnumDefinition.MonsterType monsterType)
     {
-        curMonsterType= monsterType;   
-        var monsterLevel = GlobalData.instance.player.dungeonMonsterClearLevel.GetLeveByDungeonMonType(curMonsterType);
-        var data = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(curMonsterType, monsterLevel);
+        curMonsterType= monsterType;
+        curLevel = GlobalData.instance.player.dungeonMonsterClearLevel.GetLeveByDungeonMonType(curMonsterType);
+        curDungeonMonData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(curMonsterType, curLevel);
+  
+
         contents.SetActive(true);
         SetKeyUI(monsterType);
-        SetRewardUI(monsterLevel,data);
+        SetRewardUI(curLevel, curDungeonMonData);
     }
 
     void SetRewardUI(int level, DungeonMonsterData data)
