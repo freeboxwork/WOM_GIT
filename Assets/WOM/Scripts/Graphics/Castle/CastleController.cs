@@ -6,20 +6,21 @@ namespace ProjectGraphics
 {
     public class CastleController : MonoBehaviour
     {
+        [SerializeField] GameObject castleObject; //캐슬오브젝트
         [SerializeField] GameObject[] campBuild;//소환건물(캠프)
         [SerializeField] GameObject[] factoryBuild;//뼛조각 생산건물(가공소)
         [SerializeField] GameObject[] mineBuild;//골드 생산건물(광산)
         [SerializeField] GameObject[] labBuild;//던전업그레이드 건물(연구소)
 
         //임시
-        [Range(0, 4)]
-        public int campBuildLv = 0;
-        [Range(0, 4)]
-        public int factoryBuildLv = 0;
-        [Range(0, 4)]
-        public int mineBuildLv = 0;
-        [Range(0, 4)]
-        public int labBuildLv = 0;
+        [Range(0, 4), SerializeField]
+        int campBuildLv = 0;
+        [Range(0, 4), SerializeField]
+        int factoryBuildLv = 0;
+        [Range(0, 4), SerializeField]
+        int mineBuildLv = 0;
+        [Range(0, 4), SerializeField]
+        int labBuildLv = 0;
 
         public enum BuildingType
         {
@@ -28,6 +29,7 @@ namespace ProjectGraphics
 
         void Update()
         {
+            /*
             for (int i = 0; i < campBuild.Length; i++)
             {
                 if (campBuildLv < i) campBuild[i].SetActive(false);     else campBuild[i].SetActive(true);
@@ -35,6 +37,7 @@ namespace ProjectGraphics
                 if (mineBuildLv < i) mineBuild[i].SetActive(false);       else mineBuild[i].SetActive(true);
                 if (labBuildLv < i) labBuild[i].SetActive(false); else labBuild[i].SetActive(true);
             }
+            */
         }
 
         public void SetBuildUpgrade(BuildingType type, int level)
@@ -46,6 +49,8 @@ namespace ProjectGraphics
                 case BuildingType.MINE:     SetMineBuild(level);    break;
                 case BuildingType.LAB: SetLabBuild(level); break;
             }
+
+            if(!castleObject.activeSelf) castleObject.SetActive(true);
         }
 
         private void SetCampBuild(int level)
