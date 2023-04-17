@@ -3938,7 +3938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.000305}
+  m_AnchoredPosition: {x: 0, y: -50.000244}
   m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115326143
@@ -54813,6 +54813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452894175}
   - component: {fileID: 1452894176}
+  - component: {fileID: 1452894177}
   m_Layer: 0
   m_Name: CastleManager
   m_TagString: Untagged
@@ -54868,9 +54869,50 @@ MonoBehaviour:
     price: 0
     currencyType: 
     totlaMiningValue: 0
-  castleController: {fileID: 6219573943992181294}
+  castleController: {fileID: 0}
   mineLevel: 0
   factoryLevel: 0
+--- !u!114 &1452894177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452894174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5b8ad3bd906a84695e023eb51eb66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castleObject: {fileID: 5888335923745280018}
+  campBuild:
+  - {fileID: 3558430584150134456}
+  - {fileID: 6911426712913529725}
+  - {fileID: 3112888043428334830}
+  - {fileID: 2091250400730901590}
+  - {fileID: 8529065079536550034}
+  factoryBuild:
+  - {fileID: 4954081054978304581}
+  - {fileID: 4643430576707953160}
+  - {fileID: 4998019509001837547}
+  - {fileID: 7112541818363299151}
+  - {fileID: 4562519616116341020}
+  mineBuild:
+  - {fileID: 5547051330227590585}
+  - {fileID: 3375298775812101001}
+  - {fileID: 8311473845241838871}
+  - {fileID: 597803130021067740}
+  - {fileID: 4022871391404808054}
+  labBuild:
+  - {fileID: 6973021492556926286}
+  - {fileID: 6044729717748692274}
+  - {fileID: 2537914213422358947}
+  - {fileID: 40637898606843443}
+  - {fileID: 3372766480365455057}
+  campBuildLv: 0
+  factoryBuildLv: 0
+  mineBuildLv: 0
+  labBuildLv: 0
 --- !u!1 &1455574523
 GameObject:
   m_ObjectHideFlags: 0
@@ -90452,7 +90494,6 @@ GameObject:
   - component: {fileID: 4719644350630922355}
   - component: {fileID: 4719644350630922354}
   - component: {fileID: 4719644350630922357}
-  - component: {fileID: 6219573943992181294}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Untagged
@@ -91289,46 +91330,6 @@ Transform:
   m_Father: {fileID: 4719644350630922353}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6219573943992181294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5888335923745280018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5b8ad3bd906a84695e023eb51eb66f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  campBuild:
-  - {fileID: 3558430584150134456}
-  - {fileID: 6911426712913529725}
-  - {fileID: 3112888043428334830}
-  - {fileID: 2091250400730901590}
-  - {fileID: 8529065079536550034}
-  factoryBuild:
-  - {fileID: 4954081054978304581}
-  - {fileID: 4643430576707953160}
-  - {fileID: 4998019509001837547}
-  - {fileID: 7112541818363299151}
-  - {fileID: 4562519616116341020}
-  mineBuild:
-  - {fileID: 5547051330227590585}
-  - {fileID: 3375298775812101001}
-  - {fileID: 8311473845241838871}
-  - {fileID: 597803130021067740}
-  - {fileID: 4022871391404808054}
-  labBuild:
-  - {fileID: 6973021492556926286}
-  - {fileID: 6044729717748692274}
-  - {fileID: 2537914213422358947}
-  - {fileID: 40637898606843443}
-  - {fileID: 3372766480365455057}
-  campBuildLv: 0
-  factoryBuildLv: 0
-  mineBuildLv: 0
-  labBuildLv: 0
 --- !u!1 &6219573944270962565
 GameObject:
   m_ObjectHideFlags: 0
