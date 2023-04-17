@@ -79,7 +79,10 @@ public class DungeonMonster : DungeonMonsterBase
     {
         curLevel++;
         curData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(curMonsterData.monsterType, curLevel).CloneInstance();
-        curMonsterHP = curData.monsterHP; 
+        curMonsterHP = curData.monsterHP;
+
+        // 레벨업 데이터 저장
+        GlobalData.instance.player.dungeonMonsterClearLevel.SetLevelFromMonsterType(curMonsterData.monsterType, curLevel);
     }
 
     public void DungeonMonsterOut()
