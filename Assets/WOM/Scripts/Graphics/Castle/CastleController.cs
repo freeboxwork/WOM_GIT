@@ -6,7 +6,7 @@ namespace ProjectGraphics
 {
     public class CastleController : MonoBehaviour
     {
-        [SerializeField] GameObject castleObject; //캐슬오브젝트
+        public GameObject castleObject; //캐슬오브젝트
         [SerializeField] GameObject[] campBuild;//소환건물(캠프)
         [SerializeField] GameObject[] factoryBuild;//뼛조각 생산건물(가공소)
         [SerializeField] GameObject[] mineBuild;//골드 생산건물(광산)
