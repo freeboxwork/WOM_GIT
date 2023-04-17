@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using static EnumDefinition;
 
@@ -13,6 +14,8 @@ public class DungeonEnterPopup : MonoBehaviour
 
     public TextMeshProUGUI textClearTicket;
     public TextMeshProUGUI textKeyCount;
+    public TextMeshProUGUI textPervClearLevel;
+    public TextMeshProUGUI textRewardValue;
 
     public SerializableDictionary<EnumDefinition.MonsterType, Sprite> monsterTypeToIconMap;
 
@@ -48,8 +51,18 @@ public class DungeonEnterPopup : MonoBehaviour
     public void EnablePopup(EnumDefinition.MonsterType monsterType)
     {
         curMonsterType= monsterType;   
+        var monsterLevel = GlobalData.instance.player.dungeonMonsterClearLevel.GetLeveByDungeonMonType(curMonsterType);
+        var data = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(curMonsterType, monsterLevel);
         contents.SetActive(true);
         SetKeyUI(monsterType);
+        SetRewardUI(monsterLevel,data);
+    }
+
+    void SetRewardUI(int level, DungeonMonsterData data)
+    {
+        textPervClearLevel.text = $"{level}단계";
+        textRewardValue.text = data.currencyAmount.ToString();
+
     }
 
     // 던전 몬스터 열쇠 사용 가능 체크
