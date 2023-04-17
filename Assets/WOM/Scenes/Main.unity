@@ -54869,7 +54869,7 @@ MonoBehaviour:
     price: 0
     currencyType: 
     totlaMiningValue: 0
-  castleController: {fileID: 0}
+  castleController: {fileID: 1452894177}
   mineLevel: 0
   factoryLevel: 0
 --- !u!114 &1452894177
