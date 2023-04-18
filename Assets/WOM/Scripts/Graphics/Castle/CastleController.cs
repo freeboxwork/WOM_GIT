@@ -26,6 +26,13 @@ namespace ProjectGraphics
         {
             CAMP, FACTORY, MINE, LAB
         }
+        private void Awake()
+        {
+            SetMineBuild(mineBuildLv);
+            SetLabBuild(labBuildLv);
+            SetCampBuild(campBuildLv);
+            SetFactoryBuild(factoryBuildLv);
+        }
 
         void Update()
         {
