@@ -72,13 +72,17 @@ public class DungeonEnterPopup : MonoBehaviour
         if(curTicketCount > clearTicketCount)
         {
             // pay ticket
+            GlobalData.instance.player.PayClearTicekt(clearTicketCount);
 
             // reward
             addRewardMap[curMonsterType].Invoke(curDungeonMonData.currencyAmount);
+
+            Debug.Log("소탕권 사용. 리워드 지급");
         }
         else
         {
             // 티켓 부족 팝업
+            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("", 17);
         }
     }
 

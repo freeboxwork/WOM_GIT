@@ -46,7 +46,7 @@ public class GlobalPopupController : MonoBehaviour
         });
     }
 
-    public void EnableGlobalPopupByMessageId(string title = null,int messageId=0)
+    public void EnableGlobalPopupByMessageId(string title = "",int messageId=0)
     {
         var messageData = GetMessageById(messageId);
      
