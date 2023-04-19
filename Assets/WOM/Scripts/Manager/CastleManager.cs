@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine.Events;
 using static EnumDefinition;
 using ProjectGraphics;
+using static ProjectGraphics.CastleController;
 
 public class CastleManager : MonoBehaviour
 {
@@ -76,6 +77,16 @@ public class CastleManager : MonoBehaviour
         UtilityMethod.SetBtnEventCustomTypeByID(54,()=>{
             OpenCastlePopup(EnumDefinition.CastlePopupType.lab);            
         });
+
+        // 64 금광 건설하기 버튼
+
+        // 103 금광 건설에 필요한 골드 텍스트
+
+    }
+
+    void SetUi()
+    {
+
     }
 
 
@@ -154,13 +165,78 @@ public class CastleManager : MonoBehaviour
     }
 
 
+    void UpgradeMine()
+    {
 
-/*
- * UpgradeMine - 광산 업그레이드 메소드
- * 
- * @param completeCallback: UnityAction<bool, CastleBuildingData> 타입의 콜백 함수. 업그레이드 성공 여부와 다음 레벨 정보를 전달합니다.
- */
-public void UpgradeMine(UnityAction<bool,CastleBuildingData > completeCallback)
+        // 가격만큼 resource 차감 후 레벨 업그레이드 진행
+        GlobalData.instance.player.PayCoal(BuildDataMine.price);
+        mineLevel++;
+
+        // 다음 레벨의 광산 정보 가져오기
+        var refBuildDataMine = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel);
+
+        // Clone 메소드를 이용하여 BuildDataMine 객체의 데이터 갱신
+        BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(refBuildDataMine);
+
+        // Set Popup    UI
+        var popup = (MinePopup)GetCastlePopupByType(CastlePopupType.mine);
+        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel + 1);
+        CastleBuildingData nextBuildData = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(nextLevelData);
+        popup.SetUpGradeText(BuildDataMine, nextBuildData);
+        castleController.SetBuildUpgrade(BuildingType.MINE, mineLevel);
+    }
+
+    void UpgradeFactory()
+    {
+        // 가격만큼 resource 차감 후 레벨 업그레이드 진행
+        GlobalData.instance.player.PayCoal(BuildDataFactory.price);
+        factoryLevel++;
+
+        // 다음 레벨의 광산 정보 가져오기
+        var refBuildDataMine = GlobalData.instance.dataManager.GetBuildDataFactoryByLevel(factoryLevel);
+
+        // Clone 메소드를 이용하여 BuildDataMine 객체의 데이터 갱신
+        BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.bone).Clone(refBuildDataMine);
+
+        // Set Popup    UI
+        var popup = (MinePopup)GetCastlePopupByType(CastlePopupType.factory);
+        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(factoryLevel + 1);
+        CastleBuildingData nextBuildData = new CastleBuildingData().Create().SetGoodsType(GoodsType.bone).Clone(nextLevelData);
+        popup.SetUpGradeText(BuildDataMine, nextBuildData);
+        castleController.SetBuildUpgrade(BuildingType.FACTORY, factoryLevel);
+    }
+
+
+
+
+    bool IsValidCastleUpgradePay(int price)
+    {
+        var value = GlobalData.instance.player.coal >= price;
+        if (value)
+        {
+            return true;
+        }
+        else
+        {
+            // show popup
+
+            return false;
+        }
+        
+    }
+
+    // max level
+    bool IsValidCastleUpgradeLevel(int level, int price)
+    {
+        return true;
+    }
+
+    /*
+     * UpgradeMine - 광산 업그레이드 메소드
+     * 
+     * @param completeCallback: UnityAction<bool, CastleBuildingData> 타입의 콜백 함수. 업그레이드 성공 여부와 다음 레벨 정보를 전달합니다.
+     */
+    public void UpgradeMine(UnityAction<bool,CastleBuildingData > completeCallback)
 {
     // 플레이어가 가진 coal(resource)이 광산의 가격보다 많을 때 업그레이드 진행
     if (GlobalData.instance.player.coal >= BuildDataMine.price)
