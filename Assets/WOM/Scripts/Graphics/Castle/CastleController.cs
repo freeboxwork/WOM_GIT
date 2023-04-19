@@ -11,6 +11,8 @@ namespace ProjectGraphics
         [SerializeField] GameObject[] factoryBuild;//뼛조각 생산건물(가공소)
         [SerializeField] GameObject[] mineBuild;//골드 생산건물(광산)
         [SerializeField] GameObject[] labBuild;//던전업그레이드 건물(연구소)
+        [SerializeField] GameObject dustEffect;
+        List<GameObject> buildEffects = new List<GameObject>();
 
         //임시
         [Range(0, 4), SerializeField]
@@ -34,6 +36,7 @@ namespace ProjectGraphics
             SetFactoryBuild(factoryBuildLv);
         }
 
+        //int num = 0;
         void Update()
         {
             /*
@@ -43,6 +46,13 @@ namespace ProjectGraphics
                 if (factoryBuildLv < i) factoryBuild[i].SetActive(false);     else factoryBuild[i].SetActive(true);
                 if (mineBuildLv < i) mineBuild[i].SetActive(false);       else mineBuild[i].SetActive(true);
                 if (labBuildLv < i) labBuild[i].SetActive(false); else labBuild[i].SetActive(true);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                if (num == 4) num = 0;
+                else num++;
+                
+                SetBuildUpgrade(BuildingType.CAMP, num);
             }
             */
         }
@@ -106,8 +116,22 @@ namespace ProjectGraphics
 
         private void SetBuildEffect(Vector3 pos)
         {
-            //생성되는 위치에 이펙트 추가.
-            Debug.Log("이펙트 위치 : " + pos);
+            for (int i = 0; i < buildEffects.Count; i++)
+            {
+                if (!buildEffects[i].activeSelf)
+                {
+                    buildEffects[i].SetActive(true);
+                    buildEffects[i].transform.position = pos;
+                    buildEffects[i].GetComponent<ParticleSystem>().Play();
+                    return;
+                }
+            }
+
+            GameObject e =
+                Instantiate(dustEffect, pos, Quaternion.identity);
+            e.transform.SetParent(castleObject.transform);
+
+            buildEffects.Add(e);
         }
     }
 }
