@@ -54911,6 +54911,7 @@ MonoBehaviour:
   - {fileID: 2537914213422358947}
   - {fileID: 40637898606843443}
   - {fileID: 3372766480365455057}
+  dustEffect: {fileID: 2760724631881846970, guid: 396db36604d420a4a94a6a755d0871ff, type: 3}
   campBuildLv: 0
   factoryBuildLv: 0
   mineBuildLv: 0
@@ -70204,7 +70205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.17}
-  m_AnchoredPosition: {x: 0, y: -7.7993393}
+  m_AnchoredPosition: {x: 0, y: -7.799408}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863561721
