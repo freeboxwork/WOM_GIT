@@ -304,6 +304,10 @@ public class UiController : MonoBehaviour
     {
         // 공격 불가능 상태 전환
         GlobalData.instance.attackController.SetAttackableState(false);
+        // 버튼 클릭 안되게 수정
+        UtilityMethod.EnableUIEventSystem(false);
+
+        GlobalData.instance.attackController.SetAttackableState(false);
         StartCoroutine(EnableCastle());
         // 화면전환 효과
         yield return StartCoroutine(GlobalData.instance.effectManager.EffTransitioEvolutionUpgrade(() =>
@@ -319,6 +323,9 @@ public class UiController : MonoBehaviour
             UtilityMethod.GetCustomTypeGMById(6).gameObject.SetActive(false);
           
         }));
+
+        UtilityMethod.EnableUIEventSystem(true);
+
     }
 
     //TODO : 캐슬 활성화 타이밍 수정 ( 제대로 활성화 안된느 문제 해결)
@@ -334,7 +341,7 @@ public class UiController : MonoBehaviour
 
     IEnumerator ExitCastlePanel()
     {
-
+        UtilityMethod.EnableUIEventSystem(false);
         // 화면전환 효과
         yield return StartCoroutine(GlobalData.instance.effectManager.EffTransitioEvolutionUpgrade(() =>
         {
@@ -350,13 +357,16 @@ public class UiController : MonoBehaviour
             var curMonsterType = GlobalData.instance.player.curMonsterType;
             StartCoroutine(GlobalData.instance.eventController.MonsterAppearCor(curMonsterType));
 
-           // EnableMenuPanel(MenuPanelType.castle);
-
+            // EnableMenuPanel(MenuPanelType.castle);
+           
 
         }));
 
         // 공격 가능 상태 전환
         GlobalData.instance.attackController.SetAttackableState(true);
+       
+        yield return new WaitForSeconds(0.2f);
+        UtilityMethod.EnableUIEventSystem(true);
     }
 
     void EnableDungeonEnterPopup(MonsterType monsterType)

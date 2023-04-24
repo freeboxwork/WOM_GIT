@@ -2,6 +2,7 @@ using ProjectGraphics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GlobalData : MonoBehaviour
 {
@@ -39,8 +40,8 @@ public class GlobalData : MonoBehaviour
     public DungeonPopup dungeonPopup;
     public DungeonManager dungeonManager;
     public DungeonEnterPopup dungeonEnterPopup;
-    public CastleManager castleManager;     
-
+    public CastleManager castleManager;
+    public EventSystem eventSystem;
     private void Awake()
     {
         SetInstance();

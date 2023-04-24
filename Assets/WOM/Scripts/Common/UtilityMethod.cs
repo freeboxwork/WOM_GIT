@@ -12,7 +12,10 @@ using UnityEditor;
 
 public static class UtilityMethod 
 {
-
+    public static void EnableUIEventSystem(bool value)
+    {
+        GlobalData.instance.eventSystem.enabled = value;
+    }
     public static T CustomGetComponet<T>() where T : UnityEngine.Object
     {
         var returnValue = GameObject.FindObjectOfType<T>();

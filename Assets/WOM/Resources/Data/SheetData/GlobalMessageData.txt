@@ -135,6 +135,14 @@
       "message_kor": "석탄이 부족 합니다.",
       "message_eng": "Not enough coal.",
       "비고": ""
+    },
+    {
+      "id": 17,
+      "popupType": "message",
+      "title": "message",
+      "message_kor": "소탕권이 부족 합니다.",
+      "message_eng": "Not enough clear Ticket.",
+      "비고": ""
     }
   ]
 }
