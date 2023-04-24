@@ -35,8 +35,13 @@ public class GlobalController : MonoBehaviour
    
     IEnumerator Init()
     {
+        // black screen on
+        GlobalData.instance.effectManager.EnableTransitionBlackScreen();
+
         // 공격 불가능 상태로 전환
         attackController.SetAttackableState(false);
+        // 버튼 불가능 상태로 전환
+        UtilityMethod.EnableUIEventSystem(false);
 
         // set data
         yield return StartCoroutine(dataManager.SetDatas());
@@ -112,6 +117,10 @@ public class GlobalController : MonoBehaviour
         // UI 초기화
         SetUI_Init();
 
+        // 트랜지션 아웃 ( black screen )
+        yield return StartCoroutine(GlobalData.instance.effectManager.TransitionOut());
+
+
         // 캐슬 초기화
         yield return StartCoroutine(GlobalData.instance.castleManager.Init());
 
@@ -121,12 +130,15 @@ public class GlobalController : MonoBehaviour
         // 한 프레임 대기
         yield return new WaitForEndOfFrame();
 
+      
         // 공격 가능 상태로 전환
         attackController.SetAttackableState(true);
 
         // 곤충 스폰 활성화
-        insectSpwanManager.AllTimerStart(); 
+        insectSpwanManager.AllTimerStart();
 
+        // 버튼 가능 상태로 전환
+        UtilityMethod.EnableUIEventSystem(true);
     }
 
     void SetUI_Init()

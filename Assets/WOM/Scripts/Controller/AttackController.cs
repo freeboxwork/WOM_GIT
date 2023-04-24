@@ -31,9 +31,12 @@ public class AttackController : MonoBehaviour
 
                     var pos = Input.mousePosition;
                     // 포인터 위치가 UI 위에 있는지 판단
-                    var isPointerOnUI = EventSystem.current.IsPointerOverGameObject();
-                    if (isPointerOnUI == false)
-                        EnableInsectBullet(pos);
+                    if (EventSystem.current!= null && EventSystem.current.enabled)
+                    {
+                        var isPointerOnUI = EventSystem.current.IsPointerOverGameObject();
+                        if (isPointerOnUI == false)
+                            EnableInsectBullet(pos);
+                    }
                 }
             }
         }
@@ -87,3 +90,5 @@ public class AttackController : MonoBehaviour
 
 
 }
+
+

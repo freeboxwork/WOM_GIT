@@ -230,7 +230,20 @@ public class EffectManager : MonoBehaviour
         // 트랜지션 아웃
         animContTransition.animData = animDataTranOut;
         yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha_None, colorAlpha));
+    }
 
+    public void EnableTransitionBlackScreen()
+    {
+        var image = UtilityMethod.GetCustomTypeImageById(20);
+        image.color = new Color(1, 1, 1, 1);
+    }
 
+    public IEnumerator TransitionOut()
+    {
+        var image = UtilityMethod.GetCustomTypeImageById(20);
+        animContTransition.animData = animDataTranOut;
+        var colorAlpha_None = new Color(1, 1, 1, 1);
+        var colorAlpha = new Color(1, 1, 1, 0);
+        yield return StartCoroutine(animContTransition.UI_ImageColorAnim(image, colorAlpha_None, colorAlpha));
     }
 }

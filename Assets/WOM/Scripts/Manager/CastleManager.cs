@@ -218,16 +218,18 @@ public class CastleManager : MonoBehaviour
         }
         else
         {
-            // show popup
-
+            // show popup 석탄 부족.
+            GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", 16);
+            Debug.Log("Upgrade Fail");
             return false;
         }
         
     }
 
-    // max level
+    // max level 체크
     bool IsValidCastleUpgradeLevel(int level, int price)
     {
+
         return true;
     }
 
