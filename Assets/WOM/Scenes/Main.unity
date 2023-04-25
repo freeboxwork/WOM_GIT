@@ -3938,7 +3938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.000366}
+  m_AnchoredPosition: {x: 0, y: -50.00006}
   m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115326143
@@ -54158,7 +54158,7 @@ MonoBehaviour:
   bone: 0
   gem: 0
   coal: 9000
-  clearTicket: 0
+  clearTicket: 4
   dungeonKeys:
     keys: 00000000010000000300000004000000
     values: 01000000010000000100000001000000
@@ -70307,7 +70307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.17}
-  m_AnchoredPosition: {x: 0, y: -7.799431}
+  m_AnchoredPosition: {x: 0, y: -7.799446}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863561721
@@ -106609,7 +106609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
   m_SizeDelta: {x: 0, y: -400.77112}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2091250400730901590
@@ -119783,7 +119783,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.590088, y: 47}
+  m_AnchoredPosition: {x: 12.590088, y: 46.999817}
   m_SizeDelta: {x: -99.07837, y: 127.45581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8995775498470938730

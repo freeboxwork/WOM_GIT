@@ -69,7 +69,7 @@ public class DungeonEnterPopup : MonoBehaviour
     {
         var player = GlobalData.instance.player;
         var curTicketCount = player.clearTicket;
-        if(curTicketCount > clearTicketCount)
+        if(curTicketCount >= clearTicketCount)
         {
             // pay ticket
             GlobalData.instance.player.PayClearTicekt(clearTicketCount);
