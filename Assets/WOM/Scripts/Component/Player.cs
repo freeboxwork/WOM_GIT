@@ -159,6 +159,9 @@ public class Player : MonoBehaviour
     public void AddClearTicket(int value)
     {
         clearTicket += value;
+
+        // set ui 
+        GlobalData.instance.dungeonEnterPopup.SetTxtClierTicket(clearTicket);
     }
          
 
@@ -216,6 +219,9 @@ public class Player : MonoBehaviour
     {
         clearTicket -= value;
         if (clearTicket < 0) clearTicket = 0;
+
+        // set ui 
+        GlobalData.instance.dungeonEnterPopup.SetTxtClierTicket(clearTicket);
     }
 
     public void AddDungeonKey(GoodsType goodsType , int addKeyCount)

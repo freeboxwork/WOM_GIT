@@ -1,3 +1,4 @@
+using GooglePlayGames.BasicApi;
 using SRDebugger.UI.Other;
 using System.Collections;
 using System.Collections.Generic;
@@ -76,7 +77,6 @@ public class DungeonEnterPopup : MonoBehaviour
 
             // reward
             addRewardMap[curMonsterType].Invoke(curDungeonMonData.currencyAmount);
-
             Debug.Log("소탕권 사용. 리워드 지급");
         }
         else
@@ -84,6 +84,11 @@ public class DungeonEnterPopup : MonoBehaviour
             // 티켓 부족 팝업
             GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("", 17);
         }
+    }
+
+    public void SetTxtClierTicket(int ticketCount)
+    {
+        textClearTicket.text = ticketCount.ToString();
     }
 
 
@@ -139,6 +144,9 @@ public class DungeonEnterPopup : MonoBehaviour
         var keyCount = GlobalData.instance.player.GetCurrentDungeonKeyCount(monsterType);
         textKeyCount.text = keyCount.ToString();
     }
+
+    
+
 
     public void SetDungeonEnterPopup(int clear, int key, Sprite sp)
     {

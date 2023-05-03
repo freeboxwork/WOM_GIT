@@ -8,6 +8,7 @@ using static EnumDefinition;
 using System.Linq;
 using ProjectGraphics;
 using Unity.VisualScripting;
+using SRF.UI;
 
 public class UiController : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class UiController : MonoBehaviour
         // Disable Ui Elements
         DisableUiElements();
 
-        // 재화 UI 세팅 ( 골드 , 뼈조각 , 보석 UI 초기 세팅 )
+        // 재화 UI 세팅 ( 골드 , 뼈조각 , 보석 , 소탕권 UI 초기 세팅 )
         SetGoodsUI();
 
         // 메인 판넬 스크롤뷰 시작 위치 가져오기 ( 리셋을 위해 )
@@ -92,6 +93,14 @@ public class UiController : MonoBehaviour
         SetTxtBone(0);
         SetTxtGem(0);
         SetTxtDice(0);  // 현재 남은 진화 주사위 개수 UI 적용
+        // 소탕권
+        SetTxtClearTicket();
+    }
+
+     void SetTxtClearTicket()
+    {
+        var ticket = GlobalData.instance.player.clearTicket;
+        GlobalData.instance.dungeonEnterPopup.SetTxtClierTicket(ticket);
     }
 
 
