@@ -132,6 +132,11 @@ public class CastleManager : MonoBehaviour
                         var _level = type == CastlePopupType.mine ? mineLevel : factoryLevel;
                         castleController.SetBuildUpgrade( _type,_level );
 
+                        if (nextLevelData.level == GlobalData.instance.dataManager.buildDatasMine.data.Max(m => m.level))
+                        {
+                            popup.btnUpgrade.interactable = false;
+                        }
+
                         // 성공 로그
                         Debug.Log("Upgrade Success " + type);
                     }
