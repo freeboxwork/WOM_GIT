@@ -235,7 +235,7 @@ public class DataManager : MonoBehaviour
         //any 를 이용한 예외처리
         if(buildDatasMine.data.Any(f => f.level == level) == false)
         {
-            Debug.LogError("Mine Data is not exist. level : " + level);
+            Debug.Log("Mine Data is not exist. level : " + level);
             return null;
         }
         return buildDatasMine.data.Find(f => f.level == level);
