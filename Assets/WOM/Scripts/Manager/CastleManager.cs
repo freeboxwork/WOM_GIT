@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using static EnumDefinition;
 using ProjectGraphics;
 using static ProjectGraphics.CastleController;
+using System.Runtime.InteropServices;
 
 public class CastleManager : MonoBehaviour
 {
@@ -126,42 +127,51 @@ public class CastleManager : MonoBehaviour
         switch (type)
         {
             case CastlePopupType.mine:
-            case CastlePopupType.factory:
                 UpgradeMine((isSuccess, upgradeData) =>
                 {
                     if (isSuccess)
                     {
-                        //TODO: 코드 정리....
-                        // if(type == CastlePopupType.mine)
-                        // {
-                        //     mineLevel++;
-                        // }
-                        // else if(type == CastlePopupType.factory)
-                        // {
-                        //     factoryLevel++;
-                        // }
-                        var _level = type == CastlePopupType.mine ? mineLevel : factoryLevel;
-
-
                         var popup = (MinePopup)GetCastlePopupByType(type);
-                        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(_level + 1);
+                        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel + 1);
                         CastleBuildingData nextBuildData = null;
                         if (nextLevelData != null)
                         {
                             nextBuildData = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(nextLevelData);
                         }
                         popup.SetUpGradeText(upgradeData, nextBuildData);
-                        var _type = type == CastlePopupType.mine ? CastleController.BuildingType.MINE : CastleController.BuildingType.FACTORY;
-                      
-                        castleController.SetBuildUpgrade( _type,_level );
-
+                        castleController.SetBuildUpgrade(BuildingType.MINE, mineLevel);
                         if (nextBuildData == null)
                             popup.btnUpgrade.interactable = false;
 
-                        //if (nextLevelData.level == GlobalData.instance.dataManager.buildDatasMine.data.Max(m => m.level))
-                        //{
-                        //    popup.btnUpgrade.interactable = false;
-                        //}
+                        Debug.Log("Upgrade Success " + type);
+                    }
+                    else
+                    {
+                        // 석탄 부족 POPUP
+                        GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", 16);
+                        Debug.Log("Upgrade Fail");
+                    }
+
+                });
+                break;
+            case CastlePopupType.factory:
+                UpgradeFactory((isSuccess, upgradeData) =>
+                {
+                    if (isSuccess)
+                    {
+
+                        var popup = (MinePopup)GetCastlePopupByType(type);
+                        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataFactoryByLevel(factoryLevel + 1);
+                        CastleBuildingData nextBuildData = null;
+                        if (nextLevelData != null)
+                        {
+                            nextBuildData = new CastleBuildingData().Create().SetGoodsType(GoodsType.coal).Clone(nextLevelData);
+                        }
+                        popup.SetUpGradeText(upgradeData, nextBuildData);
+                        castleController.SetBuildUpgrade(BuildingType.FACTORY, factoryLevel );
+
+                        if (nextBuildData == null)
+                            popup.btnUpgrade.interactable = false;
 
                         // 성공 로그
                         Debug.Log("Upgrade Success " + type);
@@ -169,27 +179,15 @@ public class CastleManager : MonoBehaviour
                     else
                     {
                         // 석탄 부족 POPUP
-                        // 실패 로그
                         GlobalData.instance.globalPopupController.EnableGlobalPopupByMessageId("Message", 16);
                         Debug.Log("Upgrade Fail");
                     }
                 });
                 break;
-            // case CastlePopupType.factory:
-            //     UpgradeFactory((isSuccess) =>
-            //     {
-            //         if (isSuccess)
-            //         {
-            //             // 팩토리 업그레이드 성공 처리
-            //         }
-            //         else
-            //         {
-            //             // 뼈조각 부족 POPUP
-            //         }
-            //     });
-            //     break;
             case CastlePopupType.camp:
+                break;
             case CastlePopupType.lab:
+                break;
             default:
                 break;
         }
@@ -269,31 +267,31 @@ public class CastleManager : MonoBehaviour
      * 
      * @param completeCallback: UnityAction<bool, CastleBuildingData> 타입의 콜백 함수. 업그레이드 성공 여부와 다음 레벨 정보를 전달합니다.
      */
-    public void UpgradeMine(UnityAction<bool,CastleBuildingData > completeCallback)
-{
-    // 플레이어가 가진 coal(resource)이 광산의 가격보다 많을 때 업그레이드 진행
-    if (GlobalData.instance.player.coal >= BuildDataMine.price)
+    public void UpgradeMine(UnityAction<bool, CastleBuildingData> completeCallback)
     {
-        // 가격만큼 resource 차감 후 레벨 업그레이드 진행
-        GlobalData.instance.player.PayCoal(BuildDataMine.price);
-        mineLevel++;
+        // 플레이어가 가진 coal(resource)이 광산의 가격보다 많을 때 업그레이드 진행
+        if (GlobalData.instance.player.coal >= BuildDataMine.price)
+        {
+            // 가격만큼 resource 차감 후 레벨 업그레이드 진행
+            GlobalData.instance.player.PayCoal(BuildDataMine.price);
+            mineLevel++;
 
-        // 다음 레벨의 광산 정보 가져오기
-        var refBuildDataMine = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel);
+            // 다음 레벨의 광산 정보 가져오기
+            var refBuildDataMine = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel);
 
-        // Clone 메소드를 이용하여 BuildDataMine 객체의 데이터 갱신
-        BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(refBuildDataMine);
+            // Clone 메소드를 이용하여 BuildDataMine 객체의 데이터 갱신
+            BuildDataMine = new CastleBuildingData().Create().SetGoodsType(GoodsType.gold).Clone(refBuildDataMine);
 
-        // 업그레이드 성공 처리를 위해 completeCallback 호출
-        completeCallback(true, BuildDataMine);
+            // 업그레이드 성공 처리를 위해 completeCallback 호출
+            completeCallback(true, BuildDataMine);
+        }
+        else
+        {
+            // Coal(resource) 부족으로 업그레이드 실패 시 completeCallback 호출
+            completeCallback(false, null);
+        }
     }
-    else
-    {
-        // Coal(resource) 부족으로 업그레이드 실패 시 completeCallback 호출
-        completeCallback(false,null);
-    }
-}
-    public void UpgradeFactory(UnityAction<bool> completeCallback)
+    public void UpgradeFactory(UnityAction<bool, CastleBuildingData> completeCallback)
     {
         if (GlobalData.instance.player.coal >= BuildDataFactory.price)
         {
@@ -301,11 +299,11 @@ public class CastleManager : MonoBehaviour
             factoryLevel++;
             var refBuildDataFactory = GlobalData.instance.dataManager.GetBuildDataFactoryByLevel(factoryLevel);
             BuildDataFactory = new CastleBuildingData().Create().SetGoodsType(GoodsType.bone).Clone(refBuildDataFactory);
-            completeCallback(true);
+            completeCallback(true, BuildDataFactory);
         }
         else
         {
-            completeCallback(false);
+            completeCallback(false,null);
         }
     }
 
