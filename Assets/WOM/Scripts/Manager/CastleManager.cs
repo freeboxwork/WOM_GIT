@@ -65,6 +65,26 @@ public class CastleManager : MonoBehaviour
 
     void SetBtnEvents() 
     {
+        // 건설하기 버튼 ( 금광 , 가공소 )
+        // 64, 65
+        UtilityMethod.SetBtnEventCustomTypeByID(64, () => {
+            UpGradeCastle(CastlePopupType.mine);
+            var isUpgrade = mineLevel > 0;
+
+            //Debug.Log( isUpgrade + " mine level " + mineLevel );
+            UtilityMethod.GetCustomTypeBtnByID(64).gameObject.SetActive(!isUpgrade);
+            UtilityMethod.GetCustomTypeBtnByID(51).interactable = isUpgrade;
+        });
+        UtilityMethod.SetBtnEventCustomTypeByID(65, () => {
+            UpGradeCastle(CastlePopupType.factory);
+
+            var isUpgrade = factoryLevel > 0;
+            
+            Debug.Log(isUpgrade + " factory level " + factoryLevel);
+            UtilityMethod.GetCustomTypeBtnByID(65).gameObject.SetActive(!isUpgrade);
+            UtilityMethod.GetCustomTypeBtnByID(52).interactable = isUpgrade;
+        });
+
         UtilityMethod.SetBtnEventCustomTypeByID(51,()=>{
             OpenCastlePopup(EnumDefinition.CastlePopupType.mine);            
         });
@@ -120,8 +140,11 @@ public class CastleManager : MonoBehaviour
                         // {
                         //     factoryLevel++;
                         // }
+                        var _level = type == CastlePopupType.mine ? mineLevel : factoryLevel;
+
+
                         var popup = (MinePopup)GetCastlePopupByType(type);
-                        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(mineLevel + 1);
+                        var nextLevelData = GlobalData.instance.dataManager.GetBuildDataMineByLevel(_level + 1);
                         CastleBuildingData nextBuildData = null;
                         if (nextLevelData != null)
                         {
@@ -129,7 +152,7 @@ public class CastleManager : MonoBehaviour
                         }
                         popup.SetUpGradeText(upgradeData, nextBuildData);
                         var _type = type == CastlePopupType.mine ? CastleController.BuildingType.MINE : CastleController.BuildingType.FACTORY;
-                        var _level = type == CastlePopupType.mine ? mineLevel : factoryLevel;
+                      
                         castleController.SetBuildUpgrade( _type,_level );
 
                         if (nextBuildData == null)
