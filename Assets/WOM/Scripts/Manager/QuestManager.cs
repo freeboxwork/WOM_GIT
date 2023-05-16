@@ -12,12 +12,15 @@ public class QuestManager : MonoBehaviour
     
     void Start()
     {
-        
+        SetBtnEvent();
     }
 
     void SetBtnEvent()
     {
-
+        btn_showQuestPopup.onClick.AddListener(() => {
+            questPopup.gameObject.SetActive(true);
+            btn_showQuestPopup.gameObject.SetActive(false);
+        });
     }
 
    
