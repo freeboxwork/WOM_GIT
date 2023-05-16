@@ -1530,11 +1530,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 630736420063910280, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3740893056698269306, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3366819005177823854, guid: 29a144983112de24e9c3860b6a9a469e, type: 3}
     - target: {fileID: 4862160205534152494, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
       propertyPath: m_SpriteKey
-      value: 4.0745438e-19
+      value: 1.0809512e-22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7beac88d15916f84dbb101af58a6a269, type: 3}
@@ -2867,7 +2871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3715019508681735442, guid: 2a7c4a618adcd08479317b6fbc618445, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3776735927489089325, guid: 2a7c4a618adcd08479317b6fbc618445, type: 3}
       propertyPath: dustEffect
