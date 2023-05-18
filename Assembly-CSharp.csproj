@@ -203,6 +203,7 @@
      <Compile Include="Assets\GooglePlayGames\ISocialPlatform\PlayGamesScore.cs" />
      <Compile Include="Assets\WOM\Scripts\Controller\UnionInfoPopupController.cs" />
      <Compile Include="Assets\Plug-in\IAP\EasyIAP\Scripts\VisiualScriptingSupport\PlaymakerSupport\InitializeIAP.cs" />
+     <Compile Include="Assets\WOM\Scripts\Graphics\BackgroundSpriteFileData.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\WOM\Scripts\FX\EffectManager.cs" />
      <Compile Include="Assets\Plug-in\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
@@ -311,7 +312,6 @@
      <Compile Include="Assets\WOM\Scripts\Data\DataManager.cs" />
      <Compile Include="Assets\Plug-in\IAP\EasyIAP\Scripts\VisiualScriptingSupport\GameFlowSupport\CheckIfBought.cs" />
      <Compile Include="Assets\Plug-in\IAP\EasyIAP\Scripts\VisiualScriptingSupport\GameFlowSupport\GetStorePrice.cs" />
-     <Compile Include="Assets\WOM\Scripts\Graphics\BackgroundSpriteFileData.cs" />
      <None Include="Assets\WOM\Resources\Data\SheetData\DungenMonsterDataCoal.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\WOM\Resources\Data\SheetData\DungenMonsterDataDice.txt" />
