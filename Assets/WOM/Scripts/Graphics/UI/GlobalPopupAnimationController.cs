@@ -9,7 +9,9 @@ namespace ProjectGraphics
         [Header("등장 속도")]
         public float openDuration = 0.5f;
         [Header("올라가는 속도")]
-        public float climbDuration = 0.5f;
+        public float climbDuration = 2f;
+        [Header("사라지는 속도")]
+        public float fadeOutDuration = 1f;
         public Vector3 climeTargetPosition;
         public Vector3 startPosition;
 
@@ -50,6 +52,7 @@ namespace ProjectGraphics
             }
             else if (currentIndex == slots.Length - 1)
             {
+                
                 previousIndex = currentIndex - 1;
                 currentIndex = 0;
             }

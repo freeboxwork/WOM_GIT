@@ -9,6 +9,7 @@ using System.Linq;
 using ProjectGraphics;
 using Unity.VisualScripting;
 using SRF.UI;
+using DG.Tweening;
 
 public class UiController : MonoBehaviour
 {
@@ -47,7 +48,6 @@ public class UiController : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void SetMainPanels()
@@ -470,4 +470,30 @@ public class UiController : MonoBehaviour
     {
         UtilityMethod.GetCustomTypeGMById(7).SetActive(value);
     }
+
+    public RectTransform menuRectTrans;
+    bool isMenuHide = false;
+    [Sirenix.OdinInspector.Button]
+    public void MoveMenu()
+    {
+        //Debug.Log(menuRectTrans.sizeDelta);
+        if (!isMenuHide)
+        {
+            menuRectTrans.DOAnchorPos(new Vector2(0f, -150f), 0.5f).SetEase(Ease.InOutExpo);
+
+        }
+        else
+        {
+            menuRectTrans.DOAnchorPos(new Vector2(0f, 0f), 0.5f).SetEase(Ease.InOutExpo);
+        }
+
+        isMenuHide = !isMenuHide;
+    }
+
+
+
+
+
+
+
 }
