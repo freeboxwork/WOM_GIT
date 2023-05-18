@@ -8,10 +8,10 @@ using DG.Tweening;
 
 namespace ProjectGraphics
 {
-    //´Ü¼øÇÏ°í ½ÉÇÃÇÏ°Ô
+    //ï¿½Ü¼ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
     public class MessageSlot : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI titleText;
+        //[SerializeField] TextMeshProUGUI titleText;
         [SerializeField] TextMeshProUGUI messageText;
         [SerializeField] Image backImage;
         [SerializeField] RectTransform rect;
@@ -23,8 +23,8 @@ namespace ProjectGraphics
 
         private void Awake()
         {
-            //ÁØºñ
-            titleTextColor = titleText.color;
+            //ï¿½Øºï¿½
+            //titleTextColor = titleText.color;
             messageTextColor = messageText.color;
             backImageColor = backImage.color;
         }
@@ -34,14 +34,14 @@ namespace ProjectGraphics
             InitializedSlot();
         }
 
-        //ÃÊ±âÈ­
+        //ï¿½Ê±ï¿½È­
         private void InitializedSlot()
         {
             transform.localScale = Vector3.zero;
             rect.anchoredPosition = popupAnimationController.startPosition;
 
-            titleText.color = titleTextColor;
-            titleText.text = "Title";
+            //titleText.color = titleTextColor;
+            //titleText.text = "Title";
 
             messageText.color = messageTextColor;
             messageText.text = "Message";
@@ -49,22 +49,27 @@ namespace ProjectGraphics
             backImage.color = backImageColor;
         }
 
-        //µîÀå
+        //ï¿½ï¿½ï¿½ï¿½
         public void OpenTheMessageAnimation(string title, string message)
         {
-            titleText.text = title;
+            //titleText.text = title;
             messageText.text = message;
-            transform.DOScale(Vector3.one, popupAnimationController.openDuration).SetEase(Ease.OutBack);
+            transform.DOScale(Vector3.one, popupAnimationController.openDuration).SetEase(Ease.OutBack).OnComplete(FadeOut);
         }
 
-        //¹Ð¸²°ú »èÁ¦
+        //ï¿½Ð¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         public void ClimbTheMessageAnimation()
         {
-            titleText.DOFade(0.0f, popupAnimationController.climbDuration).SetEase(Ease.InQuad);
-            messageText.DOFade(0.0f, popupAnimationController.climbDuration).SetEase(Ease.InQuad);
-            backImage.DOFade(0.0f, popupAnimationController.climbDuration).SetEase(Ease.InQuad);
+            //titleText.DOFade(0.0f, popupAnimationController.climbDuration).SetEase(Ease.InQuad);
+            //FadeOut();
             rect.DOAnchorPos(popupAnimationController.climeTargetPosition, popupAnimationController.climbDuration).SetEase(Ease.OutQuart)
                 .OnComplete(OnCompletedAnimation);
+        }
+
+        void FadeOut()
+        {
+            messageText.DOFade(0.0f, popupAnimationController.fadeOutDuration).SetEase(Ease.InQuad);
+            backImage.DOFade(0.0f, popupAnimationController.fadeOutDuration).SetEase(Ease.InQuad).OnComplete(OnCompletedAnimation);;
         }
 
         private void OnCompletedAnimation()
