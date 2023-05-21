@@ -1092,6 +1092,10 @@
       <Project>{c366a5bb-8b6d-940a-6cd9-1a182f0847b1}</Project>
       <Name>CFXRRuntime</Name>
     </ProjectReference>
+    <ProjectReference Include="ParticleImage.csproj">
+      <Project>{46a01093-3459-1c18-d2a8-4e55d85e5d3e}</Project>
+      <Name>ParticleImage</Name>
+    </ProjectReference>
     <ProjectReference Include="StompyRobot.SRDebugger.csproj">
       <Project>{a4718b96-4f1f-03c4-f084-c0584de8503c}</Project>
       <Name>StompyRobot.SRDebugger</Name>
@@ -1104,17 +1108,13 @@
       <Project>{70190dd1-0175-d4d2-5b6c-ed44ec3f4c3a}</Project>
       <Name>CFXRDemo</Name>
     </ProjectReference>
-    <ProjectReference Include="StompyRobot.SRF.csproj">
-      <Project>{f9039e16-2e1e-ddcd-b4d2-6ea4bf654922}</Project>
-      <Name>StompyRobot.SRF</Name>
-    </ProjectReference>
     <ProjectReference Include="ParticleImage.Editor.csproj">
       <Project>{59da5873-9722-dd6f-8b70-a120ce89159e}</Project>
       <Name>ParticleImage.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="ParticleImage.csproj">
-      <Project>{46a01093-3459-1c18-d2a8-4e55d85e5d3e}</Project>
-      <Name>ParticleImage</Name>
+    <ProjectReference Include="StompyRobot.SRF.csproj">
+      <Project>{f9039e16-2e1e-ddcd-b4d2-6ea4bf654922}</Project>
+      <Name>StompyRobot.SRF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
