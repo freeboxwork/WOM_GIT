@@ -142,7 +142,6 @@
      <Compile Include="Assets\Plug-in\IAP\EasyIAP\Scripts\VisiualScriptingSupport\PlaymakerSupport\Subscription\IsExpired.cs" />
      <Compile Include="Assets\Plug-in\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
      <Compile Include="Assets\WOM\Scripts\Common\EnumDefinition.cs" />
-     <Compile Include="Assets\Plug-in\GUI PRO Kit - Casual Game\Extensions\UIParticle\UIParticleSystem.cs" />
      <Compile Include="Assets\WOM\Scripts\FX\BackgroundAnimController.cs" />
      <Compile Include="Assets\WOM\Scripts\Graphics\G_Editor\SpriteFileDataEditor.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\PlayerStats.cs" />
@@ -325,7 +324,6 @@
      <None Include="Assets\Plug-in\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Glow.shader" />
      <None Include="Assets\WOM\Resources\Data\SheetData\UnionData.txt" />
      <None Include="Assets\WOM\Resources\Data\SheetData\TalentDamageData.txt" />
-     <None Include="Assets\Plug-in\GUI PRO Kit - Casual Game\ResourcesData\Shader &amp; Materials\UIAdditive.shader" />
      <None Include="Assets\Plug-in\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Ubershader.shader" />
      <None Include="Assets\WOM\Resources\Data\SheetData\MonsterData_Gold_New.txt" />
      <None Include="Assets\Plug-in\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_SETTINGS.cginc" />
@@ -337,7 +335,6 @@
      <None Include="Assets\Plug-in\JMO Assets\Cartoon FX (legacy)\CartoonFX Free.txt" />
      <None Include="Assets\WOM\Resources\Data\SheetData\DNAData.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-     <None Include="Assets\Plug-in\GUI PRO Kit - Casual Game\Extensions\UIParticle\hidden particle.shader" />
      <None Include="Assets\WOM\Resources\Data\SheetData\RewardDiceEvolutionData.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
      <None Include="Assets\WOM\Resources\Data\SheetData\SummonGradeData.txt" />
@@ -395,7 +392,6 @@
      <None Include="Assets\WOM\Resources\Data\SheetData\MonsterData_Evolution.txt" />
      <None Include="Assets\Plug-in\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
      <None Include="Assets\WOM\Resources\Data\SheetData\TrainingCriticalChanceData.txt" />
-     <None Include="Assets\Plug-in\GUI PRO Kit - Casual Game\ResourcesData\Shader &amp; Materials\MobileAdditive.shader" />
      <None Include="Assets\Plug-in\JMO Assets\Cartoon FX (legacy)\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\Plug-in\ParticleEffectForGUI\Shaders\UIAdditive.shader" />
@@ -1273,6 +1269,10 @@
       <Project>{c366a5bb-8b6d-940a-6cd9-1a182f0847b1}</Project>
       <Name>CFXRRuntime</Name>
     </ProjectReference>
+    <ProjectReference Include="ParticleImage.csproj">
+      <Project>{46a01093-3459-1c18-d2a8-4e55d85e5d3e}</Project>
+      <Name>ParticleImage</Name>
+    </ProjectReference>
     <ProjectReference Include="StompyRobot.SRDebugger.csproj">
       <Project>{a4718b96-4f1f-03c4-f084-c0584de8503c}</Project>
       <Name>StompyRobot.SRDebugger</Name>
@@ -1285,17 +1285,13 @@
       <Project>{70190dd1-0175-d4d2-5b6c-ed44ec3f4c3a}</Project>
       <Name>CFXRDemo</Name>
     </ProjectReference>
-    <ProjectReference Include="StompyRobot.SRF.csproj">
-      <Project>{f9039e16-2e1e-ddcd-b4d2-6ea4bf654922}</Project>
-      <Name>StompyRobot.SRF</Name>
-    </ProjectReference>
     <ProjectReference Include="ParticleImage.Editor.csproj">
       <Project>{59da5873-9722-dd6f-8b70-a120ce89159e}</Project>
       <Name>ParticleImage.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="ParticleImage.csproj">
-      <Project>{46a01093-3459-1c18-d2a8-4e55d85e5d3e}</Project>
-      <Name>ParticleImage</Name>
+    <ProjectReference Include="StompyRobot.SRF.csproj">
+      <Project>{f9039e16-2e1e-ddcd-b4d2-6ea4bf654922}</Project>
+      <Name>StompyRobot.SRF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
