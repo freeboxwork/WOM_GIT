@@ -28,8 +28,8 @@ public class GoogleLogin : MonoBehaviour
 
     void LogIn()
     {
-        Debug.Log("·Î±×ÀÎ ½Ãµµ");
-        //·Î±×ÀÎÀÌ ¾ÈµÇ¾î ÀÖÀ¸¸é
+        Debug.Log("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ãµï¿½");
+        //ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (!Social.localUser.authenticated)
         {
 
@@ -37,12 +37,12 @@ public class GoogleLogin : MonoBehaviour
             {
                 if (isSuccess)
                 {
-                    Debug.Log("±¸±Û ·Î±×ÀÎ ¼º°ø");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                     SceneManager.LoadScene("Main");
                 }
                 else
                 {
-                    Debug.Log("±¸±Û ·Î±×ÀÎ ½ÇÆÐ");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
                 }
             });
@@ -54,6 +54,6 @@ public class GoogleLogin : MonoBehaviour
     void LogOut()
     {
         ((PlayGamesPlatform)Social.Active).SignOut();
-        Debug.Log("±¸±Û ·Î±×¾Æ¿ô"); 
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Î±×¾Æ¿ï¿½"); 
     }
 }
