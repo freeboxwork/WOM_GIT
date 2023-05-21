@@ -26,3 +26,4 @@ relative/path/*.txt text eol-lf
 *.aab filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.ArtifactDB filter=lfs diff=lfs merge=lfs -text
+ArtifactDB filter=lfs diff=lfs merge=lfs -text
