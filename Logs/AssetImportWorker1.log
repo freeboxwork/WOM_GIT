@@ -15,7 +15,7 @@ C:/Users/spike/Documents/GitHub/WOM_GIT
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-58031
+60391
 Successfully changed project path to: C:/Users/spike/Documents/GitHub/WOM_GIT
 C:/Users/spike/Documents/GitHub/WOM_GIT
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/spike/Documents/GitHub/WOM_GIT
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [20768] Host "[IP] 192.168.219.105 [Port] 0 [Flags] 2 [Guid] 2464375545 [EditorId] 2464375545 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FULIFO0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [19020] Host "[IP] 192.168.219.105 [Port] 0 [Flags] 2 [Guid] 1707741354 [EditorId] 1707741354 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FULIFO0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [20768] Host "[IP] 192.168.219.105 [Port] 0 [Flags] 2 [Guid] 2464375545 [EditorId] 2464375545 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FULIFO0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [19020] Host "[IP] 192.168.219.105 [Port] 0 [Flags] 2 [Guid] 1707741354 [EditorId] 1707741354 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FULIFO0) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 137.10 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 139.90 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.20f1 (577897200b8b)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/Resources/UnitySubsystems
@@ -67,59 +67,59 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56104
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56784
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.20f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.013103 seconds.
+Registered in 0.013264 seconds.
 Native extension for WindowsStandalone target not found
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 268 ms
-Refreshing native plugins compatible for Editor in 110.52 ms, found 4 plugins.
+Android Extension - Scanning For ADB Devices 270 ms
+Refreshing native plugins compatible for Editor in 105.53 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.877 seconds
+- Completed reload, in  0.881 seconds
 Domain Reload Profiling:
-	ReloadAssembly (878ms)
-		BeginReloadAssembly (81ms)
+	ReloadAssembly (882ms)
+		BeginReloadAssembly (89ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (706ms)
-			LoadAssemblies (79ms)
+		EndReloadAssembly (700ms)
+			LoadAssemblies (85ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (85ms)
+			SetupTypeCache (80ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (22ms)
+			RebuildScriptCaches (23ms)
 			SetupLoadedEditorAssemblies (547ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (329ms)
+				InitializePlatformSupportModulesInManaged (332ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (111ms)
+				RefreshPlugins (106ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (68ms)
-				ProcessInitializeOnLoadMethodAttributes (39ms)
+				ProcessInitializeOnLoadAttributes (70ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.026759 seconds.
+Registered in 0.024796 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\spike\Documents\GitHub\WOM_GIT\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\spike\Documents\GitHub\WOM_GIT\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 117.61 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 113.11 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unable to write to 'ProjectSettings\GvhProjectSettings.xml' (System.IO.IOException: Sharing violation on path C:\Users\spike\Documents\GitHub\WOM_GIT\ProjectSettings\GvhProjectSettings.xml
   at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <88e4733ac7bc4ae1b496735e6b83bbd3>:0 
@@ -153,59 +153,55 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
 (Filename: Assets/GooglePlayGames/Editor/GPGSUpgrader.cs Line: 38)
 
-System.IO.IOException: Sharing violation on path C:\Users\spike\Documents\GitHub\WOM_GIT\ProjectSettings\GooglePlayGameSettings.txt
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <88e4733ac7bc4ae1b496735e6b83bbd3>:0 
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <88e4733ac7bc4ae1b496735e6b83bbd3>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
-  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <88e4733ac7bc4ae1b496735e6b83bbd3>:0 
-  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append) [0x00008] in <88e4733ac7bc4ae1b496735e6b83bbd3>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool)
-  at GooglePlayGames.Editor.GPGSProjectSettings.Save () [0x0004d] in C:\Users\spike\Documents\GitHub\WOM_GIT\Assets\GooglePlayGames\Editor\GPGSProjectSettings.cs:182 
-  at GooglePlayGames.Editor.GPGSUpgrader..cctor () [0x00041] in C:\Users\spike\Documents\GitHub\WOM_GIT\Assets\GooglePlayGames\Editor\GPGSUpgrader.cs:43 
+GPGSUpgrader done
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogError (object)
+UnityEngine.Debug:Log (object)
+GooglePlayGames.Editor.GPGSUpgrader:.cctor () (at Assets/GooglePlayGames/Editor/GPGSUpgrader.cs:57)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+(Filename: Assets/GooglePlayGames/Editor/GPGSUpgrader.cs Line: 57)
+
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
 Mono: successfully reloaded assembly
-- Completed reload, in  1.912 seconds
+- Completed reload, in  1.863 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1913ms)
+	ReloadAssembly (1864ms)
 		BeginReloadAssembly (111ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (1711ms)
-			LoadAssemblies (123ms)
+		EndReloadAssembly (1660ms)
+			LoadAssemblies (128ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (222ms)
+			SetupTypeCache (225ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (62ms)
-			SetupLoadedEditorAssemblies (1264ms)
+			RebuildScriptCaches (65ms)
+			SetupLoadedEditorAssemblies (1205ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (27ms)
+				InitializePlatformSupportModulesInManaged (25ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (118ms)
-				BeforeProcessingInitializeOnLoad (121ms)
-				ProcessInitializeOnLoadAttributes (739ms)
-				ProcessInitializeOnLoadMethodAttributes (246ms)
-				AfterProcessingInitializeOnLoad (14ms)
+				RefreshPlugins (113ms)
+				BeforeProcessingInitializeOnLoad (124ms)
+				ProcessInitializeOnLoadAttributes (698ms)
+				ProcessInitializeOnLoadMethodAttributes (233ms)
+				AfterProcessingInitializeOnLoad (12ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (10ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Refreshing native plugins compatible for Editor in 1.90 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.61 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5908 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 99 unused Assets / (0.7 MB). Loaded Objects now: 6392.
-Memory consumption went from 237.3 MB to 236.6 MB.
-Total: 17.252500 ms (FindLiveObjects: 0.456500 ms CreateObjectMapping: 0.150700 ms MarkObjects: 16.313500 ms  DeleteObjects: 0.330600 ms)
+Unloading 5904 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 99 unused Assets / (0.7 MB). Loaded Objects now: 6388.
+Memory consumption went from 236.6 MB to 235.9 MB.
+Total: 15.046500 ms (FindLiveObjects: 0.443800 ms CreateObjectMapping: 0.143000 ms MarkObjects: 14.068000 ms  DeleteObjects: 0.390500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -219,148 +215,16 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 425687.277991 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Prize Wheel Spin 2 Reward.wav
-  artifactKey: Guid(fd57e0caacaa6474e9834c86a877baab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Prize Wheel Spin 2 Reward.wav using Guid(fd57e0caacaa6474e9834c86a877baab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2efd063655c2a87d337871cb4d04cf90') in 0.139928 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Positive 7.wav
-  artifactKey: Guid(2dba7d45256d4ed4187283d46f3a6bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Positive 7.wav using Guid(2dba7d45256d4ed4187283d46f3a6bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee795f72f84aaac8f6ec165486bb1648') in 0.020237 seconds 
+  Time since last request: 428509.397401 seconds.
+  path: Assets/WOM/Resources/2D/GameIcon_01.png
+  artifactKey: Guid(3f923be70b41eae4c82e42e2feffae5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WOM/Resources/2D/GameIcon_01.png using Guid(3f923be70b41eae4c82e42e2feffae5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e250dc5f957ec5c24a183e770b7ac62') in 0.153101 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000021 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 31.wav
-  artifactKey: Guid(5be34e82f45c4d6498a8402b16bf73a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 31.wav using Guid(5be34e82f45c4d6498a8402b16bf73a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1d9f56e985a1ef8f88da25e945ed869') in 0.017851 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Cash Register.wav
-  artifactKey: Guid(3581101cd18d34940aa72fa5220515c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Cash Register.wav using Guid(3581101cd18d34940aa72fa5220515c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c92a506f169b0f64d913a784f850511e') in 0.013171 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 09.wav
-  artifactKey: Guid(8e923a5f39865d04aa115c6f6ef90054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 09.wav using Guid(8e923a5f39865d04aa115c6f6ef90054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2866f4af6fecb57970f16e1dc814049f') in 0.013042 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 10 - Oriental.wav
-  artifactKey: Guid(b3ab7d46e6cd4c44191b3bae30799ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 10 - Oriental.wav using Guid(b3ab7d46e6cd4c44191b3bae30799ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f91b4bc55a95fb5a32c5238bfc8a294') in 0.010890 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Negative 9.wav
-  artifactKey: Guid(6e1723e405484c447ac8bf74d6c8c074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Negative 9.wav using Guid(6e1723e405484c447ac8bf74d6c8c074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10227fb73b70537bb41a9b855bebe470') in 0.011935 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Book Page 1.wav
-  artifactKey: Guid(e334a9ed77aa41c4f86fb88e6cea19be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Book Page 1.wav using Guid(e334a9ed77aa41c4f86fb88e6cea19be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f131dceabca9502ea7f4b15e9a2d083b') in 0.011033 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 45.wav
-  artifactKey: Guid(02a52017b998cc8479363e08c4d8a09b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 45.wav using Guid(02a52017b998cc8479363e08c4d8a09b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a411cdf49ae1fdd974483f8fbf3a1685') in 0.011889 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Click 09.wav
-  artifactKey: Guid(cb1fef58f5c7d694d9788e2f21981f7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Click 09.wav using Guid(cb1fef58f5c7d694d9788e2f21981f7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd73ec542897bf78e1d2e4edf57d59365') in 0.013131 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Negative 2.wav
-  artifactKey: Guid(5c0a82cdd3d529b4d911bd8d69fac7cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Negative 2.wav using Guid(5c0a82cdd3d529b4d911bd8d69fac7cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cf9210f25366b382bf5d757d8de7b36') in 0.012031 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Negative 8.wav
-  artifactKey: Guid(38dfc7062c23a6a45987c44385fe5adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Negative 8.wav using Guid(38dfc7062c23a6a45987c44385fe5adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef68baa805c3c4d1844e915b899a22a1') in 0.011929 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Positive 6.wav
-  artifactKey: Guid(c9d9185a5e57b854b9b8553453d24564) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Positive 6.wav using Guid(c9d9185a5e57b854b9b8553453d24564) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14a9fbdb00f9fed44fe0569bc3b4b1bd') in 0.012382 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 32.wav
-  artifactKey: Guid(b3cf24375706f20459f58c6241acb68f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 32.wav using Guid(b3cf24375706f20459f58c6241acb68f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a63b4a881ba4d3dc6f96a5a35c359f22') in 0.012018 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 18.wav
-  artifactKey: Guid(ca67a5965100eea49a90c3cb256dde18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 18.wav using Guid(ca67a5965100eea49a90c3cb256dde18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e4639d464fca9b10fe78002648f6bbc') in 0.011871 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 33.wav
-  artifactKey: Guid(434c885ea34f9484a959ba2b19500702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Special & Powerup 33.wav using Guid(434c885ea34f9484a959ba2b19500702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf8759eb270b5d1c09362ca5fcc5f630') in 0.011980 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Negative 6.wav
-  artifactKey: Guid(ba8e5c2372d362f4284b119af33bdd41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Negative 6.wav using Guid(ba8e5c2372d362f4284b119af33bdd41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '891b7b4b8c0479379ac870307b65bf18') in 0.012157 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Positive 3.wav
-  artifactKey: Guid(d15d2dbe42e36cf4fb27f94524e4ace1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Positive 3.wav using Guid(d15d2dbe42e36cf4fb27f94524e4ace1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43c1d8f87816a6f65cf4939cc2994262') in 0.012457 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Buzz Error 09.wav
-  artifactKey: Guid(082d3d8beb20eac4b95533cc853754c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Buzz Error 09.wav using Guid(082d3d8beb20eac4b95533cc853754c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ef365c900df7519dcd08f292ea42a85') in 0.011640 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 17.wav
-  artifactKey: Guid(e90d3f290a7649846a41627926023f1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Music Loops/Casual Game Music 17.wav using Guid(e90d3f290a7649846a41627926023f1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2aeec3c3a6d5f09c9dbe960ce26fc36') in 0.012457 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Sound Effects/Click 18.wav
-  artifactKey: Guid(a15be5ba9c01a244db44a53f3f17ead7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Sound Effects/Click 18.wav using Guid(a15be5ba9c01a244db44a53f3f17ead7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4322db129bb9292f207a4a82ceb2bdad') in 0.013978 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Positive 2.wav
-  artifactKey: Guid(a7bb2afe1e5b8ac409d2682d82f25448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Positive 2.wav using Guid(a7bb2afe1e5b8ac409d2682d82f25448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3d8502ddd050c82088dacda4eccb07d') in 0.010992 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Positive 10.wav
-  artifactKey: Guid(f5b1a259960fac04188a5d6f4a88fb41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Positive 10.wav using Guid(f5b1a259960fac04188a5d6f4a88fb41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74c16fbfa0763b300381939459e0e79f') in 0.011506 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Plug-in/Casual Music Pack/Jingles/Negative 4.wav
-  artifactKey: Guid(6e110cfc2e52ffd4f998055f05d421d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plug-in/Casual Music Pack/Jingles/Negative 4.wav using Guid(6e110cfc2e52ffd4f998055f05d421d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14ee8511eb59002ce13f884e8e9b0dd0') in 0.013317 seconds 
+  path: Assets/WOM/Resources/2D/Icon_News.png
+  artifactKey: Guid(5d4330732fd9bb442b521d80d31fe32b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WOM/Resources/2D/Icon_News.png using Guid(5d4330732fd9bb442b521d80d31fe32b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '958924117cd6663ece96d4591ef54105') in 0.012819 seconds 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting
