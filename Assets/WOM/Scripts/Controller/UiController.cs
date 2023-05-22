@@ -43,6 +43,9 @@ public class UiController : MonoBehaviour
     public FloatingTextValues floatingTextBone;
     public FloatingTextValues floatingTextGem;
 
+    public Button btnMainMenuClose;
+    MenuPanelType curMenuPanelType = MenuPanelType.none;
+
     void Start()
     {
     }
@@ -80,7 +83,6 @@ public class UiController : MonoBehaviour
         yield return null;
 
     }
-
 
     // SET PLAYER UI
     void SetGoodsUI()
@@ -267,6 +269,13 @@ public class UiController : MonoBehaviour
         //    UtilityMethod.SetBtnEventCustomTypeByID(((int)type + 1), () => { EnableMenuPanel(type); });
         //}
 
+        // 메인메뉴 판넬 닫기 버튼
+        btnMainMenuClose.onClick.AddListener(() =>
+        {
+            EnableMenuPanel(curMenuPanelType);
+            btnMainMenuClose.interactable = false;
+        });
+
 
         for (int i = 0; i < mainButtons.Count; i++)
         {
@@ -390,14 +399,19 @@ public class UiController : MonoBehaviour
     }
 
 
+
     public void EnableMenuPanel(MenuPanelType type)
     {
         for (int i = 0; i < mainPanels.Count; i++)
         {
             if (i == (int)type)
             {
+                curMenuPanelType = type;
                 //Debug.Log(type);
                 var enableValue = !mainPanels[i].activeSelf;
+
+                btnMainMenuClose.interactable = enableValue;
+
                 mainPanels[i].SetActive(enableValue);
                 mainButtons[i].Select(enableValue);
                 ResetMainPannelScrollViewPosY(type);

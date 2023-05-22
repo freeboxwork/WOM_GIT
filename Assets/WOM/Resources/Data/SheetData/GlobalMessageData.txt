@@ -143,6 +143,14 @@
       "message_kor": "소탕권이 부족 합니다.",
       "message_eng": "Not enough clear Ticket.",
       "비고": ""
+    },
+    {
+      "id": 18,
+      "popupType": "message",
+      "title": "message",
+      "message_kor": "게임을 종료 하시겠습니까?",
+      "message_eng": "Are you sure you want to quit the game?",
+      "비고": ""
     }
   ]
 }

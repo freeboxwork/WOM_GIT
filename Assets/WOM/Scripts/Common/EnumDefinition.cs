@@ -1,5 +1,5 @@
 
-public class EnumDefinition 
+public class EnumDefinition
 {
     public enum CustomDataType
     {
@@ -7,7 +7,7 @@ public class EnumDefinition
         text,
         image,
         animCont,
-        tr, 
+        tr,
         gm // gameobject
     }
 
@@ -141,7 +141,8 @@ public class EnumDefinition
         dungeon,
         shop,
         union,
-        dna
+        dna,
+        none,
     }
 
     public enum EvolutionDiceStatType
