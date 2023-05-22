@@ -20,7 +20,7 @@ public class EvolutionManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
 
@@ -37,7 +37,7 @@ public class EvolutionManager : MonoBehaviour
         // 진화 주사위 사용 개수 세팅
         SetTxtUsingDiceCount();
 
-        yield return null;             
+        yield return null;
     }
 
     public void SetUI_Pannel_Evolution(int dataId)
@@ -75,7 +75,7 @@ public class EvolutionManager : MonoBehaviour
 
     public void SetUI_EvolutuinSlotsLockerItems(int dataId)
     {
-      
+
         var data = GlobalData.instance.dataManager.GetRewaedEvolutionGradeDataByID(dataId);
 
         // 자물쇠 오픈
@@ -89,14 +89,14 @@ public class EvolutionManager : MonoBehaviour
         GlobalData.instance.evolutionManager.SetTxtUsingDiceCount();
 
         //모든 slot 오픈시 진화전 이동 버튼 비활성화
-        if(data.slotCount == GlobalData.instance.dataManager.rewardEvolutionGradeDatas.data.Max(m => m.slotCount))
+        if (data.slotCount == GlobalData.instance.dataManager.rewardEvolutionGradeDatas.data.Max(m => m.slotCount))
         {
             UtilityMethod.GetCustomTypeBtnByID(20).interactable = false;
         }
     }
-         
 
-    public void SetEvolutuinSlotName(EvolutionDiceStatType type, EvolutionSlot slot, float value , string clorHexCode)
+
+    public void SetEvolutuinSlotName(EvolutionDiceStatType type, EvolutionSlot slot, float value, string clorHexCode)
     {
         var data = GlobalData.instance.dataManager.GetConvertTextDataByEvolutionDiceStatType(type);
         var txtValue = $"{data.kr_Front} {value}{data.kr_Back}";
@@ -153,7 +153,7 @@ public class EvolutionManager : MonoBehaviour
             EnableBtnEvolutionMonsterChange(false);
 
             // 진화전 포기 버튼 활성화
-            UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(true);
+            // UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(true);
 
         });
 
@@ -167,7 +167,8 @@ public class EvolutionManager : MonoBehaviour
         });
 
         // 진화 주사위 뽑기 버튼
-        UtilityMethod.SetBtnEventCustomTypeByID(22, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(22, () =>
+        {
             if (evolutionSlots.Any(a => a.isUnlock == true))
                 StartCoroutine(GlobalData.instance.evolutionDiceLotteryManager.RollEvolutionDice());
             else
@@ -175,10 +176,11 @@ public class EvolutionManager : MonoBehaviour
         });
 
         // 진화전 포기 버튼
-        UtilityMethod.SetBtnEventCustomTypeByID(30, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(30, () =>
+        {
             StartCoroutine(GlobalData.instance.eventController.ProcessEvolutionMonsterGiveUp());
-        }); 
-        
+        });
+
     }
 
 
@@ -218,7 +220,8 @@ public class EvolutionManager : MonoBehaviour
     public void UnionLotteryGameStart(int roundCount)
     {
         //trLotteryGameSet.gameObject.SetActive(true);
-        GlobalData.instance.lotteryManager.LotteryStart(roundCount, () => {
+        GlobalData.instance.lotteryManager.LotteryStart(roundCount, () =>
+        {
             Debug.Log(roundCount + "회 뽑기 게임 종료 이벤트 실행");
         });
     }

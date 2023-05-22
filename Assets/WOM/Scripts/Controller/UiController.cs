@@ -5,23 +5,20 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using static EnumDefinition;
-using System.Linq;
 using ProjectGraphics;
-using Unity.VisualScripting;
-using SRF.UI;
 using DG.Tweening;
 
 public class UiController : MonoBehaviour
 {
     public CustomTypeDataManager customTypeDataManager;
-    
+
     [Header("Monster 관련 UI 항목")]
     public TextMeshProUGUI txtMonsterHp;
     public TextMeshProUGUI txtPhaseCount;
     public TextMeshProUGUI txtGold;
     public Button btnBossChallenge;
 
-    [Header("보스몬스터 도전 관련 UI 항목" )]
+    [Header("보스몬스터 도전 관련 UI 항목")]
     public TextMeshProUGUI txtBossMonChallengeTimer;
     public Image imgBossMonTimer;
     public Image imgBossMonTimerParent;
@@ -31,7 +28,7 @@ public class UiController : MonoBehaviour
 
     [SerializeField]
     List<GameObject> mainPanels = new List<GameObject>();
-    public List< MainBtnSlot> mainButtons = new List<MainBtnSlot>();
+    public List<MainBtnSlot> mainButtons = new List<MainBtnSlot>();
 
     //[Header("진화 UI 관련 항목")]
     //public List<Sprite> evolutionGradeBadgeImages = new List<Sprite>();
@@ -97,7 +94,7 @@ public class UiController : MonoBehaviour
         SetTxtClearTicket();
     }
 
-     void SetTxtClearTicket()
+    void SetTxtClearTicket()
     {
         var ticket = GlobalData.instance.player.clearTicket;
         GlobalData.instance.dungeonEnterPopup.SetTxtClierTicket(ticket);
@@ -110,20 +107,20 @@ public class UiController : MonoBehaviour
     {
         txtMonsterHp.text = value.ToString();
     }
-      
+
     public void SetTxtPhaseCount(int value)
     {
         var countValue = GlobalData.instance.player.pahseCountOriginalValue - value;
         txtPhaseCount.text = countValue.ToString();
 
-        
+
     }
 
     public void SetSliderMonsterHp(float value)
     {
-        var sliderValue = value / GlobalData.instance.player.currentMonsterHp ;
+        var sliderValue = value / GlobalData.instance.player.currentMonsterHp;
         UtilityMethod.GetCustomTypeImageById(41).fillAmount = sliderValue;
-        
+
         // 0.1초 뒤에 실행
         StartCoroutine(SetSliderBgWithDelay(sliderValue, 0.15f));
     }
@@ -183,7 +180,7 @@ public class UiController : MonoBehaviour
     public void SetTxtGem(int value)
     {
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
-        
+
         // floting text effect
         floatingTextGem.gameObject.SetActive(true);
         floatingTextGem.SetText(changeValue, FloatingTextValues.ValueType.jewel);
@@ -196,7 +193,7 @@ public class UiController : MonoBehaviour
         var changeValue = UtilityMethod.ChangeSymbolNumber(value);
         UtilityMethod.SetTxtCustomTypeByID(65, changeValue);
     }
-         
+
 
 
 
@@ -204,15 +201,15 @@ public class UiController : MonoBehaviour
     public void SetTxtBossChallengeTimer(int value)
     {
         txtBossMonChallengeTimer.text = value.ToString();
-    } 
+    }
 
     public void SetImgTimerFilledRaidal(float value)
     {
         var sliderValue = 1 - value;
-        imgBossMonTimer.fillAmount = sliderValue; 
+        imgBossMonTimer.fillAmount = sliderValue;
     }
-        
-    public void EnableGlodMonsterIconOutlineEffect( bool value)
+
+    public void EnableGlodMonsterIconOutlineEffect(bool value)
     {
         UtilityMethod.GetCustomTypeImageById(43).enabled = value;
     }
@@ -220,13 +217,13 @@ public class UiController : MonoBehaviour
 
     void SetUiData()
     {
-        txtMonsterHp             = customTypeDataManager.GetCustomTypeData_Text(1);
-        txtPhaseCount            = customTypeDataManager.GetCustomTypeData_Text(2);
-        txtGold                  = customTypeDataManager.GetCustomTypeData_Text(4);
-        btnBossChallenge         = customTypeDataManager.GetCustomTypeData_Button(0);
+        txtMonsterHp = customTypeDataManager.GetCustomTypeData_Text(1);
+        txtPhaseCount = customTypeDataManager.GetCustomTypeData_Text(2);
+        txtGold = customTypeDataManager.GetCustomTypeData_Text(4);
+        btnBossChallenge = customTypeDataManager.GetCustomTypeData_Button(0);
         txtBossMonChallengeTimer = customTypeDataManager.GetCustomTypeData_Text(3);
-        imgBossMonTimer          = customTypeDataManager.GetCustomTypeData_Image(0);
-        imgBossMonTimerParent    = customTypeDataManager.GetCustomTypeData_Image(1);
+        imgBossMonTimer = customTypeDataManager.GetCustomTypeData_Image(0);
+        imgBossMonTimerParent = customTypeDataManager.GetCustomTypeData_Image(1);
         //trLotteryGameSet         = customTypeDataManager.GetCustomTypeData_Transform(0);
     }
 
@@ -234,27 +231,33 @@ public class UiController : MonoBehaviour
     void SetBtnEvent()
     {
         // 보스 몬스터 도전 버튼
-        btnBossChallenge.onClick.AddListener(() => {
-            
+        btnBossChallenge.onClick.AddListener(() =>
+        {
+
             EventManager.instance.RunEvent(CallBackEventType.TYPES.OnBossMonsterChallenge);
         });
 
         // 던전 몬스터 - 골드 도전 버튼
-        UtilityMethod.SetBtnEventCustomTypeByID(45, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(45, () =>
+        {
             EnableDungeonEnterPopup(MonsterType.dungeonGold);
         });
-        UtilityMethod.SetBtnEventCustomTypeByID(46, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(46, () =>
+        {
             EnableDungeonEnterPopup(MonsterType.dungeonDice);
         });
-        UtilityMethod.SetBtnEventCustomTypeByID(47, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(47, () =>
+        {
             EnableDungeonEnterPopup(MonsterType.dungeonBone);
         });
-        UtilityMethod.SetBtnEventCustomTypeByID(48, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(48, () =>
+        {
             EnableDungeonEnterPopup(MonsterType.dungeonCoal);
         });
 
         // 캐슬 빠저 나가기.
-        UtilityMethod.SetBtnEventCustomTypeByID(55, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(55, () =>
+        {
             StartCoroutine(ExitCastlePanel());
         });
 
@@ -265,11 +268,11 @@ public class UiController : MonoBehaviour
         //}
 
 
-        for(int i = 0; i < mainButtons.Count; i++)
+        for (int i = 0; i < mainButtons.Count; i++)
         {
             var index = i;
             var btn = mainButtons[index];
-            if(btn.menuPanelType == MenuPanelType.castle)
+            if (btn.menuPanelType == MenuPanelType.castle)
             {
                 btn.btnMain.onClick.AddListener(() =>
                 {
@@ -330,7 +333,7 @@ public class UiController : MonoBehaviour
 
             // UI 비활성화
             UtilityMethod.GetCustomTypeGMById(6).gameObject.SetActive(false);
-          
+
         }));
 
         UtilityMethod.EnableUIEventSystem(true);
@@ -367,13 +370,13 @@ public class UiController : MonoBehaviour
             StartCoroutine(GlobalData.instance.eventController.MonsterAppearCor(curMonsterType));
 
             // EnableMenuPanel(MenuPanelType.castle);
-           
+
 
         }));
 
         // 공격 가능 상태 전환
         GlobalData.instance.attackController.SetAttackableState(true);
-       
+
         yield return new WaitForSeconds(0.2f);
         UtilityMethod.EnableUIEventSystem(true);
     }
@@ -399,7 +402,7 @@ public class UiController : MonoBehaviour
                 mainButtons[i].Select(enableValue);
                 ResetMainPannelScrollViewPosY(type);
 
-                Debug.Log("EnableMenuPanel : " + type + " / " + enableValue );
+                Debug.Log("EnableMenuPanel : " + type + " / " + enableValue);
             }
             else
             {
@@ -411,7 +414,7 @@ public class UiController : MonoBehaviour
 
     void ResetMainPannelScrollViewPosY(MenuPanelType type)
     {
-        switch(type)
+        switch (type)
         {
             case MenuPanelType.training:
                 SetMenuPannelScrollView_Pos(0, menuPannelScrollView_posY_traning);
@@ -446,7 +449,7 @@ public class UiController : MonoBehaviour
 
     public void AllDisableMenuPanels()
     {
-        foreach(var panel in mainPanels)
+        foreach (var panel in mainPanels)
             panel.SetActive(false);
     }
 
@@ -455,7 +458,7 @@ public class UiController : MonoBehaviour
         foreach (var mainBtn in mainButtons)
             mainBtn.Select(false);
     }
-        
+
 
 
     // 초기화시 UI 오브젝트 비활성화 
@@ -490,8 +493,15 @@ public class UiController : MonoBehaviour
         isMenuHide = !isMenuHide;
     }
 
+    public void MainMenuHide()
+    {
+        menuRectTrans.DOAnchorPos(new Vector2(0f, -150f), 0.5f).SetEase(Ease.InOutExpo);
+    }
 
-
+    public void MainMenuShow()
+    {
+        menuRectTrans.DOAnchorPos(new Vector2(0f, 0f), 0.5f).SetEase(Ease.InOutExpo);
+    }
 
 
 

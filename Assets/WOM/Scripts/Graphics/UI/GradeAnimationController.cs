@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,34 +41,37 @@ namespace ProjectGraphics
         {
             anim = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            
+
         }
 
 
         private void Start()
         {
-            btnClose = GetComponent<Button>();  
+            btnClose = GetComponent<Button>();
             SetBtnEvent();
         }
 
         void SetBtnEvent()
         {
 
-            btnClose.onClick.AddListener(() => {
+            btnClose.onClick.AddListener(() =>
+            {
                 // 진화 메뉴 등장
                 GlobalData.instance.uiController.EnableMenuPanel(MenuPanelType.evolution);
                 // 일반 몬스터 등장
-                GlobalData.instance.eventController.NormalMonsterIn();
+                // GlobalData.instance.eventController.NormalMonsterIn();
+
+                GlobalData.instance.eventController.evalGradeEffectShow = false;
 
                 gameObject.SetActive(false);
 
             });
-        
+
         }
         private void OnEnable()
         {
             //시작시 gradeIndex 값을 정의 해주세요.
-            int startIndex= 0;
+            int startIndex = 0;
             if (gradeIndex <= 0 || gradeIndex >= imageResources.Length) startIndex = 0;
             else startIndex = gradeIndex - 1;
             SetImageResources(startIndex);
@@ -78,7 +80,7 @@ namespace ProjectGraphics
             anim.SetTrigger("Action");
         }
 
-        
+
 
         public void SetImageResources(int num)
         {
@@ -101,7 +103,7 @@ namespace ProjectGraphics
             foreach (var element in enableObjects)
                 element.SetActive(value);
         }
-            
+
     }
 }
 
