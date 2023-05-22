@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using static EnumDefinition;
 /// <summary>
@@ -10,12 +7,13 @@ using static EnumDefinition;
 public class EventController : MonoBehaviour
 {
     GlobalData globalData;
-   
+    public bool evalGradeEffectShow = false;
+
     void Start()
     {
         GetManagers();
         AddEvents();
-        
+
     }
 
     private void OnDestroy()
@@ -39,7 +37,7 @@ public class EventController : MonoBehaviour
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnBossMonsterChallenge, EvnOnBossMonsterChalleng);
         EventManager.instance.AddCallBackEvent(CallBackEventType.TYPES.OnEvolutionMonsterChallenge, EvnOnEvolutionGradeChallenge);
         EventManager.instance.AddCallBackEvent<MonsterType>(CallBackEventType.TYPES.OnDungeonMonsterChallenge, EvnOnDungenMonsterChalleng);
-        
+
     }
 
     void RemoveEvents()
@@ -62,18 +60,18 @@ public class EventController : MonoBehaviour
         return globalData.player.curMonsterType == MonsterType.boss || globalData.player.curMonsterType == MonsterType.evolution;
     }
     // MONSTER HIT EVENT
-    void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex= 0, Transform tr = null )
+    void EvnOnMonsterHit(EnumDefinition.InsectType insectType, int unionIndex = 0, Transform tr = null)
     {
         if (isMonsterDie) return;
-        
+
         float damage;
-        
+
         damage = globalData.insectManager.GetInsectDamage(insectType, insectType == InsectType.union ? unionIndex : 0, out bool isCritical);
 
         // ENABLE Floting Text Effect 
         globalData.effectManager.EnableFloatingText(damage, isCritical, tr);
 
-        
+
         // GET MONSTER
         var currentMonster = globalData.player.currentMonster;
 
@@ -85,7 +83,7 @@ public class EventController : MonoBehaviour
         currentMonster.hp -= curDamage;
 
         // monster hit animation 
-        currentMonster.inOutAnimator.monsterAnim.SetBool("Hit",true);
+        currentMonster.inOutAnimator.monsterAnim.SetBool("Hit", true);
 
         // monster hit shader effect
         currentMonster.inOutAnimator.MonsterHitAnim();
@@ -102,7 +100,7 @@ public class EventController : MonoBehaviour
             globalData.uiController.SetTxtMonsterHp(currentMonster.hp);
 
             // 몬스터 hp slider
-            globalData.uiController.SetSliderMonsterHp(currentMonster.hp); 
+            globalData.uiController.SetSliderMonsterHp(currentMonster.hp);
 
         }
     }
@@ -122,7 +120,7 @@ public class EventController : MonoBehaviour
         var currentMonster = globalData.monsterManager.GetMonsterDungeon();
 
         var curDamage = damage;
-        
+
         // 사용 확인 필요
         /*
         if (IsBossOrEvolutionMonster())
@@ -235,14 +233,14 @@ public class EventController : MonoBehaviour
     {
         // BG Scroll Animation
         globalData.stageManager.PlayAnimBgScroll();
-        
+
         //phaseCount 0 도달시 골드 몬스터 등장.
         PhaseCounting(out int phaseCount);
-        if (IsPhaseCountZero(phaseCount)) 
+        if (IsPhaseCountZero(phaseCount))
         {
             // 보스 도전 버튼 숨김 ( 보스 도전 버튼 있다면 숨김 - 무조건 숨김 )
             globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
-            yield return StartCoroutine( MonsterAppearCor(MonsterType.gold));  
+            yield return StartCoroutine(MonsterAppearCor(MonsterType.gold));
         }
         else
         {
@@ -271,9 +269,9 @@ public class EventController : MonoBehaviour
 
         // 보스 도전 버튼 활성화 
         globalData.uiController.btnBossChallenge.gameObject.SetActive(true);
-        
+
         // 보스 도전 가능 상태 설정
-        globalData.player.isBossMonsterChllengeEnable = true;   
+        globalData.player.isBossMonsterChllengeEnable = true;
 
         // phaseCount 리셋
         PhaseCountReset();
@@ -312,7 +310,7 @@ public class EventController : MonoBehaviour
         PhaseCountReset();
 
         // stage setting - stage manager 스테이지 데이터와 배경 이미지 전환 애니메이션
-        yield return StartCoroutine( globalData.stageManager.SetStageById(globalData.player.stageIdx));
+        yield return StartCoroutine(globalData.stageManager.SetStageById(globalData.player.stageIdx));
 
         // set monster data and monster skin
         yield return StartCoroutine(globalData.monsterManager.Init(globalData.player.stageIdx));
@@ -351,7 +349,8 @@ public class EventController : MonoBehaviour
         globalData.player.curMonsterType = MonsterType.dungeon;
 
         // 화면전환 이펙트
-        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() => {
+        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
+        {
 
             // 금광보스 카운트 UI 숨김
             globalData.uiController.SetEnablePhaseCountUI(false);
@@ -437,12 +436,14 @@ public class EventController : MonoBehaviour
         // 유니온 장착 슬롯 오픈
         globalData.unionManager.UnlockEquipSlots(evalutionLeveld);
 
-        // 기존 UI Canvas 비활성화  ( 현재 사용하지 않음 )
-        // UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
+        // 상단의 몬스터 정보([ CANVAS UI SET ])와 재화 정보([ TOP_UI_CANVAS ]) UI 활성화 → 비활성화
+        UtilityMethod.GetCustomTypeGMById(6).SetActive(false);
+        UtilityMethod.GetCustomTypeGMById(11).SetActive(false);
 
         // 등급 업그레이드 연출 등장
         globalData.gradeAnimCont.gradeIndex = evalutionLeveld;
         globalData.gradeAnimCont.gameObject.SetActive(true);
+        evalGradeEffectShow = true;
 
         // 금광보스 카운트 UI 활성화
         globalData.uiController.SetEnablePhaseCountUI(true);
@@ -461,15 +462,27 @@ public class EventController : MonoBehaviour
 
         // 진화 자물쇠 UnLock 상태로 Enable 및 필요 주사위 개수 계산하여 적용함.
         globalData.evolutionManager.SetUI_EvolutuinSlotsLockerItems(evalutionLeveld);
-        
+
+        // 진화전 포기 버튼 비활성화
+        UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(false);
+
+        yield return new WaitUntil(() => evalGradeEffectShow == false); // 등급업그레이드 연출이 끝날때까지 대기
+
+        // 상단의 몬스터 정보([ CANVAS UI SET ])와 재화 정보([ TOP_UI_CANVAS ]) 비활성화 → UI 활성화
+        UtilityMethod.GetCustomTypeGMById(6).SetActive(true);
+        UtilityMethod.GetCustomTypeGMById(11).SetActive(true);
+
+        // 메인 메뉴 활성화
+        globalData.uiController.MainMenuShow();
+        yield return new WaitForSeconds(0.5f);// 메인메뉴 등장 애니메이션 연출이 끝날때까지 대기
         // 등급 업그레이트 연출 시간 후 몬스터 등장
         //yield return new WaitForSeconds(3f);
 
         // 진화 메뉴 활성화
-        // globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
 
         // 일반 몬스터 등장
-         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
+        yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
     }
 
@@ -481,12 +494,12 @@ public class EventController : MonoBehaviour
 
         // 보스의 경우 뼈조각 OUT EFF 추가 ( 뼈조각 화면에 뿌려진 경우에만 )
         StartCoroutine(globalData.effectManager.bonePoolingCont.DisableGoldEffects());
-        
+
         // get curret monster data
         var monsterData = globalData.monsterManager.GetMonsterData(monsterType);
 
         // set hp 
-        monsterData.hp = monsterData.hp  *(1 - GlobalData.instance.statManager.MonsterHpLess());
+        monsterData.hp = monsterData.hp * (1 - GlobalData.instance.statManager.MonsterHpLess());
 
         // set current monster
         globalData.player.SetCurrentMonster(monsterData);
@@ -515,7 +528,7 @@ public class EventController : MonoBehaviour
         // set current monster hp
         // TODO: 이펙트 연출 추가
         globalData.player.SetCurrentMonsterHP(monsterData.hp);
-        
+
 
         // 몬스터 UI 리셋 
         MonsterUiReset();
@@ -554,15 +567,22 @@ public class EventController : MonoBehaviour
         // 공격 불가능 상태로 전환
         globalData.attackController.SetAttackableState(false);
 
+        // 하단 메인 메뉴 숨김
+        globalData.uiController.MainMenuHide();
+
         // 진화전 화면전환 이펙트
-        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() => {
-            
+        yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
+        {
+
+            // 진화전 포기 버튼 활성화
+            UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(true);
+
             // 금광보스 카운트 UI 숨김
             globalData.uiController.SetEnablePhaseCountUI(false);
 
             // 보스 도전 버튼 숨김
             globalData.uiController.btnBossChallenge.gameObject.SetActive(false);
-            
+
             // 하프 라인 위 곤충 모두 제거
             globalData.insectManager.DisableHalfLineInsects();
 
@@ -579,6 +599,8 @@ public class EventController : MonoBehaviour
             globalData.bossChallengeTimer.StartTimer();
 
         }));
+
+
 
         // 공격 가능 상태로 전환
         globalData.attackController.SetAttackableState(true);
@@ -667,6 +689,9 @@ public class EventController : MonoBehaviour
         // 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
           {
+              // 진화전 포기 버튼 비활성화
+              UtilityMethod.GetCustomTypeBtnByID(30).gameObject.SetActive(false);
+
               // 금광보스 카운트 UI 활성화
               globalData.uiController.SetEnablePhaseCountUI(true);
 
@@ -678,17 +703,28 @@ public class EventController : MonoBehaviour
 
           }));
 
+
+
+
+
+        // 메인 메뉴 활성화
+        globalData.uiController.MainMenuShow();
+
+        yield return new WaitForSeconds(0.5f);
+
+        //진화 메뉴 활성화
+        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+        // 진화 몬스터 도전 버튼 활성화
+        globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
+
+
         // 공격 가능 상태로 전환
         globalData.attackController.SetAttackableState(true);
 
         // 일반 몬스터 등장
         StartCoroutine(MonsterAppearCor(MonsterType.normal));
 
-        // 진화 몬스터 도전 버튼 활성화
-        globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
 
-        //진화 메뉴 활성화
-        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
     }
     private void DungeonPopupApplyEvent()
     {
@@ -702,7 +738,7 @@ public class EventController : MonoBehaviour
     //던전 몬스터 전투 종료
     IEnumerator ProcessDungeonMonsterTimeOut()
     {
-        
+
         // 공격 불가능 상태로 전환
         globalData.attackController.SetAttackableState(false);
 
@@ -730,7 +766,7 @@ public class EventController : MonoBehaviour
 
         // 팝업 파티클이 종료될때까지 대기
         yield return new WaitUntil(() => dungeonMonsterPopupFinishParticle);
-        
+
         // 재화 획득 TODO: 재화 획득 연출
         AddDungeonMonsterKillReward(goodsType, totalCurrencyAmount);
 
@@ -740,12 +776,12 @@ public class EventController : MonoBehaviour
 
         // 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
-        { 
+        {
             // 금광보스 카운트 UI 활성화
             globalData.uiController.SetEnablePhaseCountUI(true);
 
             // 보스 몬스터 OUT
-            StartCoroutine( globalData.monsterManager.GetMonsterDungeon().inOutAnimator.AnimPositionOut());
+            StartCoroutine(globalData.monsterManager.GetMonsterDungeon().inOutAnimator.AnimPositionOut());
 
             globalData.monsterManager.GetMonsterDungeon().DungeonMonsterOut();
 
@@ -788,8 +824,8 @@ public class EventController : MonoBehaviour
         }
     }
 
-        // 진화전 포기 했을때
-        public IEnumerator ProcessEvolutionMonsterGiveUp()
+    // 진화전 포기 했을때
+    public IEnumerator ProcessEvolutionMonsterGiveUp()
     {
         // 공격 불가능 상태로 전환
         globalData.attackController.SetAttackableState(false);
@@ -811,6 +847,14 @@ public class EventController : MonoBehaviour
 
         }));
 
+
+
+        // 메인 메뉴 활성화
+        globalData.uiController.MainMenuShow();
+        yield return new WaitForSeconds(0.5f);// 메인메뉴 등장 애니메이션 연출이 끝날때까지 대기
+        //진화 메뉴 활성화
+        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+
         // 공격 가능 상태로 전환
         globalData.attackController.SetAttackableState(true);
 
@@ -820,15 +864,16 @@ public class EventController : MonoBehaviour
         // 진화 몬스터 도전 버튼 활성화
         globalData.evolutionManager.EnableBtnEvolutionMonsterChange(true);
 
-        //진화 메뉴 활성화
-        globalData.uiController.EnableMenuPanel(MenuPanelType.evolution);
+
+
+
 
     }
 
 
     void MonsterUiReset()
     {
-        var monsterData  = globalData.player.currentMonster;
+        var monsterData = globalData.player.currentMonster;
 
         // SET HP
         globalData.uiController.SetTxtMonsterHp(monsterData.hp);
@@ -850,7 +895,7 @@ public class EventController : MonoBehaviour
     {
         return phaseCount <= 0;
     }
-    
+
     // 골드 몬스터 진입 단계 카운팅
     void PhaseCounting(out int value)
     {
@@ -865,7 +910,7 @@ public class EventController : MonoBehaviour
         var resetValue = globalData.player.pahseCountOriginalValue;
         globalData.player.currentStageData.phaseCount = resetValue;
         globalData.uiController.SetTxtPhaseCount(resetValue);
-        globalData.uiController.SetSliderPhaseValue(resetValue);    
+        globalData.uiController.SetSliderPhaseValue(resetValue);
     }
 
     #endregion
