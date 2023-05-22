@@ -350,7 +350,7 @@ public class EventController : MonoBehaviour
 
         // 현재 몬스터 타입 세팅 ( 타이머 종료 이벤트를 위한...)
         globalData.player.curMonsterType = MonsterType.dungeon;
-        globalData.uiController.btnMainMenuClose.gameObject.SetActive(false);
+        globalData.uiController.EnableMainMenuCloseBtn(false);
 
         // 메인 메뉴 활성화
         globalData.uiController.MainMenuHide();
@@ -808,7 +808,11 @@ public class EventController : MonoBehaviour
 
         // 메인 메뉴 활성화
         globalData.uiController.MainMenuShow();
-        globalData.uiController.btnMainMenuClose.gameObject.SetActive(true);
+        globalData.uiController.EnableMainMenuCloseBtn(true);
+        yield return new WaitForSeconds(0.5f);
+
+        //던전 메뉴 활성화
+        globalData.uiController.EnableMenuPanel(MenuPanelType.dungeon);
 
         // 공격 가능 상태로 전환
         globalData.attackController.SetAttackableState(true);
