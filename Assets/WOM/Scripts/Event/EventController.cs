@@ -324,6 +324,9 @@ public class EventController : MonoBehaviour
     void EvnOnDungenMonsterChalleng(MonsterType monsterType)
     {
         var usingKeyCount = GlobalData.instance.monsterManager.GetMonsterDungeon().monsterToDataMap[monsterType].usingKeyCount;
+
+
+
         // 열쇠 사용
         globalData.player.PayDungeonKeyByMonsterType(monsterType, usingKeyCount);
 
@@ -347,10 +350,19 @@ public class EventController : MonoBehaviour
 
         // 현재 몬스터 타입 세팅 ( 타이머 종료 이벤트를 위한...)
         globalData.player.curMonsterType = MonsterType.dungeon;
+        globalData.uiController.btnMainMenuClose.gameObject.SetActive(false);
+
+        // 메인 메뉴 활성화
+        globalData.uiController.MainMenuHide();
 
         // 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
         {
+            // bg sprite id
+            var bgSpriteId = GlobalData.instance.monsterManager.GetMonsterDungeon().monsterToDataMap[monsterType].bgID;
+
+            // bg 변경
+            globalData.stageManager.SetDungeonBgImage(bgSpriteId);
 
             // 금광보스 카운트 UI 숨김
             globalData.uiController.SetEnablePhaseCountUI(false);
@@ -777,6 +789,10 @@ public class EventController : MonoBehaviour
         // 화면전환 이펙트
         yield return StartCoroutine(globalData.effectManager.EffTransitioEvolutionUpgrade(() =>
         {
+
+            // 배경 이미지 변경
+            globalData.stageManager.SetBgImage();
+
             // 금광보스 카운트 UI 활성화
             globalData.uiController.SetEnablePhaseCountUI(true);
 
@@ -789,6 +805,10 @@ public class EventController : MonoBehaviour
             globalData.uiController.imgBossMonTimerParent.gameObject.SetActive(false);
 
         }));
+
+        // 메인 메뉴 활성화
+        globalData.uiController.MainMenuShow();
+        globalData.uiController.btnMainMenuClose.gameObject.SetActive(true);
 
         // 공격 가능 상태로 전환
         globalData.attackController.SetAttackableState(true);

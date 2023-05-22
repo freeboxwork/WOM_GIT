@@ -38873,6 +38873,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2713ba01da9935240ae211ea27e848e2, type: 3}
   - {fileID: 21300000, guid: 35bd9eae687c56b4eaabbe33e46494dc, type: 3}
   bgAnimController: {fileID: 26985160}
+  bgSpriteFileData: {fileID: 11400000, guid: 4d189ed3578eab044a8ff435c96b2a92, type: 2}
 --- !u!1 &911327339
 GameObject:
   m_ObjectHideFlags: 0
@@ -41553,6 +41554,7 @@ MonoBehaviour:
   txtTitle: {fileID: 574841493}
   txtKeyCount: {fileID: 895757923}
   monsterType: 8
+  bgSpriteId: 9
 --- !u!114 &976151408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 976151408, guid: 7fd1179315e6d924298181be0682252c, type: 3}
@@ -70839,6 +70841,7 @@ MonoBehaviour:
   txtTitle: {fileID: 1582853643}
   txtKeyCount: {fileID: 456969729}
   monsterType: 6
+  bgSpriteId: 8
 --- !u!1 &1736920824
 GameObject:
   m_ObjectHideFlags: 0
@@ -80011,6 +80014,7 @@ MonoBehaviour:
   txtTitle: {fileID: 1436146474}
   txtKeyCount: {fileID: 427635941}
   monsterType: 7
+  bgSpriteId: 7
 --- !u!1 &1977599350
 GameObject:
   m_ObjectHideFlags: 0
@@ -94354,6 +94358,7 @@ MonoBehaviour:
   txtTitle: {fileID: 3301927388978586552}
   txtKeyCount: {fileID: 3301927388425917037}
   monsterType: 5
+  bgSpriteId: 6
 --- !u!114 &3301927388978586552
 MonoBehaviour:
   m_ObjectHideFlags: 0
