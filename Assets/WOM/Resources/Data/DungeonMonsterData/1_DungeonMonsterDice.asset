@@ -18,5 +18,5 @@ MonoBehaviour:
   battleTime: 30
   maxKeyCount: 2
   maxAdCount: 2
-  bgID: 1
+  bgID: 8
   usingKeyCount: 1

@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
-using Unity.VisualScripting;
-using static GlobalPopupController;
 
 public class GlobalMessageTwoBtnPopup : MonoBehaviour
 {
@@ -13,10 +9,10 @@ public class GlobalMessageTwoBtnPopup : MonoBehaviour
     public TextMeshProUGUI txtMessage;
     public Button btnApply;
     public Button btnCancel;
-    
+
     void Start()
     {
-        
+
     }
 
 
@@ -26,20 +22,22 @@ public class GlobalMessageTwoBtnPopup : MonoBehaviour
         txtMessage.text = message;
     }
 
-    public void SetBtnApplyEvent(UnityAction action )
+    public void SetBtnApplyEvent(UnityAction action)
     {
         btnApply.onClick.RemoveAllListeners();
-        btnApply.onClick.AddListener(()=> {
-            action.Invoke(); 
-            gameObject.SetActive(false); 
-        });   
+        btnApply.onClick.AddListener(() =>
+        {
+            action.Invoke();
+            gameObject.SetActive(false);
+        });
     }
     public void SetBtnCancelEvent(UnityAction action)
     {
         btnCancel.onClick.RemoveAllListeners();
-        btnCancel.onClick.AddListener(()=> { 
-            action.Invoke(); 
-            gameObject.SetActive(false); 
+        btnCancel.onClick.AddListener(() =>
+        {
+            action.Invoke();
+            gameObject.SetActive(false);
         });
     }
 

@@ -7,18 +7,20 @@ public class StageManager : MonoBehaviour
     public StageData stageData;
     public SpriteRenderer rdBg;
     public List<Sprite> bgImages = new List<Sprite>();
-    public BackgroundAnimController bgAnimController;   
-    
+    public BackgroundAnimController bgAnimController;
+
+    public BackgroundSpriteFileData bgSpriteFileData;
+
     void Start()
     {
-        
+
     }
 
     public void PlayAnimBgScroll()
     {
         StartCoroutine(bgAnimController.ScrollAnim_BG());
     }
-    
+
     public IEnumerator Init(int stageId)
     {
         yield return null;
@@ -37,7 +39,7 @@ public class StageManager : MonoBehaviour
             var nextBgImg = GetCurrentBgImg();
             yield return StartCoroutine(bgAnimController.TransitinBG(nextBgImg));
         }
-        
+
         yield return null;
     }
 
@@ -57,11 +59,17 @@ public class StageManager : MonoBehaviour
         stageData = data.CopyInstance();
     }
 
-    void SetBgImage()
+    public void SetBgImage()
     {
         bgAnimController.SetBgTex_Back(GetCurrentBgImg().texture);
     }
-    
+
+    public void SetDungeonBgImage(int bgId)
+    {
+        bgAnimController.SetBgTex_Back(GetBgImgById(bgId).texture);
+    }
+
+
     Sprite GetCurrentBgImg()
     {
         var idx = stageData.bgId;
@@ -71,6 +79,6 @@ public class StageManager : MonoBehaviour
 
     Sprite GetBgImgById(int id)
     {
-        return bgImages[id];
+        return bgSpriteFileData.background[id];
     }
 }

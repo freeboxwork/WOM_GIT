@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -7,11 +5,11 @@ public class DungeonSlot : MonoBehaviour
 {
     public TextMeshProUGUI txtTitle;
     public TextMeshProUGUI txtKeyCount;
-    public  EnumDefinition.MonsterType monsterType;
+    public EnumDefinition.MonsterType monsterType;
 
     void Start()
     {
-        
+
     }
 
     public void UpdateTxtKeyCount()
@@ -21,6 +19,6 @@ public class DungeonSlot : MonoBehaviour
         var txt = $"{haveKeyCount}/{usingKey}";
         txtKeyCount.text = txt;
     }
-    
+
 
 }

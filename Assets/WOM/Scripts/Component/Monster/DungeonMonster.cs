@@ -1,9 +1,7 @@
 using ProjectGraphics;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
 using static EnumDefinition;
 
 public class DungeonMonster : DungeonMonsterBase
@@ -16,9 +14,9 @@ public class DungeonMonster : DungeonMonsterBase
     public DungeonMonsterData curData;
     public SpriteLibraryChanged spriteLibraryChanged;
     public MonsterInOutAnimator inOutAnimator;
-    
- 
-    public  DungenMonsterFileData[] dungenMonsterFileDatas;
+
+
+    public DungenMonsterFileData[] dungenMonsterFileDatas;
 
     public Dictionary<MonsterType, DungenMonsterFileData> monsterToDataMap;
 
@@ -52,10 +50,10 @@ public class DungeonMonster : DungeonMonsterBase
 
         // SET FACE
         SetMonsterFace(monsterToDataMap[monsterType].monsterFaceId);
-        
+
         // 몬스터 hp text
         GlobalData.instance.uiController.SetTxtMonsterHp(curMonsterHP);
-        
+
         // 몬스터 hp slider
         GlobalData.instance.uiController.SetSliderDungeonMonsterHP(curMonsterHP);
 
