@@ -273,7 +273,7 @@ public class UiController : MonoBehaviour
         btnMainMenuClose.onClick.AddListener(() =>
         {
             EnableMenuPanel(curMenuPanelType);
-            btnMainMenuClose.interactable = false;
+            EnableMainMenuCloseBtn(false);
         });
 
 
@@ -320,6 +320,10 @@ public class UiController : MonoBehaviour
 
     }
 
+    public void EnableMainMenuCloseBtn(bool value)
+    {
+        btnMainMenuClose.image.raycastTarget = value;
+    }
 
     IEnumerator EnableCastlePanel()
     {
@@ -410,7 +414,8 @@ public class UiController : MonoBehaviour
                 //Debug.Log(type);
                 var enableValue = !mainPanels[i].activeSelf;
 
-                btnMainMenuClose.interactable = enableValue;
+                EnableMainMenuCloseBtn(enableValue);
+                //btnMainMenuClose.interactable = enableValue;
 
                 mainPanels[i].SetActive(enableValue);
                 mainButtons[i].Select(enableValue);

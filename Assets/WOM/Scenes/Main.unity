@@ -12414,7 +12414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12477,7 +12477,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 282815592}
   m_OnClick:
     m_PersistentCalls:
@@ -41554,7 +41554,6 @@ MonoBehaviour:
   txtTitle: {fileID: 574841493}
   txtKeyCount: {fileID: 895757923}
   monsterType: 8
-  bgSpriteId: 9
 --- !u!114 &976151408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 976151408, guid: 7fd1179315e6d924298181be0682252c, type: 3}
@@ -70841,7 +70840,6 @@ MonoBehaviour:
   txtTitle: {fileID: 1582853643}
   txtKeyCount: {fileID: 456969729}
   monsterType: 6
-  bgSpriteId: 8
 --- !u!1 &1736920824
 GameObject:
   m_ObjectHideFlags: 0
@@ -80014,7 +80012,6 @@ MonoBehaviour:
   txtTitle: {fileID: 1436146474}
   txtKeyCount: {fileID: 427635941}
   monsterType: 7
-  bgSpriteId: 7
 --- !u!1 &1977599350
 GameObject:
   m_ObjectHideFlags: 0
@@ -94358,7 +94355,6 @@ MonoBehaviour:
   txtTitle: {fileID: 3301927388978586552}
   txtKeyCount: {fileID: 3301927388425917037}
   monsterType: 5
-  bgSpriteId: 6
 --- !u!114 &3301927388978586552
 MonoBehaviour:
   m_ObjectHideFlags: 0
