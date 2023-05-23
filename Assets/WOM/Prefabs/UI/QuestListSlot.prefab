@@ -845,6 +845,7 @@ GameObject:
   - component: {fileID: 3235312349821682550}
   - component: {fileID: 405193965071644290}
   - component: {fileID: 1076809868420960465}
+  - component: {fileID: 8956997981293685212}
   m_Layer: 5
   m_Name: QuestListSlot
   m_TagString: Untagged
@@ -916,6 +917,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8956997981293685212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4933385473610317649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3addd4bc5d00d7d40ac95cf47f6d1bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imgNotifyIcon: {fileID: 5256588682335354828}
+  imgRewardIcon: {fileID: 1414990512925557222}
+  txtQuestName: {fileID: 7245079060956907844}
+  imgQuestProgress: {fileID: 8574376208877629999}
+  txtQuestProgressCount: {fileID: 6479067947219466906}
+  btnReward: {fileID: 2081078722389949908}
+  txtDoing: {fileID: 8100435445203373987}
 --- !u!1 &5256588681367499374
 GameObject:
   m_ObjectHideFlags: 0

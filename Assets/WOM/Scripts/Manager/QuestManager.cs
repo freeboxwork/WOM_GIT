@@ -56,32 +56,25 @@ public class QuestManager : MonoBehaviour
     {
         if (questsOneDay.ContainsKey(type))
         {
-            if (questsOneDay[type].qusetComplete == false)
-                questsOneDay[type].curCountValue++;
 
-            if (IsReachedTargetCount(type))
+            var quest = questsOneDay[type];
+            if (!quest.qusetComplete)
             {
-                questsOneDay[type].qusetComplete = true;
-                // EVENT 실행
+                quest.curCountValue++;
+                if (quest.curCountValue >= quest.targetValue)
+                {
+                    quest.qusetComplete = true;
+                    //ui update , playerprefs event 실행
+
+                }
             }
-
-
         }
         else
         {
-            Debug.LogError("IncreaseCount Error : " + type.ToString() + " is not exist in questsOneDay");
+            Debug.LogError("퀘스트 카운트 에러 : " + type.ToString() + " 해당 퀘스트가 존재 하지 않습니다.");
         }
     }
 
-    bool IsCountValid(QuestTypeOneDay type)
-    {
-        return questsOneDay[type].curCountValue < questsOneDay[type].targetValue;
-    }
-
-    bool IsReachedTargetCount(QuestTypeOneDay type)
-    {
-        return questsOneDay[type].curCountValue <= questsOneDay[type].targetValue && questsOneDay[type].qusetComplete == false;
-    }
 
 
 
