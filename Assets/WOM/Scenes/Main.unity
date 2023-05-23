@@ -5439,7 +5439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.2}
-  m_AnchoredPosition: {x: 0, y: 28.00003}
+  m_AnchoredPosition: {x: 0, y: 28.000061}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138134076
@@ -35818,6 +35818,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: c5ba46c0a092bbf40a1bf6f31a57dc24, type: 3}
   - {fileID: 4900000, guid: 3efb4a8c64a6be14bba24899996a0b3a, type: 3}
   - {fileID: 4900000, guid: 377f20604f2062f40af2c480c57dbb0a, type: 3}
+  - {fileID: 4900000, guid: d4e691d085fac9445a039247da7e94e2, type: 3}
   sheetDatas_saleStats:
   - {fileID: 4900000, guid: d9d0207d5010e46458b2a5fe4af26f50, type: 3}
   - {fileID: 4900000, guid: 7c9a2f69513c44e4b95add4ff39e1490, type: 3}
@@ -75333,7 +75334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.17}
-  m_AnchoredPosition: {x: 0, y: -7.7988205}
+  m_AnchoredPosition: {x: 0, y: -7.7988815}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863561721
@@ -86560,7 +86561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
   m_AnchorMax: {x: 0.9, y: 0.2}
-  m_AnchoredPosition: {x: 0, y: 28.00003}
+  m_AnchoredPosition: {x: 0, y: 28.000061}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097338218

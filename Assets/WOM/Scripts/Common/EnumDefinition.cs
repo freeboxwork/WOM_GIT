@@ -68,7 +68,9 @@ public class EnumDefinition
         buildingDataMine,
         buildingDataFactory,
         buindingDataCamp,
-        buindingDataLab
+        buindingDataLab,
+        questDataOneDay,
+        questDataRepeat,
     }
 
     /// <summary> 훈련 메뉴 </summary>
@@ -241,6 +243,19 @@ public class EnumDefinition
         factory,
         camp,
         lab
+    }
+
+    public enum QuestTypeOneDay
+    {
+        allComplete,
+        showAd,
+        clearDungeon,
+        useSkill3,
+        summonUnion,
+        progressStage,
+        killGoldBoss,
+        takeGoldPig,
+        none
     }
 
 }
