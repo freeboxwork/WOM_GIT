@@ -116,9 +116,11 @@ public class DataManager : MonoBehaviour
     // 캐슬 데이터.
     public MineAndFactoryBuildingDatas buildDatasMine;
     public MineAndFactoryBuildingDatas buildDatasFactory;
-    public CampBuildingData buildDatasCamp; 
+    public CampBuildingData buildDatasCamp;
     public LabBuildingDatas buildDataLab;
 
+    // 퀘스트 데이터
+    public QuestDatas questDatasOneDay;
 
     void Start()
     {
@@ -181,10 +183,13 @@ public class DataManager : MonoBehaviour
         // SET CASTLE DATA
         SetCastleData();
 
+        // SET QUEST DATA
+        SetQuestData();
+
         yield return new WaitForEndOfFrame();
     }
 
- 
+
 
     void AddSaleStatElements()
     {
@@ -198,8 +203,8 @@ public class DataManager : MonoBehaviour
         statSaleDatas.Add(talentSpawnSpeed);
         statSaleDatas.Add(talentGoldBonusData);
     }
-         
-   
+
+
     void SetSaleStatDatas()
     {
         for (int i = 0; i < sheetDatas_saleStats.Count; i++)
@@ -230,10 +235,15 @@ public class DataManager : MonoBehaviour
         buildDataLab = GetData<LabBuildingDatas>(SheetDataType.buindingDataLab);
     }
 
+    void SetQuestData()
+    {
+        questDatasOneDay = GetData<QuestDatas>(SheetDataType.questDataOneDay);
+    }
+
     public MineAndFactoryBuildingData GetBuildDataMineByLevel(int level)
     {
         //any 를 이용한 예외처리
-        if(buildDatasMine.data.Any(f => f.level == level) == false)
+        if (buildDatasMine.data.Any(f => f.level == level) == false)
         {
             Debug.Log("Mine Data is not exist. level : " + level);
             return null;
@@ -316,13 +326,13 @@ public class DataManager : MonoBehaviour
     {
         trainingElementDatas = GetData<TrainingElementDatas>(SheetDataType.TrainingElementData);
     }
-    
+
     void SetConvertTextDatas()
     {
-        convertTextDatas = GetData<ConvertTextDatas>(SheetDataType.convertTextData);    
+        convertTextDatas = GetData<ConvertTextDatas>(SheetDataType.convertTextData);
     }
 
-    void SetMonsterData() 
+    void SetMonsterData()
     {
         var boss = GetData<MonsterDatas>(SheetDataType.monsterData_boss);
         var gold = GetData<MonsterDatas>(SheetDataType.monsterData_gold);
@@ -345,7 +355,7 @@ public class DataManager : MonoBehaviour
     {
         upgradeData = GetData<UpgradeDatas>(SheetDataType.upgradeData);
     }
-    
+
     void SetMonsterSpriteData()
     {
         monsterSpriteData = GetData<MonsterSprites>(SheetDataType.monsterSpriteData);
@@ -366,12 +376,12 @@ public class DataManager : MonoBehaviour
 
     public StageData GetStageDataById(int stageId)
     {
-        return stageDatas.data.FirstOrDefault(f=> f.stageId == stageId);
+        return stageDatas.data.FirstOrDefault(f => f.stageId == stageId);
     }
 
     public EvolutionData GetEvolutionDataById(InsectType insectType, int id)
     {
-        return evolutionDatas[TypeIdx(insectType)].data.FirstOrDefault(f=> f.depthId == id);
+        return evolutionDatas[TypeIdx(insectType)].data.FirstOrDefault(f => f.depthId == id);
     }
 
     public EvolutionOptionData GetEvolutionOptionDataById(InsectType insectType, int id)
@@ -421,12 +431,12 @@ public class DataManager : MonoBehaviour
         int totalCurrencyAmount = dataList.data.Where(data => data.level <= targetLevel).Sum(data => data.currencyAmount);
         return totalCurrencyAmount;
     }
-         
+
 
     DungeonMonsterData GetDungeonMonsterDataByLevel(DungeonMonsterDatas monsterDatas, int level)
     {
         var maxLevel = monsterDatas.data.Max(f => f.level);
-        if(maxLevel >= level)
+        if (maxLevel >= level)
         {
             return monsterDatas.data.FirstOrDefault((f) => f.level == level);
         }
@@ -455,7 +465,7 @@ public class DataManager : MonoBehaviour
 
     public SummonGradeData GetSummonGradeDataByLevel(int level)
     {
-        return summonGradeDatas.data.FirstOrDefault(f => f.level == level); 
+        return summonGradeDatas.data.FirstOrDefault(f => f.level == level);
     }
 
 
@@ -465,7 +475,7 @@ public class DataManager : MonoBehaviour
         return sheetDatas[idx];
     }
 
-    int TypeIdx(InsectType  insectType)
+    int TypeIdx(InsectType insectType)
     {
         return (int)insectType;
     }
@@ -474,7 +484,7 @@ public class DataManager : MonoBehaviour
         return (int)monsterType;
     }
 
-    public StatSaleData GetSaleStatDataByTypeId(SaleStatType statType , int level)
+    public StatSaleData GetSaleStatDataByTypeId(SaleStatType statType, int level)
     {
         return statSaleDatas[(int)statType].data.FirstOrDefault(f => f.level == level);
     }
@@ -556,7 +566,7 @@ public class MonsterDatas
 [Serializable]
 public class UpgradeDatas
 {
-    public List<UpgradeData> data = new List<UpgradeData>(); 
+    public List<UpgradeData> data = new List<UpgradeData>();
 }
 
 
@@ -587,7 +597,7 @@ public class StatSaleDatas
 [Serializable]
 public class RewardEvolutionGradeDatas
 {
-    public List<RewardEvolutionGradeData> data = new List<RewardEvolutionGradeData>();  
+    public List<RewardEvolutionGradeData> data = new List<RewardEvolutionGradeData>();
 }
 
 [Serializable]
@@ -651,3 +661,9 @@ public class LabBuildingDatas
     public List<LabBuildingData> data = new List<LabBuildingData>();
 }
 
+
+[Serializable]
+public class QuestDatas
+{
+    public List<QuestData> data = new List<QuestData>();
+}

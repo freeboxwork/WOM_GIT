@@ -1,17 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class DataModel : MonoBehaviour
 {
-   
+
 }
 
 
 
 [Serializable]
-public class StageData   
+public class StageData
 {
     public int stageId;
     public string stageName;
@@ -45,17 +44,17 @@ public class StageData
 [Serializable]
 public class MonsterSprite
 {
-    public int id ;
-    public int tail ;
-    public int hand ;
-    public int finger ;
-    public int foreArm ;
-    public int upperArm ;
-    public int head ;
-    public int body ;
-    public int leg_0 ;
-    public int leg_1 ;
-    public int leg_2 ;
+    public int id;
+    public int tail;
+    public int hand;
+    public int finger;
+    public int foreArm;
+    public int upperArm;
+    public int head;
+    public int body;
+    public int leg_0;
+    public int leg_1;
+    public int leg_2;
 }
 
 
@@ -184,7 +183,7 @@ public class UnionInGameData
     public float moveSpeed;
     public float passiveDamage;
 
-   
+
 
 }
 
@@ -238,14 +237,14 @@ public class TalentData
 [Serializable]
 public class DNAData
 {
-    public int dnaIndex ;
-    public float power ;
-    public int maxLevel ;
-    public string spriteName ;
-    public string infoFront ;
-    public string infoBack ;
-    public string dnaName ;
-    public string dnaType ;
+    public int dnaIndex;
+    public float power;
+    public int maxLevel;
+    public string spriteName;
+    public string infoFront;
+    public string infoBack;
+    public string dnaName;
+    public string dnaType;
 }
 
 public class DNAInGameData
@@ -304,7 +303,7 @@ public class TraningInGameData
 {
     public int level;
     public int salePrice;
-    public float value; 
+    public float value;
     public string unitName;
     public string trainingName;
 }
@@ -342,7 +341,7 @@ public class GlobalMessageData
     public string popupType;
     public string message_kor;
     public string message_eng;
- }
+}
 
 [Serializable]
 public class RewardDiceEvolutionData
@@ -364,7 +363,7 @@ public class RewardDiceEvolutionData
 /// <summary>  진화 주사위 획득 값 저장 </summary>
 [Serializable]
 public class DiceEvolutionInGameData
-{ 
+{
     public float insectDamage;
     public float insectCriticalChance;
     public float insectCriticalDamage;
@@ -475,10 +474,10 @@ public class DungeonMonsterData
 
     public DungeonMonsterData CloneInstance()
     {
-        DungeonMonsterData dungeonMonsterData = new DungeonMonsterData();   
+        DungeonMonsterData dungeonMonsterData = new DungeonMonsterData();
         dungeonMonsterData.level = level;
         dungeonMonsterData.currencyAmount = currencyAmount;
-        dungeonMonsterData.monsterHP = monsterHP;   
+        dungeonMonsterData.monsterHP = monsterHP;
         return dungeonMonsterData;
     }
 }
@@ -501,7 +500,7 @@ public class MineAndFactoryBuildingData
     public int productionTime;
     public string currencyType;
     EnumDefinition.GoodsType goodsType;
-     
+
 }
 
 public class CampBuildingData
@@ -520,3 +519,20 @@ public class LabBuildingData
     public int dice;
     public int coal;
 }
+
+// 퀘스트 관련
+
+[System.Serializable]
+public class QuestData
+{
+    public string questType;
+    public string questName;
+    public int targetValue;
+    public int curCountValue;
+    public string rewardType;
+    public int rewardValue;
+    // 하루 한번만 보상을 받을 수 있도록 하기 위한 변수
+    public bool qusetComplete = false;
+
+}
+
