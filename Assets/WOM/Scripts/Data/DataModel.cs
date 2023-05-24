@@ -533,6 +533,8 @@ public class QuestData
     public int rewardValue;
     // 하루 한번만 보상을 받을 수 있도록 하기 위한 변수
     public bool qusetComplete = false;
+    // 보상을 받았는지 확인
+    public bool usingReward = false;
 
 }
 

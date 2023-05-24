@@ -931,6 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imgNotifyIcon: {fileID: 5256588682335354828}
   imgRewardIcon: {fileID: 1414990512925557222}
+  txtRewardValue: {fileID: 8583759517236154839}
   txtQuestName: {fileID: 7245079060956907844}
   imgQuestProgress: {fileID: 8574376208877629999}
   txtQuestProgressCount: {fileID: 6479067947219466906}

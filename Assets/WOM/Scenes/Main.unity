@@ -93182,6 +93182,8 @@ MonoBehaviour:
   btn_showListRepeat: {fileID: 134828272}
   questListOneDay: {fileID: 797525990416333058}
   questListRepeat: {fileID: 2026885551}
+  questSlotsOneDay: []
+  questSlotsRepeat: []
 --- !u!1 &2163793303698398823
 GameObject:
   m_ObjectHideFlags: 0
@@ -99405,6 +99407,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2064195668998832280}
     m_Modifications:
+    - target: {fileID: 272433313272854472, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1076809868420960465, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -99497,6 +99503,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4565541171223347451, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4933385473610317649, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
       propertyPath: m_Name
       value: QuestListSlot
@@ -99518,8 +99528,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6479067947219466906, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479067947219466906, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921207793450836874, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7245079060956907844, guid: 253d849a3f6fac64abba0580433201b6, type: 3}
       propertyPath: m_hasFontAssetChanged
