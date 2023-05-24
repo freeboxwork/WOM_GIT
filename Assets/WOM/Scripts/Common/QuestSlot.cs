@@ -7,13 +7,13 @@ public class QuestSlot : MonoBehaviour
 
     public Image imgNotifyIcon;
     public Image imgRewardIcon;
+    public TextMeshProUGUI txtRewardValue;
     public TextMeshProUGUI txtQuestName;
     public Image imgQuestProgress;
     public TextMeshProUGUI txtQuestProgressCount;
     public Button btnReward;
     public TextMeshProUGUI txtDoing;
-
-
+    public EnumDefinition.QuestTypeOneDay questTypeOneDay;
 
     void Start()
     {
@@ -37,14 +37,25 @@ public class QuestSlot : MonoBehaviour
         imgRewardIcon.sprite = sprite;
     }
 
+    public void EnableNotifyIcon(bool value)
+    {
+        imgNotifyIcon.enabled = value;
+    }
+
     public void SetQuestName(string name)
     {
         txtQuestName.text = name;
     }
 
-    public void SetQuestProgress(float progress)
+    public void SetTxtRewardValue(string value)
     {
-        imgQuestProgress.fillAmount = progress;
+        txtRewardValue.text = value;
+    }
+
+    public void SetQuestProgress(QuestData questData)
+    {
+        float value = (float)questData.curCountValue / (float)questData.targetValue;
+        imgQuestProgress.fillAmount = value;
     }
 
     public void SetQuestProgressCount(string count)

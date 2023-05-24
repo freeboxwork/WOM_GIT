@@ -258,4 +258,9 @@ public class EnumDefinition
         none
     }
 
+    public enum QuestTypeRepeat
+    {
+        none
+    }
+
 }

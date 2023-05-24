@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +14,8 @@ public class QuestPopup : MonoBehaviour
     public GameObject questListRepeat;
 
 
+    public List<QuestSlot> questSlotsOneDay;
+    public List<QuestSlot> questSlotsRepeat;
 
     void Start()
     {
@@ -45,5 +45,36 @@ public class QuestPopup : MonoBehaviour
     {
         questListOneDay.SetActive(false);
         questListRepeat.SetActive(true);
+    }
+
+    void InitOneDayQuestUI(List<QuestData> questDatas)
+    {
+
+        for (int i = 0; i < questDatas.Count; i++)
+        {
+
+            var data = questDatas[i];
+            var slot = questSlotsOneDay[i];
+
+            slot.SetQuestName(data.questName);
+
+        }
+
+    }
+
+    void SetUIQusetSlot(QuestSlot slot, QuestData data)
+    {
+        slot.SetQuestName(data.questName);
+        slot.SetQuestProgress(data);
+        slot.SetTxtRewardValue(data.rewardValue.ToString());
+        //slot.SetRewardIcon(data.rewardIcon);
+        //slot.SetNotifyIcon(data.notifyIcon);
+        slot.EnableNotifyIcon(data.usingReward);
+    }
+
+    void InitRepeatQuestUI(List<QuestData> questDatas)
+    {
+
+
     }
 }
