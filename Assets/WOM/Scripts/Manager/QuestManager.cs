@@ -12,9 +12,29 @@ public class QuestManager : MonoBehaviour
 
     private Dictionary<QuestTypeOneDay, QuestData> questsOneDay = new Dictionary<QuestTypeOneDay, QuestData>();
 
+    const string keyUsingReward = "_usingReward";
+    const string keyQuestComplete = "_questComplete";
+
+
+
+
+
     void Start()
     {
+        AddEvents();
+        RemoveEvents();
+    }
 
+    void AddEvents()
+    {
+        EventManager.instance.AddCallBackEvent<QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, IncreaseCountOneDayQuest);
+        EventManager.instance.AddCallBackEvent<QuestData>(CallBackEventType.TYPES.OnQusetUsingRewardOneDay, EvnUsingReward);
+    }
+
+    void RemoveEvents()
+    {
+        EventManager.instance.RemoveCallBackEvent<QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, IncreaseCountOneDayQuest);
+        EventManager.instance.RemoveCallBackEvent<QuestData>(CallBackEventType.TYPES.OnQusetUsingRewardOneDay, EvnUsingReward);
     }
 
 
@@ -69,15 +89,19 @@ public class QuestManager : MonoBehaviour
             var quest = questsOneDay[type];
             if (!quest.qusetComplete)
             {
-                //ui update , playerprefs event 실행
+
                 quest.curCountValue++;
                 if (quest.curCountValue >= quest.targetValue)
                 {
                     quest.qusetComplete = true;
                 }
 
+                //ui update , playerprefs save event 실행
                 var slot = questPopup.GetQuestSlotByQuestTypeOneDay(type);
                 slot.UpdateUI(quest);
+
+                // save data
+                SaveQuestData(quest);
             }
         }
         else
@@ -88,6 +112,18 @@ public class QuestManager : MonoBehaviour
 
 
 
+    // user quest data save
+    void SaveQuestData(QuestData data)
+    {
+        PlayerPrefs.SetInt(data.questType, data.curCountValue);
+        PlayerPrefs.SetInt(data.questType + keyQuestComplete, data.qusetComplete ? 1 : 0);
+    }
+
+    void EvnUsingReward(QuestData data)
+    {
+        data.usingReward = true;
+        PlayerPrefs.SetInt(data.questType + keyUsingReward, data.usingReward ? 1 : 0);
+    }
 
 
 

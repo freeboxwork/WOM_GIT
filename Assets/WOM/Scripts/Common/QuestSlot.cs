@@ -26,9 +26,9 @@ public class QuestSlot : MonoBehaviour
         btnReward.onClick.AddListener(() =>
         {
             // 리워드 획득
-            questData.usingReward = true;
-            // 타입을 인자로 한 글로벌 이벤트 실행
-
+            EventManager.instance.RunEvent<QuestData>(CallBackEventType.TYPES.OnQusetUsingRewardOneDay, questData);
+            ActiveRewardButton(questData);
+            SetDoingText(questData);
         });
     }
     public void SetNotifyIcon(Sprite sprite) // 알림 아이콘의 스프라이트를 설정합니다.
@@ -75,9 +75,10 @@ public class QuestSlot : MonoBehaviour
         btnReward.gameObject.SetActive(isActive);
     }
 
-    public void SetDoingText(string text) // 사용자가 수행 중인 퀘스트의 현재 동작에 대한 텍스트를 설정합니다.
+    public void SetDoingText(QuestData questData) // 사용자가 수행 중인 퀘스트의 현재 동작에 대한 텍스트를 설정합니다.
     {
-        txtDoing.text = text;
+        var txtValue = questData.qusetComplete && questData.usingReward ? "보상완료" : "진행중";
+        txtDoing.text = txtValue;
     }
 
     public void SetQuestTypeOneDay(EnumDefinition.QuestTypeOneDay type) // 사용자 지정 열거형을 사용하여 하루짜리 퀘스트 유형을 설정합니다.
@@ -98,5 +99,7 @@ public class QuestSlot : MonoBehaviour
         SetQuestProgressCount(data);
         ActiveRewardButton(data);
     }
+
+
 
 }
