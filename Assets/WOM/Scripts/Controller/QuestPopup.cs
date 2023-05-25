@@ -49,21 +49,21 @@ public class QuestPopup : MonoBehaviour
         questListRepeat.SetActive(true);
     }
 
-    void InitOneDayQuestUI(List<QuestData> questDatas)
-    {
+    // void InitOneDayQuestUI(List<QuestData> questDatas)
+    // {
 
-        for (int i = 0; i < questDatas.Count; i++)
-        {
+    //     for (int i = 0; i < questDatas.Count; i++)
+    //     {
 
-            var data = questDatas[i];
-            var slot = questSlotsOneDay[i];
-            SetUIQusetSlot(slot, data);
+    //         var data = questDatas[i];
+    //         var slot = questSlotsOneDay[i];
+    //         SetUIQusetSlot(slot, data);
 
-        }
+    //     }
 
-    }
+    // }
 
-    void SetUIQusetSlot(QuestSlot slot, QuestData data)
+    public void SetUIQusetSlot(QuestSlot slot, QuestData data)
     {
         slot.ActiveNotifyIcon(data);
         slot.SetTxtRewardValue(data.rewardValue.ToString());

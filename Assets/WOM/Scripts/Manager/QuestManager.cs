@@ -18,7 +18,7 @@ public class QuestManager : MonoBehaviour
     }
 
 
-    IEnumerator Init()
+    public IEnumerator Init()
     {
         SetBtnEvent();
         AddQuestData();
@@ -38,12 +38,19 @@ public class QuestManager : MonoBehaviour
 
     void AddQuestData()
     {
-        foreach (QuestData data in GlobalData.instance.dataManager.questDatasOneDay.data)
+        var oneDayData = GlobalData.instance.dataManager.questDatasOneDay.data;
+        for (int i = 0; i < oneDayData.Count; i++)
         {
-            var clonData = data.CloneInstance();
-            //TODO: clonData 에서 일부 맴버 변수는 저장된 값 불러와야 함. (playerprefs 퀘스트 진척 사항)
-            questsOneDay.Add(GetQuestTypeOneDayByTypeName(data.questType), clonData);
+            var clonData = oneDayData[i].CloneInstance();
+            var slot = questPopup.questSlotsOneDay[i];
+            questsOneDay.Add(GetQuestTypeOneDayByTypeName(clonData.questType), clonData);
+            questPopup.SetUIQusetSlot(slot, clonData);
         }
+        // foreach (QuestData data in GlobalData.instance.dataManager.questDatasOneDay.data)
+        // {
+        //     var clonData = data.CloneInstance();
+
+        // }
     }
 
     QuestTypeOneDay GetQuestTypeOneDayByTypeName(string typeName)

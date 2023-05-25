@@ -250,7 +250,7 @@ public class EnumDefinition
         allComplete,
         showAd,
         clearDungeon,
-        useSkill3,
+        useSkill,
         summonUnion,
         progressStage,
         killGoldBoss,

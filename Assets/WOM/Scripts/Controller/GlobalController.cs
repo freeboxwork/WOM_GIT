@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalController : MonoBehaviour
@@ -26,13 +25,14 @@ public class GlobalController : MonoBehaviour
     public InsectSpwanManager insectSpwanManager;
     public StatManager statManager;
     public SaveDataManager saveDataManager;
-    
+    public QuestManager questManager;
+
     void Start()
     {
         if (dataManager == null) dataManager = FindObjectOfType<DataManager>();
         StartCoroutine(Init());
     }
-   
+
     IEnumerator Init()
     {
         // black screen on
@@ -51,7 +51,7 @@ public class GlobalController : MonoBehaviour
 
         // get player data ( 게임 종료전 저장 되어있는 데이터 로드 )
         yield return StartCoroutine(playerDataManager.InitPlayerData());
-        
+
         // 스테이지 세팅
         yield return StartCoroutine(stageManager.Init(playerDataManager.saveData.stageIdx));
 
@@ -106,6 +106,9 @@ public class GlobalController : MonoBehaviour
         // 던전 매니저 세팅
         yield return StartCoroutine(GlobalData.instance.dungeonManager.Init());
 
+        // 퀘스트 매니저 세팅
+        yield return StartCoroutine(questManager.Init());
+
         // 타겟 몬스터 지정 -> 첫 시작은 노멀 몬스터
         player.SetCurrentMonster(monsterManager.monsterNormal);
         player.SetCurrentMonsterHP(monsterManager.monsterNormal.hp);
@@ -130,7 +133,7 @@ public class GlobalController : MonoBehaviour
         // 한 프레임 대기
         yield return new WaitForEndOfFrame();
 
-      
+
         // 공격 가능 상태로 전환
         attackController.SetAttackableState(true);
 
