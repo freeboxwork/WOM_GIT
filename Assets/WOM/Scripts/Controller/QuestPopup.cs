@@ -71,6 +71,7 @@ public class QuestPopup : MonoBehaviour
         slot.SetQuestProgress(data);
         slot.SetQuestProgressCount(data);
         slot.ActiveRewardButton(data);
+        slot.SetDoingText(data);
         slot.SetQuestTypeOneDay(ConvertStringToQuestType(data.questType));
         slot.SetQuestData(data);
     }
