@@ -1080,10 +1080,6 @@
       <Project>{74ff2e9d-963f-2d88-3e9b-d47aea28e6d5}</Project>
       <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
-    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
-      <Project>{88f7cdf5-a351-e085-382e-1c684579c39b}</Project>
-      <Name>CFXR.WelcomeScreen</Name>
-    </ProjectReference>
     <ProjectReference Include="Coffee.UIParticle.csproj">
       <Project>{a7590065-4222-5775-ae7c-1556f36dd211}</Project>
       <Name>Coffee.UIParticle</Name>
