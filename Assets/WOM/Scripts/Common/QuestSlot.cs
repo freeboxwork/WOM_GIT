@@ -27,6 +27,8 @@ public class QuestSlot : MonoBehaviour
         {
             // 리워드 획득
             EventManager.instance.RunEvent<QuestData>(CallBackEventType.TYPES.OnQusetUsingRewardOneDay, questData);
+
+            //EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.showAd);
             ActiveRewardButton(questData);
             SetDoingText(questData);
         });
@@ -44,7 +46,7 @@ public class QuestSlot : MonoBehaviour
     public void ActiveNotifyIcon(QuestData questData) // 전달된 값에 따라 알림 아이콘의 활성화/비활성화 여부를 설정합니다.
     {
         bool isActive = questData.qusetComplete && !questData.usingReward;
-        imgNotifyIcon.enabled = isActive;
+        imgNotifyIcon.gameObject.SetActive(isActive);
     }
 
     public void SetQuestName(string name) // 퀘스트 이름의 텍스트를 설정합니다.
