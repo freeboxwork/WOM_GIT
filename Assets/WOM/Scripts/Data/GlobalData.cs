@@ -1,19 +1,17 @@
 using ProjectGraphics;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class GlobalData : MonoBehaviour
 {
 
-    public  static GlobalData instance;
+    public static GlobalData instance;
     public DataManager dataManager;
     public InsectManager insectManager;
     public MonsterManager monsterManager;
     public AttackController attackController;
     public CustomTypeDataManager customTypeDataManager;
-    public EventController eventController; 
+    public EventController eventController;
     public UiController uiController;
     public Player player;
     public EffectManager effectManager;
@@ -42,6 +40,7 @@ public class GlobalData : MonoBehaviour
     public DungeonEnterPopup dungeonEnterPopup;
     public CastleManager castleManager;
     public EventSystem eventSystem;
+    public QuestManager questManager;
     private void Awake()
     {
         SetInstance();
@@ -49,7 +48,7 @@ public class GlobalData : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void SetInstance()
@@ -58,6 +57,6 @@ public class GlobalData : MonoBehaviour
         instance = this;
     }
 
-   
+
 
 }
