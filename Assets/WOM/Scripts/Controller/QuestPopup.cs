@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+
 
 public class QuestPopup : MonoBehaviour
 {
@@ -55,8 +57,7 @@ public class QuestPopup : MonoBehaviour
 
             var data = questDatas[i];
             var slot = questSlotsOneDay[i];
-
-            slot.SetQuestName(data.questName);
+            SetUIQusetSlot(slot, data);
 
         }
 
@@ -64,12 +65,14 @@ public class QuestPopup : MonoBehaviour
 
     void SetUIQusetSlot(QuestSlot slot, QuestData data)
     {
+        slot.ActiveNotifyIcon(data);
+        slot.SetTxtRewardValue(data.rewardValue.ToString());
         slot.SetQuestName(data.questName);
         slot.SetQuestProgress(data);
-        slot.SetTxtRewardValue(data.rewardValue.ToString());
-        //slot.SetRewardIcon(data.rewardIcon);
-        //slot.SetNotifyIcon(data.notifyIcon);
-        slot.EnableNotifyIcon(data.usingReward);
+        slot.SetQuestProgressCount(data);
+        slot.ActiveRewardButton(data);
+        slot.SetQuestTypeOneDay(ConvertStringToQuestType(data.questType));
+        slot.SetQuestData(data);
     }
 
     void InitRepeatQuestUI(List<QuestData> questDatas)
@@ -77,4 +80,26 @@ public class QuestPopup : MonoBehaviour
 
 
     }
+
+    public QuestSlot GetQuestSlotByQuestTypeOneDay(EnumDefinition.QuestTypeOneDay type)
+    {
+        return questSlotsOneDay.Where(x => x.questTypeOneDay == type).FirstOrDefault();
+    }
+
+
+    public EnumDefinition.QuestTypeOneDay ConvertStringToQuestType(string questTypeString)
+    {
+        if (string.IsNullOrEmpty(questTypeString))
+        {
+            throw new System.ArgumentException("questTypeString cannot be null or empty.");
+        }
+
+        if (!System.Enum.TryParse(questTypeString, out EnumDefinition.QuestTypeOneDay questTypeEnum))
+        {
+            throw new System.ArgumentException($"{questTypeString} is not a valid value for QuestTypeOneDay enum.");
+        }
+
+        return questTypeEnum;
+    }
+
 }
