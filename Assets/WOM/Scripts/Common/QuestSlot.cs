@@ -27,8 +27,7 @@ public class QuestSlot : MonoBehaviour
         {
             // 리워드 획득
             EventManager.instance.RunEvent<QuestData>(CallBackEventType.TYPES.OnQusetUsingRewardOneDay, questData);
-
-            //EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.showAd);
+            ActiveNotifyIcon(questData);
             ActiveRewardButton(questData);
             SetDoingText(questData);
         });

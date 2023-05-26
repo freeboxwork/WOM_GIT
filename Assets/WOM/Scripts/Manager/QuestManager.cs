@@ -17,11 +17,13 @@ public class QuestManager : MonoBehaviour
 
 
 
-
-
     void Start()
     {
         AddEvents();
+    }
+
+    void OnDestroy()
+    {
         RemoveEvents();
     }
 
@@ -90,7 +92,9 @@ public class QuestManager : MonoBehaviour
             if (!quest.qusetComplete)
             {
 
-                quest.curCountValue++;
+                ++quest.curCountValue;
+
+
                 if (quest.curCountValue >= quest.targetValue)
                 {
                     quest.qusetComplete = true;
@@ -99,6 +103,9 @@ public class QuestManager : MonoBehaviour
                 //ui update , playerprefs save event 실행
                 var slot = questPopup.GetQuestSlotByQuestTypeOneDay(type);
                 slot.UpdateUI(quest);
+
+                // quest 의 변동 사항을 로그로 출력
+                Debug.Log("퀘스트 카운트 증가 : " + type.ToString() + " 현재 카운트 : " + quest.curCountValue + " / " + quest.targetValue);
 
                 // save data
                 SaveQuestData(quest);
@@ -123,6 +130,8 @@ public class QuestManager : MonoBehaviour
     {
         data.usingReward = true;
         PlayerPrefs.SetInt(data.questType + keyUsingReward, data.usingReward ? 1 : 0);
+
+        // 리워드 지급
     }
 
 
