@@ -6,17 +6,35 @@ public class QuestResetTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
+        // PlayerPrefs 에 CURRENT_TIME_KEY 가 저장되어 있지 않다면 SaveCurrentTime() 함수를 실행한다.
+        if (!PlayerPrefs.HasKey(CURRENT_TIME_KEY))
         {
             SaveCurrentTime();
             SaveMidnightTime();
         }
+        else
+        {
+            if (HasCrossedMidnight())
+            {
+                Debug.Log("자정이 지났습니다.");
+
+                // reset timer
+                SaveCurrentTime();
+                SaveMidnightTime();
+
+                // reset one day quest
+            }
+        }
     }
+
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.A))
+    //     {
+    //         SaveCurrentTime();
+    //         SaveMidnightTime();
+    //     }
+    // }
 
     private const string CURRENT_TIME_KEY = "current_time";
     private const string MIDNIGHT_TIME_KEY = "midnight_time";
