@@ -30,6 +30,9 @@ public class StageManager : MonoBehaviour
 
     public IEnumerator SetStageById(int stageIdx)
     {
+        // 일일 퀘스트 완료 : 스테이지 클리어
+        EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.progressStage);
+
         // set data
         SetStageData(stageIdx, out bool isBgImgChange);
 

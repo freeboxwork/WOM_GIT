@@ -276,6 +276,9 @@ public class EventController : MonoBehaviour
         // phaseCount 리셋
         PhaseCountReset();
 
+        // 일일 퀘스트 완료 : 금광보스
+        EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.killGoldBoss);
+
         // 일반 몬스터 등장
         yield return StartCoroutine(MonsterAppearCor(MonsterType.normal));
     }

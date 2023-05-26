@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static EnumDefinition;
+using System.Linq;
+
 
 public class QuestManager : MonoBehaviour
 {
@@ -91,10 +93,7 @@ public class QuestManager : MonoBehaviour
             var quest = questsOneDay[type];
             if (!quest.qusetComplete)
             {
-
                 ++quest.curCountValue;
-
-
                 if (quest.curCountValue >= quest.targetValue)
                 {
                     quest.qusetComplete = true;
@@ -106,9 +105,14 @@ public class QuestManager : MonoBehaviour
 
                 // quest 의 변동 사항을 로그로 출력
                 Debug.Log("퀘스트 카운트 증가 : " + type.ToString() + " 현재 카운트 : " + quest.curCountValue + " / " + quest.targetValue);
-
                 // save data
                 SaveQuestData(quest);
+
+                if (AllQuestComplete()) // 일일 퀘스트 전체 완료 체크
+                {
+                    // 일일 퀘스트 완료 : 모든 일일 퀘스트 완료
+                    EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.allComplete);
+                }
             }
         }
         else
@@ -117,6 +121,11 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+
+    bool AllQuestComplete()
+    {
+        return questsOneDay.Values.All(quest => quest.qusetComplete);
+    }
 
 
     // user quest data save

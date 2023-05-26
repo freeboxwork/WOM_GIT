@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using UnityEngine.Rendering;
 
 public class SkillBtn : MonoBehaviour
 {
@@ -21,7 +19,7 @@ public class SkillBtn : MonoBehaviour
     public AnimData animDataUsingSkill;
     public AnimData animDataReloadSkill;
     public AnimationController animCont;
-    
+
     public EnumDefinition.SkillType skillType;
 
     /* PROCESS
@@ -60,7 +58,7 @@ public class SkillBtn : MonoBehaviour
         string answer = string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
         txtTime.text = answer;
     }
-   
+
     public bool skillAddValue = false;
 
     IEnumerator UsingKill_Cor()
@@ -75,26 +73,29 @@ public class SkillBtn : MonoBehaviour
             btnSkill.enabled = false;
             skillReady = false;
 
-            imgSkillBack.color = colorWhite; 
+            imgSkillBack.color = colorWhite;
             imgSkillFront.color = colorDeem;
 
 
-           
+
             animCont.animData = animDataUsingSkill;
 
             //스킬 사용
             GlobalData.instance.statManager.UsingSkill(skillType);
 
+            // 일일 퀘스트 완료 : 스킬 사용
+            EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.useSkill);
+
             txtTime.enabled = false;
             skillAddValue = true;
             txtTimeAnim.enabled = true;
-            StartCoroutine(animCont.UI_TextAnim(txtTimeAnim, data.duaration,0));
+            StartCoroutine(animCont.UI_TextAnim(txtTimeAnim, data.duaration, 0));
             yield return StartCoroutine(animCont.UI_ImageFillAmountAnim(imgSkillFront, 0, 1));
             txtTimeAnim.enabled = false;
             skillAddValue = false;
             txtTime.enabled = true;
 
-            imgSkillBack.color = colorDeem; 
+            imgSkillBack.color = colorDeem;
             imgSkillFront.color = colorWhite;
             animCont.animData = animDataReloadSkill;
 
@@ -107,8 +108,8 @@ public class SkillBtn : MonoBehaviour
         yield return null;
     }
 
-    
 
 
-    
+
+
 }
