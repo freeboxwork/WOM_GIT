@@ -151,4 +151,9 @@ public class QuestManager : MonoBehaviour
         return RewardType.none;
     }
 
+
+
+
+
+
 }
