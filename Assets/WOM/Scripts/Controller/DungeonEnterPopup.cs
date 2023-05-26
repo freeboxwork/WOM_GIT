@@ -1,11 +1,7 @@
-using GooglePlayGames.BasicApi;
-using SRDebugger.UI.Other;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 using static EnumDefinition;
 
@@ -50,27 +46,32 @@ public class DungeonEnterPopup : MonoBehaviour
 
     void SetBtnEvents()
     {
-        btn_KeyDungeon.onClick.AddListener(() => {
+        btn_KeyDungeon.onClick.AddListener(() =>
+        {
             if (IsValidDungeonKeyCount(curMonsterType))
             {
+                // 일일 퀘스트 완료 : 던전
+                Debug.Log("던전 입장");
+                EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.clearDungeon);
                 EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, curMonsterType);
             }
             contents.SetActive(false);
         });
 
-        btn_Ticket_Dungeon.onClick.AddListener(() => {
+        btn_Ticket_Dungeon.onClick.AddListener(() =>
+        {
             UsingClearTicket();
         });
     }
 
 
-    
+
 
     void UsingClearTicket()
     {
         var player = GlobalData.instance.player;
         var curTicketCount = player.clearTicket;
-        if(curTicketCount >= clearTicketCount)
+        if (curTicketCount >= clearTicketCount)
         {
             // pay ticket
             GlobalData.instance.player.PayClearTicekt(clearTicketCount);
@@ -94,10 +95,10 @@ public class DungeonEnterPopup : MonoBehaviour
 
     public void EnablePopup(EnumDefinition.MonsterType monsterType)
     {
-        curMonsterType= monsterType;
+        curMonsterType = monsterType;
         curLevel = GlobalData.instance.player.dungeonMonsterClearLevel.GetLeveByDungeonMonType(curMonsterType);
         curDungeonMonData = GlobalData.instance.dataManager.GetDungeonMonsterDataByTypeLevel(curMonsterType, curLevel);
-  
+
 
         contents.SetActive(true);
         SetKeyUI(monsterType);
@@ -145,7 +146,7 @@ public class DungeonEnterPopup : MonoBehaviour
         textKeyCount.text = keyCount.ToString();
     }
 
-    
+
 
 
     public void SetDungeonEnterPopup(int clear, int key, Sprite sp)
