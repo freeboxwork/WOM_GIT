@@ -41,6 +41,9 @@ public class GlobalData : MonoBehaviour
     public CastleManager castleManager;
     public EventSystem eventSystem;
     public QuestManager questManager;
+    public RewardManager rewardManager;
+
+
     private void Awake()
     {
         SetInstance();

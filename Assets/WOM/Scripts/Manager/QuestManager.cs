@@ -139,31 +139,16 @@ public class QuestManager : MonoBehaviour
     {
         data.usingReward = true;
         PlayerPrefs.SetInt(data.questType + keyUsingReward, data.usingReward ? 1 : 0);
-
         // 리워드 지급
+        GlobalData.instance.rewardManager.RewardByType(GetRewardTypeByTypeName(data.rewardType), data.rewardValue);
     }
 
-
-
-
-    // public void IncreaseCount(QuestTypeOneDay type)
-    // {
-    //     if (!questsOneDay.ContainsKey(type))
-    //     {
-    //         questsOneDay[type] = 0;
-    //     }
-
-    //     questsOneDay[type]++;
-    // }
-
-    // public void ResetCount(QuestTypeOneDay type)
-    // {
-    //     questsOneDay[type] = 0;
-    // }
-
-    // public int GetCount(QuestTypeOneDay type)
-    // {
-    //     return questsOneDay.ContainsKey(type) ? questsOneDay[type] : 0;
-    // }
+    EnumDefinition.RewardType GetRewardTypeByTypeName(string typeName)
+    {
+        foreach (RewardType type in System.Enum.GetValues(typeof(RewardType)))
+            if (type.ToString() == typeName)
+                return type;
+        return RewardType.none;
+    }
 
 }
