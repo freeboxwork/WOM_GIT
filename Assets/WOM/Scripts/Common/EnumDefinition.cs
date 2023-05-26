@@ -128,9 +128,20 @@ public class EnumDefinition
     {
         gold,
         bone,
-        jewel,
+        gem,
         dice,
         coal
+    }
+
+    public enum RewardType
+    {
+        gold,
+        bone,
+        gem,
+        dice,
+        coal,
+        clearTicket,
+        none,
     }
 
 
