@@ -9,6 +9,15 @@ public class QuestResetTimer : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SaveCurrentTime();
+            SaveMidnightTime();
+        }
+    }
+
     private const string CURRENT_TIME_KEY = "current_time";
     private const string MIDNIGHT_TIME_KEY = "midnight_time";
 
@@ -20,6 +29,8 @@ public class QuestResetTimer : MonoBehaviour
         // PlayerPrefs에 현재 시간을 문자열로 저장한다.
         PlayerPrefs.SetString(CURRENT_TIME_KEY, now.ToString());
 
+        Debug.Log(now.ToString());
+
         //PlayerPrefs.Save();
     }
 
@@ -30,6 +41,8 @@ public class QuestResetTimer : MonoBehaviour
 
         // PlayerPrefs에 오늘 자정 시간을 문자열로 저장한다.
         PlayerPrefs.SetString(MIDNIGHT_TIME_KEY, midnight.ToString());
+
+        Debug.Log(midnight.ToString());
 
         //PlayerPrefs.Save();
     }
