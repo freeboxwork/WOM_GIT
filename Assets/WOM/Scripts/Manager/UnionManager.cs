@@ -12,7 +12,7 @@ public class UnionManager : MonoBehaviour
 
     void Start()
     {
-       // UnlockEquipSlots(GlobalData.instance.evolutionManager.evalutionLeveldx);
+        // UnlockEquipSlots(GlobalData.instance.evolutionManager.evalutionLeveldx);
     }
 
     public void UnlockEquipSlots(int dataId)
@@ -37,13 +37,13 @@ public class UnionManager : MonoBehaviour
             int index = i;
             var data = unionDatas[index];
             var slot = unionSlots[index];
-            
+
             slot.inGameData = new UnionInGameData();
-            
+
             // set id
             slot.inGameData.unionIndex = data.unionIndex;
             // set type
-            slot.unionGradeType = (EnumDefinition.UnionGradeType)System.Enum.Parse( typeof(EnumDefinition.UnionGradeType), data.gradeType);
+            slot.unionGradeType = (EnumDefinition.UnionGradeType)System.Enum.Parse(typeof(EnumDefinition.UnionGradeType), data.gradeType);
             // set face image
             slot.SetUIImageUnion(spriteFileData.GetIconData(data.unionIndex));
             // set data
@@ -70,7 +70,8 @@ public class UnionManager : MonoBehaviour
             slot.SetUITxtUnionEquipState();
 
             // set BtnAction
-            slot.btn.onClick.AddListener(() => {
+            slot.btn.onClick.AddListener(() =>
+            {
                 GlobalData.instance.unionInfoPopupController.EnablePopup(slot, data, slot.inGameData);
             });
 
@@ -101,7 +102,8 @@ public class UnionManager : MonoBehaviour
 
     void SetBtnEvent()
     {
-        UtilityMethod.SetBtnEventCustomTypeByID(7, () => {
+        UtilityMethod.SetBtnEventCustomTypeByID(7, () =>
+        {
             TotlaUnionLevelUp();
         });
     }
@@ -133,7 +135,9 @@ public class UnionManager : MonoBehaviour
         // Union Spwan
         GlobalData.instance.unionSpwanManager.UnionSpwan(selectedSlot, equipSlot.slotIndex);
 
-       
+        // 일일 퀘스트 완료 : 유니온 소환
+        EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.summonUnion);
+
     }
 
 
@@ -164,12 +168,12 @@ public class UnionManager : MonoBehaviour
     {
         selectedSlot = slot;
     }
-        
+
     public UnionSlot GetSelectedSlotData()
     {
         return selectedSlot;
     }
-        
+
 
     UnionSlot GetUnionSlotByID(int id)
     {
@@ -209,13 +213,13 @@ public class UnionManager : MonoBehaviour
 
     public float GetUnionDamage(UnionSlot slot)
     {
-        var damage = slot.unionData.damage + (slot.inGameData.level * slot.unionData.addDamage); 
+        var damage = slot.unionData.damage + (slot.inGameData.level * slot.unionData.addDamage);
         return damage;
     }
 
-    public float GetUnionPassiveDamage(UnionSlot slot) 
+    public float GetUnionPassiveDamage(UnionSlot slot)
     {
-        var passiveDamage = slot.unionData.passiveDamage + (slot.inGameData.level * slot.unionData.addPassiveDamage); 
+        var passiveDamage = slot.unionData.passiveDamage + (slot.inGameData.level * slot.unionData.addPassiveDamage);
         return passiveDamage;
     }
 
@@ -287,11 +291,11 @@ public class UnionManager : MonoBehaviour
     public float GetAllUnionPassiveDamage()
     {
         float totalPassiveValue = 0f;
-        
-        foreach(var slot in unionSlots)
+
+        foreach (var slot in unionSlots)
         {
-            if(slot.inGameData.level > 0)
-                totalPassiveValue+= slot.inGameData.passiveDamage;
+            if (slot.inGameData.level > 0)
+                totalPassiveValue += slot.inGameData.passiveDamage;
         }
         return totalPassiveValue;
     }

@@ -51,7 +51,6 @@ public class DungeonEnterPopup : MonoBehaviour
             if (IsValidDungeonKeyCount(curMonsterType))
             {
                 // 일일 퀘스트 완료 : 던전
-                Debug.Log("던전 입장");
                 EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.clearDungeon);
                 EventManager.instance.RunEvent(CallBackEventType.TYPES.OnDungeonMonsterChallenge, curMonsterType);
             }
@@ -75,6 +74,8 @@ public class DungeonEnterPopup : MonoBehaviour
         {
             // pay ticket
             GlobalData.instance.player.PayClearTicekt(clearTicketCount);
+            // 일일 퀘스트 완료 : 던전
+            EventManager.instance.RunEvent<EnumDefinition.QuestTypeOneDay>(CallBackEventType.TYPES.OnQusetClearOneDayCounting, EnumDefinition.QuestTypeOneDay.clearDungeon);
 
             // reward
             addRewardMap[curMonsterType].Invoke(curDungeonMonData.currencyAmount);
