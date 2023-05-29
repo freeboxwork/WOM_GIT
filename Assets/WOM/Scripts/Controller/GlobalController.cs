@@ -74,7 +74,7 @@ public class GlobalController : MonoBehaviour
         yield return StartCoroutine(evolutionManager.Init());
 
         // 뽑기 매니저 초기화 ( 첫 뽑기 데이터는 모두 0번 )
-        yield return StartCoroutine(lotteryManager.Init(0));
+        yield return StartCoroutine(lotteryManager.Init());
 
         // 진화 주사위 뽑기 세팅
         yield return StartCoroutine(evolutionDiceLotteryManager.Init());

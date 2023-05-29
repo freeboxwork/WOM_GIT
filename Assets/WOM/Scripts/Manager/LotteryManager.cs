@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using ProjectGraphics;
@@ -46,9 +45,11 @@ public class LotteryManager : MonoBehaviour
     public List<EnumDefinition.UnionGradeType> openedUnionTypeCards;
 
 
+    public int unionGradeIndex = 0;
+
     void Start()
     {
-       // SetUnionNmaeData();
+        // SetUnionNmaeData();
         SetUnionFaceList();
     }
 
@@ -94,15 +95,19 @@ public class LotteryManager : MonoBehaviour
     }
 
     /// <summary> 뽑기 필요 데이터 최초 세팅 </summary>
-    public IEnumerator Init(int gradeIndex)
+    public IEnumerator Init()
     {
-        SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(gradeIndex));
-        SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(gradeIndex));
+
+        // TODO : 저장된 데이터에서 불러와야 함
+        // unionGradeIndex = 
+
+        SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(unionGradeIndex));
+        SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(unionGradeIndex));
         randomGradeValues = GetRandomArrayValue();
         //CreateCards();
         yield return null;
     }
-        
+
     // 풀링으로 사용할 카드 생성
     void CreateCards()
     {
@@ -123,8 +128,8 @@ public class LotteryManager : MonoBehaviour
     public IEnumerator CardOpen(int roundCount, UnityAction gameEndEvent)
     {
         // 닫기 버튼 비활성화
-        UtilityMethod.GetCustomTypeBtnByID(44).interactable = false; 
-        
+        UtilityMethod.GetCustomTypeBtnByID(44).interactable = false;
+
         // 다시 뽑기 버튼 비활성화
         UtilityMethod.SetBtnsInteractableEnable(new List<int> { 17, 18, 19 }, false);
 
@@ -132,7 +137,7 @@ public class LotteryManager : MonoBehaviour
         UtilityMethod.SetBtnInteractableEnable(33, true);
 
         yield return StartCoroutine(MakeCardOption(roundCount));
-        
+
         //yield return new WaitForSeconds(0.3f); // 05초 대기 ( 연출 )
 
         yield return StartCoroutine(CardsOpenEffect());
@@ -144,7 +149,7 @@ public class LotteryManager : MonoBehaviour
         UtilityMethod.SetBtnInteractableEnable(33, false);
 
         // 닫기 버튼 활성화
-        UtilityMethod.GetCustomTypeBtnByID(44).interactable = true; 
+        UtilityMethod.GetCustomTypeBtnByID(44).interactable = true;
 
         gameEndEvent.Invoke();
     }
@@ -169,9 +174,9 @@ public class LotteryManager : MonoBehaviour
 
     public IEnumerator CardsOpenEffect()
     {
-      
 
-        List<int> unionIndexList = new List<int>(); 
+
+        List<int> unionIndexList = new List<int>();
         for (int i = 0; i < openedUnionTypeCards.Count; i++)
         {
             var unionType = openedUnionTypeCards[i];
@@ -197,7 +202,7 @@ public class LotteryManager : MonoBehaviour
             var unionIdex = GetUnionIndex(unionType, faceIndex);
             unionIndexList.Add(unionIdex);
             yield return null;
-           // yield return new WaitForSeconds(cardOpenDeayTime);
+            // yield return new WaitForSeconds(cardOpenDeayTime);
         }
 
         //Debug.Log("뽑기 카운트 " + unionIndexList.Count);
@@ -207,12 +212,12 @@ public class LotteryManager : MonoBehaviour
         //}
 
         // effect open
-       
+
         lotteryAnimationController.gameObject.SetActive(true);
         lotteryAnimationController.StartLotteryAnimation();
         yield return StartCoroutine(lotteryAnimationController.ShowUnionSlotCardOpenProcess(unionIndexList.ToArray()));
         GlobalData.instance.unionManager.AddUnions(unionIndexList);
-      
+
     }
 
     int GetRandomFaceIndex()
@@ -220,9 +225,9 @@ public class LotteryManager : MonoBehaviour
         return Random.Range(0, 7);
     }
 
-    int GetUnionIndex(EnumDefinition.UnionGradeType unionGradeType , int faceIndex )
+    int GetUnionIndex(EnumDefinition.UnionGradeType unionGradeType, int faceIndex)
     {
-        return faceIndex + ( 8 * (int)unionGradeType);
+        return faceIndex + (8 * (int)unionGradeType);
     }
 
     // curGambleData 의 각 랜덤 범위 적용 
@@ -270,8 +275,8 @@ public class LotteryManager : MonoBehaviour
 
     void ResetValues()
     {
-       
+
     }
 
-         
+
 }
