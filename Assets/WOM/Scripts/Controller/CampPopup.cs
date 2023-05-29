@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CampPopup : CastlePopupBase
 {
-    // Start is called before the first frame update
+
+    public Image imgSummonCountProgress;
+    public TextMeshProUGUI txtSummonCount;
+    public Button btnGetReward;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+
     }
 }
