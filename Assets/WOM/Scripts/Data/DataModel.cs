@@ -545,7 +545,8 @@ public class QuestData
         questData.targetValue = targetValue;
         questData.rewardType = rewardType;
         questData.rewardValue = rewardValue;
-        // TODO: 아래 항목은 저장 되어 있는 데이터가 있다면 해당 데이터로 초기화
+
+        //아래 항목은 저장 되어 있는 데이터가 있다면 해당 데이터로 초기화
         questData.qusetComplete = qusetComplete;
         questData.curCountValue = curCountValue;
         questData.usingReward = usingReward;

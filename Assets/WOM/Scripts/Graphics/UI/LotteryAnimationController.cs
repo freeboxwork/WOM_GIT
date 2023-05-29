@@ -13,7 +13,7 @@ namespace ProjectGraphics
 
         public Color[] effectColor;
         public Sprite[] gradeBackImage;
-        private Lottery_Slot[] slots;
+        public Lottery_Slot[] slots;
 
         private bool isSkip = false;
 

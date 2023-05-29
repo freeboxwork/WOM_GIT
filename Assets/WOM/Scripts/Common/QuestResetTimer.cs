@@ -76,7 +76,7 @@ public class QuestResetTimer : MonoBehaviour
         return currentTime;
     }
 
-    bool HasCrossedMidnight()
+    public bool HasCrossedMidnight()
     {
         // 현재 시간과 저장된 오늘 자정 시간을 비교한다.
         DateTime currentTime = LoadCurrentTime();
@@ -93,4 +93,11 @@ public class QuestResetTimer : MonoBehaviour
             return false;
         }
     }
+
+    public void ResetTimer()
+    {
+        SaveCurrentTime();
+        SaveMidnightTime();
+    }
+
 }

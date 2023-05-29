@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour
     const string keyUsingReward = "_usingReward";
     const string keyQuestComplete = "_questComplete";
 
-
+    public QuestResetTimer questResetTimer;
 
     void Start()
     {
@@ -67,14 +67,40 @@ public class QuestManager : MonoBehaviour
         {
             var clonData = oneDayData[i].CloneInstance();
             var slot = questPopup.questSlotsOneDay[i];
+
+            // 만약 퀘스트 재설정 타이머가 자정을 지난 경우
+            if (questResetTimer.HasCrossedMidnight())
+            {
+                // 타이머를 재설정한다.
+                questResetTimer.ResetTimer();
+            }
+            else // 자정을 지나지 않은 경우
+            {
+                // 유저 메모리에서 저장된 데이터를 로드한다.
+                LoadQuestDataFromUserMemory(clonData);
+            }
+
             questsOneDay.Add(GetQuestTypeOneDayByTypeName(clonData.questType), clonData);
             questPopup.SetUIQusetSlot(slot, clonData);
         }
-        // foreach (QuestData data in GlobalData.instance.dataManager.questDatasOneDay.data)
-        // {
-        //     var clonData = data.CloneInstance();
+    }
 
-        // }
+    void LoadQuestDataFromUserMemory(QuestData data)
+    {
+        if (PlayerPrefs.HasKey(data.questType))
+        {
+            data.curCountValue = PlayerPrefs.GetInt(data.questType);
+        }
+
+        if (PlayerPrefs.HasKey(data.questType + keyQuestComplete))
+        {
+            data.qusetComplete = PlayerPrefs.GetInt(data.questType + keyQuestComplete) == 1 ? true : false;
+        }
+
+        if (PlayerPrefs.HasKey(data.questType + keyUsingReward))
+        {
+            data.usingReward = PlayerPrefs.GetInt(data.questType + keyUsingReward) == 1 ? true : false;
+        }
     }
 
     QuestTypeOneDay GetQuestTypeOneDayByTypeName(string typeName)
@@ -124,7 +150,20 @@ public class QuestManager : MonoBehaviour
 
     bool AllQuestComplete()
     {
-        return questsOneDay.Values.All(quest => quest.qusetComplete);
+
+        return questsOneDay.Where(x => x.Value != questsOneDay[EnumDefinition.QuestTypeOneDay.allComplete])
+                      .All(x => x.Value.qusetComplete);
+        // foreach (var v in questsOneDay)
+        // {
+        //     if (v.Value == questsOneDay[EnumDefinition.QuestTypeOneDay.allComplete])
+        //         continue;
+        //     else
+        //     {
+        //         if (!v.Value.qusetComplete)
+        //             return false;
+        //     }
+        // }
+        // return true;
     }
 
 
@@ -150,6 +189,7 @@ public class QuestManager : MonoBehaviour
                 return type;
         return RewardType.none;
     }
+
 
 
 
