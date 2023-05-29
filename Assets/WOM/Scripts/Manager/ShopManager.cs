@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopSlots.Count; i++)
         {
             var slot = shopSlots[i];
-            
+
             // set ui
         }
     }
@@ -46,7 +46,7 @@ public class ShopManager : MonoBehaviour
             EnableLotteryBtnsSet(LotteryPageType.UNION);
             // 뽑기 1회 시작
             GlobalData.instance.evolutionManager.UnionLotteryGameStart(1);
-           
+
         });
 
         // UNION 11
@@ -58,7 +58,7 @@ public class ShopManager : MonoBehaviour
         });
 
         // DNA 1
-        UtilityMethod.SetBtnEventCustomTypeByID(36, () => 
+        UtilityMethod.SetBtnEventCustomTypeByID(36, () =>
         {
             GlobalData.instance.uiController.AllDisableMenuPanels();
             EnableLotteryBtnsSet(LotteryPageType.DNA);
@@ -66,7 +66,7 @@ public class ShopManager : MonoBehaviour
         });
 
         // DNA 11
-        UtilityMethod.SetBtnEventCustomTypeByID(37, () => 
+        UtilityMethod.SetBtnEventCustomTypeByID(37, () =>
         {
             GlobalData.instance.uiController.AllDisableMenuPanels();
             EnableLotteryBtnsSet(LotteryPageType.DNA);
@@ -92,10 +92,10 @@ public class ShopManager : MonoBehaviour
         UtilityMethod.SetBtnEventCustomTypeByID(43, () => { });
 
         // 뽑기 페이지 닫기 버튼
-        UtilityMethod.SetBtnEventCustomTypeByID(44, () => {
-
-            GlobalData.instance.uiController.EnableMenuPanel(MenuPanelType.shop);
-
+        UtilityMethod.SetBtnEventCustomTypeByID(44, () =>
+        {
+            //GlobalData.instance.uiController.EnableMenuPanel(MenuPanelType.shop);
+            UtilityMethod.GetCustomTypeGMById(12).gameObject.SetActive(true);
         });
 
 
@@ -103,7 +103,7 @@ public class ShopManager : MonoBehaviour
 
     ShopSlot GetShopSlotByType(ShopSlotType type)
     {
-        return shopSlots.FirstOrDefault(f=> f.shopSlotType == type);
+        return shopSlots.FirstOrDefault(f => f.shopSlotType == type);
     }
 
     void EnableLotteryBtnsSet(LotteryPageType lotteryPageType)
