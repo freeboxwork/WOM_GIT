@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace ProjectGraphics
 {
@@ -23,8 +21,8 @@ namespace ProjectGraphics
 
         private void Awake()
         {
-            slots = GetComponentsInChildren<Lottery_Slot>();
-            foreach(var slot in slots) slot.gameObject.SetActive(false);
+            // slots = GetComponentsInChildren<Lottery_Slot>();
+            // foreach(var slot in slots) slot.gameObject.SetActive(false);
         }
 
 #if UNITY_EDITOR
@@ -61,8 +59,8 @@ namespace ProjectGraphics
             for (int i = 0; i < u.Length; i++)
             {
                 int typeIndex = SetImageFromUnionType(data.GetGradeData(u[i]));
-                
-                if(isSkip == false)
+
+                if (isSkip == false)
                 {
                     if (typeIndex == 2)
                     {

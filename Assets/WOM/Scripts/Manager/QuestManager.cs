@@ -68,18 +68,15 @@ public class QuestManager : MonoBehaviour
             var clonData = oneDayData[i].CloneInstance();
             var slot = questPopup.questSlotsOneDay[i];
 
-            // 만약 퀘스트 재설정 타이머가 자정을 지난 경우
-            if (questResetTimer.HasCrossedMidnight())
+            if (questResetTimer.HasCurrentTime())
             {
-                // 타이머를 재설정한다.
-                questResetTimer.ResetTimer();
+                // 만약 퀘스트 재설정 타이머가 자정을 지난 경우 타이머를 재설정한다.
+                if (questResetTimer.HasCrossedMidnight())
+                    questResetTimer.ResetTimer();
+                //자정을 지나지 않은 경우 유저 메모리에서 저장된 데이터를 로드한다.
+                else
+                    LoadQuestDataFromUserMemory(clonData);
             }
-            else // 자정을 지나지 않은 경우
-            {
-                // 유저 메모리에서 저장된 데이터를 로드한다.
-                LoadQuestDataFromUserMemory(clonData);
-            }
-
             questsOneDay.Add(GetQuestTypeOneDayByTypeName(clonData.questType), clonData);
             questPopup.SetUIQusetSlot(slot, clonData);
         }

@@ -7,7 +7,7 @@ public class QuestResetTimer : MonoBehaviour
     void Start()
     {
         // PlayerPrefs 에 CURRENT_TIME_KEY 가 저장되어 있지 않다면 SaveCurrentTime() 함수를 실행한다.
-        if (!PlayerPrefs.HasKey(CURRENT_TIME_KEY))
+        if (!HasCurrentTime())
         {
             SaveCurrentTime();
             SaveMidnightTime();
@@ -38,6 +38,11 @@ public class QuestResetTimer : MonoBehaviour
 
     private const string CURRENT_TIME_KEY = "current_time";
     private const string MIDNIGHT_TIME_KEY = "midnight_time";
+
+    public bool HasCurrentTime()
+    {
+        return PlayerPrefs.HasKey(CURRENT_TIME_KEY);
+    }
 
     void SaveCurrentTime()
     {
