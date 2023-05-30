@@ -45,7 +45,12 @@ public class LotteryManager : MonoBehaviour
     public List<EnumDefinition.UnionGradeType> openedUnionTypeCards;
 
 
-    public int unionGradeIndex = 0;
+
+    public int unionGradeLevel = 0;
+    // 현재 레벨에서 뽑기 진행 수
+    public int curLotteryCount = 0;
+    // 현재 레벨에서 전체 뽑기 수
+    public int totalLotteryCount = 0;
 
     void Start()
     {
@@ -92,6 +97,9 @@ public class LotteryManager : MonoBehaviour
     public void SetSummonGradeData(SummonGradeData summonGradeData)
     {
         curSummonGradeData = summonGradeData;
+        curLotteryCount = 0;
+        totalLotteryCount = curSummonGradeData.count;
+        PopupUIUpdate();
     }
 
     /// <summary> 뽑기 필요 데이터 최초 세팅 </summary>
@@ -99,10 +107,10 @@ public class LotteryManager : MonoBehaviour
     {
 
         // TODO : 저장된 데이터에서 불러와야 함
-        // unionGradeIndex = 
+        // unionGradeLevel = 
 
-        SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(unionGradeIndex));
-        SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(unionGradeIndex));
+        SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(unionGradeLevel));
+        SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(unionGradeLevel));
         randomGradeValues = GetRandomArrayValue();
         //CreateCards();
         yield return null;
@@ -151,7 +159,29 @@ public class LotteryManager : MonoBehaviour
         // 닫기 버튼 활성화
         UtilityMethod.GetCustomTypeBtnByID(44).interactable = true;
 
+        curLotteryCount += roundCount;
+        // 소환등급 레벨업 체크 및 UI 업데이트
+        if (curLotteryCount >= totalLotteryCount)
+        {
+            unionGradeLevel++;
+            SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(unionGradeLevel));
+            SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(unionGradeLevel));
+        }
+        else
+        {
+            PopupUIUpdate();
+        }
+
+        Debug.Log("뽑기 진행 수 : " + curLotteryCount);
+
         gameEndEvent.Invoke();
+    }
+
+    // UI 업데이트
+    void PopupUIUpdate()
+    {
+        CampPopup popup = (CampPopup)GlobalData.instance.castleManager.GetCastlePopupByType(EnumDefinition.CastlePopupType.camp);
+        popup.SetSummonCountProgress(totalLotteryCount, curLotteryCount);
     }
 
     void LotteryClose()
@@ -174,50 +204,20 @@ public class LotteryManager : MonoBehaviour
 
     public IEnumerator CardsOpenEffect()
     {
-
-
         List<int> unionIndexList = new List<int>();
         for (int i = 0; i < openedUnionTypeCards.Count; i++)
         {
             var unionType = openedUnionTypeCards[i];
             var faceIndex = GetRandomFaceIndex();
-
-            /*
-            // name , color , sprite image index
-            //var name = unionNameData[unionTypeIndex][faceIndex];
-            var face = unionFaceDatas[unionTypeIndex][faceIndex];
-            // INDEX 로 전달 하도록 수정 
-            // https://docs.google.com/spreadsheets/d/1gsiAKac3UtyWZNIKr3T-RxqNeR6ZfgjRdC4_VC_49gA/edit#gid=548996693
-            //var color = cardColors[faceIndex];
-            //card.imgCard.color = color;
-            var card = lotteryCards[i];
-            card.SetTxtName(name);
-            card.SetCardFace(face);
-            card.gameObject.SetActive(true);
-            card.Effect(openedUnionTypeCards[i]);
-            */
-            // 딜레이가 필요한경우 코루틴
-            // yield return StartCoroutine(card.EffectCor(openedUnionTypeCards[i]));
-
             var unionIdex = GetUnionIndex(unionType, faceIndex);
             unionIndexList.Add(unionIdex);
             yield return null;
-            // yield return new WaitForSeconds(cardOpenDeayTime);
         }
-
-        //Debug.Log("뽑기 카운트 " + unionIndexList.Count);
-        //foreach(var index in unionIndexList)
-        //{
-        //    Debug.Log("union index : " + index);
-        //}
-
-        // effect open
 
         lotteryAnimationController.gameObject.SetActive(true);
         lotteryAnimationController.StartLotteryAnimation();
         yield return StartCoroutine(lotteryAnimationController.ShowUnionSlotCardOpenProcess(unionIndexList.ToArray()));
         GlobalData.instance.unionManager.AddUnions(unionIndexList);
-
     }
 
     int GetRandomFaceIndex()
