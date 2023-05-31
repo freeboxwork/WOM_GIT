@@ -279,7 +279,7 @@ public class SummonGradeData
 {
     public int level;
     public int count;
-    public string rewardUnionIndex;
+    public int rewardUnionIndex;
 }
 
 

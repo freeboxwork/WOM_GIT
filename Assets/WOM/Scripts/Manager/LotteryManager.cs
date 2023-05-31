@@ -100,6 +100,9 @@ public class LotteryManager : MonoBehaviour
         curLotteryCount = 0;
         totalLotteryCount = curSummonGradeData.count;
         PopupUIUpdate();
+
+        //획득할 유니온 저장
+        GlobalData.instance.rewardManager.AddUnionReward(curSummonGradeData.rewardUnionIndex);
     }
 
     /// <summary> 뽑기 필요 데이터 최초 세팅 </summary>

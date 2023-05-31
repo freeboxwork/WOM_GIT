@@ -23,7 +23,10 @@ public class CampPopup : CastlePopupBase
 
     void SetBtnEvent()
     {
-
+        btnGetReward.onClick.AddListener(() =>
+        {
+            GlobalData.instance.rewardManager.UnionReward();
+        });
     }
 
 }
