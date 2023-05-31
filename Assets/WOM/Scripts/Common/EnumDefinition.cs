@@ -1,6 +1,7 @@
 
 public class EnumDefinition
 {
+
     public enum CustomDataType
     {
         button,
@@ -73,7 +74,7 @@ public class EnumDefinition
         questDataRepeat,
     }
 
-    /// <summary> í›ˆë ¨ ë©”ë‰´ </summary>
+    /// <summary> ?›ˆ? ¨ ë©”ë‰´ </summary>
     public enum SaleStatType
     {
         trainingDamage,
@@ -123,7 +124,7 @@ public class EnumDefinition
     }
 
 
-    /// <summary> ì¬í™”íƒ€ì… </summary>
+    /// <summary> ?¬?™”????… </summary>
     public enum GoodsType
     {
         gold,
@@ -141,6 +142,12 @@ public class EnumDefinition
         dice,
         coal,
         clearTicket,
+        goldKey,
+        boneKey,
+        diceKey,
+        coalKey,
+        union,
+        dna,
         none,
     }
 
@@ -181,17 +188,17 @@ public class EnumDefinition
 
     public enum SkillType
     {
-        /// <summary> ê³¤ì¶© ê³µê²©ë ¥ ì¦ê°€ </summary>
+        /// <summary> ê³¤ì¶© ê³µê²©? ¥ ì¦ê?? </summary>
         insectDamageUp,
-        /// <summary> ìœ ë‹ˆì˜¨ ê³µê²©ë ¥ ì¦ê°€ </summary>
+        /// <summary> ?œ ?‹ˆ?˜¨ ê³µê²©? ¥ ì¦ê?? </summary>
         unionDamageUp,
-        /// <summary> ì•„êµ° ì „ì²´ ì†ë„ ì¦ê°€ </summary>
+        /// <summary> ?•„êµ? ? „ì²? ?†?„ ì¦ê?? </summary>
         allUnitSpeedUp,
-        /// <summary> ê³¨ë“œ íšë“ëŸ‰ ì¦ê°€ </summary>
+        /// <summary> ê³¨ë“œ ?š?“?Ÿ‰ ì¦ê?? </summary>
         glodBonusUp,
-        /// <summary> ê´´ìˆ˜ ëª¬ìŠ¤í„° ë“±ì¥ </summary>
+        /// <summary> ê´´ìˆ˜ ëª¬ìŠ¤?„° ?“±?¥ </summary>
         monsterKing,
-        /// <summary> ì•„êµ° ì „ì²´ ì¹˜ëª…íƒ€  </summary>
+        /// <summary> ?•„êµ? ? „ì²? ì¹˜ëª…???  </summary>
         allUnitCriticalChanceUp,
     }
 
