@@ -12,6 +12,8 @@ using UnityEditor;
 
 public static class UtilityMethod 
 {
+    static readonly string[] symbol = new string[] { "","K", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J","L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",};
+
     public static void EnableUIEventSystem(bool value)
     {
         GlobalData.instance.eventSystem.enabled = value;
@@ -183,72 +185,73 @@ public static class UtilityMethod
     }
 
     ///<summary> 골드 및 뼛조각 숫자 Text를 심볼로 변경 </summary>
-    public static string ChangeSymbolNumber(float value)
+    public static string ChangeSymbolNumber(float number)
     {
-        //char[] temp = new char[64];
-        //string strNum = new string(temp);
-        string strNum = string.Format("{0:F0}", value);
-        //Debug.Log("넘겨받은 값:" + strNum);
 
-        int strLength = strNum.Length;
 
-        if (strLength < 4)
+        string zero = "0";
+        
+        if (-1d < number && number < 1d)
         {
-            return strNum;
+            return zero;
         }
 
-        int unit = 7;
-
-        string[] symbol = { "K", "M", "G", "T", "P", "E", "Z" };
-
-        for (int i = 0; i < symbol.Length; i++)
+        if (double.IsInfinity(number))
         {
-            int b;
-
-            unit += i * 3;
-
-            if (i == 0)
-            {
-                if (strLength < unit)
-                {
-                    if (strLength == unit - (unit - 4))
-                    {
-                        b = 2;
-                        strNum = strNum.Substring(0, b);//앞에 2개 자르고
-                        strNum = string.Format("{0}.{1}", strNum.Substring(0, strNum.Length - 1), strNum.Substring(strNum.Length - 1));
-                    }
-                    else
-                    {
-                        b = (i + 1) * 3;
-                        strNum = strNum.Substring(0, strNum.Length - b);
-                    }
-
-                    strNum += symbol[i];
-                    break;
-                }
-            }
-            else
-            {
-                if (strLength < unit)
-                {
-                    if (strLength == unit - 3)
-                    {
-                        b = 2;
-                        strNum = strNum.Substring(0, b);
-                        strNum = string.Format("{0}.{1}", strNum.Substring(0, strNum.Length - 1), strNum.Substring(strNum.Length - 1));
-                    }
-                    else
-                    {
-                        b = (i + 1) * 3;
-                        strNum = strNum.Substring(0, strNum.Length - b);
-                    }
-                    strNum += symbol[i]; break;
-                }
-            }
+            return "Max";
         }
 
-        return strNum;
+        //  ��ȣ ��� ���ڿ�
+        string significant = (number < 0) ? "-" : string.Empty;
+
+        //  ������ ����
+        string showNumber = string.Empty;
+
+        //  ���� ���ڿ�
+        string unityString = string.Empty;
+
+        //  ������ �ܼ�ȭ ��Ű�� ���� ������ ���� ǥ�������� ������ �� ó��
+        string[] partsSplit = number.ToString("E").Split('+');
+
+        //  ����
+        if (partsSplit.Length < 2)
+        {
+            return zero;
+        }
+
+        //  ���� (�ڸ��� ǥ��)
+        if (!int.TryParse(partsSplit[1], out int exponent))
+        {
+            Debug.LogWarningFormat("Failed - ToCurrentString({0}) : partSplit[1] = {1}", number, partsSplit[1]);
+            return zero;
+        }
+
+        //  ���� ���ڿ� �ε���
+        int quotient = exponent / 3;
+
+        //  �������� ������ �ڸ��� ��꿡 ���(10�� �ŵ������� ���)
+        int remainder = exponent % 3;
+
+        //  1A �̸��� �׳� ǥ��
+        if (exponent < 3)
+        {
+            showNumber = System.Math.Truncate(number).ToString();
+        }
+        else
+        {
+            //  10�� �ŵ������� ���ؼ� �ڸ��� ǥ������ ����� �ش�.
+            var temp = double.Parse(partsSplit[0].Replace("E", "")) * System.Math.Pow(10, remainder);
+
+            //  �Ҽ� ��°�ڸ������� ����Ѵ�.
+            //showNumber = temp.ToString("F").Replace(".0", "");
+            showNumber = temp.ToString("F");
+        }
+
+        unityString = symbol[quotient];
+
+        return string.Format("{0}{1}{2}", significant, showNumber, unityString);
     }
+
 
 
 
