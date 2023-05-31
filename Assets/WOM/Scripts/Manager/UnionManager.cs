@@ -26,6 +26,20 @@ public class UnionManager : MonoBehaviour
         }
     }
 
+    // void Update()
+    // {
+    //     //만약에 키보드 q 키를 누르면
+    //     if (Input.GetKeyDown(KeyCode.O))
+    //     {
+    //         Debug.Log("add union");
+    //         AddUnion(16);
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.P))
+    //     {
+    //         Debug.Log("add union");
+    //         AddUnion(24);
+    //     }
+    // }
 
     // set slot data
     public IEnumerator Init()

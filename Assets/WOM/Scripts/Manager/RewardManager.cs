@@ -10,18 +10,12 @@ public class RewardManager : MonoBehaviour
         SetRewardDic();
     }
 
-
+    // 유니온 보상을 받을때 레벨이 오를때 마다 하나씩 넣고 리워드를 획득 할때마다 하나씩 빼서 리워드를 획득한다.
+    Queue<int> unionRewardQueue = new Queue<int>();
     Dictionary<EnumDefinition.RewardType, UnityAction<int>> rewardDic = new Dictionary<EnumDefinition.RewardType, UnityAction<int>>();
 
-    public void RewardByType(EnumDefinition.RewardType rewardType, int rewardValye)
-    {
-        rewardDic[rewardType].Invoke(rewardValye);
 
-        // 획득 연출 추가
 
-        // 획득 이벤트 타입과 획득량을 로그로 출력함
-        Debug.Log($"획득 이벤트 타입 : {rewardType}, 획득량 : {rewardValye}");
-    }
 
     void SetRewardDic()
     {
@@ -34,5 +28,60 @@ public class RewardManager : MonoBehaviour
     }
 
 
+
+    // unionRewardQueue 에 인자로 값을 받아서 넣는 함수
+    public void AddUnionReward(int unionIndex)
+    {
+        unionRewardQueue.Enqueue(unionIndex);
+    }
+
+    // unionRewardQueue 에서 값을 추출 하고 예외처리를 한다.
+    public void UnionReward()
+    {
+        if (unionRewardQueue.Count == 0)
+        {
+            // 팝업
+            Debug.Log("획득할 유니온이 없습니다.");
+            return;
+        }
+
+        // 팝업
+        int unionIndex = unionRewardQueue.Dequeue();
+        RewardUnion(unionIndex);
+    }
+
+
+    void SetunionRewardQueue()
+    {
+        var datas = GlobalData.instance.dataManager.summonGradeDatas.data;
+        for (int i = 0; i < datas.Count; i++)
+        {
+            if (datas[i].level != 0)
+            {
+                unionRewardQueue.Enqueue(datas[i].rewardUnionIndex);
+            }
+        }
+    }
+
+    public void RewardByType(EnumDefinition.RewardType rewardType, int rewardValye)
+    {
+        rewardDic[rewardType].Invoke(rewardValye);
+
+        //TODO: 획득 연출 추가
+
+        // 획득 이벤트 타입과 획득량을 로그로 출력함
+        Debug.Log($"획득 이벤트 타입 : {rewardType}, 획득량 : {rewardValye}");
+    }
+
+
+    public void RewardUnion(int unionIndex)
+    {
+        //TODO: 획득 연출 추가 ( 팝업 )
+
+        // 획득
+        GlobalData.instance.unionManager.AddUnion(unionIndex);
+        // 획득한 유니온을 로그로 출력함
+        Debug.Log($"획득한 유니온 번호 : {unionIndex}");
+    }
 
 }
