@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
         UtilityMethod.SetBtnEventCustomTypeByID(34, () =>
         {
             // disable menu ui
-            GlobalData.instance.uiController.AllDisableMenuPanels();
+            //GlobalData.instance.uiController.AllDisableMenuPanels();
             // 유니온 뽑기 버튼 셋트 활성화
             EnableLotteryBtnsSet(LotteryPageType.UNION);
             // 뽑기 1회 시작
@@ -52,7 +52,7 @@ public class ShopManager : MonoBehaviour
         // UNION 11
         UtilityMethod.SetBtnEventCustomTypeByID(35, () =>
         {
-            GlobalData.instance.uiController.AllDisableMenuPanels();
+            //GlobalData.instance.uiController.AllDisableMenuPanels();
             EnableLotteryBtnsSet(LotteryPageType.UNION);
             GlobalData.instance.evolutionManager.UnionLotteryGameStart(11);
         });
@@ -60,7 +60,7 @@ public class ShopManager : MonoBehaviour
         // DNA 1
         UtilityMethod.SetBtnEventCustomTypeByID(36, () =>
         {
-            GlobalData.instance.uiController.AllDisableMenuPanels();
+            //GlobalData.instance.uiController.AllDisableMenuPanels();
             EnableLotteryBtnsSet(LotteryPageType.DNA);
             GlobalData.instance.dnaManger.DNALotteryGameStart(1);
         });
@@ -68,7 +68,7 @@ public class ShopManager : MonoBehaviour
         // DNA 11
         UtilityMethod.SetBtnEventCustomTypeByID(37, () =>
         {
-            GlobalData.instance.uiController.AllDisableMenuPanels();
+            //GlobalData.instance.uiController.AllDisableMenuPanels();
             EnableLotteryBtnsSet(LotteryPageType.DNA);
             GlobalData.instance.dnaManger.DNALotteryGameStart(11);
         });
@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
         UtilityMethod.SetBtnEventCustomTypeByID(44, () =>
         {
             //GlobalData.instance.uiController.EnableMenuPanel(MenuPanelType.shop);
-            UtilityMethod.GetCustomTypeGMById(12).gameObject.SetActive(true);
+            //UtilityMethod.GetCustomTypeGMById(12).gameObject.SetActive(true);
         });
 
 

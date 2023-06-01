@@ -51,7 +51,8 @@ public class LotteryManager : MonoBehaviour
     public int curLotteryCount = 0;
     // 현재 레벨에서 전체 뽑기 수
     public int totalLotteryCount = 0;
-
+    /// <summary> 리워드 획득전 전체 뽑기 진행 수 </summary>
+    public int totalDrawCount = 0;
     void Start()
     {
         // SetUnionNmaeData();
@@ -103,7 +104,13 @@ public class LotteryManager : MonoBehaviour
 
         //획득할 유니온 저장
         if (curSummonGradeData.rewardUnionIndex > 0)
+        {
             GlobalData.instance.rewardManager.AddUnionReward(curSummonGradeData.rewardUnionIndex);
+            var campPopup = (CampPopup)GlobalData.instance.castleManager.GetCastlePopupByType(EnumDefinition.CastlePopupType.camp);
+            campPopup.SetTxtGradeLevel(curSummonGradeData.level);
+         
+        }
+
     }
 
     /// <summary> 뽑기 필요 데이터 최초 세팅 </summary>
@@ -112,7 +119,7 @@ public class LotteryManager : MonoBehaviour
 
         // TODO : 저장된 데이터에서 불러와야 함
         // unionGradeLevel = 
-
+        totalDrawCount  = 0;
         SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(unionGradeLevel));
         SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(unionGradeLevel));
         randomGradeValues = GetRandomArrayValue();
@@ -164,6 +171,7 @@ public class LotteryManager : MonoBehaviour
         UtilityMethod.GetCustomTypeBtnByID(44).interactable = true;
 
         curLotteryCount += roundCount;
+        totalDrawCount += roundCount;
         // 소환등급 레벨업 체크 및 UI 업데이트
         if (curLotteryCount >= totalLotteryCount)
         {
@@ -186,6 +194,16 @@ public class LotteryManager : MonoBehaviour
     {
         CampPopup popup = (CampPopup)GlobalData.instance.castleManager.GetCastlePopupByType(EnumDefinition.CastlePopupType.camp);
         popup.SetSummonCountProgress(totalLotteryCount, curLotteryCount);
+        popup.SetTxtSummonCount(totalDrawCount, totalLotteryCount);
+
+    }
+
+    //유니온 리워드 사용 획득 버튼 이벤트 실행 후 호출 
+    public void TotalDrawCountUiUpdate()
+    {
+        totalDrawCount = totalLotteryCount - totalDrawCount;
+        var campPopup = (CampPopup)GlobalData.instance.castleManager.GetCastlePopupByType(EnumDefinition.CastlePopupType.camp);
+        campPopup.SetTxtSummonCount(totalDrawCount, totalLotteryCount);
     }
 
     void LotteryClose()
