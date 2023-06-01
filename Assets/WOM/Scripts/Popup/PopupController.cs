@@ -32,31 +32,39 @@ public enum EEfectGameObjectTYPE
 
 public class PopupRewardInfoData
 {
+    //º¸»ó ÀçÈ­ Á¤º¸
     private List<RewardInfoData> rewardInfoList;
+    //º¸»ó ÆË¾÷ ÀÌ¸§
     private string popupTitleName;
-
+    //¿¬Ãâ ÀÌÆåÆ® Å¸ÀÔ
     private EEfectGameObjectTYPE effectType;
-
+    //Äİ¹é ¾×¼Ç
     private Action callBack;
 
-    public void SetTitle(string title)
+    public void SetPopupData(string title)
     {
         this.popupTitleName = title;
     }
-    public void SetRewardInfoList(List<RewardInfoData> list)
+    public void SetPopupData(string title, List<RewardInfoData> list)
     {
+        this.popupTitleName = title;
         this.rewardInfoList = list;
     }
-    public void SetEffectType(EEfectGameObjectTYPE type)
+    public void SetPopupData(string title, List<RewardInfoData> list, Action cb)
     {
-        this.effectType = type;
-    }
-    public void SetCallBack(Action cb)
-    {
+        this.popupTitleName = title;
+        this.rewardInfoList = list;
         this.callBack = cb;
     }
+    public void SetPopupData(string title , List<RewardInfoData> list, Action cb,EEfectGameObjectTYPE type)
+    {
+        this.popupTitleName = title;
+        this.rewardInfoList = list;
+        this.callBack = cb;
+        this.effectType = type;
+    }
 
-    //GET
+    //GET//
     public string GetTitle()
     {
         return popupTitleName;
@@ -81,16 +89,16 @@ public class PopupController : MonoBehaviour
 {
     public static PopupController instance;
 
-    [Header("ìœ ë‹ˆì˜¨ Sprite SO")]
+    [Header("À¯´Ï¿Â Sprite SO")]
     [SerializeField] SpriteFileData spriteFileData; //GetIconData()
 
-    //ë¦¬ì›Œë“œ ì •ë³´ê°€ ë‹´ê¸´ í´ë˜ìŠ¤
+    //ë¦¬ì›Œ?“œ ? •ë³´ê?? ?‹´ê¸? ?´?˜?Š¤
     PopupRewardInfoData popupRewardInfoData = null;
-    //ì½œë°± ì´ë²¤íŠ¸ ì•¡ì…˜
+    //ì½œë°± ?´ë²¤íŠ¸ ?•¡?…˜
     List<Action> callbacks = new List<Action>();
-    [Header("ë³´ìƒ ì´í™íŠ¸ ê²Œì„ì˜¤ë¸Œì íŠ¸")]
+    [Header("ÀÌÆåÆ® ¿¬Ãâ °ÔÀÓ¿ÀºêÁ§Æ®")]
     public GameObject rewardEffect;
-    [Header("ì»¤ìŠ¤í…€ íŒì—… ìƒì„± ë¶€ëª¨ ìœ„ì¹˜")]
+    [Header("ÆË¾÷ÀÇ ºÎ¸ğ ¿ÀºêÁ§Æ®")]
     public Transform popupParent;
 
     private void Awake()
@@ -118,8 +126,8 @@ public class PopupController : MonoBehaviour
 
         PopupBuilder popupBuilder = new PopupBuilder(popupParent);
         popupBuilder.SetTitle(popupRewardInfoData.GetTitle());
-        //popupBuilder.SetButton(I2.Loc.LocalizationManager.GetTranslation("íƒ­í•˜ì—¬ë‹«ê¸° ë²„íŠ¼") , callbacks);
-        popupBuilder.SetButton("ë‹«ê¸°", callbacks);
+        //popupBuilder.SetButton(I2.Loc.LocalizationManager.GetTranslation("?ƒ­?•˜?—¬?‹«ê¸? ë²„íŠ¼") , callbacks);
+        popupBuilder.SetButton("?‹«ê¸?", callbacks);
         var rewards = popupRewardInfoData.GetRewardInfoDataList();
 
         for (int i = 0; i < rewards.Count; i++)
@@ -191,6 +199,26 @@ public class PopupController : MonoBehaviour
 
 
         //Player Data Save
+    }
+
+
+    [Sirenix.OdinInspector.Button]
+    public void TestPopup()
+    {
+        PopupRewardInfoData data = new PopupRewardInfoData();
+        List<RewardInfoData> rewards = new List<RewardInfoData>();
+
+        rewards.Add(new RewardInfoData(EnumDefinition.RewardType.gold, 10000, null));
+        rewards.Add(new RewardInfoData(EnumDefinition.RewardType.gem, 20000, null));
+ 
+
+        data.SetPopupData("REWARD",rewards);
+
+        SetupPopupInfo(data);
+
+
+
+
     }
 
 

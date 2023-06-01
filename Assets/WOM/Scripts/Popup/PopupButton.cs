@@ -14,7 +14,7 @@ public class PopupButton : MonoBehaviour
 
     private GameObject target = null;
 
-    Button btn;
+    [SerializeField] Button btn;
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class PopupButton : MonoBehaviour
 
     IEnumerator AutoClose()
     {
-        float time = 3f;
+        float time = 5f;
 
         while(time > 0)
         {
