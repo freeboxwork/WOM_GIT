@@ -102,7 +102,8 @@ public class LotteryManager : MonoBehaviour
         PopupUIUpdate();
 
         //획득할 유니온 저장
-        GlobalData.instance.rewardManager.AddUnionReward(curSummonGradeData.rewardUnionIndex);
+        if (curSummonGradeData.rewardUnionIndex > 0)
+            GlobalData.instance.rewardManager.AddUnionReward(curSummonGradeData.rewardUnionIndex);
     }
 
     /// <summary> 뽑기 필요 데이터 최초 세팅 </summary>
@@ -166,7 +167,7 @@ public class LotteryManager : MonoBehaviour
         // 소환등급 레벨업 체크 및 UI 업데이트
         if (curLotteryCount >= totalLotteryCount)
         {
-            unionGradeLevel++;
+            ++unionGradeLevel;
             SetSummonGradeData(GlobalData.instance.dataManager.GetSummonGradeDataByLevel(unionGradeLevel));
             SetGambleData(GlobalData.instance.dataManager.GetUnionGambleDataBySummonGrade(unionGradeLevel));
         }

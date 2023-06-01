@@ -11,7 +11,7 @@ public class RewardManager : MonoBehaviour
     }
 
     // 유니온 보상을 받을때 레벨이 오를때 마다 하나씩 넣고 리워드를 획득 할때마다 하나씩 빼서 리워드를 획득한다.
-    Queue<int> unionRewardQueue = new Queue<int>();
+    public Queue<int> unionRewardQueue = new Queue<int>();
     Dictionary<EnumDefinition.RewardType, UnityAction<int>> rewardDic = new Dictionary<EnumDefinition.RewardType, UnityAction<int>>();
 
 
@@ -42,12 +42,15 @@ public class RewardManager : MonoBehaviour
         {
             // 팝업
             Debug.Log("획득할 유니온이 없습니다.");
+            GlobalData.instance.globalPopupController.EnableGlobalPopup("유니온 획득", "획득할 유니온이 없습니다.");
             return;
         }
 
         // 팝업
         int unionIndex = unionRewardQueue.Dequeue();
         RewardUnion(unionIndex);
+
+        GlobalData.instance.globalPopupController.EnableGlobalPopup("유니온 획득", $"유니온 {unionIndex} 획득");
     }
 
 
