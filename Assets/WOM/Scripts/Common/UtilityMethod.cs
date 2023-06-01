@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,12 +6,11 @@ using System.Reflection;
 
 
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
-public static class UtilityMethod 
+public static class UtilityMethod
 {
-    static readonly string[] symbol = new string[] { "","K", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J","L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",};
+    static readonly string[] symbol = new string[] { "", "K", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", };
 
     public static void EnableUIEventSystem(bool value)
     {
@@ -21,7 +19,7 @@ public static class UtilityMethod
     public static T CustomGetComponet<T>() where T : UnityEngine.Object
     {
         var returnValue = GameObject.FindObjectOfType<T>();
-        if (returnValue == null) Debug.Log($"ì”¬ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íƒ€ì… ì…ë‹ˆë‹¤.");
+        if (returnValue == null) Debug.Log($"¾À¿¡ Á¸ÀçÇÏÁö ¾Ê´Â Å¸ÀÔ ÀÔ´Ï´Ù.");
         return returnValue;
     }
 
@@ -33,7 +31,7 @@ public static class UtilityMethod
         }
         else
         {
-            //Debug.LogError($"{gameObject.name} ê²Œì„ ì˜¤ë¸Œì íŠ¸ì— ì»´í¬ë„ŒíŠ¸ íƒ€ì…ì´ ì—†ìŠµë‹ˆë‹¤.");
+            //Debug.LogError($"{gameObject.name} °ÔÀÓ ¿ÀºêÁ§Æ®¿¡ ÄÄÆ÷³ÍÆ® Å¸ÀÔÀÌ ¾ø½À´Ï´Ù.");
             return null;
         }
     }
@@ -64,7 +62,7 @@ public static class UtilityMethod
         }
         else
         {
-            Debug.LogError($"Custom Type Object - Text - {id} ì˜¤ë¸Œì íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
+            Debug.LogError($"Custom Type Object - Text - {id} ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù.");
         }
     }
 
@@ -75,26 +73,26 @@ public static class UtilityMethod
     }
 
 
-    public static void SetImageSpriteCustomTypeByID(int id , Sprite sprite)
+    public static void SetImageSpriteCustomTypeByID(int id, Sprite sprite)
     {
         GetCustomTypeImageById(id).sprite = sprite;
     }
 
 
-    public static void SetBtnEventCustomTypeByID(int id , UnityAction action)
+    public static void SetBtnEventCustomTypeByID(int id, UnityAction action)
     {
         var btn = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);
-        if(btn != null)
+        if (btn != null)
         {
             btn.onClick.AddListener(action);
         }
         else
         {
-            Debug.LogError($"Custom Type Object - Button - {id} ì˜¤ë¸Œì íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
+            Debug.LogError($"Custom Type Object - Button - {id} ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù.");
         }
     }
 
-    public static void SetBtnInteractableEnable(int id , bool value)
+    public static void SetBtnInteractableEnable(int id, bool value)
     {
         var btn = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);
         if (btn != null)
@@ -103,13 +101,13 @@ public static class UtilityMethod
         }
         else
         {
-            Debug.LogError($"Custom Type Object - Button - {id} ì˜¤ë¸Œì íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
+            Debug.LogError($"Custom Type Object - Button - {id} ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù.");
         }
     }
 
     public static void SetBtnsInteractableEnable(List<int> ids, bool value)
     {
-        foreach(var id in ids)
+        foreach (var id in ids)
         {
             var btn = GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);
             if (btn != null)
@@ -118,7 +116,7 @@ public static class UtilityMethod
             }
             else
             {
-                Debug.LogError($"Custom Type Object - Button - {id} ì˜¤ë¸Œì íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
+                Debug.LogError($"Custom Type Object - Button - {id} ¿ÀºêÁ§Æ®°¡ ¾ø½À´Ï´Ù.");
             }
         }
     }
@@ -127,7 +125,7 @@ public static class UtilityMethod
 
     public static Button GetCustomTypeBtnByID(int id)
     {
-        return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);  
+        return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Button(id);
     }
 
     public static Image GetCustomTypeImageById(int id)
@@ -145,7 +143,7 @@ public static class UtilityMethod
         return GlobalData.instance.customTypeDataManager.GetCustomTypeData_Transform(id);
     }
 
-    /// <summary> ê°€ì¤‘ì¹˜ ëœë¤ ë½‘ê¸° </summary>
+    /// <summary> °¡ÁßÄ¡ ·£´ı »Ì±â </summary>
     public static float GetWeightRandomValue(float[] probs)
     {
         float total = 0;
@@ -169,7 +167,7 @@ public static class UtilityMethod
         return probs.Length - 1;
     }
 
-    ///<summary> ì§„í™” ì£¼ì‚¬ìœ„ ì‚¬ìš© ê°œìˆ˜ </summary>
+    ///<summary> ÁøÈ­ ÁÖ»çÀ§ »ç¿ë °³¼ö </summary>
     public static int GetEvolutionDiceUsingCount()
     {
         return 10 + (10 * GetUnLockCount());
@@ -184,13 +182,13 @@ public static class UtilityMethod
         return unlock;
     }
 
-    ///<summary> ê³¨ë“œ ë° ë¼›ì¡°ê° ìˆ«ì Textë¥¼ ì‹¬ë³¼ë¡œ ë³€ê²½ </summary>
+    ///<summary> °ñµå ¹× »ÄÁ¶°¢ ¼ıÀÚ Text¸¦ ½Éº¼·Î º¯°æ </summary>
     public static string ChangeSymbolNumber(float number)
     {
 
 
         string zero = "0";
-        
+
         if (-1d < number && number < 1d)
         {
             return zero;
@@ -201,48 +199,48 @@ public static class UtilityMethod
             return "Max";
         }
 
-        //  ï¿½ï¿½È£ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½
+        //  ??? ??? ?????
         string significant = (number < 0) ? "-" : string.Empty;
 
-        //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //  ?????? ????
         string showNumber = string.Empty;
 
-        //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½
+        //  ???? ?????
         string unityString = string.Empty;
 
-        //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½È­ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½
+        //  ?????? ???? ????? ???? ?????? ???? ????????? ?????? ?? ???
         string[] partsSplit = number.ToString("E").Split('+');
 
-        //  ï¿½ï¿½ï¿½ï¿½
+        //  ????
         if (partsSplit.Length < 2)
         {
             return zero;
         }
 
-        //  ï¿½ï¿½ï¿½ï¿½ (ï¿½Ú¸ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½)
+        //  ???? (????? ???)
         if (!int.TryParse(partsSplit[1], out int exponent))
         {
             Debug.LogWarningFormat("Failed - ToCurrentString({0}) : partSplit[1] = {1}", number, partsSplit[1]);
             return zero;
         }
 
-        //  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½Îµï¿½ï¿½ï¿½
+        //  ???? ????? ?¥å???
         int quotient = exponent / 3;
 
-        //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ï¿½ê¿¡ ï¿½ï¿½ï¿½(10ï¿½ï¿½ ï¿½Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+        //  ???????? ?????? ????? ??…Z ???(10?? ????????? ???)
         int remainder = exponent % 3;
 
-        //  1A ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½×³ï¿½ Ç¥ï¿½ï¿½
+        //  1A ????? ??? ???
         if (exponent < 3)
         {
             showNumber = System.Math.Truncate(number).ToString();
         }
         else
         {
-            //  10ï¿½ï¿½ ï¿½Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½.
+            //  10?? ????????? ????? ????? ??????? ????? ???.
             var temp = double.Parse(partsSplit[0].Replace("E", "")) * System.Math.Pow(10, remainder);
 
-            //  ï¿½Ò¼ï¿½ ï¿½ï¿½Â°ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+            //  ??? ??¡Æ????????? ??????.
             //showNumber = temp.ToString("F").Replace(".0", "");
             showNumber = temp.ToString("F");
         }
@@ -256,7 +254,7 @@ public static class UtilityMethod
 
 
 #if UNITY_EDITOR
- 
+
     public static void AssignFieldsWithSameName<T, U>(T target, U source)
     {
         FieldInfo[] fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -273,7 +271,7 @@ public static class UtilityMethod
         }
     }
 
-  
+
 
 #endif
 

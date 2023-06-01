@@ -6,6 +6,8 @@ public class CampPopup : CastlePopupBase
 
     public Image imgSummonCountProgress;
     public TextMeshProUGUI txtSummonCount;
+    public TextMeshProUGUI txtGradeLevel;
+
     public Button btnGetReward;
 
 
@@ -18,7 +20,17 @@ public class CampPopup : CastlePopupBase
     public void SetSummonCountProgress(int totalValue, int curValue)
     {
         imgSummonCountProgress.fillAmount = (float)curValue / (float)totalValue;
+        
+    }
+
+    public void SetTxtSummonCount(int curValue, int totalValue)
+    {
         txtSummonCount.text = $"{curValue}/{totalValue}";
+    }
+
+    public void SetTxtGradeLevel(int level)
+    {
+        txtGradeLevel.text = $"{level}";
     }
 
     void SetBtnEvent()
@@ -26,6 +38,7 @@ public class CampPopup : CastlePopupBase
         btnGetReward.onClick.AddListener(() =>
         {
             GlobalData.instance.rewardManager.UnionReward();
+
         });
     }
 

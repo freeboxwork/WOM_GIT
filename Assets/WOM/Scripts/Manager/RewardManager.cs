@@ -32,6 +32,8 @@ public class RewardManager : MonoBehaviour
     // unionRewardQueue 에 인자로 값을 받아서 넣는 함수
     public void AddUnionReward(int unionIndex)
     {
+        // 유니온 획득 버튼 활성화
+        UtilityMethod.SetBtnInteractableEnable(68, true);
         unionRewardQueue.Enqueue(unionIndex);
     }
 
@@ -51,6 +53,13 @@ public class RewardManager : MonoBehaviour
         RewardUnion(unionIndex);
 
         GlobalData.instance.globalPopupController.EnableGlobalPopup("유니온 획득", $"유니온 {unionIndex} 획득");
+        GlobalData.instance.lotteryManager.TotalDrawCountUiUpdate();
+
+        if (unionRewardQueue.Count <= 0)
+        {
+            // 유니온 획득 버튼 비활성화
+            UtilityMethod.SetBtnInteractableEnable(68, false);
+        }
     }
 
 
